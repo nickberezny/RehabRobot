@@ -1,1 +1,21 @@
-sudo npm install react react-dom redux react-redux next material-ui react-websocket three
+NodeJS backend for rehab robot UI
+Made with:
+	React (create reusable components)
+	Redux (react state manager)
+	Express (server)
+	Next (server-side rendering)
+	Material-UI (library based on Google's Material Design)
+	Socket.io (websocket library)
+
+folders:
+	components: various UI components used to build UI
+	games: games made with THREE.js
+	pages: containes entry point index.js
+	src: containes actions, reducers and store (see redux)
+
+prereqs from npm: 
+	sudo npm install react react-dom redux react-redux next @material-ui/core @material-ui/icons react-websocket three express socketio
+
+run dev environment :
+	sudo npm run dev
+

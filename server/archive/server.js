@@ -11,7 +11,7 @@ const nextHandler = nextApp.getRequestHandler()
 var tcp_port = 1337;
 var ui_port = 3000;
 
-var TEST = 0;
+var TEST = 1;
 
 if(TEST) {
 //tcp socket client
@@ -74,3 +74,5 @@ nextApp.prepare().then(() => {
   })
 
 })
+
+
