@@ -4,14 +4,24 @@ var io = require("socket.io")(server);
 const next = require('next')
 var net = require('net');
 
-const dev = process.env.NODE_ENV !== 'production'
-const nextApp = next({ dev })
-const nextHandler = nextApp.getRequestHandler()
-
 var tcp_port = 1337;
 var ui_port = 3000;
 
 var TEST = 0;
+
+
+/**********************************************************************
+            Create Web Server
+***********************************************************************/
+
+const dev = process.env.NODE_ENV !== 'production'
+const nextApp = next({ dev })
+const nextHandler = nextApp.getRequestHandler()
+
+
+/**********************************************************************
+            Connect to TCP Socket (Controller Process)
+***********************************************************************/
 
 if(TEST) {
 //tcp socket client
@@ -20,6 +30,10 @@ if(TEST) {
     console.log('Connected');
   })
 }
+
+/**********************************************************************
+            Websocket Server 
+***********************************************************************/
 
 // socket.io server
 io.on('connection', socket => {
@@ -61,6 +75,9 @@ io.on('connection', socket => {
 
 })
 
+/**********************************************************************
+            Start Server
+***********************************************************************/
 
 nextApp.prepare().then(() => {
 

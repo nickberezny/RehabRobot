@@ -62,6 +62,10 @@ int main(int argc, char* argv[]) {
  
     if(DEBUG) printf("begin \n");
 
+/**********************************************************************
+				   Initialize Mutexes
+***********************************************************************/
+
     int start_controller = 0;
 	struct impStruct imp[BUFFER_SIZE + 1] = {0};
 
@@ -87,6 +91,10 @@ int main(int argc, char* argv[]) {
     //create socket to connect to socket server 
     //init_sock(&(imp[BUFFER_SIZE].socket_data));
 
+/**********************************************************************
+				  		 Initialize DAQ
+***********************************************************************/
+
     //connect to DAQ
     daqHandle = init_daq(daqHandle);
     double value = 0;
@@ -98,6 +106,9 @@ int main(int argc, char* argv[]) {
     //init json conversion
     //json_length = length_json(imp);
 
+/**********************************************************************
+				   Initialize Threads & Memory Lock
+***********************************************************************/
 
     //lock memory (no dynamic allocation beyond here)
     if(mlockall(MCL_CURRENT|MCL_FUTURE) == -1) {
@@ -111,9 +122,9 @@ int main(int argc, char* argv[]) {
     	init_thread(&attr[i], &param[i], 95-i);
     }
 
-   //system("gnome-terminal -e 'echo ""abl123"" | sudo -S'");
-    //system("gnome-terminal --working-directory=Documents/UI -e 'node server'"); //node server
-    //system("gnome-terminal -e 'echo abl123 | sudo -S mongod --dbpath /data'"); //start mongodb database service
+/**********************************************************************
+				   Initialize TCP Socket
+***********************************************************************/
 	
 	int listenfd = 0, connfd = 0;
     struct sockaddr_in serv_addr; 
@@ -130,7 +141,15 @@ int main(int argc, char* argv[]) {
     bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
     listen(listenfd, 10);
 
-    system("gnome-terminal --working-directory=Documents/UI -e 'node server'"); 
+/**********************************************************************
+				   Wait for input 
+***********************************************************************/
+
+//Start UI Process 
+system("gnome-terminal --working-directory=Documents/UI -e 'node server'");
+
+//system("gnome-terminal -e 'echo ""abl123"" | sudo -S'");
+//system("gnome-terminal -e 'echo abl123 | sudo -S mongod --dbpath /data'"); //start mongodb database service
 
     while(1)
     {
@@ -169,7 +188,10 @@ int main(int argc, char* argv[]) {
         sleep(0.01);
      }
 
- 
+/**********************************************************************
+				   	Create and join threads
+***********************************************************************/
+
 	//create and join threads 
 	pthread_create(&thread[0], &attr[0], controller, (void *)imp);
 	pthread_create(&thread[1], &attr[1], server, (void *)imp);
@@ -184,6 +206,12 @@ int main(int argc, char* argv[]) {
 	return 0;
 
 }
+
+
+/**********************************************************************
+				   	Thread 1: Controller 
+***********************************************************************/
+
 
 void *controller(void * d)
 {
@@ -245,6 +273,11 @@ void *controller(void * d)
 	}
 	return NULL;
 }
+
+
+/**********************************************************************
+				   	Thread 2: Comm Server 
+***********************************************************************/
 
 void *server(void* d)
 {

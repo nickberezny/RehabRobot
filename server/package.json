@@ -9,5 +9,10 @@
     "start": "next start"
   },
   "author": "Nick Berezny",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@babel/parser": "^7.1.2",
+    "babel": "^6.23.0",
+    "react": "^16.5.2"
+  }
 }
