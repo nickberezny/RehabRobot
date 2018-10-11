@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class ComponentName extends React.Component {
+class UserPage extends React.Component {
 
 	constructor(props) {
 	    super(props);
@@ -9,7 +9,7 @@ class ComponentName extends React.Component {
 
 	render() {
 		return (
-
+			<div> Test </div>
 		)
 	}
 }
@@ -22,4 +22,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {}
-)(App);
+)(UserPage);

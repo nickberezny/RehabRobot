@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import DrawerMenu from './Drawer'
+import Topbar from './Topbar'
+import ContentWindow from './ContentWindow'
+
 /*
 import TopbarCont from '../containers/TopbarCont'
 import ContentCont from '../containers/ContentCont'
@@ -25,7 +28,9 @@ class App extends React.Component {
 		return (
 			<div>
 				<DrawerMenu />
-				Hi
+				<Topbar title="Rehab Robot" />
+				<br/><br/><br/><br/>
+				<ContentWindow />
 			</div>
 		)
 	}
@@ -37,7 +42,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {}
+  { }
 )(App);
 
 

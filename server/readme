@@ -19,3 +19,7 @@ prereqs from npm:
 run dev environment :
 	sudo npm run dev
 
+
+Components: 
+	BasicButton - include text and onClick function, e.g.
+		<Button text="Test01" clickFn = {this.props.runRobot} />

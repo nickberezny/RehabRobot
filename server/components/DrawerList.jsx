@@ -20,24 +20,30 @@ class DrawerList extends React.Component {
 
   constructor(props) {
       super(props);
-      this.handleChange = this.handleChange.bind(this);
+      this.pageOne = this.pageOne.bind(this);
+      this.pageTwo = this.pageTwo.bind(this);
   }
 
-  handleChange(pageNum) {
-    this.props.openPage(pageNum);
+  pageOne() {
+    this.props.openPage(1);
   }
+
+  pageTwo() {
+    this.props.openPage(2);
+  }
+
 
   render() {
     return (
       <div style={ListStyles}>
         <List component="nav">
-          <ListItem button onClick={this.handleChange(1)}>
+          <ListItem button onClick={this.pageOne}>
             <ListItemIcon>
               <BuildIcon />
             </ListItemIcon>
             <ListItemText primary="Setup" />
           </ListItem>
-          <ListItem button onClick={this.handleChange(2)}>
+          <ListItem button onClick={this.pageTwo}>
             <ListItemIcon>
               <MoviesIcon />
             </ListItemIcon>

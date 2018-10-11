@@ -2,19 +2,17 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 
 import { connect } from "react-redux";
-import { runRobot } from "../src/actions";
+import { runRobot } from "../../src/actions";
 
 import io from "socket.io-client";
 
-class RunButton extends React.Component {
+class BasicButton extends React.Component {
   
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
-    this.state = {
-        socket: null
-      }
   }
+
+  /*
 
   componentDidMount() {
     const socketio = io('http://192.168.2.205:3000');
@@ -43,28 +41,25 @@ class RunButton extends React.Component {
     this.state.socket.emit('START_ROBOT',dataToSend)
   
     };
+    */
 
   render() {
 
     return (
-      <Button variant="contained" color="primary" onClick={this.onClick}>
-        {props.name}
+      <Button variant="contained" color="primary" onClick={this.props.clickFn}>
+        {this.props.text}
       </Button>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return { 
-    K: state.kParam,
-    B: state.bParam,
-    controller: state.controller
-    }
+  return {}
 }
 
 export default connect(
   mapStateToProps,
-  { runRobot }
-)(RunButton);
+  { }
+)(BasicButton);
 
 //

@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class ComponentName extends React.Component {
+import Scene from '../../games/basic'
+
+class VisualsPage extends React.Component {
 
 	constructor(props) {
 	    super(props);
@@ -9,6 +11,10 @@ class ComponentName extends React.Component {
 
 	render() {
 		return (
+
+			<div>
+				<Scene />
+			</div>
 
 		)
 	}
@@ -22,4 +28,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {}
-)(App);
+)(VisualsPage);
