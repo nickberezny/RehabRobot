@@ -1,0 +1,158 @@
+\documentclass{article}
+\author{Nicholas Berezny}
+\title{Thesis Outline}
+\usepackage{cite}
+\usepackage{fullpage}
+\usepackage{gensymb}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{Literature Review and Preliminary Research}
+
+	\subsection{Introduction}
+
+	\subsection{Stroke Rehabilitation Literature}
+%------------------------------------------------------------------------
+%-stroke basics and stats
+%-rehab basics (traditional)
+%	-acute vs chronic
+%	-best practices 
+%
+%-------------------------------------------------------------------------	
+	
+	
+	\subsection{Rehabilitation Roboticss Literature}
+%------------------------------------------------------------------------
+%-lower vs upper limb (more upper) bots
+%-overview of more popular ones ()
+%-ViGRR
+%
+%
+%-------------------------------------------------------------------------
+	\subsection{Shadowing}
+%------------------------------------------------------------------------
+%-shadowing notes
+%
+%-------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	\subsection{Fundamental Design Decisions}
+%------------------------------------------------------------------------
+%-lower limb, acute and bed bound, knee flex/ext, portable and low powered
+%
+%-------------------------------------------------------------------------
+
+
+\section{Mechanical Design}
+	\subsection{Actuation}
+%------------------------------------------------------------------------
+%-Targeted exercise (knee extension/flexion)
+%	-kinematics, expected forces / velocities 
+%-ball screw vs belt 
+%-belt dynamics / characterisitcs 
+%-motor selection
+%
+%-------------------------------------------------------------------------
+
+	\subsection{Frame}
+%------------------------------------------------------------------------
+%-On Bed vs side of bed
+%-cart based vs independent
+%-part placement
+%-safety (adjustable stop bar)
+%
+%-------------------------------------------------------------------------
+	\subsection{Foot and Leg Support}
+%------------------------------------------------------------------------
+%-adjustability
+%-decision to 3d print
+%-leg support  ?
+%
+%-------------------------------------------------------------------------
+	\subsection{Bed Interface}
+%------------------------------------------------------------------------
+%-support
+%-end of bed anchoring
+%
+%-------------------------------------------------------------------------
+
+
+\section{Controller and Haptics Implementation}
+
+	\subsection{Overview}
+		
+	\subsection{Real Time Linux}
+	
+%------------------------------------------------------------------------
+%-Explain Real time
+%	-features
+%-Explain Linux Real time
+%	-POSIX
+%-Details of robot software (threads, libraries, memory ...)
+%	-threads, memory sharing 
+%
+%-------------------------------------------------------------------------
+
+		
+	
+	\subsection{Impedance Controller}
+
+%------------------------------------------------------------------------
+%-Explain force control
+%	-choice of impedance over admittance
+%-Implementation in code
+%
+%-------------------------------------------------------------------------	
+
+
+	\subsection{Physics Engine \& Haptic Coupling}
+%------------------------------------------------------------------------
+%-1 DOF physics engine 
+%-strategies to create haptics 
+%	-changing imp params
+%	-virtual coupling
+%
+%-------------------------------------------------------------------------
+
+
+	\subsection{Communication} 
+%------------------------------------------------------------------------
+%-sockets and websockets 
+%-logging
+%
+%-------------------------------------------------------------------------
+
+
+\section{User Interface}
+
+	\subsection{User Interface}
+%------------------------------------------------------------------------
+%-Layout design
+%-controls for developers / therapists
+%
+%
+%-------------------------------------------------------------------------
+	\subsection{Visualizations}
+%------------------------------------------------------------------------
+%-THREE.js
+%-communication with controller
+%different games / visualizations, how they relate to therapy 
+%
+%-------------------------------------------------------------------------
+	
+\section{Experiments}
+	\subsection{Functional Tests}
+	\subsection{Healthy Subjects}
+	\subsection{Testing in Hospital Experiments} 
+	
+\section{Conclusion}
+	\subsection{Future Work}
+
+\bibliography{thesis}
+\bibliographystyle{ieeetr}
+\end{document}

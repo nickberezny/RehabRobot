@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{Real Time Linux}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Background}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Installation}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Libraries}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Controller}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Outline}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Initialization}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Controller}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Communication}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Node JS}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Background}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Installation}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{React}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Web Sockets}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{UI Server}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Outline}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Server}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{UI}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Communication}{section.4}% 19
+\BOOKMARK [1][-]{section.5}{UI Server}{}% 20

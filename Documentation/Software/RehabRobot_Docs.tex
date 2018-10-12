@@ -1,9 +1,11 @@
 \documentclass{article}
 \author{Nicholas Berezny}
 \title{Rehabilitation Robot Software Documentation}
+
 \usepackage{cite}
 \usepackage{fullpage}
 \usepackage{gensymb}
+\usepackage{hyperref}
 
 \begin{document}
 \maketitle
@@ -22,7 +24,7 @@
 	
 	\subsection{Installation}
 	
-	The following is an outline of the installation process for a PREEMPT\_RT patched linux kernel with Ubuntu. Other linux flavours may also be used. 
+	The following is an outline of the installation process for a PREEMPT\_RT patched linux kernel with Ubuntu. Other linux flavours may also be used. More detailed instruction can be found at the \href{https://wiki.linuxfoundation.org/realtime/documentation/howto/applications/preemptrt_setup}{Linux Foundation Website.}
 	\begin{enumerate}
 		\item Download the linux kernel and the patch. The latest stable release of the patch is  4.14 (as of 11/10/2018)
 		\item Patch the kernel through the command line
