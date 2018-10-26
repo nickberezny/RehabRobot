@@ -1,3 +1,24 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{Stroke}
+``Stroke [online], available :
+  {https://www.nhlbi.nih.gov/health-topics/stroke}, accessed: 2018-10-26.''
+
+\bibitem{Hebert2016}
+D.~Hebert, M.~P. Lindsay, A.~McIntyre, A.~Kirton, P.~G. Rumney, S.~Bagg,
+  M.~Bayley, D.~Dowlatshahi, S.~Dukelow, M.~Garnhum, E.~Glasser, M.-L. Halabi,
+  E.~Kang, M.~MacKay-Lyons, R.~Martino, A.~Rochette, S.~Rowe, N.~Salbach,
+  B.~Semenko, B.~Stack, L.~Swinton, V.~Weber, M.~Mayer, S.~Verrilli,
+  G.~DeVeber, J.~Andersen, K.~Barlow, C.~Cassidy, M.-E. Dilenge, D.~Fehlings,
+  R.~Hung, J.~Iruthayarajah, L.~Lenz, A.~Majnemer, J.~Purtzki, M.~Rafay, L.~K.
+  Sonnenberg, A.~Townley, S.~Janzen, N.~Foley, and R.~Teasell, ``{Canadian
+  stroke best practice recommendations: Stroke rehabilitation practice
+  guidelines, update 2015},'' {\em International Journal of Stroke}, vol.~11,
+  pp.~459--484, jun 2016.
+
+\bibitem{Chisholm2010}
+K.~Chisholm, {\em {Design and Control for a Gait Rehabilitation Robot}},
+  vol.~MR71524.
+\newblock 2010.
 
 \end{thebibliography}

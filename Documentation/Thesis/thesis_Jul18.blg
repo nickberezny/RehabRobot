@@ -1,5 +1,12 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis_Jul18.aux
 The style file: ieeetr.bst
-I found no \citation commands---while reading file thesis_Jul18.aux
 Database file #1: thesis.bib
+I was expecting a `,' or a `}'---line 7 of file thesis.bib
+ : 
+ : @book{Chisholm2010,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Meng2015"
+Warning--can't use both volume and number fields in Chisholm2010
+Warning--empty publisher in Chisholm2010
 (There was 1 error message)
