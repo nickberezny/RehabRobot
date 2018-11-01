@@ -3,3 +3,8 @@ daq:
 	sudo ./daq_test
 	rm daq_test
 
+calibrate: 
+	gcc calibrate_sensors.c -o calibrate -lpthread -lLabJackM -ljansson
+	sudo ./calibrate
+	rm calibrate
+
