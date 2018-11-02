@@ -8,3 +8,7 @@ calibrate:
 	sudo ./calibrate
 	rm calibrate
 
+controller: 
+	gcc controller_test.c -o controller -lpthread -lLabJackM -ljansson
+	sudo ./controller
+	rm controller

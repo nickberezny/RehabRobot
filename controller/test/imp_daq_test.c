@@ -50,10 +50,10 @@ int main(int argc, char* argv[]) {
 
     while(1)
     {
-    	LJM_eWriteName(handle, "DAC0", 2.5);
-    	//LJM_eReadName(handle, "AIN0", data);
+    	LJM_eWriteName(handle, "DAC0", 0);
+    	LJM_eReadName(handle, "AIN0", data);
     	//*data = 44.4*(*data - 0.152); 
-    	//printf("AIN0 Data: %f\n", *data);
+    	printf("AIN0 Data: %f\n", *data);
     	sleep(1);
     }
 
