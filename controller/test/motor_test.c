@@ -57,14 +57,29 @@ int main(int argc, char* argv[]) {
 
     double command = - 0.05 + MOTOR_ZERO;
 
-    double lsf[10000] = {0}; //front limit swithc
-    double lsb[10000] = {0}; //back limit switch
-    double buffer[2] = {0};
+    double lsf[10] = {0}; //front limit swithc
+    double lsb[10] = {0}; //back limit switch
+    double encA[10] = {0}; //back limit switch
+    double encB[10] = {0}; //back limit switch
+    int bitMAT[2][2] = {
+                    {0,1},
+                    {2,3}
+                };
+    int bitENC[2] = {0};
+    int encMAT[4][4] = {
+                    {0,-1,1,0},
+                    {1,0,0,-1},
+                    {-1,0,0,1},
+                    {0,1,-1,0}
+                };
+    int encCOUNT = 0;
+
+    double buffer[4] = {0};
     double data = 9;
 
   
-    double ScanRate = 10;
-    const int aScanList[2] = {2000,2001};
+    //double ScanRate = 10;
+    //const int aScanList[2] = {2000,2001,2002,2003};
 
     int DeviceScanBacklog = 0; 
     int LJMScanBacklog = 0;
@@ -79,13 +94,14 @@ int main(int argc, char* argv[]) {
     double aValues[3];
     */
     
-    const char * aNames[2] = {"FIO0","FIO1"};
-    int aWrites[2] = {LJM_READ, LJM_READ};
-    int aNumValues[2] = {1, 1};
-    double aValues[2];
+    const char * aNames[4] = {"FIO0","FIO1","FI02","FIO3"};
+    int aWrites[2] = {LJM_READ, LJM_READ, LJM_READ, LJM_READ};
+    int aNumValues[4] = {1, 1, 1, 1};
+    double aValues[4];
     
 
     int errorAddress;
+    int ii = 1;
     
     // handle comes from LJM_Open()
     //printf("Stream Start Error: %d\n", LJM_eStreamStart(handle,1,2,aScanList,&ScanRate));
@@ -97,41 +113,62 @@ int main(int argc, char* argv[]) {
 
         LJM_eNames(handle, 2, aNames, aWrites, aNumValues, aValues, &errorAddress);
         //LJM_eStreamRead(handle, buffer, &DeviceScanBacklog, &LJMScanBacklog);
-        lsf[i] = aValues[0];
-        lsb[i] = aValues[1];
+        lsf[ii] = aValues[0];
+        lsb[ii] = aValues[1];
+        encA[ii] = aValues[2];
+        encB[ii] = aValues[3];
 
-        //LJM_eReadName(handle, "FIO0", &data);
-        //lsf[i] = data;
-
-        
-        if((lsf[i] && !lsf[i-1]) || (lsb[i] && !lsb[i-1]) )
+        if((lsf[ii] && !lsf[ii-1]) || (lsb[ii] && !lsb[ii-1]) )
         {
             command = MOTOR_ZERO - (command - MOTOR_ZERO);
         }
 
         LJM_eWriteName(handle, "DAC0", command);
     
-        //printf("%d\n",i);
-        if(i%100 == 0) printf("Front LS: %.2f, Back LS: %.2f, Command: %.2f\n", lsf[i], lsb[i], command);
+        if(ii == 5) printf("EncA: %.1f, EncB %.1f, Front LS: %.1f, Back LS: %.1f, Command: %.2f\n", encA[ii], encB[ii], lsf[ii], lsb[ii], command);
         //if(i%100 == 0) printf("Device Backlog: %d, LJM Backlog: %d\n", DeviceScanBacklog, LJMScanBacklog);
         //usleep(10);
+
+        bitENC[0] = bitENC[1];
+        bitENC[1] = bitMAT[encA[ii]][encB[ii]];
+
+        encCOUNT += encMAT[bitENC[0]][bitENC[1]];
+
+        if(encCOUNT >= 10)
+        {
+            //get current time
+            //find delta_t
+            //speed = 10 * 0.0031416 / delta_t
+            //prev time = curr time
+            encCOUNT = 0;
+        }
+
+
+        if (++ii > 9) {
+            ii = 1;
+            lsf[0] = lsf[9];
+            lsb[0] = lsb[9];
+            encA[0] = encA[9];
+            encB[0] = enc[9];
+        } 
 
     }
 
     LJM_eWriteName(handle, "DAC0", MOTOR_ZERO);
     LJM_eStreamStop(handle);
 
+    /*
     //log data
     FILE * fp;
     fp = fopen ("encoder_data.txt","w");
 
     for(int i = 0; i < 10000; i++)
     {
-        fprintf (fp, "%f, %f\n", lsf[i], lsb[i]);
+        fprintf (fp, "%f, %f\n", lsf[ii], lsb[ii]);
     }
     
-
     fclose (fp);
+    */
 
 	return 0;
 
