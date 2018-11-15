@@ -11,7 +11,7 @@
 #define MOTOR_ZERO 2.35
 
 FIO2_EF_ENABLE = 0;    //Make sure DIO-EF is disabled on DIO6
-FIO3_EF_ENABLE = 0;    //Make sure DIO-EF is disabled on DIO7
+FIO3_EF_ENABLE = 0;   //Make sure DIO-EF is disabled on DIO7
 
 FIO2_EF_INDEX = 10;    //Set feature index for DIO6 to quadrature.
 FIO3_EF_INDEX = 10;    //Set feature index for DIO7 to quadrature.
@@ -154,5 +154,6 @@ int main(int argc, char* argv[]) {
     */
 
 	return 0;
+
 
 }
