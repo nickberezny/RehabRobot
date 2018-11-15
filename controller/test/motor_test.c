@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
     double buffer[4] = {0};
     double data = 9;
 
-    float encCount;
+    double encCount;
 
   
     //double ScanRate = 10;
