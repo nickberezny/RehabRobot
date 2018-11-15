@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
     printf("Connected to LabJack %s = %f\n", NAME, value); 
 
     LJM_eWriteName(handle, "DIO2_EF_ENABLE", 1);
-     LJM_eWriteName(handle, "DIO3_EF_ENABLE", 1);
+    LJM_eWriteName(handle, "DIO3_EF_ENABLE", 1);
     //LJM_eWriteName(handle, "DAC0", 0);
 
     double command = - 0.05 + MOTOR_ZERO;
@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
 
         LJM_eWriteName(handle, "DAC0", command);
     
-        //if(ii == 5) printf("EncA: %.1f, EncB %.1f, Front LS: %.1f, Back LS: %.1f, Command: %.2f\n", encA[ii], encB[ii], lsf[ii], lsb[ii], command);
+        if(ii == 5) printf("Enc Count: %.f, Front LS: %.1f, Back LS: %.1f, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
         //if(i%100 == 0) printf("Device Backlog: %d, LJM Backlog: %d\n", DeviceScanBacklog, LJMScanBacklog);
         //usleep(10);
 
