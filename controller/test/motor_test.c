@@ -52,8 +52,12 @@ int main(int argc, char* argv[]) {
     LJM_eStreamStop(handle); //stop any previous streams
     printf("Connected to LabJack %s = %f\n", NAME, value); 
 
+    LJM_eWriteName(handle, "DIO2_EF_INDEX", 10);
+    LJM_eWriteName(handle, "DIO3_EF_INDEX", 10);
+
     LJM_eWriteName(handle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(handle, "DIO3_EF_ENABLE", 1);
+
     //LJM_eWriteName(handle, "DAC0", 0);
 
     double command = - 0.05 + MOTOR_ZERO;
