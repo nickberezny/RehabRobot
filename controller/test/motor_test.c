@@ -7,7 +7,7 @@
 
 #define FT_GAIN 43
 #define FT_OFFSET -0.156393
-#define MOTOR_ZERO 2.35
+#define MOTOR_ZERO 2.355
 
 int main(int argc, char* argv[]) {
 
@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
     //LJM_eWriteName(handle, "FIO0", 0);
     //LJM_eWriteName(handle, "DAC0", 0);
 
-    double command = - 0.05 + MOTOR_ZERO;
+    double command = - 0.04 + MOTOR_ZERO;
 
     double lsf[10] = {0}; //front limit swithc
     double lsb[10] = {0}; //back limit switch
@@ -94,7 +94,7 @@ int main(int argc, char* argv[]) {
     double aValues[3];
     */
     
-    const char * aNames[4] = {"FIO0","FIO1","FI02","FIO3"};
+    const char * aNames[4] = {"FIO0","FIO1","AIN0","AIN1"};
     int aWrites[2] = {LJM_READ, LJM_READ, LJM_READ, LJM_READ};
     int aNumValues[4] = {1, 1, 1, 1};
     double aValues[4];
@@ -128,6 +128,7 @@ int main(int argc, char* argv[]) {
         if(ii == 5) printf("EncA: %.1f, EncB %.1f, Front LS: %.1f, Back LS: %.1f, Command: %.2f\n", encA[ii], encB[ii], lsf[ii], lsb[ii], command);
         //if(i%100 == 0) printf("Device Backlog: %d, LJM Backlog: %d\n", DeviceScanBacklog, LJMScanBacklog);
         //usleep(10);
+        /*
 
         bitENC[0] = bitENC[1];
         bitENC[1] = bitMAT[encA[ii]][encB[ii]];
@@ -136,12 +137,14 @@ int main(int argc, char* argv[]) {
 
         if(encCOUNT >= 10)
         {
+            printf("10 Counts\n");
             //get current time
             //find delta_t
             //speed = 10 * 0.0031416 / delta_t
             //prev time = curr time
             encCOUNT = 0;
         }
+        */
 
 
         if (++ii > 9) {
@@ -149,7 +152,7 @@ int main(int argc, char* argv[]) {
             lsf[0] = lsf[9];
             lsb[0] = lsb[9];
             encA[0] = encA[9];
-            encB[0] = enc[9];
+            encB[0] = encB[9];
         } 
 
     }

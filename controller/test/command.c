@@ -7,7 +7,7 @@
 
 #define FT_GAIN 43
 #define FT_OFFSET -0.156393
-#define MOTOR_ZERO 2.33
+#define MOTOR_ZERO 2.35
 
 int main(int argc, char* argv[]) {
 
