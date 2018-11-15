@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
 
         LJM_eWriteName(handle, "DAC0", command);
     
-        if(ii == 5) printf("Enc Count: %.f, Front LS: %.1f, Back LS: %.1f, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
+        if(ii == 5) printf("Enc Count: %.1f, Front LS: %.1f, Back LS: %.1f, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
         //if(i%100 == 0) printf("Device Backlog: %d, LJM Backlog: %d\n", DeviceScanBacklog, LJMScanBacklog);
         //usleep(10);
 
