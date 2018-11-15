@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
             command = MOTOR_ZERO - (command - MOTOR_ZERO);
         }
 
-        LJM_eReadName(handle, "DIO2_EF_READ_A_F", &encCount);
+        LJM_eReadName(handle, "DIO2_EF_READ_A_F_AND_RESET", &encCount);
         LJM_eWriteName(handle, "DAC0", command);
     
         if(ii == 5) printf("Enc Count: %.f, Front LS: %d, Back LS: %d, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
