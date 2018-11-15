@@ -41,6 +41,7 @@ int main(int argc, char* argv[]) {
 	//CONNECT TO DAQ
 	int err, handle;
 	double value = 0;
+	double data = 0;
 
     LJM_CloseAll();
 
@@ -51,11 +52,14 @@ int main(int argc, char* argv[]) {
 
     LJM_eStreamStop(handle); //stop any previous streams
     printf("Connected to LabJack %s = %f\n", NAME, value); 
+	
+	LJM_eWriteName(handle, "DIO2_EF_ENABLE",0);
+	LJM_eWriteName(handle, "DIO3_EF_ENABLE",0);	
 
     LJM_eWriteName(handle, "DIO2_EF_INDEX", 10);
     LJM_eWriteName(handle, "DIO3_EF_INDEX", 10);
 
-    LJM_eWriteName(handle, "DIO2_EF_ENABLE", 1);
+    printf("Error = %d\n", LJM_eWriteName(handle, "DIO2_EF_ENABLE", 1));
     LJM_eWriteName(handle, "DIO3_EF_ENABLE", 1);
 
 
@@ -67,16 +71,18 @@ int main(int argc, char* argv[]) {
 
 
         LJM_eWriteName(handle, "FIO0", 1);
-        usleep(50);
+        usleep(100);
         LJM_eWriteName(handle, "FIO1", 1);
-        usleep(50);
+        usleep(100);
         LJM_eWriteName(handle, "FIO0", 0);
-        usleep(50);
+        usleep(100);
         LJM_eWriteName(handle, "FIO1", 0);
-        LJM_eReadName(handle, "DIO2_EF_READ_A", &encCount);
-        
+        LJM_eReadName(handle, "DIO2_EF_READ_A_F", &encCount);
+ 	LJM_eReadName(handle, "DIO2_EF_READ_B", &data);       
     
-        printf("Enc Count: %d\n", (int)encCount);
+        printf("Enc Count: %.2f, Error: %.1f\n", encCount, data);
+
+	usleep(1000);
 
     }
 
