@@ -10,14 +10,14 @@
 #define FT_OFFSET -0.156393
 #define MOTOR_ZERO 2.35
 
-FIO2_EF_ENABLE = 0    //Make sure DIO-EF is disabled on DIO6
-FIO3_EF_ENABLE = 0    //Make sure DIO-EF is disabled on DIO7
+FIO2_EF_ENABLE = 0;    //Make sure DIO-EF is disabled on DIO6
+FIO3_EF_ENABLE = 0;   //Make sure DIO-EF is disabled on DIO7
 
-FIO2_EF_INDEX = 10    //Set feature index for DIO6 to quadrature.
-FIO3_EF_INDEX = 10    //Set feature index for DIO7 to quadrature.
+FIO2_EF_INDEX = 10;    //Set feature index for DIO6 to quadrature.
+FIO3_EF_INDEX = 10;    //Set feature index for DIO7 to quadrature.
 
-FIO2_EF_ENABLE = 1    //Enable quadrature DIO-EF on DIO6, for A phase.
-FIO3_EF_ENABLE = 1    //Enable quadrature DIO-EF on DIO7, for B phase.
+FIO2_EF_ENABLE = 1;    //Enable quadrature DIO-EF on DIO6, for A phase.
+FIO3_EF_ENABLE = 1;    //Enable quadrature DIO-EF on DIO7, for B phase.
 
 int main(int argc, char* argv[]) {
 
