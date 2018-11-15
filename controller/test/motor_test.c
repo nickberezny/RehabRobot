@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
     double buffer[4] = {0};
     double data = 9;
 
-    double encCount;
+    float encCount;
 
   
     //double ScanRate = 10;
@@ -105,16 +105,17 @@ int main(int argc, char* argv[]) {
         //LJM_eStreamRead(handle, buffer, &DeviceScanBacklog, &LJMScanBacklog);
         lsf[ii] = aValues[0];
         lsb[ii] = aValues[1];
-        encCount = aValues[2];
+        //encCount = aValues[2];
 
         if((lsf[ii] && !lsf[ii-1]) || (lsb[ii] && !lsb[ii-1]) )
         {
             command = MOTOR_ZERO - (command - MOTOR_ZERO);
         }
 
+        LJM_eReadName(handle, "DIO2_EF_READ_A_F", &encCount);
         LJM_eWriteName(handle, "DAC0", command);
     
-        if(ii == 5) printf("Enc Count: %.1f, Front LS: %d, Back LS: %d, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
+        if(ii == 5) printf("Enc Count: %f, Front LS: %d, Back LS: %d, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
         //if(i%100 == 0) printf("Device Backlog: %d, LJM Backlog: %d\n", DeviceScanBacklog, LJMScanBacklog);
         //usleep(10);
 
