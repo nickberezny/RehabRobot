@@ -88,10 +88,10 @@ int main(int argc, char* argv[]) {
     double aValues[3];
     */
     
-    const char * aNames[3] = {"FIO0","FIO1","DIO2_EF_READ_A_F"};
-    int aWrites[3] = {LJM_READ, LJM_READ, LJM_READ};
-    int aNumValues[3] = {1, 1, 1};
-    double aValues[3];
+    const char * aNames[3] = {"FIO0","FIO1"};
+    int aWrites[2] = {LJM_READ, LJM_READ};
+    int aNumValues[2] = {1, 1};
+    double aValues[2];
     
 
     int errorAddress;
