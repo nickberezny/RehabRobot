@@ -23,6 +23,11 @@ command:
 	sudo ./command
 	rm command
 
+encoder: 
+	gcc encoder_test.c -o encoder -lpthread -lLabJackM -ljansson
+	sudo ./encoder
+	rm encoder
+
 archive_dont_run:
 	sudo ip route del default via 192.168.25.1 dev eno1
 	sudo ip route add default via 192.168.25.1 dev eno1
