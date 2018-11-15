@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
     double aValues[3];
     */
     
-    const char * aNames[3] = {"FIO0","FIO1"};
+    const char * aNames[2] = {"FIO0","FIO1"};
     int aWrites[2] = {LJM_READ, LJM_READ};
     int aNumValues[2] = {1, 1};
     double aValues[2];
