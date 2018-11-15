@@ -58,14 +58,14 @@ int main(int argc, char* argv[]) {
 
     double command = - 0.05 + MOTOR_ZERO;
 
-    double lsf[10] = {0}; //front limit swithc
-    double lsb[10] = {0}; //back limit switch
+    int lsf[10] = {0}; //front limit swithc
+    int lsb[10] = {0}; //back limit switch
   
 
     double buffer[4] = {0};
     double data = 9;
 
-    float encCount;
+    double encCount;
 
   
     //double ScanRate = 10;
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
     double aValues[3];
     */
     
-    const char * aNames[3] = {"FIO0","FIO1","FIO2_EF_READ_A_F"};
+    const char * aNames[3] = {"FIO0","FIO1","DIO2_EF_READ_A_F"};
     int aWrites[3] = {LJM_READ, LJM_READ, LJM_READ};
     int aNumValues[3] = {1, 1, 1};
     double aValues[3];
@@ -106,7 +106,6 @@ int main(int argc, char* argv[]) {
         lsf[ii] = aValues[0];
         lsb[ii] = aValues[1];
         encCount = aValues[2];
-       
 
         if((lsf[ii] && !lsf[ii-1]) || (lsb[ii] && !lsb[ii-1]) )
         {
@@ -115,7 +114,7 @@ int main(int argc, char* argv[]) {
 
         LJM_eWriteName(handle, "DAC0", command);
     
-        if(ii == 5) printf("Enc Count: %.1f, Front LS: %.1f, Back LS: %.1f, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
+        if(ii == 5) printf("Enc Count: %.1f, Front LS: %d, Back LS: %d, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
         //if(i%100 == 0) printf("Device Backlog: %d, LJM Backlog: %d\n", DeviceScanBacklog, LJMScanBacklog);
         //usleep(10);
 
