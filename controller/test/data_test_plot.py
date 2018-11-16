@@ -19,8 +19,8 @@ with open('data_test.txt', 'r') as csvfile:
 		else: 
 			#should be the header
 			data_len = len(row)
-			y = [[] for i in range(data_len)]
-			ylabel = [['No Label Found'] for i in range(data_len)]
+			y = [[] for j in range(data_len)]
+			ylabel = [['No Label Found'] for jj in range(data_len)]
 			for point in row:
 				ylabel[i] = point
 				i = i +1

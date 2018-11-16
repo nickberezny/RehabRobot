@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     //log data
     FILE * fp;
     fp = fopen ("data_test.txt","w");
-    fprintf (fp, "Seconds, Nanoseconds\n"); 
+    fprintf (fp, "Seconds, Nanoseconds, Iterations, Iterations Squared\n"); 
  
 	struct timespec last_time;
 
