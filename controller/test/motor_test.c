@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h> 
 
 #include <LabJackM.h> //DAQ library
 #include "include/LJM_Utilities.h"
@@ -8,6 +9,8 @@
 #define FT_GAIN 43
 #define FT_OFFSET -0.156393
 #define MOTOR_ZERO 2.35
+#define MOTOR_MOVE 0.04
+#define STEP_NSEC 10000000
 
 int main(int argc, char* argv[]) {
 
@@ -28,15 +31,10 @@ int main(int argc, char* argv[]) {
 
 		LJM_eWriteName(handle, "DAC0", 0);
     	LJM_eReadName(handle, "AIN0", data);
-
-        LJM_ERROR_RETURN LJM_eStreamStart(
-                      handle, 
-                      int ScansPerRead,
-                      int NumAddresses, 
-                      const int * aScanList, 
-                      double * ScanRate) 
-
 	*/
+
+    struct timespec last_time;
+    struct timespec curr_time;
 
 	//CONNECT TO DAQ
 	int err, handle;
@@ -48,10 +46,11 @@ int main(int argc, char* argv[]) {
     err = LJM_Open(LJM_dtANY, LJM_ctANY, "LJM_idANY", &handle);
     const char * NAME = {"SERIAL_NUMBER"};
     LJM_eReadName(handle, NAME, &value);
-
-    LJM_eStreamStop(handle); //stop any previous streams
     printf("Connected to LabJack %s = %f\n", NAME, value); 
 
+    LJM_eStreamStop(handle); //stop any previous streams
+
+    //start Quadrature counter on DIO2 and DIO3
     LJM_eWriteName(handle, "DIO2_EF_ENABLE", 0);
     LJM_eWriteName(handle, "DIO3_EF_ENABLE", 0);
 
@@ -61,77 +60,106 @@ int main(int argc, char* argv[]) {
     LJM_eWriteName(handle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(handle, "DIO3_EF_ENABLE", 1);
 
-    //LJM_eWriteName(handle, "DAC0", 0);
 
-    double command = - 0.05 + MOTOR_ZERO;
+    double command = -MOTOR_MOVE + MOTOR_ZERO; //command to move to home
 
-    int lsf[10] = {0}; //front limit swithc
-    int lsb[10] = {0}; //back limit switch
+    int lsf[2] = {0}; //front limit switch
+    int lsb[2] = {0}; //back limit switch
   
-
+  //--------------------------
     double buffer[4] = {0};
     double data = 9;
-
-    double encCount;
-
-  
-    //double ScanRate = 10;
-    //const int aScanList[2] = {2000,2001,2002,2003};
-
-    int DeviceScanBacklog = 0; 
-    int LJMScanBacklog = 0;
-    int lsReset = 0;
+    double encCount, revCount;
+    double clock_time[2] = {0};
+    double position = 0;
 
     //sleep(20);
-
-    /*
-    const char * aNames[3] = {"FIO0","FIO1","DAC0"};
-    int aWrites[3] = {LJM_READ, LJM_READ, LJM_WRITE};
+    
+    const char * aNames[3] = {"FIO0","FIO1","DIO2_EF_READ_A_F_AND_RESET"};
+    int aWrites[3] = {LJM_READ, LJM_READ, LJM_READ};
     int aNumValues[3] = {1, 1, 1};
     double aValues[3];
-    */
-    
-    const char * aNames[2] = {"FIO0","FIO1"};
-    int aWrites[2] = {LJM_READ, LJM_READ};
-    int aNumValues[2] = {1, 1};
-    double aValues[2];
-    
-
     int errorAddress;
-    int ii = 1;
     
-    // handle comes from LJM_Open()
-    //printf("Stream Start Error: %d\n", LJM_eStreamStart(handle,1,2,aScanList,&ScanRate));
 
-    for(int i = 1; i < 10000; i++)
+    //HOME
+
+    while(1)
+    {
+
+        LJM_eNames(handle, 3, aNames, aWrites, aNumValues, aValues, &errorAddress);
+        lsf[1] = aValues[0];
+        lsb[1] = aValues[1];
+
+        if(!lsb[1]) {
+            LJM_eWriteName(handle, "DAC0", command);
+        }else {
+            break;
+        }
+    }
+
+    LJM_eWriteName(handle, "DAC0", MOTOR_ZERO);
+    position = 0;
+
+    LJM_eNames(handle, 3, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    lsf[1] = aValues[0];
+    lsb[1] = aValues[1];
+    encCount = aValues[2];
+
+    
+    
+
+    for(int i = 1; i < 100000; i++)
     {
 
         //aValues[2] = command; 
 
-        LJM_eNames(handle, 2, aNames, aWrites, aNumValues, aValues, &errorAddress);
-        //LJM_eStreamRead(handle, buffer, &DeviceScanBacklog, &LJMScanBacklog);
-        lsf[ii] = aValues[0];
-        lsb[ii] = aValues[1];
-        //encCount = aValues[2];
+        LJM_eNames(handle, 3, aNames, aWrites, aNumValues, aValues, &errorAddress);
+     
+        lsf[1] = aValues[0];
+        lsb[1] = aValues[1];
+        encCount = aValues[2]; //4 counts per pulse, 2000 per rev
 
-        if((lsf[ii] && !lsf[ii-1]) || (lsb[ii] && !lsb[ii-1]) )
+        revCount = encCount/2000.0;
+        position += revCount*(0.07547); //4 inches per gear rev = 4/53 in/rev 
+
+        //TODO: get time 
+        //TODO: sleep 
+
+        //vel = revCount / (clock_time[1] - clock_time[0]);
+        //clock_time[0] = clock_time[1];
+
+        if((lsf[1] && !lsf[0]) || (lsb[1] && !lsb[0]) )
         {
             command = MOTOR_ZERO - (command - MOTOR_ZERO);
+            //position = lsf[ii]; 
         }
 
-        LJM_eReadName(handle, "DIO2_EF_READ_A_F_AND_RESET", &encCount);
         LJM_eWriteName(handle, "DAC0", command);
     
-        if(ii == 5) printf("Enc Count: %.f, Front LS: %d, Back LS: %d, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
-        //if(i%100 == 0) printf("Device Backlog: %d, LJM Backlog: %d\n", DeviceScanBacklog, LJMScanBacklog);
+        if(i%100 == 0) printf("Enc Count: %.f, Front LS: %d, Back LS: %d, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
+    
         //usleep(10);
 
+        lsf[0] = lsf[1];
+        lsb[0] = lsb[1];
 
-        if (++ii > 9) {
-            ii = 1;
-            lsf[0] = lsf[9];
-            lsb[0] = lsb[9];
-        } 
+        clock_gettime(CLOCK_MONOTONIC, &curr_time); 
+
+        //calculate time for next step
+        if(last_time.tv_nsec + STEP_NSEC > 1000000000)
+        {
+            last_time.tv_nsec = STEP_NSEC - (1000000000 - last_time.tv_nsec);
+            last_time.tv_sec += 1.0; 
+        }
+        else 
+        {
+            last_time.tv_nsec += STEP_NSEC;
+        }
+
+        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &last_time, NULL); //sleep until next step
+        clock_gettime(CLOCK_MONOTONIC, &last_time); //reset time 
+    
 
     }
 
