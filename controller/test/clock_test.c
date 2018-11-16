@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,12 +12,12 @@ int main(int argc, char* argv[]) {
     struct timespec curr_time;
 
     clock_gettime(CLOCK_MONOTONIC, &curr_time); 
-    usleep(1000);
+    usleep(100000);
     clock_gettime(CLOCK_MONOTONIC, &last_time); 
 
-    printf("Current: sec: %.1f, nanosec: %.5f\n", curr_tim.tv_sec, curr_time.tv_nsec);
-    printf("Previous: sec: %.1f, nanosec: %.5f\n", last_tim.tv_sec, last_time.tv_nsec);
-    printf("Difference: sec: %.1f, nanosec: %.5f\n", last_tim.tv_sec - curr_tim.tv_sec, last_tim.tv_nsec -curr_time.tv_nsec);
+    printf("Current: sec: %ld, nanosec: %ld\n", curr_time.tv_sec, curr_time.tv_nsec);
+    printf("Previous: sec: %ld, nanosec: %ld\n", last_time.tv_sec, last_time.tv_nsec);
+    printf("Difference: sec: %ld, nanosec: %ld\n", last_time.tv_sec - curr_time.tv_sec, last_time.tv_nsec -curr_time.tv_nsec);
     //calculate time for next step
     /*
     if(last_time.tv_nsec + STEP_NSEC > 1000000000)
