@@ -1,5 +1,4 @@
 Fri Nov 16 14:36:21 2018
-
 Seconds, Nanoseconds, Iterations, Iterations Squared
 13988, 75375019, 0, 0
 13988, 76615408, 1, 1
