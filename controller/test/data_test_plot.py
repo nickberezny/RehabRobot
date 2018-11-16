@@ -7,6 +7,7 @@ import matplotlib.gridspec as gridspec
 #must have one header row with text, followed only by numbers
 
 data_len = 0
+colours = ['blue','red','black','green']
 
 with open('data_test.txt', 'r') as csvfile:
 	data = csv.reader(csvfile, delimiter=',', quotechar='|')
@@ -34,6 +35,6 @@ for i in range(data_len):
 	ax = plt.subplot(gs[i%2,math.floor(i/2)])
 	ax.set_xlabel('time step (ms)')
 	ax.set_ylabel(ylabel[i])
-	ax.plot(y[i])
+	ax.plot(y[i], color=colours[i])
 
 plt.show()

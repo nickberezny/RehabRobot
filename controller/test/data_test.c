@@ -6,10 +6,16 @@
 
 int main(int argc, char* argv[]) {
 
-	
+	time_t rawtime;
+	struct tm * timeinfo;
+
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+
     //log data
     FILE * fp;
     fp = fopen ("data_test.txt","w");
+    fprintf (fp, "%s\n", asctime (timeinfo) ); 
     fprintf (fp, "Seconds, Nanoseconds, Iterations, Iterations Squared\n"); 
  
 	struct timespec last_time;
