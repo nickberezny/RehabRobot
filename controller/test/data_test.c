@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < 100; i++)
 	{
 		clock_gettime(CLOCK_MONOTONIC, &last_time);
-		fprintf (fp, "%ld, %ld\n", last_time.tv_sec, last_time.tv_nsec); 
+		fprintf (fp, "%ld, %ld, %d, %d\n", last_time.tv_sec, last_time.tv_nsec, i, i*i); 
 		usleep(1000);
 	}
 
