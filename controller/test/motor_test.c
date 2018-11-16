@@ -8,9 +8,10 @@
 
 #define FT_GAIN 43
 #define FT_OFFSET -0.156393
-#define MOTOR_ZERO 2.35
+#define MOTOR_ZERO 2.35 
 #define MOTOR_MOVE 0.04
-#define STEP_NSEC 10000000
+#define STEP_NSEC 1000000 //1 ms
+#define NSEC_IN_SEC 1000000000 //
 
 int main(int argc, char* argv[]) {
 
@@ -35,6 +36,9 @@ int main(int argc, char* argv[]) {
 
     struct timespec last_time;
     struct timespec curr_time;
+    struct timespec delta_time;
+
+    int wait_time;
 
 	//CONNECT TO DAQ
 	int err, handle;
@@ -82,7 +86,7 @@ int main(int argc, char* argv[]) {
     int errorAddress;
     
 
-    //HOME
+    //HOME----------------------------------------------------------
 
     while(1)
     {
@@ -100,15 +104,20 @@ int main(int argc, char* argv[]) {
 
     LJM_eWriteName(handle, "DAC0", MOTOR_ZERO);
     position = 0;
+    desired_position = 3; //in inches
+    P_gain = 0.25;
 
     LJM_eNames(handle, 3, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    lsf[1] = aValues[0];
-    lsb[1] = aValues[1];
     encCount = aValues[2];
 
-    
-    
+    lsf[0] = 0;
+    lsb[0] = 1;
+    lsf[1] = 0;
+    lsb[1] = 1;
 
+
+    //P-Controller----------------------------------------------------------
+    
     for(int i = 1; i < 100000; i++)
     {
 
@@ -123,6 +132,8 @@ int main(int argc, char* argv[]) {
         revCount = encCount/2000.0;
         position += revCount*(0.07547); //4 inches per gear rev = 4/53 in/rev 
 
+        command = P_gain*(desired_position - position) + MOTOR_ZERO;
+
         //TODO: get time 
         //TODO: sleep 
 
@@ -131,34 +142,64 @@ int main(int argc, char* argv[]) {
 
         if((lsf[1] && !lsf[0]) || (lsb[1] && !lsb[0]) )
         {
-            command = MOTOR_ZERO - (command - MOTOR_ZERO);
-            //position = lsf[ii]; 
+            command = MOTOR_ZERO;
         }
 
         LJM_eWriteName(handle, "DAC0", command);
     
         if(i%100 == 0) printf("Enc Count: %.f, Front LS: %d, Back LS: %d, Command: %.2f\n", encCount, lsf[ii], lsb[ii], command);
-    
-        //usleep(10);
 
         lsf[0] = lsf[1];
         lsb[0] = lsb[1];
 
+        //TIME -----------------------------------------------------
+
         clock_gettime(CLOCK_MONOTONIC, &curr_time); 
 
-        //calculate time for next step
-        if(last_time.tv_nsec + STEP_NSEC > 1000000000)
+        delta_time.tv_sec = curr_time.tv_sec - last_time.tv_sec;
+        delta_time.tv_nsec = curr_time.tv_nsec - last_time.tv_nsec;
+
+        if (delta_time.tv_sec == 0 && delta_time.tv_nsec < 0)
         {
-            last_time.tv_nsec = STEP_NSEC - (1000000000 - last_time.tv_nsec);
-            last_time.tv_sec += 1.0; 
+            pritnf("Time error - negative delta time\n");
+            LJM_eWriteName(handle, "DAC0", MOTOR_ZERO);
+            return 0;
+
         }
+        else if (delta_time.tv_sec > 0 && delta_time.tv_nsec =< 0)
+        {
+            delta_time.tv_sec = 0;
+            delta_time.tv_nsec = NSEC_IN_SEC + delta_time.tv_nsec;
+        }
+        else if (delta_time.tv_sec == 0 && delta_time.tv_nsec > 0) {}
         else 
         {
-            last_time.tv_nsec += STEP_NSEC;
+            printf("Delta time error\n");
+            LJM_eWriteName(handle, "DAC0", MOTOR_ZERO);
+            return 0;
         }
 
-        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &last_time, NULL); //sleep until next step
+        wait_time = STEP_NSEC - delta_time.tv_nsec;
+
+        //calculate time for next step
+        if(wait_time > 0)
+        {
+            if(curr_time.tv_nsec + wait_time > NSEC_IN_SEC)
+            {
+                curr_time.tv_nsec = wait_time - (NSEC_IN_SEC - curr_time.tv_nsec);
+                curr_time.tv_sec += 1.0; 
+            }
+            else 
+            {
+                curr_time.tv_nsec += wait_time;
+            }
+
+            clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &curr_time, NULL); //sleep until next step
+        }
+        
         clock_gettime(CLOCK_MONOTONIC, &last_time); //reset time 
+
+        //------------------------------------------------------------
     
 
     }
