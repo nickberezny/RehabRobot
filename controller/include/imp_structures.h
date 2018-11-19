@@ -1,9 +1,11 @@
-#include<stdbool.h>
+#include <stdbool.h>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <poll.h>
 #include <signal.h>
+#include <time.h> 
+
 
 struct game_data {
 	int game;
@@ -20,40 +22,23 @@ struct socket_data {
 
 struct impStruct {
 
-	//impedance parameters
+	//admittance control parameters 
+	double xk, vk, fk;
+	double fdes, xdes, vdes;
+	double P, D;
+	double cmd;
+	struct timespec start_time;
+	struct timespec end_time;
+    struct timespec step_time;
+    double wait_time;
 
-	//adaptive impedance params
-	double x_trans;
-	struct impPhysics * next;
-
-	//virtual coupling params
-	double k_coupling;
-	double x_env;
-
-	//position, velocity and acceleration of pedal
-	double x;
-	double dx;
-	double xdes;
-	double dxdes;
-	
-	double F; //force
-	int limit; //limit switch
-	int foot_sensor; //footplate IR sensor
-	double cmd; //motor command
-
-	struct socket_data socket_data;
-
-	//FILE * logFile;
-	
-};
-
-struct impPhysics {
-	double x_trans;
-	double k;
-	double b;
-	struct impPhysics * next;
+	//other sensors 
+	int LSF[2] = {0};
+	int LSB[2] = {0};
+	int IR;
 
 };
+
 
 void *controller(void * d);
 void *server(void * d);

@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     struct timespec curr_time;
     struct timespec delta_time;
 
-    int wait_time;
+    int imp_cont->wait_time;
 
 	//CONNECT TO DAQ
 	int err, handle;
@@ -179,19 +179,19 @@ int main(int argc, char* argv[]) {
             return 0;
         }
 
-        wait_time = STEP_NSEC - delta_time.tv_nsec;
+        imp_cont->wait_time = STEP_NSEC - delta_time.tv_nsec;
 
         //calculate time for next step
-        if(wait_time > 0)
+        if(imp_cont->wait_time > 0)
         {
-            if(curr_time.tv_nsec + wait_time > NSEC_IN_SEC)
+            if(curr_time.tv_nsec + imp_cont->wait_time > NSEC_IN_SEC)
             {
-                curr_time.tv_nsec = wait_time - (NSEC_IN_SEC - curr_time.tv_nsec);
+                curr_time.tv_nsec = imp_cont->wait_time - (NSEC_IN_SEC - curr_time.tv_nsec);
                 curr_time.tv_sec += 1.0; 
             }
             else 
             {
-                curr_time.tv_nsec += wait_time;
+                curr_time.tv_nsec += imp_cont->wait_time;
             }
 
             clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &curr_time, NULL); //sleep until next step
