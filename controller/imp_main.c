@@ -30,8 +30,7 @@
 #define STRUCTURE_ELEMENTS 18 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
 #define STEP_NSEC 1000000 //control step time (1ms)
-//TODO -- CHANGE:
-#define ENC_TO_M 2000 //meters / encoder count
+#define ENC_TO_MM 0.06096 //meters / encoder count (0.12192 m/rev, 2000 counts/rev ==> 0.06096 mm / rev )
 
 /**********************************************************************
 					   Global Variables
@@ -49,6 +48,8 @@ struct impStruct * imp_serve;
 double Ad[4] = {0};
 double Bd[2] = {0};
 
+char recvBuff[1024];
+
 
 
 
@@ -60,6 +61,11 @@ int main(int argc, char* argv[]) {
     if(DEBUG) printf("begin \n");
 
     int start_controller = 0;
+
+    struct regexMatch regex; //regex matches
+	regex_t compiled;
+	regmatch_t matches[2];
+	char matchBuffer[100];
 
     /**********************************************************************
 					   Initialize TCP Socket
@@ -178,11 +184,42 @@ int main(int argc, char* argv[]) {
 
 		//wait for game settings
 		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
-		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'r')
+		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
 		{
 			//recieved settings 
 			if(DEBUG) printf("recieved data: %s\n", recvBuff);
 			start_controller = 1;
+
+			regcomp(&compiled, regex.P, REG_EXTENDED);
+			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  test_string+matches[1].rm_so );
+				sscanf(matchBuffer, "%lf", imp[0].P);
+			    if(DEBUG) { printf("P gain is: %f\n", imp[0].P); }
+			}
+
+			regcomp(&compiled, regex.D, REG_EXTENDED);
+			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  test_string+matches[1].rm_so );
+				sscanf(matchBuffer, "%lf", imp[0].D);
+			    if(DEBUG) { printf("D gain is: %f\n", imp[0].D); }
+			}
+
+			regcomp(&compiled, regex.xdes, REG_EXTENDED);
+			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  test_string+matches[1].rm_so );
+				sscanf(matchBuffer, "%lf", imp[0].xdes);
+			    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
+			}
+	
+
+			for(i = 1; i < BUFFER_SIZE; i++)
+			{
+				imp[i]->P = imp[0]->P;
+				imp[i]->D = imp[0]->D;
+				imp[i]->xdes = imp[0]->xdes;
+			}
+
+
 		}
 
 		//wait for run signal before starting controller
@@ -203,8 +240,8 @@ int main(int argc, char* argv[]) {
 	***********************************************************************/
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
-    Ad = {{1.0, imp->Ts},{-imp->Ts * imp->k/imp->m, 1.0 - imp.Ts * imp->Bd/imp->m}};
-    Bd = {0.0, 1.0/imp->m}
+    //Ad = {{1.0, imp->Ts},{-imp->Ts * imp->k/imp->m, 1.0 - imp.Ts * imp->Bd/imp->m}};
+    //Bd = {0.0, 1.0/imp->m}
 
 
     /**********************************************************************
@@ -262,19 +299,31 @@ void *controller(void * d)
 			imp_cont = imp_cont_next;
 			imp_cont_next = &((struct impStruct*)d)[i+1];
 
+			//Calculate Velocity 
+			//imp_cont->vk = imp_cont->xk / imp_cont->
+
 			//PD Control
 			imp_cont->cmd = imp_cont->P * (imp_cont->xk - imp_cont->xdes) + imp_cont->D * (imp_cont->vk - imp_cont->vdes);
-			aValues[0] = imp_cont->cmd;
 			
 
+			//check Limit Switches and IR
+			//TODO : check direction of command
+			//TODO : check IR
+			if(imp_cont.LSF[1] && !imp_cont.LSF[0] && imp_cont->cmd > 0) { imp_cont->cmd = 0; }
+			if(imp_cont.LSF[1] && !imp_cont.LSF[0] && imp_cont->cmd < 0) { imp_cont->cmd = 0; }
+
+			
+			aValues[0] = imp_cont->cmd;
 			//Read & Write to DAQ ---------------------------------------
 			LJM_eNames(handle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress);
      
 	        imp_cont_next->fk = aValues[1];
 	        imp_cont_next->IR = aValues[2];
-	        imp_cont_next.LSF[2] = aValues[3];
+	        imp_cont_next.LSF[0] = imp_cont.LSF[1];
+	        imp_cont_next.LSB[0] = imp_cont.LSF[1];
+	        imp_cont_next.LSF[1] = aValues[3];
 	        imp_cont_next.LSB[1] = aValues[4];
-	        imp_cont_next->xk = imp_cont.xk + ENC_TO_M * aValues[5];
+	        imp_cont_next->xk = imp_cont.xk + ENC_TO_MM * aValues[5];
 
 	      	 //TIME -----------------------------------------------------
 

@@ -7,12 +7,6 @@
 #include <time.h> 
 
 
-struct game_data {
-	int game;
-	int mode;
-	int intensity;
-};
-
 struct socket_data {
 	int server_fd, new_socket, valread;
     struct sockaddr_in address;
@@ -38,6 +32,13 @@ struct impStruct {
 	int IR;
 
 };
+
+struct regexMatch {
+	char *SET = "SET";
+	char *P = "_P([0-9]*.[0-9]*)_";
+	char *D = "_D([0-9]*.[0-9]*)_";
+	char *xdes= "_xdes([0-9]*.[0-9]*)_";
+}
 
 
 void *controller(void * d);
