@@ -131,9 +131,10 @@ int main(int argc, char* argv[]) {
 
     fp = fopen (data_file_name,"w");
     fprintf (fp, "%s", asctime (timeinfo) ); 
-    fprintf (fp, "Seconds, Nanoseconds, Iterations, Iterations Squared\n"); //print header
+    fprintf (fp, "StepTime, x, v, f, xdes, vdes, fdes, cmd, IR, LSB, LSF\n"); //print header
 
     if(DEBUG) printf("Created data file %s\n", data_file_name); 
+
 
 
     /**********************************************************************
@@ -223,7 +224,7 @@ int main(int argc, char* argv[]) {
 		}
 
 		//wait for run signal before starting controller
-		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'r' && start_controller == 1)
+		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R' && start_controller == 1)
 		{
 			//everything set, begin therapy 
 			if(DEBUG) printf("Start signal recieved \n");
