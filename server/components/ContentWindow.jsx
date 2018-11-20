@@ -9,6 +9,10 @@ import UserPage from './Pages/UserPage'
 import VisualsPage from './Pages/VisualsPage'
 import SettingsPage from './Pages/SettingsPage'
 
+import io from "socket.io-client";
+
+import { setSocket } from "../src/actions";
+
 class WindowContent extends React.Component {
 
 	constructor(props) {
@@ -17,10 +21,26 @@ class WindowContent extends React.Component {
 
 	    this.state = { 
 	    	content: null,
-	    	style: null 
+	    	style: null,
 	    };
 	}
 
+	componentDidMount() {
+	    const socketio = io('http://192.168.2.205:3000');
+	    socketio.on('message', this.handleMessage) 
+	    console.log(socketio);
+	    this.props.setSocket(socketio)	   
+	}
+
+	componentWillUnmount () {
+	    console.log('unmount')
+	    //this.state.socket.close()
+	}
+
+	  handleMessage = (message) => {
+	    console.log(message);
+	    console.log('recieved');
+	}
 
 	render() {
 
@@ -63,14 +83,15 @@ function mapStateToProps(state) {
 	//map state variables to the component's state 
  	return {
  		activePage: state.activePage,
- 		menuOpen: state.menuOpen
+ 		menuOpen: state.menuOpen,
+ 		socket: state.socket
  	}
 }
 
 
 export default connect(
   mapStateToProps,
-  {} //add importing action functions here
+  { setSocket } //add importing action functions here
 )(WindowContent);
 
 

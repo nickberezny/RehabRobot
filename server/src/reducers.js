@@ -3,12 +3,12 @@ import {
   TOGGLE_DRAWER,
   OPEN_PAGE,
   SELECT_CONTROLLER,
-  SET_SPRING,
-  SET_DAMPING,
+  SET_PARAM,
   RUN_ROBOT,
+  SET_SOCKET,
 } from './actions'
 
-var initState = {menuOpen: false, activePage: 1, controller: 0, kParam: 0, bParam: 0};
+var initState = {menuOpen: false, activePage: 1, socket: null, P: 0, D:0, xdes: 0};
 
 function todoApp(state = initState, action) {
   switch (action.type) {
@@ -31,22 +31,22 @@ function todoApp(state = initState, action) {
       })
       break;
 
-    case SET_SPRING:
-      console.log(action.kParam)
+    case SET_PARAM:
+      console.log(action.id)
+      console.log(action.param)
       return Object.assign({}, state, {
-        kParam: action.kParam,
+        [action.id]: action.param,
       })
       break;
-
-    case SET_DAMPING:
-      console.log(action.bParam)
-      return Object.assign({}, state, {
-        bParam: action.bParam,
-      })
-      break;
-      
+ 
     case RUN_ROBOT:
       console.log("Run!")
+      break;
+
+    case SET_SOCKET:
+      return Object.assign({}, state, {
+        socket: action.socket,
+      })
       break;
       
     default:

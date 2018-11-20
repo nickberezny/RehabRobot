@@ -46,10 +46,12 @@ io.on('connection', socket => {
 
   socket.on('SET_PARAMS', function (data) {
     client.write(data)
+    console.log(data);
   });
 
   socket.on('START_ROBOT', function (data) {
     client.write(data)
+    console.log(data);
   });
 
   socket.on('STOP_ROBOT', function (data) {
