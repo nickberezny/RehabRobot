@@ -1,5 +1,5 @@
 run: 
-	gcc imp_run.c imp_init.c imp_utilities.c imp_controller.c -o run_robot -lpthread -lLabJackM -ljansson
+	sudo gcc imp_main.c imp_init.c imp_controller.c -o run_robot -lpthread -lLabJackM -ljansson
 	sudo ./run_robot
 	abl123
 	rm run_robot

@@ -5,6 +5,7 @@
 #include <poll.h>
 #include <signal.h>
 #include <time.h> 
+#include <regex.h>
 
 
 struct socket_data {
@@ -27,18 +28,25 @@ struct impStruct {
     double wait_time;
 
 	//other sensors 
-	int LSF[2] = {0};
-	int LSB[2] = {0};
+	int LSF[2];
+	int LSB[2];
 	int IR;
+
+	//Daq 
+	char * aNames[6];
+	int aWrites[6];
+	int aNumValues[6];
+	double aValues[6];
+	int errorAddress;
 
 };
 
 struct regexMatch {
-	char *SET = "SET";
-	char *P = "_P([0-9]*.[0-9]*)_";
-	char *D = "_D([0-9]*.[0-9]*)_";
-	char *xdes= "_xdes([0-9]*.[0-9]*)_";
-}
+	char *SET;
+	char *P;
+	char *D;
+	char *xdes;
+};
 
 
 void *controller(void * d);

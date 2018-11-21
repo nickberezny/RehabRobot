@@ -11,8 +11,19 @@
   "author": "Nick Berezny",
   "license": "ISC",
   "dependencies": {
-    "@babel/parser": "^7.1.2",
+    "@babel/parser": "^7.1.6",
+    "@material-ui/core": "^3.5.1",
+    "@material-ui/icons": "^3.0.1",
     "babel": "^6.23.0",
-    "react": "^16.5.2"
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-websocket": "^2.0.0",
+    "redux": "^4.0.1",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
+    "three": "^0.98.0"
   }
 }

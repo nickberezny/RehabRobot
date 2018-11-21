@@ -4,8 +4,6 @@ import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
 import { runRobot } from "../../src/actions";
 
-import io from "socket.io-client";
-
 class BasicButton extends React.Component {
   
   constructor(props) {

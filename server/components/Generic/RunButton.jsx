@@ -18,7 +18,7 @@ class RunButton extends React.Component {
     //change this to send different data
     let dataToSend = 'RUN'
     console.log(dataToSend)
-    //this.props.socket.emit('START_ROBOT',dataToSend)
+    this.props.socket.emit('START_ROBOT',dataToSend)
   
   }
 

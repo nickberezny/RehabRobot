@@ -26,7 +26,7 @@ class WindowContent extends React.Component {
 	}
 
 	componentDidMount() {
-	    const socketio = io('http://192.168.2.205:3000');
+	    var socketio = io();
 	    socketio.on('message', this.handleMessage) 
 	    console.log(socketio);
 	    this.props.setSocket(socketio)	   
@@ -34,12 +34,12 @@ class WindowContent extends React.Component {
 
 	componentWillUnmount () {
 	    console.log('unmount')
-	    //this.state.socket.close()
+	    this.props.socket.close()
 	}
 
 	  handleMessage = (message) => {
 	    console.log(message);
-	    console.log('recieved');
+	    //console.log('recieved');
 	}
 
 	render() {

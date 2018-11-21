@@ -134,12 +134,12 @@ int main(int argc, char* argv[]) {
     
     serv_addr.sin_family = AF_INET;
     inet_pton(AF_INET, "127.0.0.1",  &serv_addr.sin_addr.s_addr);
-    serv_addr.sin_port = htons(1337); 
+    serv_addr.sin_port = htons(3000); 
 
     char recvBuff[1024];
 
     bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
-    listen(listenfd, 10);
+    listen(listenfd, 100000);
 
 /**********************************************************************
 				   Wait for input 
