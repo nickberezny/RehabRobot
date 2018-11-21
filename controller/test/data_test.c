@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 
     //log data
     FILE * fp;
-    fp = fopen ("data_test.txt","w");
+    fp = fopen ("data_test2.txt","w");
     fprintf (fp, "%s", asctime (timeinfo) ); 
     fprintf (fp, "Seconds, Nanoseconds, Iterations, Iterations Squared\n"); 
  

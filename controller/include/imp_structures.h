@@ -6,6 +6,7 @@
 #include <signal.h>
 #include <time.h> 
 #include <regex.h>
+#include <stdio.h>
 
 
 struct socket_data {
@@ -38,6 +39,9 @@ struct impStruct {
 	int aNumValues[6];
 	double aValues[6];
 	int errorAddress;
+
+	//data log
+	FILE * fp;
 
 };
 

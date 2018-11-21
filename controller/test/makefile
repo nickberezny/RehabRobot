@@ -33,6 +33,11 @@ clock:
 	sudo ./clock_test
 	rm clock_test
 
+data: 
+	gcc data_test.c -o data_test -lpthread -lLabJackM -ljansson
+	sudo ./data_test
+	rm data_test
+
 archive_dont_run:
 	sudo ip route del default via 192.168.25.1 dev eno1
 	sudo ip route add default via 192.168.25.1 dev eno1

@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -10,8 +9,9 @@ import VisualsPage from './Pages/VisualsPage'
 import SettingsPage from './Pages/SettingsPage'
 
 import io from "socket.io-client";
-
 import { setSocket } from "../src/actions";
+
+let WIRELESS = 1
 
 class WindowContent extends React.Component {
 

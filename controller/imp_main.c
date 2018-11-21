@@ -37,7 +37,7 @@
 					   Global Variables
 ***********************************************************************/
 int daqHandle; 
-FILE * fp;
+
 int listenfd = 0, connfd = 0;
 
 pthread_mutex_t lock[BUFFER_SIZE]; 
@@ -139,7 +139,7 @@ int main(int argc, char* argv[]) {
 	int en = strlen(data_file_name);
 	data_file_name[en-1] = '_';
 
-	printf("%s\n", data_file_name);
+	//printf("%s\n", data_file_name);
 	const char file_ext[] = "data.txt";
 	strcat(data_file_name, file_ext);
 
@@ -151,16 +151,15 @@ int main(int argc, char* argv[]) {
 			data_file_name[i]='-';
 	}
 
+
    //create file name (date&time_data.txt)
-	printf("%s\n", data_file_name);
 
-    fp = fopen ('test.txt','w');
-    //fprintf (fp, "%s\n", asctime (timeinfo) ); 
-    //fprintf (fp, "StepTime, x, v, f, xdes, vdes, fdes, cmd, IR, LSB, LSF\n"); //print header
-
-    //if(DEBUG) printf("Created data file %s\n", data_file_name); 
-
-    printf("1\n");
+    imp[0].fp = fopen (data_file_name,"w");
+    fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
+    fprintf (imp[0].fp, "StepTime, x, v, f, xdes, vdes, fdes, cmd, IR, LSB, LSF\n"); //print header
+    //fclose(imp[0].fp);
+    
+    if(DEBUG) printf("Created data file %s\n", data_file_name); 
 
     /**********************************************************************
 					   Initialize Mutexes
@@ -250,6 +249,7 @@ int main(int argc, char* argv[]) {
 				imp[i].aNames[0] = imp[0].aNames; 
 				imp[i].aNumValues[0] = imp[0].aNumValues;
 				imp[i].aWrites[0] = imp[0].aWrites;
+				imp[i].fp = imp[0].fp;
 						
 			}
 
@@ -294,7 +294,7 @@ int main(int argc, char* argv[]) {
 	
 	//finished sessions, begin shutdown
 	LJM_Close(daqHandle);
-	fclose(fp);
+	fclose(imp[0].fp);
     if(DEBUG) printf("Finished, terminating program... \n");
 
 	return 0;
@@ -449,7 +449,7 @@ void *logger(void * d)
 			if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (fp, "%.5f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %d, %d\n", 
+			fprintf (imp_log->fp, "%.5f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %d, %d\n", 
 				imp_log->step_time.tv_nsec, imp_log->xk, imp_log->vk, imp_log->fk, 
 				imp_log->xdes, imp_log->vdes, imp_log->fdes, imp_log->cmd, imp_log->IR, imp_log->LSB, imp_log->LSF); 
 			
