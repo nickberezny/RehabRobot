@@ -34,10 +34,10 @@ struct impStruct {
 	int IR;
 
 	//Daq 
-	char * aNames[6];
-	int aWrites[6];
-	int aNumValues[6];
-	double aValues[6];
+	char * aNames;
+	int * aWrites;
+	int * aNumValues;
+	double * aValues;
 	int errorAddress;
 
 	//data log

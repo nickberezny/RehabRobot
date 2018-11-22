@@ -30,8 +30,10 @@
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 18 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 1000000 //control step time (1ms)
-#define ENC_TO_MM 0.06096 //meters / encoder count (0.12192 m/rev, 2000 counts/rev ==> 0.06096 mm / rev )
+#define STEP_NSEC 3500000 //control step time (1ms)
+//#define ENC_TO_MM 0.06096 //meters / encoder count (0.12192 m/rev, 2000 counts/rev ==> 0.06096 mm / rev )
+#define ENC_TO_MM 0.00115
+#define MOTOR_ZERO 2.35 
 
 /**********************************************************************
 					   Global Variables
@@ -51,6 +53,15 @@ double Bd[2] = {0};
 
 char recvBuff[1024];
 
+double aValues[6] = {0};
+const char * aNames[6] = {"DAC0","AIN1","AIN2","FIO0","FIO1","DIO2_EF_READ_A_F_AND_RESET"};
+int aNumValues[6] = {1, 1, 1, 1, 1, 1};
+int aWrites[6] = {1,0,0,0,0,0};
+int errorAddress;
+
+int temp_counter = 0;
+
+int wait_time; 
 
 /***********************************************************************
 ***********************************************************************/
@@ -74,6 +85,8 @@ int main(int argc, char* argv[]) {
 	regmatch_t matches[2];
 	char matchBuffer[100];
 
+	//int temp[6] = {LJM_WRITE, LJM_READ, LJM_READ, LJM_READ, LJM_READ, LJM_READ};
+	//memcpy(aWrites, temp, 6*sizeof(int));
 
 
     /**********************************************************************
@@ -101,6 +114,7 @@ int main(int argc, char* argv[]) {
     LJM_eReadName(daqHandle, NAME, &value);
 
     LJM_eStreamStop(daqHandle); //stop any previous streams
+    LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO); //set motor to zero
 
     //start Quadrature counter on DIO2 and DIO3
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 0);
@@ -112,13 +126,17 @@ int main(int argc, char* argv[]) {
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
 
-    char * temp[6] = {"AIN0","AIN1","AIN2","FIO0","FIO1","DIO2_EF_READ_A_F_AND_RESET"};
-    int temp2[6] = {1, 1, 1, 1, 1, 1};
-    int temp3[6] = {LJM_WRITE, LJM_READ, LJM_READ, LJM_READ, LJM_READ, LJM_READ};
+    //char * temp[6] = {"DAC0","AIN1","AIN2","FIO0","FIO1","DIO2_EF_READ_A_F_AND_RESET"};
+    //int temp2[6] = {1, 1, 1, 1, 1, 1};
+    //int temp3[6] = {LJM_WRITE, LJM_READ, LJM_READ, LJM_READ, LJM_READ, LJM_READ};
 
-    imp[0].aNames[0] = *temp;
-	imp[0].aNumValues[0] = *temp2;
-	imp[0].aWrites[0] = *temp3;
+    for(int i = 0; i < BUFFER_SIZE; i++)
+    {
+    	//imp[i].aNames = temp;
+		//imp[i].aNumValues = temp2;
+		//imp[i].aWrites = temp3;
+    }
+    
 
   
     if(DEBUG) printf("Connected to LabJack %s = %f\n", NAME, value);
@@ -141,20 +159,22 @@ int main(int argc, char* argv[]) {
 
 	//printf("%s\n", data_file_name);
 	const char file_ext[] = "data.txt";
+	char folder[1000] = "data/";
 	strcat(data_file_name, file_ext);
+	strcat(folder, data_file_name);
 
-	for(int i; i < strlen(data_file_name) - 1; i++)
+	for(int i; i < strlen(folder) - 1; i++)
 	{
-		if (isspace(data_file_name[i])) 
-		    data_file_name[i]='_';
-		if (data_file_name[i] == ':')
-			data_file_name[i]='-';
+		if (isspace(folder[i])) 
+		    folder[i]='_';
+		if (folder[i] == ':')
+			folder[i]='-';
 	}
 
 
    //create file name (date&time_data.txt)
 
-    imp[0].fp = fopen (data_file_name,"w");
+    imp[0].fp = fopen (folder,"w");
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
     fprintf (imp[0].fp, "StepTime, x, v, f, xdes, vdes, fdes, cmd, IR, LSB, LSF\n"); //print header
     //fclose(imp[0].fp);
@@ -192,7 +212,7 @@ int main(int argc, char* argv[]) {
     //initialize threads (do not start yet)
     for(int i = 0; i < 3; i++)
     {
-    	init_thread(&attr[i], &param[i], 95-i);
+    	init_thread(&attr[i], &param[i], 98-2*i);
     }
 
     /**********************************************************************
@@ -200,13 +220,13 @@ int main(int argc, char* argv[]) {
 	***********************************************************************/
 
     //start tcp socket
-    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
-    listen(listenfd, 100);
+    //bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
+    //listen(listenfd, 100);
 
 	//Start UI Process 
-	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+	//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
 
-
+/*
 	while(1)
     {
 		if(DEBUG) printf("Waiting for run signal from UI ... \n");
@@ -267,6 +287,17 @@ int main(int argc, char* argv[]) {
 		close(connfd);
 		sleep(0.01);
     }
+    */
+
+    for(int i = 0; i < BUFFER_SIZE; i++)
+			{
+				imp[i].P = 0.001;
+				imp[i].D = 0.001;
+				imp[i].xdes = 100.0;
+				imp[i].vdes = 0.0;
+				imp[i].fp = imp[0].fp;
+						
+			}
 
 
     /**********************************************************************
@@ -313,56 +344,62 @@ void *controller(void * d)
 	pthread_mutex_lock(&lock[0]);
 	pthread_mutex_lock(&lock[1]);
 
-	
 	//setup for first time step
 	imp_cont_next = &((struct impStruct*)d)[0];
 
-	printf("2\n");
+	aValues[0] = MOTOR_ZERO;
 	clock_gettime(CLOCK_MONOTONIC, &(imp_cont_next->start_time)); 
-	//LJM_eNames(daqHandle, 6, imp_cont->aNames, imp_cont->aWrites, imp_cont->aNumValues, imp_cont->aValues, &imp_cont->errorAddress);
+	printf("%d\n", LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress));
 
-	printf("3\n");
-	imp_cont_next->fk = imp_cont_next->aValues[1];
-    imp_cont_next->IR = imp_cont_next->aValues[2];
-    imp_cont_next->LSF[0] = imp_cont_next->aValues[3];
-    imp_cont_next->LSB[0] = imp_cont_next->aValues[4];
-    imp_cont_next->xk = imp_cont_next->xk + ENC_TO_MM * imp_cont_next->aValues[5];
-    printf("1\n");
 
+	
+	imp_cont_next->fk = aValues[1];
+    imp_cont_next->IR = aValues[2];
+    imp_cont_next->LSF[0] = aValues[3];
+    imp_cont_next->LSB[0] = aValues[4];
+    imp_cont_next->xk = imp_cont_next->xk + ENC_TO_MM * aValues[5];
+	
     //CONTROL LOOP -------------------------------------------------
 	while(1){
+
+		imp_cont_next = &((struct impStruct*)d)[0];
+
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
-			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
+			//if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
 			imp_cont = imp_cont_next;
-			imp_cont_next = &((struct impStruct*)d)[i+1];
-
+			if(i == BUFFER_SIZE - 1) imp_cont_next = &((struct impStruct*)d)[0];
+			else imp_cont_next = &((struct impStruct*)d)[i+1];
 			//Calculate Velocity 
 			//imp_cont->vk = imp_cont->xk / imp_cont->
 
 			//PD Control
-			imp_cont->cmd = imp_cont->P * (imp_cont->xk - imp_cont->xdes) + imp_cont->D * (imp_cont->vk - imp_cont->vdes);
-			
+			imp_cont->cmd = MOTOR_ZERO + imp_cont->P * (imp_cont->xdes - imp_cont->xk) + imp_cont->D * (imp_cont->vdes - imp_cont->vk);
+			//if(DEBUG & i == 1) printf("CMD: %.3f\n", imp_cont->cmd);
 
 			//check Limit Switches and IR
 			//TODO : check direction of command
 			//TODO : check IR
-			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0) { imp_cont->cmd = 0; }
-			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0) { imp_cont->cmd = 0; }
+			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0) { imp_cont->cmd = MOTOR_ZERO; }
+			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0) { imp_cont->cmd = MOTOR_ZERO; }
 
-			
-			imp_cont->aValues[0] = imp_cont->cmd;
+			aValues[0] = imp_cont->cmd;
+			//if(DEBUG & i == 0) printf("CMD: %.3f\n", imp_cont->cmd);
+			//aValues[0] = MOTOR_ZERO - 0.05;
 			//Read & Write to DAQ ---------------------------------------
-			//LJM_eNames(daqHandle, 6, imp_cont->aNames, imp_cont->aWrites, imp_cont->aNumValues, imp_cont->aValues, &imp_cont->errorAddress);
-     	/*
-	        imp_cont_next->fk = imp_cont->aValues[1];
-	        imp_cont_next->IR = imp_cont->aValues[2];
+			LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress);
+
+     	
+	        imp_cont_next->fk = aValues[1];
+	        imp_cont_next->IR = aValues[2];
 	        imp_cont_next->LSF[0] = imp_cont->LSF[1];
 	        imp_cont_next->LSB[0] = imp_cont->LSF[1];
-	        imp_cont_next->LSF[1] = imp_cont->aValues[3];
-	        imp_cont_next->LSB[1] = imp_cont->aValues[4];
-	        imp_cont_next->xk = imp_cont->xk + ENC_TO_MM * imp_cont->aValues[5];
-*/
+	        imp_cont_next->LSF[1] = aValues[3];
+	        imp_cont_next->LSB[1] = aValues[4];
+	        imp_cont_next->xk = imp_cont->xk + ENC_TO_MM * aValues[5];
+
+	        
+
 	      	 //TIME -----------------------------------------------------
 
 	        clock_gettime(CLOCK_MONOTONIC, &imp_cont->end_time); 
@@ -376,7 +413,7 @@ void *controller(void * d)
 	            imp_cont->step_time.tv_nsec = NSEC_IN_SEC + imp_cont->step_time.tv_nsec;
 	        }
 	       
-	        int wait_time = STEP_NSEC - imp_cont->step_time.tv_nsec;
+	        wait_time = STEP_NSEC - imp_cont->step_time.tv_nsec;
 
 	        //calculate time for next step
 	        if(wait_time > 0)
@@ -395,17 +432,29 @@ void *controller(void * d)
 	            clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->end_time, NULL); //sleep until next step
 	        }
 
+	        
+
 	        clock_gettime(CLOCK_MONOTONIC, &imp_cont_next->start_time);
-	        imp_cont->step_time.tv_sec = imp_cont->start_time.tv_sec - imp_cont_next->start_time.tv_sec; 
-	        imp_cont->step_time.tv_nsec = imp_cont->start_time.tv_nsec - imp_cont_next->start_time.tv_nsec; 
+	        imp_cont->step_time.tv_sec = - imp_cont->start_time.tv_sec + imp_cont_next->start_time.tv_sec; 
+	        imp_cont->step_time.tv_nsec = - imp_cont->start_time.tv_nsec + imp_cont_next->start_time.tv_nsec; 
+	        //if(i == 0) printf("Sec: %d, Nsec %d\n", imp_cont->step_time.tv_sec, imp_cont->step_time.tv_nsec);
+
+	        //if(DEBUG & i == 0) printf("Thread 1 (controller) Done ...\n");
 
 	        //unlock current, lock next mutex
 			if(i == BUFFER_SIZE - 2) { pthread_mutex_lock(&lock[0]); }
+			else if(i== BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[1]); }
 			else { pthread_mutex_lock(&lock[i+2]); }
 			pthread_mutex_unlock(&lock[i]);	
 	        
+	        
 			}
+
+		if(++temp_counter > 500) break;
 	}
+
+	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
+
 	return NULL;
 }
 
@@ -423,11 +472,12 @@ void *server(void* d)
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
 			pthread_mutex_lock(&lock[i]);
-			if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
-			imp_serve = &((struct impStruct*)d)[i];
-
+			//if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
+			//imp_serve = &((struct impStruct*)d)[i];
+			//if(DEBUG & i == 0) printf("Thread 2 (server) Done ...\n");
 			pthread_mutex_unlock(&lock[i]);	
 		}
+		if(temp_counter > 500) break;
 
 	}
 
@@ -446,15 +496,16 @@ void *logger(void * d)
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
 			pthread_mutex_lock(&lock[i]);
-			if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
+			//if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (imp_log->fp, "%.5f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %d, %d\n", 
-				imp_log->step_time.tv_nsec, imp_log->xk, imp_log->vk, imp_log->fk, 
-				imp_log->xdes, imp_log->vdes, imp_log->fdes, imp_log->cmd, imp_log->IR, imp_log->LSB, imp_log->LSF); 
-			
+			fprintf (imp_log->fp, "%d, %d,%.2f, %.2f, %.2f, %.2f, %d, %d, %d\n", 
+				i, imp_log->step_time.tv_nsec, imp_log->xk, 
+				imp_log->xdes, imp_log->vdes, imp_log->cmd,imp_log->LSB[0], imp_log->LSF[0], errorAddress); 
+			//if(DEBUG & i == 0) printf("Thread 3 (logging) Done ...\n");
 			pthread_mutex_unlock(&lock[i]);
 		}
+		if(temp_counter > 500) break;
 	}
 	
 	return NULL;
