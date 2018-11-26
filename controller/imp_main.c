@@ -27,6 +27,7 @@
 #include "include/LJM_Utilities.h"
 
 #define DEBUG 1 //will print updates
+#define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 18 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
@@ -58,6 +59,9 @@ const char * aNames[6] = {"DAC0","AIN1","AIN2","FIO0","FIO1","DIO2_EF_READ_A_F_A
 int aNumValues[6] = {1, 1, 1, 1, 1, 1};
 int aWrites[6] = {1,0,0,0,0,0};
 int errorAddress;
+
+int * DeviceScanBacklog;
+int * LJMScanBacklog;
 
 int temp_counter = 0;
 
@@ -126,19 +130,14 @@ int main(int argc, char* argv[]) {
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
 
-    //char * temp[6] = {"DAC0","AIN1","AIN2","FIO0","FIO1","DIO2_EF_READ_A_F_AND_RESET"};
-    //int temp2[6] = {1, 1, 1, 1, 1, 1};
-    //int temp3[6] = {LJM_WRITE, LJM_READ, LJM_READ, LJM_READ, LJM_READ, LJM_READ};
 
-    for(int i = 0; i < BUFFER_SIZE; i++)
-    {
-    	//imp[i].aNames = temp;
-		//imp[i].aNumValues = temp2;
-		//imp[i].aWrites = temp3;
-    }
-    
+    int ScansPerRead = 1;
+    int NumAddresses = 5;
+    const int aScanList[5] = {0, 2, 4, 2000, 2001, 2002} //AIN0, AIN1, AIN2, DIO0, DIO1, DIO2 
+    double ScanRate = STEP_NSEC / 1000000;
 
-  
+    //LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate);
+
     if(DEBUG) printf("Connected to LabJack %s = %f\n", NAME, value);
 
 
@@ -219,77 +218,81 @@ int main(int argc, char* argv[]) {
 					   Wait for input 
 	***********************************************************************/
 
-    //start tcp socket
-    //bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
-    //listen(listenfd, 100);
+    if(UI_CONNECT){
 
-	//Start UI Process 
-	//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+	    //start tcp socket
+	    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
+	    listen(listenfd, 100);
 
-/*
-	while(1)
-    {
-		if(DEBUG) printf("Waiting for run signal from UI ... \n");
+		//Start UI Process 
+		system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
 
-		//wait for game settings
-		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
-		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
-		{
-			//recieved settings 
-			if(DEBUG) printf("recieved data: %s\n", recvBuff);
-			start_controller = 1;
 
-			regcomp(&compiled, regex.P, REG_EXTENDED);
-			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-				sscanf(matchBuffer, "%lf", &imp[0].P);
-			    if(DEBUG) { printf("P gain is: %lf\n", imp[0].P); }
-			}
+		while(1)
+	    {
+			if(DEBUG) printf("Waiting for run signal from UI ... \n");
 
-			regcomp(&compiled, regex.D, REG_EXTENDED);
-			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-				sscanf(matchBuffer, "%lf", &imp[0].D);
-			    if(DEBUG) { printf("D gain is: %f\n", imp[0].D); }
-			}
-
-			regcomp(&compiled, regex.xdes, REG_EXTENDED);
-			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-				sscanf(matchBuffer, "%lf", &imp[0].xdes);
-			    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
-			}
-			
-
-			for(int i = 1; i < BUFFER_SIZE; i++)
+			//wait for game settings
+			connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
+			if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
 			{
-				imp[i].P = imp[0].P;
-				imp[i].D = imp[0].D;
-				imp[i].xdes = imp[0].xdes;
-				imp[i].aNames[0] = imp[0].aNames; 
-				imp[i].aNumValues[0] = imp[0].aNumValues;
-				imp[i].aWrites[0] = imp[0].aWrites;
-				imp[i].fp = imp[0].fp;
-						
+				//recieved settings 
+				if(DEBUG) printf("recieved data: %s\n", recvBuff);
+				start_controller = 1;
+
+				regcomp(&compiled, regex.P, REG_EXTENDED);
+				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+					sscanf(matchBuffer, "%lf", &imp[0].P);
+				    if(DEBUG) { printf("P gain is: %lf\n", imp[0].P); }
+				}
+
+				regcomp(&compiled, regex.D, REG_EXTENDED);
+				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+					sscanf(matchBuffer, "%lf", &imp[0].D);
+				    if(DEBUG) { printf("D gain is: %f\n", imp[0].D); }
+				}
+
+				regcomp(&compiled, regex.xdes, REG_EXTENDED);
+				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+					sscanf(matchBuffer, "%lf", &imp[0].xdes);
+				    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
+				}
+				
+
+				for(int i = 1; i < BUFFER_SIZE; i++)
+				{
+					imp[i].P = imp[0].P;
+					imp[i].D = imp[0].D;
+					imp[i].xdes = imp[0].xdes;
+					imp[i].aNames[0] = imp[0].aNames; 
+					imp[i].aNumValues[0] = imp[0].aNumValues;
+					imp[i].aWrites[0] = imp[0].aWrites;
+					imp[i].fp = imp[0].fp;
+							
+				}
+
+				if(DEBUG) printf("Set All Parameters...\n");
 			}
 
-			if(DEBUG) printf("Set All Parameters...\n");
-		}
+			//wait for run signal before starting controller
+			if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R' && start_controller == 1)
+			{
+				//everything set, begin therapy 
+				if(DEBUG) printf("Start signal recieved \n");
+				break;
+			}
 
-		//wait for run signal before starting controller
-		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R' && start_controller == 1)
-		{
-			//everything set, begin therapy 
-			if(DEBUG) printf("Start signal recieved \n");
-			break;
-		}
+			close(connfd);
+			sleep(0.01);
+	    }
+	}
+   	else {
 
-		close(connfd);
-		sleep(0.01);
-    }
-    */
-
-    for(int i = 0; i < BUFFER_SIZE; i++)
+   		//set default values if not connecting to UI (for testing)
+	    for(int i = 0; i < BUFFER_SIZE; i++)
 			{
 				imp[i].P = 0.001;
 				imp[i].D = 0.001;
@@ -298,6 +301,7 @@ int main(int argc, char* argv[]) {
 				imp[i].fp = imp[0].fp;
 						
 			}
+	}
 
 
     /**********************************************************************
@@ -344,15 +348,16 @@ void *controller(void * d)
 	pthread_mutex_lock(&lock[0]);
 	pthread_mutex_lock(&lock[1]);
 
+	LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate);
+
 	//setup for first time step
 	imp_cont_next = &((struct impStruct*)d)[0];
 
 	aValues[0] = MOTOR_ZERO;
 	clock_gettime(CLOCK_MONOTONIC, &(imp_cont_next->start_time)); 
-	printf("%d\n", LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress));
+	//LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress);
+	LJM_eStreamRead(daqHandle, aValues, DeviceScanBacklog, LJMScanBacklog);
 
-
-	
 	imp_cont_next->fk = aValues[1];
     imp_cont_next->IR = aValues[2];
     imp_cont_next->LSF[0] = aValues[3];
@@ -374,7 +379,7 @@ void *controller(void * d)
 			//imp_cont->vk = imp_cont->xk / imp_cont->
 
 			//PD Control
-			imp_cont->cmd = MOTOR_ZERO + imp_cont->P * (imp_cont->xdes - imp_cont->xk) + imp_cont->D * (imp_cont->vdes - imp_cont->vk);
+			//imp_cont->cmd = MOTOR_ZERO + imp_cont->P * (imp_cont->xdes - imp_cont->xk) + imp_cont->D * (imp_cont->vdes - imp_cont->vk);
 			//if(DEBUG & i == 1) printf("CMD: %.3f\n", imp_cont->cmd);
 
 			//check Limit Switches and IR
@@ -387,7 +392,8 @@ void *controller(void * d)
 			//if(DEBUG & i == 0) printf("CMD: %.3f\n", imp_cont->cmd);
 			//aValues[0] = MOTOR_ZERO - 0.05;
 			//Read & Write to DAQ ---------------------------------------
-			LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress);
+			//LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress);
+			LJM_eStreamRead(daqHandle, aValues, DeviceScanBacklog, LJMScanBacklog);
 
      	
 	        imp_cont_next->fk = aValues[1];
@@ -401,7 +407,11 @@ void *controller(void * d)
 	        
 
 	      	 //TIME -----------------------------------------------------
-
+	        /*
+	        	The following for calculating remaining time in the step is not necessary when using
+	        	stream mode on the DAQ since the scan rate will force the thread to wait before reading data 
+	        */
+	        /*
 	        clock_gettime(CLOCK_MONOTONIC, &imp_cont->end_time); 
 
 	        imp_cont->step_time.tv_sec = imp_cont->end_time.tv_sec - imp_cont->start_time.tv_sec;
@@ -432,7 +442,7 @@ void *controller(void * d)
 	            clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->end_time, NULL); //sleep until next step
 	        }
 
-	        
+	        */
 
 	        clock_gettime(CLOCK_MONOTONIC, &imp_cont_next->start_time);
 	        imp_cont->step_time.tv_sec = - imp_cont->start_time.tv_sec + imp_cont_next->start_time.tv_sec; 

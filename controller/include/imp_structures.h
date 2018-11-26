@@ -21,7 +21,9 @@ struct impStruct {
 	//admittance control parameters 
 	double xk, vk, fk;
 	double fdes, xdes, vdes;
+	double xa, va;
 	double P, D;
+	double *Ad, *Bd;
 	double cmd;
 	struct timespec start_time;
 	struct timespec end_time;
@@ -65,7 +67,4 @@ void init_log(char * filename);
 void imp_struct_to_json(struct impStruct * imp, double k, double b, char * json, size_t len);
 size_t imp_length_json(struct impStruct * imp, double k, double b);
 
-void imp_simple_control(struct impStruct * imp, double k, double b);
-void imp_adaptive_control(struct impStruct *imp);
-void imp_coupling_control(struct impStruct * imp);
 
