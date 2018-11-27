@@ -10,6 +10,7 @@ import SettingsPage from './Pages/SettingsPage'
 
 import io from "socket.io-client";
 import { setSocket } from "../src/actions";
+import { setParam } from "../src/actions";
 
 let WIRELESS = 1
 

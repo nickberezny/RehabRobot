@@ -27,7 +27,7 @@
 #include "include/LJM_Utilities.h"
 
 #define DEBUG 1 //will print updates
-#define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
+#define UI_CONNECT 1 //will get params from remote UI (set 0 for testing, 1 for production)
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
@@ -56,9 +56,10 @@ struct impStruct * imp_log;
 struct impStruct * imp_serve;
 
 char recvBuff[1024];
+char sendBuff[1024];
 
-int * DeviceScanBacklog;
-int * LJMScanBacklog;
+int DeviceScanBacklog = 0;
+int LJMScanBacklog = 0;
 
 int temp_counter = 0; 
 double curr_pos = 0.0;
@@ -381,20 +382,20 @@ void *controller(void * d)
 	if(DEBUG) printf("Thread 1 (controller) initializing ...\n");
 	pthread_mutex_lock(&lock[0]);
 
-	LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate);
+	printf("%d\n", LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate));
 	
     //CONTROL LOOP -------------------------------------------------
 	while(1){
-
-		imp_cont_next = &((struct impStruct*)d)[0];
 
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
 			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
 
+			imp_cont = &((struct impStruct*)d)[i];
 			//Read & Write to DAQ ---------------------------------------
-			LJM_eStreamRead(daqHandle, aValues, DeviceScanBacklog, LJMScanBacklog);
+			printf("%d\n", LJM_eStreamRead(daqHandle, aValues, &DeviceScanBacklog, &LJMScanBacklog));
 			//TODO: check if backlog exist, empty it 
+
 			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
 
 	        imp_cont->fk = FT_GAIN*aValues[0] + FT_OFFSET;
@@ -405,7 +406,7 @@ void *controller(void * d)
 	        imp_cont->LSB[1] = aValues[4];
 	        curr_pos = curr_pos + ENC_TO_MM * aValues[5];
 	        imp_cont->xk = curr_pos;
-
+	
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &imp_cont->end_time, &imp_cont->step_time);
 			imp_cont->vk = ENC_TO_MM * aValues[5] / (imp_cont->step_time.tv_sec + NSEC_IN_SEC*imp_cont->step_time.tv_nsec);
@@ -423,8 +424,8 @@ void *controller(void * d)
 
 			//write motor command 
 			LJM_eWriteName(daqHandle, "DAC0", imp_cont->cmd);
-	      
-	        clock_gettime(CLOCK_MONOTONIC, &imp_cont_next->end_time);
+
+	        clock_gettime(CLOCK_MONOTONIC, &imp_cont->end_time);
 
 	        //unlock current, lock next mutex
 			if(i == BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[0]); }
@@ -458,8 +459,9 @@ void *server(void* d)
 			pthread_mutex_lock(&lock[i]);
 			if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
 
+			sprintf(sendBuff,"%.2f", imp_serve->xk);
 			imp_serve = &((struct impStruct*)d)[i];
-			send(connfd, &imp_serve->xk, sizeof(double), 0);
+			send(connfd, sendBuff, strlen(sendBuff), 0);
 
 			pthread_mutex_unlock(&lock[i]);	
 		}

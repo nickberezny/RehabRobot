@@ -49,6 +49,9 @@ function mapStateToProps(state) {
   	P: state.P,
   	D: state.D,
   	xdes: state.xdes,
+  	K: state.K,
+  	B: state.B,
+  	M: state.M
   }
 }
 

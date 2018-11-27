@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import * as THREE from 'three'
+import { setParam } from "../src/actions";
 
 class Scene extends Component {
   constructor(props) {
