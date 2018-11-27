@@ -55,17 +55,20 @@ struct impStruct * imp_cont_next;
 struct impStruct * imp_log;
 struct impStruct * imp_serve;
 
-double Ad[4] = {0};
-double Bd[2] = {0};
-
 char recvBuff[1024];
 
 int * DeviceScanBacklog;
 int * LJMScanBacklog;
 
-int temp_counter = 0;
-int wait_time; 
+int temp_counter = 0; 
 double curr_pos = 0.0;
+
+int ScansPerRead = 1;
+int NumAddresses = 6;
+const int aScanList[6] = {0, 2, 4, 2000, 2001, 2002}; //AIN0, AIN1, AIN2, DIO0, DIO1, DIO2 
+double ScanRate = STEP_NSEC / 1000000;
+
+double aValues[6] = {0};
 
 /***********************************************************************
 ***********************************************************************/
@@ -134,10 +137,7 @@ int main(int argc, char* argv[]) {
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
 
 
-    int ScansPerRead = 1;
-    int NumAddresses = 5;
-    const int aScanList[5] = {0, 2, 4, 2000, 2001, 2002} //AIN0, AIN1, AIN2, DIO0, DIO1, DIO2 
-    double ScanRate = STEP_NSEC / 1000000;
+   
 
     //LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate);
 
@@ -167,7 +167,7 @@ int main(int argc, char* argv[]) {
 
 	for(int i; i < strlen(folder) - 1; i++)
 	{
-		if (isspace(folder[i])) 
+		if (folder[i] == ' ') 
 		    folder[i]='_';
 		if (folder[i] == ':')
 			folder[i]='-';
@@ -337,8 +337,8 @@ int main(int argc, char* argv[]) {
 	***********************************************************************/
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
-    Ad = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0]->K/imp[0]->M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0]->B/imp[0]->M}};
-    Bd = {0.0, 1.0/imp[0]->M}
+    double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
+    double Bd[2] = {0.0, 1.0/imp[0].M};
 
     for(int i = 0; i < BUFFER_SIZE; i++)
     {
@@ -408,7 +408,7 @@ void *controller(void * d)
 
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &imp_cont->end_time, &imp_cont->step_time);
-			imp_cont->vk = ENC_TO_MM * aValues[5] / imp_cont->step_time;
+			imp_cont->vk = ENC_TO_MM * aValues[5] / (imp_cont->step_time.tv_sec + NSEC_IN_SEC*imp_cont->step_time.tv_nsec);
 
 			//Controller
 			imp_Adm(imp_cont);
@@ -422,7 +422,7 @@ void *controller(void * d)
 			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
 
 			//write motor command 
-			LJM_eWriteName(handle, "DAC0", imp_cont->cmd);
+			LJM_eWriteName(daqHandle, "DAC0", imp_cont->cmd);
 	      
 	        clock_gettime(CLOCK_MONOTONIC, &imp_cont_next->end_time);
 
@@ -459,7 +459,7 @@ void *server(void* d)
 			if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
 
 			imp_serve = &((struct impStruct*)d)[i];
-			send(int connfd, imp_server->xk, sizeof(double));
+			send(connfd, &imp_serve->xk, sizeof(double), 0);
 
 			pthread_mutex_unlock(&lock[i]);	
 		}
@@ -485,9 +485,9 @@ void *logger(void * d)
 			//if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (imp_log->fp, "%d, %d,%.2f, %.2f, %.2f, %.2f, %d, %d, %d\n", 
+			fprintf (imp_log->fp, "%d, %d,%.2f, %.2f, %.2f, %.2f, %d, %d \n", 
 				i, imp_log->step_time.tv_nsec, imp_log->xk, 
-				imp_log->xdes, imp_log->vdes, imp_log->cmd,imp_log->LSB[0], imp_log->LSF[0], errorAddress); 
+				imp_log->xdes, imp_log->vdes, imp_log->cmd,imp_log->LSB[0], imp_log->LSF[0]); 
 			//if(DEBUG & i == 0) printf("Thread 3 (logging) Done ...\n");
 			pthread_mutex_unlock(&lock[i]);
 		}

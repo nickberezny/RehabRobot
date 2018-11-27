@@ -45,6 +45,9 @@ struct regexMatch {
 	char *P;
 	char *D;
 	char *xdes;
+	char *K;
+	char *B;
+	char *M;
 };
 
 

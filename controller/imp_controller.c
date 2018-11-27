@@ -5,7 +5,7 @@
 
 void imp_PD(struct impStruct * imp)
 {
-	imp->cmd = imp->P*(imp->xk - imp->xdes) + imp->D(imp->vk - imp->vdes);
+	imp->cmd = imp->P*(imp->xk - imp->xdes) + imp->D*(imp->vk - imp->vdes);
 	return;
 }
 
