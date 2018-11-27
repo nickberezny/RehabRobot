@@ -8,7 +8,7 @@ import {
   SET_SOCKET,
 } from './actions'
 
-var initState = {menuOpen: false, activePage: 1, socket: null, P: 0, D:0, xdes: 0, K:0, B:0, M:0, x:0 };
+var initState = {menuOpen: false, activePage: 1, socket: null, P: 1, D:1, xdes: 1, K:1, B:1, M:1, x:0.5 };
 
 function todoApp(state = initState, action) {
   switch (action.type) {

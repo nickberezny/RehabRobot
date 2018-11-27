@@ -26,13 +26,13 @@
 #include "include/imp_structures.h"
 #include "include/LJM_Utilities.h"
 
-#define DEBUG 1 //will print updates
-#define UI_CONNECT 1 //will get params from remote UI (set 0 for testing, 1 for production)
+#define DEBUG 0 //will print updates
+#define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 3500000 //control step time (1ms)
+#define STEP_NSEC 5000000 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
 
@@ -67,9 +67,16 @@ double curr_pos = 0.0;
 int ScansPerRead = 1;
 int NumAddresses = 6;
 const int aScanList[6] = {0, 2, 4, 2000, 2001, 2002}; //AIN0, AIN1, AIN2, DIO0, DIO1, DIO2 
-double ScanRate = STEP_NSEC / 1000000;
+double ScanRate = NSEC_IN_SEC / STEP_NSEC;
+
 
 double aValues[6] = {0};
+
+double aCmd[1] = {0};
+const char * aNames[1] = {"DAC0"};
+int aNumValues[1] = {1};
+int aWrites[1] = {1};
+int errorAddress = 0;
 
 /***********************************************************************
 ***********************************************************************/
@@ -78,6 +85,7 @@ int main(int argc, char* argv[]) {
 
     if(DEBUG) printf("Begin ... \n");
 
+    printf("%f\n", ScanRate);
     int start_controller = 0;
     struct impStruct imp[BUFFER_SIZE + 1] = {0};
 
@@ -126,7 +134,7 @@ int main(int argc, char* argv[]) {
 
     LJM_eStreamStop(daqHandle); //stop any previous streams
     LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO); //set motor to zero
-
+    
     //start Quadrature counter on DIO2 and DIO3
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 0);
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 0);
@@ -136,8 +144,12 @@ int main(int argc, char* argv[]) {
 
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
+	
 
+   ///
+   
 
+    LJM_WriteLibraryConfigS(LJM_STREAM_TRANSFERS_PER_SECOND, 9999999);
    
 
     //LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate);
@@ -354,6 +366,8 @@ int main(int argc, char* argv[]) {
     
     if(DEBUG) printf("Joining Threads ...\n"); 
 
+    sleep(5);
+
 	//create and join threads 
 	pthread_create(&thread[0], &attr[0], controller, (void *)imp);
 	pthread_create(&thread[1], &attr[1], server, (void *)imp);
@@ -382,7 +396,7 @@ void *controller(void * d)
 	if(DEBUG) printf("Thread 1 (controller) initializing ...\n");
 	pthread_mutex_lock(&lock[0]);
 
-	printf("%d\n", LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate));
+	//printf("%d\n", LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate));
 	
     //CONTROL LOOP -------------------------------------------------
 	while(1){
@@ -392,10 +406,14 @@ void *controller(void * d)
 			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
 
 			imp_cont = &((struct impStruct*)d)[i];
+			//LJM_eWriteName(daqHandle, "STREAM_OUT0_BUFFER_F32", aCmd[0]);
 			//Read & Write to DAQ ---------------------------------------
-			printf("%d\n", LJM_eStreamRead(daqHandle, aValues, &DeviceScanBacklog, &LJMScanBacklog));
+			
+			//printf("Error %d\n", LJM_eStreamRead(daqHandle, aValues, &DeviceScanBacklog, &LJMScanBacklog));
+			//LJM_eReadName(daqHandle, "AIN0", aValues);
 			//TODO: check if backlog exist, empty it 
-
+			LJM_eNames(daqHandle, 1, aNames, aWrites, aNumValues, aCmd, &errorAddress);
+			//printf("Backlogs: %d, %d\n", DeviceScanBacklog, LJMScanBacklog);
 			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
 
 	        imp_cont->fk = FT_GAIN*aValues[0] + FT_OFFSET;
@@ -411,21 +429,34 @@ void *controller(void * d)
 	        imp_StepTime(&imp_cont->start_time, &imp_cont->end_time, &imp_cont->step_time);
 			imp_cont->vk = ENC_TO_MM * aValues[5] / (imp_cont->step_time.tv_sec + NSEC_IN_SEC*imp_cont->step_time.tv_nsec);
 
+			//printf("step: %d . %d \n",imp_cont->start_time.tv_sec - imp_cont->end_time.tv_sec, imp_cont->start_time.tv_nsec - imp_cont->end_time.tv_nsec);
+
 			//Controller
-			imp_Adm(imp_cont);
+			//imp_Adm(imp_cont);
 			imp_PD(imp_cont);
+			//printf("Cmd: %.2f\n", imp_cont->cmd);
+			
 
 			//Safety Checks
 			//TODO : check direction of command
 			//TODO : check IR
+			if(abs(imp_cont->cmd) > 0.75) imp_cont->cmd = 0;
+			imp_cont->cmd += MOTOR_ZERO;
+
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0)  imp_cont->cmd = MOTOR_ZERO; 
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0)  imp_cont->cmd = MOTOR_ZERO; 
 			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
 
-			//write motor command 
-			LJM_eWriteName(daqHandle, "DAC0", imp_cont->cmd);
+			aCmd[0] = 0;
 
-	        clock_gettime(CLOCK_MONOTONIC, &imp_cont->end_time);
+    		//LJM_eWriteName(daqHandle, "STREAM_OUT0_BUFFER_F32", aCmd[0]);
+			
+			//write motor command 
+			//LJM_eWriteName(daqHandle, "DAC0", 0.1);
+			
+			//LJM_eNames(daqHandle, 1, aNames, aWrites, aNumValues, aCmd, &errorAddress);
+			//LJM_eNames(daqHandle, 1, aNames, aWrites, aNumValues, aCmd, &errorAddress);
+	        clock_gettime(CLOCK_MONOTONIC, &(imp_cont->end_time));
 
 	        //unlock current, lock next mutex
 			if(i == BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[0]); }
@@ -435,7 +466,10 @@ void *controller(void * d)
 	        
 			}
 
-		if(++temp_counter > 500) break;
+		if(++temp_counter > 100) {
+			pthread_mutex_unlock(&lock[0]);	
+			break;
+		}
 	}
 
 	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
@@ -459,13 +493,15 @@ void *server(void* d)
 			pthread_mutex_lock(&lock[i]);
 			if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
 
-			sprintf(sendBuff,"%.2f", imp_serve->xk);
 			imp_serve = &((struct impStruct*)d)[i];
-			send(connfd, sendBuff, strlen(sendBuff), 0);
+			sprintf(sendBuff,"%.2f", imp_serve->xk);
+			
+			
+			//send(connfd, sendBuff, strlen(sendBuff), 0);
 
 			pthread_mutex_unlock(&lock[i]);	
 		}
-		if(temp_counter > 500) break;
+		if(temp_counter > 100) break;
 
 	}
 
@@ -493,7 +529,7 @@ void *logger(void * d)
 			//if(DEBUG & i == 0) printf("Thread 3 (logging) Done ...\n");
 			pthread_mutex_unlock(&lock[i]);
 		}
-		if(temp_counter > 500) break;
+		if(temp_counter > 100) break;
 	}
 	
 	return NULL;

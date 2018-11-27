@@ -33,7 +33,7 @@ bool init_thread(pthread_attr_t * attr, struct sched_param * param, int priority
     }
 
     // Set scheduler policy and priority of pthread (SCHED_FIFO, SCHED_RR, SCHED_DEADLINE)
-    if (pthread_attr_setschedpolicy(attr, SCHED_FIFO)) {
+    if (pthread_attr_setschedpolicy(attr, SCHED_RR)) {
         printf("pthread setschedpolicy failed \n");
         return false;
     }

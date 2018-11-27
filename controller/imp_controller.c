@@ -24,8 +24,8 @@ void imp_Haptics(struct impStruct * imp)
 
 void imp_StepTime(struct timespec * start_time, struct timespec * end_time, struct timespec * step_time  )
 {
-	step_time->tv_sec = end_time->tv_sec - start_time->tv_sec;
-    step_time->tv_nsec = end_time->tv_nsec - start_time->tv_nsec;
+	step_time->tv_sec = start_time->tv_sec - end_time->tv_sec;
+    step_time->tv_nsec = start_time->tv_nsec - end_time->tv_nsec;
 
     if ( step_time->tv_sec > 0 && step_time->tv_nsec <= 0)
     {
