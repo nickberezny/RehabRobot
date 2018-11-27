@@ -37,7 +37,7 @@ class WindowContent extends React.Component {
 	    this.props.socket.close()
 	}
 
-	  handleMessage = (message) => {
+	handleMessage = (message) => {
 	    console.log(message);
 	    //console.log('recieved');
 	}

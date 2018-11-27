@@ -29,7 +29,15 @@ if(TEST) {
   client.connect(tcp_port, '127.0.0.1', function() {
     console.log('Connected');
   })
+
+  client.on('data', function(data){
+    io.emit('broadcast', data)
+  });
+
+
+
 }
+
 
 /**********************************************************************
             Websocket Server 
@@ -38,7 +46,7 @@ if(TEST) {
 // socket.io server
 io.on('connection', socket => {
   console.log("server socket connect")
-  socket.broadcast.emit('message', 'world')
+  //socket.broadcast.emit('message', 'world')
 
   socket.on('HEY', function (data) {
     console.log(data)
