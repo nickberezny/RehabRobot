@@ -28,13 +28,19 @@
 
 #define DEBUG 1 //will print updates
 #define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
+
 #define BUFFER_SIZE 10 //size of data sturcture array
-#define STRUCTURE_ELEMENTS 18 //number of elements in data structure
+#define STRUCTURE_ELEMENTS 25 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
 #define STEP_NSEC 3500000 //control step time (1ms)
-//#define ENC_TO_MM 0.06096 //meters / encoder count (0.12192 m/rev, 2000 counts/rev ==> 0.06096 mm / rev )
+
+#define MAX_FORCE 50 //Newtons  
+
+//Conversion
 #define ENC_TO_MM 0.00115
 #define MOTOR_ZERO 2.35 
+#define FT_GAIN 43.0
+#define FT_OFFSET -0.156393
 
 /**********************************************************************
 					   Global Variables
@@ -54,18 +60,12 @@ double Bd[2] = {0};
 
 char recvBuff[1024];
 
-double aValues[6] = {0};
-const char * aNames[6] = {"DAC0","AIN1","AIN2","FIO0","FIO1","DIO2_EF_READ_A_F_AND_RESET"};
-int aNumValues[6] = {1, 1, 1, 1, 1, 1};
-int aWrites[6] = {1,0,0,0,0,0};
-int errorAddress;
-
 int * DeviceScanBacklog;
 int * LJMScanBacklog;
 
 int temp_counter = 0;
-
 int wait_time; 
+double curr_pos = 0.0;
 
 /***********************************************************************
 ***********************************************************************/
@@ -82,7 +82,10 @@ int main(int argc, char* argv[]) {
 		.SET = "SET",
 		.P = "_P([0-9]*.[0-9]*)_",
 		.D = "_D([0-9]*.[0-9]*)_",
-		.xdes = "_xdes([0-9]*.[0-9]*)_"
+		.xdes = "_xdes([0-9]*.[0-9]*)_",
+		.K = "_K([0-9]*.[0-9]*)_",
+		.B = "_B([0-9]*.[0-9]*)_",
+		.M = "_M([0-9]*.[0-9]*)_"
 	} ; //regex matches
 
 	regex_t compiled;
@@ -260,16 +263,38 @@ int main(int argc, char* argv[]) {
 					sscanf(matchBuffer, "%lf", &imp[0].xdes);
 				    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
 				}
+
+				regcomp(&compiled, regex.K, REG_EXTENDED);
+				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+					sscanf(matchBuffer, "%lf", &imp[0].K);
+				    if(DEBUG) { printf("K is: %f\n", imp[0].K); }
+				}
+				
+				regcomp(&compiled, regex.B, REG_EXTENDED);
+				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+					sscanf(matchBuffer, "%lf", &imp[0].B);
+				    if(DEBUG) { printf("B is: %f\n", imp[0].B); }
+				}
+				
+				regcomp(&compiled, regex.M, REG_EXTENDED);
+				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+					sscanf(matchBuffer, "%lf", &imp[0].M);
+				    if(DEBUG) { printf("M is: %f\n", imp[0].M); }
+				}
+				
 				
 
 				for(int i = 1; i < BUFFER_SIZE; i++)
 				{
 					imp[i].P = imp[0].P;
 					imp[i].D = imp[0].D;
+					imp[i].K = imp[0].K;
+					imp[i].B = imp[0].B;
+					imp[i].M = imp[0].M;
 					imp[i].xdes = imp[0].xdes;
-					imp[i].aNames[0] = imp[0].aNames; 
-					imp[i].aNumValues[0] = imp[0].aNumValues;
-					imp[i].aWrites[0] = imp[0].aWrites;
 					imp[i].fp = imp[0].fp;
 							
 				}
@@ -296,6 +321,9 @@ int main(int argc, char* argv[]) {
 			{
 				imp[i].P = 0.001;
 				imp[i].D = 0.001;
+				imp[i].K = 0.001;
+				imp[i].B = 0.001;
+				imp[i].M = 0.001;
 				imp[i].xdes = 100.0;
 				imp[i].vdes = 0.0;
 				imp[i].fp = imp[0].fp;
@@ -309,8 +337,14 @@ int main(int argc, char* argv[]) {
 	***********************************************************************/
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
-    //Ad = {{1.0, imp->Ts},{-imp->Ts * imp->k/imp->m, 1.0 - imp.Ts * imp->Bd/imp->m}};
-    //Bd = {0.0, 1.0/imp->m}
+    Ad = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0]->K/imp[0]->M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0]->B/imp[0]->M}};
+    Bd = {0.0, 1.0/imp[0]->M}
+
+    for(int i = 0; i < BUFFER_SIZE; i++)
+    {
+    	imp[i].Ad = Ad;
+    	imp[i].Bd = Bd;
+    }
 
 
     /**********************************************************************
@@ -346,23 +380,8 @@ void *controller(void * d)
 {
 	if(DEBUG) printf("Thread 1 (controller) initializing ...\n");
 	pthread_mutex_lock(&lock[0]);
-	pthread_mutex_lock(&lock[1]);
 
 	LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate);
-
-	//setup for first time step
-	imp_cont_next = &((struct impStruct*)d)[0];
-
-	aValues[0] = MOTOR_ZERO;
-	clock_gettime(CLOCK_MONOTONIC, &(imp_cont_next->start_time)); 
-	//LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress);
-	LJM_eStreamRead(daqHandle, aValues, DeviceScanBacklog, LJMScanBacklog);
-
-	imp_cont_next->fk = aValues[1];
-    imp_cont_next->IR = aValues[2];
-    imp_cont_next->LSF[0] = aValues[3];
-    imp_cont_next->LSB[0] = aValues[4];
-    imp_cont_next->xk = imp_cont_next->xk + ENC_TO_MM * aValues[5];
 	
     //CONTROL LOOP -------------------------------------------------
 	while(1){
@@ -371,90 +390,45 @@ void *controller(void * d)
 
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
-			//if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
-			imp_cont = imp_cont_next;
-			if(i == BUFFER_SIZE - 1) imp_cont_next = &((struct impStruct*)d)[0];
-			else imp_cont_next = &((struct impStruct*)d)[i+1];
+			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
+
+			//Read & Write to DAQ ---------------------------------------
+			LJM_eStreamRead(daqHandle, aValues, DeviceScanBacklog, LJMScanBacklog);
+			//TODO: check if backlog exist, empty it 
+			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
+
+	        imp_cont->fk = FT_GAIN*aValues[0] + FT_OFFSET;
+	        imp_cont->IR = aValues[1];
+	        imp_cont->LSF[0] = imp_cont->LSF[1];
+	        imp_cont->LSB[0] = imp_cont->LSF[1];
+	        imp_cont->LSF[1] = aValues[3];
+	        imp_cont->LSB[1] = aValues[4];
+	        curr_pos = curr_pos + ENC_TO_MM * aValues[5];
+	        imp_cont->xk = curr_pos;
+
 			//Calculate Velocity 
-			//imp_cont->vk = imp_cont->xk / imp_cont->
+	        imp_StepTime(&imp_cont->start_time, &imp_cont->end_time, &imp_cont->step_time);
+			imp_cont->vk = ENC_TO_MM * aValues[5] / imp_cont->step_time;
 
-			//PD Control
-			//imp_cont->cmd = MOTOR_ZERO + imp_cont->P * (imp_cont->xdes - imp_cont->xk) + imp_cont->D * (imp_cont->vdes - imp_cont->vk);
-			//if(DEBUG & i == 1) printf("CMD: %.3f\n", imp_cont->cmd);
+			//Controller
+			imp_Adm(imp_cont);
+			imp_PD(imp_cont);
 
-			//check Limit Switches and IR
+			//Safety Checks
 			//TODO : check direction of command
 			//TODO : check IR
-			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0) { imp_cont->cmd = MOTOR_ZERO; }
-			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0) { imp_cont->cmd = MOTOR_ZERO; }
+			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0)  imp_cont->cmd = MOTOR_ZERO; 
+			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0)  imp_cont->cmd = MOTOR_ZERO; 
+			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
 
-			aValues[0] = imp_cont->cmd;
-			//if(DEBUG & i == 0) printf("CMD: %.3f\n", imp_cont->cmd);
-			//aValues[0] = MOTOR_ZERO - 0.05;
-			//Read & Write to DAQ ---------------------------------------
-			//LJM_eNames(daqHandle, 6, aNames, aWrites, aNumValues, aValues, &errorAddress);
-			LJM_eStreamRead(daqHandle, aValues, DeviceScanBacklog, LJMScanBacklog);
-
-     	
-	        imp_cont_next->fk = aValues[1];
-	        imp_cont_next->IR = aValues[2];
-	        imp_cont_next->LSF[0] = imp_cont->LSF[1];
-	        imp_cont_next->LSB[0] = imp_cont->LSF[1];
-	        imp_cont_next->LSF[1] = aValues[3];
-	        imp_cont_next->LSB[1] = aValues[4];
-	        imp_cont_next->xk = imp_cont->xk + ENC_TO_MM * aValues[5];
-
-	        
-
-	      	 //TIME -----------------------------------------------------
-	        /*
-	        	The following for calculating remaining time in the step is not necessary when using
-	        	stream mode on the DAQ since the scan rate will force the thread to wait before reading data 
-	        */
-	        /*
-	        clock_gettime(CLOCK_MONOTONIC, &imp_cont->end_time); 
-
-	        imp_cont->step_time.tv_sec = imp_cont->end_time.tv_sec - imp_cont->start_time.tv_sec;
-	        imp_cont->step_time.tv_nsec = imp_cont->end_time.tv_nsec - imp_cont->start_time.tv_nsec;
-
-	        if ( imp_cont->step_time.tv_sec > 0 && imp_cont->step_time.tv_nsec <= 0)
-	        {
-	            imp_cont->step_time.tv_sec = 0;
-	            imp_cont->step_time.tv_nsec = NSEC_IN_SEC + imp_cont->step_time.tv_nsec;
-	        }
-	       
-	        wait_time = STEP_NSEC - imp_cont->step_time.tv_nsec;
-
-	        //calculate time for next step
-	        if(wait_time > 0)
-	        {
-	            if(imp_cont->end_time.tv_nsec + wait_time > NSEC_IN_SEC)
-	            {
-	                imp_cont->end_time.tv_nsec = wait_time - (NSEC_IN_SEC - imp_cont->end_time.tv_nsec);
-	                imp_cont->end_time.tv_sec += 1.0; 
-	            }
-	            else 
-	            {
-	                imp_cont->end_time.tv_nsec += wait_time;
-	            }
-
-
-	            clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->end_time, NULL); //sleep until next step
-	        }
-
-	        */
-
-	        clock_gettime(CLOCK_MONOTONIC, &imp_cont_next->start_time);
-	        imp_cont->step_time.tv_sec = - imp_cont->start_time.tv_sec + imp_cont_next->start_time.tv_sec; 
-	        imp_cont->step_time.tv_nsec = - imp_cont->start_time.tv_nsec + imp_cont_next->start_time.tv_nsec; 
-	        //if(i == 0) printf("Sec: %d, Nsec %d\n", imp_cont->step_time.tv_sec, imp_cont->step_time.tv_nsec);
-
-	        //if(DEBUG & i == 0) printf("Thread 1 (controller) Done ...\n");
+			//write motor command 
+			LJM_eWriteName(handle, "DAC0", imp_cont->cmd);
+	      
+	        clock_gettime(CLOCK_MONOTONIC, &imp_cont_next->end_time);
 
 	        //unlock current, lock next mutex
-			if(i == BUFFER_SIZE - 2) { pthread_mutex_lock(&lock[0]); }
-			else if(i== BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[1]); }
-			else { pthread_mutex_lock(&lock[i+2]); }
+			if(i == BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[0]); }
+			else { pthread_mutex_lock(&lock[i+1]); }
 			pthread_mutex_unlock(&lock[i]);	
 	        
 	        
@@ -482,9 +456,11 @@ void *server(void* d)
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
 			pthread_mutex_lock(&lock[i]);
-			//if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
-			//imp_serve = &((struct impStruct*)d)[i];
-			//if(DEBUG & i == 0) printf("Thread 2 (server) Done ...\n");
+			if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
+
+			imp_serve = &((struct impStruct*)d)[i];
+			send(int connfd, imp_server->xk, sizeof(double));
+
 			pthread_mutex_unlock(&lock[i]);	
 		}
 		if(temp_counter > 500) break;
