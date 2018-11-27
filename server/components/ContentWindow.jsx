@@ -38,8 +38,8 @@ class WindowContent extends React.Component {
 	}
 
 	handleMessage = (message) => {
-	    console.log(message);
-	    //console.log('recieved');
+	    console.log('Message Recieved: ' + message);
+	    this.props.setParam('x', message)
 	}
 
 	render() {
@@ -91,7 +91,8 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { setSocket } //add importing action functions here
+  { setSocket,
+  	setParam } //add importing action functions here
 )(WindowContent);
 
 

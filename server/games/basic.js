@@ -60,6 +60,7 @@ class Scene extends Component {
   animate() {
     this.cube.rotation.x += 0.01
     this.cube.rotation.y += 0.01
+    this.cube.position.x = this.props.x
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
@@ -79,4 +80,16 @@ class Scene extends Component {
   }
 }
 
-export default Scene
+function mapStateToProps(state) {
+  
+  //map state variables to the component's state 
+  return {
+    x: state.x
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  {} //add importing action functions here
+)(Scene);

@@ -26,10 +26,15 @@ class SetupPage extends React.Component {
 		      		<InputText text="P Gain" textValue={this.props.P} paramName='P' />
 		      		<InputText text="D Gain" textValue={this.props.D} paramName='D' />
 		      		<InputText text="X Desired" textValue={this.props.xdes} paramName='xdes' />
+		      		<InputText text="Admittance K" textValue={this.props.K} paramName='K' />
+		      		<InputText text="Admittance B" textValue={this.props.B} paramName='B' />
+		      		<InputText text="Admittance M" textValue={this.props.M} paramName='M' />
 		      	</div>
 		      	
-		      	<div style={{padding: 24}}>
+		      	<div style={{padding: 12}}>
 			      	<SetButton text="Set" />
+			    </div>
+			    <div style={{padding: 12}}>
 			      	<RunButton text="Run" />
 		      	</div>
 		      	
