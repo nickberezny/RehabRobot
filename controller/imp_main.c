@@ -77,7 +77,6 @@ int main(int argc, char* argv[]) {
 
     if(DEBUG) printf("Begin ... \n");
 
-    printf("%f\n", ScanRate);
     int start_controller = 0;
     struct impStruct imp[BUFFER_SIZE + 1] = {0};
 
