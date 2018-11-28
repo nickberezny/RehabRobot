@@ -26,13 +26,13 @@
 #include "include/imp_structures.h"
 #include "include/LJM_Utilities.h"
 
-#define DEBUG 0 //will print updates
+#define DEBUG 1 //will print updates
 #define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 5000000 //control step time (1ms)
+#define STEP_NSEC 1500000 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
 
@@ -65,18 +65,23 @@ int temp_counter = 0;
 double curr_pos = 0.0;
 
 int ScansPerRead = 1;
-int NumAddresses = 6;
-const int aScanList[6] = {0, 2, 4, 2000, 2001, 2002}; //AIN0, AIN1, AIN2, DIO0, DIO1, DIO2 
+int NumAddresses = 7;
+int aScanList[7] = {4800, 0, 2, 4, 2000, 2001, 2002, 1000}; //DAC0, AIN0, AIN1, AIN2, DIO0, DIO1, DIO2 
 double ScanRate = NSEC_IN_SEC / STEP_NSEC;
 
 
-double aValues[6] = {0};
+double aValues[7] = {0};
 
-double aCmd[1] = {0};
-const char * aNames[1] = {"DAC0"};
-int aNumValues[1] = {1};
-int aWrites[1] = {1};
+float writeArray[1] = {1};
+
+double aCmd[3] = {0};
+const char * aNames[3] = {"DAC0","AIN0", "AIN1"};
+int aNumValues[3] = {1,1,1};
+int aWrites[3] = {1,0,0};
 int errorAddress = 0;
+
+double timeEnd = 0;
+double timeStart = 0;
 
 /***********************************************************************
 ***********************************************************************/
@@ -145,11 +150,17 @@ int main(int argc, char* argv[]) {
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
 	
+	///
+	LJM_eWriteName(daqHandle, "STREAM_OUT0_ENABLE", 0);
+	LJM_eWriteName(daqHandle, "STREAM_OUT0_TARGET", 1000);
+	LJM_eWriteName(daqHandle, "STREAM_OUT0_BUFFER_SIZE", 64);
+	LJM_eWriteName(daqHandle, "STREAM_OUT0_ENABLE", 1);
 
-   ///
-   
+	LJM_eWriteName(daqHandle, "STREAM_OUT0_BUFFER_F32", writeArray[0]);
+	LJM_eWriteName(daqHandle, "STREAM_OUT0_LOOP_SIZE", 1);
+	LJM_eWriteName(daqHandle, "STREAM_OUT0_SET_LOOP", 1);
 
-    LJM_WriteLibraryConfigS(LJM_STREAM_TRANSFERS_PER_SECOND, 9999999);
+    LJM_WriteLibraryConfigS(LJM_STREAM_TRANSFERS_PER_SECOND, 80);
    
 
     //LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate);
@@ -366,7 +377,7 @@ int main(int argc, char* argv[]) {
     
     if(DEBUG) printf("Joining Threads ...\n"); 
 
-    sleep(5);
+    sleep(10);
 
 	//create and join threads 
 	pthread_create(&thread[0], &attr[0], controller, (void *)imp);
@@ -377,6 +388,7 @@ int main(int argc, char* argv[]) {
 	pthread_join(thread[2], NULL);
 	
 	//finished sessions, begin shutdown
+	LJM_eStreamStop(daqHandle);
 	LJM_Close(daqHandle);
 	fclose(imp[0].fp);
     if(DEBUG) printf("Finished, terminating program... \n");
@@ -398,6 +410,7 @@ void *controller(void * d)
 
 	//printf("%d\n", LJM_eStreamStart(daqHandle, ScansPerRead, NumAddresses, aScanList, &ScanRate));
 	
+	//clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
     //CONTROL LOOP -------------------------------------------------
 	while(1){
 
@@ -409,21 +422,26 @@ void *controller(void * d)
 			//LJM_eWriteName(daqHandle, "STREAM_OUT0_BUFFER_F32", aCmd[0]);
 			//Read & Write to DAQ ---------------------------------------
 			
-			//printf("Error %d\n", LJM_eStreamRead(daqHandle, aValues, &DeviceScanBacklog, &LJMScanBacklog));
+			//printf("%d\n",LJM_eWriteName(daqHandle, "STREAM_OUT0_BUFFER_F32", writeArray[0]));
+			//printf("%d\n",LJM_eStreamRead(daqHandle, aValues, &DeviceScanBacklog, &LJMScanBacklog));
 			//LJM_eReadName(daqHandle, "AIN0", aValues);
 			//TODO: check if backlog exist, empty it 
+			printf("1\n");
+			timeStart = LJM_GetHostTick();
 			LJM_eNames(daqHandle, 1, aNames, aWrites, aNumValues, aCmd, &errorAddress);
+			timeEnd = LJM_GetHostTick();
+			printf("%f\n", timeEnd-timeStart);
 			//printf("Backlogs: %d, %d\n", DeviceScanBacklog, LJMScanBacklog);
 			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
-
-	        imp_cont->fk = FT_GAIN*aValues[0] + FT_OFFSET;
+			printf("2\n");
+	        //imp_cont->fk = FT_GAIN*aValues[0] + FT_OFFSET;
 	        imp_cont->IR = aValues[1];
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
 	        imp_cont->LSB[0] = imp_cont->LSF[1];
 	        imp_cont->LSF[1] = aValues[3];
 	        imp_cont->LSB[1] = aValues[4];
 	        curr_pos = curr_pos + ENC_TO_MM * aValues[5];
-	        imp_cont->xk = curr_pos;
+	        imp_cont->xk = DeviceScanBacklog;
 	
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &imp_cont->end_time, &imp_cont->step_time);
