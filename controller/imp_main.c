@@ -42,6 +42,12 @@
 #define FT_GAIN 43.0
 #define FT_OFFSET -0.156393
 
+//Controller Defaults (in terms of m)
+#define P_GAIN 1
+#define D_GAIN 1
+#define X_DES 0.25
+
+
 /**********************************************************************
 					   Global Variables
 ***********************************************************************/
@@ -136,8 +142,9 @@ int main(int argc, char* argv[]) {
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
 
+    //set Analog in resolution
     LJM_eWriteName(daqHandle, "AIN0_RESOLUTION_INDEX", 1);
-     LJM_eWriteName(daqHandle, "AIN0_SETTLING_US", 0);
+    LJM_eWriteName(daqHandle, "AIN0_SETTLING_US", 0);
     
 	
 
@@ -178,10 +185,11 @@ int main(int argc, char* argv[]) {
 
     imp[0].fp = fopen (folder,"w");
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
-    fprintf (imp[0].fp, "StepTime, x, v, f, xdes, vdes, fdes, cmd, IR, LSB, LSF\n"); //print header
+    fprintf (imp[0].fp, "Time(s), Time(ns), x, v, f, xdes, vdes, cmd, LSB, LSF\n"); //print header
     //fclose(imp[0].fp);
     
-    if(DEBUG) printf("Created data file %s\n", data_file_name); 
+    if(DEBUG) printf("Created data file %s\n", folder); 
+
 
     /**********************************************************************
 					   Initialize Mutexes
@@ -243,6 +251,7 @@ int main(int argc, char* argv[]) {
 				if(DEBUG) printf("recieved data: %s\n", recvBuff);
 				start_controller = 1;
 
+				//find set parameters in message using regular expreesions 
 				regcomp(&compiled, regex.P, REG_EXTENDED);
 				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
 					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
@@ -319,12 +328,12 @@ int main(int argc, char* argv[]) {
    		//set default values if not connecting to UI (for testing)
 	    for(int i = 0; i < BUFFER_SIZE; i++)
 			{
-				imp[i].P = 0.001;
-				imp[i].D = 0.001;
+				imp[i].P = P_GAIN / 1000;
+				imp[i].D = D_GAIN / 1000;
 				imp[i].K = 0.001;
 				imp[i].B = 0.001;
 				imp[i].M = 0.001;
-				imp[i].xdes = 100.0;
+				imp[i].xdes = X_DES * 1000;
 				imp[i].vdes = 0.0;
 				imp[i].fp = imp[0].fp;
 						
@@ -504,9 +513,9 @@ void *logger(void * d)
 			if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (imp_log->fp, "%d, %d, %d, %.2f, %.2f, %.2f, %.2f, %d, %d \n", 
-				i, imp_log->start_time.tv_sec, imp_log->start_time.tv_nsec, imp_log->xk, 
-				imp_log->xdes, imp_log->vdes, imp_log->cmd,imp_log->LSB[0], imp_log->LSF[0]); 
+			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 
+				imp_log->start_time.tv_sec, imp_log->start_time.tv_nsec, imp_log->xk, 
+				imp_log->vk, imp_log->fk, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
 			
 			pthread_mutex_unlock(&lock[i]);
 		}
