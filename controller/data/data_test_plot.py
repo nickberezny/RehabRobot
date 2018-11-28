@@ -7,11 +7,11 @@ import matplotlib.gridspec as gridspec
 #must have one header row with text, followed only by numbers
 
 data_len = 0
-colours = ['blue','red','black','green']
+colours = ['blue','red','black','green','blue','red','black','green','blue','red','black','green','blue','red','black','green']
 time = ""
 
 #read data csv 
-with open('data_test.txt', 'r') as csvfile:
+with open('Wed_Nov_28_15-35-30_2018_data.txt', 'r') as csvfile:
 	data = csv.reader(csvfile, delimiter=',', quotechar='|')
 	
 	#read time (first line)
@@ -37,18 +37,30 @@ with open('data_test.txt', 'r') as csvfile:
 			
 			
 #create single plot with data as subplots 
-plt.figure(figsize=(12, 12),facecolor='w', edgecolor='k')
-plt.suptitle('Rehab Robot Trial Data \n' + time[0], fontsize=14)
 
-gs = gridspec.GridSpec(2,math.ceil(data_len/2))
+j = 0
+p = [[] for l in range(10)]
+k = 0
 
-for i in range(data_len):
-	ax = plt.subplot(gs[i%2,math.floor(i/2)])
-	ax.set_xlabel('time step (ms)')
-	ax.set_ylabel(ylabel[i])
-	ax.plot(y[i], color=colours[i])
+while(data_len > 0):
 
-#save figure as png under data folder, with the time variable as the name
-plt.savefig('data/' + time[0].replace(" ", "_").replace(":",".") + '.png')
-plt.show()
+	p[k] = plt.figure(k, figsize=(12, 12),facecolor='w', edgecolor='k')
+	plt.suptitle('Rehab Robot Trial Data \n' + time[0], fontsize=14)
+	gs = gridspec.GridSpec(2,2)
+	index = 4
+
+	if(data_len < 4):	 index = data_len
+	for i in range(index):
+		ax = plt.subplot(gs[i%2,math.floor(i/2)])
+		ax.set_xlabel('Step Number')
+		ax.set_ylabel(ylabel[j])
+		ax.plot(y[j], color=colours[j])
+		data_len = data_len - 1
+		j = j + 1
+
+	#save figure as png under data folder, with the time variable as the name
+	p[k].savefig(str(k) + '_' + time[0].replace(" ", "_").replace(":",".") + '.png')
+	#p[k].show()
+
+	k = k + 1
 

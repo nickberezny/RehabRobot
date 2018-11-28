@@ -183,8 +183,13 @@ int main(int argc, char* argv[]) {
 
    //create file name (date&time_data.txt)
 
+	double freq = STEP_NSEC / NSEC_IN_SEC;
+	char freq_buff[1000];
+	sprintf(freq_buff, "Controller Frequency: %.2f Hz", freq);
+
     imp[0].fp = fopen (folder,"w");
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
+    fprintf (imp[0].fp, "%s\n", freq_buff); 
     fprintf (imp[0].fp, "Time(s), Time(ns), x, v, f, xdes, vdes, cmd, LSB, LSF\n"); //print header
     //fclose(imp[0].fp);
     
