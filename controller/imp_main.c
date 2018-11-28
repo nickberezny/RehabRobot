@@ -32,7 +32,7 @@
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 1500000 //control step time (1ms)
+#define STEP_NSEC 2500000 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
 
@@ -64,13 +64,13 @@ int LJMScanBacklog = 0;
 int temp_counter = 0; 
 double curr_pos = 0.0;
 
-double aValues[7] = {0};
-const char * aNames[3] = {"DAC0","AIN0", "AIN1", "FIO0", "FIO1", "FIO2"};
-int aNumValues[3] = {1,1,1};
-int aWrites[3] = {1,0,0,0,0,0};
+double aValues[5] = {0};
+const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2"};
+int aNumValues[5] = {1,1,1,1,1};
+int aWrites[5] = {1,0,0,0,0};
 int errorAddress = 0;
 
-double * timeStep = STEP_NSEC;
+
 
 /***********************************************************************
 ***********************************************************************/
@@ -388,12 +388,10 @@ void *controller(void * d)
 
 			imp_cont = &((struct impStruct*)d)[i];
 
-			//Read & Write to DAQ ---------------------------------------
-			LJM_eNames(daqHandle, 1, aNames, aWrites, aNumValues, aValues, &errorAddress);
-			
-			//printf("Backlogs: %d, %d\n", DeviceScanBacklog, LJMScanBacklog);
 			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
-			
+			//Read & Write to DAQ ---------------------------------------
+			printf("Err: %d\n",LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress));
+			printf("Start: %d . %d\n", imp_cont->start_time.tv_sec, imp_cont->start_time.tv_nsec);	
 	        imp_cont->fk = FT_GAIN*aValues[1] + FT_OFFSET;
 	        imp_cont->IR = aValues[2];
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
@@ -411,9 +409,7 @@ void *controller(void * d)
 
 			//Controller
 			//imp_Adm(imp_cont);
-			imp_PD(imp_cont);
-			//printf("Cmd: %.2f\n", imp_cont->cmd);
-			
+			imp_PD(imp_cont);		
 
 			//Safety Checks
 			//TODO : check direction of command
@@ -430,12 +426,15 @@ void *controller(void * d)
 			if(DEBUG  & i==0) printf("Motor Command: %.2f\n", aValues[0]);
 
 	        clock_gettime(CLOCK_MONOTONIC, &(imp_cont->end_time));
+	        
 	        imp_cont->wait_time = imp_cont->end_time;
-
+	        
 	        imp_StepTime(&imp_cont->end_time, &imp_cont->start_time, &imp_cont->step_time);
-	        imp_WaitTime(timeStep, &imp_cont->step_time, &imp_cont->wait_time);
-	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
+	        imp_WaitTime(&imp_cont->step_time, &imp_cont->wait_time);
 
+	       
+	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
+	   
 	        //unlock current, lock next mutex
 			if(i == BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[0]); }
 			else { pthread_mutex_lock(&lock[i+1]); }
@@ -499,8 +498,8 @@ void *logger(void * d)
 			if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (imp_log->fp, "%d, %d, %.2f, %.2f, %.2f, %.2f, %d, %d \n", 
-				i, imp_log->step_time.tv_nsec, imp_log->xk, 
+			fprintf (imp_log->fp, "%d, %d, %d, %.2f, %.2f, %.2f, %.2f, %d, %d \n", 
+				i, imp_log->start_time.tv_sec, imp_log->start_time.tv_nsec, imp_log->xk, 
 				imp_log->xdes, imp_log->vdes, imp_log->cmd,imp_log->LSB[0], imp_log->LSF[0]); 
 			
 			pthread_mutex_unlock(&lock[i]);
