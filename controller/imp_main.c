@@ -63,6 +63,7 @@ int LJMScanBacklog = 0;
 
 int temp_counter = 0; 
 double curr_pos = 0.0;
+struct timespec last_time;  
 
 double aValues[5] = {0};
 const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2"};
@@ -406,7 +407,7 @@ void *controller(void * d)
 	        imp_cont->xk = curr_pos;
 	
 			//Calculate Velocity 
-	        imp_StepTime(&imp_cont->start_time, &imp_cont->end_time, &imp_cont->step_time);
+	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
 			imp_cont->vk = ENC_TO_MM * aValues[5] / (imp_cont->step_time.tv_sec + NSEC_IN_SEC*imp_cont->step_time.tv_nsec);
 
 			//printf("step: %d . %d \n",imp_cont->start_time.tv_sec - imp_cont->end_time.tv_sec, imp_cont->start_time.tv_nsec - imp_cont->end_time.tv_nsec);
@@ -432,6 +433,7 @@ void *controller(void * d)
 	        clock_gettime(CLOCK_MONOTONIC, &(imp_cont->end_time));
 	        
 	        imp_cont->wait_time = imp_cont->end_time;
+	        last_time = imp_cont->end_time;
 	        
 	        imp_StepTime(&imp_cont->end_time, &imp_cont->start_time, &imp_cont->step_time);
 	        imp_WaitTime(&imp_cont->step_time, &imp_cont->wait_time);
