@@ -38,7 +38,7 @@ void imp_WaitTime(double * total_step,  struct timespec * step_time, struct time
 {
 
     *total_step += - step_time->tv_sec * NSEC_IN_SEC - step_time->tv_nsec;
-    if(total_step =< 0) return;
+    if(total_step <= 0) return;
 
     if(curr_time->tv_nsec + *total_step > NSEC_IN_SEC)
     {

@@ -70,6 +70,8 @@ int aNumValues[3] = {1,1,1};
 int aWrites[3] = {1,0,0,0,0,0};
 int errorAddress = 0;
 
+double * timeStep = STEP_NSEC;
+
 /***********************************************************************
 ***********************************************************************/
 
@@ -431,7 +433,7 @@ void *controller(void * d)
 	        imp_cont->wait_time = imp_cont->end_time;
 
 	        imp_StepTime(&imp_cont->end_time, &imp_cont->start_time, &imp_cont->step_time);
-	        imp_WaitTime(&STEP_NSEC, &imp_cont->step_time, &imp_cont->wait_time);
+	        imp_WaitTime(timeStep, &imp_cont->step_time, &imp_cont->wait_time);
 	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
 
 	        //unlock current, lock next mutex
