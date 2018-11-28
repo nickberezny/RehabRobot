@@ -428,6 +428,11 @@ void *controller(void * d)
 			if(DEBUG  & i==0) printf("Motor Command: %.2f\n", aValues[0]);
 
 	        clock_gettime(CLOCK_MONOTONIC, &(imp_cont->end_time));
+	        imp_cont->wait_time = imp_cont->end_time;
+
+	        imp_StepTime(&imp_cont->end_time, &imp_cont->start_time, &imp_cont->step_time);
+	        imp_WaitTime(&STEP_NSEC, &imp_cont->step_time, &imp_cont->wait_time);
+	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
 
 	        //unlock current, lock next mutex
 			if(i == BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[0]); }
