@@ -433,7 +433,7 @@ void *controller(void * d)
 	        clock_gettime(CLOCK_MONOTONIC, &(imp_cont->end_time));
 	        
 	        imp_cont->wait_time = imp_cont->end_time;
-	        last_time = imp_cont->end_time;
+	        last_time = imp_cont->start_time;
 	        
 	        imp_StepTime(&imp_cont->end_time, &imp_cont->start_time, &imp_cont->step_time);
 	        imp_WaitTime(&imp_cont->step_time, &imp_cont->wait_time);
