@@ -134,6 +134,10 @@ int main(int argc, char* argv[]) {
 
     LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 1);
     LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
+
+    LJM_eWriteName(daqHandle, "AIN0_RESOLUTION_INDEX", 1);
+     LJM_eWriteName(daqHandle, "AIN0_SETTLING_US", 0);
+    
 	
 
     if(DEBUG) printf("Connected to LabJack %s = %f\n", NAME, value);
