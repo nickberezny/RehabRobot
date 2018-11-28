@@ -9,13 +9,14 @@ import matplotlib.gridspec as gridspec
 data_len = 0
 colours = ['blue','red','black','green','blue','red','black','green','blue','red','black','green','blue','red','black','green']
 time = ""
+freq = ""
 
 #read data csv 
-with open('Wed_Nov_28_15-35-30_2018_data.txt', 'r') as csvfile:
+with open('Wed_Nov_28_16-03-12_2018_data.txt', 'r') as csvfile:
 	data = csv.reader(csvfile, delimiter=',', quotechar='|')
 	
-	#read time (first line)
-	time = next(data)
+	time = next(data) #read time (first line)
+	freq = next(data) #read frequency (second line)
 
 	#read header (second line)
 	header = next(data)
@@ -35,21 +36,30 @@ with open('Wed_Nov_28_15-35-30_2018_data.txt', 'r') as csvfile:
 				y[i].append(float(point))
 				i = i + 1
 			
-			
-#create single plot with data as subplots 
+step_time = [[] for j in range(len(y[0]))]
+step_time[0] = 0
+for i in range(len(y[0])-1):
+	step_time[i+1] = 1000*(y[0][i+1] - y[0][i]) + (y[1][i+1] - y[1][i])/1000000
 
-j = 0
+y[1] = step_time
+
+
+#create single plot with data as subplots 
+j = 1
 p = [[] for l in range(10)]
 k = 0
+data_len = data_len - 1;
+ylabel[1] = 'Time Step (ms)'
 
 while(data_len > 0):
 
 	p[k] = plt.figure(k, figsize=(12, 12),facecolor='w', edgecolor='k')
-	plt.suptitle('Rehab Robot Trial Data \n' + time[0], fontsize=14)
+	plt.suptitle('Rehab Robot Trial Data \n' + time[0] + '\n' + freq[0], fontsize=14)
 	gs = gridspec.GridSpec(2,2)
 	index = 4
 
 	if(data_len < 4):	 index = data_len
+
 	for i in range(index):
 		ax = plt.subplot(gs[i%2,math.floor(i/2)])
 		ax.set_xlabel('Step Number')

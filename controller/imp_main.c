@@ -33,7 +33,7 @@
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
 #define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 1000000 //control step time (1ms)
+#define STEP_NSEC 1500000 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
 
