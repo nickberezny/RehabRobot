@@ -40,7 +40,9 @@
 
 //Conversion
 #define ENC_TO_MM 0.00115
-#define MOTOR_ZERO 2.35 
+#define MOTOR_ZERO 2.35 //zero movement from motor
+#define MOTOR_ZERO_FWD 2.33  //forward and backwards deadzone limits
+#define MOTOR_ZERO_BWD 2.37 
 #define FT_GAIN 43.0
 #define FT_OFFSET -0.156393
 
@@ -74,7 +76,7 @@ double curr_pos = 0.0;
 struct timespec last_time;  
 
 double aValues[5] = {0};
-const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2"};
+const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2_EF_READ_A_AND_RESET"};
 int aNumValues[5] = {1,1,1,1,1};
 int aWrites[5] = {1,0,0,0,0};
 int errorAddress = 0;
@@ -434,7 +436,9 @@ void *controller(void * d)
 			//TODO : check direction of command
 			//TODO : check IR
 			if(abs(imp_cont->cmd) > 0.75) imp_cont->cmd = 0;
-			imp_cont->cmd += MOTOR_ZERO;
+			if(imp_cont->cmd > 0) imp_cont->cmd += MOTOR_ZERO_FWD;
+			if(imp_cont->cmd < 0) imp_cont->cmd += MOTOR_ZERO_BWD;
+			if(imp_cont->cmd == 0) imp_cont->cmd += MOTOR_ZERO;
 
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0)  imp_cont->cmd = MOTOR_ZERO; 
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0)  imp_cont->cmd = MOTOR_ZERO; 
