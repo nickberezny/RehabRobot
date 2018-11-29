@@ -365,14 +365,38 @@ int main(int argc, char* argv[]) {
     }
 
 
-    /**********************************************************************
-					   	Create and join threads
-	***********************************************************************/
-    
-    if(DEBUG) printf("Joining Threads ...\n"); 
+/**********************************************************************
+					   	Home to back
+***********************************************************************/
 
+    if(DEBUG) printf("Homing ...\n");     
+   
     sleep(10);
 
+    aValues[0] = MOTOR_ZERO; 
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    imp[9].LSB[0] = aValues[3];
+
+
+
+    while(imp[9].LSB[0] == 0)
+    {
+    	aValues[0] = 2.38; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	imp[9].LSB[0] = aValues[3];
+
+    }
+
+    aValues[0] = MOTOR_ZERO; 
+    //Robot should not be homed, reading the encoder will zero the position here.
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+
+/**********************************************************************
+					   	Create and join threads
+***********************************************************************/
+
+    if(DEBUG) printf("Joining Threads ...\n"); 
+    sleep(10);
 	//create and join threads 
 	pthread_create(&thread[0], &attr[0], controller, (void *)imp);
 	pthread_create(&thread[1], &attr[1], server, (void *)imp);
