@@ -29,7 +29,7 @@
 
 #define DEBUG 1 //will print updates
 #define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
-#define MAX_COUNT 999 //maximum iterations before shutdown (only on debug) 
+#define MAX_COUNT 3999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
@@ -45,8 +45,8 @@
 #define FT_OFFSET -0.156393
 
 //Controller Defaults (in terms of m)
-#define P_GAIN 1
-#define D_GAIN 1
+#define P_GAIN 200
+#define D_GAIN 0
 #define X_DES 0.25
 
 
@@ -335,12 +335,12 @@ int main(int argc, char* argv[]) {
    		//set default values if not connecting to UI (for testing)
 	    for(int i = 0; i < BUFFER_SIZE; i++)
 			{
-				imp[i].P = P_GAIN / 1000;
-				imp[i].D = D_GAIN / 1000;
+				imp[i].P = P_GAIN / 1000.0;
+				imp[i].D = D_GAIN / 1000.0;
 				imp[i].K = 0.001;
 				imp[i].B = 0.001;
 				imp[i].M = 0.001;
-				imp[i].xdes = X_DES * 1000;
+				imp[i].xdes = X_DES;
 				imp[i].vdes = 0.0;
 				imp[i].fp = imp[0].fp;
 						
@@ -414,19 +414,17 @@ void *controller(void * d)
 			printf("Err: %d\n",LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress));
 			printf("Start: %d . %d\n", imp_cont->start_time.tv_sec, imp_cont->start_time.tv_nsec);	
 	        imp_cont->fk = FT_GAIN*aValues[1] + FT_OFFSET;
-	        imp_cont->IR = aValues[2];
+	        //imp_cont->IR = aValues[2];
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
-	        imp_cont->LSB[0] = imp_cont->LSF[1];
-	        imp_cont->LSF[1] = aValues[3];
-	        imp_cont->LSB[1] = aValues[4];
-	        curr_pos = curr_pos + ENC_TO_MM * aValues[5];
+	        imp_cont->LSB[0] = imp_cont->LSB[1];
+	        imp_cont->LSF[1] = aValues[2];
+	        imp_cont->LSB[1] = aValues[3];
+	        curr_pos = curr_pos + ENC_TO_MM * aValues[4];
 	        imp_cont->xk = curr_pos;
-	
+
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
-			imp_cont->vk = ENC_TO_MM * aValues[5] / (imp_cont->step_time.tv_sec + NSEC_IN_SEC*imp_cont->step_time.tv_nsec);
-
-			//printf("step: %d . %d \n",imp_cont->start_time.tv_sec - imp_cont->end_time.tv_sec, imp_cont->start_time.tv_nsec - imp_cont->end_time.tv_nsec);
+			imp_cont->vk = ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
 
 			//Controller
 			//imp_Adm(imp_cont);
@@ -462,6 +460,7 @@ void *controller(void * d)
 			if(++temp_counter > MAX_COUNT) {
 				pthread_mutex_unlock(&lock[0]);	
 				printf("i %d count %d \n", i, temp_counter);
+				LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
 				return;
 			}
 	       
