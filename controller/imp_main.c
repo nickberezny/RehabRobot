@@ -440,7 +440,7 @@ void *controller(void * d)
 
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0)  imp_cont->cmd = MOTOR_ZERO; 
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0)  imp_cont->cmd = MOTOR_ZERO; 
-			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
+			//if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
 
 			//set motor command (written at beginning of next step on eNames())
 			aValues[0] = imp_cont->cmd;
