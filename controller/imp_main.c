@@ -29,6 +29,7 @@
 
 #define DEBUG 1 //will print updates
 #define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
+#define MAX_COUNT 1000 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
@@ -453,21 +454,21 @@ void *controller(void * d)
 	        imp_StepTime(&imp_cont->end_time, &imp_cont->start_time, &imp_cont->step_time);
 	        imp_WaitTime(&imp_cont->step_time, &imp_cont->wait_time);
 
-	       
-	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
-	   
 	        //unlock current, lock next mutex
 			if(i == BUFFER_SIZE - 1) { pthread_mutex_lock(&lock[0]); }
 			else { pthread_mutex_lock(&lock[i+1]); }
 			pthread_mutex_unlock(&lock[i]);	
 	        
-	        
+			if(++temp_counter > MAX_COUNT) {
+				pthread_mutex_unlock(&lock[0]);	
+				break;
 			}
+	       
+	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
 
-		if(++temp_counter > 100) {
-			pthread_mutex_unlock(&lock[0]);	
-			break;
 		}
+
+		
 	}
 
 	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
@@ -496,8 +497,10 @@ void *server(void* d)
 			send(connfd, sendBuff, strlen(sendBuff), 0);
 
 			pthread_mutex_unlock(&lock[i]);	
+
+			if(temp_counter > MAX_COUNT) break;
 		}
-		if(temp_counter > 100) break;
+		
 
 	}
 
@@ -524,8 +527,9 @@ void *logger(void * d)
 				imp_log->vk, imp_log->fk, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
 			
 			pthread_mutex_unlock(&lock[i]);
+
+			if(temp_counter > MAX_COUNT) break;
 		}
-		if(temp_counter > 100) break;
 	}
 	
 	return NULL;

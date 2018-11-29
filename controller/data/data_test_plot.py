@@ -74,3 +74,4 @@ while(data_len > 0):
 
 	k = k + 1
 
+plt.show()
