@@ -461,6 +461,7 @@ void *controller(void * d)
 	        
 			if(++temp_counter > MAX_COUNT) {
 				pthread_mutex_unlock(&lock[0]);	
+				printf("i %d count %d \n", i, temp_counter);
 				return;
 			}
 	       
