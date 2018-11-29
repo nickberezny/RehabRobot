@@ -42,14 +42,17 @@
 #define ENC_TO_MM 0.00115
 #define MOTOR_ZERO 2.35 //zero movement from motor
 #define MOTOR_ZERO_FWD 2.32  //forward and backwards deadzone limits
-#define MOTOR_ZERO_BWD 2.37 
+#define MOTOR_ZERO_BWD 2.42 
 #define FT_GAIN 43.0
 #define FT_OFFSET -0.156393
 
 //Controller Defaults (in terms of m)
 #define P_GAIN 1
-#define D_GAIN 0
+#define D_GAIN 0.5
 #define X_DES 0.1
+#define FIR_ORDER_V 10
+#define FIR_ORDER_F 5
+
 
 
 /**********************************************************************
@@ -81,6 +84,8 @@ int aNumValues[5] = {1,1,1,1,1};
 int aWrites[5] = {1,0,0,0,0};
 int errorAddress = 0;
 
+double v_filt[FIR_ORDER_V + 1] = {0};
+double f_filt[FIR_ORDER_F + 1] = {0};
 
 
 /***********************************************************************
@@ -187,9 +192,9 @@ int main(int argc, char* argv[]) {
 
    //create file name (date&time_data.txt)
 
-	double freq = 1000.0 * STEP_NSEC / NSEC_IN_SEC;
+	double freq = NSEC_IN_SEC / STEP_NSEC;
 	char freq_buff[1000];
-	sprintf(freq_buff, "Controller Frequency: %.2f kHz", freq);
+	sprintf(freq_buff, "Controller Frequency: %.3f kHz", freq);
 
     imp[0].fp = fopen (folder,"w");
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
@@ -377,8 +382,6 @@ int main(int argc, char* argv[]) {
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     imp[9].LSB[0] = aValues[3];
 
-
-
     while(imp[9].LSB[0] == 0)
     {
     	aValues[0] = 2.43; 
@@ -438,9 +441,8 @@ void *controller(void * d)
 			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
 			//Read & Write to DAQ ---------------------------------------
 			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-			//printf("Start: %d . %d\n", imp_cont->start_time.tv_sec, imp_cont->start_time.tv_nsec);	
+				
 	        imp_cont->fk = FT_GAIN*aValues[1] + FT_OFFSET;
-	        //imp_cont->IR = aValues[2];
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
 	        imp_cont->LSB[0] = imp_cont->LSB[1];
 	        imp_cont->LSF[1] = aValues[2];
@@ -448,11 +450,12 @@ void *controller(void * d)
 	        curr_pos = curr_pos - ENC_TO_MM * (double)aValues[4]; 
 	        imp_cont->xk = curr_pos;
 
-	        //printf("X %d\n %.2f\n", aValues[4], aValues[4]);
+	        imp_FIR(f_filt, &imp_cont->fk, FIR_ORDER_F); //moving avg filter for force
 
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
 			imp_cont->vk = (-1)* ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
+			imp_FIR(v_filt, &imp_cont->vk, FIR_ORDER_V); //moving average filter for velocity 
 
 			//Controller
 			//imp_Adm(imp_cont);
@@ -497,8 +500,6 @@ void *controller(void * d)
 	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
 
 		}
-
-		
 	}
 
 	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
@@ -529,7 +530,8 @@ void *server(void* d)
 			pthread_mutex_unlock(&lock[i]);	
 
 		}
-			if(temp_counter > MAX_COUNT) return;
+			
+		if(temp_counter > MAX_COUNT) return;
 		
 
 	}
@@ -559,7 +561,8 @@ void *logger(void * d)
 			pthread_mutex_unlock(&lock[i]);
 
 		}
-			if(temp_counter > MAX_COUNT) return;
+			
+		if(temp_counter > MAX_COUNT) return;
 	}
 	
 	return NULL;

@@ -5,14 +5,13 @@ import matplotlib.gridspec as gridspec
 
 #reads csv file
 #must have one header row with text, followed only by numbers
-
 data_len = 0
 colours = ['blue','red','black','green','blue','red','black','green','blue','red','black','green','blue','red','black','green']
 time = ""
 freq = ""
 
 #read data csv 
-with open('Thu_Nov_29_11-15-44_2018_data.txt', 'r') as csvfile:
+with open('Thu_Nov_29_14-57-03_2018_data.txt', 'r') as csvfile:
 	data = csv.reader(csvfile, delimiter=',', quotechar='|')
 	
 	time = next(data) #read time (first line)
@@ -42,6 +41,18 @@ for i in range(len(y[0])-1):
 	step_time[i+1] = 1000*(y[0][i+1] - y[0][i]) + (y[1][i+1] - y[1][i])/1000000
 
 y[1] = step_time
+
+avg_step = sum(y[1])/len(y[1])
+print('Average step time (ms): ' + str(avg_step))
+
+filt_order = 15
+v_filt = [[] for j in range(len(y[3]) - filt_order)]
+for i in range(len(y[3]) - filt_order):
+	end = i+filt_order-1
+	v_filt[i] = sum(y[3][i:i+filt_order-1]) / float(filt_order)
+
+y[4] = v_filt
+
 
 
 #create single plot with data as subplots 

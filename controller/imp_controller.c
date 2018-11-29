@@ -9,6 +9,7 @@
 void imp_PD(struct impStruct * imp)
 {
 	imp->cmd = imp->P*(imp->xdes - imp->xk) + imp->D*(imp->vdes - imp->vk);
+    
 	return;
 }
 
@@ -16,6 +17,8 @@ void imp_Adm(struct impStruct * imp)
 {
 	imp->xa = imp->xdes + imp->Ad[0]*imp->xk + imp->Ad[2]*imp->vk + imp->Bd[0] * (imp->fk - imp->fdes);
 	imp->va = imp->vdes + imp->Ad[1]*imp->xk + imp->Ad[3]*imp->vk + imp->Bd[1] * (imp->fk - imp->fdes);
+    imp_PD(imp);
+
 	return;
 }
 
@@ -51,10 +54,24 @@ void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time)
         curr_time->tv_nsec += STEP_NSEC - step_time->tv_nsec;
     }
 
-
-
     return;
 
 }
 
-	
+
+void imp_FIR(double * array, double * output, int * order)
+{
+
+    //moving average FIR filter of adjustable order
+
+    array[0] = output;
+    for(int i = 1; i < order; i++)
+    {
+        output += array[i];
+        array[i] = array[i+1];
+    }
+
+    array[order] = array[0];
+    output += output
+    output = output / (double) order;
+}

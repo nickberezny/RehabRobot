@@ -69,5 +69,4 @@ void imp_Adm(struct impStruct * imp);
 void imp_Haptics(struct impStruct * imp);
 void imp_StepTime(struct timespec * start_time, struct timespec * end_time, struct timespec * step_time  );
 void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time);
-
-
+void imp_FIR(double * array, double * output, int * order);
