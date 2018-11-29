@@ -461,7 +461,7 @@ void *controller(void * d)
 	        
 			if(++temp_counter > MAX_COUNT) {
 				pthread_mutex_unlock(&lock[0]);	
-				break;
+				return;
 			}
 	       
 	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
@@ -498,8 +498,8 @@ void *server(void* d)
 
 			pthread_mutex_unlock(&lock[i]);	
 
-			if(temp_counter > MAX_COUNT) break;
 		}
+			if(temp_counter > MAX_COUNT) return;
 		
 
 	}
@@ -528,8 +528,8 @@ void *logger(void * d)
 			
 			pthread_mutex_unlock(&lock[i]);
 
-			if(temp_counter > MAX_COUNT) break;
 		}
+			if(temp_counter > MAX_COUNT) return;
 	}
 	
 	return NULL;
