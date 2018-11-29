@@ -8,7 +8,7 @@
 
 void imp_PD(struct impStruct * imp)
 {
-	imp->cmd = imp->P*(imp->xk - imp->xdes) + imp->D*(imp->vk - imp->vdes);
+	imp->cmd = imp->P*(imp->xdes - imp->xk) + imp->D*(imp->vdes - imp->vk);
 	return;
 }
 
@@ -34,7 +34,7 @@ void imp_StepTime(struct timespec * start_time, struct timespec * end_time, stru
     if(end_time->tv_nsec > start_time->tv_nsec)  step_time->tv_nsec = NSEC_IN_SEC + start_time->tv_nsec - end_time->tv_nsec;
     else step_time->tv_nsec = start_time->tv_nsec - end_time->tv_nsec;
 
-    printf("Total step calc: %d . %d\n", step_time->tv_sec, step_time->tv_nsec);
+    //printf("Total step calc: %d . %d\n", step_time->tv_sec, step_time->tv_nsec);
 
 	return;
 }

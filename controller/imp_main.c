@@ -41,15 +41,15 @@
 //Conversion
 #define ENC_TO_MM 0.00115
 #define MOTOR_ZERO 2.35 //zero movement from motor
-#define MOTOR_ZERO_FWD 2.33  //forward and backwards deadzone limits
+#define MOTOR_ZERO_FWD 2.32  //forward and backwards deadzone limits
 #define MOTOR_ZERO_BWD 2.37 
 #define FT_GAIN 43.0
 #define FT_OFFSET -0.156393
 
 //Controller Defaults (in terms of m)
-#define P_GAIN 200
+#define P_GAIN 1
 #define D_GAIN 0
-#define X_DES 0.25
+#define X_DES 0.1
 
 
 /**********************************************************************
@@ -76,7 +76,7 @@ double curr_pos = 0.0;
 struct timespec last_time;  
 
 double aValues[5] = {0};
-const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2_EF_READ_A_AND_RESET"};
+const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2_EF_READ_A_F_AND_RESET"};
 int aNumValues[5] = {1,1,1,1,1};
 int aWrites[5] = {1,0,0,0,0};
 int errorAddress = 0;
@@ -342,7 +342,7 @@ int main(int argc, char* argv[]) {
 				imp[i].K = 0.001;
 				imp[i].B = 0.001;
 				imp[i].M = 0.001;
-				imp[i].xdes = X_DES;
+				imp[i].xdes = X_DES*1000;
 				imp[i].vdes = 0.0;
 				imp[i].fp = imp[0].fp;
 						
@@ -413,20 +413,22 @@ void *controller(void * d)
 
 			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
 			//Read & Write to DAQ ---------------------------------------
-			printf("Err: %d\n",LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress));
-			printf("Start: %d . %d\n", imp_cont->start_time.tv_sec, imp_cont->start_time.tv_nsec);	
+			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+			//printf("Start: %d . %d\n", imp_cont->start_time.tv_sec, imp_cont->start_time.tv_nsec);	
 	        imp_cont->fk = FT_GAIN*aValues[1] + FT_OFFSET;
 	        //imp_cont->IR = aValues[2];
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
 	        imp_cont->LSB[0] = imp_cont->LSB[1];
 	        imp_cont->LSF[1] = aValues[2];
 	        imp_cont->LSB[1] = aValues[3];
-	        curr_pos = curr_pos + ENC_TO_MM * aValues[4];
+	        curr_pos = curr_pos - ENC_TO_MM * (double)aValues[4]; 
 	        imp_cont->xk = curr_pos;
+
+	        //printf("X %d\n %.2f\n", aValues[4], aValues[4]);
 
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
-			imp_cont->vk = ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
+			imp_cont->vk = (-1)* ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
 
 			//Controller
 			//imp_Adm(imp_cont);
@@ -436,8 +438,8 @@ void *controller(void * d)
 			//TODO : check direction of command
 			//TODO : check IR
 			if(abs(imp_cont->cmd) > 0.75) imp_cont->cmd = 0;
-			if(imp_cont->cmd > 0) imp_cont->cmd += MOTOR_ZERO_FWD;
-			if(imp_cont->cmd < 0) imp_cont->cmd += MOTOR_ZERO_BWD;
+			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD - imp_cont->cmd;
+			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD - imp_cont->cmd;
 			if(imp_cont->cmd == 0) imp_cont->cmd += MOTOR_ZERO;
 
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0)  imp_cont->cmd = MOTOR_ZERO; 
