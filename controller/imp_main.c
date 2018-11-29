@@ -381,7 +381,7 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSB[0] == 0)
     {
-    	aValues[0] = 2.38; 
+    	aValues[0] = 2.43; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSB[0] = aValues[3];
 
