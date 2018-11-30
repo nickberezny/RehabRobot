@@ -570,3 +570,48 @@ void *logger(void * d)
 }
 
 
+
+//TODO: set up homing, position thread 
+
+void *home(void * d)
+{
+	pthread_mutex_lock(&lock[9]);
+   	imp_cont = &((struct impStruct*)d)[9]
+
+   	if(DEBUG) printf("Homing ...\n"); 
+    sleep(10);
+
+    aValues[0] = MOTOR_ZERO; 
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    imp_cont.LSB[0] = aValues[3];
+
+    while(imp_cont.LSB[0] == 0)
+    {
+    	aValues[0] = 2.43; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	imp_cont.LSB[0] = aValues[3];
+
+    }
+
+    aValues[0] = MOTOR_ZERO; 
+    //Robot should not be homed, reading the encoder will zero the position here.
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+	
+	if(DEBUG) printf("Device is home.\n"); 
+	pthread_mutex_unlock(&lock[9]);
+
+	return NULL;
+
+}
+
+void *goto_position(void * d)
+{
+	if(DEBUG) printf("Homing ...\n");     
+   
+    sleep(10);
+	
+	return NULL;
+
+}
+
+

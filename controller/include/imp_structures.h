@@ -36,6 +36,8 @@ struct impStruct {
 	int LSB[2];
 	int IR;
 
+	int home; //boolean indicated if device has been homed
+
 	//data log
 	FILE * fp;
 
