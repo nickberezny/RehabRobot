@@ -28,7 +28,7 @@
 #include "include/LJM_Utilities.h"
 
 #define DEBUG 1 //will print updates
-#define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
+#define UI_CONNECT 1 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 3999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
@@ -373,7 +373,7 @@ int main(int argc, char* argv[]) {
 /**********************************************************************
 					   	Home to back
 ***********************************************************************/
-
+/*
     if(DEBUG) printf("Homing ...\n");     
    
     sleep(10);
@@ -393,13 +393,13 @@ int main(int argc, char* argv[]) {
     aValues[0] = MOTOR_ZERO; 
     //Robot should not be homed, reading the encoder will zero the position here.
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-
+*/
 /**********************************************************************
 					   	Create and join threads
 ***********************************************************************/
 
     if(DEBUG) printf("Joining Threads ...\n"); 
-    sleep(10);
+   // sleep(10);
 	//create and join threads 
 	pthread_create(&thread[0], &attr[0], controller, (void *)imp);
 	pthread_create(&thread[1], &attr[1], server, (void *)imp);
@@ -576,20 +576,20 @@ void *logger(void * d)
 void *home(void * d)
 {
 	pthread_mutex_lock(&lock[9]);
-   	imp_cont = &((struct impStruct*)d)[9]
+   	imp_cont = &((struct impStruct*)d)[9];
 
    	if(DEBUG) printf("Homing ...\n"); 
     sleep(10);
 
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    imp_cont.LSB[0] = aValues[3];
+    imp_cont->LSB[0] = aValues[3];
 
-    while(imp_cont.LSB[0] == 0)
+    while(imp_cont->LSB[0] == 0)
     {
     	aValues[0] = 2.43; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	imp_cont.LSB[0] = aValues[3];
+    	imp_cont->LSB[0] = aValues[3];
 
     }
 
