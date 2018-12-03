@@ -24,6 +24,8 @@
     "redux": "^4.0.1",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
-    "three": "^0.98.0"
+    "three": "^0.98.0",
+    "webpack": "^4.26.1",
+    "webpackbar": "^3.1.3"
   }
 }

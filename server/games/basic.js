@@ -24,6 +24,27 @@ class Scene extends Component {
       1000
     )
 
+  // instantiate a loader
+  var loader = new THREE.OBJLoader();
+
+  // load a resource
+  loader.load(
+    // resource URL
+    'robot_base_model.obj',
+    // called when resource is loaded
+    function ( object ) {
+      scene.add( object );
+    },
+    // called when loading is in progresses
+    function ( xhr ) {
+      console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    // called when loading has errors
+    function ( error ) {
+      console.log( 'An error happened' );
+    }
+  );
+
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     const geometry = new THREE.BoxGeometry(1, 1, 1)
     const material = new THREE.MeshBasicMaterial({ color: '#433F81' })
