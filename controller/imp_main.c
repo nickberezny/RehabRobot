@@ -52,8 +52,8 @@
 #define P_GAIN 1
 #define D_GAIN 0.5
 #define X_DES 0.1
-#define FIR_ORDER_V 5
-#define FIR_ORDER_F 5
+#define FIR_ORDER_V 10
+#define FIR_ORDER_F 10
 
 /**********************************************************************
 					   Global Variables
@@ -446,7 +446,7 @@ void *controller(void * d)
 			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 				
 	        imp_cont->fk = FT_GAIN*aValues[1] + FT_OFFSET;
-	        printf("Force: %.2f\n", imp_cont->fk);
+	        //printf("Force: %.2f\n", imp_cont->fk);
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
 	        imp_cont->LSB[0] = imp_cont->LSB[1];
 	        imp_cont->LSF[1] = aValues[2];
@@ -455,7 +455,6 @@ void *controller(void * d)
 	        imp_cont->xk = curr_pos;
 
 	        imp_cont->f_unfilt = imp_cont->fk;
-	
 	        imp_FIR(f_filt, &imp_cont->fk, &fir_order_f); //moving avg filter for force
 	
 			//Calculate Velocity 
