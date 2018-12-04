@@ -32,6 +32,7 @@ struct impStruct {
     struct timespec step_time;
 
     double f_unfilt, v_unfilt;
+    double F_gain;
 
 	//other sensors 
 	int LSF[2];
@@ -74,3 +75,4 @@ void imp_Haptics(struct impStruct * imp);
 void imp_StepTime(struct timespec * start_time, struct timespec * end_time, struct timespec * step_time  );
 void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time);
 void imp_FIR(double * array, double * output, int * order);
+void imp_Force(struct impStruct * imp);

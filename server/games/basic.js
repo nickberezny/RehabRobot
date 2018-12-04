@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as THREE from 'three'
-import * as OBJLoader from 'three-obj-loader';
+//import * as OBJLoader from 'three-obj-loader';
 import { setParam } from "../src/actions";
-OBJLoader(THREE);
-InputStream is = (InputStream) MyTest.class.getResourcesAsStream(test.csv))
+//OBJLoader(THREE);
 
 class Scene extends Component {
   constructor(props) {
     super(props)
 
-    this.loader = new THREE.OBJLoader()
-    this.scene = new THREE.Scene()
+    //this.loader = new THREE.OBJLoader()
+    
 
+    /*
     this.loader.load(
       // resource URL
       'robot_base_model.obj',
@@ -29,6 +29,7 @@ class Scene extends Component {
         console.log( 'An error happened' );
       }
     );
+    */
 
     this.start = this.start.bind(this)
     this.stop = this.stop.bind(this)
@@ -38,6 +39,8 @@ class Scene extends Component {
   componentDidMount() {
     const width = this.mount.clientWidth
     const height = this.mount.clientHeight
+
+    var scene = new THREE.Scene()
     
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -58,11 +61,11 @@ class Scene extends Component {
     const cube = new THREE.Mesh(geometry, material)
 
     camera.position.z = 4
-    this.scene.add(cube)
+    scene.add(cube)
     renderer.setClearColor('#000000')
     renderer.setSize(width, height)
 
-    this.scene = this.scene
+    this.scene = scene
     this.camera = camera
     this.renderer = renderer
     this.material = material
@@ -88,8 +91,8 @@ class Scene extends Component {
   }
 
   animate() {
-    this.cube.rotation.x += 0.01
-    this.cube.rotation.y += 0.01
+    //this.cube.rotation.x += 0.01
+    //this.cube.rotation.y += 0.01
     this.cube.position.x = this.props.x
 
     this.renderScene()
