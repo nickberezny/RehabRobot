@@ -29,7 +29,7 @@
 
 #define DEBUG 1 //will print updates
 #define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
-#define MAX_COUNT 3999 //maximum iterations before shutdown (only on debug) 
+#define MAX_COUNT 6999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
@@ -41,8 +41,8 @@
 //Conversion
 #define ENC_TO_MM 0.00115
 #define MOTOR_ZERO 2.35 //zero movement from motor
-#define MOTOR_ZERO_FWD 2.32  //forward and backwards deadzone limits
-#define MOTOR_ZERO_BWD 2.42 
+#define MOTOR_ZERO_BWD 2.325  //forward and backwards deadzone limits
+#define MOTOR_ZERO_FWD 2.425 
 #define FT_GAIN 43.0
 #define FT_OFFSET_OLD -0.156393
 #define FT_OFFSET -7.15
@@ -50,8 +50,8 @@
 
 //Controller Defaults (in terms of m)
 #define P_GAIN 1
-#define D_GAIN 0.5
-#define X_DES 0.1
+#define D_GAIN 0.1
+#define X_DES 0.2
 #define FIR_ORDER_V 10
 #define FIR_ORDER_F 10
 
@@ -202,7 +202,7 @@ int main(int argc, char* argv[]) {
     imp[0].fp = fopen (folder,"w");
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
     fprintf (imp[0].fp, "%s\n", freq_buff); 
-    fprintf (imp[0].fp, "Time(s), Time(ns), x, v, v_unfilt, f, f_unfilt, xdes, vdes, cmd, LSB, LSF\n"); //print header
+    fprintf (imp[0].fp, "Time(s), Time(ns), x, xa, v, va, v_unfilt, f, f_unfilt, xdes, vdes, cmd, LSB, LSF\n"); //print header
     //fclose(imp[0].fp);
     
     if(DEBUG) printf("Created data file %s\n", folder); 
@@ -349,7 +349,7 @@ int main(int argc, char* argv[]) {
 				imp[i].D = D_GAIN / 1000.0;
 				imp[i].K = 0.001;
 				imp[i].B = 0.001;
-				imp[i].M = 0.001;
+				imp[i].M = 0.00001;
 				imp[i].xdes = X_DES*1000;
 				imp[i].vdes = 0.0;
 				imp[i].fp = imp[0].fp;
@@ -376,10 +376,12 @@ int main(int argc, char* argv[]) {
 /**********************************************************************
 					   	Home to back
 ***********************************************************************/
-/*
+
+    sleep(2);
+
     if(DEBUG) printf("Homing ...\n");     
    
-    sleep(10);
+    
 
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
@@ -387,16 +389,17 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSB[0] == 0)
     {
-    	aValues[0] = 2.43; 
+    	aValues[0] = MOTOR_ZERO_BWD - 0.01; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSB[0] = aValues[3];
+    	//printf("Enc: %.3f\n", ENC_TO_MM*(double)aValues[4]);
 
     }
 
     aValues[0] = MOTOR_ZERO; 
     //Robot should not be homed, reading the encoder will zero the position here.
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-*/
+
 /**********************************************************************
 					   	Create and join threads
 ***********************************************************************/
@@ -451,7 +454,7 @@ void *controller(void * d)
 	        imp_cont->LSB[0] = imp_cont->LSB[1];
 	        imp_cont->LSF[1] = aValues[2];
 	        imp_cont->LSB[1] = aValues[3];
-	        curr_pos = curr_pos - ENC_TO_MM * (double)aValues[4]; 
+	        curr_pos = curr_pos + ENC_TO_MM * (double)aValues[4]; 
 	        imp_cont->xk = curr_pos;
 
 	        imp_cont->f_unfilt = imp_cont->fk;
@@ -459,20 +462,20 @@ void *controller(void * d)
 	
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
-			imp_cont->vk = (-1)* ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
+			imp_cont->vk = ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
 			imp_cont->v_unfilt = imp_cont->vk;
 			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
-			//imp_Adm(imp_cont);
-			imp_PD(imp_cont);		
+			imp_Adm(imp_cont);
+			//imp_PD(imp_cont);		
 
 			//Safety Checks
 			//TODO : check direction of command
 			//TODO : check IR
 			if(abs(imp_cont->cmd) > 0.75) imp_cont->cmd = 0;
-			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD - imp_cont->cmd;
-			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD - imp_cont->cmd;
+			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD + imp_cont->cmd;
+			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD + imp_cont->cmd;
 			if(imp_cont->cmd == 0) imp_cont->cmd += MOTOR_ZERO;
 
 			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0)  imp_cont->cmd = MOTOR_ZERO; 
@@ -560,9 +563,9 @@ void *logger(void * d)
 			if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 
-				imp_log->start_time.tv_sec, imp_log->start_time.tv_nsec, imp_log->xk, 
-				imp_log->vk, imp_log->v_unfilt, imp_log->fk, imp_log->f_unfilt, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
+			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 
+				imp_log->start_time.tv_sec, imp_log->start_time.tv_nsec, imp_log->xk, imp_log->xa, 
+				imp_log->vk, imp_log->va, imp_log->v_unfilt, imp_log->fk, imp_log->f_unfilt, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
 			
 			pthread_mutex_unlock(&lock[i]);
 
