@@ -29,7 +29,7 @@
 
 #define DEBUG 1 //will print updates
 #define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
-#define MAX_COUNT 6999 //maximum iterations before shutdown (only on debug) 
+#define MAX_COUNT 32999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
@@ -37,6 +37,7 @@
 #define STEP_NSEC 1000000 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
+#define MAX_COMMAND 1 
 
 //Conversion
 #define ENC_TO_MM 0.00115
@@ -50,10 +51,14 @@
 
 //Controller Defaults (in terms of m)
 #define P_GAIN 1
-#define D_GAIN 0.1
+#define D_GAIN 0.75
 #define X_DES 0.2
 #define FIR_ORDER_V 10
 #define FIR_ORDER_F 10
+
+#define K_GAIN 10
+#define M_GAIN 0.09
+#define B_GAIN 0
 
 /**********************************************************************
 					   Global Variables
@@ -347,9 +352,9 @@ int main(int argc, char* argv[]) {
 			{
 				imp[i].P = P_GAIN / 1000.0;
 				imp[i].D = D_GAIN / 1000.0;
-				imp[i].K = 1000;
+				imp[i].K = K_GAIN;
 				imp[i].B = 0;
-				imp[i].M = 1000;
+				imp[i].M = M_GAIN;
 				imp[i].xdes = X_DES*1000;
 				imp[i].vdes = 0.0;
 				imp[i].fdes = 0.0;
@@ -474,7 +479,8 @@ void *controller(void * d)
 			//Safety Checks
 			//TODO : check direction of command
 			//TODO : check IR
-			if(abs(imp_cont->cmd) > 0.75) imp_cont->cmd = 0;
+			if(imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = MAX_COMMAND;
+			if((-1)*imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = (-1)*MAX_COMMAND;
 			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD + imp_cont->cmd;
 			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD + imp_cont->cmd;
 			if(imp_cont->cmd == 0) imp_cont->cmd += MOTOR_ZERO;
