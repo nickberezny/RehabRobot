@@ -15,9 +15,11 @@ void imp_PD(struct impStruct * imp)
 
 void imp_Adm(struct impStruct * imp)
 {
-	imp->xa = imp->xdes + imp->Ad[0]*imp->xk + imp->Ad[2]*imp->vk + imp->Bd[0] * (imp->fk - imp->fdes);
-	imp->va = imp->vdes + imp->Ad[1]*imp->xk + imp->Ad[3]*imp->vk + imp->Bd[1] * (imp->fk - imp->fdes);
-    imp->cmd = imp->P*(imp->xdes - imp->xa) + imp->D*(imp->vdes - imp->va);
+
+
+	imp->xa =  imp->Ad[0]*(imp->xdes-imp->xk) + imp->Ad[2]*(imp->vdes-imp->vk) + imp->Bd[0] * (imp->fdes - imp->fk);
+	imp->va = imp->Ad[1]*(imp->xdes-imp->xk) + imp->Ad[3]*(imp->vdes-imp->vk) + imp->Bd[1] * (imp->fdes - imp->fk);
+    imp->cmd = imp->P*(imp->xa) + imp->D*(imp->va);
 
 	return;
 }

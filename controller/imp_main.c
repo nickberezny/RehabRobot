@@ -347,11 +347,12 @@ int main(int argc, char* argv[]) {
 			{
 				imp[i].P = P_GAIN / 1000.0;
 				imp[i].D = D_GAIN / 1000.0;
-				imp[i].K = 0.001;
-				imp[i].B = 0.001;
-				imp[i].M = 0.00001;
+				imp[i].K = 1000;
+				imp[i].B = 0;
+				imp[i].M = 1000;
 				imp[i].xdes = X_DES*1000;
 				imp[i].vdes = 0.0;
+				imp[i].fdes = 0.0;
 				imp[i].fp = imp[0].fp;
 						
 			}
