@@ -11,7 +11,7 @@ time = ""
 freq = ""
 
 #read data csv 
-with open('Tue_Dec__4_12-31-57_2018_data.txt', 'r') as csvfile:
+with open('Tue_Dec__4_12-57-00_2018_data.txt', 'r') as csvfile:
 	data = csv.reader(csvfile, delimiter=',', quotechar='|')
 	
 	time = next(data) #read time (first line)
