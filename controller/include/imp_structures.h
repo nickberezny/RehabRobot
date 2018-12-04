@@ -31,6 +31,8 @@ struct impStruct {
 	struct timespec wait_time;
     struct timespec step_time;
 
+    double f_unfilt, v_unfilt;
+
 	//other sensors 
 	int LSF[2];
 	int LSB[2];

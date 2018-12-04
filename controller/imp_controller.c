@@ -65,13 +65,15 @@ void imp_FIR(double * array, double * output, int * order)
     //moving average FIR filter of adjustable order
 
     array[0] = *output;
-    for(int i = 1; i < order; i++)
+
+    for(int i = 1; i < *order; i++)
     {
         *output += array[i];
         array[i] = array[i+1];
     }
-
+    
     array[*order] = array[0];
-    *output += *output;
+    //*output += *output;
+
     *output = *output / (double) *order;
 }

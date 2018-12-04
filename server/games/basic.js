@@ -1,11 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as THREE from 'three'
+import * as OBJLoader from 'three-obj-loader';
 import { setParam } from "../src/actions";
+OBJLoader(THREE);
+InputStream is = (InputStream) MyTest.class.getResourcesAsStream(test.csv))
 
 class Scene extends Component {
   constructor(props) {
     super(props)
+
+    this.loader = new THREE.OBJLoader()
+    this.scene = new THREE.Scene()
+
+    this.loader.load(
+      // resource URL
+      'robot_base_model.obj',
+      // called when resource is loaded
+      function ( object ) {
+        this.scene.add( object );
+      },
+      // called when loading is in progresses
+      function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+      },
+      // called when loading has errors
+      function ( error ) {
+        console.log( 'An error happened' );
+      }
+    );
 
     this.start = this.start.bind(this)
     this.stop = this.stop.bind(this)
@@ -15,8 +38,7 @@ class Scene extends Component {
   componentDidMount() {
     const width = this.mount.clientWidth
     const height = this.mount.clientHeight
-
-    const scene = new THREE.Scene()
+    
     const camera = new THREE.PerspectiveCamera(
       75,
       width / height,
@@ -24,26 +46,11 @@ class Scene extends Component {
       1000
     )
 
-  // instantiate a loader
-  var loader = new THREE.OBJLoader();
+    // instantiate a loader
+    
 
-  // load a resource
-  loader.load(
-    // resource URL
-    'robot_base_model.obj',
-    // called when resource is loaded
-    function ( object ) {
-      scene.add( object );
-    },
-    // called when loading is in progresses
-    function ( xhr ) {
-      console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-    },
-    // called when loading has errors
-    function ( error ) {
-      console.log( 'An error happened' );
-    }
-  );
+    // load a resource
+    
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     const geometry = new THREE.BoxGeometry(1, 1, 1)
@@ -51,11 +58,11 @@ class Scene extends Component {
     const cube = new THREE.Mesh(geometry, material)
 
     camera.position.z = 4
-    scene.add(cube)
+    this.scene.add(cube)
     renderer.setClearColor('#000000')
     renderer.setSize(width, height)
 
-    this.scene = scene
+    this.scene = this.scene
     this.camera = camera
     this.renderer = renderer
     this.material = material

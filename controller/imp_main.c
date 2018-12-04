@@ -28,7 +28,7 @@
 #include "include/LJM_Utilities.h"
 
 #define DEBUG 1 //will print updates
-#define UI_CONNECT 1 //will get params from remote UI (set 0 for testing, 1 for production)
+#define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 3999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
@@ -44,16 +44,16 @@
 #define MOTOR_ZERO_FWD 2.32  //forward and backwards deadzone limits
 #define MOTOR_ZERO_BWD 2.42 
 #define FT_GAIN 43.0
-#define FT_OFFSET -0.156393
+#define FT_OFFSET_OLD -0.156393
+#define FT_OFFSET -7.15
+
 
 //Controller Defaults (in terms of m)
 #define P_GAIN 1
 #define D_GAIN 0.5
 #define X_DES 0.1
-#define FIR_ORDER_V 10
+#define FIR_ORDER_V 5
 #define FIR_ORDER_F 5
-
-
 
 /**********************************************************************
 					   Global Variables
@@ -86,6 +86,9 @@ int errorAddress = 0;
 
 double v_filt[FIR_ORDER_V + 1] = {0};
 double f_filt[FIR_ORDER_F + 1] = {0};
+
+int fir_order_v = FIR_ORDER_V;
+int fir_order_f = FIR_ORDER_F;
 
 
 /***********************************************************************
@@ -199,7 +202,7 @@ int main(int argc, char* argv[]) {
     imp[0].fp = fopen (folder,"w");
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
     fprintf (imp[0].fp, "%s\n", freq_buff); 
-    fprintf (imp[0].fp, "Time(s), Time(ns), x, v, f, xdes, vdes, cmd, LSB, LSF\n"); //print header
+    fprintf (imp[0].fp, "Time(s), Time(ns), x, v, v_unfilt, f, f_unfilt, xdes, vdes, cmd, LSB, LSF\n"); //print header
     //fclose(imp[0].fp);
     
     if(DEBUG) printf("Created data file %s\n", folder); 
@@ -443,6 +446,7 @@ void *controller(void * d)
 			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 				
 	        imp_cont->fk = FT_GAIN*aValues[1] + FT_OFFSET;
+	        printf("Force: %.2f\n", imp_cont->fk);
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
 	        imp_cont->LSB[0] = imp_cont->LSB[1];
 	        imp_cont->LSF[1] = aValues[2];
@@ -450,12 +454,15 @@ void *controller(void * d)
 	        curr_pos = curr_pos - ENC_TO_MM * (double)aValues[4]; 
 	        imp_cont->xk = curr_pos;
 
-	        imp_FIR(f_filt, &imp_cont->fk, FIR_ORDER_F); //moving avg filter for force
-
+	        imp_cont->f_unfilt = imp_cont->fk;
+	
+	        imp_FIR(f_filt, &imp_cont->fk, &fir_order_f); //moving avg filter for force
+	
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
 			imp_cont->vk = (-1)* ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
-			imp_FIR(v_filt, &imp_cont->vk, FIR_ORDER_V); //moving average filter for velocity 
+			imp_cont->v_unfilt = imp_cont->vk;
+			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
 			//imp_Adm(imp_cont);
@@ -554,9 +561,9 @@ void *logger(void * d)
 			if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 
+			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 
 				imp_log->start_time.tv_sec, imp_log->start_time.tv_nsec, imp_log->xk, 
-				imp_log->vk, imp_log->fk, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
+				imp_log->vk, imp_log->v_unfilt, imp_log->fk, imp_log->f_unfilt, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
 			
 			pthread_mutex_unlock(&lock[i]);
 
