@@ -60,7 +60,7 @@ class Scene extends Component {
     const material = new THREE.MeshBasicMaterial({ color: '#433F81' })
     const cube = new THREE.Mesh(geometry, material)
 
-    camera.position.z = 4
+    camera.position.z = 10
     scene.add(cube)
     renderer.setClearColor('#000000')
     renderer.setSize(width, height)
@@ -93,7 +93,7 @@ class Scene extends Component {
   animate() {
     //this.cube.rotation.x += 0.01
     //this.cube.rotation.y += 0.01
-    this.cube.position.x = this.props.x
+    this.cube.position.x = this.props.x / 40
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)

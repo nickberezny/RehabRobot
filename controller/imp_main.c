@@ -28,7 +28,7 @@
 #include "include/LJM_Utilities.h"
 
 #define DEBUG 1 //will print updates
-#define UI_CONNECT 0 //will get params from remote UI (set 0 for testing, 1 for production)
+#define UI_CONNECT 1 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 32999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
@@ -251,7 +251,7 @@ int main(int argc, char* argv[]) {
 					   Wait for input 
 	***********************************************************************/
 
-    if(UI_CONNECT){
+    //if(UI_CONNECT){
 
 	    //start tcp socket
 	    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
@@ -259,8 +259,8 @@ int main(int argc, char* argv[]) {
 
 		//Start UI Process 
 		system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
-
-
+		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
+		/*
 		while(1)
 	    {
 			if(DEBUG) printf("Waiting for run signal from UI ... \n");
@@ -346,7 +346,7 @@ int main(int argc, char* argv[]) {
 	    }
 	}
    	else {
-
+	*/
    		//set default values if not connecting to UI (for testing)
 	    for(int i = 0; i < BUFFER_SIZE; i++)
 			{
@@ -361,7 +361,7 @@ int main(int argc, char* argv[]) {
 				imp[i].fp = imp[0].fp;
 						
 			}
-	}
+	//}
 
 
     /**********************************************************************
@@ -424,6 +424,7 @@ int main(int argc, char* argv[]) {
 	LJM_eStreamStop(daqHandle);
 	LJM_Close(daqHandle);
 	fclose(imp[0].fp);
+	shutdown(connfd, 2);
     if(DEBUG) printf("Finished, terminating program... \n");
 
 	return 0;
@@ -538,10 +539,13 @@ void *server(void* d)
 		{
 			pthread_mutex_lock(&lock[i]);
 			if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
-
-			imp_serve = &((struct impStruct*)d)[i];
-			sprintf(sendBuff,"%.2f", imp_serve->xk);
-			send(connfd, sendBuff, strlen(sendBuff), 0);
+			if(i == 0)
+			{
+				imp_serve = &((struct impStruct*)d)[i];
+				sprintf(sendBuff,"%.2f", imp_serve->xk);
+				printf("%d\n", send(connfd, sendBuff, strlen(sendBuff), 0));
+			}
+			
 
 			pthread_mutex_unlock(&lock[i]);	
 
