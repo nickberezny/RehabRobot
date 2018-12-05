@@ -11,7 +11,7 @@ time = ""
 freq = ""
 
 #read data csv 
-with open('Tue_Dec__4_15-07-26_2018_data.txt', 'r') as csvfile:
+with open('Wed_Dec__5_15-20-34_2018_data.txt', 'r') as csvfile:
 	data = csv.reader(csvfile, delimiter=',', quotechar='|')
 	
 	time = next(data) #read time (first line)
@@ -19,7 +19,7 @@ with open('Tue_Dec__4_15-07-26_2018_data.txt', 'r') as csvfile:
 
 	#read header (second line)
 	header = next(data)
-	data_len = len(header)
+	data_len = int(len(header))
 	y = [[] for j in range(data_len)]
 	ylabel = [['No Label Found'] for jj in range(data_len)]
 	i = 0
@@ -71,8 +71,12 @@ while(data_len > 0):
 
 	if(data_len < 4):	 index = data_len
 
+	
+
 	for i in range(index):
-		ax = plt.subplot(gs[i%2,math.floor(i/2)])
+		
+
+		ax = plt.subplot(gs[i%2,int(math.floor(i/2))])
 		ax.set_xlabel('Step Number')
 		ax.set_ylabel(ylabel[j])
 		ax.plot(y[j], color=colours[j])

@@ -29,7 +29,7 @@
 
 #define DEBUG 1 //will print updates
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
-#define MAX_COUNT 20999 //maximum iterations before shutdown (only on debug) 
+#define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
