@@ -6,6 +6,7 @@
 #define NSEC_IN_SEC 1000000000
 #define STEP_NSEC 1000000
 
+
 void imp_PD(struct impStruct * imp)
 {
 	imp->cmd = imp->P*(imp->xdes - imp->xk) + imp->D*(imp->vdes - imp->vk);
@@ -85,4 +86,13 @@ void imp_FIR(double * array, double * output, int * order)
     //*output += *output;
 
     *output = *output / (double) *order;
+}
+
+void imp_traj(struct impStruct * imp, double * dir)
+{
+    //Sets trajectory to follow a parabola, with 0 velocity at the extremes at vmax in the middle
+
+    imp->vdes = (-1)*dir*( imp->vmax / (X_END/2.0)^2.0 ) * imp->xk * (imp->xk - X_END);
+    imp->xdes = imp->xk + (-1)*dir*(imp->vdes * STEP_NSEC/NSEC_IN_SEC); 
+    return;
 }

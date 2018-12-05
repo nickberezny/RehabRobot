@@ -28,7 +28,7 @@
 #include "include/LJM_Utilities.h"
 
 #define DEBUG 1 //will print updates
-#define UI_CONNECT 1 //will get params from remote UI (set 0 for testing, 1 for production)
+#define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 32999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
@@ -59,6 +59,8 @@
 #define K_GAIN 10
 #define M_GAIN 0.09
 #define B_GAIN 0
+#define V_MAX 50
+#define X_END 300 //stroke length in mm
 
 /**********************************************************************
 					   Global Variables
@@ -94,6 +96,8 @@ double f_filt[FIR_ORDER_F + 1] = {0};
 
 int fir_order_v = FIR_ORDER_V;
 int fir_order_f = FIR_ORDER_F;
+
+double direction = 0; 
 
 
 /***********************************************************************
@@ -359,6 +363,7 @@ int main(int argc, char* argv[]) {
 				imp[i].vdes = 0.0;
 				imp[i].fdes = 0.0;
 				imp[i].fp = imp[0].fp;
+				imp[i].vmax = V_MAX;
 						
 			}
 	//}
@@ -474,8 +479,9 @@ void *controller(void * d)
 			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
-			imp_Adm(imp_cont);
-			//imp_PD(imp_cont);		
+			//imp_Adm(imp_cont);
+			imp_traj(imp_cont);
+			imp_PD(imp_cont);		
 
 			//Safety Checks
 			//TODO : check direction of command
@@ -486,9 +492,17 @@ void *controller(void * d)
 			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD + imp_cont->cmd;
 			if(imp_cont->cmd == 0) imp_cont->cmd += MOTOR_ZERO;
 
-			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd > 0)  imp_cont->cmd = MOTOR_ZERO; 
-			if(imp_cont->LSF[1] && !imp_cont->LSF[0] && imp_cont->cmd < 0)  imp_cont->cmd = MOTOR_ZERO; 
-			//if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
+			if(imp_cont->LSF[1] )
+			{
+			  	if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO; 
+			  	direction = -1;		
+			}
+			if(imp_cont->LSB[1])  
+			{
+				if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO;  
+				direction = 1;
+			}
+			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
 
 			//set motor command (written at beginning of next step on eNames())
 			aValues[0] = imp_cont->cmd;

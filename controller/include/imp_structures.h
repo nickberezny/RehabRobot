@@ -34,6 +34,8 @@ struct impStruct {
     double f_unfilt, v_unfilt;
     double F_gain;
 
+    double vmax;
+
 	//other sensors 
 	int LSF[2];
 	int LSB[2];
@@ -76,3 +78,4 @@ void imp_StepTime(struct timespec * start_time, struct timespec * end_time, stru
 void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time);
 void imp_FIR(double * array, double * output, int * order);
 void imp_Force(struct impStruct * imp);
+void imp_traj(struct impStruct * imp);
