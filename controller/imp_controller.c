@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 
 #define NSEC_IN_SEC 1000000000
 #define STEP_NSEC 1000000
+#define X_END 400
 
 
 void imp_PD(struct impStruct * imp)
@@ -34,7 +36,7 @@ void imp_Haptics(struct impStruct * imp)
 
 void imp_Force(struct impStruct * imp)
 {
-    imp->cmd = imp->F_gain * imp->fk; 
+    imp->cmd = imp->F_Gain * imp->fk; 
     return;
 }
 
@@ -84,15 +86,16 @@ void imp_FIR(double * array, double * output, int * order)
     
     array[*order] = array[0];
     //*output += *output;
-
     *output = *output / (double) *order;
 }
 
 void imp_traj(struct impStruct * imp, double * dir)
 {
     //Sets trajectory to follow a parabola, with 0 velocity at the extremes at vmax in the middle
-
-    imp->vdes = (-1)*dir*( imp->vmax / (X_END/2.0)^2.0 ) * imp->xk * (imp->xk - X_END);
-    imp->xdes = imp->xk + (-1)*dir*(imp->vdes * STEP_NSEC/NSEC_IN_SEC); 
+    if(imp->xk > X_END) *dir = -1.0;
+    if(imp->xk < 0.05) *dir = 1.0;
+    if(imp->xk < 0.0) imp->xk = 0.0;
+    imp->vdes = (*dir)*1.0 - (*dir)*( imp->vmax / pow((X_END/2.0),2.0) ) * imp->xk * (imp->xk - X_END);
+    imp->xdes = imp->xk + (*dir)*(imp->vdes * STEP_NSEC/NSEC_IN_SEC); 
     return;
 }

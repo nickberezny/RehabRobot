@@ -29,7 +29,7 @@
 
 #define DEBUG 1 //will print updates
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
-#define MAX_COUNT 32999 //maximum iterations before shutdown (only on debug) 
+#define MAX_COUNT 20999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
@@ -37,21 +37,20 @@
 #define STEP_NSEC 1000000 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
-#define MAX_COMMAND 1 
+#define MAX_COMMAND 1.5
 
 //Conversion
 #define ENC_TO_MM 0.00115
 #define MOTOR_ZERO 2.35 //zero movement from motor
 #define MOTOR_ZERO_BWD 2.325  //forward and backwards deadzone limits
-#define MOTOR_ZERO_FWD 2.425 
+#define MOTOR_ZERO_FWD 2.43 
 #define FT_GAIN 43.0
 #define FT_OFFSET_OLD -0.156393
-#define FT_OFFSET -7.15
-
+#define FT_OFFSET -10.25
 
 //Controller Defaults (in terms of m)
-#define P_GAIN 1
-#define D_GAIN 0.75
+#define P_GAIN 2//5
+#define D_GAIN 1//20
 #define X_DES 0.2
 #define FIR_ORDER_V 10
 #define FIR_ORDER_F 10
@@ -59,8 +58,10 @@
 #define K_GAIN 10
 #define M_GAIN 0.09
 #define B_GAIN 0
-#define V_MAX 50
-#define X_END 300 //stroke length in mm
+#define V_MAX 200
+#define X_END 400 //stroke length in mm
+
+#define F_GAIN -0.005;
 
 /**********************************************************************
 					   Global Variables
@@ -97,7 +98,7 @@ double f_filt[FIR_ORDER_F + 1] = {0};
 int fir_order_v = FIR_ORDER_V;
 int fir_order_f = FIR_ORDER_F;
 
-double direction = 0; 
+double direction = 1.0; 
 
 
 /***********************************************************************
@@ -258,12 +259,12 @@ int main(int argc, char* argv[]) {
     //if(UI_CONNECT){
 
 	    //start tcp socket
-	    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
-	    listen(listenfd, 100);
+	    //bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
+	    //listen(listenfd, 100);
 
 		//Start UI Process 
-		system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
-		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
+		//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+		//connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
 		/*
 		while(1)
 	    {
@@ -364,6 +365,7 @@ int main(int argc, char* argv[]) {
 				imp[i].fdes = 0.0;
 				imp[i].fp = imp[0].fp;
 				imp[i].vmax = V_MAX;
+				imp[i].F_Gain = F_GAIN;
 						
 			}
 	//}
@@ -398,6 +400,8 @@ int main(int argc, char* argv[]) {
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     imp[9].LSB[0] = aValues[3];
 
+    printf("%f\n", aValues[3]);
+
     while(imp[9].LSB[0] == 0)
     {
     	aValues[0] = MOTOR_ZERO_BWD - 0.01; 
@@ -409,7 +413,12 @@ int main(int argc, char* argv[]) {
 
     aValues[0] = MOTOR_ZERO; 
     //Robot should not be homed, reading the encoder will zero the position here.
+    
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+
+    sleep(5);
 
 /**********************************************************************
 					   	Create and join threads
@@ -479,9 +488,10 @@ void *controller(void * d)
 			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
-			//imp_Adm(imp_cont);
-			imp_traj(imp_cont);
-			imp_PD(imp_cont);		
+			imp_Adm(imp_cont);
+			//imp_traj(imp_cont, &direction);
+			//imp_PD(imp_cont);	
+			//imp_Force(imp_cont);	
 
 			//Safety Checks
 			//TODO : check direction of command
@@ -495,12 +505,12 @@ void *controller(void * d)
 			if(imp_cont->LSF[1] )
 			{
 			  	if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO; 
-			  	direction = -1;		
+			  	direction = -1.0;		
 			}
 			if(imp_cont->LSB[1])  
 			{
 				if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO;  
-				direction = 1;
+				direction = 1.0;
 			}
 			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
 

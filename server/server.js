@@ -32,7 +32,7 @@ if(TEST) {
 
   client.on('data', function(data){
     io.emit('message', data.toString())
-    console.log(data.toString())
+    //console.log(data.toString())
   });
 
 

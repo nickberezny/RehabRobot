@@ -32,7 +32,7 @@ struct impStruct {
     struct timespec step_time;
 
     double f_unfilt, v_unfilt;
-    double F_gain;
+    double F_Gain;
 
     double vmax;
 
@@ -78,4 +78,4 @@ void imp_StepTime(struct timespec * start_time, struct timespec * end_time, stru
 void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time);
 void imp_FIR(double * array, double * output, int * order);
 void imp_Force(struct impStruct * imp);
-void imp_traj(struct impStruct * imp);
+void imp_traj(struct impStruct * imp, double * dir);
