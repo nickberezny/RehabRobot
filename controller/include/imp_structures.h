@@ -79,3 +79,7 @@ void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time);
 void imp_FIR(double * array, double * output, int * order);
 void imp_Force(struct impStruct * imp);
 void imp_traj(struct impStruct * imp, double * dir);
+
+void matrix_sqaure(double A[4], double C[4]);
+void factorial(double n, double * ans);
+void matrix_exp(double A[4], double B[4]);

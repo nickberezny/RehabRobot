@@ -4,9 +4,7 @@
 #include <time.h>
 #include <math.h>
 
-#define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 1000000
-#define X_END 400
+#include "include/imp_variables.h"
 
 
 void imp_PD(struct impStruct * imp)

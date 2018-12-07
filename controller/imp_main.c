@@ -27,41 +27,15 @@
 #include "include/imp_structures.h"
 #include "include/LJM_Utilities.h"
 
+#include "include/imp_variables.h"
+
 #define DEBUG 1 //will print updates
+#define CONNECT_TO_UI 0
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
-#define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 1000000 //control step time (1ms)
-
-#define MAX_FORCE 50 //Newtons  
-#define MAX_COMMAND 1.5
-
-//Conversion
-#define ENC_TO_MM 0.00115
-#define MOTOR_ZERO 2.35 //zero movement from motor
-#define MOTOR_ZERO_BWD 2.325  //forward and backwards deadzone limits
-#define MOTOR_ZERO_FWD 2.43 
-#define FT_GAIN 43.0
-#define FT_OFFSET_OLD -0.156393
-#define FT_OFFSET -10.25
-
-//Controller Defaults (in terms of m)
-#define P_GAIN 2//5
-#define D_GAIN 1//20
-#define X_DES 0.2
-#define FIR_ORDER_V 10
-#define FIR_ORDER_F 10
-
-#define K_GAIN 10
-#define M_GAIN 0.09
-#define B_GAIN 0
-#define V_MAX 200
-#define X_END 400 //stroke length in mm
-
-#define F_GAIN -0.005;
 
 /**********************************************************************
 					   Global Variables
@@ -256,72 +230,74 @@ int main(int argc, char* argv[]) {
 					   Wait for input 
 	***********************************************************************/
 
-    //if(UI_CONNECT){
+    if(CONNECT_TO_UI){
 
 	    //start tcp socket
-	    //bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
-	    //listen(listenfd, 100);
+	    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
+	    listen(listenfd, 100);
 
 		//Start UI Process 
-		//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
-		//connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
-		/*
-		while(1)
-	    {
-			if(DEBUG) printf("Waiting for run signal from UI ... \n");
+		system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
+		
+		if(GET_PARAMS_FROM_UI){
+			while(1)
+		    {
+				if(DEBUG) printf("Waiting for run signal from UI ... \n");
 
-			//wait for game settings
-			connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
-			if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
-			{
-				//recieved settings 
-				if(DEBUG) printf("recieved data: %s\n", recvBuff);
-				start_controller = 1;
+				//wait for game settings
+				connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
+				if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
+				{
+					//recieved settings 
+					if(DEBUG) printf("recieved data: %s\n", recvBuff);
+					start_controller = 1;
 
-				//find set parameters in message using regular expreesions 
-				regcomp(&compiled, regex.P, REG_EXTENDED);
-				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-					sscanf(matchBuffer, "%lf", &imp[0].P);
-				    if(DEBUG) { printf("P gain is: %lf\n", imp[0].P); }
-				}
+					//find set parameters in message using regular expreesions 
+					regcomp(&compiled, regex.P, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].P);
+					    if(DEBUG) { printf("P gain is: %lf\n", imp[0].P); }
+					}
 
-				regcomp(&compiled, regex.D, REG_EXTENDED);
-				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-					sscanf(matchBuffer, "%lf", &imp[0].D);
-				    if(DEBUG) { printf("D gain is: %f\n", imp[0].D); }
-				}
+					regcomp(&compiled, regex.D, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].D);
+					    if(DEBUG) { printf("D gain is: %f\n", imp[0].D); }
+					}
 
-				regcomp(&compiled, regex.xdes, REG_EXTENDED);
-				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-					sscanf(matchBuffer, "%lf", &imp[0].xdes);
-				    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
-				}
+					regcomp(&compiled, regex.xdes, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].xdes);
+					    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
+					}
 
-				regcomp(&compiled, regex.K, REG_EXTENDED);
-				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-					sscanf(matchBuffer, "%lf", &imp[0].K);
-				    if(DEBUG) { printf("K is: %f\n", imp[0].K); }
+					regcomp(&compiled, regex.K, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].K);
+					    if(DEBUG) { printf("K is: %f\n", imp[0].K); }
+					}
+					
+					regcomp(&compiled, regex.B, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].B);
+					    if(DEBUG) { printf("B is: %f\n", imp[0].B); }
+					}
+					
+					regcomp(&compiled, regex.M, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].M);
+					    if(DEBUG) { printf("M is: %f\n", imp[0].M); }
+					}
 				}
-				
-				regcomp(&compiled, regex.B, REG_EXTENDED);
-				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-					sscanf(matchBuffer, "%lf", &imp[0].B);
-				    if(DEBUG) { printf("B is: %f\n", imp[0].B); }
-				}
-				
-				regcomp(&compiled, regex.M, REG_EXTENDED);
-				if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-					sscanf(matchBuffer, "%lf", &imp[0].M);
-				    if(DEBUG) { printf("M is: %f\n", imp[0].M); }
-				}
-				
-				
+					
+					
 
 				for(int i = 1; i < BUFFER_SIZE; i++)
 				{
@@ -335,40 +311,42 @@ int main(int argc, char* argv[]) {
 							
 				}
 
-				if(DEBUG) printf("Set All Parameters...\n");
+				if(DEBUG) printf("Set All Parameters (From UI)...\n");
 			}
 
-			//wait for run signal before starting controller
-			if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R' && start_controller == 1)
-			{
-				//everything set, begin therapy 
-				if(DEBUG) printf("Start signal recieved \n");
-				break;
-			}
+				//wait for run signal before starting controller
+				if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R' && start_controller == 1)
+				{
+					//everything set, begin therapy 
+					if(DEBUG) printf("Start signal recieved \n");
+					break;
+				}
 
-			close(connfd);
-			sleep(0.01);
-	    }
+				close(connfd);
+				sleep(0.01);
+	    	}
 	}
-   	else {
-	*/
+   		
+	if(! GET_PARAMS_FROM_UI) {
    		//set default values if not connecting to UI (for testing)
 	    for(int i = 0; i < BUFFER_SIZE; i++)
-			{
-				imp[i].P = P_GAIN / 1000.0;
-				imp[i].D = D_GAIN / 1000.0;
-				imp[i].K = K_GAIN;
-				imp[i].B = 0;
-				imp[i].M = M_GAIN;
-				imp[i].xdes = X_DES*1000;
-				imp[i].vdes = 0.0;
-				imp[i].fdes = 0.0;
-				imp[i].fp = imp[0].fp;
-				imp[i].vmax = V_MAX;
-				imp[i].F_Gain = F_GAIN;
-						
-			}
-	//}
+		{
+			imp[i].P = P_GAIN / 1000.0;
+			imp[i].D = D_GAIN / 1000.0;
+			imp[i].K = K_GAIN;
+			imp[i].B = 0;
+			imp[i].M = M_GAIN;
+			imp[i].xdes = X_DES*1000;
+			imp[i].vdes = 0.0;
+			imp[i].fdes = 0.0;
+			imp[i].fp = imp[0].fp;
+			imp[i].vmax = V_MAX;
+			imp[i].F_Gain = F_GAIN;
+					
+		}
+
+		if(DEBUG) printf("Set All Parameters...\n");
+	}
 
 
     /**********************************************************************
@@ -376,6 +354,7 @@ int main(int argc, char* argv[]) {
 	***********************************************************************/
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
+   	/*
     double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
     double Bd[2] = {0.0, 1.0/imp[0].M};
 
@@ -384,7 +363,10 @@ int main(int argc, char* argv[]) {
     	imp[i].Ad = Ad;
     	imp[i].Bd = Bd;
     }
+	*/
 
+	double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
+    double Bd[2] = {0.0, 1.0/imp[0].M};
 
 /**********************************************************************
 					   	Home to back
@@ -417,6 +399,24 @@ int main(int argc, char* argv[]) {
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+
+/**********************************************************************
+					   	Calibrate Force Sensor (get offset)
+***********************************************************************/
+
+    if(DEBUG) printf("Calibrating Force Sensor, Keep motor enabled ...\n"); 
+
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    ft_offset = FT_GAIN*aValues[1]; 
+
+    for(int i = 1; i < 20; i++)
+    {
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	ft_offset = (ft_offset / (double)i + FT_GAIN*aValues[1])/((double)i + 1);
+    	usleep(1000); //sleep to space out measurements
+    }
+
+    if(DEBUG) printf("Force sensor offset: %d\n", ft_offset);
 
     sleep(5);
 
@@ -469,7 +469,7 @@ void *controller(void * d)
 			//Read & Write to DAQ ---------------------------------------
 			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 				
-	        imp_cont->fk = FT_GAIN*aValues[1] + FT_OFFSET;
+	        imp_cont->fk = FT_GAIN*aValues[1] - ft_offset;
 	        //printf("Force: %.2f\n", imp_cont->fk);
 	        imp_cont->LSF[0] = imp_cont->LSF[1];
 	        imp_cont->LSB[0] = imp_cont->LSB[1];
