@@ -1,4 +1,5 @@
 #ifndef INCLUDE_FILE
+#define INCLUDE_FILE
 
 #define NSEC_IN_SEC 1000000000
 #define STEP_NSEC 1000000 //control step time (1ms)

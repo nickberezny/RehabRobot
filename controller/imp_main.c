@@ -73,6 +73,7 @@ int fir_order_v = FIR_ORDER_V;
 int fir_order_f = FIR_ORDER_F;
 
 double direction = 1.0; 
+double ft_offset = 0.0;
 
 
 /***********************************************************************
@@ -312,7 +313,6 @@ int main(int argc, char* argv[]) {
 				}
 
 				if(DEBUG) printf("Set All Parameters (From UI)...\n");
-			}
 
 				//wait for run signal before starting controller
 				if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R' && start_controller == 1)
@@ -324,6 +324,9 @@ int main(int argc, char* argv[]) {
 
 				close(connfd);
 				sleep(0.01);
+			}
+
+				
 	    	}
 	}
    		
@@ -354,7 +357,7 @@ int main(int argc, char* argv[]) {
 	***********************************************************************/
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
-   	/*
+   	
     double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
     double Bd[2] = {0.0, 1.0/imp[0].M};
 
@@ -363,21 +366,19 @@ int main(int argc, char* argv[]) {
     	imp[i].Ad = Ad;
     	imp[i].Bd = Bd;
     }
-	*/
+	
 
-	double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
-    double Bd[2] = {0.0, 1.0/imp[0].M};
+	//double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
+    //double Bd[2] = {0.0, 1.0/imp[0].M};
 
 /**********************************************************************
 					   	Home to back
 ***********************************************************************/
 
     sleep(2);
-
+    
     if(DEBUG) printf("Homing ...\n");     
    
-    
-
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     imp[9].LSB[0] = aValues[3];
@@ -412,11 +413,12 @@ int main(int argc, char* argv[]) {
     for(int i = 1; i < 20; i++)
     {
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	ft_offset = (ft_offset / (double)i + FT_GAIN*aValues[1])/((double)i + 1);
+    	printf("Force: %.3f\n", ft_offset);
+    	ft_offset = ( (ft_offset*(double)i) + FT_GAIN*aValues[1] ) / ((double)i + 1.0);
     	usleep(1000); //sleep to space out measurements
     }
 
-    if(DEBUG) printf("Force sensor offset: %d\n", ft_offset);
+    if(DEBUG) printf("Force sensor offset: %.3f\n", ft_offset);
 
     sleep(5);
 
@@ -480,7 +482,9 @@ void *controller(void * d)
 
 	        imp_cont->f_unfilt = imp_cont->fk;
 	        imp_FIR(f_filt, &imp_cont->fk, &fir_order_f); //moving avg filter for force
-	
+			
+
+			if(i==0) printf("Force: %.3f\n", imp_cont->fk);
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
 			imp_cont->vk = ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
