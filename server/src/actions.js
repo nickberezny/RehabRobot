@@ -8,6 +8,7 @@ export const SELECT_CONTROLLER = 'SELECT_CONTROLLER'
 export const SET_PARAM = 'SET_PARAM'
 export const RUN_ROBOT = 'RUN_ROBOT'
 export const SET_SOCKET = 'SET_SOCKET'
+export const SET_USER = 'SET_USER'
 
 
 /*
@@ -45,4 +46,8 @@ export function runRobot() {
 
 export function setSocket(socket) {
   return { type: SET_SOCKET, socket }
+}
+
+export function setUser(value) {
+  return { type: SET_USER, value }
 }

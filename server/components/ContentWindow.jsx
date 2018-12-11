@@ -7,6 +7,7 @@ import SetupPage from './Pages/SetupPage'
 import UserPage from './Pages/UserPage'
 import VisualsPage from './Pages/VisualsPage'
 import SettingsPage from './Pages/SettingsPage'
+import BasicSetupPage from './Pages/BasicSetupPage'
 
 import io from "socket.io-client";
 import { setSocket } from "../src/actions";
@@ -61,11 +62,14 @@ class WindowContent extends React.Component {
 
 		switch(this.props.activePage) {
 			case 1:
-				  this.state.content = <div style={this.state.style}> <SetupPage /> </div>
+				  if(this.state.user = 1) this.state.content = <div style={this.state.style}> <SetupPage /> </div>
+				  if(this.state.user = 2) this.state.content = <div style={this.state.style}> <BasicSetupPage /> </div>
 				  break;
 			case 2:
 				  this.state.content = <div style={this.state.style}> <VisualsPage /> </div>
 				  break;
+			case 3:
+				this.state.content = <div style={this.state.style}> <SettingsPage /> </div>
 			default:
 				  this.state.content = <div style={this.state.style}> Page Load Failed </div>		
 		}
@@ -85,7 +89,8 @@ function mapStateToProps(state) {
  	return {
  		activePage: state.activePage,
  		menuOpen: state.menuOpen,
- 		socket: state.socket
+ 		socket: state.socket,
+ 		user: state.user 
  	}
 }
 

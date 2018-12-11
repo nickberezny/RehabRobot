@@ -22,6 +22,7 @@ class DrawerList extends React.Component {
       super(props);
       this.pageOne = this.pageOne.bind(this);
       this.pageTwo = this.pageTwo.bind(this);
+      this.pageThree = this.pageThree.bind(this);
   }
 
   pageOne() {
@@ -30,6 +31,10 @@ class DrawerList extends React.Component {
 
   pageTwo() {
     this.props.openPage(2);
+  }
+
+  pageTwo() {
+    this.props.openPage(3);
   }
 
 
@@ -48,6 +53,12 @@ class DrawerList extends React.Component {
               <MoviesIcon />
             </ListItemIcon>
             <ListItemText primary="Game" />
+          </ListItem>
+          <ListItem button onClick={this.pageThree}>
+            <ListItemIcon>
+              <MoviesIcon />
+            </ListItemIcon>
+            <ListItemText primary="Settings" />
           </ListItem>
         </List>
       </div>

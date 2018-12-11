@@ -6,9 +6,10 @@ import {
   SET_PARAM,
   RUN_ROBOT,
   SET_SOCKET,
+  SET_USER,
 } from './actions'
 
-var initState = {menuOpen: false, activePage: 1, socket: null, P: 1, D:1, xdes: 1, K:1, B:1, M:1, x:0.5 };
+var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, P: 2, D:1, xdes: 200, K:10, B:0.5, M:0.09, x:0.5 };
 
 function todoApp(state = initState, action) {
   switch (action.type) {
@@ -46,6 +47,12 @@ function todoApp(state = initState, action) {
     case SET_SOCKET:
       return Object.assign({}, state, {
         socket: action.socket,
+      })
+      break;
+
+    case SET_USER:
+      return Object.assign({}, state, {
+        user: action.value,
       })
       break;
       
