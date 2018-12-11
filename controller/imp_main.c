@@ -30,8 +30,8 @@
 #include "include/imp_variables.h"
 
 #define DEBUG 1 //will print updates
-#define CONNECT_TO_UI 0
-#define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
+#define CONNECT_TO_UI 1
+#define GET_PARAMS_FROM_UI 1 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array

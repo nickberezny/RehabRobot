@@ -33,7 +33,7 @@ class DrawerList extends React.Component {
     this.props.openPage(2);
   }
 
-  pageTwo() {
+  pageThree() {
     this.props.openPage(3);
   }
 
