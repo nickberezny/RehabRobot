@@ -10,7 +10,7 @@
 #include <time.h>
 #include <stdbool.h>
 #include <string.h>
-#include <regex.h>
+F
 
 #include <unistd.h>
 #include <sys/socket.h>
@@ -58,7 +58,8 @@ int LJMScanBacklog = 0;
 
 int temp_counter = 0; 
 double curr_pos = 0.0;
-struct timespec last_time;  
+struct timespec last_time;
+struct timespec temp_time;    
 
 double aValues[5] = {0};
 const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2_EF_READ_A_F_AND_RESET"};
@@ -101,6 +102,9 @@ int main(int argc, char* argv[]) {
 	regmatch_t matches[2];
 	char matchBuffer[100];
 
+	double Ad[4] = {0};
+	double Bd[2] = {0};
+
 
     /**********************************************************************
 					   Initialize TCP Socket
@@ -122,28 +126,10 @@ int main(int argc, char* argv[]) {
 	***********************************************************************/
 
     daqHandle = init_daq(daqHandle);
+
     double value = 0;
     const char * NAME = {"SERIAL_NUMBER"};
     LJM_eReadName(daqHandle, NAME, &value);
-
-    LJM_eStreamStop(daqHandle); //stop any previous streams
-    LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO); //set motor to zero
-    
-    //start Quadrature counter on DIO2 and DIO3
-    LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 0);
-    LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 0);
-
-    LJM_eWriteName(daqHandle, "DIO2_EF_INDEX", 10);
-    LJM_eWriteName(daqHandle, "DIO3_EF_INDEX", 10);
-
-    LJM_eWriteName(daqHandle, "DIO2_EF_ENABLE", 1);
-    LJM_eWriteName(daqHandle, "DIO3_EF_ENABLE", 1);
-
-    //set Analog in resolution
-    LJM_eWriteName(daqHandle, "AIN0_RESOLUTION_INDEX", 1);
-    LJM_eWriteName(daqHandle, "AIN0_SETTLING_US", 0);
-    
-	
 
     if(DEBUG) printf("Connected to LabJack %s = %f\n", NAME, value);
 
@@ -180,9 +166,9 @@ int main(int argc, char* argv[]) {
 
    //create file name (date&time_data.txt)
 
-	double freq = NSEC_IN_SEC / STEP_NSEC;
+	double freq = NSEC_IN_SEC / STEP_NSEC / 1000.0;
 	char freq_buff[1000];
-	sprintf(freq_buff, "Controller Frequency: %.3f kHz", freq);
+	sprintf(freq_buff, "Controller Frequency: %.2f kHz", freq);
 
     imp[0].fp = fopen (folder,"w");
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
@@ -196,8 +182,6 @@ int main(int argc, char* argv[]) {
     /**********************************************************************
 					   Initialize Mutexes
 	***********************************************************************/
-
-	
 
 	for(int i = 0; i < BUFFER_SIZE; i++)
 	{
@@ -358,8 +342,11 @@ int main(int argc, char* argv[]) {
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
    	
-    double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
-    double Bd[2] = {0.0, 1.0/imp[0].M};
+    double A = {{0.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
+    double B = {0.0, 1.0/imp[0].M};
+
+    matrix_exp(A, Ad);
+    imp_calc_Bd(Ad, A, B, Bd);
 
     for(int i = 0; i < BUFFER_SIZE; i++)
     {
@@ -367,10 +354,6 @@ int main(int argc, char* argv[]) {
     	imp[i].Bd = Bd;
     }
 	
-
-	//double Ad[4] = {{1.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, 1.0 - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
-    //double Bd[2] = {0.0, 1.0/imp[0].M};
-
 /**********************************************************************
 					   	Home to back
 ***********************************************************************/
@@ -463,11 +446,12 @@ void *controller(void * d)
 
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
-			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
+			clock_gettime(CLOCK_MONOTONIC, &temp_time); 
 
 			imp_cont = &((struct impStruct*)d)[i];
+			imp_cont->start_time = temp_time;
 
-			clock_gettime(CLOCK_MONOTONIC, &(imp_cont->start_time)); 
+			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
 			//Read & Write to DAQ ---------------------------------------
 			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 				
@@ -654,7 +638,7 @@ void *home(void * d)
 
 void *goto_position(void * d)
 {
-	if(DEBUG) printf("Homing ...\n");     
+	if(DEBUG) printf("Going to desired position ...\n");     
    
     sleep(10);
 	

@@ -8,7 +8,7 @@
 #include <regex.h>
 #include <stdio.h>
 
-
+//data for tcp socket
 struct socket_data {
 	int server_fd, new_socket, valread;
     struct sockaddr_in address;
@@ -16,6 +16,7 @@ struct socket_data {
     int addrlen;
 };
 
+//data for robot (updated at each time step)
 struct impStruct {
 
 	//admittance control parameters 
@@ -48,6 +49,7 @@ struct impStruct {
 
 };
 
+//holds regular expression searches
 struct regexMatch {
 	char *SET;
 	char *P;
@@ -59,6 +61,8 @@ struct regexMatch {
 };
 
 
+
+//FUNCTION DECLARATIONS ----------------------
 void *controller(void * d);
 void *server(void * d);
 void *logger(void * d);
@@ -80,6 +84,11 @@ void imp_FIR(double * array, double * output, int * order);
 void imp_Force(struct impStruct * imp);
 void imp_traj(struct impStruct * imp, double * dir);
 
-void matrix_sqaure(double A[4], double C[4]);
+void matrix_square(double A[2][2], double C[2][2]);
 void factorial(double n, double * ans);
-void matrix_exp(double A[4], double B[4]);
+void matrix_exp(double A[2][2], double B[2][2]);
+void invert_matrix(double A[2][2], double B[2][2]);
+void imp_calc_Bd(double Ad[2][2], double A[2][2], double B[2], double Bd[2]);
+
+void imp_regex_match(regex_t * compiled, char recvBuff[1024], regmatch_t matches[2], 
+	char matchBuffer[100],  struct regexMatch * regex, double * param_loc );
