@@ -30,8 +30,8 @@ class SettingsPage extends React.Component {
 	            value={this.props.u_value}
 	            onChange={this.handleChange}
 	          >
-	            <FormControlLabel value="1" control={<Radio />} label="Developer" />
-	            <FormControlLabel value="2" control={<Radio />} label="User" />
+	            <FormControlLabel value="1" control={<Radio color="secondary" />} label="Developer" />
+	            <FormControlLabel value="2" control={<Radio color="secondary" />} label="User" />
 	          </RadioGroup>
 	        </FormControl>
 		)

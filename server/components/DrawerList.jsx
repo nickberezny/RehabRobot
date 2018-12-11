@@ -10,6 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import BuildIcon from '@material-ui/icons/Build';
 import MoviesIcon from '@material-ui/icons/Movie';
+import SettingsIcon from '@material-ui/icons/Settings';
+
 
 const ListStyles = {
     width: 230,
@@ -56,7 +58,7 @@ class DrawerList extends React.Component {
           </ListItem>
           <ListItem button onClick={this.pageThree}>
             <ListItemIcon>
-              <MoviesIcon />
+              <SettingsIcon />
             </ListItemIcon>
             <ListItemText primary="Settings" />
           </ListItem>
