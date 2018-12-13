@@ -7,7 +7,7 @@
 #ifndef INCLUDE_FILE
 #define INCLUDE_FILE
 
-#define PORT 5000 //socket port
+#define TCP_PORT 1337 //socket port
 #define LINUX_SCHEDULER SCHED_RR //cpu scheduler, choose from: SCHED_FIFO, SCHED_RR, SCHED_DEADLINE
 
 #define NSEC_IN_SEC 1000000000

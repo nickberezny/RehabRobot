@@ -6,6 +6,7 @@
 \usepackage{fullpage}
 \usepackage{gensymb}
 \usepackage{hyperref}
+\usepackage{amsmath}
 
 \begin{document}
 \maketitle
@@ -36,8 +37,70 @@
 
 \section{Controller}
 	\subsection{Outline}
+	
+	
 	\subsection{Initialization}
+	Initialization can be found in the first few hundred lines on imp\_main.c, which calls functions found in imp\_init.c. 
+	
+	\begin{enumerate}
+		\item TCP Socket Initialization: E.g. \href{https://www.geeksforgeeks.org/tcp-server-client-implementation-in-c/}{this tutorial}.
+		\item Connecting to the DAQ: \href{https://labjack.com/support/software/api/ljm/function-reference/ljmopen}{Instructions found here}.
+		\item Creating a data log text file 
+		\item Initializing Mutexes: 
+		\item Setting Thread Parameters and Locking Memory : \href{https://wiki.linuxfoundation.org/realtime/documentation/howto/applications/application_base}{Example here}.
+	\end{enumerate}
+	
+	\subsection{Getting Control Parameters}
+	Parameters like controller gains, desired maximum velcoity, etc can be set either using variables defined in imp\_variables.h, or by connecting to the UI and receiving custom parameters. Setting the macro CONNECT\_TO\_UI = 1 will allow the robot to connect to the UI server, and then setting GET\_PARAMS\_FROM\_UI = 1 will set control parameters based on a message from the UI.
+	\\ \\
+	If getting parameters from the UI, the process will wait for a message from the UI containing the parameters. This message will being with a capital 'S'. After the system receives the message, it uses regular expression to extract parameter values. It then waits again for start message from the UI. It will then break the loop and continue executing.
+	\\ \\
+	The message encodes parameter values by starting with a letter representing the parameter (e.g. the proportion gain is 'P'), followed by the value for the parameter (potentially containing a decimal point). Each parameter is separated by an underscore. For example, if the user sets the P gain to 5.1, the message will read '\_P5.1\_'.
+	\\ \\
+	After getting the parameters, the controller needs to calculate the discrete system matrices for the admittance controller, which is based on the set stiffness (K), damping (B), and mass (m). The continuous time matrices are:
+	
+	\begin{equation}
+	\dot{X} = AX + Bf
+	\end{equation}
+	\[
+		A=
+		\begin{bmatrix}
+			0 & 1 \\
+			-\frac{K}{m} & -\frac{B}{m}
+		\end{bmatrix}
+	\]
+	
+	\[
+		B=
+		\begin{bmatrix}
+			0 \\
+			\frac{1}{m}
+		\end{bmatrix}
+	\]
+	
+	The equivalent discrete system is:
+	\begin{equation}
+	X_{k+1} = A_dX_k + B_df
+	\end{equation}
+	\begin{equation}
+	A_d = e^{At_s}
+	\end{equation}
+	\begin{equation}
+	B_d = A^{-1}(A_d - I)B
+	\end{equation}
+	
+	Where $t_s$ is the sampling time (time in seconds of a single iteration). The matrix exponential can be approximated by calculating the first n terms of the series:
+	
+	\begin{equation}
+	A_d ~= \sum_{n=0}^{\infty} \frac{At_s}{n!} = I + \frac{At_s}{1} + \frac{{At_s}^2}{2} ... 
+	\end{equation}
+	
+	\subsection{Homing}
+	
+	
 	\subsection{Controller}
+	
+	
 	\subsection{Communication}
 
 \section{Node JS}

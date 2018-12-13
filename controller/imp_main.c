@@ -117,7 +117,7 @@ int main(int argc, char* argv[]) {
     
     serv_addr.sin_family = AF_INET;
     inet_pton(AF_INET, "127.0.0.1",  &serv_addr.sin_addr.s_addr);
-    serv_addr.sin_port = htons(1337); 
+    serv_addr.sin_port = htons(TCP_PORT); 
 
     if(DEBUG) printf("Initialized Socket\n"); 
 
