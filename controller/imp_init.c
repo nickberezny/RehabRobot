@@ -73,7 +73,7 @@ bool init_sock(struct socket_data * sock)
     setsockopt(sock->server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT,
         &(sock->opt), sizeof(sock->opt));
     sock->address.sin_family = AF_INET;
-    sock->address.sin_port = htons( PORT );
+    sock->address.sin_port = htons( TCP_PORT );
     inet_pton(AF_INET, "127.0.0.1", &sock->address.sin_addr);
 
     bind(sock->server_fd, (struct sockaddr *)&(sock->address), sizeof(sock->address));

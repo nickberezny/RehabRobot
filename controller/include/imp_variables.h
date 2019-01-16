@@ -10,8 +10,8 @@
 #define TCP_PORT 1337 //socket port
 #define LINUX_SCHEDULER SCHED_RR //cpu scheduler, choose from: SCHED_FIFO, SCHED_RR, SCHED_DEADLINE
 
-#define NSEC_IN_SEC 1000000000
-#define STEP_NSEC 1000000 //control step time (1ms)
+#define NSEC_IN_SEC 1000000000.0
+#define STEP_NSEC 1000000.0 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
 #define MAX_COMMAND 1.5
@@ -33,14 +33,14 @@
 #define FIR_ORDER_V 10
 #define FIR_ORDER_F 10
 
-#define K_GAIN 10 //  [N/mm]
+#define K_GAIN 10.0 //  [N/mm]
 #define M_GAIN 0.09 //  [Ns2/mm]
-#define B_GAIN 0 //  [Ns/mm]
+#define B_GAIN 0.0 //  [Ns/mm]
 #define V_MAX 200 // [mm/s]
 #define X_END 400 //stroke length in mm
 
 #define F_GAIN -0.005
 
-#define MAT_EXP_ITERATIONS 15 //number of iterations for matrix exp approximation
- 
+#define MAT_EXP_ITERATIONS 50 //number of iterations for matrix exp approximation
+
 #endif

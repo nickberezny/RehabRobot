@@ -10,7 +10,6 @@
 #include <time.h>
 #include <stdbool.h>
 #include <string.h>
-F
 
 #include <unistd.h>
 #include <sys/socket.h>
@@ -30,8 +29,8 @@ F
 #include "include/imp_variables.h"
 
 #define DEBUG 1 //will print updates
-#define CONNECT_TO_UI 1
-#define GET_PARAMS_FROM_UI 1 //will get params from remote UI (set 0 for testing, 1 for production)
+#define CONNECT_TO_UI 0
+#define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
 
 #define BUFFER_SIZE 10 //size of data sturcture array
@@ -342,8 +341,8 @@ int main(int argc, char* argv[]) {
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
    	
-    double A = {{0.0, STEP_NSEC/NSEC_IN_SEC},{-STEP_NSEC/NSEC_IN_SEC * imp[0].K/imp[0].M, - STEP_NSEC/NSEC_IN_SEC * imp[0].B/imp[0].M}};
-    double B = {0.0, 1.0/imp[0].M};
+    double A[2][2] = {{0.0, 1.0},{-imp[0].K/imp[0].M, -imp[0].B/imp[0].M}};
+    double B[2] = {0.0, 1.0/imp[0].M};
 
     matrix_exp(A, Ad);
     imp_calc_Bd(Ad, A, B, Bd);
@@ -353,6 +352,9 @@ int main(int argc, char* argv[]) {
     	imp[i].Ad = Ad;
     	imp[i].Bd = Bd;
     }
+
+    printf("Ad: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
+    printf("Bd: %.4f, %.4f\n", Bd[0], Bd[1]);
 	
 /**********************************************************************
 					   	Home to back
