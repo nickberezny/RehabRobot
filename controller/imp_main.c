@@ -372,7 +372,7 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSB[0] == 0)
     {
-    	aValues[0] = MOTOR_ZERO_BWD - 0.01; 
+    	aValues[0] = MOTOR_ZERO_BWD - 0.02; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSB[0] = aValues[3];
     	//printf("Enc: %.3f\n", ENC_TO_MM*(double)aValues[4]);
@@ -552,7 +552,7 @@ void *server(void* d)
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
 			pthread_mutex_lock(&lock[i]);
-			if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
+			//if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
 			if(i == 0)
 			{
 				imp_serve = &((struct impStruct*)d)[i];
@@ -585,7 +585,7 @@ void *logger(void * d)
 		for(int i = 0; i < BUFFER_SIZE; i++)
 		{
 			pthread_mutex_lock(&lock[i]);
-			if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
+			//if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
 			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 

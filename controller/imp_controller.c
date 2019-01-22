@@ -30,9 +30,11 @@ void imp_Adm(struct impStruct * imp)
         command = P*(xa) + D*(va)
 ------------------------------------------------------------------------*/
 
-	imp->xa =  imp->Ad[0]*(imp->xdes-imp->xk) + imp->Ad[2]*(imp->vdes-imp->vk) + imp->Bd[0] * (imp->fdes - imp->fk);
-    imp->va = imp->Ad[1]*(imp->xdes-imp->xk) + imp->Ad[3]*(imp->vdes-imp->vk) + imp->Bd[1] * (imp->fdes - imp->fk);
+	imp->xa =  imp->Ad[0]*(imp->xdes-imp->xk) + imp->Ad[1]*(imp->vdes-imp->vk) + imp->Bd[0] * (imp->fdes - imp->fk);
+    imp->va = imp->Ad[2]*(imp->xdes-imp->xk) + imp->Ad[3]*(imp->vdes-imp->vk) + imp->Bd[1] * (imp->fdes - imp->fk);
     imp->cmd = imp->P*(imp->xa) + imp->D*(imp->va);
+
+    printf("CMD: %.4f\n", imp->cmd);
 
 	return;
 }

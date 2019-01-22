@@ -14,7 +14,7 @@
 #define STEP_NSEC 1000000.0 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
-#define MAX_COMMAND 1.5
+#define MAX_COMMAND 2.5
 
 //Conversion
 #define ENC_TO_MM 0.00115
@@ -27,17 +27,17 @@
 //#define FT_OFFSET -10.25
 
 //Controller Defaults (in terms of m)
-#define P_GAIN 2 //5
-#define D_GAIN 1 //20
+#define P_GAIN 5.0 //5
+#define D_GAIN 20.0 //20
 #define X_DES 0.2 //m
 #define FIR_ORDER_V 10
 #define FIR_ORDER_F 10
 
-#define K_GAIN 10.0 //  [N/mm]
-#define M_GAIN 0.09 //  [Ns2/mm]
+#define K_GAIN 1.0 //  [N/mm]
+#define M_GAIN 0.03 //  [Ns2/mm]
 #define B_GAIN 0.0 //  [Ns/mm]
-#define V_MAX 200 // [mm/s]
-#define X_END 400 //stroke length in mm
+#define V_MAX 200.0 // [mm/s]
+#define X_END 400.0 //stroke length in mm
 
 #define F_GAIN -0.005
 
