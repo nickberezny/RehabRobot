@@ -21,21 +21,21 @@
 #define MOTOR_ZERO 2.35 //zero movement from motor
 #define MOTOR_ZERO_BWD 2.325  //forward and backwards deadzone limits
 #define MOTOR_ZERO_FWD 2.43 
-//#define FT_GAIN 43.0 //lbs
-#define FT_GAIN 7.64 //N
+#define FT_GAIN 43.0 //lbs
+//#define FT_GAIN 7.64 //N
 //#define FT_OFFSET_OLD -0.156393
 //#define FT_OFFSET -10.25
 
 //Controller Defaults (in terms of m)
-#define P_GAIN 5.0 //5
-#define D_GAIN 20.0 //20
+#define P_GAIN 7.0 //5
+#define D_GAIN 4.0 //20
 #define X_DES 0.2 //m
 #define FIR_ORDER_V 10
 #define FIR_ORDER_F 10
 
-#define K_GAIN 1.0 //  [N/mm]
-#define M_GAIN 0.03 //  [Ns2/mm]
-#define B_GAIN 0.0 //  [Ns/mm]
+#define K_GAIN 0.3 //  [N/mm]
+#define M_GAIN 0.0005 //  [Ns2/mm]
+#define B_GAIN 0.005 //  [Ns/mm]
 #define V_MAX 200.0 // [mm/s]
 #define X_END 400.0 //stroke length in mm
 
