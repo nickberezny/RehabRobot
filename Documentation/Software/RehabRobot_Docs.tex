@@ -8,6 +8,8 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 
+\usepackage{url}[obeyspaces,spaces]
+
 \begin{document}
 \maketitle
 \newpage
@@ -15,14 +17,13 @@
 \section{Real Time Linux}
 	\subsection{Background}
 	
-	Real time systems are systems requiring that computations be made by strict time deadlines - in other words, they must be deterministic. Missing deadlines may result in damage to the system or to its environment. This category can be further subdivided into soft real-time and hard real-time. Hard real-time systems usually mathematical verify that deadlines will not be missed.  For example, QNX is a hard real time OS. Soft real-time relaxes this condition, but still contains many of the features of a real-time system. Realtime Linux, for example. 
-	\\ \\
-	Typical real time procedures include memory-locking, multithreading, setting priorities and schedulers, and testing latencies. Memory-locking ensures that no pagefaults occur during execution, which can cause significant delays. Multi-threading is a form of parallel computing that can speed up your process. Threads must have a priority set based on how critical they are to the functioning of the system. Thread execution is handled by the kernel?, which delegates processing time according to the set scheduler (first-in first-out, round robin, etc.) 
-	\\ \\
-	This software runs on a real-time enabled version of Linux which uses the PREEMPT\_RT patch. 
+	Real time systems are those requiring that computations be made by fixed deadlines - in other words, systems which must be deterministic. Missing deadlines may result in damage to the system or to its environment. This category can be further subdivided into soft real-time and hard real-time. Hard real-time systems usually mathematical verify that deadlines will not be missed.  For example, QNX and VxWork are both hard RTOS's. Soft real-time relaxes this condition, but still contains many of the features of a real-time system. Realtime Linux, for example. 
+
+	Typical real time procedures include memory-locking, multi-threading, setting priorities and schedulers, and testing latencies. Memory-locking ensures that no pagefaults occur during execution, which can cause significant delays. Multi-threading is a form of parallel computing, allowing for multiple threads of computation to be run simultaneously. a scheduler will determine how many resources to delegate to each thread, based on user-set priority levels. The type of scheduler can also be changed (First-in-first-out FIFO, or Roundrobin RR).
+
+	This software runs on a real-time enabled version of Linux which uses the PREEMPT\_RT patch to add the functionalities mentioned above. This is a soft RTOS since it is not fully deterministic, which should be adequate for this project as missed time-steps should not cause serious harm or damage.
 	
 		
-	
 	\subsection{Installation}
 	
 	The following is an outline of the installation process for a PREEMPT\_RT patched linux kernel with Ubuntu. Other linux flavours may also be used. More detailed instruction can be found at the \href{https://wiki.linuxfoundation.org/realtime/documentation/howto/applications/preemptrt_setup}{Linux Foundation Website.}
@@ -52,12 +53,14 @@
 	
 	\subsection{Getting Control Parameters}
 	Parameters like controller gains, desired maximum velcoity, etc can be set either using variables defined in imp\_variables.h, or by connecting to the UI and receiving custom parameters. Setting the macro CONNECT\_TO\_UI = 1 will allow the robot to connect to the UI server, and then setting GET\_PARAMS\_FROM\_UI = 1 will set control parameters based on a message from the UI.
-	\\ \\
+
 	If getting parameters from the UI, the process will wait for a message from the UI containing the parameters. This message will being with a capital 'S'. After the system receives the message, it uses regular expression to extract parameter values. It then waits again for start message from the UI. It will then break the loop and continue executing.
-	\\ \\
+
 	The message encodes parameter values by starting with a letter representing the parameter (e.g. the proportion gain is 'P'), followed by the value for the parameter (potentially containing a decimal point). Each parameter is separated by an underscore. For example, if the user sets the P gain to 5.1, the message will read '\_P5.1\_'.
-	\\ \\
-	After getting the parameters, the controller needs to calculate the discrete system matrices for the admittance controller, which is based on the set stiffness (K), damping (B), and mass (m). The continuous time matrices are:
+	
+	\subsection{Discretization}
+	
+	Control parameters can be used to construct the admittance control continuous system matrices A and B: 
 	
 	\begin{equation}
 	\dot{X} = AX + Bf
@@ -78,6 +81,8 @@
 		\end{bmatrix}
 	\]
 	
+	The equivalent discrete system can be derived from the continuous matrices:	
+	
 	The equivalent discrete system is:
 	\begin{equation}
 	X_{k+1} = A_dX_k + B_df
@@ -85,37 +90,82 @@
 	\begin{equation}
 	A_d = e^{At_s}
 	\end{equation}
-	\begin{equation}
+	\begin{equation} \label{eqn:bd}
 	B_d = A^{-1}(A_d - I)B
 	\end{equation}
 	
-	Where $t_s$ is the sampling time (time in seconds of a single iteration). The matrix exponential can be approximated by calculating the first n terms of the series:
+	Where $t_s$ is the sampling time (time in seconds of a single iteration). The matrix exponential can be approximated by calculating the first $m$ terms of the series:
 	
-	\begin{equation}
-	A_d ~= \sum_{n=0}^{\infty} \frac{At_s}{n!} = I + \frac{At_s}{1} + \frac{{At_s}^2}{2} ... 
+	\begin{equation} \label{eqn:matrix_exp}
+	A_d ~= \sum_{n=0}^{m} \frac{A^nt_s}{n!} = I + \frac{At_s}{1} + \frac{{A}^2t_s}{2} ... 
 	\end{equation}
 	
-	\subsection{Homing}
+	Calculation of the discrete system matrices is handled in the file \path{RehabRobot/controller/imp_math.c}, which contains the following functions relevant to discretization:
 	
+	\begin{itemize}
+		\item \textbf{matrix\_square}: squares a given matrix and stores in another location
+		\item  \textbf{factorial}: calculations the factorial of a given number
+		\item  \textbf{matrix\_exp}: calculates the exponential of a matrix ($e^A$) using the series approximation in Eqn. \ref{eqn:matrix_exp}.
+		\item  \textbf{invert\_matrix}: inverts a given 2x2 matrix ($A^{-1}$)
+		\item  \textbf{calc\_Bd}: calculates the discrete matrix Bd using Eqn. \ref{eqn:bd}
+		
+	\end{itemize}
+	
+	\subsection{Zeroing the Force Sensor \& Homing}
+	
+	The motor encoder is not absolute, and so it the controller needs to determine the actuators position before continuing. This is done by homing the device, whereby it is slowly brought forward until triggering the front limit switch. This is considered position 0. At this point, the encoder is zeroed. 
+	
+	The homing process is comprised of a while loop, which is continually checks for contact from the front limit switch. A slow forward motor command is set constantly until the limit is triggered, which stops the motor and breaks the loop. 
+	
+	Next, the force sensor is zeroed. A series of readings are taken. It is important that no force be applied to the sensor during this process. The average of these readings is saved as the variable FT\_OFFSET, which is used to calibrate all raw sensor readings throughout the robots operation.
 	
 	\subsection{Controller}
 	
 	
+	
 	\subsection{Communication}
 
-\section{Node JS}
+\section{UI Application}
 	\subsection{Background}
+	
+	A variety of user interface technologies exist. An emerging trend within UI development is the use of web tools, which take advantage of already established programs like Chrome or other browsers. Frameworks like Angular, React, and Ionic can be used to build reusable UI components using familiar web utilities like HTML, Javascript, and css. 
+	
+	This software using React for its UI (\href{https://reactjs.org/}{site}). The UI is essentially a website which can be served and loaded in a browser like any other local site. The upside of this method is that users do not need to install anything on their device, only requiring that they know the IP address. In the future, it may be beneficial to build a native application that can be installed on a Windows machine or on a tablet. Fortunately, it is fairly easy to convert a React website to a native app, using either Electron (\href{https://electronjs.org/}{site}) for the windows app or React Native(\href{https://facebook.github.io/react-native/}{site}) for the android/iPad app. 
+	
+	In addition to React, the UI uses the following tools or frameworks: 
+	
+	\begin{itemize}
+		\item \textbf{Node.js} as the base JS runtime environment \href{https://nodejs.org/en/}{site}
+		\item \textbf{Redux} for state management \href{https://redux.js.org/}{site}
+		\item \textbf{Express} for the server framework \href{https://expressjs.com/}{site}
+		\item \textbf{Next} for server-side rendering \href{https://nextjs.org/}{site}
+		\item \textbf{Material-UI}, a UI component library based on Google's Material Design philosophy \href{https://material-ui.com/}{site}
+		\item \textbf{Socket.io} for websocket communication \href{https://socket.io/}{site}
+		\item \textbf{three.js} as the 3D graphics library \href{https://threejs.org/}{site}
+	\end{itemize}
+	
 	\subsection{Installation}
+	
+	First, Node.js must be installed on your system, along with the package manager npm. All other tools are then installed using npm, which can be done by either running the following command in the server folder, or by running ... in the git repository.
+	
+	\begin{verbatim}
+	sudo npm install react react-dom redux react-redux next 
+	@material-ui/core @material-ui/icons react-websocket three express
+	\end{verbatim}
+	
 	\subsection{React}
 	\subsection{Web Sockets}
 	
 \section{UI Server}
 	\subsection{Outline}
 	\subsection{Server}
-	\subsection{UI} 
 	\subsection{Communication}
-	
+
+\section{Controller Folder Organization}
+\section{Server Folder Organization}
+
+\section{Suggestions for Future Improvements}
 		
-\section{UI Server}
+
 
 \end{document}
