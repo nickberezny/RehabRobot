@@ -75,6 +75,9 @@ int fir_order_f = FIR_ORDER_F;
 double direction = 1.0; 
 double ft_offset = 0.0;
 
+double xa = 0.0;
+double va = 0.0;
+
 
 /***********************************************************************
 ***********************************************************************/
@@ -478,11 +481,10 @@ void *controller(void * d)
 			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
-			imp_Adm(imp_cont);
+			imp_Adm(imp_cont, &xa, &va);
 			//imp_traj(imp_cont, &direction);
 			//imp_PD(imp_cont);	
 			//imp_Force(imp_cont);	
-
 			//Safety Checks
 			//TODO : check direction of command
 			//TODO : check IR

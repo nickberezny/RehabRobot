@@ -21,18 +21,25 @@ void imp_PD(struct impStruct * imp)
 
 
 
-void imp_Adm(struct impStruct * imp)
+void imp_Adm(struct impStruct * imp, double * xa, double * va)
 {
 
 /*------------------------------------------------------------------------
     Admittance control - go to position given force and desired impedance 
         Xa = Ad * X + Bd * F
-        command = P*(xa) + D*(va)
+        command = P*(x) + D*(va)
 ------------------------------------------------------------------------*/
 
-	imp->xa =  imp->Ad[0]*(imp->xdes-imp->xk) + imp->Ad[1]*(imp->vdes-imp->vk) + imp->Bd[0] * (imp->fdes - imp->fk);
+	/*imp->xa =  imp->Ad[0]*(imp->xdes-imp->xk) + imp->Ad[1]*(imp->vdes-imp->vk) + imp->Bd[0] * (imp->fdes - imp->fk);
     imp->va = imp->Ad[2]*(imp->xdes-imp->xk) + imp->Ad[3]*(imp->vdes-imp->vk) + imp->Bd[1] * (imp->fdes - imp->fk);
-    imp->cmd = imp->P*(imp->xa) + imp->D*(imp->va);
+    imp->cmd = imp->P*(imp->xa) + imp->D*(imp->va);*/
+
+    imp->xa = imp->xdes -  imp->Ad[0]*(imp->xdes - *xa) + imp->Ad[1]*(imp->vdes - *va) + imp->Bd[0] * (imp->fdes - imp->fk);
+    imp->va = imp->vdes -  imp->Ad[2]*(imp->xdes - *xa) + imp->Ad[3]*(imp->vdes - *va) + imp->Bd[1] * (imp->fdes - imp->fk);
+    imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(imp->va - imp->vk);
+
+    *xa = imp->xa;
+    *va = imp->va;
 
     printf("CMD: %.4f\n", imp->cmd);
 
