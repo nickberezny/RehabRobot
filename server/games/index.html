@@ -15,11 +15,14 @@
 			var ySpeed = 0;
 			var maxStroke = 200;
 			var dir = 1*0.5;
-
+			var text;
 			var points = 0;
+			var init = 0;
 
 			var width = window.innerWidth;
 			var height = window.innerHeight;
+
+			var text_geometry
 
 			var scene = new THREE.Scene();
 			scene.background = new THREE.Color( 0xBCBFFF );
@@ -38,6 +41,8 @@
 			var cube = new THREE.Mesh( geometry, material );
 			cube.position.z = 0;
 			scene.add( cube );
+
+			var loader = new THREE.FontLoader();
 
 			var textureLoader = new THREE.TextureLoader();
 
@@ -76,14 +81,33 @@
 			};
 
 			var animate = function () {
+
 				requestAnimationFrame( animate );
 				if (Math.abs(cube.position.x) > maxStroke) {
 					dir = -dir;
 				}
+
+				if(init == 1) { 
+					scene.remove( text ) 
+					console.log('check')
+				}
+				init = 1;
+
+				/* loader.load( 'sprite/helvetiker_regular.typeface.json', function ( font ) {
+
+					var message = 'Points: ' + points
+					var shapes = font.generateShapes( message, 25 );
+					var geometry = new THREE.ShapeBufferGeometry( shapes );
+					text = new THREE.Mesh( geometry, material );
+					text.position.set(width/2 - 200, - height/2 + 100, 0)
+					scene.add( text );
+
+				} ); */
+
 				cube.position.x += dir*xSpeed;
 				if(group.position.x > cube.position.x - 50 && group.position.x < cube.position.x + 50){
 					points += 1;
-					console.log(points);
+					//console.log(points);
 				}
 				renderer.render( scene, cameraOrtho );
 			};

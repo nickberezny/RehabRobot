@@ -9,28 +9,6 @@ class Scene extends Component {
   constructor(props) {
     super(props)
 
-    //this.loader = new THREE.OBJLoader()
-    
-
-    /*
-    this.loader.load(
-      // resource URL
-      'robot_base_model.obj',
-      // called when resource is loaded
-      function ( object ) {
-        this.scene.add( object );
-      },
-      // called when loading is in progresses
-      function ( xhr ) {
-        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-      },
-      // called when loading has errors
-      function ( error ) {
-        console.log( 'An error happened' );
-      }
-    );
-    */
-
     this.start = this.start.bind(this)
     this.stop = this.stop.bind(this)
     this.animate = this.animate.bind(this)

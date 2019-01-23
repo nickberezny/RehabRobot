@@ -556,7 +556,7 @@ void *server(void* d)
 			if(i == 0)
 			{
 				imp_serve = &((struct impStruct*)d)[i];
-				sprintf(sendBuff,"%.2f", imp_serve->xk);
+				sprintf(sendBuff,"%.2f,%.2f", imp_serve->xk,imp_serve->xdes);
 				printf("%d\n", send(connfd, sendBuff, strlen(sendBuff), 0));
 			}
 			

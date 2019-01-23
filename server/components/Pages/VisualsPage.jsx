@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Scene from '../../games/basic'
+import Follow_traj from '../../games/follow_traj'
 
 class VisualsPage extends React.Component {
 
@@ -13,7 +14,7 @@ class VisualsPage extends React.Component {
 		return (
 
 			<div>
-				<Scene />
+				<Follow_traj />
 			</div>
 
 		)

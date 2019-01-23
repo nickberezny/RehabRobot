@@ -41,7 +41,9 @@ class WindowContent extends React.Component {
 
 	handleMessage = (message) => {
 	    console.log('Message Recieved: ' + message);
-	    this.props.setParam('x', message)
+	    var res = message.split(",");
+	    this.props.setParam('x', res[0])
+	    this.props.setParam('xdes', res[1])
 	}
 
 	render() {

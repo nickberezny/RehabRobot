@@ -9,7 +9,7 @@ import {
   SET_USER,
 } from './actions'
 
-var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, P: 2, D:1, xdes: 200, K:10, B:0.5, M:0.09, x:0.5 };
+var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, P: 2, D:1, xdes: 0, K:10, B:0.5, M:0.09, x:0.5 };
 
 function todoApp(state = initState, action) {
   switch (action.type) {
