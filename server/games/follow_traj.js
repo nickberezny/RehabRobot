@@ -5,6 +5,9 @@ import * as THREE from 'three'
 import { setParam } from "../src/actions";
 //OBJLoader(THREE);
 
+//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
+//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
+
 class Follow_traj extends Component {
   constructor(props) {
     super(props)
@@ -17,6 +20,7 @@ class Follow_traj extends Component {
   componentDidMount() {
 
     var points = 0;
+    var group = new THREE.Group();
 
     const width = this.mount.clientWidth
     const height = this.mount.clientHeight
@@ -31,11 +35,17 @@ class Follow_traj extends Component {
     renderer.setSize(width, height)
 
     var geometry = new THREE.BoxGeometry( 100, 100, 100 );
+    var geometry2 = new THREE.BoxGeometry( 80, 80, 80 );
     var material = new THREE.MeshBasicMaterial( { color: 0xffcc66 } );
     var cube = new THREE.Mesh( geometry, material );
-    cube.position.z = 0;
+    var material2 = new THREE.MeshBasicMaterial( { color: 0x4F99FF } );
+    var cube2 = new THREE.Mesh( geometry2, material2 );
+    cube.position.z = -100;
+    cube2.position.z = 0;
     scene.add( cube );
+    scene.add( cube2 );
 
+    /*
     var textureLoader = new THREE.TextureLoader();
 
     var mapA = textureLoader.load( "sprite/crosshair.png" );
@@ -50,6 +60,7 @@ class Follow_traj extends Component {
 
     group.add(sprite1);
     scene.add( group );
+    */
     scene.add( camera );
 
     this.scene = scene
@@ -57,7 +68,9 @@ class Follow_traj extends Component {
     this.renderer = renderer
     this.material = material
     this.cube = cube
-    this.group = group
+    this.cube2 = cube2;
+    //this.group = group
+    this.points = points
 
     this.mount.appendChild(this.renderer.domElement)
     this.start()
@@ -80,12 +93,12 @@ class Follow_traj extends Component {
 
   animate() {
 
-    this.cube.position.x = this.props.xdes / 40
-    this.group.position.x = this.props.x / 40
+    this.cube.position.x = this.props.xdes 
+    this.cube2.position.x = this.props.x 
 
-    if(this.group.position.x > this.cube.position.x - 50 && this.group.position.x < this.cube.position.x + 50){
-      points += 1;
-      console.log(points);
+    if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
+      this.points += 1;
+      console.log(this.points);
     }
 
     this.renderScene()

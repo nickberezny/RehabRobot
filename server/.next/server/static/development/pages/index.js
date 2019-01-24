@@ -252,8 +252,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! socket.io-client */ "socket.io-client");
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../src/actions */ "./src/actions.js");
-var _jsxFileName = "/home/rehab/Documents/RehabRobot/server/components/ContentWindow.jsx";
-
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -302,8 +300,11 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleMessage", function (message) {
       console.log('Message Recieved: ' + message);
+      var res = message.split(",");
 
-      _this.props.setParam('x', message);
+      _this.props.setParam('x', res[0]);
+
+      _this.props.setParam('xdes', res[1]);
     });
 
     _this.state = {
@@ -348,92 +349,37 @@ function (_React$Component) {
         case 1:
           if (this.props.user == 1) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              style: this.state.style,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 65
-              },
-              __self: this
-            }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_SetupPage__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 65
-              },
-              __self: this
-            }), " ");
+              style: this.state.style
+            }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_SetupPage__WEBPACK_IMPORTED_MODULE_4__["default"], null), " ");
           }
 
           if (this.props.user == 2) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              style: this.state.style,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 66
-              },
-              __self: this
-            }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_BasicSetupPage__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 66
-              },
-              __self: this
-            }), " ");
+              style: this.state.style
+            }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_BasicSetupPage__WEBPACK_IMPORTED_MODULE_8__["default"], null), " ");
           }
 
           break;
 
         case 2:
           this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            style: this.state.style,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 69
-            },
-            __self: this
-          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_VisualsPage__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 69
-            },
-            __self: this
-          }), " ");
+            style: this.state.style
+          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_VisualsPage__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ");
           break;
 
         case 3:
           this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            style: this.state.style,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 72
-            },
-            __self: this
-          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_SettingsPage__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 72
-            },
-            __self: this
-          }), " ");
+            style: this.state.style
+          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_SettingsPage__WEBPACK_IMPORTED_MODULE_7__["default"], null), " ");
           break;
 
         default:
           this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            style: this.state.style,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 75
-            },
-            __self: this
+            style: this.state.style
           }, " Page Load Failed ");
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 79
-        },
-        __self: this
-      }, this.state.content);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.content);
     }
   }]);
 
@@ -1657,8 +1603,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _games_basic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../games/basic */ "./games/basic.js");
-var _jsxFileName = "/home/rehab/Documents/RehabRobot/server/components/Pages/VisualsPage.jsx";
-
+/* harmony import */ var _games_follow_traj__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../games/follow_traj */ "./games/follow_traj.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1681,6 +1626,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var VisualsPage =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1695,19 +1641,7 @@ function (_React$Component) {
   _createClass(VisualsPage, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 15
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_basic__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16
-        },
-        __self: this
-      }));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_follow_traj__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -1909,27 +1843,7 @@ function (_Component) {
 
     _classCallCheck(this, Scene);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Scene).call(this, props)); //this.loader = new THREE.OBJLoader()
-
-    /*
-    this.loader.load(
-      // resource URL
-      'robot_base_model.obj',
-      // called when resource is loaded
-      function ( object ) {
-        this.scene.add( object );
-      },
-      // called when loading is in progresses
-      function ( xhr ) {
-        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-      },
-      // called when loading has errors
-      function ( error ) {
-        console.log( 'An error happened' );
-      }
-    );
-    */
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Scene).call(this, props));
     _this.start = _this.start.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.stop = _this.stop.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.animate = _this.animate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -2026,6 +1940,190 @@ function mapStateToProps(state) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
 )(Scene));
+
+/***/ }),
+
+/***/ "./games/follow_traj.js":
+/*!******************************!*\
+  !*** ./games/follow_traj.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "three");
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(three__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/actions */ "./src/actions.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+ //import * as OBJLoader from 'three-obj-loader';
+
+ //OBJLoader(THREE);
+//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
+//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
+
+var Follow_traj =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Follow_traj, _Component);
+
+  function Follow_traj(props) {
+    var _this;
+
+    _classCallCheck(this, Follow_traj);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Follow_traj).call(this, props));
+    _this.start = _this.start.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.stop = _this.stop.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.animate = _this.animate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(Follow_traj, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var points = 0;
+      var group = new three__WEBPACK_IMPORTED_MODULE_2__["Group"]();
+      var width = this.mount.clientWidth;
+      var height = this.mount.clientHeight;
+      var scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
+      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0xBCBFFF);
+      var camera = new three__WEBPACK_IMPORTED_MODULE_2__["OrthographicCamera"](-width / 2, width / 2, height / 2, -height / 2, -100, 500000);
+      camera.position.set(0, 0, 5);
+      var renderer = new three__WEBPACK_IMPORTED_MODULE_2__["WebGLRenderer"]({
+        antialias: true
+      });
+      renderer.setSize(width, height);
+      var geometry = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](100, 100, 100);
+      var geometry2 = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](80, 80, 80);
+      var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
+        color: 0xffcc66
+      });
+      var cube = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry, material);
+      var material2 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
+        color: 0x4F99FF
+      });
+      var cube2 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry2, material2);
+      cube.position.z = -100;
+      cube2.position.z = 0;
+      scene.add(cube);
+      scene.add(cube2);
+      /*
+      var textureLoader = new THREE.TextureLoader();
+       var mapA = textureLoader.load( "sprite/crosshair.png" );
+      var materialA = new THREE.SpriteMaterial( { map: mapA, color: 0xFFFFFF} );
+      var mapB = textureLoader.load( "sprite/crosshair_yellow.png" );
+      var materialB = new THREE.SpriteMaterial( { map: mapB, color: 0xFFFFFF} );
+      var sprite1 = new THREE.Sprite( materialA );
+      var sprite2 = new THREE.Sprite( materialB );
+       sprite1.position.set( 0, 0, 100 );
+      sprite1.scale.set(100,100,100);
+       group.add(sprite1);
+      scene.add( group );
+      */
+
+      scene.add(camera);
+      this.scene = scene;
+      this.camera = camera;
+      this.renderer = renderer;
+      this.material = material;
+      this.cube = cube;
+      this.cube2 = cube2; //this.group = group
+
+      this.points = points;
+      this.mount.appendChild(this.renderer.domElement);
+      this.start();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.stop();
+      this.mount.removeChild(this.renderer.domElement);
+    }
+  }, {
+    key: "start",
+    value: function start() {
+      if (!this.frameId) {
+        this.frameId = requestAnimationFrame(this.animate);
+      }
+    }
+  }, {
+    key: "stop",
+    value: function stop() {
+      cancelAnimationFrame(this.frameId);
+    }
+  }, {
+    key: "animate",
+    value: function animate() {
+      this.cube.position.x = this.props.xdes;
+      this.cube2.position.x = this.props.x;
+
+      if (this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50) {
+        this.points += 1;
+        console.log(this.points);
+      }
+
+      this.renderScene();
+      this.frameId = window.requestAnimationFrame(this.animate);
+    }
+  }, {
+    key: "renderScene",
+    value: function renderScene() {
+      this.renderer.render(this.scene, this.camera);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          width: '900px',
+          height: '400px'
+        },
+        ref: function ref(mount) {
+          _this2.mount = mount;
+        }
+      });
+    }
+  }]);
+
+  return Follow_traj;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+function mapStateToProps(state) {
+  //map state variables to the component's state 
+  return {
+    x: state.x,
+    xdes: state.xdes
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
+)(Follow_traj));
 
 /***/ }),
 
@@ -2231,7 +2329,7 @@ var initState = {
   socket: null,
   P: 2,
   D: 1,
-  xdes: 200,
+  xdes: 0,
   K: 10,
   B: 0.5,
   M: 0.09,

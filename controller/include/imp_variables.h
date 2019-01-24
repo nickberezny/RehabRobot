@@ -34,7 +34,7 @@
 #define FIR_ORDER_V 10
 #define FIR_ORDER_F 10
 
-#define K_GAIN 0.1 //  [N/mm]
+#define K_GAIN 0.4 //  [N/mm]
 #define M_GAIN 0.001 //  [Ns2/mm]
 #define B_GAIN 0.5 //  [Ns/mm]
 #define V_MAX 200.0 // [mm/s]
