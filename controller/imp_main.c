@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
 			imp[i].P = P_GAIN / 1000.0;
 			imp[i].D = D_GAIN / 1000.0;
 			imp[i].K = K_GAIN;
-			imp[i].B = 0;
+			imp[i].B = B_GAIN;
 			imp[i].M = M_GAIN;
 			imp[i].xdes = X_DES*1000;
 			imp[i].vdes = 0.0;
@@ -445,6 +445,9 @@ void *controller(void * d)
 {
 	if(DEBUG) printf("Thread 1 (controller) initializing ...\n");
 	pthread_mutex_lock(&lock[0]);
+
+	aValues[0] = MOTOR_ZERO; 
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 
     //CONTROL LOOP -------------------------------------------------
 	while(1){
