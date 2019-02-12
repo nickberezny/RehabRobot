@@ -8,17 +8,27 @@
 \BOOKMARK [2][-]{subsection.2.3}{Getting Control Parameters}{section.2}% 8
 \BOOKMARK [2][-]{subsection.2.4}{Discretization}{section.2}% 9
 \BOOKMARK [2][-]{subsection.2.5}{Zeroing the Force Sensor \046 Homing}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.6}{Controller}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.7}{Communication}{section.2}% 12
-\BOOKMARK [1][-]{section.3}{UI Application}{}% 13
-\BOOKMARK [2][-]{subsection.3.1}{Background}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.2}{Installation}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.3}{React}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.4}{Web Sockets}{section.3}% 17
-\BOOKMARK [1][-]{section.4}{UI Server}{}% 18
-\BOOKMARK [2][-]{subsection.4.1}{Outline}{section.4}% 19
-\BOOKMARK [2][-]{subsection.4.2}{Server}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.3}{Communication}{section.4}% 21
-\BOOKMARK [1][-]{section.5}{Controller Folder Organization}{}% 22
-\BOOKMARK [1][-]{section.6}{Server Folder Organization}{}% 23
-\BOOKMARK [1][-]{section.7}{Suggestions for Future Improvements}{}% 24
+\BOOKMARK [2][-]{subsection.2.6}{Thread 1: Controller}{section.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Reading \046 Writing to the DAQ}{subsection.2.6}% 12
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Filtering}{subsection.2.6}% 13
+\BOOKMARK [3][-]{subsubsection.2.6.3}{Trajectory Calculation}{subsection.2.6}% 14
+\BOOKMARK [3][-]{subsubsection.2.6.4}{Admittance Control}{subsection.2.6}% 15
+\BOOKMARK [3][-]{subsubsection.2.6.5}{Maintaining Frequency}{subsection.2.6}% 16
+\BOOKMARK [2][-]{subsection.2.7}{Thread 2: Server}{section.2}% 17
+\BOOKMARK [3][-]{subsubsection.2.7.1}{TCP Socket}{subsection.2.7}% 18
+\BOOKMARK [2][-]{subsection.2.8}{Thread 3: Data Logging}{section.2}% 19
+\BOOKMARK [3][-]{subsubsection.2.8.1}{Data Formatting and Printing}{subsection.2.8}% 20
+\BOOKMARK [3][-]{subsubsection.2.8.2}{Plotting with Python}{subsection.2.8}% 21
+\BOOKMARK [1][-]{section.3}{UI Application}{}% 22
+\BOOKMARK [2][-]{subsection.3.1}{Background}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.2}{Installation}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.3}{React}{section.3}% 25
+\BOOKMARK [2][-]{subsection.3.4}{Web Sockets}{section.3}% 26
+\BOOKMARK [2][-]{subsection.3.5}{Three.js \046 Visuals}{section.3}% 27
+\BOOKMARK [1][-]{section.4}{UI Server}{}% 28
+\BOOKMARK [2][-]{subsection.4.1}{Outline}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.2}{Server}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.3}{Communication}{section.4}% 31
+\BOOKMARK [1][-]{section.5}{Controller Folder Organization}{}% 32
+\BOOKMARK [1][-]{section.6}{Server Folder Organization}{}% 33
+\BOOKMARK [1][-]{section.7}{Suggestions for Future Improvements}{}% 34

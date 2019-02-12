@@ -11,6 +11,14 @@
 		<script src="three.min.js"></script>
 		<script>
 
+			function addHexColor(c1, c2, c3) {
+			  var hexStr = (parseInt(c1, 16) + (c3*parseInt(c2, 16))).toString(16);
+			  while (hexStr.length < 6) { hexStr = '0' + hexStr; } // Zero pad.
+			  return hexStr;
+			}
+
+			var currentColor = 'FF0000'
+
 			var xSpeed = 0;
 			var ySpeed = 5;
 			var maxStroke = 200;
@@ -25,7 +33,7 @@
 			var text_geometry
 
 			var scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0xf7fdff );
+			scene.background = new THREE.Color( 0xBCBFFF );
 
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 			var cameraOrtho = new THREE.OrthographicCamera( - width / 2, width / 2, height / 2, - height / 2, -100, 500000);
@@ -37,55 +45,13 @@
 			document.body.appendChild( renderer.domElement );
 
 			var geometry = new THREE.BoxGeometry( 100, 100, 100 );
-
-			var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
-			var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
-			var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.5 } );
-
-			var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x86a5d6 });
-
-			var plate = new THREE.Mesh( geometry, plateMaterial );
-			var bar = new THREE.Mesh( geometry, barMaterial );
-			var desPos = new THREE.Mesh( geometry, desMaterial );
-
-			var cube = new THREE.Mesh( geometry, cubeMaterial)
-
-			plate.position.set(width/8, 0.0, 0.0);
-			plate.scale.set(1.25, 0.25, 1.0);
-	
-			bar.position.set(width/8, 0.0, -25);
-			bar.scale.set(0.75, 4.0, 1.0);
-
-			desPos.position.set(width/8, 0.0, 50);
-			desPos.scale.set(1.5, 0.5, 1.0);
-
-			cube.position.set( -width/8, 0.0, 0.0);
-
-			var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
-			spotLight1.position.set( -width/3, 200, 200 );
-
-			var spotLight2 = new THREE.SpotLight( 0xffffff, 1 );
-			spotLight2.position.set( -width/3, -200, 200 );
-			spotLight2.rotation.set( -180, 0, 0 );
-
-			//var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
-			//scene.add( directionalLight );
-
-			var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
-			scene.add( light );
-			
-			scene.add(spotLight1)
-			//scene.add(spotLight2)
-
-			group.add( plate );
-			scene.add( bar );
-			scene.add(desPos);
-			scene.add(cube);
+			var material = new THREE.MeshBasicMaterial( { color: 0xffcc66 } );
+			var cube = new THREE.Mesh( geometry, material );
+			cube.position.z = 0;
+			scene.add( cube );
 
 			var loader = new THREE.FontLoader();
 
-
-			/*
 			var textureLoader = new THREE.TextureLoader();
 
 			var mapA = textureLoader.load( "sprite/crosshair.png" );
@@ -95,30 +61,18 @@
 			var sprite1 = new THREE.Sprite( materialA );
 			var sprite2 = new THREE.Sprite( materialB );
 
+			var colors = [0xFF0000, 0xFFFF00, 0x00FF00]
+
 			sprite1.position.set( 0, 0, 100 );
 			sprite1.scale.set(100,100,100);
 
 			group.add(sprite1);
-
-			//scene.add( sprite1 );
-			*/
-
-
+			
 			scene.add( group );
+			//scene.add( sprite1 );
+
 			scene.add( cameraOrtho );
 			//camera.position.z = 10;
-
-			var text2 = document.createElement('div');
-			text2.style.position = 'absolute';
-			//text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
-			text2.style.width = 100;
-			text2.style.height = 100;
-			text2.style.fontSize = 25;
-			//text2.style.backgroundColor = "blue";
-			text2.innerHTML = "Points: ";
-			text2.style.top = height/1.2 + 'px';
-			text2.style.left = width/2.1 + 'px';
-			document.body.appendChild(text2);
 
 			document.addEventListener("keydown", onDocumentKeyDown, false);
 			function onDocumentKeyDown(event) {
@@ -139,9 +93,17 @@
 			var animate = function () {
 
 				requestAnimationFrame( animate );
-				if (Math.abs(desPos.position.y) > maxStroke) {
+				if (cube.position.y > maxStroke || cube.position.y <= -0.1) {
 					dir = -dir;
+					
 				}
+
+				currentColor = addHexColor(currentColor, '000500', dir);
+				if(currentColor == '00FF00')
+				{
+
+				}
+				cube.material.color.setHex( '0x'+currentColor)
 
 				if(init == 1) { 
 					scene.remove( text ) 
@@ -160,22 +122,12 @@
 
 				} ); */
 
-				desPos.position.y += 0.5*dir*ySpeed;
-				if(group.position.y > desPos.position.y - 30 && group.position.y < desPos.position.y + 30){
+				cube.scale.y += 0.02*dir*ySpeed;
+				cube.position.y += dir*ySpeed
+				if(group.position.y > cube.position.y - 50 && group.position.y < cube.position.y + 50){
 					points += 1;
-					desPos.material.color.setHex(0x7fffa3)
-
-					var html_text = "Points: " + points;
-					text2.innerHTML = html_text
-
-					cube.rotation.x += 0.008;
-					cube.rotation.y += 0.008;
-					cube.rotation.z += 0.008;
 					//console.log(points);
-				}else{
-					desPos.material.color.setHex(0xff7272)
 				}
-
 				renderer.render( scene, cameraOrtho );
 			};
 

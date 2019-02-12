@@ -38,52 +38,28 @@
 
 			var geometry = new THREE.BoxGeometry( 100, 100, 100 );
 
-			var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
+			var cubeMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
 			var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
 			var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.5 } );
 
-			var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x86a5d6 });
-
-			var plate = new THREE.Mesh( geometry, plateMaterial );
+			var cube = new THREE.Mesh( geometry, cubeMaterial );
 			var bar = new THREE.Mesh( geometry, barMaterial );
 			var desPos = new THREE.Mesh( geometry, desMaterial );
 
-			var cube = new THREE.Mesh( geometry, cubeMaterial)
-
-			plate.position.set(width/8, 0.0, 0.0);
-			plate.scale.set(1.25, 0.25, 1.0);
+			cube.position.z = 0;
+			cube.scale.set(1.25, 0.25, 1.0)
 	
-			bar.position.set(width/8, 0.0, -25);
-			bar.scale.set(0.75, 4.0, 1.0);
+			bar.position.z = -25;
+			bar.scale.set(0.75, 4.0, 1.0)
 
-			desPos.position.set(width/8, 0.0, 50);
-			desPos.scale.set(1.5, 0.5, 1.0);
+			desPos.scale.set(1.5, 0.5, 1.0)
+			desPos.position.z = 50
 
-			cube.position.set( -width/8, 0.0, 0.0);
-
-			var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
-			spotLight1.position.set( -width/3, 200, 200 );
-
-			var spotLight2 = new THREE.SpotLight( 0xffffff, 1 );
-			spotLight2.position.set( -width/3, -200, 200 );
-			spotLight2.rotation.set( -180, 0, 0 );
-
-			//var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
-			//scene.add( directionalLight );
-
-			var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
-			scene.add( light );
-			
-			scene.add(spotLight1)
-			//scene.add(spotLight2)
-
-			group.add( plate );
+			group.add( cube );
 			scene.add( bar );
 			scene.add(desPos);
-			scene.add(cube);
 
 			var loader = new THREE.FontLoader();
-
 
 			/*
 			var textureLoader = new THREE.TextureLoader();
@@ -99,26 +75,13 @@
 			sprite1.scale.set(100,100,100);
 
 			group.add(sprite1);
-
+			
+			
 			//scene.add( sprite1 );
 			*/
-
-
 			scene.add( group );
 			scene.add( cameraOrtho );
 			//camera.position.z = 10;
-
-			var text2 = document.createElement('div');
-			text2.style.position = 'absolute';
-			//text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
-			text2.style.width = 100;
-			text2.style.height = 100;
-			text2.style.fontSize = 25;
-			//text2.style.backgroundColor = "blue";
-			text2.innerHTML = "Points: ";
-			text2.style.top = height/1.2 + 'px';
-			text2.style.left = width/2.1 + 'px';
-			document.body.appendChild(text2);
 
 			document.addEventListener("keydown", onDocumentKeyDown, false);
 			function onDocumentKeyDown(event) {
@@ -164,13 +127,6 @@
 				if(group.position.y > desPos.position.y - 30 && group.position.y < desPos.position.y + 30){
 					points += 1;
 					desPos.material.color.setHex(0x7fffa3)
-
-					var html_text = "Points: " + points;
-					text2.innerHTML = html_text
-
-					cube.rotation.x += 0.008;
-					cube.rotation.y += 0.008;
-					cube.rotation.z += 0.008;
 					//console.log(points);
 				}else{
 					desPos.material.color.setHex(0xff7272)

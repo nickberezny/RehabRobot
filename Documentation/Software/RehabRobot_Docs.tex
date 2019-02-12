@@ -119,11 +119,21 @@
 	
 	Next, the force sensor is zeroed. A series of readings are taken. It is important that no force be applied to the sensor during this process. The average of these readings is saved as the variable FT\_OFFSET, which is used to calibrate all raw sensor readings throughout the robots operation.
 	
-	\subsection{Controller}
+	\subsection{Thread 1: Controller}
 	
+	\subsubsection{Reading \& Writing to the DAQ}
+	\subsubsection{Filtering}
+	\subsubsection{Trajectory Calculation}
+	\subsubsection{Admittance Control}
+	\subsubsection{Maintaining Frequency}
 	
+
+	\subsection{Thread 2: Server}
+	\subsubsection{TCP Socket}
 	
-	\subsection{Communication}
+	\subsection{Thread 3: Data Logging}
+	\subsubsection{Data Formatting and Printing}
+	\subsubsection{Plotting with Python}
 
 \section{UI Application}
 	\subsection{Background}
@@ -135,13 +145,13 @@
 	In addition to React, the UI uses the following tools or frameworks: 
 	
 	\begin{itemize}
-		\item \textbf{Node.js} as the base JS runtime environment \href{https://nodejs.org/en/}{site}
-		\item \textbf{Redux} for state management \href{https://redux.js.org/}{site}
-		\item \textbf{Express} for the server framework \href{https://expressjs.com/}{site}
-		\item \textbf{Next} for server-side rendering \href{https://nextjs.org/}{site}
-		\item \textbf{Material-UI}, a UI component library based on Google's Material Design philosophy \href{https://material-ui.com/}{site}
-		\item \textbf{Socket.io} for websocket communication \href{https://socket.io/}{site}
-		\item \textbf{three.js} as the 3D graphics library \href{https://threejs.org/}{site}
+		\item \textbf{Node.js} as the base JS runtime environment (\href{https://nodejs.org/en/}{site})
+		\item \textbf{Redux} for state management (\href{https://redux.js.org/}{site})
+		\item \textbf{Express} for the server framework (\href{https://expressjs.com/}{site})
+		\item \textbf{Next} for server-side rendering (\href{https://nextjs.org/}{site})
+		\item \textbf{Material-UI}, a UI component library based on Google's Material Design philosophy (\href{https://material-ui.com/}{site})
+		\item \textbf{Socket.io} for websocket communication (\href{https://socket.io/}{site})
+		\item \textbf{Three.js} as the 3D graphics library (\href{https://threejs.org/}{site})
 	\end{itemize}
 	
 	\subsection{Installation}
@@ -155,6 +165,11 @@
 	
 	\subsection{React}
 	\subsection{Web Sockets}
+	
+	\subsection{Three.js \& Visuals}
+	\subsubsection{Scene Setup}
+	\subsubsection{Rendering}
+	\subsubsection{Games}
 	
 \section{UI Server}
 	\subsection{Outline}
