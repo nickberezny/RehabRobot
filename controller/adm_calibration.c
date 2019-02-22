@@ -22,10 +22,10 @@
 
 #include <LabJackM.h> 
 
-#include "include/imp_structures.h"
+#include "include/adm_structures.h"
 #include "include/LJM_Utilities.h"
 
-#include "include/imp_variables.h"
+#include "include/adm_variables.h"
 
 
 int adm_calibration(struct amd_struct * adm)

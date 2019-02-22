@@ -22,10 +22,10 @@
 
 #include <LabJackM.h> 
 
-#include "include/imp_structures.h"
+#include "include/adm_structures.h"
 #include "include/LJM_Utilities.h"
 
-#include "include/imp_variables.h"
+#include "include/adm_variables.h"
 
 #define DEBUG 1 //will print updates
 #define CONNECT_TO_UI 1
@@ -121,18 +121,18 @@ void *controller(void * d)
 			//TODO : check IR
 			if(imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = MAX_COMMAND;
 			if((-1)*imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = (-1)*MAX_COMMAND;
-			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD + imp_cont->cmd;
-			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD + imp_cont->cmd;
+			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD - imp_cont->cmd;
+			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD - imp_cont->cmd;
 			if(imp_cont->cmd == 0) imp_cont->cmd += MOTOR_ZERO;
 
 			if(imp_cont->LSF[1] )
 			{
-			  	if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO; 
+			  	if(imp_cont->cmd < MOTOR_ZERO) imp_cont->cmd = MOTOR_ZERO; 
 			  	direction = -1.0;		
 			}
 			if(imp_cont->LSB[1])  
 			{
-				if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO;  
+				if(imp_cont->cmd < MOTOR_ZERO) imp_cont->cmd = MOTOR_ZERO;  
 				direction = 1.0;
 			}
 			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 

@@ -19,8 +19,8 @@
 //Conversion
 #define ENC_TO_MM 0.00115
 #define MOTOR_ZERO 2.35 //zero movement from motor
-#define MOTOR_ZERO_BWD 2.325  //forward and backwards deadzone limits
-#define MOTOR_ZERO_FWD 2.43 
+#define MOTOR_ZERO_FWD 2.325  //forward and backwards deadzone limits
+#define MOTOR_ZERO_BWD 2.43 
 //#define FT_GAIN 43.0 //lbs
 #define FT_GAIN 100
 //#define FT_GAIN 7.64 //N
