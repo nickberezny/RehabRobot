@@ -374,7 +374,7 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSB[0] == 0)
     {
-    	aValues[0] = MOTOR_ZERO_BWD - 0.02; 
+    	aValues[0] = MOTOR_ZERO_BWD + 0.02; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSB[0] = aValues[3];
     	//printf("Enc: %.3f\n", ENC_TO_MM*(double)aValues[4]);
@@ -492,18 +492,18 @@ void *controller(void * d)
 			//TODO : check IR
 			if(imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = MAX_COMMAND;
 			if((-1)*imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = (-1)*MAX_COMMAND;
-			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD + imp_cont->cmd;
-			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD + imp_cont->cmd;
-			if(imp_cont->cmd == 0) imp_cont->cmd += MOTOR_ZERO;
+			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD - imp_cont->cmd;
+			if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO_BWD - imp_cont->cmd;
+			if(imp_cont->cmd == 0) imp_cont->cmd = MOTOR_ZERO;
 
 			if(imp_cont->LSF[1] )
 			{
-			  	if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO; 
+			  	if(imp_cont->cmd < MOTOR_ZERO) imp_cont->cmd = MOTOR_ZERO; 
 			  	direction = -1.0;		
 			}
 			if(imp_cont->LSB[1])  
 			{
-				if(imp_cont->cmd < 0) imp_cont->cmd = MOTOR_ZERO;  
+				if(imp_cont->cmd > MOTOR_ZERO) imp_cont->cmd = MOTOR_ZERO;  
 				direction = 1.0;
 			}
 			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
