@@ -28,7 +28,7 @@
 #include "include/imp_variables.h"
 
 #define DEBUG 1 //will print updates
-#define CONNECT_TO_UI 1
+#define CONNECT_TO_UI 0
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
 
@@ -330,6 +330,8 @@ int main(int argc, char* argv[]) {
 			imp[i].fp = imp[0].fp;
 			imp[i].vmax = V_MAX;
 			imp[i].F_Gain = F_GAIN;
+
+			imp[i].xa = X_DES*1000;
 					
 		}
 
@@ -374,11 +376,11 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSB[0] == 0)
     {
-    	aValues[0] = MOTOR_ZERO_BWD + 0.02; 
+    	aValues[0] = MOTOR_ZERO_BWD + 0.02;
+    	//aValues[0] = MOTOR_ZERO_FWD; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSB[0] = aValues[3];
     	//printf("Enc: %.3f\n", ENC_TO_MM*(double)aValues[4]);
-
     }
 
     aValues[0] = MOTOR_ZERO; 
@@ -444,6 +446,8 @@ void *controller(void * d)
 {
 	if(DEBUG) printf("Thread 1 (controller) initializing ...\n");
 	pthread_mutex_lock(&lock[0]);
+
+	xa = X_DES*1000;
 
 	aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
