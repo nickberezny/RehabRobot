@@ -28,7 +28,7 @@
 #include "include/imp_variables.h"
 
 #define DEBUG 1 //will print updates
-#define CONNECT_TO_UI 0
+#define CONNECT_TO_UI 1
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
 

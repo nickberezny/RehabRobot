@@ -14,8 +14,6 @@ class VisualsPage extends React.Component {
 	    }
 	}
 
-
-
 	render() {
 
 		switch(this.props.game) {
@@ -30,6 +28,7 @@ class VisualsPage extends React.Component {
 				break; 
 			default: 
 				<div> Game load failed </div>
+			}
 
 		return (
 

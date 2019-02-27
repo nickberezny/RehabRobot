@@ -84,8 +84,7 @@ class Follow_traj extends Component {
 
     this.group = group;
     this.points = points
-    this.direction = direction; 
-
+    
     this.mount.appendChild(this.renderer.domElement)
     this.start()
   }

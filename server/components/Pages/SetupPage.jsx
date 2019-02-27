@@ -5,7 +5,7 @@ import {runRobot} from '../../src/actions'
 import SetButton from '../Generic/SetButton'
 import RunButton from '../Generic/RunButton'
 import InputText from '../Generic/InputText'
-import Dropdwon from '../Generic/Dropdown'
+import Dropdown from '../Generic/Dropdown'
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -30,7 +30,7 @@ class SetupPage extends React.Component {
 		      		<InputText text="Admittance K" textValue={this.props.K} paramName='K' />
 		      		<InputText text="Admittance B" textValue={this.props.B} paramName='B' />
 		      		<InputText text="Admittance M" textValue={this.props.M} paramName='M' />
-		      		<Dropdown text="Select Game" select1="Follow Trajectory" select2 = "Racing" select3 = "Balance" />
+		      		<Dropdown text="Game" select1="Follow Trajectory" select2 = "Racing" select3 = "Balance" />
 		      	</div>
 		      	
 		      	<div style={{padding: 12}}>
