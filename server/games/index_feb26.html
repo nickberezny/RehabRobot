@@ -1,0 +1,188 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<div id="point_div"></div>
+		<script src="three.min.js"></script>
+		<script>
+
+			var xSpeed = 0;
+			var ySpeed = 5;
+			var maxStroke = 200;
+			var dir = 1*0.5;
+			var text;
+			var points = 0;
+			var init = 0;
+
+			var width = window.innerWidth;
+			var height = window.innerHeight;
+
+			var text_geometry
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 0xf7fdff );
+
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+			var cameraOrtho = new THREE.OrthographicCamera( - width / 2, width / 2, height / 2, - height / 2, -100, 500000);
+			cameraOrtho.position.set( 0,0,5);
+			group = new THREE.Group();
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.BoxGeometry( 100, 100, 100 );
+
+			var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
+			var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
+			var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.5 } );
+
+			var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x86a5d6 });
+
+			var plate = new THREE.Mesh( geometry, plateMaterial );
+			var bar = new THREE.Mesh( geometry, barMaterial );
+			var desPos = new THREE.Mesh( geometry, desMaterial );
+
+			var cube = new THREE.Mesh( geometry, cubeMaterial)
+
+			plate.position.set(width/8, 0.0, 0.0);
+			plate.scale.set(1.25, 0.25, 1.0);
+	
+			bar.position.set(width/8, 0.0, -25);
+			bar.scale.set(0.75, 4.0, 1.0);
+
+			desPos.position.set(width/8, 0.0, 50);
+			desPos.scale.set(1.5, 0.5, 1.0);
+
+			cube.position.set( -width/8, 0.0, 0.0);
+
+			var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
+			spotLight1.position.set( -width/3, 200, 200 );
+
+			var spotLight2 = new THREE.SpotLight( 0xffffff, 1 );
+			spotLight2.position.set( -width/3, -200, 200 );
+			spotLight2.rotation.set( -180, 0, 0 );
+
+			//var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
+			//scene.add( directionalLight );
+
+			var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
+			scene.add( light );
+			
+			scene.add(spotLight1)
+			//scene.add(spotLight2)
+
+			group.add( plate );
+			scene.add( bar );
+			scene.add(desPos);
+			scene.add(cube);
+
+			var loader = new THREE.FontLoader();
+
+
+			/*
+			var textureLoader = new THREE.TextureLoader();
+
+			var mapA = textureLoader.load( "sprite/crosshair.png" );
+			var materialA = new THREE.SpriteMaterial( { map: mapA, color: 0xFFFFFF} );
+			var mapB = textureLoader.load( "sprite/crosshair_yellow.png" );
+			var materialB = new THREE.SpriteMaterial( { map: mapB, color: 0xFFFFFF} );
+			var sprite1 = new THREE.Sprite( materialA );
+			var sprite2 = new THREE.Sprite( materialB );
+
+			sprite1.position.set( 0, 0, 100 );
+			sprite1.scale.set(100,100,100);
+
+			group.add(sprite1);
+
+			//scene.add( sprite1 );
+			*/
+
+
+			scene.add( group );
+			scene.add( cameraOrtho );
+			//camera.position.z = 10;
+
+			var text2 = document.createElement('div');
+			text2.style.position = 'absolute';
+			//text2.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
+			text2.style.width = 100;
+			text2.style.height = 100;
+			text2.style.fontSize = 25;
+			//text2.style.backgroundColor = "blue";
+			text2.innerHTML = "Points: ";
+			text2.style.top = height/1.2 + 'px';
+			text2.style.left = width/2.1 + 'px';
+			document.body.appendChild(text2);
+
+			document.addEventListener("keydown", onDocumentKeyDown, false);
+			function onDocumentKeyDown(event) {
+			    var keyCode = event.which;
+			    if (keyCode == 87) {
+			        group.position.y += ySpeed;
+			    } else if (keyCode == 83) {
+			        group.position.y -= ySpeed;
+			    } else if (keyCode == 65) {
+			        group.position.x -= xSpeed;
+			    } else if (keyCode == 68) {
+			        group.position.x += xSpeed;
+			    } else if (keyCode == 32) {
+			        group.position.set(0, 0, 0);
+			    }
+			};
+
+			var animate = function () {
+
+				requestAnimationFrame( animate );
+				if (Math.abs(desPos.position.y) > maxStroke) {
+					dir = -dir;
+				}
+
+				if(init == 1) { 
+					scene.remove( text ) 
+					console.log('check')
+				}
+				init = 1;
+
+				/* loader.load( 'sprite/helvetiker_regular.typeface.json', function ( font ) {
+
+					var message = 'Points: ' + points
+					var shapes = font.generateShapes( message, 25 );
+					var geometry = new THREE.ShapeBufferGeometry( shapes );
+					text = new THREE.Mesh( geometry, material );
+					text.position.set(width/2 - 200, - height/2 + 100, 0)
+					scene.add( text );
+
+				} ); */
+
+				desPos.position.y += 0.5*dir*ySpeed;
+				if(group.position.y > desPos.position.y - 30 && group.position.y < desPos.position.y + 30){
+					points += 1;
+					desPos.material.color.setHex(0x7fffa3)
+
+					var html_text = "Points: " + points;
+					text2.innerHTML = html_text
+
+					cube.rotation.x += 0.008;
+					cube.rotation.y += 0.008;
+					cube.rotation.z += 0.008;
+					//console.log(points);
+				}else{
+					desPos.material.color.setHex(0xff7272)
+				}
+
+				renderer.render( scene, cameraOrtho );
+			};
+
+			
+
+			animate();
+		</script>
+	</body>
+</html>
+		

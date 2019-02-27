@@ -88,6 +88,11 @@ void *controller(void * d)
 			imp_cont->start_time = temp_time;
 
 			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
+
+			//toggle watchdog output at each step
+			if(aWrites[5] == 0.0) aWrites[5] = 5.0;
+			else aWrites[5] = 0.0;
+
 			//Read & Write to DAQ ---------------------------------------
 			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 				

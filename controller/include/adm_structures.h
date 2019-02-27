@@ -18,10 +18,10 @@ struct socket_data {
 
 struct daq_data {
 	int daqHandle;
-	double aValues[5] = {0};
-	const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2_EF_READ_A_F_AND_RESET"};
-	int aNumValues[5] = {1,1,1,1,1};
-	int aWrites[5] = {1,0,0,0,0};
+	double aValues[6] = {0};
+	const char * aNames[5] = {"DAC0", "AIN0","FIO0", "FIO1", "DIO2_EF_READ_A_F_AND_RESET", "DAC1"};
+	int aNumValues[6] = {1,1,1,1,1,1};
+	int aWrites[6] = {1,0,0,0,0,1};
 	int errorAddress = 0;
 }
 
