@@ -57,7 +57,7 @@ int adm_main(int argc, char* argv[])
 	if(adm_home(adm) != 0) 			exit(EXIT_FAILURE);
 	if(adm_calibration(adm) != 0) 	exit(EXIT_FAILURE);
 	if(adm_run(adm) != 0) 			exit(EXIT_FAILURE);
-	if(adm_shutdown(adm) != 0) 		exit(EXIT_FAILURE);
+	if(adm_shutdown(adm) != 0) 		exit(EXIT_FAILURE); //run python script 
 
 	return 0;
 

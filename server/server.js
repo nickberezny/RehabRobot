@@ -31,6 +31,9 @@ if(TEST) {
   })
 
   client.on('data', function(data){
+
+    //add conditionals here
+
     io.emit('message', data.toString())
     //console.log(data.toString())
   });
