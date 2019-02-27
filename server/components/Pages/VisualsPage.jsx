@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Basic from '../../games/basic'
 import BarGame from '../../games/bar_with_game'
 import Follow_traj from '../../games/follow_traj'
+import RaceGame from '../../games/race_game'
 
 class VisualsPage extends React.Component {
 
@@ -21,7 +22,7 @@ class VisualsPage extends React.Component {
 				this.state.content = <BarGame />
 				break; 
 			case 2: 
-				this.state.content = <Basic />
+				this.state.content = <RaceGame />
 				break; 
 			case 3: 
 				this.state.content = <Follow_traj />

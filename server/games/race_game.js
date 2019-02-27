@@ -171,26 +171,26 @@ class Follow_traj extends Component {
 
   if(Math.abs(this.character.position.y) >= 100 )
       {
-        this.theta1 += race_speed1/90.0;
+        this.theta1 += this.race_speed1/90.0;
       }
       else{
         this.theta1 = 0.0;
       }
       if(Math.abs(this.other.position.y) >= 100 )
       {
-        this.theta2 += race_speed2/90.0;
+        this.theta2 += this.race_speed2/90.0;
       }else{
         this.theta2 = 0.0;
       }
       if(Math.abs(this.other2.position.y) >= 100 )
       {
-        this.theta3 += race_speed3/90.0;
+        this.theta3 += this.race_speed3/90.0;
       }else{
         this.theta3 = 0.0;
       }
-      move_object(this.character, this.theta1, 80.0, race_speed1);
-      move_object(this.other, this.theta2, 90.0, race_speed2);
-      move_object(this.other2, this.theta3, 70.0, race_speed3);
+      this.move_object(this.character, this.theta1, 80.0, this.race_speed1);
+      this.move_object(this.other, this.theta2, 90.0, this.race_speed2);
+      this.move_object(this.other2, this.theta3, 70.0, this.race_speed3);
 
       this.camera.position.x = this.character.position.x;
       this.camera.position.y = this.character.position.y - 40.0;
