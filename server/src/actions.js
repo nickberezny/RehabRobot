@@ -9,6 +9,7 @@ export const SET_PARAM = 'SET_PARAM'
 export const RUN_ROBOT = 'RUN_ROBOT'
 export const SET_SOCKET = 'SET_SOCKET'
 export const SET_USER = 'SET_USER'
+export const SET_GAME = 'SET_GAME'
 
 
 /*
@@ -50,4 +51,8 @@ export function setSocket(socket) {
 
 export function setUser(value) {
   return { type: SET_USER, value }
+}
+
+export function setGame(game) {
+  return { type: SET_GAME, game}
 }
