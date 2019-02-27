@@ -135,6 +135,39 @@
 	\subsubsection{Data Formatting and Printing}
 	\subsubsection{Plotting with Python}
 
+\section{UI Server}
+	\subsection{Outline}
+
+	The purpose of the Node.js server is twofold: to serve the web application to the UI device either locally or over a local network, and to handle communication between the real time controller and the UI. The server consists of a single file, which is located at server/server.js. The following libraries/tools are used:
+	
+	\begin{itemize}
+		\item \textbf{Node.js} as the base JS runtime environment (\href{https://nodejs.org/en/}{site})
+		\item \textbf{Express} for the server framework (\href{https://expressjs.com/}{site})
+		\item \textbf{Next} for server-side rendering (\href{https://nextjs.org/}{site})
+		\item \textbf{Socket.io} for websocket communication (\href{https://socket.io/}{site})
+	\end{itemize}
+		
+	\subsection{HTTP Server}
+
+	The UI application is served using Node.js, using both Next.js (server-side rendering) and Express.js. First, Next renders the app into a static website, using Webpack among other tools. Express then servers this over a local network through the connected router. The relevant code can be found at the bottom of the server file: 
+	
+	\begin{verbatim}
+	nextApp.prepare().then(() => {
+ 	 app.get('*', (req, res) => {
+	    return nextHandler(req, res)
+	  })
+	  server.listen(ui_port, (err) => {
+	    if (err) throw err
+	    console.log('> Ready on http://localhost:3000')
+	  })
+	})
+	\end{verbatim}
+		
+	
+	\subsection{Communication}
+	
+	Communication is routed through the server from the controller to the UI, and vice versa. Communication with the controller is handled by a TCP Socket, whereas communication to the UI is handled by a websocket created with Socket.io. 
+	
 \section{UI Application}
 	\subsection{Background}
 	
@@ -147,10 +180,8 @@
 	\begin{itemize}
 		\item \textbf{Node.js} as the base JS runtime environment (\href{https://nodejs.org/en/}{site})
 		\item \textbf{Redux} for state management (\href{https://redux.js.org/}{site})
-		\item \textbf{Express} for the server framework (\href{https://expressjs.com/}{site})
 		\item \textbf{Next} for server-side rendering (\href{https://nextjs.org/}{site})
 		\item \textbf{Material-UI}, a UI component library based on Google's Material Design philosophy (\href{https://material-ui.com/}{site})
-		\item \textbf{Socket.io} for websocket communication (\href{https://socket.io/}{site})
 		\item \textbf{Three.js} as the 3D graphics library (\href{https://threejs.org/}{site})
 	\end{itemize}
 	
@@ -164,23 +195,75 @@
 	\end{verbatim}
 	
 	\subsection{React}
-	\subsection{Web Sockets}
 	
 	\subsection{Three.js \& Visuals}
-	\subsubsection{Scene Setup}
-	\subsubsection{Rendering}
-	\subsubsection{Games}
 	
-\section{UI Server}
-	\subsection{Outline}
-	\subsection{Server}
-	\subsection{Communication}
+	Three.js is a javascript library for the creation of 3D graphics for the web. It is used in the UI to create visuals and games related to the therapeutic motions to increase user engagement.
+	
+		\subsubsection{Scene Setup in React}
+			
+			Setting up the scene within React components differs from the standard Three.js tutorials. Firstly, the scene is created in the componentDidMount() function. Any object or which does not remain static in the scene must be stored in the component's state. 
+	All scenes must contain some fundamental objects:
+	\begin{itemize}
+		\item Scene
+		\item Camera
+		\item Renderer 
+	\end{itemize}
+	First, create the scene:
+	
+	\begin{verbatim}
+	var scene = new THREE.Scene()
+	\end{verbatim}
+	
+	Next, create the renderer and the camera. The following code is an example -- more options are available and can be found online in the Three.js documentation. 
+	
+	\begin{verbatim}
+	var camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 800 );
+	scene.add( camera );
+	
+	const renderer = new THREE.WebGLRenderer({ antialias: true })
+	renderer.setSize(width, height)
+	\end{verbatim}	
+	
+	Some objects have positions and orientations which can be changed, for example the position of the camera can be set as follows:
+	
+	\begin{verbatim}
+	camera.position.set( -95,-50,30);
+	camera.rotation.set(1.5,0.0,0.0);
+	\end{verbatim}			
+	
+	Next, you create the 3D objects in your scene. Three.js provides certain geometries, like spheres, discs, planes, and blocks. For more complex objects, you will likely need to import a 3D model made from an external program (see, for example, \href{https://www.blender.org/}{Blender}). These objects also have materials, which can be single colours or more complex textures. For example, the following code creates a blue cube with a side length of 100 at the origin.  
+	
+	\begin{verbatim}
+	var material = new THREE.MeshBasicMaterial( { color: 0x0036FF} );
+	var geometry = new THREE.BoxGeometry( 100, 100, 100 );
+	var cube = new THREE.Mesh( geometry, material );
+	cube.position.set(0, 0, 0);
+	scene.add(cube);
+	\end{verbatim}
+	
+	The final step is to add all non-static objects to the state of the component. This includes the scene, renderer, the camera, and any objects that will move or interact during the game. 
+	
+	\begin{verbatim}
+	this.scene = scene
+	this.camera = camera
+	this.renderer = renderer
+	this.cube = cube
+	\end{verbatim}
+	
+		\subsubsection{Animating the Scene}
+	
+
 
 \section{Controller Folder Organization}
 \section{Server Folder Organization}
 
 \section{Suggestions for Future Improvements}
-		
+	\begin{itemize}
+		\item Security
+		\item Handling multiple connections to the http server
+		\item Improve games
+	\end{itemize}
 
 
 \end{document}
