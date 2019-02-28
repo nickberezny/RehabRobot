@@ -93,10 +93,10 @@ class Follow_traj extends Component {
 
   animate() {
 
-    this.cube.position.x = this.props.xdes 
-    this.cube2.position.x = this.props.x 
+    this.cube.position.x = this.props.xdes / 40.0
+    this.cube2.position.x = this.props.x / 40.0
 
-    if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
+    if(this.cube2.position.x > this.cube.position.x - 1000 && this.cube2.position.x < this.cube.position.x + 1000){
       this.points += 1;
       console.log(this.points);
     }

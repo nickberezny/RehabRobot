@@ -1,3 +1,4 @@
+import sys
 import csv
 import math
 import matplotlib.pyplot as plt
@@ -11,7 +12,8 @@ time = ""
 freq = ""
 
 #read data csv 
-with open('Fri_Feb_22_09-58-22_2019_data.txt', 'r') as csvfile:
+#with open('Fri_Feb_22_09-58-22_2019_data.txt', 'r') as csvfile:
+with open(str(sys.argv[1]), 'r') as csvfile: #open file given as cmd line argument
 	data = csv.reader(csvfile, delimiter=',', quotechar='|')
 	
 	time = next(data) #read time (first line)
