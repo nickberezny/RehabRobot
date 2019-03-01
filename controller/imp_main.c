@@ -153,8 +153,9 @@ int main(int argc, char* argv[]) {
 	//printf("%s\n", data_file_name);
 	const char file_ext[] = "data.txt";
 	char folder[1000] = "data/";
-	strcat(data_file_name, file_ext);
-	strcat(folder, data_file_name);
+	//strcat(data_file_name, file_ext);
+	//strcat(folder, data_file_name);
+	strcat(folder, file_ext);
 
 	for(int i; i < strlen(folder) - 1; i++)
 	{
@@ -432,10 +433,12 @@ int main(int argc, char* argv[]) {
 	shutdown(connfd, 2);
     if(DEBUG) printf("Finished, terminating program... \n");
 
-    char data_command[] = "gnome-terminal --working-directory=Documents/RehabRobot/controller/data -e 'sudo python data_test_plot.py ";
+    char data_command[] = "gnome-terminal --working-directory=Documents/RehabRobot/controller/data -e 'sudo python data_test_plot.py data.txt";
     char apostrophe[] = "'";
-    strcat(data_command, data_file_name);
+    //strcat(data_command, data_file_name);
     strcat(data_command, apostrophe);
+
+    printf("%s\n", data_command);
 
     system(data_command); //automatically run python plotting script on data
 
