@@ -22,11 +22,13 @@ struct impStruct {
 	//admittance control parameters 
 	double xk, vk, fk;
 	double fdes, xdes, vdes;
+	double xmax, vmax, fmax;
 	double xa, va;
 	double P, D;
 	double *Ad, *Bd;
 	double K, B, M;
 	double cmd;
+	int game; 
 	struct timespec start_time;
 	struct timespec end_time;
 	struct timespec wait_time;
@@ -58,6 +60,9 @@ struct regexMatch {
 	char *K;
 	char *B;
 	char *M;
+	char *xmax;
+	char *vmax;
+	char *game;
 };
 
 
@@ -92,3 +97,5 @@ void imp_calc_Bd(double Ad[2][2], double A[2][2], double B[2], double Bd[2]);
 
 void imp_regex_match(regex_t * compiled, char recvBuff[1024], regmatch_t matches[2], 
 	char matchBuffer[100],  struct regexMatch * regex, double * param_loc );
+
+void imp_Haptics_impedance(struct impStruct * imp);

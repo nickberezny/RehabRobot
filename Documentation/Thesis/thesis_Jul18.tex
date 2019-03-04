@@ -1,16 +1,20 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 \author{Nicholas Berezny}
 \title{Thesis Outline}
 \usepackage{cite}
 \usepackage{fullpage}
 \usepackage{gensymb}
+\usepackage{}
 \renewcommand{\baselinestretch}{1.5} 
+
+\usepackage{amsmath}
 
 \begin{document}
 \maketitle
 \newpage
 
-\section{Literature Review and Preliminary Research}
+\chapter{Literature Review and Preliminary Research}
+\section{Test}
 
 	\subsection{Introduction}
 
@@ -169,7 +173,7 @@ We set out to design a simple lower-limb rehabilitation for acute, bed-bound str
 
 		
 	
-	\subsection{Impedance Controller}
+	\subsection{Impedance \& Admittance Controller}
 
 %------------------------------------------------------------------------
 %-Explain force control
@@ -178,6 +182,66 @@ We set out to design a simple lower-limb rehabilitation for acute, bed-bound str
 %
 %-------------------------------------------------------------------------	
 
+When controlling a robot which is interacting with an unknown environment, force and position control online may behave unpredictable or even become unstable. Instead, the relation between force and velocity (\textit{i.e.} the impedance) ...
+
+
+Impedance control accepts a velocity and renders a force. Fundamentally, impedance control can be described by the following equation, where $F$ is the force control input, $Z$ is the desired impedance, and $V_R$ is the 'flow' variable vectors (e.g. position and velocity) :
+
+\begin{equation}
+	F = ZV_R 
+\end{equation} 
+
+It is common to characterize the desired impedance in terms of a mass, spring and damper system with parameters $m$, $b$, and $k$, respectively. Furthermore, a desired position can also be integrated into the equation by changing the reference point of the spring. 
+
+\begin{equation}
+	F = m\ddot{x} + b\dot{x} + k(x - x_{des})
+\end{equation} 
+
+Using this control law, the end effector of the robot will behave like the system above, about point $x_{des}$, when displaced by the external environment. If, for example, an operator physical moved the robot, it would respond as if it were the mass-spring-damper system, \textit{i.e.} it would apply a resistive force related to the extent to which it was displaced. 
+	This control law rests on a significant assumption -- that the robot itself has no inherent impedance between the actuator and the the end-effector. This is an idealization - there will also be some level of friction, mass, or other impeding factors in the motor, gears, links, etc. Therefore, impedance control should only be considered for robots made of low impedance components, such as belt drives and direct-drives. 
+	
+	Admittance control is essentially the inverse of impedance control, in that it accepts an external force and then renders a corresponding displacement. Fundamentally, admittance control can be described by the following equation, where $F_R$ is the force applied to the robot, $Y$ is the desired admittance, and $V$ is the 'flow' variable vectors (e.g. position and velocity) :
+	
+	\begin{equation}
+	V = YF_R 
+	\end{equation} 
+	
+	Once again, it is common to define admittance in terms of a mass-spring-damper system (\ref{eqn:adm}). Here, $x_a$ and $v_a$ are the ``simulated'' position and velocity determined by the admittance controller. Additionally, to actually render the desired position and velocity, an outer-loop PD position controller is used (\ref{eqn:PD}), with $x_a$ and $v_a$ acting as the desired position and velocity. 
+	
+	\begin{gather} \label{eqn:adm}
+	\begin{bmatrix}
+    	\dot{x}_a \\
+    	\dot{v}_a 
+    \end{bmatrix} 
+    =
+    \begin{bmatrix}
+    	0 & 1 \\
+    	\frac{k}{m} & \frac{b}{m}
+    \end{bmatrix} 
+    \begin{bmatrix}
+    	x_a \\
+    	v_a
+    \end{bmatrix}  
+    +
+    \begin{bmatrix}
+    	0 \\
+    	\frac{1}{m}
+    \end{bmatrix}
+    F_R   	
+	\end{gather}
+	
+	\begin{equation} \label{eqn:PD}
+	F = P(x - x_a) + D(v - v_a)
+	\end{equation}
+
+	Admittance control assumes that the robot has infinite impedance, or that all hardware between the actuator and the end-effector is infinitely stiff, infinitely damped, etc. This, once again, is an idealization -- and therefore admittance control should only be considered when the robot has high impedance, i.e. when using large gear reductions and rigid links. 
+	
+	Another point of consideration when choosing between impedance and admittance control is its stability when encountering different types of environments. It is convenient to model the interaction as a two-port
+	Impedance control works better when interacting with an admittance (rigid environments), whereas admittance control works better when interacting with an impedance (weak environment / free space). 
+	
+	This project targets acute stroke patients who typically do not have much leg strength and rely heavily on assistance from the therapist during therapy. Therefore, these patients can be modeled as an impedance. Furthermore, the motor used on the robot has a high gear reduction which contains substantial impedance. Both of these favour using admittance control. 
+	
+	
 
 	\subsection{Physics Engine \& Haptic Coupling}
 %------------------------------------------------------------------------
@@ -188,6 +252,10 @@ We set out to design a simple lower-limb rehabilitation for acute, bed-bound str
 %
 %-------------------------------------------------------------------------
 
+Defining the desired impedance or admittance in terms of a mass-spring-damper system is not always convenient. Ideally, one could define an arbitrary impedance or admittance function relating $F$ and $V$, giving complete control of the behaviour of the robot-environment interaction, while also ensuring stability. 
+	A method for achieving arbitrary interaction and remaining stable is discussed in \cite{Adams1999}, using what is called a ``haptic coupling''. This effectively decouples the design on the admittance/impedance and analysis of the stability of the robot. 
+	Consider again the two-port model of the robot-environment interaction. The haptic coupling is a virtual passive system placed in between the two, which acts as a low pass filter on the variables. This limits the range of renderable impedances, and while it does alter the desired impedance to some extent, the trade off is guaranteed stability. 
+	Using the concept of the haptic coupling, a simple physics engine was designed which works in conjunction with the games and visualization. 
 
 	\subsection{Communication} 
 %------------------------------------------------------------------------

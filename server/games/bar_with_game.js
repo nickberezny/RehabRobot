@@ -106,8 +106,8 @@ class Follow_traj extends Component {
 
   animate() {
 
-    this.desPos.position.y = this.props.xdes
-    this.group.position.y = this.props.x
+    this.desPos.position.y = this.props.xdes / 40.0
+    this.group.position.y = this.props.x / 40.0
 
     if(this.group.position.y > this.desPos.position.y - 30 && this.group.position.y < this.desPos.position.y + 30)
     {

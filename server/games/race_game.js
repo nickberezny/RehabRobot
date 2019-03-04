@@ -28,6 +28,10 @@ class Follow_traj extends Component {
     var race_speed2 = 0.55
     var race_speed3 = 0.48
 
+    var prev_x;
+    var prev_time;
+    var curr_time;  
+
     var group = new THREE.Group();
 
     const width = this.mount.clientWidth
@@ -121,6 +125,10 @@ class Follow_traj extends Component {
     this.race_speed2 = race_speed2
     this.race_speed3 = race_speed3
 
+    this.prev_x = prev_x; 
+    this.prev_time = prev_time;
+    this.curr_time = curr_time; 
+
     this.mount.appendChild(this.renderer.domElement)
     this.start()
   }
@@ -169,6 +177,10 @@ class Follow_traj extends Component {
 
   animate() {
 
+  this.curr_time = Date.now();
+  var dt = this.curr_time - this.prev_time;
+  var vel = ( this.props.x - this.prev_x ) / dt
+  
   if(Math.abs(this.character.position.y) >= 100 )
       {
         this.theta1 += this.race_speed1/90.0;

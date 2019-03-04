@@ -7,16 +7,40 @@ import RunButton from '../Generic/RunButton'
 import InputText from '../Generic/InputText'
 import Dropdown from '../Generic/Dropdown'
 
+import FollowTraj from '../Setups/FollowTraj'
+import FollowVel from '../Setups/FollowVel'
+import Balance from '../Setups/Balance'
+
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 class SetupPage extends React.Component {
 
 	constructor(props) {
-	    super(props);  
+	    super(props);
+	    this.state = { 
+	    	content: null,
+	    };  
 	}
 
 	render() {
+
+		switch(this.state.props) {
+			case 1: 
+				this.state.contents = <div> <FollowTraj /> </div> 
+				break;
+			case 2:
+				this.state.contents = <div> <FollowVel /> </div> 
+				break;
+			case 3:
+				this.state.contents = <div> <Balance /> </div> 
+				break;
+			default: 
+				this.state.contents = <div> Select a Game </div> 
+		}
+
+
+
 		return (
 
 			<div>
@@ -24,13 +48,8 @@ class SetupPage extends React.Component {
 			    	Set Up a Session    
 		      	</Typography>
 		      	<div style={{padding: 24}}>
-		      		<InputText text="P Gain" textValue={this.props.P} paramName='P' />
-		      		<InputText text="D Gain" textValue={this.props.D} paramName='D' />
-		      		<InputText text="X Desired" textValue={this.props.xdes} paramName='xdes' />
-		      		<InputText text="Admittance K" textValue={this.props.K} paramName='K' />
-		      		<InputText text="Admittance B" textValue={this.props.B} paramName='B' />
-		      		<InputText text="Admittance M" textValue={this.props.M} paramName='M' />
 		      		<Dropdown text="Game" select1="Follow Trajectory" select2 = "Racing" select3 = "Balance" />
+		      		{this.state.contents}
 		      	</div>
 		      	
 		      	<div style={{padding: 12}}>
@@ -53,7 +72,8 @@ function mapStateToProps(state) {
   	xdes: state.xdes,
   	K: state.K,
   	B: state.B,
-  	M: state.M
+  	M: state.M,
+  	game: state.game
   }
 }
 

@@ -17,7 +17,8 @@ class RunButton extends React.Component {
 
     //change this to send different data
     let dataToSend = 'SET_P' + this.props.P + '_D' + this.props.D + '_xdes' + this.props.xdes +
-                     '_K' + this.props.K + '_B' + this.props.B +'_M' + this.props.M + '_END';
+                     '_xmax' + this.props.xmax + '_vmax' + this.props.vmax +  
+                     '_K' + this.props.K + '_B' + this.props.B +'_M' + this.props.M + '_GAME' + this.props.game + '_END';
 
     console.log(dataToSend)
     this.props.socket.emit('START_ROBOT',dataToSend)
@@ -42,7 +43,8 @@ function mapStateToProps(state) {
     xdes: state.xdes,
     K: state.K,
     B: state.B,
-    M: state.M
+    M: state.M,
+    game: state.game
 
   }
 }

@@ -16,9 +16,19 @@ D.~Hebert, M.~P. Lindsay, A.~McIntyre, A.~Kirton, P.~G. Rumney, S.~Bagg,
   guidelines, update 2015},'' {\em International Journal of Stroke}, vol.~11,
   pp.~459--484, jun 2016.
 
+\bibitem{Meng2015}
+W.~Meng, Q.~Liu, Z.~Zhou, Q.~Ai, B.~Sheng, and S.~S. Xie, ``{Recent development
+  of mechanisms and control strategies for robot-assisted lower limb
+  rehabilitation},'' {\em Mechatronics}, vol.~31, pp.~132--145, oct 2015.
+
 \bibitem{Chisholm2010}
 K.~Chisholm, {\em {Design and Control for a Gait Rehabilitation Robot}},
   vol.~MR71524.
 \newblock 2010.
+
+\bibitem{Adams1999}
+R.~Adams and B.~Hannaford, ``{Stable haptic interaction with virtual
+  environments},'' {\em IEEE Transactions on Robotics and Automation}, vol.~15,
+  pp.~465--474, jun 1999.
 
 \end{thebibliography}

@@ -96,7 +96,10 @@ int main(int argc, char* argv[]) {
 		.xdes = "_xdes([0-9]*.[0-9]*)_",
 		.K = "_K([0-9]*.[0-9]*)_",
 		.B = "_B([0-9]*.[0-9]*)_",
-		.M = "_M([0-9]*.[0-9]*)_"
+		.M = "_M([0-9]*.[0-9]*)_",
+		.xmax = "_xmax([0-9]*.[0-9]*)_",
+		.vmax = "_vmax([0-9]*.[0-9]*)_",
+		.game = "_game([0-9]*)_"
 	} ; //regex matches
 
 	regex_t compiled;
@@ -262,6 +265,20 @@ int main(int argc, char* argv[]) {
 					    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
 					}
 
+					regcomp(&compiled, regex.xmax, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].xmax);
+					    if(DEBUG) { printf("Xmax is: %f\n", imp[0].xmax); }
+					}
+
+					regcomp(&compiled, regex.vmax, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].vmax);
+					    if(DEBUG) { printf("Vmax is: %f\n", imp[0].vmax); }
+					}
+
 					regcomp(&compiled, regex.K, REG_EXTENDED);
 					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
 						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
@@ -282,6 +299,13 @@ int main(int argc, char* argv[]) {
 						sscanf(matchBuffer, "%lf", &imp[0].M);
 					    if(DEBUG) { printf("M is: %f\n", imp[0].M); }
 					}
+
+					regcomp(&compiled, regex.game, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+						sscanf(matchBuffer, "%lf", &imp[0].game);
+					    if(DEBUG) { printf("Game set to: %f\n", imp[0].game); }
+					}
 				}
 					
 					
@@ -295,6 +319,10 @@ int main(int argc, char* argv[]) {
 					imp[i].M = imp[0].M;
 					imp[i].xdes = imp[0].xdes;
 					imp[i].fp = imp[0].fp;
+
+					imp[i].xmax = imp[0].xmax;
+					imp[i].vmax = imp[0].vmax;
+					imp[i].game = imp[0].game;
 							
 				}
 
@@ -497,7 +525,18 @@ void *controller(void * d)
 			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
-			imp_Adm(imp_cont, &xa, &va);
+
+			if(imp_cont->game == 1)
+			{
+				imp_traj(imp_cont, &direction);
+				imp_Adm(imp_cont, &xa, &va);
+			}
+			else if(imp_cont->game == 2)
+			{
+				imp_traj(imp_cont, &direction);
+				imp_Adm(imp_cont, &xa, &va);
+			}
+			
 			//imp_traj(imp_cont, &direction);
 			//imp_PD(imp_cont);	
 			//imp_Force(imp_cont);	

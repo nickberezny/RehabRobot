@@ -52,7 +52,29 @@ void imp_Haptics(struct impStruct * imp)
 {
 	//TODO
     //arbitrary physics engine + LPF 
+
+    //calc Fe = F - Zc * ve = F - bc*ve - mc*(ve - ve(t-1))/dt
+    //calc Fw 
+    //calc ve(Fe) = v
+        // xk = v(k-1) * dt
+        // vk = (Fe + Fw)/m  * dt
+    //use PD control to achieve v 
+
+
 	return;
+}
+
+void imp_Haptics_impedance(struct impStruct * imp)
+{
+    //TODO
+    //arbitrary physics engine + LPF 
+
+    //calc ve = (F - Fe)*Z
+    //calc Fe(ve)
+    //calc v = (F - Fe)*Z
+
+
+    return;
 }
 
 
