@@ -37,8 +37,6 @@ struct impStruct {
     double f_unfilt, v_unfilt;
     double F_Gain;
 
-    double vmax;
-
 	//other sensors 
 	int LSF[2];
 	int LSB[2];

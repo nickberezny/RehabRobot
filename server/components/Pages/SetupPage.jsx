@@ -19,13 +19,13 @@ class SetupPage extends React.Component {
 	constructor(props) {
 	    super(props);
 	    this.state = { 
-	    	content: null,
+	    	contents: null,
 	    };  
 	}
 
 	render() {
 
-		switch(this.state.props) {
+		switch(this.props.game) {
 			case 1: 
 				this.state.contents = <div> <FollowTraj /> </div> 
 				break;
