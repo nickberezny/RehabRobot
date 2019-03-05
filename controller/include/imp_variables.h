@@ -37,7 +37,7 @@
 #define K_GAIN 0.2 //  [N/mm]
 #define M_GAIN 0.1 //  [Ns2/mm]
 #define B_GAIN 0.45 //  [Ns/mm]
-#define V_MAX 200.0 // [mm/s]
+#define V_MAX 100.0 // [mm/s]
 #define X_END 400.0 //stroke length in mm
 
 #define F_GAIN -0.005

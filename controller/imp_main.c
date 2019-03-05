@@ -393,6 +393,23 @@ int main(int argc, char* argv[]) {
 
     printf("Ad: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
     printf("Bd: %.4f, %.4f\n", Bd[0], Bd[1]);
+
+    double A[2][2] = {{0.0, 1.0},{0.0, -imp[0].B/imp[0].M}};
+    double B[2] = {0.0, 1.0/imp[0].M};
+
+    matrix_exp(A, Ad);
+    imp_calc_Bd(Ad, A, B, Bd);
+
+    for(int i = 0; i < BUFFER_SIZE; i++)
+    {
+    	imp[i].Adf = Ad;
+    	imp[i].Bdf = Bd;
+    }
+
+    printf("Adf: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
+    printf("Bdf: %.4f, %.4f\n", Bd[0], Bd[1]);
+
+
 	
 /**********************************************************************
 					   	Home to back
@@ -530,6 +547,7 @@ void *controller(void * d)
 			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
+
 			/*
 			if(imp_cont->game == 1)
 			{
@@ -538,16 +556,20 @@ void *controller(void * d)
 			}
 			else if(imp_cont->game == 2)
 			{
-				imp_traj(imp_cont, &direction);
-				imp_Adm(imp_cont, &xa, &va);
+				imp_Adm_free(imp_cont, &xa, &va);
+			}
+			else if(imp_cont->game == 3)
+			{
+				imp_Haptics(imp_cont);
+			}
+			else
+			{
+				if(DEBUG) printf("No game selected ...\n");
 			}
 			*/
 
 			imp_Adm(imp_cont, &xa, &va);
 			
-			//imp_traj(imp_cont, &direction);
-			//imp_PD(imp_cont);	
-			//imp_Force(imp_cont);	
 			//Safety Checks
 			//TODO : check direction of command
 			//TODO : check IR

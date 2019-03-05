@@ -46,19 +46,57 @@ void imp_Adm(struct impStruct * imp, double * xa, double * va)
 	return;
 }
 
+void imp_Adm_free(struct impStruct * imp, double * xa, double * va)
+{
+
+/*------------------------------------------------------------------------
+    Admittance control - go to position given force and desired impedance
+    Free motion - no spring constant (for games with no specific trajectory) 
+        Xa = Ad * X + Bd * F
+        command = P*(x) + D*(va)
+------------------------------------------------------------------------*/
+
+    imp->xa = imp->xdes - ( imp->Ad[0]*(imp->xdes - *xa) + imp->Ad[1]*(imp->vdes - *va) + imp->Bd[0] * (imp->fk) );
+    imp->va = imp->vdes - ( imp->Ad[2]*(imp->xdes - *xa) + imp->Ad[3]*(imp->vdes - *va) + imp->Bd[1] * (imp->fk) );
+    imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(imp->va - imp->vk);
+
+    *xa = imp->xa;
+    *va = imp->va;
+
+    //printf("CMD: %.4f\n", imp->cmd);
+
+    return;
+}
+
 
 
 void imp_Haptics(struct impStruct * imp)
 {
-	//TODO
-    //arbitrary physics engine + LPF 
+    /*
 
-    //calc Fe = F - Zc * ve = F - bc*ve - mc*(ve - ve(t-1))/dt
-    //calc Fw 
-    //calc ve(Fe) = v
-        // xk = v(k-1) * dt
-        // vk = (Fe + Fw)/m  * dt
-    //use PD control to achieve v 
+        Haptic controller + coupling // For ADMITTANCE DISPLAY + ADMITTANCE ENVIRONMENT
+
+        (1) Fe(k) = F(k) + (mb*(v(k-1) - v(k)) + m(Fe(k-1) - F(k-1))) / (m + bT) 
+        (2) calc Fw (disturbance)
+        (3) calc ve(Fe) = v
+            xk = v(k-1) * dt
+            vk = (Fe + Fw)/m  * dt
+        (4) use PD control to achieve v 
+
+    */
+
+    imp->Fa = imp->Fk + (imp->m*imp->b*(imp->va_1 - imp->va) + imp->m*(imp->Fa_1 - imp->Fk_1))/(imp->m + imp->b * imp->T);
+    imp->va = imp->T * (imp->Fa + imp->Fw)/imp->M; //admittance haptics
+    imp->xa = imp->va*imp->T;
+
+    //PD Control
+    imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(imp->va - imp->vk);
+
+    //Update variables
+    imp->va_1 = imp->va;
+    imp->Fa_1 = imp->Fa;
+    imp->Fk_1 = imp->Fk;
+
 
 
 	return;
@@ -66,12 +104,41 @@ void imp_Haptics(struct impStruct * imp)
 
 void imp_Haptics_impedance(struct impStruct * imp)
 {
+   
+    /*
+
+        Haptic controller + coupling // For ADMITTANCE DISPLAY + IMPEDANCE ENVIRONMENT
+
+        (1) calc ve(k) = ve(k-1) + (1/b + T/m)*(F(k) - Fe(k)) - (1/b)(F(k-1) - Fe(k-1))
+        (2) calc Fe(ve) (impedance environment)
+        (3) calc x(k) = ve(k) * dt
+        (4) use PD control to achieve v 
+
+    */
+    
+    imp->va = imp->va_1 * (1.0/imp->b + imp->T/imp->m)*(imp->Fk - imp->Fa) - (1.0/imp->b)*(imp->Fk_1 - imp->Fa_1);
+    // TO DO imp->Fa = ....
+    imp->xa = imp->va*imp->T;
+
+    //PD Control
+    imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(imp->va - imp->vk);
+
+    //Update variables
+    imp->va_1 = imp->va;
+    imp->Fk_1 = imp->Fk;
+    imp->Fa_1 = imp->Fa;
+
+
+
+    return;
+}
+
+void imp_physics(struct impStruct * imp)
+{
     //TODO
     //arbitrary physics engine + LPF 
 
-    //calc ve = (F - Fe)*Z
-    //calc Fe(ve)
-    //calc v = (F - Fe)*Z
+
 
 
     return;

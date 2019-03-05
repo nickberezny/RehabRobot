@@ -21,12 +21,16 @@ struct impStruct {
 
 	//admittance control parameters 
 	double xk, vk, fk;
+	double xa, va;
+	double Fk_1, Fa, Fa_1;
+	double va_1;
 	double fdes, xdes, vdes;
 	double xmax, vmax, fmax;
-	double xa, va;
 	double P, D;
 	double *Ad, *Bd;
+	double *Adf, *Bdf;
 	double K, B, M;
+	double m, b, T; //haptic coupling
 	double cmd;
 	int game; 
 	struct timespec start_time;
@@ -97,3 +101,4 @@ void imp_regex_match(regex_t * compiled, char recvBuff[1024], regmatch_t matches
 	char matchBuffer[100],  struct regexMatch * regex, double * param_loc );
 
 void imp_Haptics_impedance(struct impStruct * imp);
+void imp_physics(struct impStruct * imp);

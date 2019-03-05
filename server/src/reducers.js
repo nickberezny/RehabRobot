@@ -10,7 +10,7 @@ import {
   SET_GAME,
 } from './actions'
 
-var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, P: 2, D:1, xdes: 0, K:10, B:0.5, M:0.09, x:0.5, game:1, xmax: 100.0, vmax: 0.0,  };
+var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, P: 2, D:1, xdes: 0, K:10, B:0.5, M:0.09, x:0.5, v:0, game:1, xmax: 100.0, vmax: 0.0,  };
 
 function todoApp(state = initState, action) {
   switch (action.type) {

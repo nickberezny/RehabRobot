@@ -17,11 +17,8 @@ class FollowVel extends React.Component {
       <div> 
         <InputText text="Desired Velocity" textValue={this.props.vmax} paramName='vmax' />
         <InputText text="Max Position" textValue={this.props.xmax} paramName='xmax' />
-        <InputText text="Admittance K" textValue={this.props.K} paramName='K' />
-        <InputText text="Admittance B" textValue={this.props.B} paramName='B' />
-        <InputText text="Admittance M" textValue={this.props.M} paramName='M' />
-        <InputText text="P Gain" textValue={this.props.P} paramName='P' />
-        <InputText text="D Gain" textValue={this.props.D} paramName='D' />
+        <InputText text="Stiffness" textValue={this.props.K} paramName='K' />
+        <InputText text="Viscosity" textValue={this.props.B} paramName='B' />
       </div>
     )
   }
