@@ -7,7 +7,7 @@ var net = require('net');
 var tcp_port = 1337;
 var ui_port = 3000;
 
-var TEST = 0;
+var TEST = 1;
 
 
 /**********************************************************************

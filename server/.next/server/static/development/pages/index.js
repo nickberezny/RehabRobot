@@ -2352,19 +2352,20 @@ function (_Component) {
       spotLight1.position.set(-width / 3, 200, 200);
       var light = new three__WEBPACK_IMPORTED_MODULE_2__["HemisphereLight"](0xffffff, 0xffffff, 1);
       scene.add(light);
-      scene.add(spotLight1);
-      group.add(plate);
+      scene.add(spotLight1); //group.add( plate );
+
       scene.add(bar);
       scene.add(desPos);
       scene.add(cube);
+      scene.add(plate);
       this.scene = scene;
       this.camera = camera;
       this.renderer = renderer;
       this.plate = plate;
       this.bar = bar;
       this.desPos = desPos;
-      this.cube = cube;
-      this.group = group;
+      this.cube = cube; //this.group = group;
+
       this.points = points;
       this.mount.appendChild(this.renderer.domElement);
       this.start();
@@ -2390,10 +2391,11 @@ function (_Component) {
   }, {
     key: "animate",
     value: function animate() {
-      this.desPos.position.y = this.props.xdes / 40.0;
-      this.group.position.y = this.props.x / 40.0;
+      this.desPos.position.y = this.props.xdes - 200.0;
+      this.plate.position.y = this.props.x - 200.0;
+      console.log(this.plate.position.y);
 
-      if (this.group.position.y > this.desPos.position.y - 30 && this.group.position.y < this.desPos.position.y + 30) {
+      if (this.plate.position.y > this.desPos.position.y - 30 && this.plate.position.y < this.desPos.position.y + 30) {
         this.points += 1;
         this.desPos.material.color.setHex(0x7fffa3); //var html_text = "Points: " + points;
         //text2.innerHTML = html_text
@@ -2741,10 +2743,11 @@ function (_Component) {
   }, {
     key: "animate",
     value: function animate() {
-      this.cube.position.x = this.props.xdes / 40.0;
-      this.cube2.position.x = this.props.x / 40.0;
+      this.cube.position.x = this.props.xdes;
+      this.cube2.position.x = this.props.x;
+      console.log(this.cube.position.x);
 
-      if (this.cube2.position.x > this.cube.position.x - 1000 && this.cube2.position.x < this.cube.position.x + 1000) {
+      if (this.cube2.position.x > this.cube.position.x - 10 && this.cube2.position.x < this.cube.position.x + 10) {
         this.points += 1;
         console.log(this.points);
       }

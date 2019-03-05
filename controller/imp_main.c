@@ -228,7 +228,10 @@ int main(int argc, char* argv[]) {
 
 		//Start UI Process 
 		system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+		printf("TEST01\n");
 		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
+
+		printf("TEST01\n");
 		
 		if(GET_PARAMS_FROM_UI){
 			while(1)
@@ -337,11 +340,13 @@ int main(int argc, char* argv[]) {
 				}
 
 				close(connfd);
+				printf("TEST01\n");
 				sleep(0.01);
+				printf("TEST01\n");
 			}
 
 				
-	    	}
+	    }
 	}
    		
 	if(! GET_PARAMS_FROM_UI) {
@@ -525,7 +530,7 @@ void *controller(void * d)
 			imp_FIR(v_filt, &imp_cont->vk, &fir_order_v); //moving average filter for velocity 
 
 			//Controller
-
+			/*
 			if(imp_cont->game == 1)
 			{
 				imp_traj(imp_cont, &direction);
@@ -536,6 +541,9 @@ void *controller(void * d)
 				imp_traj(imp_cont, &direction);
 				imp_Adm(imp_cont, &xa, &va);
 			}
+			*/
+
+			imp_Adm(imp_cont, &xa, &va);
 			
 			//imp_traj(imp_cont, &direction);
 			//imp_PD(imp_cont);	

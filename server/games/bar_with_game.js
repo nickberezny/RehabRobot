@@ -67,10 +67,11 @@ class Follow_traj extends Component {
     scene.add( light );
     scene.add(spotLight1)
 
-    group.add( plate );
+    //group.add( plate );
     scene.add( bar );
     scene.add(desPos);
     scene.add(cube);
+    scene.add(plate);
 
 
     this.scene = scene
@@ -82,7 +83,7 @@ class Follow_traj extends Component {
     this.desPos = desPos
     this.cube = cube
 
-    this.group = group;
+    //this.group = group;
     this.points = points
     
     this.mount.appendChild(this.renderer.domElement)
@@ -106,10 +107,12 @@ class Follow_traj extends Component {
 
   animate() {
 
-    this.desPos.position.y = this.props.xdes / 40.0
-    this.group.position.y = this.props.x / 40.0
+    this.desPos.position.y = this.props.xdes - 200.0
+    this.plate.position.y = this.props.x - 200.0
 
-    if(this.group.position.y > this.desPos.position.y - 30 && this.group.position.y < this.desPos.position.y + 30)
+    console.log(this.plate.position.y)
+
+    if(this.plate.position.y > this.desPos.position.y - 30 && this.plate.position.y < this.desPos.position.y + 30)
     {
       this.points += 1;
       this.desPos.material.color.setHex(0x7fffa3)
