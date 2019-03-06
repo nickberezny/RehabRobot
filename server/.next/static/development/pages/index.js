@@ -3178,7 +3178,7 @@ function (_Component) {
   }, {
     key: "animate",
     value: function animate() {
-      this.race_speed1 = Math.abs(this.props.v - this.props.vdes) / 2.0;
+      this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0;
 
       if (Math.abs(this.character.position.y) >= 100) {
         this.theta1 += this.race_speed1 / 90.0;
