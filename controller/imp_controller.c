@@ -56,8 +56,8 @@ void imp_Adm_free(struct impStruct * imp, double * xa, double * va)
         command = P*(x) + D*(va)
 ------------------------------------------------------------------------*/
 
-    imp->xa = imp->xdes - ( imp->Ad[0]*(imp->xdes - *xa) + imp->Ad[1]*(imp->vdes - *va) + imp->Bd[0] * (imp->fk) );
-    imp->va = imp->vdes - ( imp->Ad[2]*(imp->xdes - *xa) + imp->Ad[3]*(imp->vdes - *va) + imp->Bd[1] * (imp->fk) );
+    imp->xa = imp->xdes - ( imp->Adf[0]*(imp->xdes - *xa) + imp->Adf[1]*(imp->vdes - *va) + imp->Bdf[0] * (imp->fk) );
+    imp->va = imp->vdes - ( imp->Adf[2]*(imp->xdes - *xa) + imp->Adf[3]*(imp->vdes - *va) + imp->Bdf[1] * (imp->fk) );
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(imp->va - imp->vk);
 
     *xa = imp->xa;

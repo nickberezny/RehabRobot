@@ -44,6 +44,8 @@ class WindowContent extends React.Component {
 	    var res = message.split(",");
 	    this.props.setParam('x', res[0])
 	    this.props.setParam('xdes', res[1])
+	    this.props.setParam('v', res[2])
+	    this.props.setParam('vdes', res[3])
 	}
 
 	render() {

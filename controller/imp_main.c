@@ -77,6 +77,8 @@ double ft_offset = 0.0;
 double xa = 0.0;
 double va = 0.0;
 
+double home_decrease = 0.0;
+
 
 /***********************************************************************
 ***********************************************************************/
@@ -108,6 +110,9 @@ int main(int argc, char* argv[]) {
 
 	double Ad[4] = {0};
 	double Bd[2] = {0};
+
+	double Adf[4] = {0};
+	double Bdf[2] = {0};
 
 
     /**********************************************************************
@@ -394,22 +399,23 @@ int main(int argc, char* argv[]) {
     printf("Ad: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
     printf("Bd: %.4f, %.4f\n", Bd[0], Bd[1]);
 
-/*
+    //free motion matrices 
+
     double A2[2][2] = {{0.0, 1.0},{0.0, -imp[0].B/imp[0].M}};
     double B2[2] = {0.0, 1.0/imp[0].M};
 
-    matrix_exp(A2, Ad);
-    imp_calc_Bd(Ad, A2, B2, Bd);
+    matrix_exp(A2, Adf);
+    imp_calc_Bd(Adf, A2, B2, Bdf);
 
     for(int i = 0; i < BUFFER_SIZE; i++)
     {
-    	imp[i].Adf = Ad;
-    	imp[i].Bdf = Bd;
+    	imp[i].Adf = Adf;
+    	imp[i].Bdf = Bdf;
     }
 
-    printf("Adf: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
-    printf("Bdf: %.4f, %.4f\n", Bd[0], Bd[1]);
-*/
+    printf("Adf: %.4f, %.4f, %.4f, %.4f\n", Adf[0], Adf[1], Adf[2], Adf[3]);
+    printf("Bdf: %.4f, %.4f\n", Bdf[0], Bdf[1]);
+
 
 	
 /**********************************************************************
@@ -428,7 +434,9 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSB[0] == 0)
     {
-    	aValues[0] = MOTOR_ZERO_BWD + 0.02;
+    	aValues[0] = MOTOR_ZERO_BWD + 0.02 - home_decrease;
+    	home_decrease += 0.0001; //decrease home command to prevent acceleration
+
     	//aValues[0] = MOTOR_ZERO_FWD; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSB[0] = aValues[3];
@@ -568,9 +576,12 @@ void *controller(void * d)
 				if(DEBUG) printf("No game selected ...\n");
 			}
 			*/
+
 			imp_traj(imp_cont, &direction);
 			//imp_PD(imp_cont);
 			imp_Adm(imp_cont, &xa, &va);
+
+			//imp_Adm_free(imp_cont, &xa, &va);
 			
 			//Safety Checks
 			//TODO : check direction of command
@@ -645,7 +656,7 @@ void *server(void* d)
 			if(i == 0)
 			{
 				imp_serve = &((struct impStruct*)d)[i];
-				sprintf(sendBuff,"%.2f,%.2f", imp_serve->xk,imp_serve->xdes);
+				sprintf(sendBuff,"%.2f,%.2f,%.2f,%.2f", imp_serve->xk,imp_serve->xdes,imp_serve->vk,imp_serve->vdes);
 				printf("%d\n", send(connfd, sendBuff, strlen(sendBuff), 0));
 			}
 			

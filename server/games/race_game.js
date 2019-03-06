@@ -177,9 +177,7 @@ class Follow_traj extends Component {
 
   animate() {
 
-  this.curr_time = Date.now();
-  var dt = this.curr_time - this.prev_time;
-  var vel = ( this.props.x - this.prev_x ) / dt
+  this.race_speed1 = Math.abs(this.props.v - this.props.vdes) / 2.0
   
   if(Math.abs(this.character.position.y) >= 100 )
       {
@@ -243,7 +241,9 @@ function mapStateToProps(state) {
   //map state variables to the component's state 
   return {
     x: state.x,
-    xdes: state.xdes
+    xdes: state.xdes,
+    v: state.v,
+    vdes: state.vdes
   }
 }
 
