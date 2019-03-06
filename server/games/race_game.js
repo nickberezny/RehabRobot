@@ -177,7 +177,7 @@ class Follow_traj extends Component {
 
   animate() {
 
-  this.race_speed1 = Math.abs(this.props.v - this.props.vdes) / 2.0
+  this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0
   
   if(Math.abs(this.character.position.y) >= 100 )
       {
