@@ -210,6 +210,10 @@ function (_React$Component) {
       _this.props.setParam('x', res[0]);
 
       _this.props.setParam('xdes', res[1]);
+
+      _this.props.setParam('v', res[2]);
+
+      _this.props.setParam('vdes', res[3]);
     });
 
     _this.state = {
@@ -3174,9 +3178,7 @@ function (_Component) {
   }, {
     key: "animate",
     value: function animate() {
-      this.curr_time = Date.now();
-      var dt = this.curr_time - this.prev_time;
-      var vel = (this.props.x - this.prev_x) / dt;
+      this.race_speed1 = Math.abs(this.props.v - this.props.vdes) / 2.0;
 
       if (Math.abs(this.character.position.y) >= 100) {
         this.theta1 += this.race_speed1 / 90.0;
@@ -3240,7 +3242,9 @@ function mapStateToProps(state) {
   //map state variables to the component's state 
   return {
     x: state.x,
-    xdes: state.xdes
+    xdes: state.xdes,
+    v: state.v,
+    vdes: state.vdes
   };
 }
 
@@ -90850,6 +90854,7 @@ var initState = {
   M: 0.09,
   x: 0.5,
   v: 0,
+  vdes: 0,
   game: 1,
   xmax: 100.0,
   vmax: 0.0

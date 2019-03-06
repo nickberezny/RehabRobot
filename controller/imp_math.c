@@ -162,19 +162,23 @@ void imp_FIR(double * array, double * output, int * order)
 
 
 
-void imp_traj(struct impStruct * imp, double * dir)
+void imp_traj(struct impStruct * imp, double * dir, double * xdes_old)
 {
 
 /*------------------------------------------------------------------------
 Sets velocity trajectory to follow a parabola, with small velocity at the extremes and vmax in the middle
 ------------------------------------------------------------------------*/
 
-    if(imp->xk > X_END) *dir = -1.0;
-    if(imp->xk < 0.05) *dir = 1.0;
+    imp->xdes = *xdes_old;
+
+    if(imp->xdes > X_END - 0.025) *dir = -1.0;
+    if(imp->xdes < 0.025) *dir = 1.0;
     if(imp->xdes < 0.0) imp->xdes = 0.0;
     
-    imp->vdes = (*dir)*1.0 - (*dir)*( imp->vmax / pow((X_END/2.0),2.0) ) * imp->xdes * (imp->xdes - X_END);
-    imp->xdes = imp->xdes + (*dir)*(imp->vdes * STEP_NSEC/NSEC_IN_SEC); 
+    imp->vdes = (*dir)*5.0 + (*dir)*( imp->vmax / pow((X_END/2.0),2.0) ) * imp->xdes * abs(imp->xdes - X_END);
+    imp->xdes = imp->xdes + (imp->vdes * (STEP_NSEC/NSEC_IN_SEC));
+
+    *xdes_old = imp->xdes; 
 
     /*
     imp->vdes = (*dir)*1.0 - (*dir)*( imp->vmax / pow((X_END/2.0),2.0) ) * imp->xk * (imp->xk - X_END);

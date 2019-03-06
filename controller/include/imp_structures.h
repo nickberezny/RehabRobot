@@ -89,7 +89,7 @@ void imp_StepTime(struct timespec * start_time, struct timespec * end_time, stru
 void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time);
 void imp_FIR(double * array, double * output, int * order);
 void imp_Force(struct impStruct * imp);
-void imp_traj(struct impStruct * imp, double * dir);
+void imp_traj(struct impStruct * imp, double * dir, double * xdes_old);
 
 void matrix_square(double A[2][2], double C[2][2]);
 void factorial(double n, double * ans);

@@ -76,6 +76,7 @@ double ft_offset = 0.0;
 
 double xa = 0.0;
 double va = 0.0;
+double xdes_old = 0.0;
 
 double home_decrease = 0.0;
 
@@ -401,20 +402,22 @@ int main(int argc, char* argv[]) {
 
     //free motion matrices 
 
-    double A2[2][2] = {{0.0, 1.0},{0.0, -imp[0].B/imp[0].M}};
-    double B2[2] = {0.0, 1.0/imp[0].M};
+    double A2[2][2] = {{0.0, 1.0},{0.0, -(imp[0].B)/(imp[0].M)}};
+    double B2[2] = {0.0, 1.0/(0.4*imp[0].M)};
 
     matrix_exp(A2, Adf);
-    imp_calc_Bd(Adf, A2, B2, Bdf);
+
+    B2[1] = B2[1] * 0.001;
+    //imp_calc_Bd(Adf, A2, B2, Bdf);
 
     for(int i = 0; i < BUFFER_SIZE; i++)
     {
     	imp[i].Adf = Adf;
-    	imp[i].Bdf = Bdf;
+    	imp[i].Bdf = B2; //inverted A is singular
     }
 
     printf("Adf: %.4f, %.4f, %.4f, %.4f\n", Adf[0], Adf[1], Adf[2], Adf[3]);
-    printf("Bdf: %.4f, %.4f\n", Bdf[0], Bdf[1]);
+    printf("Bdf: %.4f, %.4f\n", B2[0], B2[1]);
 
 
 	
@@ -435,7 +438,7 @@ int main(int argc, char* argv[]) {
     while(imp[9].LSB[0] == 0)
     {
     	aValues[0] = MOTOR_ZERO_BWD + 0.02 - home_decrease;
-    	home_decrease += 0.0001; //decrease home command to prevent acceleration
+    	if(aValues[0] > MOTOR_ZERO_BWD + 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
 
     	//aValues[0] = MOTOR_ZERO_FWD; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
@@ -577,7 +580,7 @@ void *controller(void * d)
 			}
 			*/
 
-			imp_traj(imp_cont, &direction);
+			imp_traj(imp_cont, &direction, &xdes_old);
 			//imp_PD(imp_cont);
 			imp_Adm(imp_cont, &xa, &va);
 
