@@ -85,7 +85,7 @@ void imp_Haptics(struct impStruct * imp)
 
     */
 
-    imp->Fa = imp->Fk + (imp->m*imp->b*(imp->va_1 - imp->va) + imp->m*(imp->Fa_1 - imp->Fk_1))/(imp->m + imp->b * imp->T);
+    imp->Fa = imp->fk + (imp->m*imp->b*(imp->va_1 - imp->va) + imp->m*(imp->Fa_1 - imp->Fk_1))/(imp->m + imp->b * imp->T);
     imp->va = imp->T * (imp->Fa + imp->Fw)/imp->M; //admittance haptics
     imp->xa = imp->va*imp->T;
 
@@ -95,7 +95,7 @@ void imp_Haptics(struct impStruct * imp)
     //Update variables
     imp->va_1 = imp->va;
     imp->Fa_1 = imp->Fa;
-    imp->Fk_1 = imp->Fk;
+    imp->Fk_1 = imp->fk;
 
 
 
@@ -116,7 +116,7 @@ void imp_Haptics_impedance(struct impStruct * imp)
 
     */
     
-    imp->va = imp->va_1 * (1.0/imp->b + imp->T/imp->m)*(imp->Fk - imp->Fa) - (1.0/imp->b)*(imp->Fk_1 - imp->Fa_1);
+    imp->va = imp->va_1 * (1.0/imp->b + imp->T/imp->m)*(imp->fk - imp->Fa) - (1.0/imp->b)*(imp->Fk_1 - imp->Fa_1);
     // TO DO imp->Fa = ....
     imp->xa = imp->va*imp->T;
 
@@ -125,7 +125,7 @@ void imp_Haptics_impedance(struct impStruct * imp)
 
     //Update variables
     imp->va_1 = imp->va;
-    imp->Fk_1 = imp->Fk;
+    imp->Fk_1 = imp->fk;
     imp->Fa_1 = imp->Fa;
 
 

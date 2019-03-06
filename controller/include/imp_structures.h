@@ -21,9 +21,9 @@ struct impStruct {
 
 	//admittance control parameters 
 	double xk, vk, fk;
-	double xa, va;
+	double xa, va, va_1;
 	double Fk_1, Fa, Fa_1;
-	double va_1;
+	double Fw;
 	double fdes, xdes, vdes;
 	double xmax, vmax, fmax;
 	double P, D;

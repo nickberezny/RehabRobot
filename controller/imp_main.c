@@ -394,11 +394,12 @@ int main(int argc, char* argv[]) {
     printf("Ad: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
     printf("Bd: %.4f, %.4f\n", Bd[0], Bd[1]);
 
-    double A[2][2] = {{0.0, 1.0},{0.0, -imp[0].B/imp[0].M}};
-    double B[2] = {0.0, 1.0/imp[0].M};
+/*
+    double A2[2][2] = {{0.0, 1.0},{0.0, -imp[0].B/imp[0].M}};
+    double B2[2] = {0.0, 1.0/imp[0].M};
 
-    matrix_exp(A, Ad);
-    imp_calc_Bd(Ad, A, B, Bd);
+    matrix_exp(A2, Ad);
+    imp_calc_Bd(Ad, A2, B2, Bd);
 
     for(int i = 0; i < BUFFER_SIZE; i++)
     {
@@ -408,7 +409,7 @@ int main(int argc, char* argv[]) {
 
     printf("Adf: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
     printf("Bdf: %.4f, %.4f\n", Bd[0], Bd[1]);
-
+*/
 
 	
 /**********************************************************************
@@ -507,7 +508,7 @@ void *controller(void * d)
 	if(DEBUG) printf("Thread 1 (controller) initializing ...\n");
 	pthread_mutex_lock(&lock[0]);
 
-	xa = X_DES*1000;
+	xa = 0.0; // X_DES*1000;
 
 	aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
@@ -567,7 +568,8 @@ void *controller(void * d)
 				if(DEBUG) printf("No game selected ...\n");
 			}
 			*/
-
+			imp_traj(imp_cont, &direction);
+			//imp_PD(imp_cont);
 			imp_Adm(imp_cont, &xa, &va);
 			
 			//Safety Checks
