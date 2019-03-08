@@ -370,13 +370,66 @@ int main(int argc, char* argv[]) {
 			imp[i].fp = imp[0].fp;
 			imp[i].vmax = V_MAX;
 			imp[i].F_Gain = F_GAIN;
-
 			imp[i].xa = X_DES*1000;
 					
 		}
 
 		if(DEBUG) printf("Set All Parameters...\n");
 	}
+
+	//check if params are within acceptable range
+	if( PMAX < imp[0].P || PMIN > imp[0].P  )
+	{ 
+		printf("P Gain out of range\n");
+		aValues[0] = MOTOR_ZERO; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	return NULL;
+	}
+	if( DMAX < imp[0].D || DMIN > imp[0].D  )
+	{ 
+		printf("D Gain out of range\n");
+		aValues[0] = MOTOR_ZERO; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	return NULL;
+	}
+	if( KMAX < imp[0].K || KMIN > imp[0].K  )
+	{ 
+		printf("K Gain out of range\n");
+		aValues[0] = MOTOR_ZERO; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	return NULL;
+	}
+	if( BMAX < imp[0].B || BMIN > imp[0].B  )
+	{ 
+		printf("B Gain out of range\n");
+		aValues[0] = MOTOR_ZERO; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	return NULL;
+	}
+	if( MMAX < imp[0].M || MMIN > imp[0].M  )
+	{ 
+		printf("M Gain out of range\n");
+		aValues[0] = MOTOR_ZERO; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	return NULL;
+	}
+	if( V_MAX_MAX < imp[0].vmax || V_MAX_MIN > imp[0].vmax )
+	{ 
+		printf("Max velocity out of range\n");
+		aValues[0] = MOTOR_ZERO; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	return NULL;
+	}
+	if( X_DES_MAX < imp[0].xdes || X_DES_MIN > imp[0].xdes  )
+	{ 
+		printf("Desired X Gain out of range\n");
+		aValues[0] = MOTOR_ZERO; 
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	return NULL;
+	}
+
+
+
 
 
     /**********************************************************************

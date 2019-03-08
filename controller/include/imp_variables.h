@@ -40,6 +40,24 @@
 #define V_MAX 100.0 // [mm/s]
 #define X_END 400.0 //stroke length in mm
 
+//TODO Set Max/min 
+#define PMAX 10
+#define PMIN 0.0
+#define DMAX 10
+#define DMIN 0.0
+#define KMAX 10
+#define KMIN 0.0
+#define BMAX 10
+#define BMIN 0.1
+#define MMAX 10
+#define MMIN 0.001
+
+#define V_MAX_MAX 200.0
+#define V_MAX_MIN 0.0
+#define X_DES_MAX 400.0 
+#define X_DES_MIN 0.0 
+
+
 #define F_GAIN -0.005
 
 #define MAT_EXP_ITERATIONS 50 //number of iterations for matrix exp approximation
