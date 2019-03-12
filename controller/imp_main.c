@@ -28,7 +28,7 @@
 #include "include/imp_variables.h"
 
 #define DEBUG 1 //will print updates
-#define CONNECT_TO_UI 1
+#define CONNECT_TO_UI 0
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
 
@@ -359,8 +359,8 @@ int main(int argc, char* argv[]) {
    		//set default values if not connecting to UI (for testing)
 	    for(int i = 0; i < BUFFER_SIZE; i++)
 		{
-			imp[i].P = P_GAIN / 1000.0;
-			imp[i].D = D_GAIN / 1000.0;
+			imp[i].P = P_GAIN;
+			imp[i].D = D_GAIN;
 			imp[i].K = K_GAIN;
 			imp[i].B = B_GAIN;
 			imp[i].M = M_GAIN;
@@ -633,7 +633,7 @@ void *controller(void * d)
 			}
 			*/
 
-			imp_traj(imp_cont, &direction, &xdes_old);
+			//imp_traj(imp_cont, &direction, &xdes_old);
 			//imp_PD(imp_cont);
 			imp_Adm(imp_cont, &xa, &va);
 
