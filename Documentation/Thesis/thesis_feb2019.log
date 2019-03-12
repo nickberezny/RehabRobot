@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  7 MAR 2019 16:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  8 MAR 2019 14:15
 entering extended mode
 **./thesis_feb2019.tex
 (thesis_feb2019.tex
@@ -141,17 +141,17 @@ Chapter 2.
 Chapter 3.
 [9
 
-] [10] [11] [12]
+] [10] [11] [12] [13] [14]
 Chapter 4.
-[13
+[15
 
 ]
 Chapter 5.
-(thesis_feb2019.bbl [14
+(thesis_feb2019.bbl [16
 
-] [15
+] [17
 
-]) [16] (thesis_feb2019.aux) ) 
+]) [18] (thesis_feb2019.aux) ) 
 Here is how much of TeX's memory you used:
  1062 strings out of 493323
  12471 string characters out of 3139054
@@ -169,9 +169,9 @@ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis_feb2019.pdf (17 pages, 138485 bytes).
+Output written on thesis_feb2019.pdf (19 pages, 148593 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 100 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

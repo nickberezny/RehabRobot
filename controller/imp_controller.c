@@ -118,6 +118,7 @@ void imp_Haptics_impedance(struct impStruct * imp)
     
     imp->va = imp->va_1 * (1.0/imp->b + imp->T/imp->m)*(imp->fk - imp->Fa) - (1.0/imp->b)*(imp->Fk_1 - imp->Fa_1);
     // TO DO imp->Fa = ....
+    imp_physics(imp);
     imp->xa = imp->va*imp->T;
 
     //PD Control
@@ -136,7 +137,12 @@ void imp_Haptics_impedance(struct impStruct * imp)
 void imp_physics(struct impStruct * imp)
 {
     //TODO
-    //arbitrary physics engine + LPF 
+    
+    //check if operator within certain error and below certain velcoity
+    //add spring-mass to system with v 
+    //once x_ref = xk, start interaction w/ physics engine (Fint = kx, F = ma)
+    //once xk - x_ref > relaxed length of spring, delete mass-spring
+    //restart
 
 
 
