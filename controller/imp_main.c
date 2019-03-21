@@ -80,6 +80,8 @@ double xdes_old = 0.0;
 
 double home_decrease = 0.0;
 
+struct physics_ball physics_ball; 
+
 
 /***********************************************************************
 ***********************************************************************/
@@ -115,6 +117,15 @@ int main(int argc, char* argv[]) {
 	double Adf[4] = {0};
 	double Bdf[2] = {0};
 
+	physics_ball.in_play = 0;
+	physics_ball.contact = 0;
+	physics_ball.dx =0.0;
+	physics_ball.x_mass = 0.0;
+	physics_ball.v_mass = 0.0;
+	physics_ball.k = PHYSICS_K;
+	physics_ball.m = PHYSICS_M;
+	physics_ball.Fs = 0.0;
+	physics_ball.dir = 1.0;
 
     /**********************************************************************
 					   Initialize TCP Socket
@@ -475,30 +486,48 @@ int main(int argc, char* argv[]) {
 
 	
 /**********************************************************************
-					   	Home to back
+					   	Home to front then to back
 ***********************************************************************/
 
     sleep(2);
     
-    if(DEBUG) printf("Homing ...\n");     
-   
+    if(DEBUG) printf("Homing ...\n");  
+
+    //home to front
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     imp[9].LSB[0] = aValues[3];
 
     printf("%f\n", aValues[3]);
 
+    while(imp[9].LSF[0] == 0)
+    {
+    	aValues[0] = MOTOR_ZERO_FWD - 0.02 + home_decrease;
+    	if(aValues[0] > MOTOR_ZERO_FWD - 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
+
+    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    	imp[9].LSF[0] = aValues[3];
+    }
+
+    //home to back
+    aValues[0] = MOTOR_ZERO; 
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    imp[9].LSB[0] = aValues[3];
+
+    printf("%f\n", aValues[3]);
+    curr_pos = 0.0;
+
     while(imp[9].LSB[0] == 0)
     {
+    	curr_pos = curr_pos + ENC_TO_MM * (double)aValues[4];
     	aValues[0] = MOTOR_ZERO_BWD + 0.02 - home_decrease;
     	if(aValues[0] > MOTOR_ZERO_BWD + 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
 
-    	//aValues[0] = MOTOR_ZERO_FWD; 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSB[0] = aValues[3];
-    	//printf("Enc: %.3f\n", ENC_TO_MM*(double)aValues[4]);
     }
 
+    //TODO set XEND to curr_pos somehow
     aValues[0] = MOTOR_ZERO; 
     //Robot should not be homed, reading the encoder will zero the position here.
     
@@ -561,8 +590,6 @@ int main(int argc, char* argv[]) {
 
 }
 
-
-
 /**********************************************************************
 				   	Thread 1: Controller 
 ***********************************************************************/
@@ -573,6 +600,7 @@ void *controller(void * d)
 	pthread_mutex_lock(&lock[0]);
 
 	xa = 0.0; // X_DES*1000;
+	curr_pos = 0.0;
 
 	aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
@@ -625,7 +653,7 @@ void *controller(void * d)
 			}
 			else if(imp_cont->game == 3)
 			{
-				imp_Haptics(imp_cont);
+				imp_Haptics_impedance(imp_cont, &physics_ball);
 			}
 			else
 			{

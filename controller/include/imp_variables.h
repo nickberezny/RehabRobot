@@ -58,6 +58,12 @@
 #define X_DES_MAX 400.0 
 #define X_DES_MIN 0.0 
 
+//TODO (for physics)
+#define POSITION_REST 20
+#define VELOCITY_REST 20 
+#define PHYSICS_K 0.01 //TODO - set range
+#define PHYSICS_M 0.001 
+
 
 #define F_GAIN -0.005
 

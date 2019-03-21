@@ -67,6 +67,29 @@ struct regexMatch {
 	char *game;
 };
 
+struct physics_ball {
+	int in_play;
+	int contact;
+	double dx;
+	double x_mass;
+	double v_mass;
+	double k;
+	double m;
+	double Fs;
+	double dir;
+};
+
+struct gait_sim {
+	int phase; // 1 = hold above xthresh, 2 = trajectory down, 3 = hold at Fthresh against spring, 4 = move up against spring 
+	double x_thresh, f_thresh; //thresholds 
+	double x_floor; //location of floor 
+	double Fs; //interaction force
+	double x_traj; //interaction force
+	double k_assist, k_floor, k_gravity; //stiffness for downward assistance, floor, upwards resistance
+	struct timespec t_start; //start time of reaching threshold 
+	struct timespec t_curr; //current time after reaching threshold
+};
+
 
 
 //FUNCTION DECLARATIONS ----------------------
@@ -100,5 +123,6 @@ void imp_calc_Bd(double Ad[2][2], double A[2][2], double B[2], double Bd[2]);
 void imp_regex_match(regex_t * compiled, char recvBuff[1024], regmatch_t matches[2], 
 	char matchBuffer[100],  struct regexMatch * regex, double * param_loc );
 
-void imp_Haptics_impedance(struct impStruct * imp);
-void imp_physics(struct impStruct * imp);
+void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball)
+void imp_physics(struct impStruct * imp, struct physics_ball * ball);
+void imp_gait(struct impStruct * imp, struct gait_sim * gait);

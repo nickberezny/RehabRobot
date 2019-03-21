@@ -8,6 +8,9 @@
 \renewcommand{\baselinestretch}{1.5} 
 
 \usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {pics/} }
+\usepackage{svg}
 
 \begin{document}
 \maketitle
@@ -15,10 +18,10 @@
 
 \chapter{Literature Review and Preliminary Research}
 
-\section{Stroke and Stroke Rehabilitation}
-Approximately 62,000 Canadians suffer from stroke every year, with over 10\% requiring in-patient rehabilitation \cite{Hebert2016}. 
+\section{Stroke and Rehabilitation}
+Approximately 62,000 Canadians suffer from stroke every year, with over 10\% of victims requiring in-patient rehabilitation \cite{Hebert2016}. 
 
-The ischaemic stroke is the most common form of stroke, accounting for around 80\% of all cases \cite{Rey2008}. It is caused by blood vessel occlusion, either directly in the brain (thrombotic), or due to the migration of a clot formed somewhere else in the body (embolic). The subsequent lack of oxygen in the affected area of the brain causes the death of brain tissue and neurological deficits \cite{Prabhakaran2015}, which manifest as functional impairments in the patient in activities associated with the affected brain region. Stroke complications can include hemiparesis (weakness on one side of the body), muscle spacitity, loss of motor control, loss of dexterity, etc... In addition to medical intervention in the form of pharmaceuticals and surgery, the stroke patient may require rehabilitation to reduce functional impairment and, ideally, to recover full autonomy \cite{Stroke}.
+Ischaemic stroke is the most common form of stroke, accounting for around 80\% of all cases \cite{Rey2008}. It is caused by blood vessel occlusion, either directly in the brain (thrombotic), or due to the migration of a clot formed somewhere else in the body (embolic). The subsequent lack of oxygen in the affected area of the brain causes the death of brain tissue and neurological deficits \cite{Prabhakaran2015}, which manifest as functional impairments in the patient in activities associated with the affected brain region. Stroke complications can include hemiparesis (weakness on one side of the body), muscle spacitity, loss of motor control, loss of dexterity, etc... In addition to medical intervention in the form of pharmaceuticals and surgery, the stroke patient may require rehabilitation to reduce functional impairment and, ideally, to recover full autonomy \cite{Stroke}.
 
 Stroke rehabilitation encompasses a broad range of therapeutic activities, typically carried out by occupational- and physiotherapists. Physiotherapists (PT's) tend to focus on gross motor movements in the upper and lower limbs, while occupational therapsits (OT's) focus on fine motor control, dexterity, and specific activities of daily living (ADL's). These two goals are inextricably linked, and so both PT's and OT's typically form a team which works together to improve patient outcomes. 
 
@@ -124,20 +127,105 @@ In addition to benefiting the patient, robotics could also be used as a tool by 
 \chapter{Device Design and Implementation}
 	\section{Overview}
 
-	
+	\begin{figure*}[t] 
+		\centering
+		\includegraphics[width=0.75\linewidth]{Robot_labeled}
+		\caption{Admittance Verification with Interaction}
+		\label{fig:VerInt}
+	\end{figure*}
 	
 	\section{Structural Design}
 
-		
-	
 	\section{Hardware}
 		\subsection{Actuator}
+		
+	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive. The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354). The gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090). The coupling is an Aluminium Flexible Shaft Coupling with polyurethance spider from McMaster-Carr. The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. The motor is mounted to the belt drive using custom machined aluminium mounts. 
+	
+	\begin{table}[]
+	\centering
+	\caption{DC Motor Properties}	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Property} & \textbf{Value}  \\ \hline
+ 		Nominal Voltage & 24V  \\ \hline
+ 		Torque Constant & 38.5 mNm/A \\ \hline
+ 		Speed Constant & 248 rpm/V  \\ \hline
+ 		Stall Torque & 8.92 Nm \\ \hline
+		\end{tabular}
+	\label{tab:motor}
+	\end{table}
+	
+	\begin{table}[]
+	\centering
+	\caption{Gear Reduction Properties}	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Property} & \textbf{Value}  \\ \hline
+ 		Reduction & 53:1  \\ \hline
+ 		Max Speed Input & 6000 rpm  \\ \hline
+ 		Max Torque Input & 45 Nm  \\ \hline
+		\end{tabular}
+	\label{tab:gear}
+	\end{table}
+	
+	\begin{table}[]
+	\centering
+	\caption{Belt Drive Properties}	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Property} & \textbf{Value}  \\ \hline
+		Stroke Length & 24 in  \\ \hline
+ 		Travel per Revolutions & 4.8 in/rev  \\ \hline
+ 		Maximum Travel Speed & 100 in/s  \\ \hline
+ 		Static Load capacity & 1000 lb  \\ \hline
+ 		Dynamic Load Capacity & 200 lb  \\ \hline
+		\end{tabular}
+	\label{tab:belt}
+	\end{table}
+	
+	 
+		
 		\subsection{Sensors}
+
+	A total of five sensors are used on the device, including: a load cell, two limit switches, a quadrature encoder, and an infrared (IR) proximity sensor. The load cell and encoder are used to measure force and relative change in position for use in the controller; the limit switches are used to sense if the carriage as reached the end of the stroke in the front or back of the device, and the IR sensor detects the user's foot on the footplate to ensure the device can be deactivated if the foot is removed or if no one is using it. 		
+		
 	\section{Electronics and Power}
+	
+	Custom electronics were needed in order to power and operate the sensors, and send command signals to the motor. As such, a printed circuit board (PCB) was created. It includes voltage regulator's to down-step? the voltage from the 48v power supply, routing to cleanly connect the DAQ with the sensors, and several integrated circuits (IC's) to perform signal processing. 
+	
+	
+	
 		\subsection{Components}
+		
+	\begin{table}[]
+	\centering
+	\caption{PCB Components}	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Component} & \textbf{Description}  \\ \hline
+		24 V DC/DC Converter & Converts 48V to 24V  \\ \hline
+		10 \& 5V Linear Regulator & Converts 48V to 10V and 5V  \\ \hline
+		OP-AMP & Signal Processing   \\ \hline
+		Comparator & Checks to ensure commands are not above/below threshold   \\ \hline
+		4 Channel AND Gate & Only enables operation if all saftey checks read ok   \\ \hline
+		Watchdog Timer & Ensures controller is still running \\ \hline
+
+		\end{tabular}
+	\label{tab:belt}
+	\end{table}
+		
 		\subsection{PCB Layout}
+		
+	\begin{figure*}[t] 
+		\centering
+		\includegraphics[width=0.9\linewidth]{pcb_schematic}
+		\caption{Printed Circuit Board}
+		\label{fig:pcb}
+	\end{figure*}
+	
 	\section{Data Acquisition} 
 
+	Data acquisition is handled by a LabJack T7 DAQ. This model has 14 analog inputs, 2 analog outputs, 23 digital I/O's, and is also capable of handling quadrature encoder signals and high-speed data streaming. The device can interface with the computer through a Ethernet, USB, or wifi (Ethernet was chosen for this project as it is the fastest and most reliable). The front-end Modbus TCP interface is conveniently packaged in the C/C++ LJM library, discussed further in chapter ... 
 
 \chapter{Controller and Software}
 
@@ -212,7 +300,7 @@ Using this control law, the end effector of the robot will behave like the syste
 	
 	
 
-	\section{Haptics and the Physics Engine}
+	\section{Haptic Coupling}
 %------------------------------------------------------------------------
 %-1 DOF physics engine 
 %-strategies to create haptics 
@@ -291,6 +379,10 @@ Defining the desired impedance or admittance in terms of a mass-spring-damper sy
 	
 	Finally, the haptic coupling parameters $m$ and $b$ should be set. As was explained in Sec. , these parameters give the controller some minimum impedance so that the haptics do not try to render an impedance too close to free motion. Therefore, the parameters are set to the empirically derived $B_{min}$ and its pair $K_{min}$. This decouples the haptic design from the stability of the controller by imposing the minimum impedance for the stability. The maximum constraints are however still not imposed. Fortunately, the haptics explicitly calculate either the desired force or the desired next position, and therefore the constraints on these parameters can be directly imposed. 
 		
+	\section{Physics Engine}
+	
+			
+		
 	\section{Real Time Operation and Linux}
 	
 %------------------------------------------------------------------------
@@ -310,6 +402,32 @@ Defining the desired impedance or admittance in terms of a mass-spring-damper sy
 \chapter{Experiments}
 	\section{Safety Tests}
 	\section{Functional Tests}
+
+	\subsection{Verifying Admittance Control}
+		
+	The goal of admittance control is to achieve a desired dynamic behaviour, usually in terms of a mass-spring-damper system, given some input force. To confirm that the controller is successfully rendering the desired admittance, the output position of the device was compared to a simulation of the desired admittance. Force was applied to the system, and data regarding the position and the input force was saved. The force data was used as an input to a Simulink simulation of the mass-spring-damper system, and both the robots position and the simulated position were compared. It was expected that the robot position would track the simulation with some minimal delay due to time lag introduced by the finite sampling rate, as well as some possible error due to limitations of the robots PD control. 
+	
+	For the first test no interaction force was applied, only an initial offset of the reference position of the spring (of 0.2m) was used to elicit a response. A comparison of the robot's behaviour and the simulated behaviour of the desired admittance behaviour is given in (). Force was applied to the robot in the second test, in order to verify that the controller reproduced the desired admittance when interacting with an unknown environment. ... 
+	
+	
+\begin{figure*}[t] 
+	\centering
+	\includegraphics[width=0.9\linewidth]{Mar12_NoForce_Step_Plot}
+	\caption{Admittance Verification with Interaction}
+	\label{fig:nVerNoInt}
+\end{figure*}
+
+\begin{figure*}[t] 
+	\centering
+	\includegraphics[width=0.9\linewidth]{Mar12_RandForce_Plot1}
+	\caption{Admittance Verification with Interaction}
+	\label{fig:VerInt}
+\end{figure*}
+	
+	These tests confirm that the admittance controller adequately recreated the desired dynamics, and that the outer-loop PD controller tracked this behaviour. 
+	
+	\subsection{Verifying Haptic Control}
+	
 	\section{Healthy Subject Experiments}
 	
 \chapter{Conclusion}
