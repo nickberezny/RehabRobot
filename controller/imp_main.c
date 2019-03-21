@@ -375,6 +375,8 @@ int main(int argc, char* argv[]) {
 			imp[i].K = K_GAIN;
 			imp[i].B = B_GAIN;
 			imp[i].M = M_GAIN;
+			imp[i].b = B_GAIN;
+			imp[i].m = M_GAIN;
 			imp[i].xdes = X_DES*1000;
 			imp[i].vdes = 0.0;
 			imp[i].fdes = 0.0;
@@ -382,7 +384,10 @@ int main(int argc, char* argv[]) {
 			imp[i].vmax = V_MAX;
 			imp[i].F_Gain = F_GAIN;
 			imp[i].xa = X_DES*1000;
-			imp[i].T = STEP_NSEC/NSEC_IN_SEC;				
+			imp[i].T = STEP_NSEC/NSEC_IN_SEC;
+			imp[i].va_1 = 0.0;
+			imp[i].Fk_1= 0.0;
+			imp[i].Fa_1 = 0.0;			
 		}
 
 		if(DEBUG) printf("Set All Parameters...\n");
