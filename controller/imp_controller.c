@@ -116,7 +116,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball)
 
     */
     
-    imp->va = imp->va_1 * (1.0/imp->b + imp->T/imp->m)*(imp->fk - imp->Fa) - (1.0/imp->b)*(imp->Fk_1 - imp->Fa_1);
+    imp->va = imp->va_1 - (1.0/imp->b + imp->T/imp->m)*(imp->fk - imp->Fa) + (1.0/imp->b)*(imp->Fk_1 - imp->Fa_1);
     
     //calc imp->Fa given x 
     //imp_physics(imp, ball);
