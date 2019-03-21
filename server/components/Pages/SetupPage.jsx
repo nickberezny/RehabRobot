@@ -10,10 +10,12 @@ import Dropdown from '../Generic/Dropdown'
 import FollowTraj_Dev from '../Setups/FollowTraj_Dev'
 import FollowVel_Dev from '../Setups/FollowVel_Dev'
 import Balance_Dev from '../Setups/Balance_Dev'
+import Gait_Dev from '../Setups/Gait_Dev'
 
 import FollowTraj from '../Setups/FollowTraj'
 import FollowVel from '../Setups/FollowVel'
 import Balance from '../Setups/Balance'
+import Gait from '../Setups/Gait'
 
 
 import { withStyles } from '@material-ui/core/styles';
@@ -41,6 +43,9 @@ class SetupPage extends React.Component {
 				case 3:
 					this.state.contents = <div> <Balance_Dev /> </div> 
 					break;
+				case 4:
+					this.state.contents = <div> <Gait_Dev /> </div> 
+					break;
 				default: 
 					this.state.contents = <div> Select a Game </div> 
 			}
@@ -55,6 +60,9 @@ class SetupPage extends React.Component {
 					break;
 				case 3:
 					this.state.contents = <div> <Balance /> </div> 
+					break;
+				case 4:
+					this.state.contents = <div> <Gait /> </div> 
 					break;
 				default: 
 					this.state.contents = <div> Select a Game </div> 

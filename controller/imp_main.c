@@ -645,16 +645,24 @@ void *controller(void * d)
 			/*
 			if(imp_cont->game == 1)
 			{
+				//assitive trajectory
 				imp_traj(imp_cont, &direction);
 				imp_Adm(imp_cont, &xa, &va);
 			}
 			else if(imp_cont->game == 2)
 			{
+				//follow velcocity (no assistance)
 				imp_Adm_free(imp_cont, &xa, &va);
 			}
 			else if(imp_cont->game == 3)
 			{
+				//balance with haptic disturbances
 				imp_Haptics_impedance(imp_cont, &physics_ball);
+			}
+			else if(imp_cont->game == 4)
+			{
+				//gait cycle simulation
+				imp_gait(imp_cont);
 			}
 			else
 			{

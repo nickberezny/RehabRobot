@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import InputText from '../Generic/InputText';
 import { connect } from "react-redux";
 
-class FollowVel_Dev extends React.Component {
+class Gait_Dev extends React.Component {
   
   constructor(props) {
     super(props);
@@ -15,9 +15,9 @@ class FollowVel_Dev extends React.Component {
 
     return (
       <div> 
-        <InputText text="Max Position" textValue={this.props.xmax} paramName='xmax' />
-        <InputText text="Contact Stiffness" textValue={this.props.k_contact} paramName='k_contact' />
-        <InputText text="Contact Object mass" textValue={this.props.m_contact} paramName='m_contact' />
+        <InputText text="Assistance Stiffness" textValue={this.props.k_assist} paramName='k_assist' />
+        <InputText text="Floor Stiffness" textValue={this.props.k_floor} paramName='k_floor' />
+        <InputText text="Gravity Stiffness" textValue={this.props.k_gravity} paramName='k_gravity' />
         <InputText text="Admittance B" textValue={this.props.B} paramName='B' />
         <InputText text="Admittance M" textValue={this.props.M} paramName='M' />
         <InputText text="P Gain" textValue={this.props.P} paramName='P' />
@@ -31,19 +31,17 @@ function mapStateToProps(state) {
   return {
     P: state.P,
     D: state.D,
-    xmax: state.xmax,
-    vmax: state.vmax,
-    K: state.K,
+    k_assist: state.k_assist,
+    k_floor: state.k_floor,
+    k_gravity: state.k_gravity,
     B: state.B,
     M: state.M,
-    m_contact: state.m_contact,
-    k_contact: state.k_contact,
   }
 }
 
 export default connect(
   mapStateToProps,
   {}
-)(FollowVel_Dev);
+)(Gait_Dev);
 
 //

@@ -10,7 +10,11 @@ import {
   SET_GAME,
 } from './actions'
 
-var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, P: 2, D:1, xdes: 0, K:10, B:0.5, M:0.09, x:0.5, v:0, vdes:0, game:1, xmax: 100.0, vmax: 0.0,  };
+var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, run: 0,
+                    P: 2, D:1, xdes: 0, K:10, B:0.5, M:0.09, 
+                    x:0.5, v:0, vdes:0, game:1, xmax: 100.0, vmax: 0.0,  
+                    k_contact: 0.0, m_contact: 0.0, k_assist: 0.0, k_floor: 0.0, k_gravity: 0.0,
+                };
 
 function todoApp(state = initState, action) {
   switch (action.type) {
@@ -43,6 +47,9 @@ function todoApp(state = initState, action) {
  
     case RUN_ROBOT:
       console.log("Run!")
+      return Object.assign({}, state, {
+        run: 1,
+      })
       break;
 
     case SET_SOCKET:

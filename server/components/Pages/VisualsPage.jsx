@@ -5,6 +5,8 @@ import Basic from '../../games/basic'
 import BarGame from '../../games/bar_with_game'
 import Follow_traj from '../../games/follow_traj'
 import RaceGame from '../../games/race_game'
+import RunButton from '../Generic/RunButton'
+import FollowTraj_Instruction from '../Instructions/FollowTraj_Instruction'
 
 class VisualsPage extends React.Component {
 
@@ -17,18 +19,43 @@ class VisualsPage extends React.Component {
 
 	render() {
 
-		switch(this.props.game) {
-			case 1: 
-				this.state.content = <BarGame />
-				break; 
-			case 2: 
-				this.state.content = <RaceGame />
-				break; 
-			case 3: 
-				this.state.content = <Follow_traj />
-				break; 
-			default: 
-				<div> Game load failed </div>
+		if(this.props.run){
+			switch(this.props.game) {
+				case 1: 
+					this.state.content = <BarGame />
+					break; 
+				case 2: 
+					this.state.content = <RaceGame />
+					break; 
+				case 3: 
+					this.state.content = <Follow_traj />
+					break; 
+				case 4: 
+					this.state.content = <Follow_traj />
+					break; 
+				default: 
+					<div> Game load failed </div>
+				}
+			}
+			else
+			{
+				switch(this.props.game) {
+				case 1: 
+					this.state.content = <div><FollowTraj_Instruction /> <RunButton /></div>
+					break; 
+				case 2: 
+					this.state.content = <div><RaceGame /> <RunButton /></div>
+					break; 
+				case 3: 
+					this.state.content = <div><Follow_traj />  <RunButton /></div>
+					break; 
+				case 4: 
+					this.state.content = <div><Follow_traj />  <RunButton /></div>
+					break; 
+				default: 
+					<div> Game load failed </div>
+				}
+				
 			}
 
 		return (
@@ -45,6 +72,7 @@ class VisualsPage extends React.Component {
 function mapStateToProps(state) {
   return {
   	game: state.game,
+  	run: state.run,
   }
 }
 
