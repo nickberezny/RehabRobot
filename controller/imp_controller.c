@@ -122,7 +122,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball)
     //imp_physics(imp, ball);
     //imp->Fa = -ball->Fs; 
 
-    imp->Fa = imp.K * (imp->xdes - imp->xk); //spring impedance 
+    imp->Fa = imp->K * (imp->xdes - imp->xk); //spring impedance 
 
     imp->xa += imp->va*imp->T;
 
@@ -171,7 +171,7 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
         {
             //ball is in contact with player, determine interaction force
             ball->contact = 1;
-            ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk))
+            ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk));
         }
         else{
             if(ball->contact = 1) ball->in_play = 0; //if ball has left player, delete
@@ -180,8 +180,8 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
         }
 
         //physics - euler approximation of differential dynamics 
-        ball->v_mass -= ball->dir * imp->step_time * ball->Fs / ball->m;
-        ball->x_mass += ball->v_mass * imp->step_time;
+        //ball->v_mass -= ball->dir * imp->step_time * ball->Fs / ball->m;
+        //ball->x_mass += ball->v_mass * imp->step_time;
 
     }
 

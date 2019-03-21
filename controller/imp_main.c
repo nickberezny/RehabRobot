@@ -494,6 +494,7 @@ int main(int argc, char* argv[]) {
     if(DEBUG) printf("Homing ...\n");  
 
     //home to front
+    /*
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     imp[9].LSB[0] = aValues[3];
@@ -508,7 +509,7 @@ int main(int argc, char* argv[]) {
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSF[0] = aValues[3];
     }
-
+*/
     //home to back
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
@@ -663,8 +664,8 @@ void *controller(void * d)
 
 			//imp_traj(imp_cont, &direction, &xdes_old);
 			//imp_PD(imp_cont);
-			imp_Adm(imp_cont, &xa, &va);
-
+			//imp_Adm(imp_cont, &xa, &va);
+			imp_Haptics_impedance(imp_cont, &physics_ball);
 			//imp_Adm_free(imp_cont, &xa, &va);
 			
 			//Safety Checks
