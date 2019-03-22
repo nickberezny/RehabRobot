@@ -1,12 +1,7 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis_feb2019.aux
 The style file: ieeetr.bst
 Database file #1: thesis.bib
-I was expecting a `,' or a `}'---line 115 of file thesis.bib
- : 
- : @article{Meng2015,
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--empty institution in Rey2008
 Warning--can't use both volume and number fields in Chisholm2010
 Warning--empty publisher in Chisholm2010
-(There was 1 error message)
+(There were 3 warnings)

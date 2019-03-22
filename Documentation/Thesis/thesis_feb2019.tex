@@ -19,7 +19,7 @@
 \chapter{Literature Review and Preliminary Research}
 
 \section{Stroke and Rehabilitation}
-Approximately 62,000 Canadians suffer from stroke every year, with over 10\% of victims requiring in-patient rehabilitation \cite{Hebert2016}. 
+Approximately 62,000 Canadians suffer from stroke every year, with over 10\% of victims requiring in-patient rehabilitation \cite{Hebert2016}. Motor impairment effects around 80\% of patients, which can result in limited mobilited and muscle control \cite{Langhorne2009}. The scale of stroke care and rehabilitation is significant, with ... Improving stroke rehabilitation would benefit the stroke victims by improving their recovery and thus their quality of life, and would also have significant economic benefits, with one study estimating up to \$682 million dollars annually in Canada alone, due to savings due to earlier discharges, as well as increased productivity of the stroke patients post-treatment \cite{Krueger2012}. 
 
 Ischaemic stroke is the most common form of stroke, accounting for around 80\% of all cases \cite{Rey2008}. It is caused by blood vessel occlusion, either directly in the brain (thrombotic), or due to the migration of a clot formed somewhere else in the body (embolic). The subsequent lack of oxygen in the affected area of the brain causes the death of brain tissue and neurological deficits \cite{Prabhakaran2015}, which manifest as functional impairments in the patient in activities associated with the affected brain region. Stroke complications can include hemiparesis (weakness on one side of the body), muscle spacitity, loss of motor control, loss of dexterity, etc... In addition to medical intervention in the form of pharmaceuticals and surgery, the stroke patient may require rehabilitation to reduce functional impairment and, ideally, to recover full autonomy \cite{Stroke}.
 
@@ -52,8 +52,30 @@ It is recommended that patients receive three hours a day of therapy, with more 
 	
 	\subsection{Robots for Bed-bound Therapy}
 	
-	ViGGR
+	The precursor to this project is the Virtual Gait Rehabilitation Robot (ViGRR), a device developed at Carleton University's Advanced Biomechatronics and Locomotion Laboratory \cite{Chisholm2014, Chisholm2010}. It is a 4-DOF end-plate based robot which can assist a reclined patient move through trajectories in the saggital plane. It works in conjunction with a virtual environment, which the patient can interact with through haptic force-feedback. An admittance controller is used to assist or resist patient movement as desired. It is capable of guiding patient's through a gait trajectory, among other activities. 
 	
+	The motivation to create a new device is twofold: creating a lower-powered device suitable for acute stroke rehabilitation, and a smaller and more light-weight device suitable for the hospital environment. 
+	
+	\subsection{Controls} 
+	
+	The type of controller used is especially important for devices interacting with a human (or any unknown environment), as it will determine the interaction behaviour and stability. The behaviour of the interaction should be optimized to ensure the patient engages in meaningful therapy driving neural plasticity and recovery. Position control through the desired trajectory is not adequate, as the robot will effectively force the limb through the motion, thus becoming a passive motion machine with no necessary engagement from the patient. Neural plasticity requires engagement, \textit{i.e.} need to contribute to some extent to the movement of their limbs. Therefore, rehabilitation robotics should only give some assistance to the patient, instead of leading the motion. 
+	
+	Four popular control laws for rehabilitation robotics are listed in \cite{Meng2015}.
+	
+	\begin{enumerate}
+		\item Position Control
+		\item Impedance/Admittance Control
+		\item EMG-based Control
+		\item Adaptive Control 
+	\end{enumerate}
+	
+	Position control...
+	
+	Impedance and admittance control were introduced by Hogan in \cite{Hogan1985}, and has been the foundation of most interaction controllers since. These controllers control the interaction between force and position at the interface between the robot and the environment. In this way, an impedance controller can be used to give a programmable amount of assistance to the user through a trajectory, which can be varied by changing the parameters so that an optimal amount of assistance can be obtained for each individual. 
+	
+	EMG-based control...
+	
+	Adaptive control ...
 	
 \section{Interviews and Shadowing}
 
@@ -66,13 +88,15 @@ It is recommended that patients receive three hours a day of therapy, with more 
 	
 	Fieldwork was conducted at the Civic campus of the Ottawa Hospital (TOH), in cooperation with Dr. Dariush Dowlatshahi, and with ethics approval from the Ottawa Health Science Network Research Ethics Board (OHSN-REB). Three PT's and two Ot's were recruited for two days of interviews and shadowing. Inclusion criteria included experience working on the stroke ward delivering rehabilitation to stroke patients. Not enough data was collected to perform any meaningful statistics, although this was not the point -- instead, key insights were discovered which guided the fundamental concept of the device, and information was gathered not otherwise available through a literature review. 
 	
-	Topics of interest included 
+	Some topics of interest included:
 	
-	
-	
-	
-	
-	
+	\begin{itemize}
+		\item Typical acute, bed-bound rehabilitation 
+		\item Patient Engagement -- how the therapists keep patients motivated and interactive
+		\item The hospital environment 
+		\item 
+	\end{itemize}
+
 	
 	\subsection{Typical Rehabilitation}
 	
@@ -86,30 +110,11 @@ It is recommended that patients receive three hours a day of therapy, with more 
 	Space in the hospital is limited. Many rooms house four patients, and are often crowded by hospital staff, family, and equipment. The beds themselves vary in model and size, but all have some common characteristics: movable guards on the side, removable baseboard, tiltable frame controlled from a panel. There appear to only be outlets behind the beds near the floor, but this will again vary from room to room. 
 	There is also a therapy room where more advanced patients go to practice sit-to-stand, walking, stair-climbing, etc. This room is more spacious and also includes beds (albeit simpler beds that cannot be tilted and that do no have guards). 
 	
-\section{Device Concept} 
-%------------------------------------------------------------------------
-%-lower limb, acute and bed bound, knee flex/ext, portable and low powered
-%
-%-------------------------------------------------------------------------
+	\section{Device Concept \& Motivation} 
+
 We set out to design a simple lower-limb rehabilitation for acute, bed-bound stroke patients. We chose to design for the knee flexion-extension exercise because it is most related to sit-to-stand, which is the most important activity for bed-bound patients to recover as it allows the patient to get up and begin gait rehabilitation. The robotic configuration best suited to this exercise is a one degree of freedom linear actuator. 
-	Another important requirement is simplicity...
+	Another important requirement is simplicity...	
 
-
-
-%---------------------------------------------------------------------	
-	\subsection{Control}
-	
-	\begin{itemize}
-		\item Position Control
-		\item Impedance/Admittance Control
-		\item EMG-based Control
-		\item Adaptive Control 
-	\end{itemize}
-	\cite{Meng2015}
-	
-	The Advanced Biomechatronics and Locomotion Laboratory (ABL) has developed a lower-limb end-plate based rehabilitation robot called the Virtual Gait Rehabilitation Robot (ViGRR). It consists of a redundant 4-DOF planar robotic leg linked with a gaming display system. \cite{Chisholm2010}
-	
-	\section{Motivation} 
 Stroke rehabilitation best practices were outlined in the previous section. A few key recommendations highlight the potential benefits of introducing a simple-to-use robotic device into the rehabilitation arsenal. The robotic device would primarily be used to offer additional rehabilitation time to patients under the supervision of a nurse or other responsible person. The gaming aspect of the system would ensure the patient is engaged in the exercise, and also offer feedback so that the patients movements can be regulated even in the absence of a therapist. The games and visualizations could also be tailored to simulate ADL's. Therefore, a robotic device could theoretically boost outcomes by covering the following recommendations:
 \begin{enumerate}
 	\item Increased therapy time per day 
@@ -118,8 +123,6 @@ Stroke rehabilitation best practices were outlined in the previous section. A fe
 	\item Using immersive technology to improve engagement 
 \end{enumerate}
 In addition to benefiting the patient, robotics could also be used as a tool by therapists to improve their tracking of patient progress. 
-
-
 
 
 
