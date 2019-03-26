@@ -78,6 +78,7 @@ double xa = 0.0;
 double va = 0.0;
 double fa = 0.0; 
 double fk = 0.0;
+double fa_1 = 0.0;
 
 double xdes_old = 0.0;
 
@@ -683,7 +684,7 @@ void *controller(void * d)
 			//imp_traj(imp_cont, &direction, &xdes_old);
 			//imp_PD(imp_cont);
 			//imp_Adm(imp_cont, &xa, &va);
-			imp_Haptics_impedance(imp_cont, &physics_ball, &xa, &va, &fa, &fk);
+			imp_Haptics_impedance(imp_cont, &physics_ball, &xa, &va, &fa, &fk, &fa_1);
 			//imp_Adm_free(imp_cont, &xa, &va);
 			
 			//Safety Checks
