@@ -102,7 +102,7 @@ void imp_Haptics(struct impStruct * imp)
 	return;
 }
 
-void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball)
+void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball,  double * xa, double * va, double *fa, double * fk)
 {
    
     /*
@@ -116,7 +116,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball)
 
     */
     
-    imp->va = imp->va_1 - (1.0/imp->b + imp->T/imp->m)*(imp->fk - imp->Fa) + (1.0/imp->b)*(imp->Fk_1 - imp->Fa_1);
+    imp->va = *va - (1.0/imp->b + imp->T/imp->m)*(imp->fk - imp->Fa) + (1.0/imp->b)*(*fa - *fk);
     
     //calc imp->Fa given x 
     //imp_physics(imp, ball);
@@ -130,11 +130,9 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball)
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(- imp->vk);
 
     //Update variables
-    imp->va_1 = imp->va;
-    imp->Fk_1 = imp->fk;
-    imp->Fa_1 = imp->Fa;
-
-
+    *va = imp->va;
+    *fk = imp->fk;
+    *fa = imp->Fa;
 
     return;
 }
