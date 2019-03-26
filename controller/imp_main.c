@@ -386,8 +386,10 @@ int main(int argc, char* argv[]) {
 			imp[i].xa = X_DES*1000;
 			imp[i].T = STEP_NSEC/NSEC_IN_SEC;
 			imp[i].va_1 = 0.0;
+			imp[i].va = 0.0;
 			imp[i].Fk_1= 0.0;
-			imp[i].Fa_1 = 0.0;			
+			imp[i].Fa_1 = 0.0;
+			imp[i].Fa = 0.0;				
 		}
 
 		if(DEBUG) printf("Set All Parameters...\n");
