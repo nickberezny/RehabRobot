@@ -14,7 +14,7 @@
 #define STEP_NSEC 1000000.0 //control step time (1ms)
 
 #define MAX_FORCE 50 //Newtons  
-#define MAX_COMMAND 0.5
+#define MAX_COMMAND 0.25
 
 //Conversion
 #define ENC_TO_MM 0.00115
@@ -69,4 +69,4 @@
 
 #define MAT_EXP_ITERATIONS 50 //number of iterations for matrix exp approximation
 
-#endif
+#endif 

@@ -383,7 +383,7 @@ int main(int argc, char* argv[]) {
 			imp[i].fp = imp[0].fp;
 			imp[i].vmax = V_MAX;
 			imp[i].F_Gain = F_GAIN;
-			imp[i].xa = X_DES*1000;
+			imp[i].xa = 0.0;
 			imp[i].T = STEP_NSEC/NSEC_IN_SEC;
 			imp[i].va_1 = 0.0;
 			imp[i].va = 0.0;
