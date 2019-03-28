@@ -174,7 +174,7 @@ int main(int argc, char* argv[]) {
 	data_file_name[en-1] = '_';
 
 	//printf("%s\n", data_file_name);
-	const char file_ext[] = "data2.txt";
+	const char file_ext[] = "data3.txt";
 	char folder[1000] = "data/";
 	//strcat(data_file_name, file_ext);
 	//strcat(folder, data_file_name);
