@@ -134,6 +134,8 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball,  
     *fk = imp->fk;
     *fa_1 = *fa;
     *fa = imp->Fa;
+    if(*fa_1 < *fa - 25.0)  *fa_1 = imp->Fa;
+    
 
 
     return;
