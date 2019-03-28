@@ -122,13 +122,14 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball,  
     //imp_physics(imp, ball);
     //imp->Fa = -ball->Fs; 
 
-    imp->xa += imp->va*imp->T;
+    imp->xa = *xa + imp->va*imp->T;
     imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance 
 
     //PD Control
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(- imp->vk);
 
     //Update variables
+    *xa = imp->xa;
     *va = imp->va;
     *fk = imp->fk;
     *fa_1 = *fa;
