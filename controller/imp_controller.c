@@ -109,7 +109,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball,  
 
         Haptic controller + coupling // For ADMITTANCE DISPLAY + IMPEDANCE ENVIRONMENT
 
-        (1) calc ve(k) = ve(k-1) + (1/b + T/m)*(F(k) - Fe(k)) - (1/b)(F(k-1) - Fe(k-1))
+        (1) calc ve(k) = (m/T ve(k-1) + F) / (m/T + b)
         (2) calc Fe(ve) (impedance environment)
         (3) calc x(k) = ve(k) * dt
         (4) use PD control to achieve v 
@@ -117,8 +117,10 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball,  
     */
     
     imp->xa = *xa + imp->va*imp->T;
-    imp->va = 0.992*(*va) + ((1.0/imp->b) + (imp->T/imp->m))*(- imp->fk + *fa) - (1.0/imp->b)*(-*fk + *fa_1);
+    //imp->va = 0.992*(*va) + ((1.0/imp->b) + (imp->T/imp->m))*(- imp->fk + *fa) - (1.0/imp->b)*(-*fk + *fa_1);
     
+    imp->va = (imp->m/imp->T * (*va) + imp->fk) / (imp->m/imp->T + imp->b);
+
     //calc imp->Fa given x 
     //imp_physics(imp, ball);
     //imp->Fa = -ball->Fs; 
