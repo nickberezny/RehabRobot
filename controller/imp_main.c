@@ -600,7 +600,7 @@ int main(int argc, char* argv[]) {
 	shutdown(connfd, 2);
     if(DEBUG) printf("Finished, terminating program... \n");
 
-    char data_command[] = "gnome-terminal --working-directory=Documents/RehabRobot/controller/data -e 'sudo python data_test_plot.py data.txt";
+    char data_command[] = "gnome-terminal --working-directory=Documents/RehabRobot/controller/data -e 'sudo python data_test_plot.py data2.txt";
     char apostrophe[] = "'";
     //strcat(data_command, data_file_name);
     strcat(data_command, apostrophe);
