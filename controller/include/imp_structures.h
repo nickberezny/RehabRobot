@@ -124,6 +124,6 @@ void imp_calc_Bd(double Ad[2][2], double A[2][2], double B[2], double Bd[2]);
 void imp_regex_match(regex_t * compiled, char recvBuff[1024], regmatch_t matches[2], 
 	char matchBuffer[100],  struct regexMatch * regex, double * param_loc );
 
-void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, struct gait_sim * gait,  double * xa, double * va, double *fa, double * fk, double * fa_1, int * environment)
+void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, struct gait_sim * gait,  double * xa, double * va, double *fa, double * fk, double * fa_1, int * environment);
 void imp_physics(struct impStruct * imp, struct physics_ball * ball);
 void imp_gait(struct impStruct * imp, struct gait_sim * gait);
