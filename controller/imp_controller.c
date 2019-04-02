@@ -102,7 +102,7 @@ void imp_Haptics(struct impStruct * imp)
 	return;
 }
 
-void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball,  double * xa, double * va, double *fa, double * fk, double * fa_1)
+void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, struct gait_sim * gait,  double * xa, double * va, double *fa, double * fk, double * fa_1, int * environment)
 {
    
     /*
@@ -119,13 +119,26 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball,  
     imp->xa = *xa + imp->va*imp->T;
     //imp->va = 0.992*(*va) + ((1.0/imp->b) + (imp->T/imp->m))*(- imp->fk + *fa) - (1.0/imp->b)*(-*fk + *fa_1);
     
-    imp->va = (imp->m/imp->T * (*va) + imp->fk) / (imp->m/imp->T + imp->b);
+    imp->va = ( (imp->m/imp->T) * (*va) + imp->fk) / ( (imp->m/imp->T) + imp->b);
 
     //calc imp->Fa given x 
     //imp_physics(imp, ball);
     //imp->Fa = -ball->Fs; 
+     switch(*environment){
 
-    imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance 
+        //HOLD ABOVE THRESHOLD AGAINST 'gravity'
+        case 1:
+            
+            imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance 
+            break;
+
+        case 2: 
+
+            imp_gait(imp, gait);
+            break;
+        }
+        
+    
 
     //PD Control
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(- imp->vk);
@@ -210,14 +223,20 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
         case 1:
             
             gait->Fs = gait->k_gravity*(imp->xk - gait->x_floor);
+            imp->Fa = gait->Fs;
             if(imp->xk < gait->x_thresh - 0.1) gait->phase = 2;
             break;
 
         //INITIATE MOVEMENT BY MOVING BELOW THREHOLD 
         case 2:
 
-            //set Fs to 0 
-            if(imp->xk > gait->x_thresh) gait->phase = 3;
+            gait->Fs = gait->k_gravity*(imp->xk - gait->x_floor);
+            imp->Fa = gait->Fs;
+            if(imp->xk > gait->x_thresh) 
+                {
+                    gait->phase = 3;
+                    gait->x_traj = gait->x_thresh;
+                }
             break;
 
         //TRAJECTORY DOWN WITH 'GRAVITY' ASSISTANCE
@@ -225,6 +244,9 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
 
             //calc traj
             gait->Fs = gait->k_assist*(imp->xk - gait->x_traj);
+            imp->Fa = gait->Fs;
+            gait->x_traj += gait->v_traj * imp->T; 
+
             if(imp->xk > gait->x_floor) gait->phase = 4;
             break;
         
@@ -232,6 +254,7 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
         case 4:
 
             gait->Fs = gait->k_floor*(imp->xk - gait->x_floor);
+            imp->Fa = gait->Fs;
             if(imp->fk > gait->f_thresh) gait->phase = 1;
             break;
         

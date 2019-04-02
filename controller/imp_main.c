@@ -41,6 +41,8 @@ int daqHandle;
 
 int listenfd = 0, connfd = 0;
 
+int environment = 1;
+
 pthread_mutex_t lock[BUFFER_SIZE]; 
 struct impStruct * imp_cont;
 struct impStruct * imp_cont_next;
@@ -84,6 +86,7 @@ double xdes_old = 0.0;
 double home_decrease = 0.0;
 
 struct physics_ball physics_ball; 
+struct gait_sim gait;
 
 
 /***********************************************************************
@@ -395,6 +398,14 @@ int main(int argc, char* argv[]) {
 			imp[i].Fa = 0.0;				
 		}
 
+		gait.k_assist = K_GAIN;
+		gait.k_gravity = K_GAIN;
+		gait.k_floor = K_GAIN + 0.3;
+		gait.x_floor = 300.0;
+		gait.x_thresh = 20.0;
+		gait.f_thresh = 7.0;
+		gait.phase = 1;
+
 		if(DEBUG) printf("Set All Parameters...\n");
 	}
 
@@ -683,7 +694,7 @@ void *controller(void * d)
 			//imp_traj(imp_cont, &direction, &xdes_old);
 			//imp_PD(imp_cont);
 			//imp_Adm(imp_cont, &xa, &va);
-			imp_Haptics_impedance(imp_cont, &physics_ball, &xa, &va, &fa, &fk, &fa_1);
+			imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1m, &environment);
 			//imp_Adm_free(imp_cont, &xa, &va);
 			
 			//Safety Checks
