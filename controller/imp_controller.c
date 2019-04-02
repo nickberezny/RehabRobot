@@ -224,7 +224,7 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
         //HOLD ABOVE THRESHOLD AGAINST 'gravity'
         case 1:
             
-            gait->Fs = gait->k_gravity*(imp->xk - gait->x_floor);
+            gait->Fs = gait->k_gravity*(-imp->xk + gait->x_floor);
             imp->Fa = gait->Fs;
             if(imp->xk < gait->x_thresh - 0.1) gait->phase = 2;
             break;
@@ -232,12 +232,12 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
         //INITIATE MOVEMENT BY MOVING BELOW THREHOLD 
         case 2:
 
-            gait->Fs = gait->k_gravity*(imp->xk - gait->x_floor);
+            gait->Fs = gait->k_gravity*(-imp->xk + gait->x_floor);
             imp->Fa = gait->Fs;
             if(imp->xk > gait->x_thresh) 
                 {
                     gait->phase = 3;
-                    gait->x_traj = gait->x_thresh;
+                    gait->x_traj = imp->xk;
                 }
             break;
 
@@ -245,7 +245,7 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
         case 3:
 
             //calc traj
-            gait->Fs = gait->k_assist*(imp->xk - gait->x_traj);
+            gait->Fs = gait->k_assist*(-imp->xk + gait->x_traj);
             imp->Fa = gait->Fs;
             gait->x_traj += gait->v_traj * imp->T; 
 
@@ -255,9 +255,9 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
         //RESIST WITH FLOOR STIFFNESS, WAIT FOR FORCE THRESHOLD
         case 4:
 
-            gait->Fs = gait->k_floor*(imp->xk - gait->x_floor);
+            gait->Fs = gait->k_floor*(-imp->xk + gait->x_floor);
             imp->Fa = gait->Fs;
-            if(imp->fk > gait->f_thresh) gait->phase = 1;
+            if(imp->fk < (-1)*gait->f_thresh) gait->phase = 1;
             break;
         
     
