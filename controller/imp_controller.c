@@ -259,8 +259,7 @@ void imp_gait(struct impStruct * imp, struct gait_sim * gait)
             imp->Fa = gait->Fs;
             if(imp->fk > gait->f_thresh) gait->phase = 1;
             break;
-        
-    
+
     }    
 
     return;

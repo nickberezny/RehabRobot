@@ -399,7 +399,7 @@ int main(int argc, char* argv[]) {
 		}
 
 		gait.k_assist = K_GAIN;
-		gait.k_gravity = K_GAIN;
+		gait.k_gravity = K_GAIN/3.0;
 		gait.k_floor = K_GAIN + 0.3;
 		gait.x_floor = 300.0;
 		gait.x_thresh = 20.0;
