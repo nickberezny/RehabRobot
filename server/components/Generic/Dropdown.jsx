@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import { setGame } from "../../src/actions";
+import { setValue } from "../../src/actions";
 
 class Dropdown extends React.Component {
 
@@ -16,7 +16,7 @@ class Dropdown extends React.Component {
 	}
 
 	handleChange(event) {
-		this.props.setGame(event.target.value)
+		this.props.setValue(this.props.id, event.target.value)
 	}
 
 	render() {
@@ -25,7 +25,7 @@ class Dropdown extends React.Component {
 			<FormControl>
 	          <InputLabel>{this.props.text}</InputLabel>
 	          <Select
-	            value={this.props.game}
+	            value={this.props.value}
 	            onChange={this.handleChange}
 	          >
 	            <MenuItem value="">

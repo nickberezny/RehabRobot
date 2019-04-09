@@ -38,10 +38,12 @@
 					   Global Variables
 ***********************************************************************/
 int daqHandle; 
-
 int listenfd = 0, connfd = 0;
-
 int environment = 2;
+int exp_number = 0;
+int exp_iteration = 0;
+
+int terminate_program = 1;
 
 pthread_mutex_t lock[BUFFER_SIZE]; 
 struct impStruct * imp_cont;
@@ -81,6 +83,10 @@ double fa = 0.0;
 double fk = 0.0;
 double fa_1 = 0.0;
 
+double k_gain = 0.0;
+double b_gain = 0.0; 
+double game_number = 0.0;
+
 double xdes_old = 0.0;
 
 double home_decrease = 0.0;
@@ -110,7 +116,8 @@ int main(int argc, char* argv[]) {
 		.M = "_M([0-9]*.[0-9]*)_",
 		.xmax = "_xmax([0-9]*.[0-9]*)_",
 		.vmax = "_vmax([0-9]*.[0-9]*)_",
-		.game = "_game([0-9]*)_"
+		.game = "_game([0-9]*)_",
+		.exp = "_exp([0-9]*)_"
 	} ; //regex matches
 
 	regex_t compiled;
@@ -243,235 +250,167 @@ int main(int argc, char* argv[]) {
 					   Wait for input 
 	***********************************************************************/
 
-    if(CONNECT_TO_UI){
+    //start tcp socket
+    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
+    listen(listenfd, 100);
 
-	    //start tcp socket
-	    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
-	    listen(listenfd, 100);
-
-		//Start UI Process 
-		system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
-		printf("TEST01\n");
-		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
-
-		printf("TEST01\n");
-		
-		if(GET_PARAMS_FROM_UI){
-			while(1)
-		    {
-				if(DEBUG) printf("Waiting for run signal from UI ... \n");
-
-				//wait for game settings
-				connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
-				if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
-				{
-					//recieved settings 
-					if(DEBUG) printf("recieved data: %s\n", recvBuff);
-					start_controller = 1;
-
-					//find set parameters in message using regular expreesions 
-					regcomp(&compiled, regex.P, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].P);
-					    if(DEBUG) { printf("P gain is: %lf\n", imp[0].P); }
-					}
-
-					regcomp(&compiled, regex.D, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].D);
-					    if(DEBUG) { printf("D gain is: %f\n", imp[0].D); }
-					}
-
-					regcomp(&compiled, regex.xdes, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].xdes);
-					    if(DEBUG) { printf("xdes is: %f\n", imp[0].xdes); }
-					}
-
-					regcomp(&compiled, regex.xmax, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].xmax);
-					    if(DEBUG) { printf("Xmax is: %f\n", imp[0].xmax); }
-					}
-
-					regcomp(&compiled, regex.vmax, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].vmax);
-					    if(DEBUG) { printf("Vmax is: %f\n", imp[0].vmax); }
-					}
-
-					regcomp(&compiled, regex.K, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].K);
-					    if(DEBUG) { printf("K is: %f\n", imp[0].K); }
-					}
-					
-					regcomp(&compiled, regex.B, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].B);
-					    if(DEBUG) { printf("B is: %f\n", imp[0].B); }
-					}
-					
-					regcomp(&compiled, regex.M, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].M);
-					    if(DEBUG) { printf("M is: %f\n", imp[0].M); }
-					}
-
-					regcomp(&compiled, regex.game, REG_EXTENDED);
-					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
-						sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-						sscanf(matchBuffer, "%lf", &imp[0].game);
-					    if(DEBUG) { printf("Game set to: %f\n", imp[0].game); }
-					}
-				}
-					
-					
-
-				for(int i = 1; i < BUFFER_SIZE; i++)
-				{
-					imp[i].P = imp[0].P;
-					imp[i].D = imp[0].D;
-					imp[i].K = imp[0].K;
-					imp[i].B = imp[0].B;
-					imp[i].M = imp[0].M;
-					imp[i].xdes = imp[0].xdes;
-					imp[i].fp = imp[0].fp;
-
-					imp[i].xmax = imp[0].xmax;
-					imp[i].vmax = imp[0].vmax;
-					imp[i].game = imp[0].game;
-							
-				}
-
-				if(DEBUG) printf("Set All Parameters (From UI)...\n");
-
-				//wait for run signal before starting controller
-				if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R' && start_controller == 1)
-				{
-					//everything set, begin therapy 
-					if(DEBUG) printf("Start signal recieved \n");
-					break;
-				}
-
-				close(connfd);
-				printf("TEST01\n");
-				sleep(0.01);
-				printf("TEST01\n");
+	//Start UI Process 
+	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+	
+	while(1)
+	{
+		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
+		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
+		{
+			//recieved settings 
+			if(DEBUG) printf("recieved data: %s\n", recvBuff);
+			
+			regcomp(&compiled, regex.exp, REG_EXTENDED);
+			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+				sscanf(matchBuffer, "%lf", &imp[0].exp);
+			    if(DEBUG) { printf("Experiment set to: %lf\n", imp[0].exp); }
 			}
 
-				
-	    }
-	}
-   		
-	if(! GET_PARAMS_FROM_UI) {
-   		//set default values if not connecting to UI (for testing)
-	    for(int i = 0; i < BUFFER_SIZE; i++)
-		{
-			imp[i].P = P_GAIN;
-			imp[i].D = D_GAIN;
-			imp[i].K = K_GAIN;
-			imp[i].B = B_GAIN;
-			imp[i].M = M_GAIN;
-			imp[i].b = B_GAIN;
-			imp[i].m = M_GAIN;
-			imp[i].xdes = X_DES*1000;
-			imp[i].vdes = 0.0;
-			imp[i].fdes = 0.0;
-			imp[i].fp = imp[0].fp;
-			imp[i].vmax = V_MAX;
-			imp[i].F_Gain = F_GAIN;
-			imp[i].xa = 0.0;
-			imp[i].T = STEP_NSEC/NSEC_IN_SEC;
-			imp[i].va_1 = 0.0;
-			imp[i].va = 0.0;
-			imp[i].Fk_1= 0.0;
-			imp[i].Fa_1 = 0.0;
-			imp[i].Fa = 0.0;				
+			break;
 		}
 
-		gait.k_assist = K_GAIN;
-		gait.k_gravity = K_GAIN - 0.15;
-		gait.k_floor = K_GAIN + 0.3;
-		gait.x_floor = 300.0;
-		gait.x_thresh = 20.0;
-		gait.f_thresh = 7.0;
-		gait.phase = 1;
-		gait.v_traj = 25.0;
-
-		if(DEBUG) printf("Set All Parameters...\n");
+		close(connfd);
+		sleep(0.01);
 	}
 
-	//check if params are within acceptable range
-	if( PMAX < imp[0].P || PMIN > imp[0].P  )
-	{ 
-		printf("P Gain out of range\n");
-		aValues[0] = MOTOR_ZERO; 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	return NULL;
-	}
-	if( DMAX < imp[0].D || DMIN > imp[0].D  )
-	{ 
-		printf("D Gain out of range\n");
-		aValues[0] = MOTOR_ZERO; 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	return NULL;
-	}
-	if( KMAX < imp[0].K || KMIN > imp[0].K  )
-	{ 
-		printf("K Gain out of range\n");
-		aValues[0] = MOTOR_ZERO; 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	return NULL;
-	}
-	if( BMAX < imp[0].B || BMIN > imp[0].B  )
-	{ 
-		printf("B Gain out of range\n");
-		aValues[0] = MOTOR_ZERO; 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	return NULL;
-	}
-	if( MMAX < imp[0].M || MMIN > imp[0].M  )
-	{ 
-		printf("M Gain out of range\n");
-		aValues[0] = MOTOR_ZERO; 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	return NULL;
-	}
-	if( V_MAX_MAX < imp[0].vmax || V_MAX_MIN > imp[0].vmax )
-	{ 
-		printf("Max velocity out of range\n");
-		aValues[0] = MOTOR_ZERO; 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	return NULL;
-	}
-	if( X_DES_MAX < imp[0].xdes || X_DES_MIN > imp[0].xdes  )
-	{ 
-		printf("Desired X Gain out of range\n");
-		aValues[0] = MOTOR_ZERO; 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	return NULL;
-	}
+	
+/*----------------------------------------------------------------------------
+	Prepare and run experiments
+-----------------------------------------------------------------------------*/
+
+	while(terminate_program){
 
 
 
+	//set default values if not connecting to UI (for testing)
+    for(int i = 0; i < BUFFER_SIZE; i++)
+	{
+		imp[i].P = P_GAIN;
+		imp[i].D = D_GAIN;
+		imp[i].M = M_GAIN;
+		imp[i].b = B_GAIN;
+		imp[i].m = M_GAIN;
+		imp[i].xdes = X_DES*1000;
+		imp[i].vdes = 0.0;
+		imp[i].fdes = 0.0;
+		imp[i].fp = imp[0].fp;
+		imp[i].vmax = V_MAX;
+		imp[i].F_Gain = F_GAIN;
+		imp[i].xa = 0.0;
+		imp[i].T = STEP_NSEC/NSEC_IN_SEC;
+		imp[i].va_1 = 0.0;
+		imp[i].va = 0.0;
+		imp[i].Fk_1= 0.0;
+		imp[i].Fa_1 = 0.0;
+		imp[i].Fa = 0.0;
+	}
+
+	gait.k_assist = K_GAIN;
+	gait.k_gravity = K_GAIN - 0.15;
+	gait.k_floor = K_GAIN + 0.3;
+	gait.x_floor = 300.0;
+	gait.x_thresh = 20.0;
+	gait.f_thresh = 7.0;
+	gait.phase = 1;
+	gait.v_traj = 25.0;
 
 
+	if(exp_number == 1)
+	{
+		game_number = 1;
+		max_count = 90000; //1.5 min
+		switch(exp_iteration++){
+
+			case 1:
+				k_gain = K_GAIN;
+				break;
+
+			case 2:
+				k_gain = K_GAIN;
+				break;
+
+			case 3:
+				k_gain = K_GAIN;
+				break; 
+
+			case 4:
+				k_gain = K_GAIN;
+				break;
+
+			case 5:
+				k_gain = K_GAIN;
+				break;
+
+			case 6:
+				k_gain = 0.0;
+				b_gain = B_GAIN;
+				break;
+
+			case 7:
+				k_gain = 0.0;
+				b_gain = B_GAIN;
+				break;
+
+			case 8:
+				k_gain = 0.0;
+				b_gain = B_GAIN;
+				break;
+
+			case 9:
+				k_gain = 0.0;
+				b_gain = B_GAIN;
+				break;
+
+			case 10:
+				k_gain = 0.0;
+				b_gain = B_GAIN;
+				terminate_program = 1;
+				break;
+		}
+	}
+
+	else if(exp_number == 2 || exp_number == 3)
+	{
+		max_count = 180000; //3 min
+		switch(exp_iteration++)
+		{
+			case 1:
+				game_number = 1;
+				break;
+
+			case 2:
+				game_number = 2;
+				break;
+
+			case 3:
+				game_number = 3;
+				environment = 1;
+				break;
+
+			case 4:
+				game_number = 4;
+				environment = 2;
+				terminate_program = 1;
+				break;
+		}
+	}
+	
+
+	if(DEBUG) printf("Set All Parameters...\n");
+	
     /**********************************************************************
 					   	Calculate Ad, Bd
 	***********************************************************************/
 
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
    	
-    double A[2][2] = {{0.0, 1.0},{-imp[0].K/imp[0].M, -imp[0].B/imp[0].M}};
+    double A[2][2] = {{0.0, 1.0},{-k_gain/imp[0].M, -b_gain/imp[0].M}};
     double B[2] = {0.0, 1.0/imp[0].M};
 
     matrix_exp(A, Ad);
@@ -486,33 +425,26 @@ int main(int argc, char* argv[]) {
     printf("Ad: %.4f, %.4f, %.4f, %.4f\n", Ad[0], Ad[1], Ad[2], Ad[3]);
     printf("Bd: %.4f, %.4f\n", Bd[0], Bd[1]);
 
-    //free motion matrices 
-
-    double A2[2][2] = {{0.0, 1.0},{0.0, -(imp[0].B)/(imp[0].M)}};
-    double B2[2] = {0.0, 1.0/(0.4*imp[0].M)};
-
-    matrix_exp(A2, Adf);
-
-    B2[1] = B2[1] * 0.001;
-    //imp_calc_Bd(Adf, A2, B2, Bdf);
-
-    for(int i = 0; i < BUFFER_SIZE; i++)
-    {
-    	imp[i].Adf = Adf;
-    	imp[i].Bdf = B2; //inverted A is singular
-    }
-
-    printf("Adf: %.4f, %.4f, %.4f, %.4f\n", Adf[0], Adf[1], Adf[2], Adf[3]);
-    printf("Bdf: %.4f, %.4f\n", B2[0], B2[1]);
-
-
-	
+  	
 /**********************************************************************
 					   	Home to front then to back
 ***********************************************************************/
 
+    while(1)
+	{
+		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
+		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'H')
+		{
+			//recieved settings 
+			if(DEBUG) printf("recieved data: %s\n", recvBuff);
+			break;
+		}
+
+		close(connfd);
+		sleep(0.01);
+	}
+
     sleep(2);
-    
     if(DEBUG) printf("Homing ...\n");  
 
     //home to front
@@ -583,6 +515,20 @@ int main(int argc, char* argv[]) {
 					   	Create and join threads
 ***********************************************************************/
 
+    while(1)
+	{
+		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
+		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R')
+		{
+			//recieved settings 
+			if(DEBUG) printf("recieved data: %s\n", recvBuff);
+			break;
+		}
+
+		close(connfd);
+		sleep(0.01);
+	}
+
     if(DEBUG) printf("Joining Threads ...\n"); 
    // sleep(10);
 	//create and join threads 
@@ -593,6 +539,8 @@ int main(int argc, char* argv[]) {
 	pthread_join(thread[1], NULL);
 	pthread_join(thread[2], NULL);
 	
+}
+
 	//finished sessions, begin shutdown
 	LJM_eStreamStop(daqHandle);
 	LJM_Close(daqHandle);
@@ -610,7 +558,6 @@ int main(int argc, char* argv[]) {
     system(data_command); //automatically run python plotting script on data
 
 	return 0;
-
 }
 
 /**********************************************************************
@@ -664,38 +611,38 @@ void *controller(void * d)
 
 			//Controller
 
-			/*
-			if(imp_cont->game == 1)
+			
+			switch(game_number)
 			{
-				//assitive trajectory
-				imp_traj(imp_cont, &direction);
-				imp_Adm(imp_cont, &xa, &va);
+				case 1:
+					//assistive
+					imp_traj(imp_cont, &direction, &xdes_old);
+					imp_Adm(imp_cont, &xa, &va);
+					break;
+
+				case 2:
+					//resistive
+					imp_traj(imp_cont, &direction, &xdes_old);
+					imp_Adm(imp_cont, &xa, &va);	
+					break;
+
+				case 3:
+					//balance
+					imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
+					break;
+
+				case 4:
+					//gait
+					imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
+					break;
+
+				
 			}
-			else if(imp_cont->game == 2)
-			{
-				//follow velcocity (no assistance)
-				imp_Adm_free(imp_cont, &xa, &va);
-			}
-			else if(imp_cont->game == 3)
-			{
-				//balance with haptic disturbances
-				imp_Haptics_impedance(imp_cont, &physics_ball);
-			}
-			else if(imp_cont->game == 4)
-			{
-				//gait cycle simulation
-				imp_gait(imp_cont);
-			}
-			else
-			{
-				if(DEBUG) printf("No game selected ...\n");
-			}
-			*/
 
 			//imp_traj(imp_cont, &direction, &xdes_old);
 			//imp_PD(imp_cont);
 			//imp_Adm(imp_cont, &xa, &va);
-			imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
+			//imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
 			//imp_Adm_free(imp_cont, &xa, &va);
 			
 			//Safety Checks
@@ -746,6 +693,8 @@ void *controller(void * d)
 	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
 
 		}
+
+		if(temp_counter > max_count) return;
 	}
 
 	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
@@ -780,7 +729,7 @@ void *server(void* d)
 
 		}
 			
-		if(temp_counter > MAX_COUNT) return;
+		if(temp_counter > max_count) return;
 		
 
 	}
@@ -811,7 +760,7 @@ void *logger(void * d)
 
 		}
 			
-		if(temp_counter > MAX_COUNT) return;
+		if(temp_counter > max_count) return;
 	}
 	
 	return NULL;

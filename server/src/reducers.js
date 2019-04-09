@@ -8,12 +8,14 @@ import {
   SET_SOCKET,
   SET_USER,
   SET_GAME,
+  SET_VALUE,
 } from './actions'
 
 var initState = {user: 1, menuOpen: false, activePage: 1, socket: null, run: 0,
                     P: 2, D:1, xdes: 0, K:10, B:0.5, M:0.09, 
                     x:0.5, v:0, vdes:0, game:1, xmax: 100.0, vmax: 0.0,  
                     k_contact: 0.0, m_contact: 0.0, k_assist: 0.0, k_floor: 0.0, k_gravity: 0.0,
+                    exp: 1,
                 };
 
 function todoApp(state = initState, action) {
@@ -66,6 +68,12 @@ function todoApp(state = initState, action) {
     case SET_GAME:
       return Object.assign({}, state, {
         game: action.game,
+      })
+      break;
+      
+    case: SET_VALUE:
+      return Ocject.assign({}, state. {
+        [action.id]: action.value,
       })
       break;
       

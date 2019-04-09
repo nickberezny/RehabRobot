@@ -33,6 +33,7 @@ struct impStruct {
 	double m, b, T; //haptic coupling
 	double cmd;
 	int game; 
+	int exp;
 	struct timespec start_time;
 	struct timespec end_time;
 	struct timespec wait_time;
@@ -65,6 +66,7 @@ struct regexMatch {
 	char *xmax;
 	char *vmax;
 	char *game;
+	char *exp;
 };
 
 struct physics_ball {
