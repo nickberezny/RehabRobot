@@ -23,9 +23,7 @@ class Experiment2019 extends React.Component {
           Set Up a Session    
         </Typography>
         <Dropdown text="Experiment" id="exp" value={this.props.exp} select1="Expirment A" select2 = "Expirment B" select3 = "Expirment C" />
-        <HomeButton text="Home" />
         <SetButton text="Set" />
-        <RunButton text="Run" />
       </div>
     )
   }

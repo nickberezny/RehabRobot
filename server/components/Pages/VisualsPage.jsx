@@ -6,6 +6,7 @@ import BarGame from '../../games/bar_with_game'
 import Follow_traj from '../../games/follow_traj'
 import RaceGame from '../../games/race_game'
 import RunButton from '../Generic/RunButton'
+import HomeButton from '../Generic/HomeButton'
 import FollowTraj_Instruction from '../Instructions/FollowTraj_Instruction'
 
 class VisualsPage extends React.Component {
@@ -62,6 +63,8 @@ class VisualsPage extends React.Component {
 
 			<div>
 				{this.state.content}
+				<HomeButton text="Home" />
+				<RunButton text="Run" />
 			</div>
 
 		)
