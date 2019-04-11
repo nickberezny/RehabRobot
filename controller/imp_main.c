@@ -26,7 +26,7 @@
 
 #include "include/imp_variables.h"
 
-#define DEBUG 1 //will print updates
+#define DEBUG 0 //will print updates
 #define CONNECT_TO_UI 0
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
@@ -604,7 +604,7 @@ void *controller(void * d)
 	        imp_FIR(f_filt, &imp_cont->fk, &fir_order_f); //moving avg filter for force
 			
 
-			if(i==0) printf("Force: %.3f\n", imp_cont->fk);
+			if(DEBUG & i==0) printf("Force: %.3f\n", imp_cont->fk);
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
 			imp_cont->vk = ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
@@ -659,12 +659,12 @@ void *controller(void * d)
 			if(imp_cont->LSF[1] )
 			{
 			  	if(imp_cont->cmd < MOTOR_ZERO) imp_cont->cmd = MOTOR_ZERO; 
-			  	direction = -1.0;		
+			  	//direction = -1.0;		
 			}
 			if(imp_cont->LSB[1])  
 			{
 				if(imp_cont->cmd > MOTOR_ZERO) imp_cont->cmd = MOTOR_ZERO;  
-				direction = 1.0;
+				//direction = 1.0;
 			}
 			if(imp_cont->fk > MAX_FORCE) imp_cont->cmd = MOTOR_ZERO; 
 
@@ -723,7 +723,7 @@ void *server(void* d)
 			{
 				imp_serve = &((struct impStruct*)d)[i];
 				sprintf(sendBuff,"%.2f,%.2f,%.2f,%.2f", imp_serve->xk,imp_serve->xdes,imp_serve->vk,imp_serve->vdes);
-				printf("%d\n", send(connfd, sendBuff, strlen(sendBuff), 0));
+				send(connfd, sendBuff, strlen(sendBuff), 0);
 			}
 			
 
