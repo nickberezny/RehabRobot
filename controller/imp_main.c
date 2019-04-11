@@ -43,7 +43,7 @@ int environment = 2;
 int exp_number = 0;
 int exp_iteration = 0;
 
-int terminate_program = 1;
+int terminate_program = 0;
 
 pthread_mutex_t lock[BUFFER_SIZE]; 
 struct impStruct * imp_cont;
@@ -285,7 +285,7 @@ int main(int argc, char* argv[]) {
 	Prepare and run experiments
 -----------------------------------------------------------------------------*/
 
-	while(terminate_program){
+	while(!terminate_program){
 
 
 
@@ -325,7 +325,7 @@ int main(int argc, char* argv[]) {
 	if(exp_number == 1)
 	{
 		game_number = 1;
-		max_count = 90000; //1.5 min
+		max_count = 9000; //1.5 min
 		switch(exp_iteration++){
 
 			case 1:
@@ -378,7 +378,7 @@ int main(int argc, char* argv[]) {
 
 	else if(exp_number == 2 || exp_number == 3)
 	{
-		max_count = 180000; //3 min
+		max_count = 18000; //3 min
 		switch(exp_iteration++)
 		{
 			case 1:
