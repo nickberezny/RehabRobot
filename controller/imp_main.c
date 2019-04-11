@@ -41,7 +41,7 @@ int daqHandle;
 int listenfd = 0, connfd = 0;
 int environment = 2;
 int exp_number = 0;
-int exp_iteration = 0;
+int exp_iteration = 1;
 
 int terminate_program = 0;
 
@@ -269,14 +269,14 @@ int main(int argc, char* argv[]) {
 			regcomp(&compiled, regex.exp, REG_EXTENDED);
 			if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
 				sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-				sscanf(matchBuffer, "%lf", &imp[0].exp);
-			    if(DEBUG) { printf("Experiment set to: %lf\n", imp[0].exp); }
+				sscanf(matchBuffer, "%d", &exp_number);
+			    if(DEBUG) { printf("Experiment set to: %d\n", exp_number); }
 			}
 
+			
 			break;
 		}
 
-		close(connfd);
 		sleep(0.01);
 	}
 
@@ -321,15 +321,16 @@ int main(int argc, char* argv[]) {
 	gait.phase = 1;
 	gait.v_traj = 25.0;
 
-
+	printf("%d\n", exp_number);
 	if(exp_number == 1)
 	{
 		game_number = 1;
-		max_count = 9000; //1.5 min
+		max_count = 90000; //1.5 min
 		switch(exp_iteration++){
 
 			case 1:
 				k_gain = KMIN;
+				terminate_program = 1;
 				break;
 
 			case 2:
@@ -378,7 +379,7 @@ int main(int argc, char* argv[]) {
 
 	else if(exp_number == 2 || exp_number == 3)
 	{
-		max_count = 18000; //3 min
+		max_count = 180000; //3 min
 		switch(exp_iteration++)
 		{
 			case 1:
@@ -412,7 +413,7 @@ int main(int argc, char* argv[]) {
     //descrete state space for admittance control (x(k+1) = Ad*x(k) + Bd*u(k))
    	
     double A[2][2] = {{0.0, 1.0},{-k_gain/imp[0].M, -b_gain/imp[0].M}};
-    double B[2] = {0.0, 1.0/imp[0].M};
+    double B[2] = {0.0, 1.0/M_GAIN};
 
     matrix_exp(A, Ad);
     imp_calc_Bd(Ad, A, B, Bd);
@@ -433,15 +434,13 @@ int main(int argc, char* argv[]) {
 
     while(1)
 	{
-		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
+		//connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
 		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'H')
 		{
 			//recieved settings 
 			if(DEBUG) printf("recieved data: %s\n", recvBuff);
 			break;
 		}
-
-		close(connfd);
 		sleep(0.01);
 	}
 
@@ -510,7 +509,7 @@ int main(int argc, char* argv[]) {
 
     if(DEBUG) printf("Force sensor offset: %.3f\n", ft_offset);
 
-    sleep(5);
+    
 
 /**********************************************************************
 					   	Create and join threads
@@ -518,7 +517,7 @@ int main(int argc, char* argv[]) {
 
     while(1)
 	{
-		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
+		
 		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R')
 		{
 			//recieved settings 
@@ -529,6 +528,8 @@ int main(int argc, char* argv[]) {
 		close(connfd);
 		sleep(0.01);
 	}
+
+	sleep(5);
 
     if(DEBUG) printf("Joining Threads ...\n"); 
    // sleep(10);
@@ -685,17 +686,17 @@ void *controller(void * d)
 			pthread_mutex_unlock(&lock[i]);	
 	        
 			if(++temp_counter > MAX_COUNT) {
-				pthread_mutex_unlock(&lock[0]);	
-				printf("i %d count %d \n", i, temp_counter);
-				LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
-				return;
+				//pthread_mutex_unlock(&lock[0]);	
+				//printf("i %d count %d \n", i, temp_counter);
+				//LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
+				//return;
 			}
 	       
 	        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &imp_cont->wait_time, NULL);
 
 		}
 
-		if(temp_counter > max_count) return;
+		if(temp_counter > max_count) break;
 	}
 
 	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
