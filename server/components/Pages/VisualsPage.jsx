@@ -42,7 +42,8 @@ class VisualsPage extends React.Component {
 			{
 				switch(this.props.game) {
 				case 1: 
-					this.state.content = <div><FollowTraj_Instruction /> <RunButton /></div>
+					this.state.content = <div><FollowTraj_Instruction /><HomeButton text="Home" />
+				<RunButton text="Run" /></div>
 					break; 
 				case 2: 
 					this.state.content = <div><RaceGame /> <RunButton /></div>
@@ -63,8 +64,6 @@ class VisualsPage extends React.Component {
 
 			<div>
 				{this.state.content}
-				<HomeButton text="Home" />
-				<RunButton text="Run" />
 			</div>
 
 		)

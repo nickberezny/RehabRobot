@@ -85,7 +85,8 @@ double fa_1 = 0.0;
 
 double k_gain = 0.0;
 double b_gain = 0.0; 
-double game_number = 0.0;
+int game_number = 0;
+int max_count = 0;
 
 double xdes_old = 0.0;
 

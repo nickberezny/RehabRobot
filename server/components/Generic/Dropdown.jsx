@@ -21,7 +21,7 @@ class Dropdown extends React.Component {
 
 	render() {
 		return (
-
+			<div style={{padding: 24}}>
 			<FormControl>
 	          <InputLabel>{this.props.text}</InputLabel>
 	          <Select
@@ -36,6 +36,7 @@ class Dropdown extends React.Component {
 	            <MenuItem value={3}>{this.props.select3}</MenuItem>
 	          </Select>
 	        </FormControl>
+	        </div>
 		)
 	}
 }
@@ -49,5 +50,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {setGame}
+  {setValue}
 )(Dropdown);

@@ -8,6 +8,7 @@ import UserPage from './Pages/UserPage'
 import VisualsPage from './Pages/VisualsPage'
 import SettingsPage from './Pages/SettingsPage'
 import BasicSetupPage from './Pages/BasicSetupPage'
+import Experiment2019 from './Setups/Experiment2019'
 
 import io from "socket.io-client";
 import { setSocket } from "../src/actions";
@@ -68,6 +69,7 @@ class WindowContent extends React.Component {
 			case 1:
 				  if(this.props.user == 1) {this.state.content = <div style={this.state.style}> <SetupPage /> </div>}
 				  if(this.props.user == 2) {this.state.content = <div style={this.state.style}> <BasicSetupPage /> </div>}
+				  if(this.props.user == 3) {this.state.content = <div style={this.state.style}> <Experiment2019 /> </div>}
 				  break;
 			case 2:
 				  this.state.content = <div style={this.state.style}> <VisualsPage /> </div>

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 
 import { connect } from "react-redux";
 import { runRobot } from "../../src/actions";
+import {setValue} from "../../src/actions";
 
 import io from "socket.io-client";
 
@@ -19,6 +20,8 @@ class RunButton extends React.Component {
     let dataToSend = 'RUN'
     console.log(dataToSend)
     this.props.socket.emit('START_ROBOT',dataToSend)
+
+    this.props.setValue('run', 1)
   
   }
 
@@ -40,7 +43,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { runRobot }
+  { runRobot, setValue }
 )(RunButton);
 
 //

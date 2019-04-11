@@ -1,9 +1,11 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import SetButton from '../Generic/SetButton'
 import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
+import Dropdown from '../Generic/Dropdown'
 
 import InputText from '../Generic/InputText';
 import { connect } from "react-redux";
@@ -18,7 +20,7 @@ class Experiment2019 extends React.Component {
   render() {
 
     return (
-      <div>
+      <div style={{padding: 24}}>
         <Typography variant="display1" gutterBottom>
           Set Up a Session    
         </Typography>
