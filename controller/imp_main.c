@@ -328,48 +328,48 @@ int main(int argc, char* argv[]) {
 		switch(exp_iteration++){
 
 			case 1:
-				k_gain = K_GAIN;
+				k_gain = KMIN;
 				break;
 
 			case 2:
-				k_gain = K_GAIN;
+				k_gain = KMIN + 0.1;
 				break;
 
 			case 3:
-				k_gain = K_GAIN;
+				k_gain = KMIN + 0.2;
 				break; 
 
 			case 4:
-				k_gain = K_GAIN;
+				k_gain = KMIN + 0.3;
 				break;
 
 			case 5:
-				k_gain = K_GAIN;
+				k_gain = KMIN + 0.4;
 				break;
 
 			case 6:
 				k_gain = 0.0;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				break;
 
 			case 7:
 				k_gain = 0.0;
-				b_gain = B_GAIN;
+				b_gain = BMIN + 0.1;
 				break;
 
 			case 8:
 				k_gain = 0.0;
-				b_gain = B_GAIN;
+				b_gain = BMIN + 0.2;
 				break;
 
 			case 9:
 				k_gain = 0.0;
-				b_gain = B_GAIN;
+				b_gain = BMIN + 0.3;
 				break;
 
 			case 10:
 				k_gain = 0.0;
-				b_gain = B_GAIN;
+				b_gain = BMIN + 0.4;
 				terminate_program = 1;
 				break;
 		}
