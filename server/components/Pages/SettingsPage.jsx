@@ -32,6 +32,7 @@ class SettingsPage extends React.Component {
 	          >
 	            <FormControlLabel value="1" control={<Radio color="secondary" />} label="Developer" />
 	            <FormControlLabel value="2" control={<Radio color="secondary" />} label="User" />
+	            <FormControlLabel value="3" control={<Radio color="secondary" />} label="Expriment" />
 	          </RadioGroup>
 	        </FormControl>
 		)
