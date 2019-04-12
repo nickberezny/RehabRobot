@@ -234,6 +234,12 @@ int main(int argc, char* argv[]) {
     pthread_attr_t attr[3];
     pthread_t thread[3];
 
+    //initialize threads (do not start yet)
+    for(int i = 0; i < 3; i++)
+    {
+    	init_thread(&attr[i], &param[i], 98-2*i);
+    }
+
     //lock memory (no dynamic allocation beyond here)
     if(mlockall(MCL_CURRENT|MCL_FUTURE) == -1) {
        printf("mlockall failed: %m\n");
@@ -283,12 +289,7 @@ int main(int argc, char* argv[]) {
 
 	while(!terminate_program){
 
-    //initialize threads (do not start yet)
-    for(int i = 0; i < 3; i++)
-    {
-    	init_thread(&attr[i], &param[i], 98-2*i);
-    }
-
+   
 	//set default values if not connecting to UI (for testing)
     for(int i = 0; i < BUFFER_SIZE; i++)
 	{
@@ -695,7 +696,11 @@ void *controller(void * d)
 
 		}
 
-		if(temp_counter > max_count) break;
+		if(temp_counter > max_count) 
+		{
+			pthread_mutex_unlock(&lock[0]);
+			break;
+		}
 	}
 
 	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
