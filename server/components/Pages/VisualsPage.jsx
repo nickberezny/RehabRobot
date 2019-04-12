@@ -23,7 +23,8 @@ class VisualsPage extends React.Component {
 		if(this.props.run){
 			switch(this.props.game) {
 				case 1: 
-					this.state.content = <BarGame />
+					this.state.content = <div><BarGame /><HomeButton text="Home" />
+				<RunButton text="Run" /></div>
 					break; 
 				case 2: 
 					this.state.content = <RaceGame />

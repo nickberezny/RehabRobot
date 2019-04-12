@@ -26,7 +26,7 @@
 
 #include "include/imp_variables.h"
 
-#define DEBUG 0 //will print updates
+#define DEBUG 1 //will print updates
 #define CONNECT_TO_UI 0
 #define GET_PARAMS_FROM_UI 0 //will get params from remote UI (set 0 for testing, 1 for production)
 #define MAX_COUNT 50999 //maximum iterations before shutdown (only on debug) 
@@ -257,10 +257,12 @@ int main(int argc, char* argv[]) {
 
 	//Start UI Process 
 	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+	printf("HEY!\n");
 	
 	while(1)
 	{
 		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
+		printf("confd: %d\n", connfd);
 		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
 		{
 			//recieved settings 
@@ -330,7 +332,6 @@ int main(int argc, char* argv[]) {
 
 			case 1:
 				k_gain = KMIN;
-				//terminate_program = 1;
 				break;
 
 			case 2:

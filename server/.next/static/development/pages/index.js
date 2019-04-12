@@ -880,11 +880,11 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
         variant: "contained",
         color: "primary",
         onClick: this.run
-      }, this.props.text);
+      }, this.props.text));
     }
   }]);
 
@@ -1076,11 +1076,11 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
         variant: "contained",
         color: "primary",
         onClick: this.run
-      }, this.props.text);
+      }, this.props.text));
     }
   }]);
 
@@ -1854,7 +1854,11 @@ function (_React$Component) {
       if (this.props.run) {
         switch (this.props.game) {
           case 1:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              text: "Home"
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              text: "Run"
+            }));
             break;
 
           case 2:
