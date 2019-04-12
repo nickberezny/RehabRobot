@@ -212,8 +212,7 @@ int main(int argc, char* argv[]) {
     fprintf (imp[0].fp, "Time(s), Time(ns), x, xa, v, va, v_unfilt, f, f_unfilt, xdes, vdes, cmd, LSB, LSF\n"); //print header
     //fclose(imp[0].fp);
     
-    if(DEBUG) printf("Created data file %s\n", folder); 
-
+    if(DEBUG) printf("Created data file %s\n", folder);
 
     /**********************************************************************
 					   Initialize Mutexes
@@ -225,9 +224,9 @@ int main(int argc, char* argv[]) {
 		struct imp *point = &(imp[i]); //allocate memory 
 		point = (struct imp*)calloc(STRUCTURE_ELEMENTS,sizeof(imp[i])); 
 	}
-	
-	
-    /**********************************************************************
+
+
+	/**********************************************************************
 					   Initialize Threads & Memory Lock
 	***********************************************************************/
 
@@ -240,12 +239,7 @@ int main(int argc, char* argv[]) {
        printf("mlockall failed: %m\n");
        return 0;
     }
-
-    //initialize threads (do not start yet)
-    for(int i = 0; i < 3; i++)
-    {
-    	init_thread(&attr[i], &param[i], 98-2*i);
-    }
+	 
 
     /**********************************************************************
 					   Wait for input 
@@ -289,7 +283,11 @@ int main(int argc, char* argv[]) {
 
 	while(!terminate_program){
 
-
+    //initialize threads (do not start yet)
+    for(int i = 0; i < 3; i++)
+    {
+    	init_thread(&attr[i], &param[i], 98-2*i);
+    }
 
 	//set default values if not connecting to UI (for testing)
     for(int i = 0; i < BUFFER_SIZE; i++)
