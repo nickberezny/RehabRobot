@@ -327,6 +327,8 @@ int main(int argc, char* argv[]) {
 	{
 		game_number = 1;
 		max_count = 1000; //1.5 min
+		temp_counter = 0;
+
 		switch(exp_iteration++){
 
 			case 1:
