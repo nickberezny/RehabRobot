@@ -325,12 +325,12 @@ int main(int argc, char* argv[]) {
 	if(exp_number == 1)
 	{
 		game_number = 1;
-		max_count = 90000; //1.5 min
+		max_count = 1000; //1.5 min
 		switch(exp_iteration++){
 
 			case 1:
 				k_gain = KMIN;
-				terminate_program = 1;
+				//terminate_program = 1;
 				break;
 
 			case 2:

@@ -25,9 +25,11 @@ class HomeButton extends React.Component {
   render() {
 
     return (
+      <div>
       <Button variant="contained" color="primary" onClick={this.run}>
         {this.props.text}
       </Button>
+      </div>
     )
   }
 }
