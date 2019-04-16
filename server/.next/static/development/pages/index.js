@@ -218,6 +218,18 @@ function (_React$Component) {
       _this.props.setParam('vdes', res[3]);
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEndStage", function (message) {
+      console.log('Stage Ended');
+
+      _this.props.setParam('stage', _this.props.stage + 1);
+
+      _this.props.setParam('run', 0);
+
+      if (_this.props.stage + 1 > 4) {
+        _this.props.setParam('game', 2);
+      }
+    });
+
     _this.state = {
       content: null,
       style: null
@@ -230,6 +242,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       var socketio = socket_io_client__WEBPACK_IMPORTED_MODULE_10___default()();
       socketio.on('message', this.handleMessage);
+      socketio.on('END_STAGE', this.handleEndStage);
       console.log(socketio);
       this.props.setSocket(socketio);
     }
@@ -309,7 +322,8 @@ function mapStateToProps(state) {
     activePage: state.activePage,
     menuOpen: state.menuOpen,
     socket: state.socket,
-    user: state.user
+    user: state.user,
+    stage: state.stage
   };
 }
 
@@ -1089,7 +1103,8 @@ function (_React$Component) {
 
 function mapStateToProps(state) {
   return {
-    socket: state.socket
+    socket: state.socket,
+    stage: state.stage
   };
 }
 
@@ -1864,7 +1879,11 @@ function (_React$Component) {
             break;
 
           case 2:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_race_game__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_vel_traj__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              text: "Home"
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              text: "Run"
+            }));
             break;
 
           case 3:
@@ -1872,7 +1891,7 @@ function (_React$Component) {
             break;
 
           case 4:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_vel_traj__WEBPACK_IMPORTED_MODULE_5__["default"], null);
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_race_game__WEBPACK_IMPORTED_MODULE_6__["default"], null);
             break;
 
           default:
@@ -1889,7 +1908,11 @@ function (_React$Component) {
             break;
 
           case 2:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_race_game__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              text: "Home"
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              text: "Run"
+            }));
             break;
 
           case 3:
@@ -1915,7 +1938,8 @@ function (_React$Component) {
 function mapStateToProps(state) {
   return {
     game: state.game,
-    run: state.run
+    run: state.run,
+    stage: state.stage
   };
 }
 
@@ -3800,24 +3824,24 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
 
-var Vel_traj =
+var vel_traj =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Vel_traj, _Component);
+  _inherits(vel_traj, _Component);
 
-  function Vel_traj(props) {
+  function vel_traj(props) {
     var _this;
 
-    _classCallCheck(this, Vel_traj);
+    _classCallCheck(this, vel_traj);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Vel_traj).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(vel_traj).call(this, props));
     _this.start = _this.start.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.stop = _this.stop.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.animate = _this.animate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
-  _createClass(Vel_traj, [{
+  _createClass(vel_traj, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var bar_width = 150.0;
@@ -3826,6 +3850,7 @@ function (_Component) {
       var falling = 0;
       var fall_dir = 0;
       var fall_speed = 0;
+      var bar;
       var group = new three__WEBPACK_IMPORTED_MODULE_2__["Group"]();
       var width = this.mount.clientWidth;
       var height = this.mount.clientHeight;
@@ -3932,7 +3957,7 @@ function (_Component) {
     }
   }]);
 
-  return Vel_traj;
+  return vel_traj;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 function mapStateToProps(state) {
@@ -3944,7 +3969,7 @@ function mapStateToProps(state) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
-)(Vel_traj));
+)(vel_traj));
 
 /***/ }),
 
@@ -91569,7 +91594,8 @@ var initState = {
   k_assist: 0.0,
   k_floor: 0.0,
   k_gravity: 0.0,
-  exp: 1
+  exp: 1,
+  stage: 1
 };
 
 function todoApp() {

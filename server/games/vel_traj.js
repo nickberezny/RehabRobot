@@ -8,7 +8,7 @@ import { setParam } from "../src/actions";
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
 
-class Vel_traj extends Component {
+class vel_traj extends Component {
   constructor(props) {
     super(props)
 
@@ -25,6 +25,8 @@ class Vel_traj extends Component {
     var falling = 0
     var fall_dir = 0
     var fall_speed = 0
+
+    var bar;
 
     var group = new THREE.Group();
 
@@ -147,4 +149,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {} //add importing action functions here
-)(Vel_traj);
+)(vel_traj);

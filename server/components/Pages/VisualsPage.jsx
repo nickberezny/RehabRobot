@@ -49,7 +49,8 @@ class VisualsPage extends React.Component {
 				<RunButton text="Run" /></div>
 					break; 
 				case 2: 
-					this.state.content = <div><RaceGame /> <RunButton /></div>
+					this.state.content = <div><FollowTraj_Instruction /><HomeButton text="Home" />
+				<RunButton text="Run" /></div>
 					break; 
 				case 3: 
 					this.state.content = <div><Follow_traj />  <RunButton /></div>
