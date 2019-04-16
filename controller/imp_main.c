@@ -700,7 +700,7 @@ void *controller(void * d)
 
 		if(temp_counter > max_count) 
 		{
-			fprintf (imp_cont->fp, "Time(s), Time(ns), x, xa, v, va, v_unfilt, f, f_unfilt, xdes, vdes, cmd, LSB, LSF\n"); //print header
+			fprintf (imp_cont->fp, "End_stage\n"); //print header
 			pthread_mutex_unlock(&lock[0]);
 			break;
 		}
