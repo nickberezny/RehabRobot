@@ -39,7 +39,8 @@ class RunButton extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    socket: state.socket
+    socket: state.socket,
+    stage: state.stage
   }
 }
 

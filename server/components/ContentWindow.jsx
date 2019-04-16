@@ -31,6 +31,7 @@ class WindowContent extends React.Component {
 	componentDidMount() {
 	    var socketio = io();
 	    socketio.on('message', this.handleMessage) 
+	    socketio.on('END_STAGE', this.handleEndStage) 
 	    console.log(socketio);
 	    this.props.setSocket(socketio)	   
 	}
@@ -47,6 +48,13 @@ class WindowContent extends React.Component {
 	    this.props.setParam('xdes', res[1])
 	    this.props.setParam('v', res[2])
 	    this.props.setParam('vdes', res[3])
+	}
+
+	handleEndStage = (message) => {
+		console.log('Stage Ended')
+		this.props.setParam('stage', this.props.stage + 1)
+		this.props.setParam('run', 0)
+		if(this.props.stage+1 > 4) {this.props.setParam('game', 2)}
 	}
 
 	render() {
@@ -97,7 +105,8 @@ function mapStateToProps(state) {
  		activePage: state.activePage,
  		menuOpen: state.menuOpen,
  		socket: state.socket,
- 		user: state.user 
+ 		user: state.user ,
+ 		stage: state.stage
  	}
 }
 

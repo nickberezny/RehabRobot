@@ -707,6 +707,8 @@ void *controller(void * d)
 	}
 
 	LJM_eWriteName(daqHandle, "DAC0", MOTOR_ZERO);
+	sprintf(sendBuff,"END_STAGE");
+	send(connfd, sendBuff, strlen(sendBuff), 0);
 
 	return NULL;
 }

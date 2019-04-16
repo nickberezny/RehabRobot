@@ -28,13 +28,14 @@ class VisualsPage extends React.Component {
 				<RunButton text="Run" /></div>
 					break; 
 				case 2: 
-					this.state.content = <RaceGame />
+					this.state.content = <div><Vel_traj /><HomeButton text="Home" />
+				<RunButton text="Run" /></div>
 					break; 
 				case 3: 
 					this.state.content = <Follow_traj />
 					break; 
 				case 4: 
-					this.state.content = <Vel_traj />
+					this.state.content = <RaceGame />
 					break; 
 				default: 
 					<div> Game load failed </div>
@@ -77,6 +78,7 @@ function mapStateToProps(state) {
   return {
   	game: state.game,
   	run: state.run,
+  	stage: state.stage,
   }
 }
 

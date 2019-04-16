@@ -31,7 +31,9 @@ if(TEST) {
   })
 
   client.on('data', function(data){
-    io.emit('message', data.toString())
+    if(data.toString() == 'END_STAGE') { io.emit('END_STAGE', data.toString()); }
+    else if(data.toString() == 'END') { io.emit('END', data.toString()); }
+    else { io.emit('message', data.toString()) }
     //console.log(data.toString())
   });
 
