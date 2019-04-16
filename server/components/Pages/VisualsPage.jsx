@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Basic from '../../games/basic'
 import BarGame from '../../games/bar_with_game'
 import Follow_traj from '../../games/follow_traj'
+import Vel_traj from '../../games/vel_traj'
 import RaceGame from '../../games/race_game'
 import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
@@ -33,7 +34,7 @@ class VisualsPage extends React.Component {
 					this.state.content = <Follow_traj />
 					break; 
 				case 4: 
-					this.state.content = <Follow_traj />
+					this.state.content = <Vel_traj />
 					break; 
 				default: 
 					<div> Game load failed </div>
