@@ -184,12 +184,16 @@ int main(int argc, char* argv[]) {
 	int en = strlen(data_file_name);
 	data_file_name[en-1] = '_';
 
-	//printf("%s\n", data_file_name);
-	const char file_ext[] = "/data.txt";
+	printf("%s\n", data_file_name);
+	const char file_ext[] = ".txt";
+	printf("TEST");
 	char folder[1000] = "data/";
+	printf("TEST");
 	strcat(data_file_name, file_ext);
 	strcat(folder, data_file_name);
-	strcat(folder, file_ext);
+	//strcat(folder, file_ext);
+
+	printf("TEST");
 
 	for(int i; i < strlen(folder) - 1; i++)
 	{
