@@ -184,16 +184,11 @@ int main(int argc, char* argv[]) {
 	int en = strlen(data_file_name);
 	data_file_name[en-1] = '_';
 
-	printf("%s\n", data_file_name);
 	const char file_ext[] = ".txt";
-	printf("TEST");
 	char folder[1000] = "data/";
-	printf("TEST");
 	strcat(data_file_name, file_ext);
 	strcat(folder, data_file_name);
 	//strcat(folder, file_ext);
-
-	printf("TEST");
 
 	for(int i; i < strlen(folder) - 1; i++)
 	{
@@ -261,12 +256,10 @@ int main(int argc, char* argv[]) {
 
 	//Start UI Process 
 	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
-	printf("HEY!\n");
 	
 	while(1)
 	{
 		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
-		printf("confd: %d\n", connfd);
 		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'S')
 		{
 			//recieved settings 
