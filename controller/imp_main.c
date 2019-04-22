@@ -295,7 +295,7 @@ int main(int argc, char* argv[]) {
 		imp[i].M = M_GAIN;
 		imp[i].b = B_GAIN;
 		imp[i].m = M_GAIN;
-		imp[i].xdes = X_DES*1000;
+		imp[i].xdes = 0.0;
 		imp[i].vdes = 0.0;
 		imp[i].fdes = 0.0;
 		imp[i].fp = imp[0].fp;
@@ -577,10 +577,19 @@ void *controller(void * d)
 	pthread_mutex_lock(&lock[0]);
 
 	xa = 0.0; // X_DES*1000;
+	va = 0.0;
 	curr_pos = 0.0;
+	xdes_old = 0.0;
+
+	for(int i = 0; i < FIR_ORDER_V; i++)
+	{
+		v_filt[i] = 0.0;
+		f_filt[i] = 0.0;
+	}
 
 	aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+    clock_gettime(CLOCK_MONOTONIC, &last_time); 
 
     //CONTROL LOOP -------------------------------------------------
 	while(1){
