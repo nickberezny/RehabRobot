@@ -330,22 +330,27 @@ int main(int argc, char* argv[]) {
 
 			case 1:
 				k_gain = KMIN;
+				b_gain = B_GAIN;
 				break;
 
 			case 2:
 				k_gain = KMIN + 0.1;
+				b_gain = B_GAIN;
 				break;
 
 			case 3:
 				k_gain = KMIN + 0.2;
+				b_gain = B_GAIN;
 				break; 
 
 			case 4:
 				k_gain = KMIN + 0.3;
+				b_gain = B_GAIN;
 				break;
 
 			case 5:
 				k_gain = KMIN + 0.4;
+				b_gain = B_GAIN;
 				break;
 
 			case 6:
@@ -379,6 +384,7 @@ int main(int argc, char* argv[]) {
 	else if(exp_number == 2 || exp_number == 3)
 	{
 		max_count = 180000; //3 min
+		game_number = 1;
 		switch(exp_iteration++)
 		{
 			case 1:
