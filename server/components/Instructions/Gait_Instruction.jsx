@@ -27,4 +27,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {}
-)(FollowVel_Instruction);
+)(Gait_Instruction);

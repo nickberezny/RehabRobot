@@ -90,21 +90,21 @@ class VisualsPage extends React.Component {
 				case 3:
 					this.state.content = 
 						<div>
-							<FollowVel_Instruction />
+							<Race_Instruction />
 							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 4: 
 					this.state.content = 
 						<div>
-							<FollowVel_Instruction />
+							<Balance_Instruction />
 							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 5:
 					this.state.content = 
 						<div>
-							<FollowVel_Instruction />
+							<Gait_Instruction />
 							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break;

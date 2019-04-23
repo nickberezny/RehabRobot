@@ -28,4 +28,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {}
-)(FollowVel_Instruction);
+)(Balance_Instruction);
