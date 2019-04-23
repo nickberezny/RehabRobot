@@ -28,7 +28,7 @@ class RunButton extends React.Component {
   render() {
 
     return (
-      <div>
+      <div style={{padding: 12}}> 
       <Button variant="contained" color="primary" onClick={this.run}>
         {this.props.text}
       </Button>

@@ -993,7 +993,11 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          padding: 12
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
         variant: "contained",
         color: "primary",
         onClick: this.run
@@ -1191,7 +1195,11 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          padding: 12
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_1___default.a, {
         variant: "contained",
         color: "primary",
         onClick: this.run
@@ -1381,6 +1389,69 @@ function mapStateToProps(state) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(FollowTraj_Instruction));
+
+/***/ }),
+
+/***/ "./components/Instructions/FollowVel_Instruction.jsx":
+/*!***********************************************************!*\
+  !*** ./components/Instructions/FollowVel_Instruction.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var FollowVel_Instruction =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(FollowVel_Instruction, _React$Component);
+
+  function FollowVel_Instruction(props) {
+    _classCallCheck(this, FollowVel_Instruction);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FollowVel_Instruction).call(this, props));
+  }
+
+  _createClass(FollowVel_Instruction, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Move at the desired velocity as closely as possible. The display bar will rise if you are moving too fast, a and will lower if you are going too slow.");
+    }
+  }]);
+
+  return FollowVel_Instruction;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+function mapStateToProps(state) {
+  return {};
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(FollowVel_Instruction));
 
 /***/ }),
 
@@ -1919,14 +1990,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _games_basic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../games/basic */ "./games/basic.js");
-/* harmony import */ var _games_bar_with_game__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../games/bar_with_game */ "./games/bar_with_game.js");
-/* harmony import */ var _games_follow_traj__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../games/follow_traj */ "./games/follow_traj.js");
-/* harmony import */ var _games_vel_traj__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../games/vel_traj */ "./games/vel_traj.js");
-/* harmony import */ var _games_race_game__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../games/race_game */ "./games/race_game.js");
-/* harmony import */ var _Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Generic/RunButton */ "./components/Generic/RunButton.jsx");
-/* harmony import */ var _Generic_HomeButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Generic/HomeButton */ "./components/Generic/HomeButton.jsx");
-/* harmony import */ var _Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Instructions/FollowTraj_Instruction */ "./components/Instructions/FollowTraj_Instruction.jsx");
+/* harmony import */ var _games_bar_with_game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../games/bar_with_game */ "./games/bar_with_game.js");
+/* harmony import */ var _games_vel_traj__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../games/vel_traj */ "./games/vel_traj.js");
+/* harmony import */ var _Generic_RunButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Generic/RunButton */ "./components/Generic/RunButton.jsx");
+/* harmony import */ var _Generic_HomeButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Generic/HomeButton */ "./components/Generic/HomeButton.jsx");
+/* harmony import */ var _Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Instructions/FollowTraj_Instruction */ "./components/Instructions/FollowTraj_Instruction.jsx");
+/* harmony import */ var _Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Instructions/FollowVel_Instruction */ "./components/Instructions/FollowVel_Instruction.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1944,8 +2013,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
 
@@ -1979,27 +2046,27 @@ function (_React$Component) {
       if (this.props.run) {
         switch (this.props.game) {
           case 1:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
               text: "Home"
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
               text: "Run"
-            }));
+            })));
             break;
 
           case 2:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_vel_traj__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_vel_traj__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
               text: "Home"
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
               text: "Run"
-            }));
+            })));
             break;
 
           case 3:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_follow_traj__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_2__["default"], null);
             break;
 
           case 4:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_race_game__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_2__["default"], null);
             break;
 
           default:
@@ -2008,27 +2075,27 @@ function (_React$Component) {
       } else {
         switch (this.props.game) {
           case 1:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
               text: "Home"
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
               text: "Run"
-            }));
+            })));
             break;
 
           case 2:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_5__["default"], {
               text: "Home"
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
               text: "Run"
-            }));
+            })));
             break;
 
           case 3:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_follow_traj__WEBPACK_IMPORTED_MODULE_4__["default"], null), "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_2__["default"], null), "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_4__["default"], null));
             break;
 
           case 4:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_follow_traj__WEBPACK_IMPORTED_MODULE_4__["default"], null), "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_bar_with_game__WEBPACK_IMPORTED_MODULE_2__["default"], null), "  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_4__["default"], null));
             break;
 
           default:
@@ -3288,620 +3355,6 @@ function mapStateToProps(state) {
   return {
     x: state.x,
     xdes: state.xdes
-  };
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
-)(Follow_traj));
-
-/***/ }),
-
-/***/ "./games/basic.js":
-/*!************************!*\
-  !*** ./games/basic.js ***!
-  \************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "three");
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(three__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/actions */ "./src/actions.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-
-
- //import * as OBJLoader from 'three-obj-loader';
-
- //OBJLoader(THREE);
-
-var Scene =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Scene, _Component);
-
-  function Scene(props) {
-    var _this;
-
-    _classCallCheck(this, Scene);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Scene).call(this, props));
-    _this.start = _this.start.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.stop = _this.stop.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.animate = _this.animate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
-  }
-
-  _createClass(Scene, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var width = this.mount.clientWidth;
-      var height = this.mount.clientHeight;
-      var scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
-      var camera = new three__WEBPACK_IMPORTED_MODULE_2__["PerspectiveCamera"](75, width / height, 0.1, 1000); // instantiate a loader
-      // load a resource
-
-      var renderer = new three__WEBPACK_IMPORTED_MODULE_2__["WebGLRenderer"]({
-        antialias: true
-      });
-      var geometry = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](1, 1, 1);
-      var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: '#433F81'
-      });
-      var cube = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry, material);
-      camera.position.z = 10;
-      scene.add(cube);
-      renderer.setClearColor('#000000');
-      renderer.setSize(width, height);
-      this.scene = scene;
-      this.camera = camera;
-      this.renderer = renderer;
-      this.material = material;
-      this.cube = cube;
-      this.mount.appendChild(this.renderer.domElement);
-      this.start();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.stop();
-      this.mount.removeChild(this.renderer.domElement);
-    }
-  }, {
-    key: "start",
-    value: function start() {
-      if (!this.frameId) {
-        this.frameId = requestAnimationFrame(this.animate);
-      }
-    }
-  }, {
-    key: "stop",
-    value: function stop() {
-      cancelAnimationFrame(this.frameId);
-    }
-  }, {
-    key: "animate",
-    value: function animate() {
-      //this.cube.rotation.x += 0.01
-      //this.cube.rotation.y += 0.01
-      this.cube.position.x = this.props.x / 40;
-      this.renderScene();
-      this.frameId = window.requestAnimationFrame(this.animate);
-    }
-  }, {
-    key: "renderScene",
-    value: function renderScene() {
-      this.renderer.render(this.scene, this.camera);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          width: '900px',
-          height: '400px'
-        },
-        ref: function ref(mount) {
-          _this2.mount = mount;
-        }
-      });
-    }
-  }]);
-
-  return Scene;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-function mapStateToProps(state) {
-  //map state variables to the component's state 
-  return {
-    x: state.x
-  };
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
-)(Scene));
-
-/***/ }),
-
-/***/ "./games/follow_traj.js":
-/*!******************************!*\
-  !*** ./games/follow_traj.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "three");
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(three__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/actions */ "./src/actions.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-
-
- //import * as OBJLoader from 'three-obj-loader';
-
- //OBJLoader(THREE);
-//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
-//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
-
-var Follow_traj =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Follow_traj, _Component);
-
-  function Follow_traj(props) {
-    var _this;
-
-    _classCallCheck(this, Follow_traj);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Follow_traj).call(this, props));
-    _this.start = _this.start.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.stop = _this.stop.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.animate = _this.animate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
-  }
-
-  _createClass(Follow_traj, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var points = 0;
-      var group = new three__WEBPACK_IMPORTED_MODULE_2__["Group"]();
-      var width = this.mount.clientWidth;
-      var height = this.mount.clientHeight;
-      var scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
-      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0xBCBFFF);
-      var camera = new three__WEBPACK_IMPORTED_MODULE_2__["OrthographicCamera"](-width / 2, width / 2, height / 2, -height / 2, -100, 500000);
-      camera.position.set(0, 0, 5);
-      var renderer = new three__WEBPACK_IMPORTED_MODULE_2__["WebGLRenderer"]({
-        antialias: true
-      });
-      renderer.setSize(width, height);
-      var geometry = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](100, 100, 100);
-      var geometry2 = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](80, 80, 80);
-      var material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: 0xffcc66
-      });
-      var cube = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry, material);
-      var material2 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: 0x4F99FF
-      });
-      var cube2 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry2, material2);
-      cube.position.z = -100;
-      cube2.position.z = 0;
-      scene.add(cube);
-      scene.add(cube2);
-      /*
-      var textureLoader = new THREE.TextureLoader();
-       var mapA = textureLoader.load( "sprite/crosshair.png" );
-      var materialA = new THREE.SpriteMaterial( { map: mapA, color: 0xFFFFFF} );
-      var mapB = textureLoader.load( "sprite/crosshair_yellow.png" );
-      var materialB = new THREE.SpriteMaterial( { map: mapB, color: 0xFFFFFF} );
-      var sprite1 = new THREE.Sprite( materialA );
-      var sprite2 = new THREE.Sprite( materialB );
-       sprite1.position.set( 0, 0, 100 );
-      sprite1.scale.set(100,100,100);
-       group.add(sprite1);
-      scene.add( group );
-      */
-
-      scene.add(camera);
-      this.scene = scene;
-      this.camera = camera;
-      this.renderer = renderer;
-      this.material = material;
-      this.cube = cube;
-      this.cube2 = cube2; //this.group = group
-
-      this.points = points;
-      this.mount.appendChild(this.renderer.domElement);
-      this.start();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.stop();
-      this.mount.removeChild(this.renderer.domElement);
-    }
-  }, {
-    key: "start",
-    value: function start() {
-      if (!this.frameId) {
-        this.frameId = requestAnimationFrame(this.animate);
-      }
-    }
-  }, {
-    key: "stop",
-    value: function stop() {
-      cancelAnimationFrame(this.frameId);
-    }
-  }, {
-    key: "animate",
-    value: function animate() {
-      this.cube.position.x = this.props.xdes;
-      this.cube2.position.x = this.props.x;
-      console.log(this.cube.position.x);
-
-      if (this.cube2.position.x > this.cube.position.x - 10 && this.cube2.position.x < this.cube.position.x + 10) {
-        this.points += 1;
-        console.log(this.points);
-      }
-
-      this.renderScene();
-      this.frameId = window.requestAnimationFrame(this.animate);
-    }
-  }, {
-    key: "renderScene",
-    value: function renderScene() {
-      this.renderer.render(this.scene, this.camera);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          width: '900px',
-          height: '400px'
-        },
-        ref: function ref(mount) {
-          _this2.mount = mount;
-        }
-      });
-    }
-  }]);
-
-  return Follow_traj;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-function mapStateToProps(state) {
-  //map state variables to the component's state 
-  return {
-    x: state.x,
-    xdes: state.xdes
-  };
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
-)(Follow_traj));
-
-/***/ }),
-
-/***/ "./games/race_game.js":
-/*!****************************!*\
-  !*** ./games/race_game.js ***!
-  \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "three");
-/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(three__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/actions */ "./src/actions.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-
-
- //import * as OBJLoader from 'three-obj-loader';
-
- //OBJLoader(THREE);
-//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
-//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
-
-var Follow_traj =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Follow_traj, _Component);
-
-  function Follow_traj(props) {
-    var _this;
-
-    _classCallCheck(this, Follow_traj);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Follow_traj).call(this, props));
-    _this.start = _this.start.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.stop = _this.stop.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.animate = _this.animate.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.move_object = _this.move_object.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
-  }
-
-  _createClass(Follow_traj, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var theta1 = 0.0;
-      var theta2 = 0.0;
-      var theta3 = 0.0;
-      var race_speed1 = 0.5;
-      var race_speed2 = 0.55;
-      var race_speed3 = 0.48;
-      var prev_x;
-      var prev_time;
-      var curr_time;
-      var group = new three__WEBPACK_IMPORTED_MODULE_2__["Group"]();
-      var width = this.mount.clientWidth;
-      var height = this.mount.clientHeight;
-      var scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
-      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0x99ccff);
-      var camera = new three__WEBPACK_IMPORTED_MODULE_2__["PerspectiveCamera"](90, window.innerWidth / window.innerHeight, 0.1, 800);
-      camera.position.set(-95, -50, 30);
-      camera.rotation.set(1.5, 0.0, 0.0);
-      scene.add(camera);
-      var renderer = new three__WEBPACK_IMPORTED_MODULE_2__["WebGLRenderer"]({
-        antialias: true
-      });
-      renderer.setSize(width, height);
-      var plateMaterial = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: 0xcc6600
-      });
-      var plateMaterial2 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: 0x009933
-      });
-      var other1Material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({
-        color: 0xff7272
-      });
-      var mainMaterial = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({
-        color: 0xFFA500
-      });
-      var other2Material = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({
-        color: 0xD4D1C8
-      });
-      var boxMaterial = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({
-        color: 0x99ccff
-      });
-      var circle = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["CircleBufferGeometry"](100, 20, 0, Math.PI * 2), plateMaterial);
-      circle.position.set(0, -100, 0);
-      scene.add(circle);
-      var circle2 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["CircleBufferGeometry"](100, 20, 0, Math.PI * 2), plateMaterial);
-      circle2.position.set(0, 100, 0);
-      scene.add(circle2);
-      var plate = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["PlaneBufferGeometry"](200, 200, 4, 4), plateMaterial);
-      plate.position.set(0, 0, 0);
-      scene.add(plate);
-      var circle3 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["CircleBufferGeometry"](60, 20, 0, Math.PI * 2), plateMaterial2);
-      circle3.position.set(0, -100, 0.1);
-      scene.add(circle3);
-      var circle4 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["CircleBufferGeometry"](60, 20, 0, Math.PI * 2), plateMaterial2);
-      circle4.position.set(0, 100, 0.1);
-      scene.add(circle4);
-      var plate2 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["PlaneBufferGeometry"](120, 200, 4, 4), plateMaterial2);
-      plate2.position.set(0, 0, 0.1);
-      scene.add(plate2);
-      var ground = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["PlaneBufferGeometry"](2000, 2000, 4, 4), plateMaterial2);
-      ground.position.set(0, 0, -0.1);
-      scene.add(ground);
-      var character = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["TetrahedronBufferGeometry"](5, 0), mainMaterial);
-      character.position.set(-80, 0, 5);
-      scene.add(character);
-      var other = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["BoxBufferGeometry"](5, 5, 5, 4, 4, 4), other1Material);
-      other.position.set(-90, 0, 5);
-      scene.add(other);
-      var other2 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["BoxBufferGeometry"](5, 5, 5, 4, 4, 4), other2Material);
-      other2.position.set(-70, 0, 5);
-      scene.add(other2);
-      var box1 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["BoxBufferGeometry"](5000, 5, 1000), boxMaterial);
-      box1.position.set(0, 350, 0);
-      scene.add(box1);
-      var spotLight1 = new three__WEBPACK_IMPORTED_MODULE_2__["SpotLight"](0xffffff, 1);
-      spotLight1.position.set(-width / 3, 200, 200);
-      var light = new three__WEBPACK_IMPORTED_MODULE_2__["HemisphereLight"](0xffffff, 0xffffff, 1);
-      scene.add(light);
-      scene.add(spotLight1);
-      scene.add(camera);
-      this.character = character;
-      this.other = other;
-      this.other2 = other2;
-      this.scene = scene;
-      this.camera = camera;
-      this.renderer = renderer;
-      this.theta1 = theta1;
-      this.theta2 = theta2;
-      this.theta3 = theta3;
-      this.race_speed1 = race_speed1;
-      this.race_speed2 = race_speed2;
-      this.race_speed3 = race_speed3;
-      this.prev_x = prev_x;
-      this.prev_time = prev_time;
-      this.curr_time = curr_time;
-      this.mount.appendChild(this.renderer.domElement);
-      this.start();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.stop();
-      this.mount.removeChild(this.renderer.domElement);
-    }
-  }, {
-    key: "start",
-    value: function start() {
-      if (!this.frameId) {
-        this.frameId = requestAnimationFrame(this.animate);
-      }
-    }
-  }, {
-    key: "stop",
-    value: function stop() {
-      cancelAnimationFrame(this.frameId);
-    }
-  }, {
-    key: "move_object",
-    value: function move_object(object, theta, radius, race_speed) {
-      if (object.position.x > 0) {
-        var race_dir = 1.0;
-      } else {
-        var race_dir = -1.0;
-      }
-
-      if (object.position.y > 0) {
-        var turn_dir = 1.0;
-      } else {
-        var turn_dir = -1.0;
-      }
-
-      if (Math.abs(object.position.y) < 100) {
-        object.position.y -= race_speed * race_dir;
-      } else {
-        object.position.x = -turn_dir * radius * Math.cos(theta);
-        object.position.y = turn_dir * (100.0 + radius * Math.sin(theta));
-        object.rotation.z = theta;
-      }
-    }
-  }, {
-    key: "animate",
-    value: function animate() {
-      this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0;
-
-      if (Math.abs(this.character.position.y) >= 100) {
-        this.theta1 += this.race_speed1 / 90.0;
-      } else {
-        this.theta1 = 0.0;
-      }
-
-      if (Math.abs(this.other.position.y) >= 100) {
-        this.theta2 += this.race_speed2 / 90.0;
-      } else {
-        this.theta2 = 0.0;
-      }
-
-      if (Math.abs(this.other2.position.y) >= 100) {
-        this.theta3 += this.race_speed3 / 90.0;
-      } else {
-        this.theta3 = 0.0;
-      }
-
-      this.move_object(this.character, this.theta1, 80.0, this.race_speed1);
-      this.move_object(this.other, this.theta2, 90.0, this.race_speed2);
-      this.move_object(this.other2, this.theta3, 70.0, this.race_speed3);
-      this.camera.position.x = this.character.position.x;
-      this.camera.position.y = this.character.position.y - 40.0;
-      this.character.rotation.x += 0.1;
-      this.character.rotation.y += 0.05;
-      this.other.rotation.x += 0.1;
-      this.other.rotation.y += 0.05;
-      this.other2.rotation.x += 0.1;
-      this.other2.rotation.y += 0.05;
-      this.camera.lookAt(this.character.position);
-      this.renderScene();
-      this.frameId = window.requestAnimationFrame(this.animate);
-    }
-  }, {
-    key: "renderScene",
-    value: function renderScene() {
-      this.renderer.render(this.scene, this.camera);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          width: '900px',
-          height: '400px'
-        },
-        ref: function ref(mount) {
-          _this2.mount = mount;
-        }
-      });
-    }
-  }]);
-
-  return Follow_traj;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-function mapStateToProps(state) {
-  //map state variables to the component's state 
-  return {
-    x: state.x,
-    xdes: state.xdes,
-    v: state.v,
-    vdes: state.vdes
   };
 }
 

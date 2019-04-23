@@ -28,16 +28,15 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div>
 							<Follow_traj />
-							<div><HomeButton text="Home" /></div>
-							<div><RunButton text="Run" /></div>
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 2: 
 					this.state.content = 
 						<div>
 							<Vel_traj />
-							<div><HomeButton text="Home" /></div>
-							<div><RunButton text="Run" /></div>
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+						
 						</div>
 					break; 
 				case 3: 
@@ -57,16 +56,14 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div>
 							<FollowTraj_Instruction />
-							<div><HomeButton text="Home" /></div>
-							<div><RunButton text="Run" /></div>
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 2: 
 					this.state.content = 
 						<div>
 							<FollowVel_Instruction />
-							<div><HomeButton text="Home" /></div>
-							<div><RunButton text="Run" /></div>
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 3: 
