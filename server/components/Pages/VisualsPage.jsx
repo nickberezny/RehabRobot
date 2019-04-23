@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Basic from '../../games/basic'
-import BarGame from '../../games/bar_with_game'
-import Follow_traj from '../../games/follow_traj'
+
+import Follow_traj from '../../games/bar_with_game'
 import Vel_traj from '../../games/vel_traj'
-import RaceGame from '../../games/race_game'
+
 import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
+
 import FollowTraj_Instruction from '../Instructions/FollowTraj_Instruction'
+import FollowVel_Instruction from '../Instructions/FollowVel_Instruction'
 
 class VisualsPage extends React.Component {
 
@@ -24,18 +25,26 @@ class VisualsPage extends React.Component {
 		if(this.props.run){
 			switch(this.props.game) {
 				case 1: 
-					this.state.content = <div><BarGame /><HomeButton text="Home" />
-				<RunButton text="Run" /></div>
+					this.state.content = 
+						<div>
+							<Follow_traj />
+							<div><HomeButton text="Home" /></div>
+							<div><RunButton text="Run" /></div>
+						</div>
 					break; 
 				case 2: 
-					this.state.content = <div><Vel_traj /><HomeButton text="Home" />
-				<RunButton text="Run" /></div>
+					this.state.content = 
+						<div>
+							<Vel_traj />
+							<div><HomeButton text="Home" /></div>
+							<div><RunButton text="Run" /></div>
+						</div>
 					break; 
 				case 3: 
 					this.state.content = <Follow_traj />
 					break; 
 				case 4: 
-					this.state.content = <RaceGame />
+					this.state.content = <Follow_traj />
 					break; 
 				default: 
 					<div> Game load failed </div>
@@ -45,12 +54,20 @@ class VisualsPage extends React.Component {
 			{
 				switch(this.props.game) {
 				case 1: 
-					this.state.content = <div><FollowTraj_Instruction /><HomeButton text="Home" />
-				<RunButton text="Run" /></div>
+					this.state.content = 
+						<div>
+							<FollowTraj_Instruction />
+							<div><HomeButton text="Home" /></div>
+							<div><RunButton text="Run" /></div>
+						</div>
 					break; 
 				case 2: 
-					this.state.content = <div><FollowTraj_Instruction /><HomeButton text="Home" />
-				<RunButton text="Run" /></div>
+					this.state.content = 
+						<div>
+							<FollowVel_Instruction />
+							<div><HomeButton text="Home" /></div>
+							<div><RunButton text="Run" /></div>
+						</div>
 					break; 
 				case 3: 
 					this.state.content = <div><Follow_traj />  <RunButton /></div>

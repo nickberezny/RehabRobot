@@ -392,16 +392,16 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 2:
-				game_number = 2;
+				game_number = 1;
 				break;
 
 			case 3:
-				game_number = 3;
+				game_number = 2;
 				environment = 1;
 				break;
 
 			case 4:
-				game_number = 4;
+				game_number = 2;
 				environment = 2;
 				terminate_program = 1;
 				break;
@@ -576,6 +576,7 @@ void *controller(void * d)
 	if(DEBUG) printf("Thread 1 (controller) initializing ...\n");
 	pthread_mutex_lock(&lock[0]);
 
+	//reset 
 	xa = 0.0; // X_DES*1000;
 	va = 0.0;
 	curr_pos = 0.0;
@@ -631,27 +632,15 @@ void *controller(void * d)
 			switch(game_number)
 			{
 				case 1:
-					//assistive
+					//assistive or resistive
 					imp_traj(imp_cont, &direction, &xdes_old);
 					imp_Adm(imp_cont, &xa, &va);
 					break;
 
 				case 2:
-					//resistive
-					imp_traj(imp_cont, &direction, &xdes_old);
-					imp_Adm(imp_cont, &xa, &va);	
-					break;
-
-				case 3:
 					//balance
 					imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
 					break;
-
-				case 4:
-					//gait
-					imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
-					break;
-
 				
 			}
 

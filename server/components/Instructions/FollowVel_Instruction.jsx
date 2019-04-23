@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class FollowTraj_Instruction extends React.Component {
+class FollowVel_Instruction extends React.Component {
 
 	constructor(props) {
 	    super(props);
@@ -12,8 +12,8 @@ class FollowTraj_Instruction extends React.Component {
 		return (
 
 			<div>
-				Follow the trajectory displayed on screen as closely as possible. Points are earned by staying close
-				to the desired point. 
+				Move at the desired velocity as closely as possible. The display bar will rise if you are moving too fast, a
+				and will lower if you are going too slow.
 			</div>
 
 		)
@@ -28,4 +28,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {}
-)(FollowTraj_Instruction);
+)(FollowVel_Instruction);
