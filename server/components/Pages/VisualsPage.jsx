@@ -2,14 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 
-import Follow_traj from '../../games/bar_with_game'
-import Vel_traj from '../../games/vel_traj'
+import Follow_traj from '../../games/Follow_traj'
+import Follow_vel from '../../games/Follow_vel'
+import Race_game from '../../games/Race_game'
+import Balance_game from '../../games/Balance_game'
+import Gait_game from '../../games/Gait_game'
+
+import FollowTraj_Instruction from '../Instructions/FollowTraj_Instruction'
+import FollowVel_Instruction from '../Instructions/FollowVel_Instruction'
 
 import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
 
-import FollowTraj_Instruction from '../Instructions/FollowTraj_Instruction'
-import FollowVel_Instruction from '../Instructions/FollowVel_Instruction'
+
 
 class VisualsPage extends React.Component {
 
@@ -34,17 +39,30 @@ class VisualsPage extends React.Component {
 				case 2: 
 					this.state.content = 
 						<div>
-							<Vel_traj />
+							<Follow_vel />
 							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
-						
 						</div>
 					break; 
 				case 3: 
-					this.state.content = <Follow_traj />
+					this.state.content = 
+						<div>
+							<Race_game />
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+						</div>
 					break; 
 				case 4: 
-					this.state.content = <Follow_traj />
+					this.state.content = 
+						<div>
+							<Balance_game />
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+						</div>
 					break; 
+				case 5:
+					this.state.content = 
+						<div>
+							<Gait_game />
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+						</div>
 				default: 
 					<div> Game load failed </div>
 				}
@@ -99,5 +117,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {}
+  { setParam }
 )(VisualsPage);

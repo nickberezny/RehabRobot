@@ -20,58 +20,72 @@ class Follow_traj extends Component {
   componentDidMount() {
 
     var points = 0;
+    var maxStroke = 200;
+    var text;
+
     var group = new THREE.Group();
 
     const width = this.mount.clientWidth
     const height = this.mount.clientHeight
 
     var scene = new THREE.Scene()
-    scene.background = new THREE.Color( 0xBCBFFF );
+    scene.background = new THREE.Color( 0xf7fdff );
     
     var camera = new THREE.OrthographicCamera( - width / 2, width / 2, height / 2, - height / 2, -100, 500000);
     camera.position.set( 0,0,5);
+    scene.add( camera );
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setSize(width, height)
 
     var geometry = new THREE.BoxGeometry( 100, 100, 100 );
-    var geometry2 = new THREE.BoxGeometry( 80, 80, 80 );
-    var material = new THREE.MeshBasicMaterial( { color: 0xffcc66 } );
-    var cube = new THREE.Mesh( geometry, material );
-    var material2 = new THREE.MeshBasicMaterial( { color: 0x4F99FF } );
-    var cube2 = new THREE.Mesh( geometry2, material2 );
-    cube.position.z = -100;
-    cube2.position.z = 0;
-    scene.add( cube );
-    scene.add( cube2 );
 
-    /*
-    var textureLoader = new THREE.TextureLoader();
+    var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
+    var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
+    var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.5 } );
+    var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x86a5d6 });
 
-    var mapA = textureLoader.load( "sprite/crosshair.png" );
-    var materialA = new THREE.SpriteMaterial( { map: mapA, color: 0xFFFFFF} );
-    var mapB = textureLoader.load( "sprite/crosshair_yellow.png" );
-    var materialB = new THREE.SpriteMaterial( { map: mapB, color: 0xFFFFFF} );
-    var sprite1 = new THREE.Sprite( materialA );
-    var sprite2 = new THREE.Sprite( materialB );
+    var plate = new THREE.Mesh( geometry, plateMaterial );
+    var bar = new THREE.Mesh( geometry, barMaterial );
+    var desPos = new THREE.Mesh( geometry, desMaterial );
+    var cube = new THREE.Mesh( geometry, cubeMaterial)
 
-    sprite1.position.set( 0, 0, 100 );
-    sprite1.scale.set(100,100,100);
+    plate.position.set(width/8, 0.0, 0.0);
+    plate.scale.set(1.25, 0.25, 1.0);
 
-    group.add(sprite1);
-    scene.add( group );
-    */
-    scene.add( camera );
+    bar.position.set(width/8, 0.0, -25);
+    bar.scale.set(0.75, 4.0, 1.0);
+
+    desPos.position.set(width/8, 0.0, 50);
+    desPos.scale.set(1.5, 0.5, 1.0);
+
+    cube.position.set( -width/8, 0.0, 0.0);
+
+    var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
+    spotLight1.position.set( -width/3, 200, 200 );
+    var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
+    scene.add( light );
+    scene.add(spotLight1)
+
+    //group.add( plate );
+    scene.add( bar );
+    scene.add(desPos);
+    scene.add(cube);
+    scene.add(plate);
+
 
     this.scene = scene
     this.camera = camera
     this.renderer = renderer
-    this.material = material
-    this.cube = cube
-    this.cube2 = cube2;
-    //this.group = group
-    this.points = points
 
+    this.plate = plate
+    this.bar = bar
+    this.desPos = desPos
+    this.cube = cube
+
+    //this.group = group;
+    this.points = points
+    
     this.mount.appendChild(this.renderer.domElement)
     this.start()
   }
@@ -93,18 +107,40 @@ class Follow_traj extends Component {
 
   animate() {
 
+    this.desPos.position.y = this.props.xdes - 200.0
+    this.plate.position.y = this.props.x - 200.0
+
+    console.log(this.plate.position.y)
+
+    if(this.plate.position.y > this.desPos.position.y - 30 && this.plate.position.y < this.desPos.position.y + 30)
+    {
+      this.points += 1;
+      this.desPos.material.color.setHex(0x7fffa3)
+
+      //var html_text = "Points: " + points;
+      //text2.innerHTML = html_text
+
+      this.cube.rotation.x += 0.008;
+      this.cube.rotation.y += 0.008;
+      this.cube.rotation.z += 0.008;
+
+    }else{
+      this.desPos.material.color.setHex(0xff7272)
+    }
+
+/*
     this.cube.position.x = this.props.xdes 
-    this.cube2.position.x = this.props.x
+    this.cube2.position.x = this.props.x 
 
-    console.log(this.cube.position.x)
-
-    if(this.cube2.position.x > this.cube.position.x - 10 && this.cube2.position.x < this.cube.position.x + 10){
+    if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
       this.points += 1;
       console.log(this.points);
     }
+ */
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
+   
   }
 
   renderScene() {

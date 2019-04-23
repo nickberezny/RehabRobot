@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 
 import { connect } from "react-redux";
 import { runRobot } from "../../src/actions";
+import { setParam } from "../src/actions";
 
 import io from "socket.io-client";
 
@@ -25,6 +26,7 @@ class RunButton extends React.Component {
     let dataToSend = 'SET_exp' + this.props.exp + '_';
     console.log(dataToSend)
     this.props.socket.emit('START_ROBOT', dataToSend)
+    if(this.props.exp == 3) {this.props.setParam('game', 3)}
   
   }
 

@@ -8,7 +8,7 @@ import { setParam } from "../src/actions";
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
 
-class Race_game extends Component {
+class Balance_game extends Component {
   constructor(props) {
     super(props)
 
@@ -251,4 +251,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {} //add importing action functions here
-)(Race_game);
+)(Balance_game);

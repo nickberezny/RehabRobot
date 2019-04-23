@@ -628,7 +628,6 @@ void *controller(void * d)
 
 			//Controller
 
-			
 			switch(game_number)
 			{
 				case 1:

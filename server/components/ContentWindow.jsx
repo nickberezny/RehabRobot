@@ -52,9 +52,31 @@ class WindowContent extends React.Component {
 
 	handleEndStage = (message) => {
 		console.log('Stage Ended')
+
 		this.props.setParam('stage', this.props.stage + 1)
 		this.props.setParam('run', 0)
-		if(this.props.stage+1 > 4) {this.props.setParam('game', 2)}
+
+		switch(this.props.exp){
+			case 1:
+				if(this.props.stage > 5) {this.props.setParam('game', 2)}
+				break;
+			case 2:
+				if(this.props.stage > 2) {this.props.setParam('game', 2)}
+				break;
+			case 3:
+				switch(this.props.stage){
+					case 3:
+						this.props.setParam('game', 4)
+						break;
+					case 4:
+						this.props.setParam('game', 5)
+						break;
+				}
+				break;
+		}
+		
+		
+		
 	}
 
 	render() {
@@ -106,7 +128,8 @@ function mapStateToProps(state) {
  		menuOpen: state.menuOpen,
  		socket: state.socket,
  		user: state.user ,
- 		stage: state.stage
+ 		stage: state.stage,
+ 		exp: state.exp,
  	}
 }
 

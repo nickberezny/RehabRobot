@@ -8,7 +8,7 @@ import { setParam } from "../src/actions";
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
 
-class vel_traj extends Component {
+class Follow_traj extends Component {
   constructor(props) {
     super(props)
 
@@ -19,15 +19,7 @@ class vel_traj extends Component {
 
   componentDidMount() {
 
-    var bar_width = 150.0
-    var bar_height = 400
-    var init = 0
-    var falling = 0
-    var fall_dir = 0
-    var fall_speed = 0
-
-    var bar;
-
+    var points = 0;
     var group = new THREE.Group();
 
     const width = this.mount.clientWidth
@@ -42,55 +34,43 @@ class vel_traj extends Component {
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setSize(width, height)
 
+    var geometry = new THREE.BoxGeometry( 100, 100, 100 );
+    var geometry2 = new THREE.BoxGeometry( 80, 80, 80 );
+    var material = new THREE.MeshBasicMaterial( { color: 0xffcc66 } );
+    var cube = new THREE.Mesh( geometry, material );
+    var material2 = new THREE.MeshBasicMaterial( { color: 0x4F99FF } );
+    var cube2 = new THREE.Mesh( geometry2, material2 );
+    cube.position.z = -100;
+    cube2.position.z = 0;
+    scene.add( cube );
+    scene.add( cube2 );
+
+    /*
+    var textureLoader = new THREE.TextureLoader();
+
+    var mapA = textureLoader.load( "sprite/crosshair.png" );
+    var materialA = new THREE.SpriteMaterial( { map: mapA, color: 0xFFFFFF} );
+    var mapB = textureLoader.load( "sprite/crosshair_yellow.png" );
+    var materialB = new THREE.SpriteMaterial( { map: mapB, color: 0xFFFFFF} );
+    var sprite1 = new THREE.Sprite( materialA );
+    var sprite2 = new THREE.Sprite( materialB );
+
+    sprite1.position.set( 0, 0, 100 );
+    sprite1.scale.set(100,100,100);
+
+    group.add(sprite1);
+    scene.add( group );
+    */
     scene.add( camera );
-
-    var blockGeometry = new THREE.BoxGeometry( bar_width, bar_height, 200 );
-    var blockMaterial = new THREE.MeshLambertMaterial({ color: 0x51677F });
-    var block = new THREE.Mesh( blockGeometry, blockMaterial );
-
-    var blockGeometry2 = new THREE.BoxGeometry( bar_width - 25, bar_height - 25, 200 );
-    var blockMaterial2 = new THREE.MeshLambertMaterial({ color: 0xFEFFD1 });
-    var block2 = new THREE.Mesh( blockGeometry2, blockMaterial2 );
-
-    var blockGeometry3 = new THREE.BoxGeometry( bar_width - 25, 5, 200 );
-    var blockMaterial3 = new THREE.MeshLambertMaterial({ color: 0x000000 });
-    var block3 = new THREE.Mesh( blockGeometry3, blockMaterial3 );
-
-    var barGeometry = new THREE.BoxGeometry( bar_width - 25, 1 , 210 );
-    var barMaterial = new THREE.MeshLambertMaterial({ color: 0x458B74 });
-    bar = new THREE.Mesh( barGeometry, barMaterial );
-  
-    block.position.set(0.0, 0.0, 0.0);
-    scene.add( block );
-
-    block2.position.set(0.0, 0.0, 0.0);
-    scene.add( block2 );
-
-    block3.position.set(0.0, 0.0, 0.0);
-    scene.add( block3 );
-
-    bar.position.set(0.0, 0.0, 0.0);
-    scene.add( bar )
-  
-    var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
-    spotLight1.position.set( -width/3, 200, 200 );
-    var spotLight2 = new THREE.SpotLight( 0xffffff, 1 );
-    spotLight2.position.set( -width/3, -200, 200 );
-    spotLight2.rotation.set( -180, 0, 0 );
-
-    //var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
-    //scene.add( directionalLight );
-
-    var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
-    scene.add( light );
-    scene.add(spotLight1);
 
     this.scene = scene
     this.camera = camera
     this.renderer = renderer
-    this.bar = bar;
-
-
+    this.material = material
+    this.cube = cube
+    this.cube2 = cube2;
+    //this.group = group
+    this.points = points
 
     this.mount.appendChild(this.renderer.domElement)
     this.start()
@@ -113,9 +93,15 @@ class vel_traj extends Component {
 
   animate() {
 
-    var bar_set = Math.abs(this.props.v - this.props.vdes)
-    this.bar.scale.set(1, bar_set, 1)
-    this.bar.position.set(0, bar_set/2.0, 0)
+    this.cube.position.x = this.props.xdes 
+    this.cube2.position.x = this.props.x
+
+    console.log(this.cube.position.x)
+
+    if(this.cube2.position.x > this.cube.position.x - 10 && this.cube2.position.x < this.cube.position.x + 10){
+      this.points += 1;
+      console.log(this.points);
+    }
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
@@ -140,8 +126,8 @@ function mapStateToProps(state) {
   
   //map state variables to the component's state 
   return {
-    v: state.v,
-    vdes: state.vdes
+    x: state.x,
+    xdes: state.xdes
   }
 }
 
@@ -149,4 +135,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {} //add importing action functions here
-)(vel_traj);
+)(Follow_traj);
