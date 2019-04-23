@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 
 import { connect } from "react-redux";
 import { runRobot } from "../../src/actions";
-import { setParam } from "../src/actions";
+import { setParam } from "../../src/actions";
 
 import io from "socket.io-client";
 
@@ -57,7 +57,8 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { runRobot }
+  { runRobot,
+    setParam }
 )(RunButton);
 
 //

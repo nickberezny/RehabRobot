@@ -14,6 +14,7 @@ import FollowVel_Instruction from '../Instructions/FollowVel_Instruction'
 import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
 
+import { setParam } from "../../src/actions";
 
 
 class VisualsPage extends React.Component {
