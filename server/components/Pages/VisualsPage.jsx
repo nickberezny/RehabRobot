@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-
 import Follow_traj from '../../games/Follow_traj'
 import Follow_vel from '../../games/Follow_vel'
 import Race_game from '../../games/Race_game'
@@ -10,6 +9,9 @@ import Gait_game from '../../games/Gait_game'
 
 import FollowTraj_Instruction from '../Instructions/FollowTraj_Instruction'
 import FollowVel_Instruction from '../Instructions/FollowVel_Instruction'
+import Race_Instruction from '../Instructions/Race_Instruction'
+import Gait_Instruction from '../Instructions/Gait_Instruction'
+import Balance_Instruction from '../Instructions/Balance_Instruction'
 
 import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
@@ -85,12 +87,27 @@ class VisualsPage extends React.Component {
 							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
-				case 3: 
-					this.state.content = <div><Follow_traj />  <RunButton /></div>
+				case 3:
+					this.state.content = 
+						<div>
+							<FollowVel_Instruction />
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+						</div>
 					break; 
 				case 4: 
-					this.state.content = <div><Follow_traj />  <RunButton /></div>
+					this.state.content = 
+						<div>
+							<FollowVel_Instruction />
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+						</div>
 					break; 
+				case 5:
+					this.state.content = 
+						<div>
+							<FollowVel_Instruction />
+							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+						</div>
+					break;
 				default: 
 					<div> Game load failed </div>
 				}
