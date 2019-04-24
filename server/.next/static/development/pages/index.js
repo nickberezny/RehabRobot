@@ -234,13 +234,19 @@ function (_React$Component) {
           break;
 
         case 2:
-          if (_this.props.stage > 2) {
+          if (_this.props.stage > 1) {
             _this.props.setParam('game', 2);
+          }
+
+          if (_this.props.stage > 2) {
+            _this.props.setParam('game', 1);
           }
 
           break;
 
         case 3:
+          _this.props.setParam('game', 3);
+
           switch (_this.props.stage) {
             case 3:
               _this.props.setParam('game', 4);
