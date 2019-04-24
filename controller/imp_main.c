@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
 	if(exp_number == 1)
 	{
 		game_number = 1;
-		max_count = 15000; //1.5 min
+		max_count = 1500; //1.5 min
 		temp_counter = 0;
 
 		switch(exp_iteration++){
@@ -383,7 +383,7 @@ int main(int argc, char* argv[]) {
 
 	else if(exp_number == 2 || exp_number == 3)
 	{
-		max_count = 180000; //3 min
+		max_count = 1500; //3 min
 		game_number = 1;
 		switch(exp_iteration++)
 		{
