@@ -61,9 +61,11 @@ class WindowContent extends React.Component {
 				if(this.props.stage > 5) {this.props.setParam('game', 2)}
 				break;
 			case 2:
-				if(this.props.stage > 2) {this.props.setParam('game', 2)}
+				if(this.props.stage > 1) {this.props.setParam('game', 2)}
+				if(this.props.stage > 2) {this.props.setParam('game', 1)}
 				break;
 			case 3:
+				this.props.setParam('game', 3)
 				switch(this.props.stage){
 					case 3:
 						this.props.setParam('game', 4)

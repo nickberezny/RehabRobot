@@ -385,13 +385,18 @@ int main(int argc, char* argv[]) {
 	{
 		max_count = 10000; //3 min
 		game_number = 1;
+		temp_counter = 0;
 		switch(exp_iteration++)
 		{
 			case 1:
+				k_gain = K_GAIN;
+				b_gain = B_GAIN;
 				game_number = 1;
 				break;
 
 			case 2:
+				k_gain = K_GAIN;
+				b_gain = B_GAIN;
 				game_number = 1;
 				break;
 
