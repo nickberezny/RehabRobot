@@ -995,6 +995,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var HomeButton =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1017,6 +1018,7 @@ function (_React$Component) {
       var dataToSend = 'HOME';
       console.log(dataToSend);
       this.props.socket.emit('START_ROBOT', dataToSend);
+      this.props.setValue('home', 1);
     }
   }, {
     key: "render",
@@ -1043,7 +1045,8 @@ function mapStateToProps(state) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, {
-  runRobot: _src_actions__WEBPACK_IMPORTED_MODULE_3__["runRobot"]
+  runRobot: _src_actions__WEBPACK_IMPORTED_MODULE_3__["runRobot"],
+  setValue: _src_actions__WEBPACK_IMPORTED_MODULE_3__["setValue"]
 })(HomeButton)); //
 
 /***/ }),
@@ -1215,10 +1218,12 @@ function (_React$Component) {
     key: "run",
     value: function run() {
       //change this to send different data
-      var dataToSend = 'RUN';
-      console.log(dataToSend);
-      this.props.socket.emit('START_ROBOT', dataToSend);
-      this.props.setValue('run', 1);
+      if (this.props.home == 1) {
+        var dataToSend = 'RUN';
+        console.log(dataToSend);
+        this.props.socket.emit('START_ROBOT', dataToSend);
+        this.props.setValue('run', 1);
+      }
     }
   }, {
     key: "render",
@@ -1241,7 +1246,8 @@ function (_React$Component) {
 function mapStateToProps(state) {
   return {
     socket: state.socket,
-    stage: state.stage
+    stage: state.stage,
+    home: state.home
   };
 }
 
@@ -4899,7 +4905,8 @@ var initState = {
   k_floor: 0.0,
   k_gravity: 0.0,
   exp: 1,
-  stage: 1
+  stage: 1,
+  home: 0
 };
 
 function todoApp() {
