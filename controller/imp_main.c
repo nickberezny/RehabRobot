@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
 	if(exp_number == 1)
 	{
 		game_number = 1;
-		max_count = 1500; //1.5 min
+		max_count = 90000; //1 min = 60000
 		temp_counter = 0;
 
 		switch(exp_iteration++){
@@ -383,7 +383,7 @@ int main(int argc, char* argv[]) {
 
 	else if(exp_number == 2 || exp_number == 3)
 	{
-		max_count = 1500; //3 min
+		max_count = 10000; //3 min
 		game_number = 1;
 		switch(exp_iteration++)
 		{
@@ -637,7 +637,7 @@ void *controller(void * d)
 					break;
 
 				case 2:
-					//balance
+					//balance or gait
 					imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
 					break;
 				

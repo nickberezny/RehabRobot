@@ -17,11 +17,14 @@ class RunButton extends React.Component {
   run() {
 
     //change this to send different data
-    let dataToSend = 'RUN'
-    console.log(dataToSend)
-    this.props.socket.emit('START_ROBOT',dataToSend)
-
-    this.props.setValue('run', 1)
+    if(this.props.home == 1) 
+    {
+      let dataToSend = 'RUN'
+      console.log(dataToSend)
+      this.props.socket.emit('START_ROBOT',dataToSend)
+      this.props.setValue('run', 1)
+    }
+    
   
   }
 
@@ -40,7 +43,8 @@ class RunButton extends React.Component {
 function mapStateToProps(state) {
   return {
     socket: state.socket,
-    stage: state.stage
+    stage: state.stage,
+    home: state.home
   }
 }
 
