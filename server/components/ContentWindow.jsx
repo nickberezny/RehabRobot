@@ -76,9 +76,6 @@ class WindowContent extends React.Component {
 				}
 				break;
 		}
-		
-		
-		
 	}
 
 	render() {

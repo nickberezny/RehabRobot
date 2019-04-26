@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
 	if(exp_number == 1)
 	{
 		game_number = 1;
-		max_count = 90000; //1 min = 60000
+		max_count = 90000; //1.5 min = 90000
 		temp_counter = 0;
 
 		switch(exp_iteration++){
@@ -383,7 +383,7 @@ int main(int argc, char* argv[]) {
 
 	else if(exp_number == 2 || exp_number == 3)
 	{
-		max_count = 10000; //3 min
+		max_count = 180000; //3 min
 		game_number = 1;
 		temp_counter = 0;
 		switch(exp_iteration++)
@@ -473,7 +473,8 @@ int main(int argc, char* argv[]) {
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSF[0] = aValues[3];
     }
-*/
+	*/
+
     //home to back
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
