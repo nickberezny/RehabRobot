@@ -455,7 +455,7 @@ int main(int argc, char* argv[]) {
 	}
 
     sleep(2);
-    if(DEBUG) printf("Homing ...\n");  
+    if(DEBUG) printf("Homing1 ...\n");  
 
     //home to front
     /*

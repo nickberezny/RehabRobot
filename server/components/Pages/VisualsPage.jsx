@@ -35,7 +35,7 @@ class VisualsPage extends React.Component {
 				case 1: 
 					this.state.content = 
 						<div>
-							<Race_game />
+							<Follow_traj />
 							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
