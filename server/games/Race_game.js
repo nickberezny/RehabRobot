@@ -55,31 +55,52 @@ class Race_game extends Component {
     var other2Material = new THREE.MeshLambertMaterial({ color: 0xD4D1C8 });
     var boxMaterial = new THREE.MeshLambertMaterial({ color: 0x99ccff });
 
-    var circle = new THREE.Mesh( new THREE.CircleBufferGeometry( 100, 20, 0, Math.PI * 2 ), plateMaterial );
+    var textureLoader = new THREE.TextureLoader();
+    var texture_grass = textureLoader.load( "static/textures/grass.jpg" );
+    var material_grass = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass } );
+    
+    var texture_track = textureLoader.load( "static/textures/track.jpg" );
+    var material_track = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_track } );
+
+    texture_grass.wrapS = texture_grass.wrapT = THREE.RepeatWrapping;
+    texture_grass.repeat.set( 64, 64 );
+
+    var texture_grass2 = textureLoader.load( "static/textures/grass.jpg" );
+    texture_grass2.wrapS = texture_grass2.wrapT = THREE.RepeatWrapping;
+    texture_grass2.repeat.set( 4, 4);
+
+    var material_grass2 = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass2 } );
+
+    texture_track.wrapS = texture_track.wrapT = THREE.RepeatWrapping;
+    texture_track.repeat.set( 8, 8 );
+
+    var circle = new THREE.Mesh( new THREE.CircleBufferGeometry( 100, 20, 0, Math.PI * 2 ), material_track );
     circle.position.set(0,-100,0)
     scene.add(circle)
 
-    var circle2 = new THREE.Mesh( new THREE.CircleBufferGeometry( 100, 20, 0, Math.PI * 2 ), plateMaterial );
+    var circle2 = new THREE.Mesh( new THREE.CircleBufferGeometry( 100, 20, 0, Math.PI * 2 ), material_track );
     circle2.position.set(0,100,0)
     scene.add(circle2)
 
-    var plate = new THREE.Mesh( new THREE.PlaneBufferGeometry( 200, 200, 4, 4 ), plateMaterial );
+    var plate = new THREE.Mesh( new THREE.PlaneBufferGeometry( 200, 200, 4, 4 ), material_track );
     plate.position.set(0,0,0)
     scene.add(plate)
 
-    var circle3 = new THREE.Mesh( new THREE.CircleBufferGeometry( 60, 20, 0, Math.PI * 2 ), plateMaterial2 );
+    var circle3 = new THREE.Mesh( new THREE.CircleBufferGeometry( 60, 20, 0, Math.PI * 2 ), material_grass2 );
     circle3.position.set(0,-100,0.1)
     scene.add(circle3)
 
-    var circle4 = new THREE.Mesh( new THREE.CircleBufferGeometry( 60, 20, 0, Math.PI * 2 ), plateMaterial2 );
+    var circle4 = new THREE.Mesh( new THREE.CircleBufferGeometry( 60, 20, 0, Math.PI * 2 ), material_grass2 );
     circle4.position.set(0,100,0.1)
     scene.add(circle4)
 
-    var plate2 = new THREE.Mesh( new THREE.PlaneBufferGeometry( 120, 200, 4, 4 ), plateMaterial2 );
+    var plate2 = new THREE.Mesh( new THREE.PlaneBufferGeometry( 120, 200, 4, 4 ), material_grass2 );
     plate2.position.set(0,0,0.1)
     scene.add(plate2)
 
-    var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000, 4, 4 ), plateMaterial2 );
+    
+
+    var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000, 4, 4 ), material_grass );
     ground.position.set(0,0,-0.1)
     scene.add(ground)
 
@@ -105,7 +126,24 @@ class Race_game extends Component {
 
     var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
     scene.add( light );
-    
+
+    var geometry = new THREE.PlaneBufferGeometry( 100, 100 );
+
+    for ( var i = 0; i < 15; i ++ ) {
+      var material = new THREE.MeshBasicMaterial( {
+        color: new THREE.Color().setHSL( 0.3, 0.75, ( i / 15 ) * 0.4 + 0.1 ),
+        map: texture_grass,
+        depthTest: false,
+        depthWrite: false,
+        transparent: true
+      } );
+      var mesh = new THREE.Mesh( geometry, material );
+      mesh.position.y = i * 0.25;
+      mesh.rotation.x = - Math.PI / 2;
+      scene.add( mesh );
+    }
+
+
     scene.add(spotLight1)
     scene.add( camera );
 
