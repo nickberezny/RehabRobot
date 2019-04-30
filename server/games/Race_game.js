@@ -42,7 +42,7 @@ class Race_game extends Component {
     
     var camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 800 );
     camera.position.set( -95,-50,30);
-    camera.rotation.set(1.5,0.0,0.0);
+    //camera.rotation.set(1.5,0.0,0.0);
     scene.add( camera );
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -87,19 +87,18 @@ class Race_game extends Component {
     scene.add(plate)
 
     var circle3 = new THREE.Mesh( new THREE.CircleBufferGeometry( 60, 20, 0, Math.PI * 2 ), material_grass2 );
-    circle3.position.set(0,-100,0.1)
+    circle3.position.set(0,-100,0.11)
     scene.add(circle3)
 
     var circle4 = new THREE.Mesh( new THREE.CircleBufferGeometry( 60, 20, 0, Math.PI * 2 ), material_grass2 );
-    circle4.position.set(0,100,0.1)
+    circle4.position.set(0,100,0.11)
     scene.add(circle4)
 
     var plate2 = new THREE.Mesh( new THREE.PlaneBufferGeometry( 120, 200, 4, 4 ), material_grass2 );
-    plate2.position.set(0,0,0.1)
+    plate2.position.set(0,0,0.10)
     scene.add(plate2)
 
-    
-
+  
     var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000, 4, 4 ), material_grass );
     ground.position.set(0,0,-0.1)
     scene.add(ground)
@@ -127,21 +126,6 @@ class Race_game extends Component {
     var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
     scene.add( light );
 
-    var geometry = new THREE.PlaneBufferGeometry( 100, 100 );
-
-    for ( var i = 0; i < 15; i ++ ) {
-      var material = new THREE.MeshBasicMaterial( {
-        color: new THREE.Color().setHSL( 0.3, 0.75, ( i / 15 ) * 0.4 + 0.1 ),
-        map: texture_grass,
-        depthTest: false,
-        depthWrite: false,
-        transparent: true
-      } );
-      var mesh = new THREE.Mesh( geometry, material );
-      mesh.position.y = i * 0.25;
-      mesh.rotation.x = - Math.PI / 2;
-      scene.add( mesh );
-    }
 
 
     scene.add(spotLight1)
@@ -217,34 +201,51 @@ class Race_game extends Component {
 
   this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0
   
-  if(Math.abs(this.character.position.y) >= 100 )
-      {
-        this.theta1 += this.race_speed1/90.0;
-      }
-      else{
-        this.theta1 = 0.0;
-      }
-      if(Math.abs(this.other.position.y) >= 100 )
-      {
-        this.theta2 += this.race_speed2/90.0;
-      }else{
-        this.theta2 = 0.0;
-      }
-      if(Math.abs(this.other2.position.y) >= 100 )
-      {
-        this.theta3 += this.race_speed3/90.0;
-      }else{
-        this.theta3 = 0.0;
-      }
+  if(this.character.position.y >= 100 )
+  {
+    this.theta1 += this.race_speed1/90.0;
+    this.camera.position.x = this.character.position.x - 40.0*Math.sin(this.theta1);
+    this.camera.position.y = this.character.position.y - 40.0*Math.cos(this.theta1);
+  }
+
+  else if(this.character.position.y <= -100 )
+  {
+    this.theta1 += this.race_speed1/90.0;
+    this.camera.position.x = this.character.position.x + 40.0*Math.sin(this.theta1);
+    this.camera.position.y = this.character.position.y + 40.0*Math.cos(this.theta1);
+  }else if(this.character.position.x > 10 ){
+    this.theta1 = 0.0;
+    this.camera.position.x = this.character.position.x + 40.0*Math.sin(this.theta1);
+    this.camera.position.y = this.character.position.y + 40.0*Math.cos(this.theta1);
+  }else{
+    this.theta1 = 0.0;
+    this.camera.position.x = this.character.position.x - 40.0*Math.sin(this.theta1);
+    this.camera.position.y = this.character.position.y - 40.0*Math.cos(this.theta1);
+  }
+
+  if(Math.abs(this.other.position.y) >= 100 )
+  {
+    this.theta2 += this.race_speed2/90.0;
+  }else{
+    this.theta2 = 0.0;
+  }
+  if(Math.abs(this.other2.position.y) >= 100 )
+  {
+    this.theta3 += this.race_speed3/90.0;
+  }else{
+    this.theta3 = 0.0;
+  }
       this.move_object(this.character, this.theta1, 80.0, this.race_speed1);
       this.move_object(this.other, this.theta2, 90.0, this.race_speed2);
       this.move_object(this.other2, this.theta3, 70.0, this.race_speed3);
 
-      this.camera.position.x = this.character.position.x;
-      this.camera.position.y = this.character.position.y - 40.0;
+      
+
+      console.log(this.character.rotation.z)
+      
 
       this.character.rotation.x += 0.1;
-      this.character.rotation.y += 0.05;
+      this.character.rotation.y += 0.05; 
 
       this.other.rotation.x += 0.1;
       this.other.rotation.y += 0.05;
@@ -252,7 +253,9 @@ class Race_game extends Component {
       this.other2.rotation.x += 0.1;
       this.other2.rotation.y += 0.05;
 
+      this.camera.up = new THREE.Vector3(0,0,1);
       this.camera.lookAt( this.character.position );
+      
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
