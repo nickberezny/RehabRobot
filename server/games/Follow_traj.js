@@ -101,8 +101,8 @@ class Follow_traj extends Component {
 
   animate() {
 
-    this.desPos.position.y = this.props.xdes - 140.0
-    this.plate.position.y = this.props.x - 140.0
+    this.desPos.position.y = 0.7*this.props.xdes - 140.0
+    this.plate.position.y = 0.7*this.props.x - 140.0
 
     console.log(this.plate.position.y)
 

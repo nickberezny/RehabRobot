@@ -329,7 +329,7 @@ int main(int argc, char* argv[]) {
 		switch(exp_iteration++){
 
 			case 1:
-				k_gain = KMIN;
+				k_gain = KMIN  + 0.2;
 				b_gain = B_GAIN;
 				terminate_program = 1;
 				break;

@@ -37,7 +37,6 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
 							<Follow_traj />
-							<Follow_game />
 						</div> 
 					break; 
 				case 2: 
