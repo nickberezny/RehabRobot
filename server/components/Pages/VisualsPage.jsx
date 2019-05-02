@@ -37,13 +37,13 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
 							<Follow_traj />
+							<Follow_game />
 						</div> 
 					break; 
 				case 2: 
 					this.state.content = 
-						<div>
+						<div style={{display: 'inline-flex'}}>
 							<Follow_vel />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 3: 
@@ -55,16 +55,14 @@ class VisualsPage extends React.Component {
 					break; 
 				case 4: 
 					this.state.content = 
-						<div>
+						<div style={{display: 'inline-flex'}}>
 							<Balance_game />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 5:
 					this.state.content = 
-						<div>
+						<div style={{display: 'inline-flex'}}>
 							<Gait_game />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 				default: 
 					<div> Game load failed </div>

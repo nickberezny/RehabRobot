@@ -38,7 +38,7 @@ class Follow_traj extends Component {
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setSize(width, height)
 
-    var geometry = new THREE.BoxGeometry( 100, 100, 100 );
+    var geometry = new THREE.BoxGeometry( 70, 70, 70 );
 
     var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
     var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
@@ -48,13 +48,13 @@ class Follow_traj extends Component {
     var bar = new THREE.Mesh( geometry, barMaterial );
     var desPos = new THREE.Mesh( geometry, desMaterial );
 
-    plate.position.set(width/8, 0.0, 0.0);
+    plate.position.set(0.0, 0.0, 0.0);
     plate.scale.set(1.25, 0.25, 1.0);
 
-    bar.position.set(width/8, 0.0, -25);
+    bar.position.set(0.0, 0.0, -25);
     bar.scale.set(0.75, 4.0, 1.0);
 
-    desPos.position.set(width/8, 0.0, 50);
+    desPos.position.set(0.0, 0.0, 50);
     desPos.scale.set(1.5, 0.5, 1.0);
 
     var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
@@ -101,8 +101,8 @@ class Follow_traj extends Component {
 
   animate() {
 
-    this.desPos.position.y = this.props.xdes - 200.0
-    this.plate.position.y = this.props.x - 200.0
+    this.desPos.position.y = this.props.xdes - 140.0
+    this.plate.position.y = this.props.x - 140.0
 
     console.log(this.plate.position.y)
 
@@ -130,7 +130,7 @@ class Follow_traj extends Component {
     return (
       
       <div
-        style={{ width: '800px', height: '600px' }}
+        style={{ width: '300px', height: '400px' }}
         ref={(mount) => { this.mount = mount }}
       />
     )

@@ -40,26 +40,11 @@ class Follow_game extends Component {
 
     var geometry = new THREE.BoxGeometry( 100, 100, 100 );
 
-    var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
-    var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
-    var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.5 } );
     var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x86a5d6 });
 
-    var plate = new THREE.Mesh( geometry, plateMaterial );
-    var bar = new THREE.Mesh( geometry, barMaterial );
-    var desPos = new THREE.Mesh( geometry, desMaterial );
     var cube = new THREE.Mesh( geometry, cubeMaterial)
 
-    plate.position.set(width/8, 0.0, 0.0);
-    plate.scale.set(1.25, 0.25, 1.0);
-
-    bar.position.set(width/8, 0.0, -25);
-    bar.scale.set(0.75, 4.0, 1.0);
-
-    desPos.position.set(width/8, 0.0, 50);
-    desPos.scale.set(1.5, 0.5, 1.0);
-
-    cube.position.set( -width/8, 0.0, 0.0);
+    cube.position.set( 0.0, 0.0, 0.0);
 
     var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
     spotLight1.position.set( -width/3, 200, 200 );
@@ -67,20 +52,12 @@ class Follow_game extends Component {
     scene.add( light );
     scene.add(spotLight1)
 
-    //group.add( plate );
-    scene.add( bar );
-    scene.add(desPos);
     scene.add(cube);
-    scene.add(plate);
-
 
     this.scene = scene
     this.camera = camera
     this.renderer = renderer
 
-    this.plate = plate
-    this.bar = bar
-    this.desPos = desPos
     this.cube = cube
 
     //this.group = group;
@@ -107,25 +84,14 @@ class Follow_game extends Component {
 
   animate() {
 
-    this.desPos.position.y = this.props.xdes - 200.0
-    this.plate.position.y = this.props.x - 200.0
-
-    console.log(this.plate.position.y)
-
-    if(this.plate.position.y > this.desPos.position.y - 30 && this.plate.position.y < this.desPos.position.y + 30)
+    if(this.props.x > this.props.xdes - 30 && this.props.x < this.props.xdes + 30)
     {
       this.points += 1;
-      this.desPos.material.color.setHex(0x7fffa3)
-
-      //var html_text = "Points: " + points;
-      //text2.innerHTML = html_text
 
       this.cube.rotation.x += 0.008;
       this.cube.rotation.y += 0.008;
       this.cube.rotation.z += 0.008;
 
-    }else{
-      this.desPos.material.color.setHex(0xff7272)
     }
 
 /*
@@ -151,7 +117,7 @@ class Follow_game extends Component {
     return (
       
       <div
-        style={{ width: '1800px', height: '800px' }}
+        style={{ width: '600px', height: '400px' }}
         ref={(mount) => { this.mount = mount }}
       />
     )
