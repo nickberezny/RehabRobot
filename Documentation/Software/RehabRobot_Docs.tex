@@ -10,6 +10,11 @@
 
 \usepackage{url}[obeyspaces,spaces]
 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {/} }
+\usepackage{svg}
+
 \begin{document}
 \maketitle
 \newpage
@@ -122,7 +127,37 @@
 	\subsection{Thread 1: Controller}
 	
 	\subsubsection{Reading \& Writing to the DAQ}
+
+	Communication with the DAQ is handled by the LJM library provided by LabJack. Writing and reading are handled by a single function, LJM\_ eNames().
+	
+	\begin{verbatim}
+	LJM_eNames(daqHandle, numChannels, aNames, aWrites, aNumValues, aValues, &errorAddress);
+	\end{verbatim}
+	
+	The function takes the following inputs:
+	
+	\begin{itemize}
+		\item daqHandle: created during initialization
+		\item numChannels: number of addresses to read/write 
+		\item aNames: strings indicating the DAQ addresses to read/write
+		\item aWrites: array indicating mode for each address (0=read, 1=write)
+		\item aNumValues: number of values per address (in this case, always 1)
+		\item aValues: array containing read data or data to be written
+		\item errorAddress: contains and error codes 
+	\end{itemize}
+	
+	There are three steps for reading and writing to DAQs: set values to be written, execute function, allocate read values to proper variables.  
+	
 	\subsubsection{Filtering}
+
+	Filtering is important to reduce noise in several of the variables. Discrete Finite Impulse Response filters are used on both the force sensor and the velocity, both of which are prone to noise (either sensor noise or amplified noise due to differentiation). A finite impulse response filter is essentially a weighted average over a moving window. A custom function is used: 
+	
+	\begin{verbatim}
+		imp_FIR(filter_array, current_value, filter_order);
+	\end{verbatim}
+	
+	The filter\_ array contains previous filter values, current\_ value is a pointer to the current value to be filtered, and filter\_ order sets the window size (greater orders result in more aggressive filters). The filter\_ array must have a size equal to the filter\_ order.
+	
 	\subsubsection{Trajectory Calculation}
 	\subsubsection{Admittance Control}
 	\subsubsection{Maintaining Frequency}
@@ -194,7 +229,44 @@
 	@material-ui/core @material-ui/icons react-websocket three express
 	\end{verbatim}
 	
-	\subsection{React}
+	\subsection{Structure}
+	
+	The UI consists of three main components: the topbar, the menu, and the content window. The content window can be used to display three more components: set up, instructions, and the visuals. 
+	
+	The folder tree structure is used based on the Next.js recommended setup. There are three relevant folders which will need to be accessed if you wish to change the UI: components, games, and src. 
+	
+	The UI consists of nested components, \textit{i.e.} components which containt multiple other components. Ultimately everything is composed of basic components such as buttons, dropdown menus, text, input text, and games/visuals. The component tree can be traced from a single overarching component (the app component) down into these basic components:
+	
+	\begin{figure*}[t] 
+		\centering
+		\includegraphics[width=0.75\linewidth]{Components}
+		\caption{Nested Component Structure of the UI}
+		\label{fig:VerInt}
+	\end{figure*}
+	
+	\subsubsection{Drawer}
+	
+	The ``Drawer'' is the collapsible menu used to navigate between pages. It uses the DrawerList, which contains the links to each of the pages (Setup, Games, Settings). It is hidden or shown via a button. 
+	
+	\subsubsection{Topbar}
+	
+	The topbar is shown at the top of the app and contains information which is always displayed. For now it contains the menu button and the app title. 
+	
+	\subsubsection{Content Window}
+	
+	The Content window fills the space below the topbar (and to the right of the menu), and is used as a container for all other components.
+	
+	\subsubsection{Setup Page}
+	
+	The Setup page is used to change parameters for the rehabilitation session, and send them to the controller. A number of different setup pages exist, for different activities (trajectory follow, balance, etc.), for different users (developer vs therapist), and for different contexts (different experiments). The setup page contains dropdown menus, input text, and a SET button. The user must change the parameters to desired settings, and then presses the SET button to send the information to the controller and begin the session.
+	
+	\subsubsection{Visuals Page}
+	
+	The visuals page contains the required visuals for the rehabilitation session. It should be accessed after setting the session up on the Setup page. It will first contain instructions for the activity, a home button, and a run button. The home button will initiate the homing procedure on the device, after which the run button is used to begin the session. This will trigger the game/visuals to be displayed. 
+	
+	\subsubsection{Settings Page}
+	
+	The settings page is used to change user settings. Currently, there are three options: developer, user, and experiment. The developer gets direct access to control parameters (P and D gains, admittance parameters...). These parameters are set indirectly in the user setting, using more non-technical choices (\textit{e.g.} setting assistance level instead of spring stiffness). The experiment option allows one to run the structured experiment. 
 	
 	\subsection{Three.js \& Visuals}
 	

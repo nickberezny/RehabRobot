@@ -19,8 +19,8 @@ class Follow_vel extends Component {
 
   componentDidMount() {
 
-    var bar_width = 150.0
-    var bar_height = 400
+    var bar_width = 75.0
+    var bar_height = 200.0
     var init = 0
     var falling = 0
     var fall_dir = 0
@@ -34,10 +34,10 @@ class Follow_vel extends Component {
     const height = this.mount.clientHeight
 
     var scene = new THREE.Scene()
-    scene.background = new THREE.Color( 0xBCBFFF );
+    scene.background = new THREE.Color( 0x99ccff );
     
     var camera = new THREE.OrthographicCamera( - width / 2, width / 2, height / 2, - height / 2, -100, 500000);
-    camera.position.set( 0,0,5);
+    camera.position.set( 0,0,10);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setSize(width, height)
@@ -129,7 +129,7 @@ class Follow_vel extends Component {
     return (
       
       <div
-        style={{ width: '900px', height: '400px' }}
+        style={{ width: '300px', height: '400px' }}
         ref={(mount) => { this.mount = mount }}
       />
     )

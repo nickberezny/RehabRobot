@@ -2614,17 +2614,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../games/Follow_traj */ "./games/Follow_traj.js");
 /* harmony import */ var _games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../games/Follow_vel */ "./games/Follow_vel.js");
-/* harmony import */ var _games_Race_game__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../games/Race_game */ "./games/Race_game.js");
-/* harmony import */ var _games_Balance_game__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../games/Balance_game */ "./games/Balance_game.js");
-/* harmony import */ var _games_Gait_game__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../games/Gait_game */ "./games/Gait_game.js");
-/* harmony import */ var _Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Instructions/FollowTraj_Instruction */ "./components/Instructions/FollowTraj_Instruction.jsx");
-/* harmony import */ var _Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Instructions/FollowVel_Instruction */ "./components/Instructions/FollowVel_Instruction.jsx");
-/* harmony import */ var _Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Instructions/Race_Instruction */ "./components/Instructions/Race_Instruction.jsx");
-/* harmony import */ var _Instructions_Gait_Instruction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Instructions/Gait_Instruction */ "./components/Instructions/Gait_Instruction.jsx");
-/* harmony import */ var _Instructions_Balance_Instruction__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Instructions/Balance_Instruction */ "./components/Instructions/Balance_Instruction.jsx");
-/* harmony import */ var _Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Generic/RunButton */ "./components/Generic/RunButton.jsx");
-/* harmony import */ var _Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Generic/HomeButton */ "./components/Generic/HomeButton.jsx");
-/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../src/actions */ "./src/actions.js");
+/* harmony import */ var _games_Follow_game__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../games/Follow_game */ "./games/Follow_game.js");
+/* harmony import */ var _games_Race_game__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../games/Race_game */ "./games/Race_game.js");
+/* harmony import */ var _games_Balance_game__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../games/Balance_game */ "./games/Balance_game.js");
+/* harmony import */ var _games_Gait_game__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../games/Gait_game */ "./games/Gait_game.js");
+/* harmony import */ var _Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Instructions/FollowTraj_Instruction */ "./components/Instructions/FollowTraj_Instruction.jsx");
+/* harmony import */ var _Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Instructions/FollowVel_Instruction */ "./components/Instructions/FollowVel_Instruction.jsx");
+/* harmony import */ var _Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Instructions/Race_Instruction */ "./components/Instructions/Race_Instruction.jsx");
+/* harmony import */ var _Instructions_Gait_Instruction__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Instructions/Gait_Instruction */ "./components/Instructions/Gait_Instruction.jsx");
+/* harmony import */ var _Instructions_Balance_Instruction__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Instructions/Balance_Instruction */ "./components/Instructions/Balance_Instruction.jsx");
+/* harmony import */ var _Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Generic/RunButton */ "./components/Generic/RunButton.jsx");
+/* harmony import */ var _Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Generic/HomeButton */ "./components/Generic/HomeButton.jsx");
+/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../src/actions */ "./src/actions.js");
 var _jsxFileName = "C:\\Users\\nicho_000\\Documents\\RehabRobot\\server\\components\\Pages\\VisualsPage.jsx";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -2644,6 +2645,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2685,71 +2687,60 @@ function (_React$Component) {
         switch (this.props.game) {
           case 1:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 37
+              style: {
+                display: 'inline-flex'
               },
-              __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_4__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 38
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 39
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              text: "Home",
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 39
+                lineNumber: 40
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
-              text: "Run",
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 39
-              },
-              __self: this
-            })));
+            }));
             break;
 
           case 2:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 44
+                lineNumber: 45
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 45
+                lineNumber: 46
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 46
+                lineNumber: 47
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 46
+                lineNumber: 47
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 46
+                lineNumber: 47
               },
               __self: this
             })));
@@ -2759,33 +2750,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 51
+                lineNumber: 52
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 52
+                lineNumber: 53
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 53
+                lineNumber: 54
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 53
+                lineNumber: 54
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 53
+                lineNumber: 54
               },
               __self: this
             })));
@@ -2795,33 +2786,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 58
+                lineNumber: 59
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Balance_game__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Balance_game__WEBPACK_IMPORTED_MODULE_6__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 59
+                lineNumber: 60
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 60
+                lineNumber: 61
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 60
+                lineNumber: 61
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 60
+                lineNumber: 61
               },
               __self: this
             })));
@@ -2831,33 +2822,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 65
+                lineNumber: 66
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Gait_game__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Gait_game__WEBPACK_IMPORTED_MODULE_7__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 66
+                lineNumber: 67
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 67
+                lineNumber: 68
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 67
+                lineNumber: 68
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 67
+                lineNumber: 68
               },
               __self: this
             })));
@@ -2866,7 +2857,7 @@ function (_React$Component) {
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 70
+                lineNumber: 71
               },
               __self: this
             }, " Game load failed ");
@@ -2877,33 +2868,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 78
+                lineNumber: 79
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_8__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 79
+                lineNumber: 80
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 80
+                lineNumber: 81
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 80
+                lineNumber: 81
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 80
+                lineNumber: 81
               },
               __self: this
             })));
@@ -2913,33 +2904,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 85
+                lineNumber: 86
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 86
+                lineNumber: 87
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 88
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 88
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 88
               },
               __self: this
             })));
@@ -2949,33 +2940,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 92
+                lineNumber: 93
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_10__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 93
+                lineNumber: 94
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 95
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 95
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 95
               },
               __self: this
             })));
@@ -2985,33 +2976,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 99
+                lineNumber: 100
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Balance_Instruction__WEBPACK_IMPORTED_MODULE_11__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Balance_Instruction__WEBPACK_IMPORTED_MODULE_12__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 100
+                lineNumber: 101
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 102
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 102
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 102
               },
               __self: this
             })));
@@ -3021,33 +3012,33 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 106
+                lineNumber: 107
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Gait_Instruction__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Gait_Instruction__WEBPACK_IMPORTED_MODULE_11__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 107
+                lineNumber: 108
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 109
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 109
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 109
               },
               __self: this
             })));
@@ -3057,7 +3048,7 @@ function (_React$Component) {
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 112
+                lineNumber: 113
               },
               __self: this
             }, " Game load failed ");
@@ -3067,7 +3058,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119
+          lineNumber: 120
         },
         __self: this
       }, this.state.content);
@@ -3086,7 +3077,7 @@ function mapStateToProps(state) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  setParam: _src_actions__WEBPACK_IMPORTED_MODULE_14__["setParam"]
+  setParam: _src_actions__WEBPACK_IMPORTED_MODULE_15__["setParam"]
 })(VisualsPage));
 
 /***/ }),
@@ -4721,9 +4712,9 @@ function mapStateToProps(state) {
 
 /***/ }),
 
-/***/ "./games/Follow_traj.js":
+/***/ "./games/Follow_game.js":
 /*!******************************!*\
-  !*** ./games/Follow_traj.js ***!
+  !*** ./games/Follow_game.js ***!
   \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4737,7 +4728,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "three");
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(three__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/actions */ "./src/actions.js");
-var _jsxFileName = "C:\\Users\\nicho_000\\Documents\\RehabRobot\\server\\games\\Follow_traj.js";
+var _jsxFileName = "C:\\Users\\nicho_000\\Documents\\RehabRobot\\server\\games\\Follow_game.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -4765,24 +4756,24 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
 
-var Follow_traj =
+var Follow_game =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Follow_traj, _Component);
+  _inherits(Follow_game, _Component);
 
-  function Follow_traj(props) {
+  function Follow_game(props) {
     var _this;
 
-    _classCallCheck(this, Follow_traj);
+    _classCallCheck(this, Follow_game);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Follow_traj).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Follow_game).call(this, props));
     _this.start = _this.start.bind(_assertThisInitialized(_this));
     _this.stop = _this.stop.bind(_assertThisInitialized(_this));
     _this.animate = _this.animate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Follow_traj, [{
+  _createClass(Follow_game, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var points = 0;
@@ -4910,6 +4901,206 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
+          width: '1800px',
+          height: '800px'
+        },
+        ref: function ref(mount) {
+          _this2.mount = mount;
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 153
+        },
+        __self: this
+      });
+    }
+  }]);
+
+  return Follow_game;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+function mapStateToProps(state) {
+  //map state variables to the component's state 
+  return {
+    x: state.x,
+    xdes: state.xdes
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
+)(Follow_game));
+
+/***/ }),
+
+/***/ "./games/Follow_traj.js":
+/*!******************************!*\
+  !*** ./games/Follow_traj.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three */ "three");
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(three__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/actions */ "./src/actions.js");
+var _jsxFileName = "C:\\Users\\nicho_000\\Documents\\RehabRobot\\server\\games\\Follow_traj.js";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+ //import * as OBJLoader from 'three-obj-loader';
+
+ //OBJLoader(THREE);
+//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
+//require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
+
+var Follow_traj =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Follow_traj, _Component);
+
+  function Follow_traj(props) {
+    var _this;
+
+    _classCallCheck(this, Follow_traj);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Follow_traj).call(this, props));
+    _this.start = _this.start.bind(_assertThisInitialized(_this));
+    _this.stop = _this.stop.bind(_assertThisInitialized(_this));
+    _this.animate = _this.animate.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Follow_traj, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var points = 0;
+      var maxStroke = 200;
+      var text;
+      var group = new three__WEBPACK_IMPORTED_MODULE_2__["Group"]();
+      var width = this.mount.clientWidth;
+      var height = this.mount.clientHeight;
+      var scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
+      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0xf7fdff);
+      var camera = new three__WEBPACK_IMPORTED_MODULE_2__["OrthographicCamera"](-width / 2, width / 2, height / 2, -height / 2, -100, 500000);
+      camera.position.set(0, 0, 5);
+      scene.add(camera);
+      var renderer = new three__WEBPACK_IMPORTED_MODULE_2__["WebGLRenderer"]({
+        antialias: true
+      });
+      renderer.setSize(width, height);
+      var geometry = new three__WEBPACK_IMPORTED_MODULE_2__["BoxGeometry"](100, 100, 100);
+      var plateMaterial = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
+        color: 0x86a5d6
+      });
+      var barMaterial = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
+        color: 0xd1d1d1
+      });
+      var desMaterial = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
+        color: 0xff7272,
+        transparent: true,
+        opacity: 0.5
+      });
+      var plate = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry, plateMaterial);
+      var bar = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry, barMaterial);
+      var desPos = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](geometry, desMaterial);
+      plate.position.set(width / 8, 0.0, 0.0);
+      plate.scale.set(1.25, 0.25, 1.0);
+      bar.position.set(width / 8, 0.0, -25);
+      bar.scale.set(0.75, 4.0, 1.0);
+      desPos.position.set(width / 8, 0.0, 50);
+      desPos.scale.set(1.5, 0.5, 1.0);
+      var spotLight1 = new three__WEBPACK_IMPORTED_MODULE_2__["SpotLight"](0xffffff, 1);
+      spotLight1.position.set(-width / 3, 200, 200);
+      var light = new three__WEBPACK_IMPORTED_MODULE_2__["HemisphereLight"](0xffffff, 0xffffff, 1);
+      scene.add(light);
+      scene.add(spotLight1); //group.add( plate );
+
+      scene.add(bar);
+      scene.add(desPos);
+      scene.add(plate);
+      this.scene = scene;
+      this.camera = camera;
+      this.renderer = renderer;
+      this.plate = plate;
+      this.bar = bar;
+      this.desPos = desPos; //this.group = group;
+
+      this.points = points;
+      this.mount.appendChild(this.renderer.domElement);
+      this.start();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.stop();
+      this.mount.removeChild(this.renderer.domElement);
+    }
+  }, {
+    key: "start",
+    value: function start() {
+      if (!this.frameId) {
+        this.frameId = requestAnimationFrame(this.animate);
+      }
+    }
+  }, {
+    key: "stop",
+    value: function stop() {
+      cancelAnimationFrame(this.frameId);
+    }
+  }, {
+    key: "animate",
+    value: function animate() {
+      this.desPos.position.y = this.props.xdes - 200.0;
+      this.plate.position.y = this.props.x - 200.0;
+      console.log(this.plate.position.y);
+      /*
+          this.cube.position.x = this.props.xdes 
+          this.cube2.position.x = this.props.x 
+      
+          if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
+            this.points += 1;
+            console.log(this.points);
+          }
+       */
+
+      this.renderScene();
+      this.frameId = window.requestAnimationFrame(this.animate);
+    }
+  }, {
+    key: "renderScene",
+    value: function renderScene() {
+      this.renderer.render(this.scene, this.camera);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
           width: '900px',
           height: '400px'
         },
@@ -4918,7 +5109,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 153
+          lineNumber: 132
         },
         __self: this
       });
@@ -5005,8 +5196,8 @@ function (_Component) {
   _createClass(Follow_vel, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var bar_width = 150.0;
-      var bar_height = 400;
+      var bar_width = 75.0;
+      var bar_height = 200.0;
       var init = 0;
       var falling = 0;
       var fall_dir = 0;
@@ -5016,9 +5207,9 @@ function (_Component) {
       var width = this.mount.clientWidth;
       var height = this.mount.clientHeight;
       var scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
-      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0xBCBFFF);
+      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0x99ccff);
       var camera = new three__WEBPACK_IMPORTED_MODULE_2__["OrthographicCamera"](-width / 2, width / 2, height / 2, -height / 2, -100, 500000);
-      camera.position.set(0, 0, 5);
+      camera.position.set(0, 0, 10);
       var renderer = new three__WEBPACK_IMPORTED_MODULE_2__["WebGLRenderer"]({
         antialias: true
       });
@@ -5108,7 +5299,7 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          width: '900px',
+          width: '300px',
           height: '400px'
         },
         ref: function ref(mount) {
@@ -5503,7 +5694,10 @@ function (_Component) {
       var width = this.mount.clientWidth;
       var height = this.mount.clientHeight;
       var scene = new three__WEBPACK_IMPORTED_MODULE_2__["Scene"]();
-      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0x99ccff);
+      var fogColor = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](0x99ccff);
+      scene.background = fogColor;
+      scene.background = new three__WEBPACK_IMPORTED_MODULE_2__["Color"](fogColor); //scene.fog = new THREE.Fog(fogColor, 0.0025, 500);
+
       var camera = new three__WEBPACK_IMPORTED_MODULE_2__["PerspectiveCamera"](90, window.innerWidth / window.innerHeight, 0.1, 800);
       camera.position.set(-95, -50, 30); //camera.rotation.set(1.5,0.0,0.0);
 
@@ -5570,8 +5764,8 @@ function (_Component) {
       var plate2 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["PlaneBufferGeometry"](120, 200, 4, 4), material_grass2);
       plate2.position.set(0, 0, 0.10);
       scene.add(plate2);
-      var ground = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["PlaneBufferGeometry"](2000, 2000, 4, 4), material_grass);
-      ground.position.set(0, 0, -0.1);
+      var ground = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["PlaneBufferGeometry"](5000, 5000, 4, 4), material_grass);
+      ground.position.set(-500, -500, -0.1);
       scene.add(ground);
       var character = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["TetrahedronBufferGeometry"](5, 0), mainMaterial);
       character.position.set(-80, 0, 5);
@@ -5712,7 +5906,7 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          width: '900px',
+          width: '800px',
           height: '400px'
         },
         ref: function ref(mount) {
@@ -5720,7 +5914,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 272
+          lineNumber: 275
         },
         __self: this
       });

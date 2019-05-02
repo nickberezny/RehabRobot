@@ -38,7 +38,11 @@ class Race_game extends Component {
     const height = this.mount.clientHeight
 
     var scene = new THREE.Scene()
-    scene.background = new THREE.Color( 0x99ccff );
+    var fogColor = new THREE.Color(0x99ccff);
+    scene.background = fogColor;
+    scene.background = new THREE.Color( fogColor );
+    //scene.fog = new THREE.Fog(fogColor, 0.0025, 500);
+
     
     var camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 800 );
     camera.position.set( -95,-50,30);
@@ -99,10 +103,9 @@ class Race_game extends Component {
     scene.add(plate2)
 
   
-    var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000, 4, 4 ), material_grass );
-    ground.position.set(0,0,-0.1)
+    var ground = new THREE.Mesh( new THREE.PlaneBufferGeometry( 5000, 5000, 4, 4 ), material_grass );
+    ground.position.set(-500,-500,-0.1)
     scene.add(ground)
-
 
     var character = new THREE.Mesh( new THREE.TetrahedronBufferGeometry( 5, 0 ), mainMaterial );
     character.position.set(-80,0,5)
@@ -270,7 +273,7 @@ class Race_game extends Component {
     return (
       
       <div
-        style={{ width: '900px', height: '400px' }}
+        style={{ width: '800px', height: '400px' }}
         ref={(mount) => { this.mount = mount }}
       />
     )

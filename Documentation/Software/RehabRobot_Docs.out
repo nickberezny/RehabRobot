@@ -26,10 +26,16 @@
 \BOOKMARK [1][-]{section.4}{UI Application}{}% 26
 \BOOKMARK [2][-]{subsection.4.1}{Background}{section.4}% 27
 \BOOKMARK [2][-]{subsection.4.2}{Installation}{section.4}% 28
-\BOOKMARK [2][-]{subsection.4.3}{React}{section.4}% 29
-\BOOKMARK [2][-]{subsection.4.4}{Three.js \046 Visuals}{section.4}% 30
-\BOOKMARK [3][-]{subsubsection.4.4.1}{Scene Setup in React}{subsection.4.4}% 31
-\BOOKMARK [3][-]{subsubsection.4.4.2}{Animating the Scene}{subsection.4.4}% 32
-\BOOKMARK [1][-]{section.5}{Controller Folder Organization}{}% 33
-\BOOKMARK [1][-]{section.6}{Server Folder Organization}{}% 34
-\BOOKMARK [1][-]{section.7}{Suggestions for Future Improvements}{}% 35
+\BOOKMARK [2][-]{subsection.4.3}{Structure}{section.4}% 29
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Drawer}{subsection.4.3}% 30
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Topbar}{subsection.4.3}% 31
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Content Window}{subsection.4.3}% 32
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Setup Page}{subsection.4.3}% 33
+\BOOKMARK [3][-]{subsubsection.4.3.5}{Visuals Page}{subsection.4.3}% 34
+\BOOKMARK [3][-]{subsubsection.4.3.6}{Settings Page}{subsection.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.4}{Three.js \046 Visuals}{section.4}% 36
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Scene Setup in React}{subsection.4.4}% 37
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Animating the Scene}{subsection.4.4}% 38
+\BOOKMARK [1][-]{section.5}{Controller Folder Organization}{}% 39
+\BOOKMARK [1][-]{section.6}{Server Folder Organization}{}% 40
+\BOOKMARK [1][-]{section.7}{Suggestions for Future Improvements}{}% 41

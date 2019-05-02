@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Follow_traj from '../../games/Follow_traj'
 import Follow_vel from '../../games/Follow_vel'
+import Follow_game from '../../games/Follow_game'
 import Race_game from '../../games/Race_game'
 import Balance_game from '../../games/Balance_game'
 import Gait_game from '../../games/Gait_game'
@@ -34,10 +35,10 @@ class VisualsPage extends React.Component {
 			switch(this.props.game) {
 				case 1: 
 					this.state.content = 
-						<div>
+						<div style={{display: 'inline-flex'}}>
 							<Race_game />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
-						</div>
+							<Follow_vel />
+						</div> 
 					break; 
 				case 2: 
 					this.state.content = 
