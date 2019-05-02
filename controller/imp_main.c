@@ -331,6 +331,7 @@ int main(int argc, char* argv[]) {
 			case 1:
 				k_gain = KMIN;
 				b_gain = B_GAIN;
+				terminate_program = 1;
 				break;
 
 			case 2:

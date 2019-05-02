@@ -130,7 +130,7 @@ class Follow_traj extends Component {
     return (
       
       <div
-        style={{ width: '900px', height: '400px' }}
+        style={{ width: '800px', height: '600px' }}
         ref={(mount) => { this.mount = mount }}
       />
     )
