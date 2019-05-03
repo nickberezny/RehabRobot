@@ -18,7 +18,6 @@ class FollowTraj extends React.Component {
         <InputText text="Max Velocity" textValue={this.props.vmax} paramName='vmax' />
         <InputText text="Max Position" textValue={this.props.xmax} paramName='xmax' />
         <InputText text="Stiffness" textValue={this.props.K} paramName='K' />
-        <InputText text="Viscosity" textValue={this.props.B} paramName='B' />
       </div>
     )
   }

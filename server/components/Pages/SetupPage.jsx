@@ -17,7 +17,6 @@ import FollowVel from '../Setups/FollowVel'
 import Balance from '../Setups/Balance'
 import Gait from '../Setups/Gait'
 
-
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -77,19 +76,15 @@ class SetupPage extends React.Component {
 			  	<Typography variant="display1" gutterBottom>
 			    	Set Up a Session    
 		      	</Typography>
-		      	<div style={{padding: 24}}>
-		      		<Dropdown text="Game" select1="Follow Trajectory" select2 = "Racing" select3 = "Balance" />
-		      		{this.state.contents}
-		      	</div>
-		      	
-		      	<div style={{padding: 12}}>
-			      	<SetButton text="Set" />
+		      	<div style={{display: 'inline-flex'}}>
+		      	<Dropdown text="Game" id="game" value={this.props.game} select1="Follow Trajectory" select2 = "Racing" select3 = "Balance" />
+		      	{this.state.contents}
+		      	<div>
+			    <SetButton text="Set" />
 			    </div>
-			    <div style={{padding: 12}}>
-			      	<RunButton text="Run" />
-		      	</div>
-		      	
-		    </div>  	
+				</div>
+			</div>
+	
 		)
 	}
 }

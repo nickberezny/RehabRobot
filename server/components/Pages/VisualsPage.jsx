@@ -36,7 +36,7 @@ class VisualsPage extends React.Component {
 				case 1: 
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
-							<Follow_traj />
+							<Follow_vel />
 						</div> 
 					break; 
 				case 2: 
@@ -74,35 +74,35 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div>
 							<FollowTraj_Instruction />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+							<div style={{display: 'inline-flex'}}><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 2: 
 					this.state.content = 
 						<div>
 							<FollowVel_Instruction />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+							<div style={{display: 'inline-flex'}}><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 3:
 					this.state.content = 
 						<div>
 							<Race_Instruction />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+							<div style={{display: 'inline-flex'}}><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 4: 
 					this.state.content = 
 						<div>
 							<Balance_Instruction />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+							<div style={{display: 'inline-flex'}}><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 5:
 					this.state.content = 
 						<div>
 							<Gait_Instruction />
-							<div><HomeButton text="Home" /><RunButton text="Run" /></div>
+							<div style={{display: 'inline-flex'}}><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break;
 				default: 

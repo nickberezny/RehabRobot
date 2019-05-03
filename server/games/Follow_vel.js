@@ -90,8 +90,6 @@ class Follow_vel extends Component {
     this.renderer = renderer
     this.bar = bar;
 
-
-
     this.mount.appendChild(this.renderer.domElement)
     this.start()
   }
@@ -114,7 +112,7 @@ class Follow_vel extends Component {
   animate() {
 
     var bar_set = Math.abs(this.props.v - this.props.vdes)
-    this.bar.scale.set(1, bar_set, 1)
+    this.bar.scale.set(1, bar_set + 0.01, 1)
     this.bar.position.set(0, bar_set/2.0, 0)
 
     this.renderScene()

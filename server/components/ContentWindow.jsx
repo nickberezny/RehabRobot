@@ -97,7 +97,7 @@ class WindowContent extends React.Component {
 		switch(this.props.activePage) {
 			case 1:
 				  if(this.props.user == 1) {this.state.content = <div style={this.state.style}> <SetupPage /> </div>}
-				  if(this.props.user == 2) {this.state.content = <div style={this.state.style}> <BasicSetupPage /> </div>}
+				  if(this.props.user == 2) {this.state.content = <div style={this.state.style}> <SetupPage /> </div>}
 				  if(this.props.user == 3) {this.state.content = <div style={this.state.style}> <Experiment2019 /> </div>}
 				  break;
 			case 2:

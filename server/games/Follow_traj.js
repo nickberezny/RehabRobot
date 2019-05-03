@@ -5,6 +5,8 @@ import * as THREE from 'three'
 import { setParam } from "../src/actions";
 //OBJLoader(THREE);
 
+import RunButton from '../components/Generic/RunButton'
+
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair.png")
 //require("/home/rehab/Documents/RehabRobot/server/games/sprite/crosshair_yellow.png" );
 
@@ -81,6 +83,13 @@ class Follow_traj extends Component {
     this.points = points
     
     this.mount.appendChild(this.renderer.domElement)
+
+    var info = document.createElement( 'div' );
+    info.style.position = 'relative';
+    info.style.top = '-390px';
+    info.style.left = '10px';
+    info.innerHTML = 'Drag to spin';
+    this.mount.appendChild(info)
     this.start()
   }
 
@@ -128,11 +137,7 @@ class Follow_traj extends Component {
 
   render() {
     return (
-      
-      <div
-        style={{ width: '300px', height: '400px' }}
-        ref={(mount) => { this.mount = mount }}
-      />
+      <div style={{ width: '300px', height: '400px' }} ref={(mount) => { this.mount = mount }} />
     )
   }
 }

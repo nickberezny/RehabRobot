@@ -21,7 +21,7 @@ class Dropdown extends React.Component {
 
 	render() {
 		return (
-			<div style={{padding: 24}}>
+			<div style={{padding: 12}}>
 			<FormControl>
 	          <InputLabel>{this.props.text}</InputLabel>
 	          <Select
