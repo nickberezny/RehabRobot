@@ -53,7 +53,7 @@ class Follow_traj extends Component {
     plate.position.set(0.0, 0.0, 0.0);
     plate.scale.set(1.25, 0.25, 1.0);
 
-    bar.position.set(0.0, 0.0, -25);
+    bar.position.set(0.0, 0.0, -200);
     bar.scale.set(0.75, 4.0, 1.0);
 
     desPos.position.set(0.0, 0.0, 50);
@@ -88,7 +88,7 @@ class Follow_traj extends Component {
     info.style.position = 'relative';
     info.style.top = '-390px';
     info.style.left = '10px';
-    info.innerHTML = 'Drag to spin';
+    //info.innerHTML = 'Drag to spin';
     this.mount.appendChild(info)
     this.start()
   }
@@ -115,11 +115,16 @@ class Follow_traj extends Component {
 
     console.log(this.plate.position.y)
 
-
+    if(this.plate.position.y > this.desPos.position.y - 20.0 && this.plate.position.y < this.desPos.position.y + 20.0)
+    {
+      this.desPos.material.color.setHex(0x7fffa3)   
+    }else{
+      this.desPos.material.color.setHex(0xff7272)
+    }
 /*
     this.cube.position.x = this.props.xdes 
     this.cube2.position.x = this.props.x 
-
+    
     if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
       this.points += 1;
       console.log(this.points);
@@ -137,7 +142,7 @@ class Follow_traj extends Component {
 
   render() {
     return (
-      <div style={{ width: '300px', height: '400px' }} ref={(mount) => { this.mount = mount }} />
+      <div style={{ width: '600px', height: '800px' }} ref={(mount) => { this.mount = mount }} />
     )
   }
 }
