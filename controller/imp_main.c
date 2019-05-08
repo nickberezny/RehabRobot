@@ -133,7 +133,7 @@ int main(int argc, char* argv[]) {
 
 	physics_ball.in_play = 0;
 	physics_ball.contact = 0;
-	physics_ball.dx =0.0;
+	physics_ball.dx = 0.0;
 	physics_ball.x_mass = 0.0;
 	physics_ball.v_mass = 0.0;
 	physics_ball.k = PHYSICS_K;
@@ -738,7 +738,7 @@ void *server(void* d)
 			if(i == 0)
 			{
 				imp_serve = &((struct impStruct*)d)[i];
-				sprintf(sendBuff,"%.2f,%.2f,%.2f,%.2f", imp_serve->xk,imp_serve->xdes,imp_serve->vk,imp_serve->vdes);
+				sprintf(sendBuff,"%.2f,%.2f,%.2f,%.2f,%.2f", imp_serve->xk,imp_serve->xdes,imp_serve->vk,imp_serve->vdes,imp_serve->x_ball);
 				send(connfd, sendBuff, strlen(sendBuff), 0);
 			}
 			

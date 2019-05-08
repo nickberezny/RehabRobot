@@ -48,6 +48,7 @@ class WindowContent extends React.Component {
 	    this.props.setParam('xdes', res[1])
 	    this.props.setParam('v', res[2])
 	    this.props.setParam('vdes', res[3])
+	    this.props.setParam('x_ball', res[4])
 	}
 
 	handleEndStage = (message) => {

@@ -49,6 +49,8 @@ struct impStruct {
 
 	int home; //boolean indicated if device has been homed
 
+	double x_ball;
+
 	//data log
 	FILE * fp;
 
@@ -70,15 +72,15 @@ struct regexMatch {
 };
 
 struct physics_ball {
-	int in_play;
-	int contact;
-	double dx;
-	double x_mass;
-	double v_mass;
-	double k;
-	double m;
-	double Fs;
-	double dir;
+	int in_play; //is ball in play?
+	int contact; //is spring in contact with player?
+	double dx; //resting length of contact spring
+	double x_mass; //position of ball
+	double v_mass; //velocity of ball
+	double k; //stiffness of contact spring
+	double m; //mass of ball
+	double Fs; //interaction force
+	double dir; //current direction of travel 
 };
 
 struct gait_sim {

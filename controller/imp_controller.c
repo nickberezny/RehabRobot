@@ -126,9 +126,9 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
         case 1:
             
             //calc imp->Fa given x 
-            //imp_physics(imp, ball);
-            //imp->Fa = -ball->Fs; 
-            imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance 
+            imp_physics(imp, ball);
+            imp->Fa = -ball->Fs; 
+            //imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance 
             break;
 
         case 2: 
@@ -160,11 +160,11 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
      
     if(abs(imp->xk) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
     {
+
         //ball not in play, player in rest position => add ball
         ball->in_play = 1;
         ball->contact = 0;
 
-        
         if(imp->start_time.tv_sec % 2 == 0) //randomly assign a side 
         {   
             //add to back of device
@@ -187,17 +187,22 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
         {
             //ball is in contact with player, determine interaction force
             ball->contact = 1;
+            //if the footplate moves past mass (spring has negative length), reset position
+            if(ball->dir*ball->x_mass < ball->dir*imp->xk ) ball->dx = imp->xk; 
             ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk));
         }
-        else{
-            if(ball->contact = 1) ball->in_play = 0; //if ball has left player, delete
+        else
+        {
+            if(abs(ball->x_mass) > 300) ball->in_play = 0; //if ball has left player, delete
             ball->contact = 0;
             ball->Fs = 0.0;
         }
 
         //physics - euler approximation of differential dynamics 
-        //ball->v_mass -= ball->dir * imp->step_time * ball->Fs / ball->m;
-        //ball->x_mass += ball->v_mass * imp->step_time;
+        ball->v_mass -= ball->dir * imp->step_time * ball->Fs / ball->m;
+        ball->x_mass += ball->v_mass * imp->step_time;
+
+        imp->x_ball = ball->x_mass;
 
     }
 
