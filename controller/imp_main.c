@@ -255,7 +255,7 @@ int main(int argc, char* argv[]) {
     listen(listenfd, 100);
 
 	//Start UI Process 
-	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo NODE_ENV='production' node server.js'");
 	
 	while(1)
 	{

@@ -198,9 +198,10 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
             ball->Fs = 0.0;
         }
 
+
         //physics - euler approximation of differential dynamics 
-        ball->v_mass -= ball->dir * imp->step_time * ball->Fs / ball->m;
-        ball->x_mass += ball->v_mass * imp->step_time;
+        ball->v_mass -= ball->dir * ((double)imp->step_time.tv_sec + (double)imp->step_time.tv_nsec/NSEC_IN_SEC) * ball->Fs / ball->m;
+        ball->x_mass += ball->v_mass * ((double)imp->step_time.tv_sec + (double)imp->step_time.tv_nsec/NSEC_IN_SEC);
 
         imp->x_ball = ball->x_mass;
 
