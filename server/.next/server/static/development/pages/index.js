@@ -344,16 +344,24 @@ function (_React$Component) {
           break;
 
         case 3:
-          _this.props.setParam('game', 3);
-
           switch (_this.props.stage) {
-            case 3:
+            case 1:
+              _this.props.setParam('game', 3);
+
+              break;
+
+            case 2:
               _this.props.setParam('game', 4);
 
               break;
 
-            case 4:
+            case 3:
               _this.props.setParam('game', 5);
+
+              break;
+
+            case 4:
+              _this.props.setParam('game', 6);
 
               break;
           }
@@ -408,13 +416,13 @@ function (_React$Component) {
               style: this.state.style,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 100
+                lineNumber: 106
               },
               __self: this
             }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_SetupPage__WEBPACK_IMPORTED_MODULE_4__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 100
+                lineNumber: 106
               },
               __self: this
             }), " ");
@@ -425,13 +433,13 @@ function (_React$Component) {
               style: this.state.style,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 107
               },
               __self: this
             }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_SetupPage__WEBPACK_IMPORTED_MODULE_4__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 107
               },
               __self: this
             }), " ");
@@ -442,13 +450,13 @@ function (_React$Component) {
               style: this.state.style,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 102
+                lineNumber: 108
               },
               __self: this
             }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Setups_Experiment2019__WEBPACK_IMPORTED_MODULE_9__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 102
+                lineNumber: 108
               },
               __self: this
             }), " ");
@@ -461,13 +469,13 @@ function (_React$Component) {
             style: this.state.style,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 105
+              lineNumber: 111
             },
             __self: this
           }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_VisualsPage__WEBPACK_IMPORTED_MODULE_6__["default"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 105
+              lineNumber: 111
             },
             __self: this
           }), " ");
@@ -478,13 +486,13 @@ function (_React$Component) {
             style: this.state.style,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 108
+              lineNumber: 114
             },
             __self: this
           }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_SettingsPage__WEBPACK_IMPORTED_MODULE_7__["default"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 108
+              lineNumber: 114
             },
             __self: this
           }), " ");
@@ -495,7 +503,7 @@ function (_React$Component) {
             style: this.state.style,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 111
+              lineNumber: 117
             },
             __self: this
           }, " Page Load Failed ");
@@ -504,7 +512,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 121
         },
         __self: this
       }, this.state.content);
@@ -2689,7 +2697,7 @@ function (_React$Component) {
                 lineNumber: 38
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Balance_game__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 39
@@ -2733,7 +2741,7 @@ function (_React$Component) {
                 lineNumber: 51
               },
               __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 52
@@ -2752,10 +2760,16 @@ function (_React$Component) {
                 lineNumber: 57
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Balance_game__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 58
+              },
+              __self: this
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 59
               },
               __self: this
             }));
@@ -2768,13 +2782,32 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 63
+                lineNumber: 64
+              },
+              __self: this
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Balance_game__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 65
+              },
+              __self: this
+            }));
+            break;
+
+          case 6:
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              style: {
+                display: 'inline-flex'
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 70
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Gait_game__WEBPACK_IMPORTED_MODULE_7__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 64
+                lineNumber: 71
               },
               __self: this
             }));
@@ -2783,7 +2816,7 @@ function (_React$Component) {
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 67
+                lineNumber: 74
               },
               __self: this
             }, " Game load failed ");
@@ -2794,49 +2827,10 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 75
-              },
-              __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 76
-              },
-              __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              style: {
-                display: 'inline-flex'
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 77
-              },
-              __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
-              text: "Home",
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 77
-              },
-              __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              text: "Run",
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 77
-              },
-              __self: this
-            })));
-            break;
-
-          case 2:
-            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              __source: {
-                fileName: _jsxFileName,
                 lineNumber: 82
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_8__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 83
@@ -2868,14 +2862,14 @@ function (_React$Component) {
             })));
             break;
 
-          case 3:
+          case 2:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 89
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 90
@@ -2907,14 +2901,14 @@ function (_React$Component) {
             })));
             break;
 
-          case 4:
+          case 3:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 96
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Balance_Instruction__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_10__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 97
@@ -2946,14 +2940,14 @@ function (_React$Component) {
             })));
             break;
 
-          case 5:
+          case 4:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 103
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Gait_Instruction__WEBPACK_IMPORTED_MODULE_11__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_10__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 104
@@ -2985,11 +2979,89 @@ function (_React$Component) {
             })));
             break;
 
+          case 5:
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 110
+              },
+              __self: this
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Balance_Instruction__WEBPACK_IMPORTED_MODULE_12__["default"], {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 111
+              },
+              __self: this
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              style: {
+                display: 'inline-flex'
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 112
+              },
+              __self: this
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
+              text: "Home",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 112
+              },
+              __self: this
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+              text: "Run",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 112
+              },
+              __self: this
+            })));
+            break;
+
+          case 6:
+            this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 117
+              },
+              __self: this
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Gait_Instruction__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 118
+              },
+              __self: this
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              style: {
+                display: 'inline-flex'
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 119
+              },
+              __self: this
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
+              text: "Home",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 119
+              },
+              __self: this
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+              text: "Run",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 119
+              },
+              __self: this
+            })));
+            break;
+
           default:
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 109
+                lineNumber: 123
               },
               __self: this
             }, " Game load failed ");
@@ -2999,7 +3071,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 116
+          lineNumber: 130
         },
         __self: this
       }, this.state.content);

@@ -36,7 +36,7 @@ class VisualsPage extends React.Component {
 				case 1: 
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
-							<Balance_game />
+							<Follow_traj />
 						</div> 
 					break; 
 				case 2: 
@@ -49,16 +49,23 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
 							<Race_game />
-							<Follow_vel />
+							<Follow_traj />
 						</div> 
 					break; 
 				case 4: 
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
+							<Race_game />
+							<Follow_vel />
+						</div>
+					break; 
+				case 5: 
+					this.state.content = 
+						<div style={{display: 'inline-flex'}}>
 							<Balance_game />
 						</div>
 					break; 
-				case 5:
+				case 6:
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
 							<Gait_game />
@@ -94,11 +101,18 @@ class VisualsPage extends React.Component {
 				case 4: 
 					this.state.content = 
 						<div>
-							<Balance_Instruction />
+							<Race_Instruction />
 							<div style={{display: 'inline-flex'}}><HomeButton text="Home" /><RunButton text="Run" /></div>
 						</div>
 					break; 
 				case 5:
+					this.state.content = 
+						<div>
+							<Balance_Instruction />
+							<div style={{display: 'inline-flex'}}><HomeButton text="Home" /><RunButton text="Run" /></div>
+						</div>
+					break;
+				case 6:
 					this.state.content = 
 						<div>
 							<Gait_Instruction />
