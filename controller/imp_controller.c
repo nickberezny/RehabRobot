@@ -181,14 +181,14 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
     }
 
     if(ball->in_play){
-        if(ball->dx + ball->dir * ball->x_mass > ball->dir * (imp->xk + CHARACTER_RADIUS)) 
+        if(ball->dx + ball->dir * ball->x_mass > ball->dir*(imp->xk) - CHARACTER_RADIUS)
         {
             printf("BALL IN CONTACT\n");
             //ball is in contact with player, determine interaction force
             ball->contact = 1;
             //if the footplate moves past mass (spring has negative length), reset position
-            if(ball->dir*ball->x_mass < ball->dir*(imp->xk + CHARACTER_RADIUS)) ball->dx = imp->xk + ball->dir*CHARACTER_RADIUS; 
-            ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk - ball->dir*CHARACTER_RADIUS));
+            if(ball->dir*ball->x_mass > ball->dir*imp->xk - CHARACTER_RADIUS) ball->x_mass = imp->xk - ball->dir*CHARACTER_RADIUS; 
+            ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk) + CHARACTER_RADIUS);
         }
         else
         {
