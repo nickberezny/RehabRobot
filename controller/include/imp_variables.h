@@ -62,6 +62,7 @@
 #define VELOCITY_REST 20 
 #define PHYSICS_K 0.01 //TODO - set range
 #define PHYSICS_M 0.001 
+#define CHARACTER_RADIUS 25.0 //radius of ball for balance game
 
 
 #define F_GAIN -0.005

@@ -133,7 +133,7 @@ int main(int argc, char* argv[]) {
 
 	physics_ball.in_play = 0;
 	physics_ball.contact = 0;
-	physics_ball.dx = 0.0;
+	physics_ball.dx = 10.0;
 	physics_ball.x_mass = 0.0;
 	physics_ball.v_mass = 0.0;
 	physics_ball.k = PHYSICS_K;
@@ -611,7 +611,7 @@ void *controller(void * d)
 			imp_cont = &((struct impStruct*)d)[i];
 			imp_cont->start_time = temp_time;
 
-			if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
+			//if(DEBUG & i == 0) printf("Thread 1 (controller) Executing ...\n");
 			//Read & Write to DAQ ---------------------------------------
 			LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 				
@@ -628,7 +628,7 @@ void *controller(void * d)
 	        imp_FIR(f_filt, &imp_cont->fk, &fir_order_f); //moving avg filter for force
 			
 
-			if(DEBUG & i==0) printf("Force: %.3f\n", imp_cont->fk);
+			//if(DEBUG & i==0) printf("Force: %.3f\n", imp_cont->fk);
 			//Calculate Velocity 
 	        imp_StepTime(&imp_cont->start_time, &last_time, &imp_cont->step_time);
 			imp_cont->vk = ENC_TO_MM * aValues[4] / ((double)imp_cont->step_time.tv_sec + (double)imp_cont->step_time.tv_nsec/NSEC_IN_SEC);
@@ -681,7 +681,7 @@ void *controller(void * d)
 
 			//set motor command (written at beginning of next step on eNames())
 			aValues[0] = imp_cont->cmd;
-			if(DEBUG  & i==0) printf("Motor Command: %.2f\n", aValues[0]);
+			//if(DEBUG  & i==0) printf("Motor Command: %.2f\n", aValues[0]);
 
 	        clock_gettime(CLOCK_MONOTONIC, &(imp_cont->end_time));
 	        

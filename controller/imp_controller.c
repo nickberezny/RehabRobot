@@ -155,8 +155,9 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 void imp_physics(struct impStruct * imp, struct physics_ball * ball)
 {
      
-    if(abs(imp->xk - X_END) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
+    if(abs(imp->xk) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
     {
+        printf("BALL IN PLAY\n");
 
         //ball not in play, player in rest position => add ball
         ball->in_play = 1;
@@ -166,7 +167,7 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
         {   
             //add to back of device
             ball->dir = 1;
-            ball->x_mass = 0.0;
+            ball->x_mass = -100.0;
 
         }else
         {
@@ -175,18 +176,19 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
             ball->x_mass = X_END;
         } 
 
-        ball->v_mass = (double) ball->dir; 
+        ball->v_mass = (double) ball->dir * 40.0; 
         ball->Fs = 0.0;
     }
 
     if(ball->in_play){
-        if(ball->dx + ball->dir * ball->x_mass > ball->dir * imp->xk) 
+        if(ball->dx + ball->dir * ball->x_mass > ball->dir * (imp->xk + CHARACTER_RADIUS)) 
         {
+            printf("BALL IN CONTACT\n");
             //ball is in contact with player, determine interaction force
             ball->contact = 1;
             //if the footplate moves past mass (spring has negative length), reset position
-            if(ball->dir*ball->x_mass < ball->dir*imp->xk ) ball->dx = imp->xk; 
-            ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk));
+            if(ball->dir*ball->x_mass < ball->dir*(imp->xk + CHARACTER_RADIUS)) ball->dx = imp->xk + ball->dir*CHARACTER_RADIUS; 
+            ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk - ball->dir*CHARACTER_RADIUS));
         }
         else
         {
@@ -197,8 +199,8 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
 
 
         //physics - euler approximation of differential dynamics 
-        ball->v_mass -= ball->dir * ((double)imp->step_time.tv_sec + (double)imp->step_time.tv_nsec/NSEC_IN_SEC) * ball->Fs / ball->m;
-        ball->x_mass += ball->v_mass * ((double)imp->step_time.tv_sec + (double)imp->step_time.tv_nsec/NSEC_IN_SEC);
+        ball->v_mass -= ball->dir * ((double)imp->step_time.tv_nsec/NSEC_IN_SEC) * ball->Fs / ball->m;
+        ball->x_mass += ball->v_mass * ((double)imp->step_time.tv_nsec/NSEC_IN_SEC);
 
         imp->x_ball = ball->x_mass;
 
