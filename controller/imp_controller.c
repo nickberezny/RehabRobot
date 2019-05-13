@@ -122,7 +122,6 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
     
      switch(*environment){
 
-        //HOLD ABOVE THRESHOLD AGAINST 'gravity'
         case 1:
             
             //calc imp->Fa given x 
@@ -133,7 +132,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 
         case 2: 
 
-            imp_gait(imp, gait);
+            //imp_gait(imp, gait);
             break;
         }
         
@@ -150,15 +149,13 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
     *fa = imp->Fa;
     if(*fa_1 < *fa - 25.0)  *fa_1 = imp->Fa;
     
-
-
     return;
 }
 
 void imp_physics(struct impStruct * imp, struct physics_ball * ball)
 {
      
-    if(abs(imp->xk) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
+    if(abs(imp->xk - X_END) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
     {
 
         //ball not in play, player in rest position => add ball
