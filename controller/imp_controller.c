@@ -126,8 +126,9 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
             
             //calc imp->Fa given x 
             imp_physics(imp, ball);
-            imp->Fa = -ball->Fs; 
+            imp->Fa = ball->dir*ball->Fs; 
             //imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance 
+            printf("Fa: %.3f\n", imp->Fa);
             break;
 
         case 2: 
@@ -147,7 +148,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
     *fk = imp->fk;
     *fa_1 = *fa;
     *fa = imp->Fa;
-    if(*fa_1 < *fa - 25.0)  *fa_1 = imp->Fa;
+    //if(*fa_1 < *fa - 25.0)  *fa_1 = imp->Fa;
     
     return;
 }
@@ -155,7 +156,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 void imp_physics(struct impStruct * imp, struct physics_ball * ball)
 {
      
-    if(abs(imp->xk) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
+    if(abs(imp->xk - X_END/2.0) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
     {
         printf("BALL IN PLAY\n");
 
