@@ -78,19 +78,15 @@ class Follow_traj extends Component {
     this.plate = plate
     this.bar = bar
     this.desPos = desPos
-
-    //this.group = group;
     this.points = points
     
     this.mount.appendChild(this.renderer.domElement)
 
-    var info = document.createElement( 'div' );
-    info.style.position = 'relative';
-    info.style.top = '-390px';
-    info.style.left = '10px';
-    //info.innerHTML = 'Drag to spin';
-    this.mount.appendChild(info)
+    console.log('Component Mount')
+
     this.start()
+
+    console.log('Component Mount Done')
   }
 
   componentWillUnmount() {
@@ -121,15 +117,6 @@ class Follow_traj extends Component {
     }else{
       this.desPos.material.color.setHex(0xff7272)
     }
-/*
-    this.cube.position.x = this.props.xdes 
-    this.cube2.position.x = this.props.x 
-    
-    if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
-      this.points += 1;
-      console.log(this.points);
-    }
- */
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
