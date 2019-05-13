@@ -14,6 +14,8 @@ import Race_Instruction from '../Instructions/Race_Instruction'
 import Gait_Instruction from '../Instructions/Gait_Instruction'
 import Balance_Instruction from '../Instructions/Balance_Instruction'
 
+import Test_timer from '../../games/Test_timer'
+
 import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
 
@@ -37,6 +39,7 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div style={{display: 'inline-flex'}}>
 							<Follow_traj />
+							<Test_timer />
 						</div> 
 					break; 
 				case 2: 
