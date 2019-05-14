@@ -95,6 +95,8 @@ double home_decrease = 0.0;
 struct physics_ball physics_ball; 
 struct gait_sim gait;
 
+int game_wait_sec = 5.0;
+
 
 /***********************************************************************
 ***********************************************************************/
@@ -304,6 +306,7 @@ int main(int argc, char* argv[]) {
 		game_number = 1;
 		max_count = 90000; //1.5 min = 90000
 		temp_counter = 0;
+		game_wait_sec = 5.0;
 
 		switch(exp_iteration++){
 
@@ -368,18 +371,21 @@ int main(int argc, char* argv[]) {
 		max_count = 180000; //3 min
 		game_number = 1;
 		temp_counter = 0;
+		game_wait_sec = 5.0;
 		switch(exp_iteration++)
 		{
 			case 1:
 				k_gain = K_GAIN;
 				b_gain = B_GAIN;
 				game_number = 1;
+				game_wait_sec = 10.0; //countdown for race
 				break;
 
 			case 2:
 				k_gain = K_GAIN;
 				b_gain = B_GAIN;
 				game_number = 1;
+				game_wait_sec = 10.0;
 				break;
 
 			case 3:
@@ -551,7 +557,7 @@ int main(int argc, char* argv[]) {
 		sleep(0.01);
 	}
 
-	sleep(5);
+	sleep(game_wait_sec);
 
     if(DEBUG) printf("Joining Threads ...\n"); 
    // sleep(10);

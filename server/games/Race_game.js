@@ -154,6 +154,8 @@ class Race_game extends Component {
     this.prev_time = prev_time;
     this.curr_time = curr_time; 
 
+    this.begin = 0;
+
     this.mount.appendChild(this.renderer.domElement)
     this.start()
   }
@@ -202,6 +204,11 @@ class Race_game extends Component {
 
   animate() {
 
+  //wait for 10 sec before beginning 
+  this.timer += clock.getDelta()
+  if(this.timer >= 10) this.begin = 1 
+  if(!this.begin) return;
+  
   this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0
   
   if(this.character.position.y >= 100 )
@@ -270,6 +277,7 @@ class Race_game extends Component {
   }
 
   render() {
+
     return (
       
       <div
