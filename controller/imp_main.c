@@ -287,28 +287,7 @@ int main(int argc, char* argv[]) {
 	while(!terminate_program){
 
    
-	//set default values if not connecting to UI (for testing)
-    for(int i = 0; i < BUFFER_SIZE; i++)
-	{
-		imp[i].P = P_GAIN;
-		imp[i].D = D_GAIN;
-		imp[i].M = M_GAIN;
-		imp[i].b = B_GAIN;
-		imp[i].m = M_GAIN;
-		imp[i].xdes = 0.0;
-		imp[i].vdes = 0.0;
-		imp[i].fdes = 0.0;
-		imp[i].fp = imp[0].fp;
-		imp[i].vmax = V_MAX;
-		imp[i].F_Gain = F_GAIN;
-		imp[i].xa = 0.0;
-		imp[i].T = STEP_NSEC/NSEC_IN_SEC;
-		imp[i].va_1 = 0.0;
-		imp[i].va = 0.0;
-		imp[i].Fk_1= 0.0;
-		imp[i].Fa_1 = 0.0;
-		imp[i].Fa = 0.0;
-	}
+	
 
 	gait.k_assist = K_GAIN;
 	gait.k_gravity = K_GAIN - 0.15;
@@ -406,6 +385,7 @@ int main(int argc, char* argv[]) {
 			case 3:
 				game_number = 2;
 				environment = 1;
+
 				break;
 
 			case 4:
@@ -414,6 +394,34 @@ int main(int argc, char* argv[]) {
 				terminate_program = 1;
 				break;
 		}
+	}
+
+	//set default values if not connecting to UI (for testing)
+    for(int i = 0; i < BUFFER_SIZE; i++)
+	{
+		imp[i].P = P_GAIN;
+		imp[i].D = D_GAIN;
+		imp[i].M = M_GAIN;
+		imp[i].b = B_GAIN;
+		imp[i].m = M_GAIN;
+		if(game_number == 2 && environment == 1) 
+		{
+			imp[i].xdes = BALANCE_POINT; //set balance game set point
+		}else{
+			imp[i].xdes = 0.0;
+		}
+		imp[i].vdes = 0.0;
+		imp[i].fdes = 0.0;
+		imp[i].fp = imp[0].fp;
+		imp[i].vmax = V_MAX;
+		imp[i].F_Gain = F_GAIN;
+		imp[i].xa = 0.0;
+		imp[i].T = STEP_NSEC/NSEC_IN_SEC;
+		imp[i].va_1 = 0.0;
+		imp[i].va = 0.0;
+		imp[i].Fk_1= 0.0;
+		imp[i].Fa_1 = 0.0;
+		imp[i].Fa = 0.0;
 	}
 	
 

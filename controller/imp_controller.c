@@ -124,21 +124,26 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 
         case 1:
             
-            //calc imp->Fa given x 
+            //calc Fa given x 
             imp_physics(imp, ball);
+
+            //saturate interaction force at set max, set force to admittance force
+            //TODO determine suitable max force
+            if(ball->Fs > INTERACTION_FORCE_MAX) ball->Fs = INTERACTION_FORCE_MAX;
             imp->Fa = ball->dir*ball->Fs; 
-            //imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance 
+
+            //imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance (for testing)
             printf("Fa: %.3f\n", imp->Fa);
             break;
 
         case 2: 
 
             //imp_gait(imp, gait);
+            imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance (for testing)
             break;
         }
         
     
-
     //PD Control
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(- imp->vk);
 
@@ -184,11 +189,13 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball)
     if(ball->in_play){
         if(ball->dx + ball->dir * ball->x_mass > ball->dir*(imp->xk) - CHARACTER_RADIUS)
         {
-            printf("BALL IN CONTACT\n");
             //ball is in contact with player, determine interaction force
+            printf("BALL IN CONTACT\n");
             ball->contact = 1;
+            
             //if the footplate moves past mass (spring has negative length), reset position
-            if(ball->dir*ball->x_mass > ball->dir*imp->xk - CHARACTER_RADIUS) ball->x_mass = imp->xk - ball->dir*CHARACTER_RADIUS; 
+            //if(ball->dir*ball->x_mass > ball->dir*imp->xk - CHARACTER_RADIUS) ball->x_mass = imp->xk - ball->dir*CHARACTER_RADIUS; 
+            
             ball->Fs = ball->k * (ball->dx + ball->dir*(ball->x_mass - imp->xk) + CHARACTER_RADIUS);
         }
         else
