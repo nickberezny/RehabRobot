@@ -102,7 +102,7 @@ void imp_Haptics(struct impStruct * imp)
 	return;
 }
 
-void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, struct gait_sim * gait,  double * xa, double * va, double *fa, double * fk, double * fa_1, int * environment)
+void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, struct gait_sim * gait,  double * xa, double * va, double *fa, double * fk, double * fa_1, int * environment, double * x_end)
 {
    
     /*
@@ -125,7 +125,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
         case 1:
             
             //calc Fa given x 
-            imp_physics(imp, ball);
+            imp_physics(imp, ball, x_end);
 
             //saturate interaction force at set max, set force to admittance force
             //TODO determine suitable max force
@@ -158,10 +158,11 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
     return;
 }
 
-void imp_physics(struct impStruct * imp, struct physics_ball * ball)
+void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_end)
 {
      
-    if(abs(imp->xk - X_END/2.0) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
+    if(abs(imp->xk - 
+        D/2.0) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
     {
         printf("BALL IN PLAY\n");
 

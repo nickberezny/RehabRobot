@@ -34,6 +34,8 @@
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
 
+#define USE_DEFINED_X_RANGE 1 //use the max range from imp_variables file (X_END)
+
 /**********************************************************************
 					   Global Variables
 ***********************************************************************/
@@ -89,6 +91,7 @@ int game_number = 0;
 int max_count = 0;
 
 double xdes_old = 0.0;
+double x_end = 0.0;
 
 double home_decrease = 0.0;
 
@@ -475,7 +478,7 @@ int main(int argc, char* argv[]) {
     if(DEBUG) printf("Homing1 ...\n");  
 
     //home to front
-    /*
+    
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     imp[9].LSB[0] = aValues[3];
@@ -490,7 +493,8 @@ int main(int argc, char* argv[]) {
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSF[0] = aValues[3];
     }
-	*/
+
+    curr_pos = 0.0;
 
     //home to back
     aValues[0] = MOTOR_ZERO; 
@@ -510,7 +514,13 @@ int main(int argc, char* argv[]) {
     	imp[9].LSB[0] = aValues[3];
     }
 
-    //TODO set XEND to curr_pos somehow
+    //set x_end to curr_pos somehow
+   	if(!USE_DEFINED_X_RANGE) x_end = curr_pos
+   	else x_end = X_END;
+
+    if(DEBUG) printf("X MAX (mm): %.2f\n", x_end);
+    
+    curr_pos = 0.0;
     aValues[0] = MOTOR_ZERO; 
     //Robot should not be homed, reading the encoder will zero the position here.
     
@@ -655,21 +665,21 @@ void *controller(void * d)
 			{
 				case 1:
 					//assistive or resistive
-					imp_traj(imp_cont, &direction, &xdes_old);
+					imp_traj(imp_cont, &direction, &xdes_old, &x_end);
 					imp_Adm(imp_cont, &xa, &va);
 					break;
 
 				case 2:
 					//balance or gait
-					imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
+					imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment, &x_end);
 					break;
 				
 			}
 
-			//imp_traj(imp_cont, &direction, &xdes_old);
+			//imp_traj(imp_cont, &direction, &xdes_old, &x_end);
 			//imp_PD(imp_cont);
 			//imp_Adm(imp_cont, &xa, &va);
-			//imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment);
+			//imp_Haptics_impedance(imp_cont, &physics_ball, &gait, &xa, &va, &fa, &fk, &fa_1, &environment, &x_end);
 			//imp_Adm_free(imp_cont, &xa, &va);
 			
 			//Safety Checks
