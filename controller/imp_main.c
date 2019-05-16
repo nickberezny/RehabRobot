@@ -34,7 +34,7 @@
 #define BUFFER_SIZE 10 //size of data sturcture array
 #define STRUCTURE_ELEMENTS 25 //number of elements in data structure
 
-#define USE_DEFINED_X_RANGE 1 //use the max range from imp_variables file (X_END)
+#define USE_DEFINED_X_RANGE 0 //use the max range from imp_variables file (X_END)
 
 /**********************************************************************
 					   Global Variables
@@ -481,9 +481,9 @@ int main(int argc, char* argv[]) {
     
     aValues[0] = MOTOR_ZERO; 
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    imp[9].LSB[0] = aValues[3];
+    imp[9].LSB[0] = aValues[2];
 
-    printf("%f\n", aValues[3]);
+    printf("%f\n", aValues[2]);
 
     while(imp[9].LSF[0] == 0)
     {
@@ -491,7 +491,7 @@ int main(int argc, char* argv[]) {
     	if(aValues[0] > MOTOR_ZERO_FWD - 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	imp[9].LSF[0] = aValues[3];
+    	imp[9].LSF[0] = aValues[2];
     }
 
     curr_pos = 0.0;
@@ -515,7 +515,7 @@ int main(int argc, char* argv[]) {
     }
 
     //set x_end to curr_pos somehow
-   	if(!USE_DEFINED_X_RANGE) x_end = curr_pos
+   	if(!USE_DEFINED_X_RANGE) x_end = -curr_pos;
    	else x_end = X_END;
 
     if(DEBUG) printf("X MAX (mm): %.2f\n", x_end);

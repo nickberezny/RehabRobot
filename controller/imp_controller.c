@@ -161,8 +161,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_end)
 {
      
-    if(abs(imp->xk - 
-        D/2.0) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
+    if(abs(imp->xk - *x_end/2.0) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
     {
         printf("BALL IN PLAY\n");
 
@@ -180,7 +179,7 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_
         {
             //add to front of device
             ball->dir = -1;
-            ball->x_mass = X_END;
+            ball->x_mass = *x_end;
         } 
 
         ball->v_mass = (double) ball->dir * 40.0; 
