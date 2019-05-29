@@ -154,7 +154,7 @@ few large clinical trials have found conflicting results. One study following 63
 	\end{figure*}
 	
 	
-	The precursor to this project is the Virtual Gait Rehabilitation Robot (ViGRR), a device developed at Carleton University's Advanced Biomechatronics and Locomotion Laboratory \cite{Chisholm2014, Chisholm2010}. It is a 4-DOF end-plate based robot which can assist a reclined patient move through trajectories in the saggital plane. It works in conjunction with a virtual environment, which the patient can interact with through haptic force-feedback. An admittance controller is used to assist or resist patient movement as desired. It is capable of guiding patient's through a gait trajectory, among other activities. 
+	The precursor to this project is the Virtual Gait Rehabilitation Robot (ViGRR), a device developed at Carleton University's Advanced Biomechatronics and Locomotion Laboratory \cite{Chisholm2014, Chisholm2010}. It is a 4-DOF end-plate based robot which can assist a reclined patient move through trajectories in the sagittal plane. It works in conjunction with a virtual environment, which the patient can interact with through haptic force-feedback. An admittance controller is used to assist or resist patient movement as desired. It is capable of guiding patient's through a gait trajectory, among other activities. 
 	
 	\begin{figure*}[t] 
 		\centering
@@ -242,35 +242,58 @@ few large clinical trials have found conflicting results. One study following 63
 	
 	\subsection{Other Comments and Concerns}
 	
-	Most therapists had concerns over safety. They recognized that the robot could potential apply forces which could harm the patient. One point of concern was rotation of the leg out of position such that the force was applied incorrectly. For example, during the knee flexion/extension exercise, if the leg were to rotate out of the saggital plane, the robot could apply a torque about the hip which would bend the leg further and potential injure the patient. Therapists suggested having multiple support points along the leg to keep the leg in position. 
+	Most therapists had concerns over safety. They recognized that the robot could potential apply forces which could harm the patient. One point of concern was rotation of the leg out of position such that the force was applied incorrectly. For example, during the knee flexion/extension exercise, if the leg were to rotate out of the sagittal plane, the robot could apply a torque about the hip which would bend the leg further and potential injure the patient. Therapists suggested having multiple support points along the leg to keep the leg in position. 
 	
 	Other comments included the need for comfort, particularly using comfortable material where the robot and human interact. The potential use of tactile methods of engaging the patient (\textit{e.g.} tapping or vibrations applied to the leg). Some indicated that combining upper and lower-limb activities could be beneficial (\textit{e.g.} by using a joystick with the robot). 
 	
 	
-	\section{Device Concept \& Motivation} 
+\section{Device Concept} 
 
-We set out to design a simple lower-limb rehabilitation for acute, bed-bound stroke patients. We chose to design for the knee flexion-extension exercise because it is most related to sit-to-stand, which is the most important activity for bed-bound patients to recover as it allows the patient to get up and begin gait rehabilitation. The robotic configuration best suited to this exercise is a one degree of freedom linear actuator. 
-	Another important requirement is simplicity...	
+Our goal is to design a lower-limb rehabilitation robot targeting acute patients by creating a device compatible with a patient who is lying or reclined in a hospital bed. The device should be a viable tool for therapists to use to increase functional outcomes for their patients. It should replicate the role of the therapist when providing assistance for bed bound exercises. There are three primary roles:
 
-Stroke rehabilitation best practices were outlined in the previous section. A few key recommendations highlight the potential benefits of introducing a simple-to-use robotic device into the rehabilitation arsenal. The robotic device would primarily be used to offer additional rehabilitation time to patients under the supervision of a nurse or other responsible person. The gaming aspect of the system would ensure the patient is engaged in the exercise, and also offer feedback so that the patients movements can be regulated even in the absence of a therapist. The games and visualizations could also be tailored to simulate ADL's. Therefore, a robotic device could theoretically boost outcomes by covering the following recommendations:
 \begin{enumerate}
-	\item Increased therapy time per day 
-	\item Provide task-specific therapy
-	\item Allowing patient to practice the exercises outside of regular therapy sessions at their convenience 
-	\item Using immersive technology to improve engagement 
+	\item Support Leg 
+	\item Provide Assistance through the motion
+	\item Engage the patient
 \end{enumerate}
-In addition to benefiting the patient, robotics could also be used as a tool by therapists to improve their tracking of patient progress. 
+
+Supporting the leg will be accomplished through the physical structure of the device. Assistance will be provided using force feedback and interaction controllers which can ensure that the patient is contributing to some extent. The patient will be engaged using visualizations, virtual environments, and haptic feedback. 
+
+Bed-bound exercises include a variety of simple movements, such as leg lifts, knee extensions, and hip abductions. Since this device is a proof-of-concept, it was decided that we would initially target a single exercise, evaluate its performance in the hospital, and then extend to target other exercises by adding degrees-of-freedom. We chose the knee flexion/extension exercise for the following reasons:
+
+\begin{itemize}
+	\item It is a commonly used bed-bound exercise
+	\item It is important due to its relation to the sit-to-stand activity, which is the first stage of getting the patient mobile
+	\item ...
+\end{itemize}
+ 
+The knee flexion/extension exercise requires just a single horizontal degree-of-freedom. The therapist uses one hand to support the leg under the knee, and the other hand to support the foot and apply force through the heel. They slowly move the leg back and forth, encouraging the patient to push. They are careful to keep the leg aligned in the sagittal plane. 
+
+There are several use cases for the device. The therapist could use during therapy instead of manually moving the legs. This would relieve them of the physical burden, the virtual environments may encourage the patient to participate more, and the data collected could be used to track progress. The therapist could use multiple devices simultaneously to provide care to multiple patients. This would allow them to see more patients and thus increase therapy dosage. Finally, since the device replicates the role of the therapist, the device could be used separately from the therapist, under the supervision of other hospital staff. This would encourage patient's to practice independently, thereby increasing therapy dosage. 
+
+In addition to these requirements, the device should be usable within a hospital environment. The device should be safe such that the patient is not harmed, and should also be perceived as safe so that the therapists and patients are willing to use it. The device should fit on a hospital bed, and should be lightweight and small enough to be manageable within a hospital room. The set-up of the device should be quick and easy.
+
+
+
+%---
+%We set out to design a simple lower-limb rehabilitation for acute, bed-bound stroke patients. We chose to design for the knee flexion-extension exercise because it is most related to sit-to-stand, which is the most important activity for bed-bound patients to recover as it allows the patient to get up and begin gait rehabilitation. The robotic configuration best suited to this exercise is a one degree of freedom linear actuator. 
+
+
+%Stroke rehabilitation best practices were outlined in the previous section. A few key recommendations highlight the potential benefits of introducing a simple-to-use robotic device into the rehabilitation arsenal. The robotic device would primarily be used to offer additional rehabilitation time to patients under the supervision of a nurse or other responsible person. The gaming aspect of the system would ensure the patient is engaged in the exercise, and also offer feedback so that the patients movements can be regulated even in the absence of a therapist. The games and visualizations could also be tailored to simulate ADL's. Therefore, a robotic device could theoretically boost outcomes by covering the following recommendations:
+
 
 
 \section{Contributions and Outline}
 
-Chapter 2 covers the design of the device. This includes preliminary design choices, the design of the physical structure, the actuation and sensors, the design of the electronics (power distribution, signal routing and preprocessing), and the chosen computer hardware. Future design suggestions are also made, including features which were not yet implemented due to time constraints. 
+A one DOF robot was designed and created, consisting of a DC motor, force sensor, belt drive, footplate, frame, and a number of smaller components. A printed circuit board (PCB) was created to route signals, do preprocessing, and distribute power. System software was implemented on a real-time linux system. A controller was created in C, which can do admittance control, haptic feedback, a basic physics engine, communication with a UI server, and data logging. Real time functionality is ensured using POSIX standards for memory locking, multi-threading, etc. The UI is implemented as website using the React framework, and some simple games are created using THREE.js 3D web graphics library. Preliminary experiments are run, include functionality tests, and healthy subject testing. 
+
+Chapter 2 covers the design of the device. This includes preliminary design choices, the design of the physical structure, the actuation and sensors, the design of the electronics (power distribution, signal routing and preprocessing), and the chosen computer hardware. 
 
 Chapter 3 covers the controller and its implementation in the software, including the basic admittance control, and the haptic feedback with physics engine. The design of the user interface (UI) and some basic games/visualisations are also discussed. The communication and the overall software design within real-time Linux is explained, including the how the modular design will allow it to be easily adapted to future design iterations. 
 
 Chapter 4 covers testing and experiments, including functional testing of the software, controller, and UI. The methods and results from a small study on healthy subjects are presented, with questionnaire answers regarding the subjective experience of participants, along with quantitative performance metrics. 
 
-Chapter 5 concludes with a summary of contributions and recommendations for future work, such as changes to the system, software, and future studies. 
+Chapter 5 concludes with a summary of contributions and recommendations for future work. This includes features that were required which have not yet been implemented due to time constraints, and ideas for future direction of the project. 
 
 \chapter{Device Design and Implementation}
 	\section{Overview}

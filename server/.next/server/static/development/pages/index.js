@@ -2699,16 +2699,10 @@ function (_React$Component) {
                 lineNumber: 40
               },
               __self: this
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], {
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 41
-              },
-              __self: this
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Test_timer__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 42
               },
               __self: this
             }));
@@ -2721,13 +2715,13 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 47
+                lineNumber: 46
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 48
+                lineNumber: 47
               },
               __self: this
             }));
@@ -2740,19 +2734,19 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 53
+                lineNumber: 52
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 54
+                lineNumber: 53
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 55
+                lineNumber: 54
               },
               __self: this
             }));
@@ -2765,19 +2759,19 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 60
+                lineNumber: 59
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 61
+                lineNumber: 60
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 62
+                lineNumber: 61
               },
               __self: this
             }));
@@ -2790,13 +2784,13 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 67
+                lineNumber: 66
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Balance_game__WEBPACK_IMPORTED_MODULE_6__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 68
+                lineNumber: 67
               },
               __self: this
             }));
@@ -2809,13 +2803,13 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 73
+                lineNumber: 72
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Gait_game__WEBPACK_IMPORTED_MODULE_7__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 74
+                lineNumber: 73
               },
               __self: this
             }));
@@ -2824,7 +2818,7 @@ function (_React$Component) {
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 77
+                lineNumber: 76
               },
               __self: this
             }, " Game load failed ");
@@ -2835,13 +2829,13 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 85
+                lineNumber: 84
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowTraj_Instruction__WEBPACK_IMPORTED_MODULE_8__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 86
+                lineNumber: 85
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2850,21 +2844,21 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 86
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 86
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 87
+                lineNumber: 86
               },
               __self: this
             })));
@@ -2874,13 +2868,13 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 92
+                lineNumber: 91
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_FollowVel_Instruction__WEBPACK_IMPORTED_MODULE_9__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 93
+                lineNumber: 92
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2889,21 +2883,21 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 93
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 93
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 94
+                lineNumber: 93
               },
               __self: this
             })));
@@ -2913,13 +2907,13 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 99
+                lineNumber: 98
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_10__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 100
+                lineNumber: 99
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2928,21 +2922,21 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 100
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 100
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 101
+                lineNumber: 100
               },
               __self: this
             })));
@@ -2952,13 +2946,13 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 106
+                lineNumber: 105
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Race_Instruction__WEBPACK_IMPORTED_MODULE_10__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 107
+                lineNumber: 106
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2967,21 +2961,21 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 107
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 107
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 108
+                lineNumber: 107
               },
               __self: this
             })));
@@ -2991,13 +2985,13 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 113
+                lineNumber: 112
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Balance_Instruction__WEBPACK_IMPORTED_MODULE_12__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 114
+                lineNumber: 113
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3006,21 +3000,21 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 115
+                lineNumber: 114
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 115
+                lineNumber: 114
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 115
+                lineNumber: 114
               },
               __self: this
             })));
@@ -3030,13 +3024,13 @@ function (_React$Component) {
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 120
+                lineNumber: 119
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Instructions_Gait_Instruction__WEBPACK_IMPORTED_MODULE_11__["default"], {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 121
+                lineNumber: 120
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3045,21 +3039,21 @@ function (_React$Component) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 122
+                lineNumber: 121
               },
               __self: this
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_HomeButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
               text: "Home",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 122
+                lineNumber: 121
               },
               __self: this
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Generic_RunButton__WEBPACK_IMPORTED_MODULE_14__["default"], {
               text: "Run",
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 122
+                lineNumber: 121
               },
               __self: this
             })));
@@ -3069,7 +3063,7 @@ function (_React$Component) {
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 126
+                lineNumber: 125
               },
               __self: this
             }, " Game load failed ");
@@ -3079,7 +3073,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 133
+          lineNumber: 132
         },
         __self: this
       }, this.state.content);
@@ -5679,6 +5673,8 @@ function (_Component) {
       this.prev_x = prev_x;
       this.prev_time = prev_time;
       this.curr_time = curr_time;
+      this.clock = new three__WEBPACK_IMPORTED_MODULE_2__["Clock"]();
+      this.begin = 0;
       this.mount.appendChild(this.renderer.domElement);
       this.start();
     }
@@ -5726,6 +5722,10 @@ function (_Component) {
   }, {
     key: "animate",
     value: function animate() {
+      //wait for 10 sec before beginning 
+      this.timer += this.clock.getDelta();
+      if (this.timer >= 0.1) this.begin = 1; //if(!this.begin) return;
+
       this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0;
 
       if (this.character.position.y >= 100) {
@@ -5793,7 +5793,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 275
+          lineNumber: 285
         },
         __self: this
       });
