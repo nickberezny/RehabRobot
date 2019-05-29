@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  22 MAR 2019 15:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  28 MAY 2019 17:01
 entering extended mode
 **./thesis_feb2019.tex
 (thesis_feb2019.tex
@@ -201,6 +201,9 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 ))
 (thesis_feb2019.aux
 
+LaTeX Warning: Label `tab:motor' multiply defined.
+
+
 LaTeX Warning: Label `tab:belt' multiply defined.
 
 
@@ -274,91 +277,148 @@ Chapter 1.
 [1
 
 ] [2] [3] [4] [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 94.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 92.
+
+<pics/Lokomat.png, id=24, 1116.17pt x 843.15pt>
+File: pics/Lokomat.png Graphic file (type png)
+ <use pics/Lokomat.png>
+Package pdftex.def Info: pics/Lokomat.png used on input line 117.
+(pdftex.def)             Requested size: 352.31625pt x 266.134pt.
+
+<pics/Hapticwalker.jpg, id=25, 454.69875pt x 401.5pt>
+File: pics/Hapticwalker.jpg Graphic file (type jpg)
+
+<use pics/Hapticwalker.jpg>
+Package pdftex.def Info: pics/Hapticwalker.jpg used on input line 126.
+(pdftex.def)             Requested size: 352.31625pt x 311.098pt.
+ [6]
+<pics/Motionmaker.png, id=30, 204.765pt x 141.4083pt>
+File: pics/Motionmaker.png Graphic file (type png)
+
+<use pics/Motionmaker.png>
+Package pdftex.def Info: pics/Motionmaker.png used on input line 142.
+(pdftex.def)             Requested size: 352.31625pt x 243.32106pt.
+ [7 <./pics/Lokomat.png>]
+<pics/Lambda.jpg, id=35, 246.375pt x 137.97pt>
+File: pics/Lambda.jpg Graphic file (type jpg)
+ <use pics/Lambda.jpg>
+Package pdftex.def Info: pics/Lambda.jpg used on input line 151.
+(pdftex.def)             Requested size: 352.31625pt x 197.32085pt.
+
+<pics/Vigrr.jpg, id=36, 227.04292pt x 146.45868pt>
+File: pics/Vigrr.jpg Graphic file (type jpg)
+ <use pics/Vigrr.jpg>
+Package pdftex.def Info: pics/Vigrr.jpg used on input line 161.
+(pdftex.def)             Requested size: 352.31625pt x 227.27899pt.
+
+[8 <./pics/Hapticwalker.jpg>] [9 <./pics/Motionmaker.png>] [10 <./pics/Lambda.j
+pg>] [11 <./pics/Vigrr.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 195.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
-
-[6] [7] [8] [9]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 195.
+ [12] [13] [14]
+[15] [16] [17]
 Chapter 2.
-<pics/Robot_labeled.png, id=38, 467.8278pt x 309.7974pt>
+<pics/Robot_labeled.png, id=70, 467.8278pt x 309.7974pt>
 File: pics/Robot_labeled.png Graphic file (type png)
 
 <use pics/Robot_labeled.png>
-Package pdftex.def Info: pics/Robot_labeled.png used on input line 135.
+Package pdftex.def Info: pics/Robot_labeled.png used on input line 280.
 (pdftex.def)             Requested size: 352.31625pt x 233.3118pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 147.
+               Default added (so using `tbp') on input line 292.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 161.
+               Default added (so using `tbp') on input line 306.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 174.
+               Default added (so using `tbp') on input line 319.
 
-[10
+[18
 
-] [11]
+] [19]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 203.
+               Default added (so using `tbp') on input line 348.
 
-[12 <./pics/Robot_labeled.png>]
-<pics/pcb_schematic.png, id=51, 685.6014pt x 549.7338pt>
+[20 <./pics/Robot_labeled.png>]
+<pics/pcb_schematic.png, id=82, 685.6014pt x 549.7338pt>
 File: pics/pcb_schematic.png Graphic file (type png)
 
 <use pics/pcb_schematic.png>
-Package pdftex.def Info: pics/pcb_schematic.png used on input line 224.
+Package pdftex.def Info: pics/pcb_schematic.png used on input line 369.
 (pdftex.def)             Requested size: 422.77664pt x 338.9944pt.
- [13] [14 <./pics/pcb_schematic.png>]
+ [21] [22 <./pics/pcb_schematic.png>]
 Chapter 3.
-[15
+[23
 
-] [16] [17] [18] [19] [20] [21]
+] [24] [25] [26] [27] [28] [29]
 Chapter 4.
-<pics/Mar12_NoForce_Step_Plot.png, id=84, 421.575pt x 316.18124pt>
+<pics/Mar12_NoForce_Step_Plot.png, id=115, 421.575pt x 316.18124pt>
 File: pics/Mar12_NoForce_Step_Plot.png Graphic file (type png)
 
 <use pics/Mar12_NoForce_Step_Plot.png>
-Package pdftex.def Info: pics/Mar12_NoForce_Step_Plot.png used on input line 41
-8.
+Package pdftex.def Info: pics/Mar12_NoForce_Step_Plot.png used on input line 56
+3.
 (pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
- [22
+ [30
 
 ]
-<pics/Mar12_RandForce_Plot1.png, id=88, 421.575pt x 316.18124pt>
+<pics/Mar12_RandForce_Plot1.png, id=120, 421.575pt x 316.18124pt>
 File: pics/Mar12_RandForce_Plot1.png Graphic file (type png)
 
 <use pics/Mar12_RandForce_Plot1.png>
-Package pdftex.def Info: pics/Mar12_RandForce_Plot1.png used on input line 425.
+Package pdftex.def Info: pics/Mar12_RandForce_Plot1.png used on input line 570.
 
 (pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
- [23 <./pics/Mar12_NoForce_Step_Plot.png>]
-[24 <./pics/Mar12_RandForce_Plot1.png>]
+ [31 <./pics/Mar12_NoForce_Step_Plot.png>]
+[32 <./pics/Mar12_RandForce_Plot1.png>]
 Chapter 5.
-(thesis_feb2019.bbl [25
+(thesis_feb2019.bbl [33
 
-] [26
+] [34
 
-]) [27] (thesis_feb2019.aux)
+]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 69.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 69.
+ [35]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+ [36]
+Missing character: There is no â in font cmr12!
+Missing character: There is no „ in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+ [37])
+[38] (thesis_feb2019.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3668 strings out of 493323
- 54113 string characters out of 3139054
- 144903 words of memory out of 3000000
- 7133 multiletter control sequences out of 15000+200000
+ 3737 strings out of 493323
+ 55283 string characters out of 3139054
+ 145019 words of memory out of 3000000
+ 7194 multiletter control sequences out of 15000+200000
  10886 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,15n,42p,1103b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,15n,42p,1603b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
@@ -368,9 +428,9 @@ nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 msfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
 pfb>
-Output written on thesis_feb2019.pdf (28 pages, 560232 bytes).
+Output written on thesis_feb2019.pdf (39 pages, 2230085 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
+ 179 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

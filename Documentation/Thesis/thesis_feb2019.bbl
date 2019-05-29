@@ -1,5 +1,24 @@
 \begin{thebibliography}{10}
 
+\bibitem{Benjamin2018}
+E.~J. Benjamin, C.~S. {Salim Virani}, C.-V.~W. {Chair Clifton Callaway}, A.~M.
+  Chamberlain, M.~R. {Alexander Chang}, M.~{Susan Cheng}, M.~E. {Stephanie
+  Chiuve}, S.~{Mary Cushman}, F.~N. {Francesca Delling}, M.~{Rajat Deo}, M.~D.
+  {Sarah de Ferranti}, F.~F. {Jane Ferguson}, M.~Fornage, F.~{Cathleen
+  Gillespie}, M.~R. {Carmen Isasi}, F.~C. {Monik Jim{\'{e}}nez}, S.~{Lori
+  Chaffin Jordan}, S.~E. Judd, M.~{Daniel Lackland}, F.~H. {Judith Lichtman},
+  F.~{Lynda Lisabeth}, F.~{Simin Liu}, F.~T. {Chris Longenecker}, P.~L. Lutsey,
+  F.~S. {Jason Mackey}, D.~B. Matchar, K.~Matsushita, F.~E. {Michael
+  Mussolino}, F.~{Khurram Nasir}, F.~O. Martin, L.~P. Palaniappan, F.~{Ambarish
+  Pandey}, D.~K. Pandey, F.~J. {Mathew Reeves}, M.~D. Ritchey, M.~J. {Carlos
+  Rodriguez}, F.~A. {Gregory Roth}, F.~D. {Wayne Rosamond}, F.~K. {Uchechukwu
+  Sampson}, F.~M. {Gary Satou}, F.~H. {Svati Shah}, F.~L. {Nicole Spartano},
+  D.~L. Tirschwell, C.~W. Tsao, M.~H. {Jenifer Voeks}, J.~Z. Willey, M.~T.
+  {John Wilkins}, F.~H. {Jason Wu}, F.~M. {Heather Alger}, S.~S. Wong, and
+  F.~{Paul Muntner}, ``{Heart Disease and Stroke Statistics-2018 Update A
+  Report From the American Heart Association},'' {\em Circulation}, vol.~137,
+  pp.~67--492, 2018.
+
 \bibitem{Hebert2016}
 D.~Hebert, M.~P. Lindsay, A.~McIntyre, A.~Kirton, P.~G. Rumney, S.~Bagg,
   M.~Bayley, D.~Dowlatshahi, S.~Dukelow, M.~Garnhum, E.~Glasser, M.-L. Halabi,
@@ -12,15 +31,24 @@ D.~Hebert, M.~P. Lindsay, A.~McIntyre, A.~Kirton, P.~G. Rumney, S.~Bagg,
   guidelines, update 2015},'' {\em International Journal of Stroke}, vol.~11,
   pp.~459--484, jun 2016.
 
+\bibitem{Ewart2003}
+S.~Ewart, M.~{Langfeld Layout}, R.~Sadki, D.~Evans, W.~Savedoff, A.~Singh,
+  B.~Stilwell, W.~{Van Lerberghe}, E.~{Villar Montesinos}, P.~Banati,
+  M.~Beusenberg, S.~Colombo, C.~Dora, J.~Dzenowagis, H.~Fogstad, E.~Gajraj,
+  G.~Galea, C.~{Garcia Moreno}, Y.~Hemed, A.~Hinman, A.~Kalache, R.~Kawar,
+  M.~Levin, A.~Lopez, A.~Mechbal, L.~Rago, S.~Saxena, P.~Setel, C.~Shahpar,
+  H.~Troedsson, A.~Yang, D.~Bayarsaikha, S.~Begg, C.~Bernard, D.~Chisholm,
+  S.~Ebener, E.~Gakidou, Y.~Guigoz, P.~Hern{\'{a}}ndez, M.~Hogan, K.~Iburg,
+  C.~Indikadahena, M.~Inoue, K.~Lunze, D.~{Ma Fat}, T.~Mwase, F.~Naville, J.-P.
+  Poullier, C.~Rao, D.~Rhoades, H.~Salehi, J.~Salomon, A.~Sousa, R.~M.
+  Suarez-Berenguela, U.~{Than Sein}, N.~Tomijima, N.~{Van de Maele},
+  S.~Volkmuth, and H.~Xu, {\em {The World Health Report}}.
+\newblock World Health Organization, 2003.
+
 \bibitem{Langhorne2009}
 P.~Langhorne, F.~Coupar, and A.~Pollock, ``{Motor recovery after stroke: a
   systematic review},'' {\em The Lancet Neurology}, vol.~8, no.~8,
   pp.~741--754, 2009.
-
-\bibitem{Krueger2012}
-H.~Krueger, P.~Lindsay, R.~Cote, M.~K. Kapral, J.~Kaczorowski, and M.~D. Hill,
-  ``{Cost avoidance associated with optimal stroke care in Canada.},'' {\em
-  Stroke}, vol.~43, pp.~2198--206, aug 2012.
 
 \bibitem{Rey2008}
 G.~Rey, A.~Donnan, M.~Fisher, M.~Macleod, and S.~M. Davis, ``{Stroke},'' tech.
@@ -33,21 +61,81 @@ S.~Prabhakaran, I.~Ruff, R.~A. Bernstein, T.~T, L.~PJ, and K.~M, ``{Acute
 \bibitem{Stroke}
 ``Stroke [online].''
 
+\bibitem{Casaubon2016}
+L.~K. Casaubon, J.-M. Boulanger, E.~Glasser, D.~Blacquiere, S.~Boucher,
+  K.~Brown, T.~Goddard, J.~Gordon, M.~Horton, J.~Lalonde, C.~LaRivi{\`{e}}re,
+  P.~Lavoie, P.~Leslie, J.~McNeill, B.~K. Menon, B.~Moses, M.~Penn, J.~Perry,
+  E.~Snieder, D.~Tymianski, N.~Foley, E.~E. Smith, G.~Gubitz, M.~D. Hill, and
+  P.~Lindsay, ``{{\textless}i{\textgreater}Canadian Stroke Best Practice
+  Recommendations{\textless}/i{\textgreater} : Acute Inpatient Stroke Care
+  Guidelines, Update 2015},'' {\em International Journal of Stroke}, vol.~11,
+  pp.~239--252, feb 2016.
+
+\bibitem{AVERTTrialCollaborationgroup2015}
+{AVERT Trial Collaboration group}, ``{Efficacy and safety of very early
+  mobilisation within 24 h of stroke onset (AVERT): a randomised controlled
+  trial.},'' {\em Lancet (London, England)}, vol.~386, pp.~46--55, jul 2015.
+
+\bibitem{Lohse2014}
+K.~R. Lohse, C.~E. Lang, and L.~A. Boyd, ``{Is More Better? Using Metadata to
+  Explore Dose–Response Relationships in Stroke Rehabilitation},'' {\em
+  Stroke}, vol.~45, pp.~2053--2058, jul 2014.
+
+\bibitem{Lang2009}
+C.~E. Lang, J.~R. MacDonald, D.~S. Reisman, L.~Boyd, T.~{Jacobson Kimberley},
+  S.~M. Schindler-Ivens, T.~G. Hornby, S.~A. Ross, and P.~L. Scheets,
+  ``{Observation of Amounts of Movement Practice Provided During Stroke
+  Rehabilitation},'' {\em Archives of Physical Medicine and Rehabilitation},
+  vol.~90, pp.~1692--1698, oct 2009.
+
+\bibitem{Bernhardt2004}
+J.~Bernhardt, H.~Dewey, A.~Thrift, and G.~Donnan, ``{Inactive and Alone
+  Physical Activity Within the First 14 Days of Acute Stroke Unit Care},'' {\em
+  Stroke}, 2004.
+
+\bibitem{King2011}
+A.~King, A.~McCluskey, and K.~Schurr, ``{The Time Use and Activity Levels of
+  Inpatients in a Co-located Acute and Rehabilitation Stroke Unit: An
+  Observational Study},'' {\em Topics in Stroke Rehabilitation}, vol.~18,
+  pp.~654--665, oct 2011.
+
+\bibitem{Colombo}
+G.~Colombo, M.~Wirz, and V.~Dietz, ``{Driven gait orthosis for improvement of
+  locomotor training in paraplegic patients},'' tech. rep., 2001.
+
 \bibitem{Chang2013}
 W.~H. Chang and Y.-H. Kim, ``{Robot-assisted Therapy in Stroke
   Rehabilitation.},'' {\em Journal of stroke}, vol.~15, pp.~174--81, sep 2013.
 
-\bibitem{Jezernik2003}
-S.~Jezernik, G.~Colombo, T.~Keller, H.~Frueh, and M.~Morari, ``{Robotic
-  Orthosis Lokomat: A Rehabilitation and Research Tool},'' {\em
-  Neuromodulation: Technology at the Neural Interface}, vol.~6, pp.~108--115,
-  apr 2003.
+\bibitem{Mehrholz2012}
+J.~Mehrholz and M.~Pohl, ``{Electromechanical-assisted gait training after
+  stroke: A systematic review comparing end-effector and exoskeleton
+  devices},'' {\em Journal of Rehabilitation Medicine}, vol.~44, no.~3,
+  pp.~193--199, 2012.
+
+\bibitem{Hidler2008}
+J.~Hidler, D.~Nichols, M.~Pelliccio, K.~Brady, D.~D. Campbell, J.~H. Kahn, and
+  T.~G. Hornby, ``{Multicenter Randomized Clinical Trial Evaluating the
+  Effectiveness of the Lokomat in Subacute Stroke},'' {\em Neurorehabilitation
+  and Neural Repair}, vol.~23, pp.~5--13, sep 2008.
 
 \bibitem{Nam2017}
 K.~Y. Nam, H.~J. Kim, B.~S. Kwon, J.-W. Park, H.~J. Lee, and A.~Yoo,
   ``{Robot-assisted gait training (Lokomat) improves walking function and
   activity in people with spinal cord injury: a systematic review},'' {\em
   Journal of NeuroEngineering and Rehabilitation}, vol.~14, p.~24, dec 2017.
+
+\bibitem{Schmitt2004}
+C.~Schmitt, P.~M{\'{e}}trailler, A.~Al-Khodairy, R.~Brodard, J.~Fournier,
+  M.~Bouri, and R.~Clavel, ``{THE MOTION MAKER ™: A REHABILITATION SYSTEM
+  COMBINING AN ORTHOSIS WITH CLOSED-LOOP ELECTRICAL MUSCLE STIMULATION},''
+  2004.
+
+\bibitem{Bouri2009}
+M.~Bouri, B.~{Le Gall}, and R.~Clavel, ``{A new concept of parallel robot for
+  rehabilitation and fitness: The Lambda},'' in {\em 2009 IEEE International
+  Conference on Robotics and Biomimetics (ROBIO)}, pp.~2503--2508, IEEE, dec
+  2009.
 
 \bibitem{Chisholm2014}
 K.~J. Chisholm, K.~Klumper, A.~Mullins, and M.~Ahmadi, ``{A task oriented
@@ -67,6 +155,36 @@ W.~Meng, Q.~Liu, Z.~Zhou, Q.~Ai, B.~Sheng, and S.~S. Xie, ``{Recent development
 \bibitem{Hogan1985}
 N.~Hogan, ``{Impedance Control: An Approach to Manipulation},'' {\em American
   Control Conference, 1984 IS - SN - VO -}, no.~March, pp.~304--313, 1985.
+
+\bibitem{Laver2015}
+K.~Laver, S.~George, S.~Thomas, J.~E. Deutsch, and M.~Crotty, ``{Virtual
+  reality for stroke rehabilitation: an abridged version of a Cochrane
+  review.},'' {\em European journal of physical and rehabilitation medicine},
+  vol.~51, pp.~497--506, aug 2015.
+
+\bibitem{Patel2015}
+J.~Patel, G.~Fluet, A.~Merians, Q.~Qiu, M.~Yarossi, S.~Adamovich, E.~Tunik, and
+  S.~Massood, ``{Virtual reality-augmented rehabilitation in the acute phase
+  post-stroke for individuals with flaccid upper extremities: A feasibility
+  study},'' in {\em 2015 International Conference on Virtual Rehabilitation
+  (ICVR)}, pp.~215--223, IEEE, jun 2015.
+
+\bibitem{Saposnik2010}
+G.~Saposnik, R.~Teasell, M.~Mamdani, J.~Hall, W.~McIlroy, D.~Cheung, K.~E.
+  Thorpe, L.~G. Cohen, and M.~Bayley, ``{Effectiveness of Virtual Reality Using
+  Wii Gaming Technology in Stroke Rehabilitation},'' {\em Stroke}, vol.~41,
+  no.~7, 2010.
+
+\bibitem{Jiang2017}
+T.~T. Jiang, Z.~Q. Qian, Y.~Lin, Z.~M. Bi, Y.~F. Liu, and W.~J. Zhang,
+  ``{Analysis of virtual environment haptic robotic systems for a
+  rehabilitation of post-stroke patients},'' in {\em 2017 IEEE International
+  Conference on Industrial Technology (ICIT)}, pp.~738--742, IEEE, 2017.
+
+\bibitem{SociedadeBrasileiradeInformaticaemSaude2014}
+E.~Vogiatzaki and A.~Krukowski, ``{Serious Games for Stroke Rehabilitation
+  Employing Immersive User Interfaces in 3D Virtual Environment},'' {\em
+  Journal of Health Informatics}, vol.~6, nov 2014.
 
 \bibitem{Adams1999}
 R.~Adams and B.~Hannaford, ``{Stable haptic interaction with virtual
