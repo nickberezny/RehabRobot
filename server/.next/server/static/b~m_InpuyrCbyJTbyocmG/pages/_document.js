@@ -88,45 +88,32 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/next/dist/pages/_error.js":
-/*!************************************************!*\
-  !*** ./node_modules/next/dist/pages/_error.js ***!
-  \************************************************/
-/*! no static exports found */
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next/error */ "next/error")
+module.exports = __webpack_require__(42);
 
 
 /***/ }),
 
-/***/ 1:
-/*!******************************************************!*\
-  !*** multi ./node_modules/next/dist/pages/_error.js ***!
-  \******************************************************/
-/*! no static exports found */
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/rehab/Documents/RehabRobot/server/node_modules/next/dist/pages/_error.js */"./node_modules/next/dist/pages/_error.js");
+module.exports = __webpack_require__(43)
 
 
 /***/ }),
 
-/***/ "next/error":
-/*!*****************************!*\
-  !*** external "next/error" ***!
-  \*****************************/
-/*! no static exports found */
+/***/ 43:
 /***/ (function(module, exports) {
 
-module.exports = require("next/error");
+module.exports = require("next/document");
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_error.js.map

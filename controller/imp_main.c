@@ -259,9 +259,9 @@ int main(int argc, char* argv[]) {
     bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
     listen(listenfd, 100);
 
-	//Start UI Process 
+	//Start UI Process *make sure to use npm run build before  
 	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo NODE_ENV='production' node server.js'");
-	
+
 	while(1)
 	{
 		connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
