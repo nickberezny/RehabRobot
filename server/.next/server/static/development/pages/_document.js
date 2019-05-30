@@ -112,7 +112,7 @@ module.exports = __webpack_require__(/*! next/document */ "next/document")
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\nicho_000\Documents\RehabRobot\server\node_modules\next\dist\pages\_document.js */"./node_modules/next/dist/pages/_document.js");
+module.exports = __webpack_require__(/*! /home/rehab/Documents/RehabRobot/server/node_modules/next/dist/pages/_document.js */"./node_modules/next/dist/pages/_document.js");
 
 
 /***/ }),
