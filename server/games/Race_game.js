@@ -153,6 +153,7 @@ class Race_game extends Component {
     this.prev_x = prev_x; 
     this.prev_time = prev_time;
     this.curr_time = curr_time; 
+    this.timer = 0.0
 
     this.clock = new THREE.Clock()
 
@@ -208,66 +209,67 @@ class Race_game extends Component {
 
   //wait for 10 sec before beginning 
   this.timer += this.clock.getDelta()
-  if(this.timer >= 0.1) this.begin = 1 
-  //if(!this.begin) return;
+  if(this.timer >= 10) this.begin = 1 
+  console.log(this.timer)
+
+
+  if(this.begin){
+    
+    this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0
+    
+    if(this.character.position.y >= 100 )
+    {
+      this.theta1 += this.race_speed1/90.0;
+      this.camera.position.x = this.character.position.x - 40.0*Math.sin(this.theta1);
+      this.camera.position.y = this.character.position.y - 40.0*Math.cos(this.theta1);
+    }
+
+    else if(this.character.position.y <= -100 )
+    {
+      this.theta1 += this.race_speed1/90.0;
+      this.camera.position.x = this.character.position.x + 40.0*Math.sin(this.theta1);
+      this.camera.position.y = this.character.position.y + 40.0*Math.cos(this.theta1);
+    }else if(this.character.position.x > 10 ){
+      this.theta1 = 0.0;
+      this.camera.position.x = this.character.position.x + 40.0*Math.sin(this.theta1);
+      this.camera.position.y = this.character.position.y + 40.0*Math.cos(this.theta1);
+    }else{
+      this.theta1 = 0.0;
+      this.camera.position.x = this.character.position.x - 40.0*Math.sin(this.theta1);
+      this.camera.position.y = this.character.position.y - 40.0*Math.cos(this.theta1);
+    }
+
+    if(Math.abs(this.other.position.y) >= 100 )
+    {
+      this.theta2 += this.race_speed2/90.0;
+    }else{
+      this.theta2 = 0.0;
+    }
+    if(Math.abs(this.other2.position.y) >= 100 )
+    {
+      this.theta3 += this.race_speed3/90.0;
+    }else{
+      this.theta3 = 0.0;
+    }
+        this.move_object(this.character, this.theta1, 80.0, this.race_speed1);
+        this.move_object(this.other, this.theta2, 90.0, this.race_speed2);
+        this.move_object(this.other2, this.theta3, 70.0, this.race_speed3);
+
+        console.log(this.character.rotation.z)
   
-  this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0
-  
-  if(this.character.position.y >= 100 )
-  {
-    this.theta1 += this.race_speed1/90.0;
-    this.camera.position.x = this.character.position.x - 40.0*Math.sin(this.theta1);
-    this.camera.position.y = this.character.position.y - 40.0*Math.cos(this.theta1);
-  }
+        this.character.rotation.x += 0.1;
+        this.character.rotation.y += 0.05; 
 
-  else if(this.character.position.y <= -100 )
-  {
-    this.theta1 += this.race_speed1/90.0;
-    this.camera.position.x = this.character.position.x + 40.0*Math.sin(this.theta1);
-    this.camera.position.y = this.character.position.y + 40.0*Math.cos(this.theta1);
-  }else if(this.character.position.x > 10 ){
-    this.theta1 = 0.0;
-    this.camera.position.x = this.character.position.x + 40.0*Math.sin(this.theta1);
-    this.camera.position.y = this.character.position.y + 40.0*Math.cos(this.theta1);
-  }else{
-    this.theta1 = 0.0;
-    this.camera.position.x = this.character.position.x - 40.0*Math.sin(this.theta1);
-    this.camera.position.y = this.character.position.y - 40.0*Math.cos(this.theta1);
-  }
+        this.other.rotation.x += 0.1;
+        this.other.rotation.y += 0.05;
 
-  if(Math.abs(this.other.position.y) >= 100 )
-  {
-    this.theta2 += this.race_speed2/90.0;
-  }else{
-    this.theta2 = 0.0;
-  }
-  if(Math.abs(this.other2.position.y) >= 100 )
-  {
-    this.theta3 += this.race_speed3/90.0;
-  }else{
-    this.theta3 = 0.0;
-  }
-      this.move_object(this.character, this.theta1, 80.0, this.race_speed1);
-      this.move_object(this.other, this.theta2, 90.0, this.race_speed2);
-      this.move_object(this.other2, this.theta3, 70.0, this.race_speed3);
+        this.other2.rotation.x += 0.1;
+        this.other2.rotation.y += 0.05;
 
-      
+    }
 
-      console.log(this.character.rotation.z)
-      
-
-      this.character.rotation.x += 0.1;
-      this.character.rotation.y += 0.05; 
-
-      this.other.rotation.x += 0.1;
-      this.other.rotation.y += 0.05;
-
-      this.other2.rotation.x += 0.1;
-      this.other2.rotation.y += 0.05;
-
-      this.camera.up = new THREE.Vector3(0,0,1);
-      this.camera.lookAt( this.character.position );
-      
+    this.camera.up = new THREE.Vector3(0,0,1);
+    this.camera.lookAt( this.character.position );
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
