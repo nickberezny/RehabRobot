@@ -66,7 +66,7 @@ class Race_game extends Component {
     
     //var texture_track = textureLoader.load( "static/textures/track.jpg" );
     //var material_track = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_track } );
-    var material_track = new THREE.MeshBasicMaterial( { color: 0x99ccff} );
+    var material_track = new THREE.MeshBasicMaterial( { color: 0xcc6600} );
 
    // texture_grass.wrapS = texture_grass.wrapT = THREE.RepeatWrapping;
     //texture_grass.repeat.set( 64, 64 );

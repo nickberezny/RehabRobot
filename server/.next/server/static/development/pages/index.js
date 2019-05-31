@@ -4612,29 +4612,29 @@ function (_Component) {
       });
       var boxMaterial = new three__WEBPACK_IMPORTED_MODULE_2__["MeshLambertMaterial"]({
         color: 0x99ccff
-      });
-      var textureLoader = new three__WEBPACK_IMPORTED_MODULE_2__["TextureLoader"]();
-      var texture_grass = textureLoader.load("static/textures/grass.jpg");
+      }); //var textureLoader = new THREE.TextureLoader();
+      //var texture_grass = textureLoader.load( "static/textures/grass.jpg" );
+      //var material_grass = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass } );
+
       var material_grass = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: 0xffffff,
-        map: texture_grass
-      });
-      var texture_track = textureLoader.load("static/textures/track.jpg");
+        color: 0x009933
+      }); //var texture_track = textureLoader.load( "static/textures/track.jpg" );
+      //var material_track = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_track } );
+
       var material_track = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: 0xffffff,
-        map: texture_track
-      });
-      texture_grass.wrapS = texture_grass.wrapT = three__WEBPACK_IMPORTED_MODULE_2__["RepeatWrapping"];
-      texture_grass.repeat.set(64, 64);
-      var texture_grass2 = textureLoader.load("static/textures/grass.jpg");
-      texture_grass2.wrapS = texture_grass2.wrapT = three__WEBPACK_IMPORTED_MODULE_2__["RepeatWrapping"];
-      texture_grass2.repeat.set(4, 4);
+        color: 0xcc6600
+      }); // texture_grass.wrapS = texture_grass.wrapT = THREE.RepeatWrapping;
+      //texture_grass.repeat.set( 64, 64 );
+      //var texture_grass2 = textureLoader.load( "static/textures/grass.jpg" );
+      //texture_grass2.wrapS = texture_grass2.wrapT = THREE.RepeatWrapping;
+      //texture_grass2.repeat.set( 4, 4);
+      //var material_grass2 = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass2 } );
+
       var material_grass2 = new three__WEBPACK_IMPORTED_MODULE_2__["MeshBasicMaterial"]({
-        color: 0xffffff,
-        map: texture_grass2
-      });
-      texture_track.wrapS = texture_track.wrapT = three__WEBPACK_IMPORTED_MODULE_2__["RepeatWrapping"];
-      texture_track.repeat.set(8, 8);
+        color: 0x009933
+      }); //texture_track.wrapS = texture_track.wrapT = THREE.RepeatWrapping;
+      // texture_track.repeat.set( 8, 8 );
+
       var circle = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["CircleBufferGeometry"](100, 20, 0, Math.PI * 2), material_track);
       circle.position.set(0, -100, 0);
       scene.add(circle);
