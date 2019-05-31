@@ -59,24 +59,27 @@ class Race_game extends Component {
     var other2Material = new THREE.MeshLambertMaterial({ color: 0xD4D1C8 });
     var boxMaterial = new THREE.MeshLambertMaterial({ color: 0x99ccff });
 
-    var textureLoader = new THREE.TextureLoader();
-    var texture_grass = textureLoader.load( "static/textures/grass.jpg" );
-    var material_grass = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass } );
+    //var textureLoader = new THREE.TextureLoader();
+    //var texture_grass = textureLoader.load( "static/textures/grass.jpg" );
+    //var material_grass = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass } );
+    var material_grass = new THREE.MeshBasicMaterial( { color: 0x009933 } );
     
-    var texture_track = textureLoader.load( "static/textures/track.jpg" );
-    var material_track = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_track } );
+    //var texture_track = textureLoader.load( "static/textures/track.jpg" );
+    //var material_track = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_track } );
+    var material_track = new THREE.MeshBasicMaterial( { color: 0x99ccff} );
 
-    texture_grass.wrapS = texture_grass.wrapT = THREE.RepeatWrapping;
-    texture_grass.repeat.set( 64, 64 );
+   // texture_grass.wrapS = texture_grass.wrapT = THREE.RepeatWrapping;
+    //texture_grass.repeat.set( 64, 64 );
 
-    var texture_grass2 = textureLoader.load( "static/textures/grass.jpg" );
-    texture_grass2.wrapS = texture_grass2.wrapT = THREE.RepeatWrapping;
-    texture_grass2.repeat.set( 4, 4);
+    //var texture_grass2 = textureLoader.load( "static/textures/grass.jpg" );
+    //texture_grass2.wrapS = texture_grass2.wrapT = THREE.RepeatWrapping;
+    //texture_grass2.repeat.set( 4, 4);
 
-    var material_grass2 = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass2 } );
+    //var material_grass2 = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture_grass2 } );
+    var material_grass2 = new THREE.MeshBasicMaterial( { color: 0x009933 } );
 
-    texture_track.wrapS = texture_track.wrapT = THREE.RepeatWrapping;
-    texture_track.repeat.set( 8, 8 );
+    //texture_track.wrapS = texture_track.wrapT = THREE.RepeatWrapping;
+   // texture_track.repeat.set( 8, 8 );
 
     var circle = new THREE.Mesh( new THREE.CircleBufferGeometry( 100, 20, 0, Math.PI * 2 ), material_track );
     circle.position.set(0,-100,0)

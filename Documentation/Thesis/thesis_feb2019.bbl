@@ -116,6 +116,12 @@ G.~Mchugh and I.~D. Swain, ``{A comparison between reported and ideal
   patient-to-therapist ratios for stroke rehabilitation},'' {\em Health},
   vol.~5, no.~6A2, pp.~105--112, 2013.
 
+\bibitem{Calabro2016}
+R.~S. Calabr{\`{o}}, A.~Cacciola, F.~Bert{\`{e}}, A.~Manuli, A.~Leo,
+  A.~Bramanti, A.~Naro, D.~Milardi, and P.~Bramanti, ``{Robotic gait
+  rehabilitation and substitution devices in neurological disorders: where are
+  we now?},'' {\em Neurological Sciences}, vol.~37, pp.~503--514, apr 2016.
+
 \bibitem{Chang2013}
 W.~H. Chang and Y.-H. Kim, ``{Robot-assisted Therapy in Stroke
   Rehabilitation.},'' {\em Journal of stroke}, vol.~15, pp.~174--81, sep 2013.
@@ -132,11 +138,38 @@ J.~Hidler, D.~Nichols, M.~Pelliccio, K.~Brady, D.~D. Campbell, J.~H. Kahn, and
   Effectiveness of the Lokomat in Subacute Stroke},'' {\em Neurorehabilitation
   and Neural Repair}, vol.~23, pp.~5--13, sep 2008.
 
+\bibitem{Banala2007}
+S.~K. Banala, S.~K. Agrawal, and J.~P. Scholz, ``{Active Leg Exoskeleton (ALEX)
+  for Gait Rehabilitation of Motor-Impaired Patients},'' in {\em 2007 IEEE 10th
+  International Conference on Rehabilitation Robotics}, pp.~401--407, IEEE, jun
+  2007.
+
+\bibitem{Veneman2007}
+J.~Veneman, R.~Kruidhof, E.~Hekman, R.~Ekkelenkamp, E.~{Van Asseldonk}, and
+  H.~van~der Kooij, ``{Design and Evaluation of the LOPES Exoskeleton Robot for
+  Interactive Gait Rehabilitation},'' {\em IEEE Transactions on Neural Systems
+  and Rehabilitation Engineering}, vol.~15, pp.~379--386, sep 2007.
+
 \bibitem{Nam2017}
 K.~Y. Nam, H.~J. Kim, B.~S. Kwon, J.-W. Park, H.~J. Lee, and A.~Yoo,
   ``{Robot-assisted gait training (Lokomat) improves walking function and
   activity in people with spinal cord injury: a systematic review},'' {\em
   Journal of NeuroEngineering and Rehabilitation}, vol.~14, p.~24, dec 2017.
+
+\bibitem{Schmidt2005}
+H.~Schmidt, S.~Hesse, R.~Bernhardt, and J.~Kr{\"{u}}ger, ``{HapticWalker---a
+  novel haptic foot device},'' {\em ACM Transactions on Applied Perception},
+  vol.~2, pp.~166--180, apr 2005.
+
+\bibitem{Hesse2010}
+S.~Hesse, A.~Waldner, and C.~Tomelleri, ``{Innovative gait robot for the
+  repetitive practice of floor walking and stair climbing up and down in stroke
+  patients},'' {\em Journal of NeuroEngineering and Rehabilitation}, vol.~7,
+  p.~30, dec 2010.
+
+\bibitem{Hesse}
+S.~Hesse, D.~Uhlenbrock, and K.~Berlin, ``{A mechanized gait trainer for
+  restoration of gait},'' Tech. Rep.~6, 2000.
 
 \bibitem{Schmitt2004}
 C.~Schmitt, P.~M{\'{e}}trailler, A.~Al-Khodairy, R.~Brodard, J.~Fournier,
