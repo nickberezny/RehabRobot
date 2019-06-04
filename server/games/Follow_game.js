@@ -40,7 +40,7 @@ class Follow_game extends Component {
 
     var geometry = new THREE.BoxGeometry( 100, 100, 100 );
 
-    var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x86a5d6 });
+    var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xE86D00 });
 
     var cube = new THREE.Mesh( geometry, cubeMaterial)
 
@@ -88,9 +88,9 @@ class Follow_game extends Component {
     {
       this.points += 1;
 
-      this.cube.rotation.x += 0.008;
-      this.cube.rotation.y += 0.008;
-      this.cube.rotation.z += 0.008;
+      this.cube.rotation.x += 0.02;
+      this.cube.rotation.y += 0.01;
+      this.cube.rotation.z += 0.015;
 
     }
 
@@ -117,7 +117,7 @@ class Follow_game extends Component {
     return (
       
       <div
-        style={{ width: '600px', height: '400px' }}
+        style={{ width: '800px', height: '800px' }}
         ref={(mount) => { this.mount = mount }}
       />
     )

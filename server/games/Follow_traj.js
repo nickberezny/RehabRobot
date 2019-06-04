@@ -44,7 +44,7 @@ class Follow_traj extends Component {
 
     var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
     var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
-    var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.5 } );
+    var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.7 } );
 
     var plate = new THREE.Mesh( geometry, plateMaterial );
     var bar = new THREE.Mesh( geometry, barMaterial );
@@ -132,7 +132,7 @@ class Follow_traj extends Component {
 
   render() {
     return (
-      <div style={{ width: '600px', height: '800px' }} ref={(mount) => { this.mount = mount }} />
+      <div style={{ width: '400px', height: '800px' }} ref={(mount) => { this.mount = mount }} />
     )
   }
 }

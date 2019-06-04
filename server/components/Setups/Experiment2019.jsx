@@ -24,7 +24,7 @@ class Experiment2019 extends React.Component {
         <Typography variant="display1" gutterBottom>
           Set Up a Session    
         </Typography>
-        <Dropdown text="Experiment" id="exp" value={this.props.exp} select1="Expirment A" select2 = "Expirment B" select3 = "Expirment C" />
+        <Dropdown text="Experiment" id="exp" value={this.props.exp} select1="Experiment A" select2 = "Experiment B" select3 = "Experiment C" />
         <SetButton text="Set" />
       </div>
     )
