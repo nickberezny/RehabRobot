@@ -766,7 +766,7 @@ void *server(void* d)
 			if(temp_counter%20 == 0) //refresh UI every _ seconds / 500 = every 0.5 seconds
 			{
 				imp_serve = &((struct impStruct*)d)[i];
-				sprintf(sendBuff,"%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", imp_serve->xk, imp_serve->xdes,imp_serve->vk,imp_serve->vdes,imp_serve->x_ball, &x_end);
+				sprintf(sendBuff,"%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", imp_serve->xk, imp_serve->xdes,imp_serve->vk,imp_serve->vdes,imp_serve->x_ball, x_end);
 				send(connfd, sendBuff, strlen(sendBuff), 0);
 			}
 			
