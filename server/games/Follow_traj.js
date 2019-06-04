@@ -106,8 +106,9 @@ class Follow_traj extends Component {
 
   animate() {
 
-    this.desPos.position.y = 0.7*this.props.xdes - 140.0
-    this.plate.position.y = 0.7*this.props.x - 140.0
+    this.factor = 280.0 / this.props.x_end
+    this.desPos.position.y = this.factor*this.props.xdes - 140.0
+    this.plate.position.y = this.factor*this.props.x - 140.0
 
     console.log(this.plate.position.y)
 
@@ -139,7 +140,8 @@ function mapStateToProps(state) {
   //map state variables to the component's state 
   return {
     x: state.x,
-    xdes: state.xdes
+    xdes: state.xdes,
+    x_end: state.x_end,
   }
 }
 
