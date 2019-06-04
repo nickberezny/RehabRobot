@@ -504,6 +504,7 @@ int main(int argc, char* argv[]) {
 
     printf("%f\n", aValues[3]);
     curr_pos = 0.0;
+    home_decrease = 0.0;
 
     while(imp[9].LSB[0] == 0)
     {
@@ -762,7 +763,7 @@ void *server(void* d)
 		{
 			pthread_mutex_lock(&lock[i]);
 			//if(DEBUG & i == 0) printf("Thread 2 (server) Executing ...\n");
-			if(temp_counter%100 == 0) //refresh UI every _ seconds / 500 = every 0.5 seconds
+			if(temp_counter%20 == 0) //refresh UI every _ seconds / 500 = every 0.5 seconds
 			{
 				imp_serve = &((struct impStruct*)d)[i];
 				sprintf(sendBuff,"%.2f,%.2f,%.2f,%.2f,%.2f", imp_serve->xk, imp_serve->xdes,imp_serve->vk,imp_serve->vdes,imp_serve->x_ball);
