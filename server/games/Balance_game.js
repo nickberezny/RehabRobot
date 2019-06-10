@@ -46,7 +46,7 @@ class Balance_game extends Component {
     scene.add(ground)
 
     var character = new THREE.Mesh(new THREE.CircleBufferGeometry( 25, 32 ), characterMaterial );
-    character.position.set(39,25,0)
+    character.position.set(0,25,0)
     scene.add(character)
 
     var ball = new THREE.Mesh(new THREE.CircleBufferGeometry( 10, 32 ), ballMaterial );
@@ -100,6 +100,8 @@ class Balance_game extends Component {
     this.v_verticle = 0;
     this.ball = ball
 
+    this.start_game = 0;
+
     this.mount.appendChild(this.renderer.domElement)
     this.start()
   }
@@ -121,7 +123,21 @@ class Balance_game extends Component {
 
   animate() {
 
-    if(Math.abs(this.character.position.x)>40)
+
+    if(Math.abs(this.character.position.x)<20 && this.start_game == 1) 
+      {
+        this.start_game = 2
+        console.log("Game start 2")
+      }
+
+    if(this.props.xdes != 0 && this.start_game == 0)
+      {
+        this.start_game = 1
+        console.log("Game start 1")
+        console.log(this.props.xdes)
+      }
+      
+    if(Math.abs(this.character.position.x)>40 && this.start_game == 2)
     {
       //ball should fall, game over
       this.character.position.x += this.v_horizontal //player continues to move horizontally 
@@ -134,7 +150,7 @@ class Balance_game extends Component {
     {
       //ball has not fallen, game still on
       this.x_prev = this.character.position.x
-      //this.character.position.x = this.props.x - this.props.xdes
+      this.character.position.x = this.props.x - this.props.xdes
       this.ball.position.x = this.props.x_ball - this.props.xdes
       this.v_horizontal = (this.character.x - this.x_prev)
     }
