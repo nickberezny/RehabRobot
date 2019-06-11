@@ -2197,7 +2197,9 @@ function (_React$Component) {
           case 1:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               style: {
-                display: 'inline-flex'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_game__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
             break;
@@ -2215,7 +2217,7 @@ function (_React$Component) {
               style: {
                 display: 'inline-flex'
               }
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_game__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
             break;
 
           case 4:
@@ -3448,7 +3450,7 @@ function (_Component) {
       ground.position.set(0, -175, 0);
       scene.add(ground);
       var character = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["CircleBufferGeometry"](25, 32), characterMaterial);
-      character.position.set(39, 25, 0);
+      character.position.set(0, 25, 0);
       scene.add(character);
       var ball = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](new three__WEBPACK_IMPORTED_MODULE_2__["CircleBufferGeometry"](10, 32), ballMaterial);
       ball.position.set(100, 25, 0);
@@ -3495,6 +3497,7 @@ function (_Component) {
       this.v_horizontal = 0;
       this.v_verticle = 0;
       this.ball = ball;
+      this.start_game = 0;
       this.mount.appendChild(this.renderer.domElement);
       this.start();
     }
@@ -3519,7 +3522,18 @@ function (_Component) {
   }, {
     key: "animate",
     value: function animate() {
-      if (Math.abs(this.character.position.x) > 40) {
+      if (Math.abs(this.character.position.x) < 20 && this.start_game == 1) {
+        this.start_game = 2;
+        console.log("Game start 2");
+      }
+
+      if (this.props.xdes != 0 && this.start_game == 0) {
+        this.start_game = 1;
+        console.log("Game start 1");
+        console.log(this.props.xdes);
+      }
+
+      if (Math.abs(this.character.position.x) > 40 && this.start_game == 2) {
         //ball should fall, game over
         this.character.position.x += this.v_horizontal; //player continues to move horizontally 
 
@@ -3530,8 +3544,8 @@ function (_Component) {
         console.log('fall');
       } else {
         //ball has not fallen, game still on
-        this.x_prev = this.character.position.x; //this.character.position.x = this.props.x - this.props.xdes
-
+        this.x_prev = this.character.position.x;
+        this.character.position.x = this.props.x - this.props.xdes;
         this.ball.position.x = this.props.x_ball - this.props.xdes;
         this.v_horizontal = this.character.x - this.x_prev;
       }

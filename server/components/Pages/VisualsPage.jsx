@@ -32,45 +32,53 @@ class VisualsPage extends React.Component {
 	}
 
 	render() {
-
 		if(this.props.run){
 			switch(this.props.game) {
 				case 1: 
 					this.state.content = 
-						<div style={{display: 'inline-flex'}}>
-							<Follow_game />
+						<div style={{display: 'flex',
+										alignItems: 'center',
+    									justifyContent: 'center'}}>
 							<Follow_traj />
 						</div> 
 					break; 
 				case 2: 
 					this.state.content = 
-						<div style={{display: 'inline-flex'}}>
+						<div style={{display: 'flex',
+										alignItems: 'center',
+    									justifyContent: 'center'}}>
 							<Follow_vel />
 						</div>
 					break; 
 				case 3: 
 					this.state.content = 
-						<div style={{display: 'inline-flex'}}>
-							<Race_game />
+						<div style={{display: 'flex',
+										alignItems: 'center',
+    									justifyContent: 'center'}}>	<Follow_game />
 							<Follow_traj />
 						</div> 
 					break; 
 				case 4: 
 					this.state.content = 
-						<div style={{display: 'inline-flex'}}>
-							<Race_game />
+						<div style={{display: 'flex',
+										alignItems: 'center',
+    									justifyContent: 'center'}}>	<Race_game />
 							<Follow_vel />
 						</div>
 					break; 
 				case 5: 
 					this.state.content = 
-						<div style={{display: 'inline-flex'}}>
+						<div style={{display: 'flex',
+										alignItems: 'center',
+    									justifyContent: 'center'}}>
 							<Balance_game />
 						</div>
 					break; 
 				case 6:
 					this.state.content = 
-						<div style={{display: 'inline-flex'}}>
+						<div style={{display: 'flex',
+										alignItems: 'center',
+    									justifyContent: 'center'}}>
 							<Gait_game />
 						</div>
 				default: 
