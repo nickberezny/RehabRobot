@@ -48,7 +48,7 @@
 #define KMAX 0.625
 #define KMIN 0.1
 #define BMAX 0.6
-#define BMIN 0.1
+#define BMIN 0.2
 #define MMAX 10
 #define MMIN 0.05
 

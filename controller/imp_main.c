@@ -308,14 +308,14 @@ int main(int argc, char* argv[]) {
 	if(exp_number == 1)
 	{
 		game_number = 1;
-		max_count = 90000; //1.5 min = 90000
+		max_count = 30000; //1.5 min = 90000
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 
 		switch(exp_iteration++){
 
 			case 1:
-				k_gain = KMIN ;
+				k_gain = 0.0; //KMIN ;
 				b_gain = B_GAIN;
 				//game_number = 2;
 				//environment = 1;

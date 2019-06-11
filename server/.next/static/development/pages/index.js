@@ -231,10 +231,7 @@ function (_React$Component) {
 
       switch (_this.props.exp) {
         case 1:
-          if (_this.props.stage > 5) {
-            _this.props.setParam('game', 2);
-          }
-
+          //if(this.props.stage > 5) {this.props.setParam('game', 2)}
           break;
 
         case 2:
@@ -2201,13 +2198,15 @@ function (_React$Component) {
                 alignItems: 'center',
                 justifyContent: 'center'
               }
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_game__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
             break;
 
           case 2:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               style: {
-                display: 'inline-flex'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], null));
             break;
@@ -2215,23 +2214,29 @@ function (_React$Component) {
           case 3:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               style: {
-                display: 'inline-flex'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_game__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+            }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_game__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_game__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
             break;
 
           case 4:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               style: {
-                display: 'inline-flex'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+            }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Race_game__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], null));
             break;
 
           case 5:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               style: {
-                display: 'inline-flex'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Balance_game__WEBPACK_IMPORTED_MODULE_6__["default"], null));
             break;
@@ -2239,7 +2244,9 @@ function (_React$Component) {
           case 6:
             this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               style: {
-                display: 'inline-flex'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Gait_game__WEBPACK_IMPORTED_MODULE_7__["default"], null));
 
