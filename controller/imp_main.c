@@ -315,11 +315,11 @@ int main(int argc, char* argv[]) {
 		switch(exp_iteration++){
 
 			case 1:
-				k_gain = KMIN  + 0.2;
+				k_gain = KMIN ;
 				b_gain = B_GAIN;
 				//game_number = 2;
 				//environment = 1;
-				terminate_program = 1;
+				//terminate_program = 1;
 				break;
 
 			case 2:
