@@ -292,9 +292,7 @@ int main(int argc, char* argv[]) {
 
 	while(!terminate_program){
 
-   
-	
-
+  
 	gait.k_assist = K_GAIN;
 	gait.k_gravity = K_GAIN - 0.15;
 	gait.k_floor = K_GAIN + 0.3;
@@ -315,7 +313,7 @@ int main(int argc, char* argv[]) {
 		switch(exp_iteration++){
 
 			case 1:
-				k_gain = 0.0; //KMIN ;
+				k_gain = KMIN ;
 				b_gain = B_GAIN;
 				//game_number = 2;
 				//environment = 1;
@@ -332,7 +330,7 @@ int main(int argc, char* argv[]) {
 				b_gain = B_GAIN;
 				break; 
 
-			case 4:
+			case  4:
 				k_gain = KMIN + 0.3;
 				b_gain = B_GAIN;
 				break;
@@ -343,27 +341,27 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 6:
-				k_gain = 0.0;
+				k_gain = 0.00001; //TODO: implement pinv, set K = 0
 				b_gain = BMIN;
 				break;
 
 			case 7:
-				k_gain = 0.0;
+				k_gain = 0.00001; 
 				b_gain = BMIN + 0.1;
 				break;
 
 			case 8:
-				k_gain = 0.0;
+				k_gain = 0.00001; 
 				b_gain = BMIN + 0.2;
 				break;
 
 			case 9:
-				k_gain = 0.0;
+				k_gain = 0.00001; 
 				b_gain = BMIN + 0.3;
 				break;
 
 			case 10:
-				k_gain = 0.0;
+				k_gain = 0.00001; 
 				b_gain = BMIN + 0.4;
 				terminate_program = 1;
 				break;
@@ -447,6 +445,9 @@ int main(int argc, char* argv[]) {
     double B[2] = {0.0, 1.0/M_GAIN};
 
     matrix_exp(A, Ad);
+
+    printf("a to invert 1: %.2f,%.2f,%.2f,%.2f\n", A[0][0], A[0][1], A[1][0], A[1][1]);
+
     imp_calc_Bd(Ad, A, B, Bd);
 
     for(int i = 0; i < BUFFER_SIZE; i++)

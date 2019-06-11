@@ -324,6 +324,10 @@ function (_React$Component) {
 
       _this.props.setParam('run', 0);
 
+      _this.props.setParam('xdes', 0.0);
+
+      _this.props.setParam('x', 0.0);
+
       switch (_this.props.exp) {
         case 1:
           //if(this.props.stage > 5) {this.props.setParam('game', 2)}

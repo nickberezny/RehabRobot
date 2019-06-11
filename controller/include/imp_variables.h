@@ -68,6 +68,6 @@
 
 #define F_GAIN -0.005
 
-#define MAT_EXP_ITERATIONS 20 //number of iterations for matrix exp approximation
+#define MAT_EXP_ITERATIONS 15 //number of iterations for matrix exp approximation
 
 #endif 

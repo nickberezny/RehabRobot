@@ -94,7 +94,7 @@ void invert_matrix(double A[2][2], double B[2][2])
 	Invert 2x2 matrix 
 		B = A^-1
 ------------------------------------------------------------------------*/
-
+	printf("a to invert: %.2f,%.2f,%.2f,%.2f\n", A[0][0], A[0][1], A[1][0], A[1][1]);
 
 	if(A[0][0]*A[1][1] - A[0][1]*A[1][0] == 0)
 	{
@@ -122,6 +122,8 @@ void imp_calc_Bd(double Ad[2][2], double A[2][2], double B[2], double Bd[2])
 
 	double Ainv[2][2] = {0.0};
 	double temp[2][2] = {0.0};
+
+	printf("a to invert 1: %.2f,%.2f,%.2f,%.2f\n", A[0][0], A[0][1], A[1][0], A[1][1]);
 
 	invert_matrix(A, Ainv);
 
