@@ -232,22 +232,4 @@ E.~Vogiatzaki and A.~Krukowski, ``{Serious Games for Stroke Rehabilitation
   Employing Immersive User Interfaces in 3D Virtual Environment},'' {\em
   Journal of Health Informatics}, vol.~6, nov 2014.
 
-\bibitem{Adams1999}
-R.~Adams and B.~Hannaford, ``{Stable haptic interaction with virtual
-  environments},'' {\em IEEE Transactions on Robotics and Automation}, vol.~15,
-  pp.~465--474, jun 1999.
-
-\bibitem{Lewine1991}
-D.~A. Lewine, ``{POSIX Programmer's Guide},'' tech. rep., 1991.
-
-\bibitem{Obenland}
-K.~M. Obenland, ``{The Use of POSIX in Real-time Systems, Assessing its
-  Effectiveness and Performance},'' tech. rep.
-
-\bibitem{SebastianSiewior2019}
-{Sebastian Siewior}, ``{Real-Time Linux Wiki},'' 2019.
-
-\bibitem{TheGTKTeam2019}
-{The GTK Team}, ``{The GTK Project},'' 2019.
-
 \end{thebibliography}
