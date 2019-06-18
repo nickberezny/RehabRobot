@@ -63,28 +63,32 @@ class WindowContent extends React.Component {
 
 		switch(this.props.exp){
 			case 1:
-				//if(this.props.stage > 5) {this.props.setParam('game', 2)}
+				//assist/resist ranges (exp 1)
+				if(this.props.stage > 5) {this.props.setParam('game', 2)}
 				break;
 			case 2:
-				if(this.props.stage > 1) {this.props.setParam('game', 2)}
-				if(this.props.stage > 2) {this.props.setParam('game', 1)}
-				break;
-			case 3:
-				
+				//games vs no games (exp 2)
 				switch(this.props.stage){
 					case 1:
-						this.props.setParam('game', 3)
+						this.props.setParam('game', 1)
 						break;
 					case 2:
-						this.props.setParam('game', 4)
+						this.props.setParam('game', 2)
 						break;
 					case 3:
-						this.props.setParam('game', 5)
+						this.props.setParam('game', 3)
 						break;
 					case 4:
-						this.props.setParam('game', 6)
+						this.props.setParam('game', 4)
+						break;
+					case 5:
+						this.props.setParam('game', 5)
 						break;
 				}
+			case 3:
+				//practice run
+				//this.props.setParam('game', this.props.game + 2)
+				break;
 			break;
 		}
 	}
@@ -140,6 +144,7 @@ function mapStateToProps(state) {
  		user: state.user ,
  		stage: state.stage,
  		exp: state.exp,
+ 		game: state.game,
  	}
 }
 

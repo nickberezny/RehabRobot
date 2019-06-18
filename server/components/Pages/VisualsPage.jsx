@@ -55,7 +55,6 @@ class VisualsPage extends React.Component {
 						<div style={{display: 'flex',
 										alignItems: 'center',
     									justifyContent: 'center'}}>	<Follow_game />
-							<Follow_game />
 							<Follow_traj />
 						</div> 
 					break; 
@@ -64,7 +63,6 @@ class VisualsPage extends React.Component {
 						<div style={{display: 'flex',
 										alignItems: 'center',
     									justifyContent: 'center'}}>	<Race_game />
-							<Race_game />
 							<Follow_vel />
 						</div>
 					break; 

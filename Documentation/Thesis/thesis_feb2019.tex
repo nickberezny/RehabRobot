@@ -287,7 +287,13 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 
 	\section{Design Iterations}
 	
-	The following section lists various fundamental design decisions made and their justification.
+	This sections lists the early design decisions and iterations, along with the justification. The goal was to design a simple lower-limb rehabilitation robot targeting bed-bound stroke patients. There were three significant design decisions to be made:
+	
+	\begin{enumerate}
+		\item The number of degrees of freedom (DOF) in the robot. The final decision was to use one linear DOF.
+		\item The robots placement within the room (on the bed v.s. beside the bed). The final design sits on the bed.
+		\item The type of linear actuator to use. Options included pneumatics, ball screws, and belt drives. 
+	\end{enumerate}
 	
 	
 		\subsection{Degrees of Freedom}
@@ -297,21 +303,58 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 				
 		
 		\subsection{Placement Relative to Bed}
-		\subsection{Belt Actuator v.s. Ballscrew}
+		
+		%%include sketch 
+		
+		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig...). The device could sit on the bed, under the patient's leg (see Fig...), similar to a passive range of motion machine (Fig...). Each configurations has pros and cons:
+		
+	\begin{table}[]
+	\centering
+	\caption{Structural Configuration }	
+	\begin{tabular}{l|l|l}
+		\hline
+		& \textbf{On-Bed} & \textbf{Beside-Bed}  \\ \hline
+		\textbf{Pros} & Takes less space in room  & Easy to set up  \\ 
+		 & Better support of patient's leg  & Easier to extend DOF's \\ \hline
+		 \textbf{Cons} & Harder to set up  & Requires room beside bed \\ 
+		 & May obstruct patient  & Large moment on footplate \\ 
+		 & & Must move patient to edge of bed \\ \hline
+
+		\end{tabular}
+	\label{tab:structure}
+	\end{table}
+		
+
+	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator (Fig...). The length of the footplate extension can be shortened to reduce the moment, however would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possible hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
+		
+		
+		\subsection{Linear Actuator Type}
+
+	There are several ways of actuating a linear motion. This includes hydraulics \& pneumatics, ballscrews, and belt drives.
+	
+	\textbf{Hydraulics \& Pneumatics}: 
+	
+	\textbf{Ballscrew}: Ball screws offer high precision and very low backlash. However, the rehabilitation needs to move quickly, and so the ballscrew would require a very large pitch, or the motor would need to powerful enough to supply high torque at high speed. Cost restraints therefore make using a ballscrew impractical. 
+	
+	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. ...
+
 
 	\section{Overview}
+	
+	The final design consists of one linear degree of freedom, actuated by a belt drive, which sits on the bed under the patient's leg. The footplate has heel support and a Velcro strap to keep the foot in place, and is height adjustable to accommodate a variety of leg sizes. There is also an adjustable end stop to limit the length of the stroke, which can be customized to each individual in order to prevent leg over-extension. Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footplate, and actuator. Figure ... shows the device as of July 2019, with the adjustable end stop. 
 
-	\begin{figure*}[t] 
+	\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=0.75\linewidth]{Robot_labeled}
 		\caption{Admittance Verification with Interaction}
-		\label{fig:VerInt}
+		\label{fig:cad}
 	\end{figure*}
+	
 	
 	\section{Structural Design}
 
 	\section{Hardware}
-		\subsection{Actuator}
+		\subsection{Actuator}		
 		
 	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive. The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354). The gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090). The coupling is an Aluminium Flexible Shaft Coupling with polyurethance spider from McMaster-Carr. The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. The motor is mounted to the belt drive using custom machined aluminium mounts. 
 	
@@ -365,10 +408,17 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 		
 	\section{Electronics and Power}
 	
-	Custom electronics were needed in order to power and operate the sensors, and send command signals to the motor. As such, a printed circuit board (PCB) was created. It includes voltage regulator's to down-step? the voltage from the 48v power supply, routing to cleanly connect the DAQ with the sensors, and several integrated circuits (IC's) to perform signal processing. 
+	Custom electronics were needed in order to power and operate the sensors, and send command signals to the motor. At first this was achieved using a protoboard (see Fig. ). Wiring and space restrictions became a problem and motivated the a redesign using a printed circuit board (PCB), along with a 3D printed case to enclose the electronics. 
+	The PCB has four functions: supply power to the sensors, route signals to and from the DAQ, process or filter signals as necessary, and implement basic safety precautions. 
+	\begin{itemize}
+	\item \textbf{Power Distribution}: The entire device should run off of a single power supply so that only one wall outlet needs to be used. A 48V supply was chosen, since voltage is required by the motor. The sensors require 24V (Load Cell), and 5V (the IR sensor), and 10V is required to send commands to the motor controller. Therefore the PCB has three step-down voltage regulators at these three levels.
+	\item \textbf{Signal Routing}: To streamline the wiring, the PCB takes in three main wires: a DB9 serial connection from the sensors on the footplate, a DB9 serial connection from  the power supply and motor controller, and a DB37 serial connection from the DAQ. These cables are connected to the PCB case and routed to the correct locations.
+	\item \textbf{Signal Processing}: There are a few processing steps taken on the PCB. An adjustable first order low pass filter is used to clean noise from the force measurements. The motor commands from the DAQ are also processed. The DAQ can output 0-5V from the analog pin, however the motor controller acceptc commands from -10 to 10V. The DAQ commands are amplified by 4 and shifted down by 10V using an Op-Amp, such that the 0-5V output can be mapped to the +/- 10V input. 
+	\item \textbf{Safety}: The PCB implements four safety checks. First, the motor commands is checked to ensure it is within an adjustable range. This range can be changed using potentiometers. A Watchdog timer is also used to ensure the software has not stalled. Every timestep, the software send a pulse to the timer -- if a pulse is missed within a certain delay, the Watchdog timer is triggered. There is also an emergency stop button which can be pressed at any time by operator or user. Th E-stop signal, Watchdog timer and motor command limits are combined in a logical AND gate, and the resulting output is sent to the enable pin on the motor controller. Any trigger from the three safety signals will disable the motor and stop the device. 
+	\end{itemize}
 	
 	
-	
+		
 		\subsection{Components}
 		
 	\begin{table}[]
@@ -404,6 +454,10 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 \chapter{Controller and Software}
 
 	\section{Overview}
+	
+	The controller and software must allow the device to perform the required tasks as laid out in chapter ref... This includes providing assistance to the patient through the exercise, but not to the extent that the patient can become passive and allow the robot to drive the motion. The level of assistance should be adjustable so that the operator can tailor the session to the capabilities of the patient. The software must also engage the patient using virtual environments and games. These must be related to the motion of the exercise, such that the robot becomes a control input into the game, and the patient is rewarded for following the desired trajectory. Immersion within the virtual environment could also be bolstered by haptic feedback, or the physical rendering of virtual forces to the patient through the robotic device. 
+	
+	
 	\section{Impedance \& Admittance Controller}
 
 %------------------------------------------------------------------------
@@ -640,7 +694,7 @@ Linux is an operating system (OS) based on UNIX which is open source and comes i
 			
 	\section{Software Extension}
 	
-			
+			While the software was customized to this system, it is desirable that it can be re-used in future design changes to the device, such as changing the control algorithm, adding DOF's, or changing the UI. To facilitate the use of the software for future designs, the software was re-factored to a more general structure, essentially a software template. The template includes  all initialization steps for creating real-time threads, communication of the UI, and communication with the DAQ -- however the controller and data structures are empty. Instructions are included on adding ...
 	
 \chapter{Experiments}
 	\section{Safety Tests}
@@ -676,6 +730,10 @@ Linux is an operating system (OS) based on UNIX which is open source and comes i
 \chapter{Conclusion}
 	\section{Future Work}
 	
+\chapter*{Appendix I: CAD Drawings}
+\chapter*{Appendix II: PCB Diagram \& BOM}
+\chapter*{Appendix III: Hardware Datasheets}
+\chapter*{Appendix IV: Complete Data from Fieldwork at Hospital}
 	
 \bibliography{thesis}
 \bibliographystyle{ieeetr}

@@ -240,12 +240,12 @@ R.~Adams and B.~Hannaford, ``{Stable haptic interaction with virtual
 \bibitem{Lewine1991}
 D.~A. Lewine, ``{POSIX Programmer's Guide},'' tech. rep., 1991.
 
+\bibitem{SebastianSiewior2019}
+{Sebastian Siewior}, ``{Real-Time Linux Wiki},'' 2019.
+
 \bibitem{Obenland}
 K.~M. Obenland, ``{The Use of POSIX in Real-time Systems, Assessing its
   Effectiveness and Performance},'' tech. rep.
-
-\bibitem{SebastianSiewior2019}
-{Sebastian Siewior}, ``{Real-Time Linux Wiki},'' 2019.
 
 \bibitem{TheGTKTeam2019}
 {The GTK Team}, ``{The GTK Project},'' 2019.

@@ -43,6 +43,8 @@ int daqHandle;
 int listenfd = 0, connfd = 0;
 int environment = 2;
 int exp_number = 0;
+int game_number = 0;
+int game_type = 0;
 int exp_iteration = 1;
 
 int terminate_program = 0;
@@ -87,7 +89,6 @@ double fa_1 = 0.0;
 
 double k_gain = 0.0;
 double b_gain = 0.0; 
-int game_number = 0;
 int max_count = 0;
 
 double xdes_old = 0.0;
@@ -277,6 +278,15 @@ int main(int argc, char* argv[]) {
 				sscanf(matchBuffer, "%d", &exp_number);
 			    if(DEBUG) { printf("Experiment set to: %d\n", exp_number); }
 			}
+			if(exp_number == 3)
+			{
+				regcomp(&compiled, regex.game, REG_EXTENDED);
+					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
+					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
+					sscanf(matchBuffer, "%d", &exp_number);
+				    if(DEBUG) { printf("Game set to: %d\n", game_number); }
+			}
+			}
 
 			
 			break;
@@ -305,7 +315,7 @@ int main(int argc, char* argv[]) {
 	printf("%d\n", exp_number);
 	if(exp_number == 1)
 	{
-		game_number = 1;
+		game_type = 1;
 		max_count = 30000; //1.5 min = 90000
 		temp_counter = 0;
 		game_wait_sec = 5.0;
@@ -368,40 +378,101 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	else if(exp_number == 2 || exp_number == 3)
+	else if(exp_number == 2 )
 	{
 		max_count = 180000; //3 min
-		game_number = 1;
+		game_type = 1;
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 		switch(exp_iteration++)
 		{
 			case 1:
+				//assist w/ no visuals
 				k_gain = K_GAIN;
 				b_gain = B_GAIN;
-				game_number = 1;
-				game_wait_sec = 10.0; //countdown for race
+				game_type = 1;
+				game_wait_sec = 5.0; 
 				break;
 
 			case 2:
-				k_gain = K_GAIN;
+				//resist with no visuals 
+				k_gain = 0.00001;
 				b_gain = B_GAIN;
-				game_number = 1;
-				game_wait_sec = 10.0;
+				game_type = 1;
+				game_wait_sec = 5.0;
 				break;
 
 			case 3:
-				game_number = 2;
-				environment = 1;
-
+				//assist with cube
+				k_gain = K_GAIN;
+				b_gain = B_GAIN;
+				game_type = 1;
+				game_wait_sec = 10.0; //countdown for race
 				break;
 
 			case 4:
-				game_number = 2;
-				environment = 2;
+				//resist with race 
+				k_gain = 0.00001;
+				b_gain = B_GAIN;
+				game_type = 1;
+				game_wait_sec = 5.0;
+				break;
+
+			case 5: 
+				//balance game
+				game_type = 2;
+				environment = 1;
 				terminate_program = 1;
 				break;
 		}
+	else if(exp_number == 3)
+	{
+		max_count = 360000; //6 min
+		game_type = 1;
+		temp_counter = 0;
+		game_wait_sec = 5.0;
+		switch(game_number)
+		{
+			case 1:
+				//assist w/ no visuals
+				k_gain = K_GAIN;
+				b_gain = B_GAIN;
+				game_type = 1;
+				game_wait_sec = 5.0; 
+				break;
+
+			case 2:
+				//resist with no visuals 
+				k_gain = 0.00001;
+				b_gain = B_GAIN;
+				game_type = 1;
+				game_wait_sec = 5.0;
+				break;
+
+			case 3:
+				//assist with cube
+				k_gain = K_GAIN;
+				b_gain = B_GAIN;
+				game_type = 1;
+				game_wait_sec = 10.0; //countdown for race
+				break;
+
+			case 4:
+				//resist with race 
+				k_gain = 0.00001;
+				b_gain = B_GAIN;
+				game_type = 1;
+				game_wait_sec = 5.0;
+				break;
+
+			case 5: 
+				//balance game
+				game_type = 2;
+				environment = 1;
+				terminate_program = 1;
+				break;
+		}
+	}
 	}
 
 	//set default values if not connecting to UI (for testing)
@@ -664,7 +735,7 @@ void *controller(void * d)
 
 			//Controller
 
-			switch(game_number)
+			switch(game_type)
 			{
 				case 1:
 					//assistive or resistive
