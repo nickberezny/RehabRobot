@@ -208,7 +208,7 @@ Sets velocity trajectory to follow a parabola, with small velocity at the extrem
     }
     else if(imp->xdes > 0.6*(*x_end))
     {
-    	imp->vdes = (*dir) * (-imp->vmax/(0.6*(*x_end))*(imp->xdes - (*x_end)/0.6) + imp->vmax + 3.0);
+    	imp->vdes = (*dir) * (-imp->vmax/(0.4*(*x_end))*(imp->xdes - (*x_end)*0.6) + imp->vmax + 3.0);
     }
     else{
     	imp->vdes = (*dir)*imp->vmax;
