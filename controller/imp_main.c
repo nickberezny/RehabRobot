@@ -93,6 +93,7 @@ int max_count = 0;
 
 double xdes_old = 0.0;
 double x_end = 0.0;
+double v_max = 0.0;
 
 double home_decrease = 0.0;
 
@@ -319,6 +320,7 @@ int main(int argc, char* argv[]) {
 		max_count = 30000; //1.5 min = 90000
 		temp_counter = 0;
 		game_wait_sec = 5.0;
+		v_max = V_MAX; 
 
 		switch(exp_iteration++){
 
@@ -383,6 +385,8 @@ int main(int argc, char* argv[]) {
 		game_type = 1;
 		temp_counter = 0;
 		game_wait_sec = 5.0;
+		v_max = V_MAX;
+
 		switch(exp_iteration++)
 		{
 			case 1:
@@ -431,6 +435,8 @@ int main(int argc, char* argv[]) {
 		game_type = 1;
 		temp_counter = 0;
 		game_wait_sec = 5.0;
+		v_max = V_MAX;
+		
 		switch(game_number)
 		{
 			case 1:
@@ -491,7 +497,7 @@ int main(int argc, char* argv[]) {
 		imp[i].vdes = 0.0;
 		imp[i].fdes = 0.0;
 		imp[i].fp = imp[0].fp;
-		imp[i].vmax = V_MAX;
+		
 		imp[i].F_Gain = F_GAIN;
 		imp[i].xa = 0.0;
 		imp[i].T = STEP_NSEC/NSEC_IN_SEC;
