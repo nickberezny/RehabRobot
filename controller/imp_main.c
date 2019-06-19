@@ -212,11 +212,12 @@ int main(int argc, char* argv[]) {
 
 	double freq = NSEC_IN_SEC / STEP_NSEC / 1000.0;
 	char freq_buff[1000];
-	fprintf (imp[0].fp, "Subject ID: %d\n", subject_id); 
+	
 
 	sprintf(freq_buff, "Controller Frequency: %.2f kHz", freq);
 
     imp[0].fp = fopen (folder,"w");
+    fprintf (imp[0].fp, "Subject ID: %d\n", subject_id); 
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
     fprintf (imp[0].fp, "%s\n", freq_buff); 
     fprintf (imp[0].fp, "Time(s), Time(ns), x, xa, v, va, v_unfilt, f, f_unfilt, xdes, vdes, cmd, LSB, LSF\n"); //print header
@@ -321,7 +322,7 @@ int main(int argc, char* argv[]) {
 	if(exp_number == 1)
 	{
 		game_type = 1;
-		max_count = 30000; //1.5 min = 90000
+		max_count = 60000; //1.5 min = 90000
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 		v_max = V_MAX; 
@@ -501,7 +502,7 @@ int main(int argc, char* argv[]) {
 		imp[i].vdes = 0.0;
 		imp[i].fdes = 0.0;
 		imp[i].fp = imp[0].fp;
-		
+		imp[i].vmax = v_max;
 		imp[i].F_Gain = F_GAIN;
 		imp[i].xa = 0.0;
 		imp[i].T = STEP_NSEC/NSEC_IN_SEC;
@@ -611,8 +612,27 @@ int main(int argc, char* argv[]) {
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 
+
 /**********************************************************************
-					   	Calibrate Force Sensor (get offset)
+					   	Wait for RUN command from UI
+***********************************************************************/
+
+    while(1)
+	{
+		
+		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R')
+		{
+			//recieved settings 
+			if(DEBUG) printf("recieved data: %s\n", recvBuff);
+			break;
+		}
+
+		close(connfd);
+		sleep(0.01);
+	}
+
+/**********************************************************************
+				   	Calibrate Force Sensor (get offset)
 ***********************************************************************/
 
     if(DEBUG) printf("Calibrating Force Sensor, Keep motor enabled ...\n"); 
@@ -630,30 +650,16 @@ int main(int argc, char* argv[]) {
 
     if(DEBUG) printf("Force sensor offset: %.3f\n", ft_offset);
 
-    
 
 /**********************************************************************
 					   	Create and join threads
 ***********************************************************************/
 
-    while(1)
-	{
-		
-		if(read(connfd, recvBuff, sizeof(recvBuff)) && recvBuff[0] == 'R')
-		{
-			//recieved settings 
-			if(DEBUG) printf("recieved data: %s\n", recvBuff);
-			break;
-		}
-
-		close(connfd);
-		sleep(0.01);
-	}
 
 	sleep(game_wait_sec);
 
     if(DEBUG) printf("Joining Threads ...\n"); 
-   // sleep(10);
+   	// sleep(10);
 	//create and join threads 
 	pthread_create(&thread[0], &attr[0], controller, (void *)imp);
 	pthread_create(&thread[1], &attr[1], server, (void *)imp);
