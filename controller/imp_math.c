@@ -190,6 +190,43 @@ Sets velocity trajectory to follow a parabola, with small velocity at the extrem
     return;
 }
 
+void imp_traj2(struct impStruct * imp, double * dir, double * xdes_old, double * x_end)
+{
+
+/*------------------------------------------------------------------------
+Sets velocity trajectory to follow a parabola, with small velocity at the extremes and vmax in the middle
+------------------------------------------------------------------------*/
+
+    imp->xdes = *xdes_old;
+
+    if(imp->xdes > *x_end - 0.025) *dir = -1.0;
+    if(imp->xdes < 0.025) *dir = 1.0;
+    if(imp->xdes < 0.0) imp->xdes = 0.0;
+    
+    if(imp->xdes < imp->x_end/3.0){
+    	imp->vdes = (*dir) * (3.0*imp->vmax/imp->x_end*imp->xdes + 3.0);
+    }
+    else if(imp->xdes > 2.0*imp->x_end/3.0)
+    {
+    	imp->vdes = (*dir) * (-3.0*imp->vmax/imp->x_end*imp->xdes + imp->vmax + 3.0);
+    }
+    else{
+    	imp->vdes = (*dir)*imp->vmax;
+    }
+
+
+    imp->xdes = imp->xdes + (imp->vdes * (STEP_NSEC/NSEC_IN_SEC));
+
+    *xdes_old = imp->xdes; 
+
+    /*
+    imp->vdes = (*dir)*1.0 - (*dir)*( imp->vmax / pow((X_END/2.0),2.0) ) * imp->xk * (imp->xk - X_END);
+    imp->xdes = imp->xk + (*dir)*(imp->vdes * STEP_NSEC/NSEC_IN_SEC); 
+	*/
+
+    return;
+}
+
 
 
 /*
