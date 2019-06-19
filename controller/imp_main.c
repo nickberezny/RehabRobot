@@ -39,6 +39,8 @@
 /**********************************************************************
 					   Global Variables
 ***********************************************************************/
+int subject_id = 0;
+
 int daqHandle; 
 int listenfd = 0, connfd = 0;
 int environment = 2;
@@ -210,6 +212,8 @@ int main(int argc, char* argv[]) {
 
 	double freq = NSEC_IN_SEC / STEP_NSEC / 1000.0;
 	char freq_buff[1000];
+	fprintf (imp[0].fp, "Subject ID: %d\n", subject_id); 
+
 	sprintf(freq_buff, "Controller Frequency: %.2f kHz", freq);
 
     imp[0].fp = fopen (folder,"w");
@@ -436,7 +440,7 @@ int main(int argc, char* argv[]) {
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 		v_max = V_MAX;
-		
+
 		switch(game_number)
 		{
 			case 1:
