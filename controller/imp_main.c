@@ -754,7 +754,7 @@ void *controller(void * d)
 			{
 				case 1:
 					//assistive or resistive
-					imp_traj(imp_cont, &direction, &xdes_old, &x_end);
+					imp_traj2(imp_cont, &direction, &xdes_old, &x_end);
 					imp_Adm(imp_cont, &xa, &va);
 					break;
 
