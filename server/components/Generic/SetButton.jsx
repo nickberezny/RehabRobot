@@ -23,7 +23,7 @@ class RunButton extends React.Component {
                      '_K' + this.props.K + '_B' + this.props.B +'_M' + this.props.M + '_GAME' + this.props.game + '_END';
     */
 
-    let dataToSend = 'SET_exp' + this.props.exp + '_' + 'SET_game' + this.props.game
+    let dataToSend = 'SET_exp' + this.props.exp + '_' + '_game' + this.props.game + '_'
     console.log(dataToSend)
     this.props.socket.emit('START_ROBOT', dataToSend)
   

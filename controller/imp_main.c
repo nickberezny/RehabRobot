@@ -283,7 +283,7 @@ int main(int argc, char* argv[]) {
 				regcomp(&compiled, regex.game, REG_EXTENDED);
 					if(regexec(&compiled, recvBuff, 2, matches, 0)==0){
 					sprintf(matchBuffer, "%.*s\n", matches[1].rm_eo-matches[1].rm_so,  recvBuff+matches[1].rm_so );
-					sscanf(matchBuffer, "%d", &exp_number);
+					sscanf(matchBuffer, "%d", &game_number);
 				    if(DEBUG) { printf("Game set to: %d\n", game_number); }
 			}
 			}
@@ -312,7 +312,7 @@ int main(int argc, char* argv[]) {
 	gait.phase = 1;
 	gait.v_traj = 25.0;
 
-	printf("%d\n", exp_number);
+	//printf("%d\n", exp_number);
 	if(exp_number == 1)
 	{
 		game_type = 1;
@@ -377,7 +377,6 @@ int main(int argc, char* argv[]) {
 				break;
 		}
 	}
-
 	else if(exp_number == 2 )
 	{
 		max_count = 180000; //3 min
@@ -425,6 +424,7 @@ int main(int argc, char* argv[]) {
 				terminate_program = 1;
 				break;
 		}
+	}
 	else if(exp_number == 3)
 	{
 		max_count = 360000; //6 min
@@ -472,7 +472,6 @@ int main(int argc, char* argv[]) {
 				terminate_program = 1;
 				break;
 		}
-	}
 	}
 
 	//set default values if not connecting to UI (for testing)
