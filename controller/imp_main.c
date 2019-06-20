@@ -331,7 +331,7 @@ int main(int argc, char* argv[]) {
 
 			case 1:
 				k_gain = KMIN ;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				//game_number = 2;
 				//environment = 1;
 				//terminate_program = 1;
@@ -339,22 +339,22 @@ int main(int argc, char* argv[]) {
 
 			case 2:
 				k_gain = KMIN + 0.1;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				break;
 
 			case 3:
 				k_gain = KMIN + 0.2;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				break; 
 
 			case  4:
 				k_gain = KMIN + 0.3;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				break;
 
 			case 5:
 				k_gain = KMIN + 0.4;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				break;
 
 			case 6:
@@ -558,7 +558,31 @@ int main(int argc, char* argv[]) {
 	}
 
     sleep(2);
-    if(DEBUG) printf("Homing1 ...\n");  
+    if(DEBUG) printf("Homing ...\n");  
+
+    if(exp_iteration == 1) //only home to back if xend has not been set (first run)
+    {
+	    //home to back
+	    aValues[0] = MOTOR_ZERO; 
+	    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+	    imp[9].LSB[0] = aValues[3];
+
+	    printf("%f\n", aValues[3]);
+	    curr_pos = 0.0;
+	    home_decrease = 0.0;
+
+	    while(imp[9].LSB[0] == 0)
+	    {
+	    	curr_pos = curr_pos + ENC_TO_MM * (double)aValues[4];
+	    	aValues[0] = MOTOR_ZERO_BWD + 0.02 - home_decrease;
+	    	if(aValues[0] > MOTOR_ZERO_BWD + 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
+
+	    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+	    	imp[9].LSB[0] = aValues[3];
+	    }
+
+	    curr_pos = 0.0;
+	}
 
     //home to front
     
@@ -570,41 +594,23 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSF[0] == 0)
     {
-    	aValues[0] = MOTOR_ZERO_FWD - 0.02 + home_decrease;
+    	aValues[0] = MOTOR_ZERO_FWD - 0.05 + home_decrease;
     	if(aValues[0] > MOTOR_ZERO_FWD - 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
 
     	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     	imp[9].LSF[0] = aValues[2];
     }
 
-    curr_pos = 0.0;
-
-    //home to back
-    aValues[0] = MOTOR_ZERO; 
-    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    imp[9].LSB[0] = aValues[3];
-
-    printf("%f\n", aValues[3]);
-    curr_pos = 0.0;
-    home_decrease = 0.0;
-
-    while(imp[9].LSB[0] == 0)
+    if(exp_iteration == 1)
     {
-    	curr_pos = curr_pos + ENC_TO_MM * (double)aValues[4];
-    	aValues[0] = MOTOR_ZERO_BWD + 0.02 - home_decrease;
-    	if(aValues[0] > MOTOR_ZERO_BWD + 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
+	    //set x_end to curr_pos somehow
+	   	if(!USE_DEFINED_X_RANGE) x_end = curr_pos;
+	   	else x_end = X_END;
 
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	imp[9].LSB[0] = aValues[3];
-    }
-
-    //set x_end to curr_pos somehow
-   	if(!USE_DEFINED_X_RANGE) x_end = -curr_pos;
-   	else x_end = X_END;
-
-    if(DEBUG) printf("X MAX (mm): %.2f\n", x_end);
+	    if(DEBUG) printf("X MAX (mm): %.2f\n", x_end);
+	}
     
-    curr_pos = 0.0;
+    curr_pos = x_end;
     aValues[0] = MOTOR_ZERO; 
     //Robot should not be homed, reading the encoder will zero the position here.
     
@@ -701,7 +707,7 @@ void *controller(void * d)
 	//reset 
 	xa = 0.0; // X_DES*1000;
 	va = 0.0;
-	curr_pos = 0.0;
+	curr_pos = x_end; //track movement since homing? 
 	xdes_old = 0.0;
 
 	for(int i = 0; i < FIR_ORDER_V; i++)
