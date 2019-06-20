@@ -23,7 +23,12 @@ class Follow_traj extends Component {
 
     var points = 0;
     var maxStroke = 200;
-    var text;
+    
+    var text5;
+    var Geometry4;
+    var Geometry3;
+    var Geometry2;
+    var Geometry1;
 
     var group = new THREE.Group();
 
@@ -42,6 +47,7 @@ class Follow_traj extends Component {
 
     var geometry = new THREE.BoxGeometry( 70, 70, 70 );
 
+    var textMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
     var plateMaterial = new THREE.MeshBasicMaterial( { color: 0x86a5d6 } );
     var barMaterial = new THREE.MeshBasicMaterial( { color: 0xd1d1d1 } );
     var desMaterial = new THREE.MeshBasicMaterial( { color: 0xff7272, transparent: true, opacity: 0.7 } );
@@ -70,7 +76,79 @@ class Follow_traj extends Component {
     scene.add(desPos);
     scene.add(plate);
 
+    var loader = new THREE.FontLoader();
+    this.loader = loader;
 
+    loader.load( 'static/fonts/helvetiker_regular.typeface.json', function ( font ) {
+       var Geometry5 = new THREE.TextGeometry( '5', {
+        font: font,
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+        bevelEnabled: false,
+      } );
+
+       text5 = new THREE.Mesh( Geometry5, textMaterial );
+       text5.position.set(-20,0,0)
+       
+       //scene.add(text5)
+/*
+       Geometry4 = new THREE.TextGeometry( '4', {
+        font: font,
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+        bevelEnabled: false,
+      } );
+
+       Geometry3 = new THREE.TextGeometry( '3', {
+        font: font,
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+        bevelEnabled: false,
+      } );
+
+       Geometry2 = new THREE.TextGeometry( '2', {
+        font: font,
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+        bevelEnabled: false,
+      } );
+
+       Geometry1 = new THREE.TextGeometry( '1', {
+        font: font,
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+        bevelEnabled: false,
+      } );
+*/
+    } );
+
+
+  
+/*
+  var text4 = new THREE.Mesh( Geometry4, textMaterial );
+  text4.position.set(-20,0,0)
+
+  var text3 = new THREE.Mesh( Geometry3, textMaterial );
+  text3.position.set(-20,0,0)
+
+  var text2 = new THREE.Mesh( Geometry2, textMaterial );
+  text2.position.set(-20,0,0)
+
+  var text1 = new THREE.Mesh( Geometry1, textMaterial );
+  text1.position.set(-20,0,0)
+ */
+
+
+   /* this.text4 = text4
+    this.text3 = text3
+    this.text2 = text2
+    this.text1 = text1
+*/
     this.scene = scene
     this.camera = camera
     this.renderer = renderer
@@ -79,6 +157,11 @@ class Follow_traj extends Component {
     this.bar = bar
     this.desPos = desPos
     this.points = points
+
+    this.textMaterial = textMaterial
+    this.clock = new THREE.Clock()
+    this.timer = 0.0;
+    this.start_game = 0;
     
     this.mount.appendChild(this.renderer.domElement)
 
@@ -106,9 +189,52 @@ class Follow_traj extends Component {
 
   animate() {
 
+    if(!this.start_game)
+    {
+      this.timer += this.clock.getDelta()
+      console.log(Math.round(5.5 - this.timer))
+      var current_time = Math.round(5 - this.timer).toString()
+      var textMaterial = this.textMaterial
+      var scene = this.scene
+      var text;
+      var start_game = 0;
+
+      if(this.timer > 4.5) 
+      {
+        this.start_game = 1;
+        start_game = 1;
+      }
+
+      this.loader.load( 'static/fonts/helvetiker_regular.typeface.json', function ( font ) {
+       var Geometry5 = new THREE.TextGeometry( current_time, {
+        font: font,
+        size: 50,
+        height: 10,
+        curveSegments: 12,
+        bevelEnabled: false,
+      } );
+
+       var selectedObject = scene.getObjectByName('text');
+       scene.remove(selectedObject)
+
+       if(start_game == 0)
+       {
+         text = new THREE.Mesh( Geometry5, textMaterial );
+         text.position.set(-20,0,0)
+         text.name = 'text'
+         scene.add(text)
+        }
+
+     });
+
+      
+
+    }
+       
+    
     this.factor = 280.0 / this.props.x_end
-    console.log(this.props.x_end)
-    console.log(this.factor)
+    //console.log(this.props.x_end)
+    //console.log(this.factor)
     this.desPos.position.y = this.factor*this.props.xdes - 140.0
     this.plate.position.y = this.factor*this.props.x - 140.0
 

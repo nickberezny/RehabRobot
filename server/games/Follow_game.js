@@ -84,15 +84,18 @@ class Follow_game extends Component {
 
   animate() {
 
-    if(this.props.x > this.props.xdes - 30 && this.props.x < this.props.xdes + 30)
+    this.factor = 280.0 / this.props.x_end
+
+    if(this.factor*this.props.x > this.factor*this.props.xdes - 20 && this.factor*this.props.x < this.factor*this.props.xdes + 20)
     {
-      this.points += 1;
+      //this.points += 1;
 
       this.cube.rotation.x += 0.02;
       this.cube.rotation.y += 0.01;
       this.cube.rotation.z += 0.015;
 
     }
+
 
 /*
     this.cube.position.x = this.props.xdes 

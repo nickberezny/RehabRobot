@@ -218,7 +218,7 @@ class Race_game extends Component {
 
   if(this.begin){
     
-    this.race_speed1 = (200.0 - Math.abs(this.props.v - this.props.vdes)) / 300.0
+    this.race_speed1 = (300.0 - Math.abs(this.props.x - this.props.xdes)) / 300.0
     
     if(this.character.position.y >= 100 )
     {

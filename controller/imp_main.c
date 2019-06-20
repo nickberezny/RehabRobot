@@ -397,7 +397,7 @@ int main(int argc, char* argv[]) {
 			case 1:
 				//assist w/ no visuals
 				k_gain = K_GAIN;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
 				game_wait_sec = 5.0; 
 				break;
@@ -413,7 +413,7 @@ int main(int argc, char* argv[]) {
 			case 3:
 				//assist with cube
 				k_gain = K_GAIN;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
 				game_wait_sec = 10.0; //countdown for race
 				break;
@@ -493,7 +493,7 @@ int main(int argc, char* argv[]) {
 		imp[i].M = M_GAIN;
 		imp[i].b = B_GAIN;
 		imp[i].m = M_GAIN;
-		if(game_number == 2 && environment == 1) 
+		if(game_type == 2 && environment == 1) 
 		{
 			imp[i].xdes = BALANCE_POINT; //set balance game set point
 		}else{

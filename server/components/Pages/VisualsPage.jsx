@@ -63,7 +63,7 @@ class VisualsPage extends React.Component {
 						<div style={{display: 'flex',
 										alignItems: 'center',
     									justifyContent: 'center'}}>	<Race_game />
-							<Follow_vel />
+							<Follow_traj />
 						</div>
 					break; 
 				case 5: 
