@@ -331,10 +331,7 @@ function (_React$Component) {
       switch (_this.props.exp) {
         case 1:
           //assist/resist ranges (exp 1)
-          if (_this.props.stage > 5) {
-            _this.props.setParam('game', 2);
-          }
-
+          //if(this.props.stage > 5) {this.props.setParam('game', 2)}
           break;
 
         case 2:
