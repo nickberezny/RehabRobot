@@ -47,7 +47,7 @@ int environment = 2;
 int exp_number = 0;
 int game_number = 0;
 int game_type = 0;
-int exp_iteration = 1;
+int exp_iteration = 0;
 
 int terminate_program = 0;
 
@@ -267,8 +267,8 @@ int main(int argc, char* argv[]) {
     listen(listenfd, 100);
 
 	//Start UI Process *make sure to use npm run build before  
-	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo NODE_ENV='production' node server.js'");
-	//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+	//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo NODE_ENV='production' node server.js'");
+	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
 
 	while(1)
 	{
@@ -391,8 +391,9 @@ int main(int argc, char* argv[]) {
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 		v_max = V_MAX;
+		exp_iteration++;
 
-		switch(exp_iteration++)
+		switch(++exp_iteration)
 		{
 			case 1:
 				//assist w/ no visuals
@@ -441,13 +442,14 @@ int main(int argc, char* argv[]) {
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 		v_max = V_MAX;
+		exp_iteration++;
 
 		switch(game_number)
 		{
 			case 1:
 				//assist w/ no visuals
 				k_gain = K_GAIN;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
 				game_wait_sec = 5.0; 
 				break;
@@ -455,7 +457,7 @@ int main(int argc, char* argv[]) {
 			case 2:
 				//resist with no visuals 
 				k_gain = 0.00001;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
 				game_wait_sec = 5.0;
 				break;
@@ -463,7 +465,7 @@ int main(int argc, char* argv[]) {
 			case 3:
 				//assist with cube
 				k_gain = K_GAIN;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
 				game_wait_sec = 10.0; //countdown for race
 				break;
@@ -471,7 +473,7 @@ int main(int argc, char* argv[]) {
 			case 4:
 				//resist with race 
 				k_gain = 0.00001;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
 				game_wait_sec = 5.0;
 				break;
@@ -560,7 +562,7 @@ int main(int argc, char* argv[]) {
     sleep(2);
     if(DEBUG) printf("Homing %d ...\n", exp_iteration);  
 
-    if(exp_iteration == 2) //only home to back if xend has not been set (first run)
+    if(exp_iteration == 1) //only home to back if xend has not been set (first run)
     {
 	    //home to back
 	    aValues[0] = MOTOR_ZERO; 
@@ -602,7 +604,7 @@ int main(int argc, char* argv[]) {
     	imp[9].LSF[0] = aValues[2];
     }
 
-    if(exp_iteration == 2)
+    if(exp_iteration == 1)
     {
 	    //set x_end to curr_pos somehow
 	   	if(!USE_DEFINED_X_RANGE) x_end = curr_pos;

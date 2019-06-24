@@ -183,7 +183,7 @@ class Follow_traj extends Component {
     this.desPos.position.y = this.factor*this.props.xdes - 140.0
     this.plate.position.y = this.factor*this.props.x - 140.0
 
-    console.log(this.plate.position.y)
+    //console.log(this.plate.position.y)
 
     if(this.plate.position.y > this.desPos.position.y - 20.0 && this.plate.position.y < this.desPos.position.y + 20.0)
     {

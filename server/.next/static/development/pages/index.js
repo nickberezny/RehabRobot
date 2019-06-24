@@ -220,6 +220,8 @@ function (_React$Component) {
       _this.props.setParam('x_ball', res[4]);
 
       _this.props.setParam('x_end', res[5]);
+
+      if (_this.props.exp == 2) _this.props.setParam('game', 3);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEndStage", function (message) {
@@ -243,7 +245,7 @@ function (_React$Component) {
           //games vs no games (exp 2)
           switch (_this.props.stage) {
             case 1:
-              _this.props.setParam('game', 1);
+              _this.props.setParam('game', 3);
 
               break;
 
@@ -3848,23 +3850,16 @@ function (_Component) {
     key: "animate",
     value: function animate() {
       this.factor = 280.0 / this.props.x_end;
+      console.log('x_end' + this.props.x_end);
+      console.log('x cube' + this.factor * this.props.x);
+      console.log('xdes cube' + this.factor * this.props.xdes);
 
-      if (this.factor * this.props.x > this.factor * this.props.xdes - 20 && this.factor * this.props.x < this.factor * this.props.xdes + 20) {
+      if (this.factor * this.props.x > this.factor * this.props.xdes - 20.0 && this.factor * this.props.x < this.factor * this.props.xdes + 20.0) {
         //this.points += 1;
         this.cube.rotation.x += 0.02;
         this.cube.rotation.y += 0.01;
         this.cube.rotation.z += 0.015;
       }
-      /*
-          this.cube.position.x = this.props.xdes 
-          this.cube2.position.x = this.props.x 
-      
-          if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
-            this.points += 1;
-            console.log(this.points);
-          }
-       */
-
 
       this.renderScene();
       this.frameId = window.requestAnimationFrame(this.animate);
@@ -3898,7 +3893,8 @@ function mapStateToProps(state) {
   //map state variables to the component's state 
   return {
     x: state.x,
-    xdes: state.xdes
+    xdes: state.xdes,
+    x_end: state.x_end
   };
 }
 
@@ -4110,8 +4106,7 @@ function (_Component) {
       //console.log(this.factor)
 
       this.desPos.position.y = this.factor * this.props.xdes - 140.0;
-      this.plate.position.y = this.factor * this.props.x - 140.0;
-      console.log(this.plate.position.y);
+      this.plate.position.y = this.factor * this.props.x - 140.0; //console.log(this.plate.position.y)
 
       if (this.plate.position.y > this.desPos.position.y - 20.0 && this.plate.position.y < this.desPos.position.y + 20.0) {
         this.desPos.material.color.setHex(0x7fffa3);

@@ -86,26 +86,20 @@ class Follow_game extends Component {
 
     this.factor = 280.0 / this.props.x_end
 
-    if(this.factor*this.props.x > this.factor*this.props.xdes - 20 && this.factor*this.props.x < this.factor*this.props.xdes + 20)
+    console.log('x_end' + this.props.x_end)
+    console.log('x cube' + this.factor*this.props.x)
+    console.log('xdes cube' + this.factor*this.props.xdes )
+
+    if(this.factor*this.props.x > this.factor*this.props.xdes - 20.0 && this.factor*this.props.x < this.factor*this.props.xdes + 20.0)
     {
       //this.points += 1;
-
+      
       this.cube.rotation.x += 0.02;
       this.cube.rotation.y += 0.01;
       this.cube.rotation.z += 0.015;
 
     }
 
-
-/*
-    this.cube.position.x = this.props.xdes 
-    this.cube2.position.x = this.props.x 
-
-    if(this.cube2.position.x > this.cube.position.x - 50 && this.cube2.position.x < this.cube.position.x + 50){
-      this.points += 1;
-      console.log(this.points);
-    }
- */
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
@@ -132,7 +126,8 @@ function mapStateToProps(state) {
   //map state variables to the component's state 
   return {
     x: state.x,
-    xdes: state.xdes
+    xdes: state.xdes,
+    x_end: state.x_end,
   }
 }
 

@@ -50,6 +50,8 @@ class WindowContent extends React.Component {
 	    this.props.setParam('vdes', res[3])
 	    this.props.setParam('x_ball', res[4])
 	    this.props.setParam('x_end', res[5])
+
+	    if(this.props.exp == 2) this.props.setParam('game', 3)
 	}
 
 	handleEndStage = (message) => {
@@ -70,7 +72,7 @@ class WindowContent extends React.Component {
 				//games vs no games (exp 2)
 				switch(this.props.stage){
 					case 1:
-						this.props.setParam('game', 1)
+						this.props.setParam('game', 3)
 						break;
 					case 2:
 						this.props.setParam('game', 2)
