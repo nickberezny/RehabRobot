@@ -138,13 +138,13 @@ class Follow_traj extends Component {
       this.props.setParam('x', this.props.x_end)
       this.timer += this.clock.getDelta()
       
-      var current_time = Math.round(5.5 - this.timer).toString()
+      var current_time = Math.round(5.8 - this.timer).toString()
       var textMaterial = this.textMaterial
       var scene = this.scene
       var text;
       var start_game = 0;
 
-      if(this.timer > 4.5) 
+      if(this.timer > 4.9) 
       {
         this.start_game = 1;
         start_game = 1;

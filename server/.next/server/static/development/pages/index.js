@@ -4161,62 +4161,8 @@ function (_Component) {
           bevelEnabled: false
         });
         text5 = new three__WEBPACK_IMPORTED_MODULE_2__["Mesh"](Geometry5, textMaterial);
-        text5.position.set(-20, 0, 0); //scene.add(text5)
-
-        /*
-               Geometry4 = new THREE.TextGeometry( '4', {
-                font: font,
-                size: 50,
-                height: 10,
-                curveSegments: 12,
-                bevelEnabled: false,
-              } );
-        
-               Geometry3 = new THREE.TextGeometry( '3', {
-                font: font,
-                size: 50,
-                height: 10,
-                curveSegments: 12,
-                bevelEnabled: false,
-              } );
-        
-               Geometry2 = new THREE.TextGeometry( '2', {
-                font: font,
-                size: 50,
-                height: 10,
-                curveSegments: 12,
-                bevelEnabled: false,
-              } );
-        
-               Geometry1 = new THREE.TextGeometry( '1', {
-                font: font,
-                size: 50,
-                height: 10,
-                curveSegments: 12,
-                bevelEnabled: false,
-              } );
-        */
+        text5.position.set(-20, 0, 0);
       });
-      /*
-        var text4 = new THREE.Mesh( Geometry4, textMaterial );
-        text4.position.set(-20,0,0)
-      
-        var text3 = new THREE.Mesh( Geometry3, textMaterial );
-        text3.position.set(-20,0,0)
-      
-        var text2 = new THREE.Mesh( Geometry2, textMaterial );
-        text2.position.set(-20,0,0)
-      
-        var text1 = new THREE.Mesh( Geometry1, textMaterial );
-        text1.position.set(-20,0,0)
-       */
-
-      /* this.text4 = text4
-       this.text3 = text3
-       this.text2 = text2
-       this.text1 = text1
-      */
-
       this.scene = scene;
       this.camera = camera;
       this.renderer = renderer;
@@ -4255,15 +4201,16 @@ function (_Component) {
     key: "animate",
     value: function animate() {
       if (!this.start_game) {
+        this.props.setParam('xdes', this.props.x_end);
+        this.props.setParam('x', this.props.x_end);
         this.timer += this.clock.getDelta();
-        console.log(Math.round(5.5 - this.timer));
-        var current_time = Math.round(5 - this.timer).toString();
+        var current_time = Math.round(5.8 - this.timer).toString();
         var textMaterial = this.textMaterial;
         var scene = this.scene;
         var text;
         var start_game = 0;
 
-        if (this.timer > 4.5) {
+        if (this.timer > 4.9) {
           this.start_game = 1;
           start_game = 1;
         }
@@ -4338,8 +4285,10 @@ function mapStateToProps(state) {
   };
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {} //add importing action functions here
-)(Follow_traj));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  setParam: _src_actions__WEBPACK_IMPORTED_MODULE_3__["setParam"] //add importing action functions here
+
+})(Follow_traj));
 
 /***/ }),
 
