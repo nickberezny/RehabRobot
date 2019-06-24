@@ -220,7 +220,7 @@ int main(int argc, char* argv[]) {
     fprintf (imp[0].fp, "Subject ID: %d\n", subject_id); 
     fprintf (imp[0].fp, "%s", asctime (timeinfo) ); 
     fprintf (imp[0].fp, "%s\n", freq_buff); 
-    fprintf (imp[0].fp, "Time(s), Time(ns), x, xa, v, va, v_unfilt, f, f_unfilt, xdes, vdes, cmd, LSB, LSF\n"); //print header
+    fprintf (imp[0].fp, "Time(s), Time(ns), x, xa, v, va, v_unfilt, f, f_unfilt, Fa, xdes, vdes, cmd, LSB, LSF\n"); //print header
     //fclose(imp[0].fp);
     
     if(DEBUG) printf("Created data file %s\n", folder);
@@ -902,9 +902,9 @@ void *logger(void * d)
 			//if(DEBUG & i == 0) printf("Thread 3 (logging) Executing ...\n");
 			imp_log = &((struct impStruct*)d)[i];
 
-			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 
+			fprintf (imp_log->fp, "%d, %d, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %.3f, %d, %d \n", 
 				imp_log->start_time.tv_sec, imp_log->start_time.tv_nsec, imp_log->xk, imp_log->xa, 
-				imp_log->vk, imp_log->va, imp_log->v_unfilt, imp_log->fk, imp_log->f_unfilt, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
+				imp_log->vk, imp_log->va, imp_log->v_unfilt, imp_log->fk, imp_log->f_unfilt, imp_log->Fa, imp_log->xdes, imp_log->vdes, imp_log->cmd, imp_log->LSB[0], imp_log->LSF[0]); 
 			
 			pthread_mutex_unlock(&lock[i]);
 
