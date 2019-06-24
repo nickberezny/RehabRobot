@@ -90,65 +90,8 @@ class Follow_traj extends Component {
 
        text5 = new THREE.Mesh( Geometry5, textMaterial );
        text5.position.set(-20,0,0)
-       
-       //scene.add(text5)
-/*
-       Geometry4 = new THREE.TextGeometry( '4', {
-        font: font,
-        size: 50,
-        height: 10,
-        curveSegments: 12,
-        bevelEnabled: false,
-      } );
+    });
 
-       Geometry3 = new THREE.TextGeometry( '3', {
-        font: font,
-        size: 50,
-        height: 10,
-        curveSegments: 12,
-        bevelEnabled: false,
-      } );
-
-       Geometry2 = new THREE.TextGeometry( '2', {
-        font: font,
-        size: 50,
-        height: 10,
-        curveSegments: 12,
-        bevelEnabled: false,
-      } );
-
-       Geometry1 = new THREE.TextGeometry( '1', {
-        font: font,
-        size: 50,
-        height: 10,
-        curveSegments: 12,
-        bevelEnabled: false,
-      } );
-*/
-    } );
-
-
-  
-/*
-  var text4 = new THREE.Mesh( Geometry4, textMaterial );
-  text4.position.set(-20,0,0)
-
-  var text3 = new THREE.Mesh( Geometry3, textMaterial );
-  text3.position.set(-20,0,0)
-
-  var text2 = new THREE.Mesh( Geometry2, textMaterial );
-  text2.position.set(-20,0,0)
-
-  var text1 = new THREE.Mesh( Geometry1, textMaterial );
-  text1.position.set(-20,0,0)
- */
-
-
-   /* this.text4 = text4
-    this.text3 = text3
-    this.text2 = text2
-    this.text1 = text1
-*/
     this.scene = scene
     this.camera = camera
     this.renderer = renderer
@@ -191,9 +134,11 @@ class Follow_traj extends Component {
 
     if(!this.start_game)
     {
+      this.props.setParam('xdes', this.props.x_end)
+      this.props.setParam('x', this.props.x_end)
       this.timer += this.clock.getDelta()
-      console.log(Math.round(5.5 - this.timer))
-      var current_time = Math.round(5 - this.timer).toString()
+      
+      var current_time = Math.round(5.5 - this.timer).toString()
       var textMaterial = this.textMaterial
       var scene = this.scene
       var text;
@@ -276,5 +221,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {} //add importing action functions here
+  {setParam} //add importing action functions here
 )(Follow_traj);
