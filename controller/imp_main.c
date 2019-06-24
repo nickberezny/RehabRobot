@@ -558,9 +558,9 @@ int main(int argc, char* argv[]) {
 	}
 
     sleep(2);
-    if(DEBUG) printf("Homing ...\n");  
+    if(DEBUG) printf("Homing %d ...\n", exp_iteration);  
 
-    if(exp_iteration == 1) //only home to back if xend has not been set (first run)
+    if(exp_iteration == 2) //only home to back if xend has not been set (first run)
     {
 	    //home to back
 	    aValues[0] = MOTOR_ZERO; 
@@ -594,6 +594,7 @@ int main(int argc, char* argv[]) {
 
     while(imp[9].LSF[0] == 0)
     {
+    	curr_pos = curr_pos + ENC_TO_MM * (double)aValues[4];
     	aValues[0] = MOTOR_ZERO_FWD - 0.05 + home_decrease;
     	if(aValues[0] > MOTOR_ZERO_FWD - 0.005) home_decrease += 0.0001; //decrease home command to prevent acceleration
 
@@ -601,7 +602,7 @@ int main(int argc, char* argv[]) {
     	imp[9].LSF[0] = aValues[2];
     }
 
-    if(exp_iteration == 1)
+    if(exp_iteration == 2)
     {
 	    //set x_end to curr_pos somehow
 	   	if(!USE_DEFINED_X_RANGE) x_end = curr_pos;
@@ -610,8 +611,17 @@ int main(int argc, char* argv[]) {
 	    if(DEBUG) printf("X MAX (mm): %.2f\n", x_end);
 	}
     
-    curr_pos = x_end;
     aValues[0] = MOTOR_ZERO; 
+
+    for(int i = 0; i < BUFFER_SIZE; i++)
+	{
+		if(game_type == 2 && environment == 1) 
+		{
+			imp[i].xdes = BALANCE_POINT; //set balance game set point
+		}else{
+			imp[i].xdes = x_end;
+		}
+	}
     //Robot should not be homed, reading the encoder will zero the position here.
     
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
@@ -705,10 +715,10 @@ void *controller(void * d)
 	pthread_mutex_lock(&lock[0]);
 
 	//reset 
-	xa = 0.0; // X_DES*1000;
+	xa = x_end; // X_DES*1000;
 	va = 0.0;
 	curr_pos = x_end; //track movement since homing? 
-	xdes_old = 0.0;
+	xdes_old = x_end;
 
 	for(int i = 0; i < FIR_ORDER_V; i++)
 	{
@@ -780,6 +790,7 @@ void *controller(void * d)
 			//Safety Checks
 			//TODO : check direction of command
 			//TODO : check IR
+			if(imp_cont->cmd != imp_cont->cmd) imp_cont->cmd = 0; //check if command is nan
 			if(imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = MAX_COMMAND;
 			if((-1)*imp_cont->cmd > MAX_COMMAND) imp_cont->cmd = (-1)*MAX_COMMAND;
 			if(imp_cont->cmd > 0) imp_cont->cmd = MOTOR_ZERO_FWD - imp_cont->cmd;
