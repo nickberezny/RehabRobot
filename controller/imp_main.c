@@ -396,35 +396,31 @@ int main(int argc, char* argv[]) {
 		switch(++exp_iteration)
 		{
 			case 1:
-				//assist w/ no visuals
+				//cube w/ assist
 				k_gain = K_GAIN;
 				b_gain = BMIN;
 				game_type = 1;
-				game_wait_sec = 5.0; 
 				break;
 
 			case 2:
-				//resist with no visuals 
+				//cube w/ no assist
 				k_gain = 0.00001;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
-				game_wait_sec = 5.0;
 				break;
 
 			case 3:
-				//assist with cube
+				//race w/ assist
 				k_gain = K_GAIN;
 				b_gain = BMIN;
 				game_type = 1;
-				game_wait_sec = 10.0; //countdown for race
 				break;
 
 			case 4:
-				//resist with race 
+				//race w/ no assist
 				k_gain = 0.00001;
-				b_gain = B_GAIN;
+				b_gain = BMIN;
 				game_type = 1;
-				game_wait_sec = 5.0;
 				break;
 
 			case 5: 

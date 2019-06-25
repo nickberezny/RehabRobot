@@ -12,7 +12,7 @@ class Race_Instruction extends React.Component {
 		return (
 
 			<div>
-				Race
+				Follow the desired trajectory. The closer you follow, the faster your player will move around the track.
 			</div>
 
 		)

@@ -12,8 +12,7 @@ class Balance_Instruction extends React.Component {
 		return (
 
 			<div>
-				Move at the desired velocity as closely as possible. The display bar will rise if you are moving too fast, a
-				and will lower if you are going too slow.
+				Keep your player (BLUE) on the column. Disturbances will be launched from the left or right (ORANGE). Push the diturbances out of the arena by applying force. 
 			</div>
 
 		)
