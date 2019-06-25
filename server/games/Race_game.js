@@ -26,7 +26,7 @@ class Race_game extends Component {
 
     var race_speed1 = 0.5
     var race_speed2 = 0.55
-    var race_speed3 = 0.48
+    var race_speed3 = 0.52
 
     var prev_x;
     var prev_time;
