@@ -22,6 +22,9 @@ class WindowContent extends React.Component {
 
 	    super(props);
 
+	    this.handleMessage = this.handleMessage.bind(this);
+	    this.handleEndStage = this.handleEndStage.bind(this);
+
 	    this.state = { 
 	    	content: null,
 	    	style: null,
@@ -51,7 +54,6 @@ class WindowContent extends React.Component {
 	    this.props.setParam('x_ball', res[4])
 	    this.props.setParam('x_end', res[5])
 
-	    if(this.props.exp == 2) this.props.setParam('game', 3)
 	}
 
 	handleEndStage = (message) => {
@@ -87,6 +89,7 @@ class WindowContent extends React.Component {
 						this.props.setParam('game', 5)
 						break;
 				}
+
 			case 3:
 				//practice run
 				//this.props.setParam('game', this.props.game + 2)

@@ -327,7 +327,7 @@ int main(int argc, char* argv[]) {
 		game_wait_sec = 5.0;
 		v_max = V_MAX; 
 
-		switch(exp_iteration++){
+		switch(++exp_iteration){
 
 			case 1:
 				k_gain = KMIN ;
@@ -386,12 +386,12 @@ int main(int argc, char* argv[]) {
 	}
 	else if(exp_number == 2 )
 	{
-		max_count = 180000; //3 min
+		max_count = 10000; //3 min
 		game_type = 1;
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 		v_max = V_MAX;
-		exp_iteration++;
+		//exp_iteration++;
 
 		switch(++exp_iteration)
 		{
@@ -411,6 +411,7 @@ int main(int argc, char* argv[]) {
 
 			case 3:
 				//race w/ assist
+				max_count = 180000;
 				k_gain = K_GAIN;
 				b_gain = BMIN;
 				game_type = 1;
@@ -418,6 +419,7 @@ int main(int argc, char* argv[]) {
 
 			case 4:
 				//race w/ no assist
+				max_count = 180000;
 				k_gain = 0.00001;
 				b_gain = BMIN;
 				game_type = 1;
@@ -425,6 +427,7 @@ int main(int argc, char* argv[]) {
 
 			case 5: 
 				//balance game
+				max_count = 180000;
 				game_type = 2;
 				environment = 1;
 				terminate_program = 1;
@@ -438,7 +441,7 @@ int main(int argc, char* argv[]) {
 		temp_counter = 0;
 		game_wait_sec = 5.0;
 		v_max = V_MAX;
-		exp_iteration++;
+		++exp_iteration;
 
 		switch(game_number)
 		{

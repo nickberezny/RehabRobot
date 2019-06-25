@@ -315,8 +315,6 @@ function (_React$Component) {
       _this.props.setParam('x_ball', res[4]);
 
       _this.props.setParam('x_end', res[5]);
-
-      if (_this.props.exp == 2) _this.props.setParam('game', 3);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEndStage", function (message) {
@@ -345,12 +343,12 @@ function (_React$Component) {
               break;
 
             case 2:
-              _this.props.setParam('game', 2);
+              _this.props.setParam('game', 3);
 
               break;
 
             case 3:
-              _this.props.setParam('game', 3);
+              _this.props.setParam('game', 4);
 
               break;
 
@@ -373,6 +371,8 @@ function (_React$Component) {
       }
     });
 
+    _this.handleMessage = _this.handleMessage.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleEndStage = _this.handleEndStage.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
       content: null,
       style: null
@@ -1548,7 +1548,7 @@ function (_React$Component) {
   _createClass(Balance_Instruction, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Move at the desired velocity as closely as possible. The display bar will rise if you are moving too fast, a and will lower if you are going too slow.");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Keep your player (BLUE) on the column. Disturbances will be launched from the left or right (ORANGE). Push the diturbances out of the arena by applying force.");
     }
   }]);
 
@@ -1800,7 +1800,7 @@ function (_React$Component) {
   _createClass(Race_Instruction, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Race");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Follow the desired trajectory. The closer you follow, the faster your player will move around the track.");
     }
   }]);
 
@@ -4991,11 +4991,11 @@ function (_Component) {
     value: function animate() {
       //wait for 10 sec before beginning 
       this.timer += this.clock.getDelta();
-      if (this.timer >= 10) this.begin = 1;
+      if (this.timer >= 5) this.begin = 1;
       console.log(this.timer);
 
       if (this.begin) {
-        this.race_speed1 = (300.0 - Math.abs(this.props.x - this.props.xdes)) / 300.0;
+        this.race_speed1 = (300.0 - Math.abs(this.props.x - this.props.xdes)) / 500.0;
 
         if (this.character.position.y >= 100) {
           this.theta1 += this.race_speed1 / 90.0;

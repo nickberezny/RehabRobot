@@ -212,13 +212,13 @@ class Race_game extends Component {
 
   //wait for 10 sec before beginning 
   this.timer += this.clock.getDelta()
-  if(this.timer >= 10) this.begin = 1 
+  if(this.timer >= 5) this.begin = 1 
   console.log(this.timer)
 
 
   if(this.begin){
     
-    this.race_speed1 = (300.0 - Math.abs(this.props.x - this.props.xdes)) / 300.0
+    this.race_speed1 = (300.0 - Math.abs(this.props.x - this.props.xdes)) / 500.0
     
     if(this.character.position.y >= 100 )
     {
