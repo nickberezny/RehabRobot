@@ -81,6 +81,7 @@ struct physics_ball {
 	double m; //mass of ball
 	double Fs; //interaction force
 	double dir; //current direction of travel 
+	double game; //is player still playing?
 };
 
 struct gait_sim {
@@ -111,7 +112,7 @@ void imp_struct_to_json(struct impStruct * imp, double k, double b, char * json,
 size_t imp_length_json(struct impStruct * imp, double k, double b);
 
 void imp_PD(struct impStruct * imp);
-void imp_Adm(struct impStruct * imp, double * xa, double * va);
+void imp_Adm(struct impStruct * imp, double * xa, double * va, double *x_end);
 void imp_Haptics(struct impStruct * imp);
 void imp_StepTime(struct timespec * start_time, struct timespec * end_time, struct timespec * step_time  );
 void imp_WaitTime(struct timespec * step_time, struct timespec * curr_time);

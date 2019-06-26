@@ -49,8 +49,12 @@ class WindowContent extends React.Component {
 	}
 
 	handleInfo = (message) => {
-		this.state.info = <div> Force offset: {this.state.info} </div>
+		var test= <div> Force offset: {message.toString()} </div>
+		this.setState({ info: test });
+		
+		//this.forceUpdate();
 	}
+	
 
 	handleMessage = (message) => {
 	    console.log('Message Recieved: ' + message);

@@ -32,11 +32,14 @@ if(TEST) {
 
   client.on('data', function(data){
 
-    var res = data.split();
+    var res = data.toString().split(",");
 
-    if(res[0] == 'INFO') {io.emit('INFO',res[1].toString());}
     if(data.toString() == 'END_STAGE') { io.emit('END_STAGE', data.toString()); }
     else if(data.toString() == 'END') { io.emit('END', data.toString()); }
+    else if(res[0] == 'INFO') {
+      io.emit('INFO',res[1].toString());
+      console.log('INFO' + res[1] + '  ' + data)
+    }
     else { io.emit('message', data.toString()) }
     //console.log(data.toString())
   });

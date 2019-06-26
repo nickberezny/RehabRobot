@@ -149,6 +149,7 @@ int main(int argc, char* argv[]) {
 	physics_ball.m = PHYSICS_M;
 	physics_ball.Fs = 0.0;
 	physics_ball.dir = 1.0;
+	physics_ball.game = 1;
 
     /**********************************************************************
 					   Initialize TCP Socket
@@ -174,6 +175,9 @@ int main(int argc, char* argv[]) {
     double value = 0;
     const char * NAME = {"SERIAL_NUMBER"};
     LJM_eReadName(daqHandle, NAME, &value);
+
+    aValues[0] = MOTOR_ZERO; 
+    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 
     if(DEBUG) printf("Connected to LabJack %s = %f\n", NAME, value);
 
@@ -267,8 +271,8 @@ int main(int argc, char* argv[]) {
     listen(listenfd, 100);
 
 	//Start UI Process *make sure to use npm run build before  
-	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo NODE_ENV='production' node server.js'");
-	//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
+	//system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo NODE_ENV='production' node server.js'");
+	system("gnome-terminal --working-directory=Documents/RehabRobot/server -e 'sudo node server.js'");
 
 	while(1)
 	{
@@ -556,7 +560,7 @@ int main(int argc, char* argv[]) {
 	}
 
     sleep(2);
-    if(DEBUG) printf("Homing...\n", );  
+    if(DEBUG) printf("Homing...\n" );  
 
     if(exp_iteration == 1) //only calibrate & home to back if xend has not been set (first run)
     {
@@ -573,7 +577,7 @@ int main(int argc, char* argv[]) {
 	    for(int i = 1; i < 20; i++)
 	    {
 	    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-	    	printf("Force: %.3f\n", ft_offset);
+	    	//printf("Force: %.3f\n", ft_offset);
 	    	ft_offset = ( (ft_offset*(double)i) + FT_GAIN*aValues[1] ) / ((double)i + 1.0);
 	    	usleep(1000); //sleep to space out measurements
 	    }
@@ -646,7 +650,7 @@ int main(int argc, char* argv[]) {
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 
-    sprintf(sendBuff,"INFO_%.2f", ft_offset);
+    sprintf(sendBuff,"INFO,%.2f", ft_offset);
 	send(connfd, sendBuff, strlen(sendBuff), 0);
 
 
@@ -775,7 +779,7 @@ void *controller(void * d)
 				case 1:
 					//assistive or resistive
 					imp_traj2(imp_cont, &direction, &xdes_old, &x_end);
-					imp_Adm(imp_cont, &xa, &va);
+					imp_Adm(imp_cont, &xa, &va, &x_end);
 					break;
 
 				case 2:

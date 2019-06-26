@@ -21,7 +21,7 @@ void imp_PD(struct impStruct * imp)
 
 
 
-void imp_Adm(struct impStruct * imp, double * xa, double * va)
+void imp_Adm(struct impStruct * imp, double * xa, double * va, double *x_end)
 {
 
 /*------------------------------------------------------------------------
@@ -35,7 +35,11 @@ void imp_Adm(struct impStruct * imp, double * xa, double * va)
     imp->cmd = imp->P*(imp->xa) + imp->D*(imp->va);*/
 
     imp->xa = imp->xdes - ( imp->Ad[0]*(imp->xdes - *xa) + imp->Ad[1]*(imp->vdes - *va) + imp->Bd[0] * (imp->fk) );
+    if(imp->xa < 0.0) imp->xa = 0.0;
+    if(imp->xa > *x_end) imp->xa = *x_end;
+
     imp->va = imp->vdes - ( imp->Ad[2]*(imp->xdes - *xa) + imp->Ad[3]*(imp->vdes - *va) + imp->Bd[1] * (imp->fk) );
+    
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(- imp->vk);
 
     *xa = imp->xa;
@@ -106,7 +110,6 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 {
    
     /*
-
         Haptic controller + coupling // For ADMITTANCE DISPLAY + IMPEDANCE ENVIRONMENT
 
         (1) calc ve(k) = (m/T ve(k-1) + F) / (m/T + b)
@@ -147,6 +150,8 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
     //PD Control
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(- imp->vk);
 
+    if(ball->in_play && abs(imp->xk - BALANCE_POINT) < POSITION_REST) ball->game = 0;
+
     //Update variables
     *xa = imp->xa;
     *va = imp->va;
@@ -161,7 +166,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_end)
 {
      
-    if(abs(imp->xk - BALANCE_POINT) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play)
+    if(abs(imp->xk - BALANCE_POINT) < POSITION_REST && abs(imp->vk) < VELOCITY_REST && !ball->in_play && ball->game)
     {
         printf("BALL IN PLAY\n");
 
@@ -200,7 +205,7 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_
         }
         else
         {
-            if(abs(ball->x_mass) > *xend + 15.0) ball->in_play = 0; //if ball has left player, delete
+            if(abs(ball->x_mass) > *x_end + 15.0) ball->in_play = 0; //if ball has left player, delete
             if(abs(ball->x_mass) < -15.0) ball->in_play = 0; //if ball has left player, delete
             ball->contact = 0;
             ball->Fs = 0.0;
