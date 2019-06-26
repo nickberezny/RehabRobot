@@ -25,11 +25,13 @@ class WindowContent extends React.Component {
 	    this.handleMessage = this.handleMessage.bind(this);
 	    this.handleEndStage = this.handleEndStage.bind(this);
 	    this.handleInfo = this.handleInfo.bind(this);
+	    this.handleHome = this.handleHome.bind(this);
 
 	    this.state = { 
 	    	content: null,
 	    	style: null,
 	    	info: null, 
+	    	home: null,
 	    };
 	}
 
@@ -37,7 +39,9 @@ class WindowContent extends React.Component {
 	    var socketio = io();
 	    socketio.on('message', this.handleMessage) 
 	    socketio.on('END_STAGE', this.handleEndStage) 
+	    socketio.on('END', this.handleEnd) 
 	    socketio.on('INFO', this.handleInfo) 
+	    socketio.on('HOME', this.handleHome) 
 	    console.log(socketio);
 	    this.props.setSocket(socketio)	 
 
@@ -49,10 +53,21 @@ class WindowContent extends React.Component {
 	}
 
 	handleInfo = (message) => {
-		var test= <div> Force offset: {message.toString()} </div>
+		var res = message.toString().split(',')
+		var test= <div> Force Offset: {res[1]}, Total Length: {res[2]} </div>
 		this.setState({ info: test });
 		
 		//this.forceUpdate();
+	}
+
+	handleHome() {
+		var test = <div>Back Home Complete</div> 
+		this.setState({ home: test });
+	}
+
+	handleEnd() {
+		var test = <div>Experiment Finished</div> 
+		this.setState({ info: test });
 	}
 	
 
@@ -66,6 +81,7 @@ class WindowContent extends React.Component {
 	    this.props.setParam('x_ball', res[4])
 	    this.props.setParam('x_end', res[5])
 	    this.state.info = null;
+	    this.state.home = null;
 
 	}
 
@@ -134,7 +150,7 @@ class WindowContent extends React.Component {
 				  if(this.props.user == 3) {this.state.content = <div style={this.state.style}> <Experiment2019 /> </div>}
 				  break;
 			case 2:
-				  this.state.content = <div style={this.state.style}> <VisualsPage /> {this.state.info} </div>
+				  this.state.content = <div style={this.state.style}> <VisualsPage /> {this.state.home} {this.state.info}  </div>
 				  break;
 			case 3:
 				this.state.content = <div style={this.state.style}> <SettingsPage /> </div>

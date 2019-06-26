@@ -36,8 +36,9 @@ if(TEST) {
 
     if(data.toString() == 'END_STAGE') { io.emit('END_STAGE', data.toString()); }
     else if(data.toString() == 'END') { io.emit('END', data.toString()); }
+    else if(data.toString() == 'HOME') { io.emit('HOME', data.toString()); }
     else if(res[0] == 'INFO') {
-      io.emit('INFO',res[1].toString());
+      io.emit('INFO',data.toString());
       console.log('INFO' + res[1] + '  ' + data)
     }
     else { io.emit('message', data.toString()) }

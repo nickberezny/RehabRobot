@@ -604,6 +604,9 @@ int main(int argc, char* argv[]) {
 	    }
 
 	    curr_pos = 0.0;
+
+	    sprintf(sendBuff,"HOME");
+		send(connfd, sendBuff, strlen(sendBuff), 0);
 	}
 
     //home to front
@@ -650,7 +653,7 @@ int main(int argc, char* argv[]) {
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 
-    sprintf(sendBuff,"INFO,%.2f", ft_offset);
+    sprintf(sendBuff,"INFO,%.2f,%.2f", ft_offset, x_end);
 	send(connfd, sendBuff, strlen(sendBuff), 0);
 
 
