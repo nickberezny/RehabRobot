@@ -556,10 +556,30 @@ int main(int argc, char* argv[]) {
 	}
 
     sleep(2);
-    if(DEBUG) printf("Homing %d ...\n", exp_iteration);  
+    if(DEBUG) printf("Homing...\n", );  
 
-    if(exp_iteration == 1) //only home to back if xend has not been set (first run)
+    if(exp_iteration == 1) //only calibrate & home to back if xend has not been set (first run)
     {
+
+    	/**********************************************************************
+						   	Calibrate Force Sensor (get offset)
+		***********************************************************************/
+
+	    if(DEBUG) printf("Calibrating Force Sensor, Keep motor enabled ...\n"); 
+
+	    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+	    ft_offset = FT_GAIN*aValues[1]; 
+
+	    for(int i = 1; i < 20; i++)
+	    {
+	    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
+	    	printf("Force: %.3f\n", ft_offset);
+	    	ft_offset = ( (ft_offset*(double)i) + FT_GAIN*aValues[1] ) / ((double)i + 1.0);
+	    	usleep(1000); //sleep to space out measurements
+	    }
+
+	    if(DEBUG) printf("Force sensor offset: %.3f\n", ft_offset);
+
 	    //home to back
 	    aValues[0] = MOTOR_ZERO; 
 	    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
@@ -626,6 +646,9 @@ int main(int argc, char* argv[]) {
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
     LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
 
+    sprintf(sendBuff,"INFO_%.2f", ft_offset);
+	send(connfd, sendBuff, strlen(sendBuff), 0);
+
 
 /**********************************************************************
 					   	Wait for RUN command from UI
@@ -645,24 +668,7 @@ int main(int argc, char* argv[]) {
 		sleep(0.01);
 	}
 
-/**********************************************************************
-				   	Calibrate Force Sensor (get offset)
-***********************************************************************/
 
-    if(DEBUG) printf("Calibrating Force Sensor, Keep motor enabled ...\n"); 
-
-    LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    ft_offset = FT_GAIN*aValues[1]; 
-
-    for(int i = 1; i < 20; i++)
-    {
-    	LJM_eNames(daqHandle, 5, aNames, aWrites, aNumValues, aValues, &errorAddress);
-    	printf("Force: %.3f\n", ft_offset);
-    	ft_offset = ( (ft_offset*(double)i) + FT_GAIN*aValues[1] ) / ((double)i + 1.0);
-    	usleep(1000); //sleep to space out measurements
-    }
-
-    if(DEBUG) printf("Force sensor offset: %.3f\n", ft_offset);
 
 
 /**********************************************************************

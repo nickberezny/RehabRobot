@@ -173,13 +173,13 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_
         {   
             //add to back of device
             ball->dir = 1;
-            ball->x_mass = -100.0;
+            ball->x_mass = -10.0;
 
         }else
         {
             //add to front of device
             ball->dir = -1;
-            ball->x_mass = *x_end;
+            ball->x_mass = *x_end + 10.0;
         } 
 
         ball->v_mass = (double) ball->dir * 40.0; 
@@ -200,7 +200,8 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_
         }
         else
         {
-            if(abs(ball->x_mass) > 300) ball->in_play = 0; //if ball has left player, delete
+            if(abs(ball->x_mass) > *xend + 15.0) ball->in_play = 0; //if ball has left player, delete
+            if(abs(ball->x_mass) < -15.0) ball->in_play = 0; //if ball has left player, delete
             ball->contact = 0;
             ball->Fs = 0.0;
         }

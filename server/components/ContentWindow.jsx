@@ -24,10 +24,12 @@ class WindowContent extends React.Component {
 
 	    this.handleMessage = this.handleMessage.bind(this);
 	    this.handleEndStage = this.handleEndStage.bind(this);
+	    this.handleInfo = this.handleInfo.bind(this);
 
 	    this.state = { 
 	    	content: null,
 	    	style: null,
+	    	info: null, 
 	    };
 	}
 
@@ -35,13 +37,19 @@ class WindowContent extends React.Component {
 	    var socketio = io();
 	    socketio.on('message', this.handleMessage) 
 	    socketio.on('END_STAGE', this.handleEndStage) 
+	    socketio.on('INFO', this.handleInfo) 
 	    console.log(socketio);
-	    this.props.setSocket(socketio)	   
+	    this.props.setSocket(socketio)	 
+
 	}
 
 	componentWillUnmount () {
 	    console.log('unmount')
 	    this.props.socket.close()
+	}
+
+	handleInfo = (message) => {
+		this.state.info = <div> Force offset: {this.state.info} </div>
 	}
 
 	handleMessage = (message) => {
@@ -53,6 +61,7 @@ class WindowContent extends React.Component {
 	    this.props.setParam('vdes', res[3])
 	    this.props.setParam('x_ball', res[4])
 	    this.props.setParam('x_end', res[5])
+	    this.state.info = null;
 
 	}
 
@@ -121,7 +130,7 @@ class WindowContent extends React.Component {
 				  if(this.props.user == 3) {this.state.content = <div style={this.state.style}> <Experiment2019 /> </div>}
 				  break;
 			case 2:
-				  this.state.content = <div style={this.state.style}> <VisualsPage /> </div>
+				  this.state.content = <div style={this.state.style}> <VisualsPage /> {this.state.info} </div>
 				  break;
 			case 3:
 				this.state.content = <div style={this.state.style}> <SettingsPage /> </div>
