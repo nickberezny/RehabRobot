@@ -150,7 +150,7 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
     //PD Control
     imp->cmd = imp->P*(imp->xa - imp->xk) + imp->D*(- imp->vk);
 
-    if(ball->in_play && abs(imp->xk - BALANCE_POINT) < POSITION_REST) ball->game = 0;
+    if(ball->in_play && abs(imp->xk - BALANCE_POINT) > POSITION_REST) ball->game = 0;
 
     //Update variables
     *xa = imp->xa;
@@ -205,8 +205,8 @@ void imp_physics(struct impStruct * imp, struct physics_ball * ball, double * x_
         }
         else
         {
-            if(abs(ball->x_mass) > *x_end + 15.0) ball->in_play = 0; //if ball has left player, delete
-            if(abs(ball->x_mass) < -15.0) ball->in_play = 0; //if ball has left player, delete
+            if(ball->x_mass > *x_end + 15.0) ball->in_play = 0; //if ball has left player, delete
+            if(ball->x_mass < -15.0) ball->in_play = 0; //if ball has left player, delete
             ball->contact = 0;
             ball->Fs = 0.0;
         }

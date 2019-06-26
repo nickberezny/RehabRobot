@@ -58,7 +58,7 @@
 #define X_DES_MIN 0.0 
 
 //TODO (for physics)
-#define POSITION_REST 20
+#define POSITION_REST 40
 #define VELOCITY_REST 20 
 #define PHYSICS_K 3.0 //TODO - set range ***********************************************
 #define PHYSICS_M 0.3 

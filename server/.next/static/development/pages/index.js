@@ -206,7 +206,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(WindowContent).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleInfo", function (message) {
-      var test = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Force offset: ", message.toString(), " ");
+      var res = message.toString().split(',');
+      var test = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Force Offset: ", res[1], ", Total Length: ", res[2], " ");
 
       _this.setState({
         info: test
@@ -230,7 +231,10 @@ function (_React$Component) {
 
       _this.props.setParam('x_end', res[5]);
 
-      _this.state.info = null;
+      _this.setState({
+        info: null,
+        home: null
+      });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEndStage", function (message) {
@@ -291,10 +295,12 @@ function (_React$Component) {
     _this.handleMessage = _this.handleMessage.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleEndStage = _this.handleEndStage.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleInfo = _this.handleInfo.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleHome = _this.handleHome.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
       content: null,
       style: null,
-      info: null
+      info: null,
+      home: null
     };
     return _this;
   }
@@ -305,7 +311,9 @@ function (_React$Component) {
       var socketio = socket_io_client__WEBPACK_IMPORTED_MODULE_10___default()();
       socketio.on('message', this.handleMessage);
       socketio.on('END_STAGE', this.handleEndStage);
+      socketio.on('END', this.handleEnd);
       socketio.on('INFO', this.handleInfo);
+      socketio.on('HOME', this.handleHome);
       console.log(socketio);
       this.props.setSocket(socketio);
     }
@@ -314,6 +322,22 @@ function (_React$Component) {
     value: function componentWillUnmount() {
       console.log('unmount');
       this.props.socket.close();
+    }
+  }, {
+    key: "handleHome",
+    value: function handleHome() {
+      var test = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Back Home Complete");
+      this.setState({
+        home: test
+      });
+    }
+  }, {
+    key: "handleEnd",
+    value: function handleEnd() {
+      var test = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Experiment Finished");
+      this.setState({
+        info: test
+      });
     }
   }, {
     key: "render",
@@ -357,7 +381,7 @@ function (_React$Component) {
         case 2:
           this.state.content = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             style: this.state.style
-          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_VisualsPage__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ", this.state.info, " ");
+          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pages_VisualsPage__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ", this.state.home, " ", this.state.info, "  ");
           break;
 
         case 3:

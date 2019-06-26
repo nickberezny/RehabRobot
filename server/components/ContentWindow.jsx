@@ -80,8 +80,7 @@ class WindowContent extends React.Component {
 	    this.props.setParam('vdes', res[3])
 	    this.props.setParam('x_ball', res[4])
 	    this.props.setParam('x_end', res[5])
-	    this.state.info = null;
-	    this.state.home = null;
+	    this.setState({ info: null, home: null });
 
 	}
 
