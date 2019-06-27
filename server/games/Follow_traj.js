@@ -63,7 +63,7 @@ class Follow_traj extends Component {
     bar.scale.set(0.75, 4.0, 1.0);
 
     desPos.position.set(0.0, 0.0, 50);
-    desPos.scale.set(1.5, 0.5, 1.0);
+    desPos.scale.set(1.5, 0.75, 1.0);
 
     var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
     spotLight1.position.set( -width/3, 200, 200 );
@@ -185,7 +185,7 @@ class Follow_traj extends Component {
 
     //console.log(this.plate.position.y)
 
-    if(this.plate.position.y > this.desPos.position.y - 20.0 && this.plate.position.y < this.desPos.position.y + 20.0)
+    if(this.plate.position.y > this.desPos.position.y - 30.0 && this.plate.position.y < this.desPos.position.y + 30.0)
     {
       this.desPos.material.color.setHex(0x7fffa3)   
     }else{

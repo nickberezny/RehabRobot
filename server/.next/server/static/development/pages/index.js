@@ -4020,7 +4020,7 @@ function (_Component) {
       console.log('x cube' + this.factor * this.props.x);
       console.log('xdes cube' + this.factor * this.props.xdes);
 
-      if (this.factor * this.props.x > this.factor * this.props.xdes - 20.0 && this.factor * this.props.x < this.factor * this.props.xdes + 20.0) {
+      if (this.factor * this.props.x > this.factor * this.props.xdes - 30.0 && this.factor * this.props.x < this.factor * this.props.xdes + 30.0) {
         //this.points += 1;
         this.cube.rotation.x += 0.02;
         this.cube.rotation.y += 0.01;
@@ -4175,7 +4175,7 @@ function (_Component) {
       bar.position.set(0.0, 0.0, -200);
       bar.scale.set(0.75, 4.0, 1.0);
       desPos.position.set(0.0, 0.0, 50);
-      desPos.scale.set(1.5, 0.5, 1.0);
+      desPos.scale.set(1.5, 0.75, 1.0);
       var spotLight1 = new three__WEBPACK_IMPORTED_MODULE_2__["SpotLight"](0xffffff, 1);
       spotLight1.position.set(-width / 3, 200, 200);
       var light = new three__WEBPACK_IMPORTED_MODULE_2__["HemisphereLight"](0xffffff, 0xffffff, 1);
@@ -4276,7 +4276,7 @@ function (_Component) {
       this.desPos.position.y = this.factor * this.props.xdes - 140.0;
       this.plate.position.y = this.factor * this.props.x - 140.0; //console.log(this.plate.position.y)
 
-      if (this.plate.position.y > this.desPos.position.y - 20.0 && this.plate.position.y < this.desPos.position.y + 20.0) {
+      if (this.plate.position.y > this.desPos.position.y - 30.0 && this.plate.position.y < this.desPos.position.y + 30.0) {
         this.desPos.material.color.setHex(0x7fffa3);
       } else {
         this.desPos.material.color.setHex(0xff7272);
@@ -5456,7 +5456,7 @@ var initState = {
   x: 0.5,
   v: 0,
   vdes: 0,
-  game: 1,
+  game: 3,
   xmax: 100.0,
   vmax: 0.0,
   k_contact: 0.0,

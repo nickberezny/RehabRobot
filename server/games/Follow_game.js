@@ -90,7 +90,7 @@ class Follow_game extends Component {
     console.log('x cube' + this.factor*this.props.x)
     console.log('xdes cube' + this.factor*this.props.xdes )
 
-    if(this.factor*this.props.x > this.factor*this.props.xdes - 20.0 && this.factor*this.props.x < this.factor*this.props.xdes + 20.0)
+    if(this.factor*this.props.x > this.factor*this.props.xdes - 30.0 && this.factor*this.props.x < this.factor*this.props.xdes + 30.0)
     {
       //this.points += 1;
       
