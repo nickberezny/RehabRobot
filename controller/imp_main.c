@@ -334,7 +334,7 @@ int main(int argc, char* argv[]) {
 		switch(++exp_iteration){
 
 			case 1:
-				k_gain = KMIN ;
+				k_gain = KMIN + 0.3;
 				b_gain = BMIN + 0.1;
 				//game_number = 2;
 				//environment = 1;
@@ -342,33 +342,33 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 2:
-				k_gain = KMIN + 0.1;
-				b_gain = BMIN+ 0.1;
+				k_gain = KMIN;
+				b_gain = BMIN + 0.1;
 				break;
 
 			case 3:
 				k_gain = KMIN + 0.2;
-				b_gain = BMIN+ 0.1;
+				b_gain = BMIN + 0.1;
 				break; 
 
 			case  4:
-				k_gain = KMIN + 0.3;
-				b_gain = BMIN+ 0.1;
+				k_gain = KMIN + 0.4;
+				b_gain = BMIN + 0.1;
 				break;
 
 			case 5:
-				k_gain = KMIN + 0.4;
-				b_gain = BMIN+ 0.1;
+				k_gain = KMIN + 0.1;
+				b_gain = BMIN + 0.1;
 				break;
 
 			case 6:
 				k_gain = 0.00001; //TODO: implement pinv, set K = 0
-				b_gain = BMIN;
+				b_gain = BMIN + 0.3;
 				break;
 
 			case 7:
 				k_gain = 0.00001; 
-				b_gain = BMIN + 0.1;
+				b_gain = BMIN;
 				break;
 
 			case 8:
@@ -378,12 +378,12 @@ int main(int argc, char* argv[]) {
 
 			case 9:
 				k_gain = 0.00001; 
-				b_gain = BMIN + 0.3;
+				b_gain = BMIN + 0.4;
 				break;
 
 			case 10:
 				k_gain = 0.00001; 
-				b_gain = BMIN + 0.4;
+				b_gain = BMIN + 0.1;
 				terminate_program = 1;
 				break;
 		}
@@ -407,27 +407,13 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 2:
-				//cube w/ no assist
-				k_gain = 0.00001;
-				b_gain = BMIN;
-				game_type = 1;
-				break;
-
-			case 3:
 				//race w/ assist
 				k_gain = K_GAIN;
 				b_gain = BMIN + 0.1;
 				game_type = 1;
 				break;
 
-			case 4:
-				//race w/ no assist
-				k_gain = 0.00001;
-				b_gain = BMIN + 0.1;
-				game_type = 1;
-				break;
-
-			case 5: 
+			case 3: 
 				//balance game
 				game_type = 2;
 				environment = 1;
@@ -437,7 +423,7 @@ int main(int argc, char* argv[]) {
 	}
 	else if(exp_number == 3)
 	{
-		max_count = 360000; //6 min
+		max_count = 180000; //6 min
 		game_type = 1;
 		temp_counter = 0;
 		game_wait_sec = 5.0;
@@ -449,33 +435,33 @@ int main(int argc, char* argv[]) {
 			case 1:
 				//assist w/ no visuals
 				k_gain = K_GAIN;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				game_type = 1;
-				game_wait_sec = 5.0; 
+				terminate_program = 1;
 				break;
 
 			case 2:
 				//resist with no visuals 
 				k_gain = 0.00001;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				game_type = 1;
-				game_wait_sec = 5.0;
+				terminate_program = 1;
 				break;
 
 			case 3:
 				//assist with cube
 				k_gain = K_GAIN;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				game_type = 1;
-				game_wait_sec = 10.0; //countdown for race
+				terminate_program = 1;
 				break;
 
 			case 4:
 				//resist with race 
 				k_gain = 0.00001;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				game_type = 1;
-				game_wait_sec = 5.0;
+				terminate_program = 1;
 				break;
 
 			case 5: 
