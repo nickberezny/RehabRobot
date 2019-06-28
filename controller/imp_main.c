@@ -39,7 +39,7 @@
 /**********************************************************************
 					   Global Variables
 ***********************************************************************/
-int subject_id = 1;
+int subject_id = 0;
 
 int daqHandle; 
 int listenfd = 0, connfd = 0;
@@ -335,7 +335,7 @@ int main(int argc, char* argv[]) {
 
 			case 1:
 				k_gain = KMIN ;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				//game_number = 2;
 				//environment = 1;
 				//terminate_program = 1;
@@ -343,22 +343,22 @@ int main(int argc, char* argv[]) {
 
 			case 2:
 				k_gain = KMIN + 0.1;
-				b_gain = BMIN;
+				b_gain = BMIN+ 0.1;
 				break;
 
 			case 3:
 				k_gain = KMIN + 0.2;
-				b_gain = BMIN;
+				b_gain = BMIN+ 0.1;
 				break; 
 
 			case  4:
 				k_gain = KMIN + 0.3;
-				b_gain = BMIN;
+				b_gain = BMIN+ 0.1;
 				break;
 
 			case 5:
 				k_gain = KMIN + 0.4;
-				b_gain = BMIN;
+				b_gain = BMIN+ 0.1;
 				break;
 
 			case 6:
@@ -402,7 +402,7 @@ int main(int argc, char* argv[]) {
 			case 1:
 				//cube w/ assist
 				k_gain = K_GAIN;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				game_type = 1;
 				break;
 
@@ -416,14 +416,14 @@ int main(int argc, char* argv[]) {
 			case 3:
 				//race w/ assist
 				k_gain = K_GAIN;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				game_type = 1;
 				break;
 
 			case 4:
 				//race w/ no assist
 				k_gain = 0.00001;
-				b_gain = BMIN;
+				b_gain = BMIN + 0.1;
 				game_type = 1;
 				break;
 
