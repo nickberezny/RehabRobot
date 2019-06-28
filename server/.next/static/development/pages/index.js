@@ -264,21 +264,11 @@ function (_React$Component) {
               break;
 
             case 2:
-              _this.props.setParam('game', 3);
+              _this.props.setParam('game', 4);
 
               break;
 
             case 3:
-              _this.props.setParam('game', 4);
-
-              break;
-
-            case 4:
-              _this.props.setParam('game', 4);
-
-              break;
-
-            case 5:
               _this.props.setParam('game', 5);
 
               break;
@@ -1396,6 +1386,7 @@ function (_React$Component) {
       var dataToSend = 'SET_exp' + this.props.exp + '_' + '_game' + this.props.game + '_';
       console.log(dataToSend);
       this.props.socket.emit('START_ROBOT', dataToSend);
+      if (this.props.exp == 2) this.props.setParam('game', 3);
     }
   }, {
     key: "render",
@@ -2358,7 +2349,7 @@ function (_React$Component) {
                 alignItems: 'center',
                 justifyContent: 'center'
               }
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_vel__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_games_Follow_traj__WEBPACK_IMPORTED_MODULE_2__["default"], null));
             break;
 
           case 3:
@@ -92704,7 +92695,7 @@ var initState = {
   x: 0.5,
   v: 0,
   vdes: 0,
-  game: 3,
+  game: 1,
   xmax: 100.0,
   vmax: 0.0,
   k_contact: 0.0,

@@ -47,7 +47,7 @@ class VisualsPage extends React.Component {
 						<div style={{display: 'flex',
 										alignItems: 'center',
     									justifyContent: 'center'}}>
-							<Follow_vel />
+							<Follow_traj />
 						</div>
 					break; 
 				case 3: 

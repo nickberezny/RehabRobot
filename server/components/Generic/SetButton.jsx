@@ -27,7 +27,7 @@ class RunButton extends React.Component {
     console.log(dataToSend)
     this.props.socket.emit('START_ROBOT', dataToSend)
 
-    if(this.props.exp == 2) this.setParam('game',3)
+    if(this.props.exp == 2) this.props.setParam('game',3)
   
   }
 
