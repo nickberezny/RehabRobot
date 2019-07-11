@@ -1,0 +1,16 @@
+%normalize 
+assist = expA(:,1:5);
+resist = expA(:,6:10);
+
+for i = 1:3
+    assist(i,:) = assist(i,:)./assist(i,1); 
+    resist(i,:) = resist(i,:)./resist(i,1); 
+end
+
+plot(assist')
+figure
+plot(resist')
+
+plot(sum(assist)./3)
+figure
+plot(sum(resist)./3)
