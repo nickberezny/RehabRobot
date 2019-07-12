@@ -134,12 +134,8 @@ class Follow_traj extends Component {
 
     if(!this.start_game)
     {
-      //this.props.setParam('xdes', this.props.x_end)
-      //this.props.setParam('x', this.props.x_end)
-
-      this.props.setParam('xdes', this.props.x_end/2.0)
-      this.props.setParam('x', this.props.x_end/1.95)
-
+      this.props.setParam('xdes', this.props.x_end)
+      this.props.setParam('x', this.props.x_end)
       this.timer += this.clock.getDelta()
       
       var current_time = Math.round(5.8 - this.timer).toString()
