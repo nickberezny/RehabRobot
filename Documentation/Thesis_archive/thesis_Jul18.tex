@@ -1,0 +1,312 @@
+\documentclass[12pt]{report}
+\author{Nicholas Berezny}
+\title{Thesis Outline}
+\usepackage{cite}
+\usepackage{fullpage}
+\usepackage{gensymb}
+\usepackage{}
+\renewcommand{\baselinestretch}{1.5} 
+
+\usepackage{amsmath}
+
+\begin{document}
+\maketitle
+\newpage
+
+\chapter{Literature Review and Preliminary Research}
+
+\section{Stroke and Stroke Rehabilitation}
+\section{Robotic Rehabilitation Literature Review}
+\section{Interviews and Shadowing}
+\section{Device Concept} 
+
+
+\section{Stroke Rehabilitation Literature}
+%------------------------------------------------------------------------
+%-stroke basics and stats
+%-rehab basics (traditional)
+%	-acute vs chronic
+%	-best practices 
+%
+%-------------------------------------------------------------------------	
+
+Stroke is a temporary blockage of blood to brain, which is commonly attributed to blod clots. The sudden loss of oxygen causes brain cell death, leading to complications in the areas of the body controlled by the effected brain regions. Complications can include hemiparesis (weakness on one side of the body), muscle spacitity, loss of motor control, loss of dexterity, etc. Consequnetly, stroke victims often require rehabilitation to recover independence and motor abilities \cite{Stroke}. Approximately 62,000 Canadians suffer from stroke every year, with over 10\% requiring in-patient rehabilitation \cite{Hebert2016}. 
+
+Guidelines stipulated in \cite{Hebert2016} express the need for prompt lower-limb rehabilitation, beginning ideally within days of the stroke. It is recommended that patients receive three hours a day of therapy, with more therapy generally leading to better outcomes. Exercises should be task-specific, meaningful, and related to activities of daily living. Giving the patient chances to repeat the exercises (under supervision) is also recommended.  The guidelines also explicitly mention both robotic devices and virtual reality training as potential tools for rehabilitation, although they should be used in addition to traditional therapy and not as replacements.  
+
+
+	\section{Rehabilitation Robotics Literature}
+	
+	Rehabilitation Robotics have become prevalent in recent decades... Robots can be broadly categorized into lower-limb and upper-limb devices. Lower-limb devices can be further subdivided into end-plate based and exoskeleton based, the former being connected to the foot and the latter being connected at multiple points along the leg. Another subdivision exists with bed-bound or reclined devices versus treadmill training (which usually also use body weight support). 
+	
+	\subsection{Robots}
+	One of the most popular lower-limb devices is the Lokomat, which is an exoskeleton based body weight supported treadmill training. The subject is suspended in a harness over a treadmill with an electromechanical orthosis on the leg providing assistance by moving the leg through the gait trajectory. Literature investigating the Lokomat is prevalent and often comes to conflicting conclusions, as is common with other rehabilitation robots. 
+	
+	\begin{itemize}
+		\item Lokomat
+		\item LOPES
+		\item Haptic Walker 
+		\item ALEX
+		\item Gait Trainer
+	\end{itemize}
+
+	
+	\subsection{Control}
+	
+	\begin{itemize}
+		\item Position Control
+		\item Impedance/Admittance Control
+		\item EMG-based Control
+		\item Adaptive Control 
+	\end{itemize}
+	\cite{Meng2015}
+	
+	The Advanced Biomechatronics and Locomotion Laboratory (ABL) has developed a lower-limb end-plate based rehabilitation robot called the Virtual Gait Rehabilitation Robot (ViGRR). It consists of a redundant 4-DOF planar robotic leg linked with a gaming display system. \cite{Chisholm2010}
+	
+	\subsection{Clinical Evidence}
+%------------------------------------------------------------------------
+%-lower vs upper limb (more upper) bots
+%-overview of more popular ones ()
+%-ViGRR
+%
+%
+%-------------------------------------------------------------------------
+
+	\section{Motivation} 
+Stroke rehabilitation best practices were outlined in the previous section. A few key recommendations highlight the potential benefits of introducing a simple-to-use robotic device into the rehabilitation arsenal. The robotic device would primarily be used to offer additional rehabilitation time to patients under the supervision of a nurse or other responsible person. The gaming aspect of the system would ensure the patient is engaged in the exercise, and also offer feedback so that the patients movements can be regulated even in the absence of a therapist. The games and visualizations could also be tailored to simulate ADL's. Therefore, a robotic device could theoretically boost outcomes by covering the following recommendations:
+\begin{enumerate}
+	\item Increased therapy time per day 
+	\item Provide task-specific therapy
+	\item Allowing patient to practice the exercises outside of regular therapy sessions at their convenience 
+	\item Using immersive technology to improve engagement 
+\end{enumerate}
+In addition to benefiting the patient, robotics could also be used as a tool by therapists to improve their tracking of patient progress. 
+
+	\section{Shadowing}
+%------------------------------------------------------------------------
+%-shadowing notes
+%
+%-------------------------------------------------------------------------
+	
+	
+	Human-centred design is the concept of giving the users of your product a key position in its design. Consulting users at multiple stages in your design process can help you avoid mistakes which may make your product unusable. With this in mind, the first step in the design of this novel rehabilitation device was to consult with several experts in the field of stroke rehabilitation. Five ? physio- and occupational therapists at the Ottawa Civic Hospital were interviewed and shadowed over the course of two days. Themes investigated with these experts included typical lower-limb rehabilitation, patient-therapist interaction, and the hospital environment. 
+	
+	\subsection{Typical Rehabilitation}
+	
+	Bed-bound lower-limb rehabilitation is one of the first therapeutic activities administered at the stroke ward, and it continues to be used even after patients are ambulatory. Bed-bound exercises tend to be simple movements, including knee flexion/extension, leg lifts, hip adduction/abduction, and ankle rolls. All exercises involve the therapist manually manipulation the patients leg, providing assistance to whatever extent the therapist deems necessary. If the patients are advanced, the therapist may choose to resist motion instead of assisting. 
+	Parameters from typical rehabilitation will help determine the requirements of the new robotic system. Therapists estimated that they exert a maximum of 10 - 15 lbs of force to the leg. The range of motion of patients varied, but many could go through the full range of the leg. The exercises were done slowly at a consistent speed. 
+	
+	\subsection{Patient Engagement} 
+	 It is important for the patient to be actively engaged in the exercise. This is accomplished through verbal encouragement, and by requiring the patient to initiate the movement. Therapists also would use physical cues to guide the patient, for example by tapping the leg if it needs adjusting. Many of the patients required verbal or physical engagement throughout the whole process. This is in part due to a phenomenon known as (), where the stroke victims has trouble focusing on the effected side of the body. Sometimes, pictures are used to engage the patient. Posters with pictures of cats and dogs were posted in front of many of the exercise machines in the therapy room. Another common practice is to switch up the exercise if the patient is showing signs of losing focus. 
+	 
+	 \subsection{Hospital Environment}
+	Space in the hospital is limited. Many rooms house four patients, and are often crowded by hospital staff, family, and equipment. The beds themselves vary in model and size, but all have some common characteristics: movable guards on the side, removable baseboard, tiltable frame controlled from a panel. There appear to only be outlets behind the beds near the floor, but this will again vary from room to room. 
+	There is also a therapy room where more advanced patients go to practice sit-to-stand, walking, stair-climbing, etc. This room is more spacious and also includes beds (albeit simpler beds that cannot be tilted and that do no have guards). 
+	 
+	 \subsection{Ideas and recommendations from the Therapists}
+	
+	\section{Fundamental Design Decisions}
+%------------------------------------------------------------------------
+%-lower limb, acute and bed bound, knee flex/ext, portable and low powered
+%
+%-------------------------------------------------------------------------
+We set out to design a simple lower-limb rehabilitation for acute, bed-bound stroke patients. We chose to design for the knee flexion-extension exercise because it is most related to sit-to-stand, which is the most important activity for bed-bound patients to recover as it allows the patient to get up and begin gait rehabilitation. The robotic configuration best suited to this exercise is a one degree of freedom linear actuator. 
+	Another important requirement is simplicity...
+
+
+
+
+
+
+
+\chapter{Device Design and Implementation}
+	\section{Actuation}
+%------------------------------------------------------------------------
+%-Targeted exercise (knee extension/flexion)
+%	-kinematics, expected forces / velocities 
+%-ball screw vs belt 
+%-belt dynamics / characterisitcs 
+%-motor selection
+%
+%-------------------------------------------------------------------------
+
+	\section{Frame}
+%------------------------------------------------------------------------
+%-On Bed vs side of bed
+%-cart based vs independent
+%-part placement
+%-safety (adjustable stop bar)
+%
+%-------------------------------------------------------------------------
+	\section{Foot and Leg Support}
+%------------------------------------------------------------------------
+%-adjustability
+%-decision to 3d print
+%-leg support  ?
+%
+%-------------------------------------------------------------------------
+	\section{Bed Interface}
+%------------------------------------------------------------------------
+%-support
+%-end of bed anchoring
+%
+%-------------------------------------------------------------------------
+	\section{Hardware}
+%------------------------------------------------------------------------
+%-sensors
+%-computer, daq ...
+%
+%-------------------------------------------------------------------------
+	\section{Power Distribution}
+%------------------------------------------------------------------------
+%-power supply vs battery 
+%-voltage converters 
+%-PCB layout
+%-------------------------------------------------------------------------
+
+\chapter{Controller and Software}
+
+	\section{Overview}
+		
+	\section{Real Time Linux}
+	
+%------------------------------------------------------------------------
+%-Explain Real time
+%	-features
+%-Explain Linux Real time
+%	-POSIX
+%-Details of robot software (threads, libraries, memory ...)
+%	-threads, memory sharing 
+%
+%-------------------------------------------------------------------------
+
+		
+	
+	\section{Impedance \& Admittance Controller}
+
+%------------------------------------------------------------------------
+%-Explain force control
+%	-choice of impedance over admittance
+%-Implementation in code
+%
+%-------------------------------------------------------------------------	
+
+When controlling a robot which is interacting with an unknown environment, force and position control online may behave unpredictable or even become unstable. Instead, the relation between force and velocity (\textit{i.e.} the impedance) ...
+
+
+Impedance control accepts a velocity and renders a force. Fundamentally, impedance control can be described by the following equation, where $F$ is the force control input, $Z$ is the desired impedance, and $V_R$ is the 'flow' variable vectors (e.g. position and velocity) :
+
+\begin{equation}
+	F = ZV_R 
+\end{equation} 
+
+It is common to characterize the desired impedance in terms of a mass, spring and damper system with parameters $m$, $b$, and $k$, respectively. Furthermore, a desired position can also be integrated into the equation by changing the reference point of the spring. 
+
+\begin{equation}
+	F = m\ddot{x} + b\dot{x} + k(x - x_{des})
+\end{equation} 
+
+Using this control law, the end effector of the robot will behave like the system above, about point $x_{des}$, when displaced by the external environment. If, for example, an operator physical moved the robot, it would respond as if it were the mass-spring-damper system, \textit{i.e.} it would apply a resistive force related to the extent to which it was displaced. 
+	This control law rests on a significant assumption -- that the robot itself has no inherent impedance between the actuator and the the end-effector. This is an idealization - there will also be some level of friction, mass, or other impeding factors in the motor, gears, links, etc. Therefore, impedance control should only be considered for robots made of low impedance components, such as belt drives and direct-drives. 
+	
+	Admittance control is essentially the inverse of impedance control, in that it accepts an external force and then renders a corresponding displacement. Fundamentally, admittance control can be described by the following equation, where $F_R$ is the force applied to the robot, $Y$ is the desired admittance, and $V$ is the 'flow' variable vectors (e.g. position and velocity) :
+	
+	\begin{equation}
+	V = YF_R 
+	\end{equation} 
+	
+	Once again, it is common to define admittance in terms of a mass-spring-damper system (\ref{eqn:adm}). Here, $x_a$ and $v_a$ are the ``simulated'' position and velocity determined by the admittance controller. Additionally, to actually render the desired position and velocity, an outer-loop PD position controller is used (\ref{eqn:PD}), with $x_a$ and $v_a$ acting as the desired position and velocity. 
+	
+	\begin{gather} \label{eqn:adm}
+	\begin{bmatrix}
+    	\dot{x}_a \\
+    	\dot{v}_a 
+    \end{bmatrix} 
+    =
+    \begin{bmatrix}
+    	0 & 1 \\
+    	\frac{k}{m} & \frac{b}{m}
+    \end{bmatrix} 
+    \begin{bmatrix}
+    	x_a \\
+    	v_a
+    \end{bmatrix}  
+    +
+    \begin{bmatrix}
+    	0 \\
+    	\frac{1}{m}
+    \end{bmatrix}
+    F_R   	
+	\end{gather}
+	
+	\begin{equation} \label{eqn:PD}
+	F = P(x - x_a) + D(v - v_a)
+	\end{equation}
+
+	Admittance control assumes that the robot has infinite impedance, or that all hardware between the actuator and the end-effector is infinitely stiff, infinitely damped, etc. This, once again, is an idealization -- and therefore admittance control should only be considered when the robot has high impedance, i.e. when using large gear reductions and rigid links. 
+	
+	Another point of consideration when choosing between impedance and admittance control is its stability when encountering different types of environments. It is convenient to model the interaction as a two-port
+	Impedance control works better when interacting with an admittance (rigid environments), whereas admittance control works better when interacting with an impedance (weak environment / free space). 
+	
+	This project targets acute stroke patients who typically do not have much leg strength and rely heavily on assistance from the therapist during therapy. Therefore, these patients can be modeled as an impedance. Furthermore, the motor used on the robot has a high gear reduction which contains substantial impedance. Both of these favour using admittance control. 
+	
+	
+
+	\section{Physics Engine \& Haptic Coupling}
+%------------------------------------------------------------------------
+%-1 DOF physics engine 
+%-strategies to create haptics 
+%	-changing imp params
+%	-virtual coupling
+%
+%-------------------------------------------------------------------------
+
+Defining the desired impedance or admittance in terms of a mass-spring-damper system is not always convenient. Ideally, one could define an arbitrary impedance or admittance function relating $F$ and $V$, giving complete control of the behaviour of the robot-environment interaction, while also ensuring stability. The dual goals of imposing a 
+	
+	A method for achieving arbitrary interaction and remaining stable is discussed in \cite{Adams1999}, using what is called a ``haptic coupling''. This effectively decouples the design on the admittance/impedance and analysis of the stability of the robot. Consider again the two-port model of the robot-environment interaction. The haptic coupling is a virtual passive system placed in between the two, which acts as a low pass filter on the variables. This limits the range of renderable impedances, and while it does alter the desired impedance to some extent, the trade off is guaranteed stability. Using the concept of the haptic coupling, a simple physics engine was designed which works in conjunction with the games and visualization. 
+	
+	In addition to decoupling stability and the design of the haptic environment, the haptic coupling also allows both impedance and admittance to be used together. For example, a robot may use admittance control due to large amounts of drive friction, but the haptic environment may need to be defined as an impedance, \textit{i.e.} using position to calculate the desired haptic force. 
+	
+	\begin{equation}
+		Z(s) = \frac{F}{v} = ms + b  
+	\end{equation}
+	\begin{equation}
+		Z(z) = \frac{mb(z-1)}{(m+bT)z - m}
+	\end{equation}
+
+	\section{Communication} 
+%------------------------------------------------------------------------
+%-sockets and websockets 
+%-logging
+%
+%-------------------------------------------------------------------------
+
+
+	\section{User Interface}
+%------------------------------------------------------------------------
+%-Layout design
+%-controls for developers / therapists
+%
+%
+%-------------------------------------------------------------------------
+	\section{Visualizations}
+%------------------------------------------------------------------------
+%-THREE.js
+%-communication with controller
+%different games / visualizations, how they relate to therapy 
+%
+%-------------------------------------------------------------------------
+	
+\chapter{Experiments}
+	\section{Functional Tests}
+	\section{Healthy Subjects}
+		
+	\section{Hospital Usability} 
+	
+\chapter{Conclusion}
+	\section{Future Work}
+	
+	
+\bibliography{thesis}
+\bibliographystyle{ieeetr}
+\end{document}

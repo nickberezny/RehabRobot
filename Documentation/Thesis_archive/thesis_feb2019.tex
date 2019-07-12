@@ -31,21 +31,8 @@ Stroke is a cerebrovascular disease which effects approximately 62,000 Canadians
 Older treatment techniques relied on compensatory measures to assist stroke patients in regaining autonomy \cite{Dobkin2004}. Using rehabilitation to restore autonomy began to be emphasized once the concept of neural plasticity became more widely accepted. Neural plasticity is the process by which new connections are formed in the central nervous system in response to experience or activities performed by the subject \cite{Warraich2010}. When a stroke patient repetitively performs motor tasks, new neural connections in the brain are formed which take on the role of the regions of the brain which were damaged. This allows the patient to re-learn tasks such as walking by going through intensive rehabilitation. 
 
 %Rehabilitation of lost abilities began to be emphasized over compensatory measures due to the discovery of neural plasticity and its role in the process of learning new tasks. The basis of this neural plasticity is the formation of new neural connection in the brain in response to a repeated movement or activity. In the case of stroke, this allows new neurons to take on the role of damaged regions in the brain, allowing the patient to effectively re-learn tasks such as walking. 
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.6\linewidth]{leg_lift}
-		\caption{Example of the leg lift exercise}
-		\label{fig:leg_lift}
-	\end{figure*}
-	
-		\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.6\linewidth]{knee_extension}
-		\caption{Example of the knee extension/flexion exercise}
-		\label{fig:knee_ext}
-	\end{figure*}
 
-Stroke rehabilitation encompasses a broad range of therapeutic activities, typically carried out by occupational- and physiotherapists. Physiotherapists (PT's) tend to focus on gross motor movements in the upper and lower limbs, while occupational therapists (OT's) focus on fine motor control, dexterity, and specific ADL's. These two goals are inextricably linked, and so both PT's and OT's form a team which works together to improve patient outcomes. The rehabilitation carried out by both OT's and PT's involves the repetition of a target movement or task. Depending on the abilities of the patient, the therapist may provide support or assistance. For example, lower-limb rehabilitation begins with simple legs movement performed in bed, such as leg lifts (Fig. \ref{fig:leg_lift}), knee flexion/extension (Fig. \ref{fig:knee_ext}), hip abductions, \textit{etc} [include pictures]. The therapist can either assist the patients leg through the movement, or allow patients to perform the movement on their own, or even provide light resistance if the patient is more advanced. Next, the patient will practice sitting upright, going from sit to stand, and  practice bearing weight and balancing while standing. Eventually the patients will be ready for more complex tasks with assistance from the therapist, including walking, heel strike, and stair climbing. The patient may advance to the point where they can walk without therapist assistance, using either parallel bars, a walker, or potentially without any assistance. The stages of lower-limb rehabilitation are summarized below:
+Stroke rehabilitation encompasses a broad range of therapeutic activities, typically carried out by occupational- and physiotherapists. Physiotherapists (PT's) tend to focus on gross motor movements in the upper and lower limbs, while occupational therapists (OT's) focus on fine motor control, dexterity, and specific ADL's. These two goals are inextricably linked, and so both PT's and OT's form a team which works together to improve patient outcomes. The rehabilitation carried out by both OT's and PT's involves the repetition of a target movement or task. Depending on the abilities of the patient, the therapist may provide support or assistance. For example, lower-limb rehabilitation begins with simple legs movement performed in bed, such as knee flexion/extension, leg lifts, hip abductions, \textit{etc} [include pictures]. The therapist can either assist the patients leg through the movement, or allow patients to perform the movement on their own, or even provide light resistance if the patient is more advanced. Next, the patient will practice sitting upright, going from sit to stand, and  practice bearing weight and balancing while standing. Eventually the patients will be ready for more complex tasks with assistance from the therapist, including walking, heel strike, and stair climbing. The patient may advance to the point where they can walk without therapist assistance, using either parallel bars, a walker, or potentially without any assistance. The stages of lower-limb rehabilitation are summarized below:
 
 \begin{enumerate}
 	\item Bed-bound exercises with assistance
@@ -296,113 +283,32 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 \end{itemize}
 
 
-\chapter{Device Design and Implementation} \label{ch2}
+\chapter{Device Design and Implementation}
 
 	\section{Design Iterations}
 	
-	This sections lists the early design decisions and iterations, along with the justification. There were three significant design decisions to be made:
+	This sections lists the early design decisions and iterations, along with the justification. The goal was to design a simple lower-limb rehabilitation robot targeting bed-bound stroke patients. There were three significant design decisions to be made:
 	
 	\begin{enumerate}
 		\item The number of degrees of freedom (DOF) in the robot. The final decision was to use one linear DOF.
-		\item The type of linear actuator to use. Options included pneumatics, ball screws, and belt drives; the final design uses a belt drive.
 		\item The robots placement within the room (on the bed v.s. beside the bed). The final design sits on the bed.
-		\item The conceptual design of a secondary leg support which would prevent the leg from rotating out of position. This was never realised, however the design is presented here for future work. It consists of a 3 DOF passive linkage which can follow the leg through the motion and provide lateral support. 
-		\item The controller can be run from either a microcontroller or a full computer. Due to the plans to increase complexity in the future, as well as the need for a user interface, a computer was chosen. 
+		\item The type of linear actuator to use. Options included pneumatics, ball screws, and belt drives. 
 	\end{enumerate}
 	
 	
 		\subsection{Degrees of Freedom}
 		
-		This project is a continuation of ViGRR, a 4 DOF planar robot. The goal is to repackage ViGRR in a smaller form more compatible with the hospital. However, we also wanted feedback from both patients and therapists at the hospital throughout the design. It was decided to build a smaller, simpler robot, which could be taken to the hospital and tested promptly. Feedback could then be used to extend the simpler robot with additional DOF's in order to achieve more complex movements.
-		
-		There were three options for a simpler robot configuration: 1 linear DOF, 1 rotary DOF, or 2-DOF. The primary motions we need to target include circular, horizontal linear (knee extensions), vertical linear (leg lifts), and more complex movements like gait trajectories. These also need to be adjustable to accommodate a variety of body sizes. A linear DOF could target knee extension or leg lifts, whereas a rotary DOF would only be able to target a weak approximation of a gait trajectory (\textit{i.e.} a circular motion more similar to pedalling a bike). A 2 DOF system could accomplish more types of motions, for example doing both leg lifts and knee extensions, or more closely approximating a gait trajectory.
-		
-		Ultimately the single rotary DOF was excluded because its movement was not relate to any of the bed-bound exercises. The 2-DOF was excluded because \textit{(a)} it was determined to be too complex for the scope of this thesis, and \textit{(b)} it was decided the final configuration of a multi-DOF device would be left to future iterations after receiving feedback from the hospital. Therefore, the final design is a single linear DOF. 
-		
-		The linear DOF could either be horizontal or vertical. ...
-		
-					
-		\subsection{Linear Actuator Type}
-
-	There are several ways of actuating a linear motion. This includes hydraulics \& pneumatics, ballscrews, and belt drives.
-	
-<<<<<<< HEAD
-	\textbf{Hydraulics \& Pneumatics}: Hydraulics and pneumatics use pressurized liquid or air to achieve linear actuation. They require more consideration than other off-the-shelf solutions, such as valves....
-=======
-	\textbf{Hydraulics \& Pneumatics}: 
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
-	
-	\textbf{Ballscrew}: Ball screws offer high precision and very low backlash. However, the rehabilitation needs to move quickly, and so the ballscrew would require a very large pitch, or the motor would need to powerful enough to supply high torque at high speed. Cost restraints therefore make using a ballscrew impractical. 
-	
-	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. Furthermore, flexibility and belt slip at high torques could actually act as worst-case safety measures.
-
-<<<<<<< HEAD
-
-	
-	\begin{table}[]
-	\centering
-	\caption{Benefits of Actuator Types (x = benefit)}	
-	\begin{tabular}{|l|c|c|c|c|}
-		\hline
-		\textbf{Type} & \textbf{Cost} & \textbf{Ease of Setup} & 		\textbf{Backdrivable} & \textbf{Precision} \\ \hline
-		Ballscrew &  &  & x & x \\ \hline
-		Belt Drive & x & x & x & \\ \hline
-		Pneumatic/Hydraulic & x &  & x & \\ \hline
-=======
-	\begin{table}[]
-	\centering
-	\caption{Actuator Type}	
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Type} & \textbf{Features / Requirements}  \\ \hline
-		Ballscrew & \textbullet \hspace{2pt} Low backlash \\ 
-				  & \textbullet \hspace{2pt} Back-drivable \\
-				  & \textbullet \hspace{2pt} Need large lead for high speed \\ \hline
-		Beltdrive & \textbullet \hspace{2pt} Elasticity -- lower precision \\ 
-				  & \textbullet \hspace{2pt}  \\
-				  & \textbullet \hspace{2pt}  \\ \hline
-		Hyrdaulic & \textbullet \hspace{2pt}  \\ 
-				  & \textbullet \hspace{2pt} \\
-				  & \textbullet \hspace{2pt}  \\ \hline
-		Pnuematic & \textbullet \hspace{2pt} Low position precision \\ 
-				  & \textbullet \hspace{2pt}  \\
-				  & \textbullet \hspace{2pt} \\ \hline
-		
-
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
-		\end{tabular}
-	\label{tab:actuator}
-	\end{table}
+		This project is a continuation of ViGRR, a 4 degree of freedom (DOF) planar robot. The goal of this project beyond this phase is to repackage ViGRR in a smaller and more hospital compatible form. However, we also wanted feedback from both patients and therapists at the hospital throughout the design. It was decided to build a smaller, simpler robot, which could be taken to the hospital and tested promptly. 
+		There were three options for a simpler robot configuration: 1 linear DOF, 1 rotary DOF, or 2 DOF. The primary motions we need to target include circular, horizontal linear (knee extensions), vertical linear (leg lifts), and more complex movements like gait trajectories. These also need to be adjustable to accommodate a variety of body sizes. 
 				
 		
 		\subsection{Placement Relative to Bed}
 		
 		%%include sketch 
-			
-	\begin{figure*}[t] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{off-bed}
-		\caption{Off-bed Design}
-		\label{fig:off-bed}
-	\end{figure*}	
-	
-	
 		
-	\begin{figure*}[t] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{on-bed}
-		\caption{On-bed Design}
-		\label{fig:on-bed}
-	\end{figure*}	
-	
+		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig...). The device could sit on the bed, under the patient's leg (see Fig...), similar to a passive range of motion machine (Fig...). Each configurations has pros and cons:
 		
-<<<<<<< HEAD
-		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig \ref{fig:off-bed}). The device could sit on the bed, under the patient's leg (see Fig \ref{fig:on-bed}), similar to a passive range of motion machine. Each configurations has pros and cons, as listed in Table. \ref{tab:config}.
-=======
-		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig \ref{fig:off-bed}). The device could sit on the bed, under the patient's leg (see Fig \ref{fig:on-bed}), similar to a passive range of motion machine (Fig...). Each configurations has pros and cons:
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
-		
-	\begin{table}[] \label{tab:config}
+	\begin{table}[]
 	\centering
 	\caption{Structural Configuration }	
 	\begin{tabular}{l|l|l}
@@ -419,45 +325,19 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	\end{table}
 		
 
-<<<<<<< HEAD
-	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. Two forces are created by the user: the applied force pushing or pulling the footplate ($F_a$), and the weight of the leg on the heel support ($F_w$). The on-bed design sits under the leg, so the moment created by the weight of the leg and its moment arm ($R_x$) can be minimized by minimizing the $R_x$. If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator throught that distance ($R$), which is harder to minimize (Fig. \ref{fig:off-bed_moment}). The length of the footplate extension can be shortened to reduce the moment, however this would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possibly hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.3\linewidth]{on-bed_moment}
-		\caption{Forces and moment arms for on-bed design}
-		\label{fig:on-bed_moment}
-	\end{figure*}
-	
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.6\linewidth]{off-bed_moment}
-		\caption{Forces and moment arm for off-bed design}
-		\label{fig:off-bed_moment}
-	\end{figure*}
-	
-	
-	\subsection{Computer v.s. Microcontroller}
-	
-	The controller can be executed either from a microcontroller or from a full computer. The microcoontroller is cheaper, easier to set up for real time code execution, and has built in I/O's. Computers have more processing power, memory, can easily be networked or connected wirelessly, but require external data acquisition. Special care must be used to set up a real time system which can execute control loops with minimized latencies. 
-	
-	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF's may be added to our system to the point where a microcontroller is not suitable. The computer could also be used to run the user interface (UI). Therefore we chose to use a computer to run the control software. 
-=======
 	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator (Fig...). The length of the footplate extension can be shortened to reduce the moment, however would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possible hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
-	
-	\subsection{Computer v.s. Microcontroller}
-	
-	The controller can be executed either from a microcontroller or from a full computer. The microcoontroller is cheaper, easier to set up for real time code execution, and has built in I/O's. Computer's have more processing power, memory, can easily be networked or connected wirelessly, but require external data acquisition.
-	
-	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF may be added to the point where a microcontrolle is not suitable. A complex user interface is required which displays 3D visuals and games, which also will require a computer....
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
 		
-	\subsection{Secondary Leg Support}
 		
-	When therapists assist patients with the knee extension exercise they support the patients leg at two points: at the heel and under the knee. From the heel they hold the leg and apply force to assist or resist the motion. The hand under the knee also supports the leg, and keeps the leg from rotating out of plane. 
+		\subsection{Linear Actuator Type}
+
+	There are several ways of actuating a linear motion. This includes hydraulics \& pneumatics, ballscrews, and belt drives.
 	
+	\textbf{Hydraulics \& Pneumatics}: 
 	
+	\textbf{Ballscrew}: Ball screws offer high precision and very low backlash. However, the rehabilitation needs to move quickly, and so the ballscrew would require a very large pitch, or the motor would need to powerful enough to supply high torque at high speed. Cost restraints therefore make using a ballscrew impractical. 
+	
+	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. ...
+
 
 	\section{Overview}
 	
@@ -465,84 +345,20 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 
 	\begin{figure*}[h] 
 		\centering
-		\includegraphics[width=0.75\linewidth]{overall_device}
-		\caption{The rehabilitation device}
+		\includegraphics[width=0.75\linewidth]{Robot_labeled}
+		\caption{Admittance Verification with Interaction}
 		\label{fig:cad}
 	\end{figure*}
 	
 	
 	\section{Structural Design}
-	
-	\subsection{Frame}
-<<<<<<< HEAD
 
-	The frame holds the actuator, footplate, and electronics (Fig. \ref{fig:frame}). It should fit on a bed, under one of the patient's leg, without obstructing the other leg or the patient's body. The frame is constructed out of 1x1' aluminium profile, as shown in Figure REF. The frame can be clamped or strapped to the bed. Future designs could include custom mounts to specific beds by attaching to the footboard or sides. The frame also contains an adjustable physical end stop which is used to control the maximum stroke length of the actuator. This can be adjusted to prevent over-extension of the leg. 
-	
-
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{frame}
-		\caption{The structure of the frame}
-		\label{fig:frame}
-	\end{figure*}
-	
-	
-	
-	\subsection{Footplate}
-	
-	The footplate attaches to the belt drive and should be height adjustable. The footplate both supports the leg and is a the interface through which the robot and user interact. It is shown in Fig \ref{fig:footplate}. 
-	
-	An aluminium profile extends from the base on the belt drive. An off-the-shelf carriage with a handle lock is used to adjust the height. Mounting plates are used to attach a load cell to the carriage, which is placed near the bottom of the footplate. The footplate is cut from aluminium 1/8'' plate. 
-	
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.5\linewidth]{footplate}
-		\caption{The structure of the frame}
-		\label{fig:footplate}
-	\end{figure*}
-	
-	
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.5\linewidth]{footplate_label}
-		\caption{The structure of the footplate}
-		\label{fig:footplate_label}
-	\end{figure*}
-	
-	
-=======
-
-	The frame was constructed out of 1in aluminium profile. 	
-	
-	\subsection{Footplate}
-	
-	The footplate attaches to the belt drive and should be height adjustable. The footplate both supports the leg and is a the interface through which the robot and user interact. It is shown in Fig REF. 
-	
-	An aluminium profile extends from the base on the belt drive. An off-the-shelf carriage with a handle lock is used to adjust the height. Mounting plates are used to attach a load cell to the carriage, which is placed near the bottom of the footplate. The footplate is cut from aluminium 1/8'' plate. 
-	
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
-	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. These brackets are shown in fig REF, and were 3D printed with PLA. 
-	
-	To hold the foot in place, a custom heel support was created (Fig REF). It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D  printed, using ABS. 
-	
 	\section{Hardware}
 		\subsection{Actuator}		
 		
-	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive (Fig. \ref{fig:actuator}). The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354). The gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090). The coupling is an Aluminium Flexible Shaft Coupling with a polyurethance spider from McMaster-Carr. The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. The motor is mounted to the belt drive using custom machined aluminium mounts. 
+	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive. The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354). The gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090). The coupling is an Aluminium Flexible Shaft Coupling with polyurethance spider from McMaster-Carr. The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. The motor is mounted to the belt drive using custom machined aluminium mounts. 
 	
-	
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{actuator}
-		\caption{The belt drive and motor}
-		\label{fig:actuator}
-	\end{figure*}
-	
-	
-	\begin{table}[h]
+	\begin{table}[]
 	\centering
 	\caption{DC Motor Properties}	
 	\begin{tabular}{|l|l|}
@@ -552,13 +368,11 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
  		Torque Constant & 38.5 mNm/A \\ \hline
  		Speed Constant & 248 rpm/V  \\ \hline
  		Stall Torque & 8.92 Nm \\ \hline
- 		Nominal Speed & 5680 rpm \\ \hline
- 		Nominal Torque & 405 mNm \\ \hline
 		\end{tabular}
 	\label{tab:motor}
 	\end{table}
 	
-	\begin{table}[h]
+	\begin{table}[]
 	\centering
 	\caption{Gear Reduction Properties}	
 	\begin{tabular}{|l|l|}
@@ -571,7 +385,7 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	\label{tab:gear}
 	\end{table}
 	
-	\begin{table}[h]
+	\begin{table}[]
 	\centering
 	\caption{Belt Drive Properties}	
 	\begin{tabular}{|l|l|}
@@ -582,55 +396,11 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
  		Maximum Travel Speed & 100 in/s  \\ \hline
  		Static Load capacity & 1000 lb  \\ \hline
  		Dynamic Load Capacity & 200 lb  \\ \hline
- 		Pulley Radius & 35 mm  \\ \hline
 		\end{tabular}
 	\label{tab:belt}
 	\end{table}
 	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{Motor_range}
-		\caption{Operating Range of the Motor \newline \small www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}
-		\label{fig:motor_range}
-	\end{figure*}
-	
-	The motor is required to move the actuator fast enough while also be able to apply adequate levels of force fro assistance or resistance. This motor and gear assembly was used from a previous project, and was found capable of fast of linear motion and applied force.
-	
-	The maximum linear speed is in this case limited by the maximum input RPM to the gearhead, 6000RPM: 
-	
-	\begin{align*}
-		V_{max} &= \frac{p\omega _{max}}{GR} \frac{1min}{60s} \\
-		&= \frac{(0.122m)(6000 RPM)}{(53)} \frac{1min}{60s} \\
-		&= 0.230 m/s
-	\end{align*}
-	
-	The nominal torque and speed are used to estimate the nominal linear speed and its associated nominal applied force:
-	
-	\begin{align*}
-		V_{nom} &= \frac{p\omega _{nom}}{GR} \frac{1min}{60s} \\
-		&= 0.217 m/s
-	\end{align*}
-	\begin{align*}
-		F_{nom} &= \frac{\tau _{nom}GR}{R_{pulley}} \\
-		&= \frac{(0.405Nm)(53)}{0.0175} \\
-		&= 1227N = 275 lbs
-	\end{align*}
-
-The maximum speed of 230 mm/s is adequate for our purposes, as the system is designed for stroke rehabilitation which is a slow moving process. The nominal force of 275lbs is much higher than the assistive forces seen during traditional therapy (which therapists estimate to be up to 20 lbs). In the future, a lower gear reduction could be used to increase the maximum speed to accommodate more advanced patients.
-
-	\begin{table}[h]
-	\centering
-	\caption{System Maximums}	
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Property} & \textbf{Value}  \\ \hline
- 		Maximum Linear Speed & 230 mm/s \\ \hline
- 		Nominal Linear Speed & 218 mm/s \\ \hline
- 		Nominal Force & 275 lbs \\ \hline
-		\end{tabular}
-	\label{tab:gear}
-	\end{table}		
-		
+	 
 		
 		\subsection{Sensors}
 
@@ -650,13 +420,6 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	
 		
 		\subsection{Components}
-		
-			 \begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.9\linewidth]{Motor_setup}
-		\caption{The belt drive and motor}
-		\label{fig:actuator}
-	\end{figure*}
 		
 	\begin{table}[]
 	\centering
@@ -679,73 +442,21 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		
 	\begin{figure*}[t] 
 		\centering
-		\includegraphics[width=\linewidth]{pcb_schematic}
+		\includegraphics[width=0.9\linewidth]{pcb_schematic}
 		\caption{Printed Circuit Board}
 		\label{fig:pcb}
 	\end{figure*}
-	
-
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{pcb_pic}
-		\caption{The PCB Layout}
-		\label{fig:pcb_pic}
-	\end{figure*}
-	
-		
 	
 	\section{Data Acquisition} 
 
 	Data acquisition is handled by a LabJack T7 DAQ. This model has 14 analog inputs, 2 analog outputs, 23 digital I/O's, and is also capable of handling quadrature encoder signals and high-speed data streaming. The device can interface with the computer through a Ethernet, USB, or wifi (Ethernet was chosen for this project as it is the fastest and most reliable). The front-end Modbus TCP interface is conveniently packaged in the C/C++ LJM library, discussed further in chapter ... 
 
-
-	\section{Computer}
-
-	The control software and UI are run from an Intel NUC computer (Fig REF). It has the following specifications:
-	
-<<<<<<< HEAD
-	\begin{table}[h]
-=======
-	\begin{table}[]
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
-	\centering
-	\caption{PCB Components}	
-	\begin{tabular}{|c|l|}
-		\hline
-		Processor & 2.2 GHz Intel Core i5 \\ \hline
-		RAM & 8GB DDR4 \\ \hline
-		Memory & 250GB Solid State \\ \hline
-		\end{tabular}
-	\label{tab:belt}
-	\end{table}
-	
-<<<<<<< HEAD
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{computer_system}
-		\caption{The Computer System, with DAQ, Router, and Tablet}
-		\label{fig:pcb_pic}
-	\end{figure*}
-	
-	
-		
-\chapter{Controller and Software} \label{ch3}
-=======
-	
-		
 \chapter{Controller and Software}
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
 
 	\section{Overview}
 	
-	The controller and software must allow the device to perform the required tasks as laid out in chapter \ref{ch2}. This includes providing assistance to the patient through the exercise, but not to the extent that the patient can become passive and allow the robot to drive the motion. The level of assistance should be adjustable so that the operator can tailor the session to the capabilities of the patient. The software must also engage the patient using virtual environments and games. These must be related to the motion of the exercise, such that the robot becomes a control input into the game, and the patient is rewarded for following the desired trajectory. Immersion within the virtual environment could also be bolstered by haptic feedback, or the physical rendering of virtual forces to the patient through the robotic device. 
+	The controller and software must allow the device to perform the required tasks as laid out in chapter ref... This includes providing assistance to the patient through the exercise, but not to the extent that the patient can become passive and allow the robot to drive the motion. The level of assistance should be adjustable so that the operator can tailor the session to the capabilities of the patient. The software must also engage the patient using virtual environments and games. These must be related to the motion of the exercise, such that the robot becomes a control input into the game, and the patient is rewarded for following the desired trajectory. Immersion within the virtual environment could also be bolstered by haptic feedback, or the physical rendering of virtual forces to the patient through the robotic device. 
 	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=\linewidth]{control_diagram2}
-		\caption{Virtual Haptic Coupling for Admittance Control}
-		\label{fig:software}
-	\end{figure*} 
 	
 	\section{Impedance \& Admittance Controller}
 
@@ -754,31 +465,25 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 %	-choice of impedance over admittance
 %-Implementation in code
 %
-%-------------------------------------------------------------------------
+%-------------------------------------------------------------------------	
 
-Both position and force control may behave unpredictably when interacting with an unknown environment, and may not be well suited for the purposes of assisting patients through rehabilitation movements. Position control would not provide assistance as needed, but would simply force the user's leg through the motion, similar to a passive motion machine. Force control is not sufficient since it does not allow the controller to follow a predefined trajectory. Interaction control, also known as impedance/admittance control, was introduced in \cite{Hogan1985}. Instead of controlling position or force directly, interaction control seeks to control the dynamic relation between the position and force variables. 
-	
-There are two possible causalities -- an impedance, which accepts a velocity/position and renders a force, and an admittance, which accepts force and renders a velocity/position. An interaction controller will chose one of these causalities, and will sense input from the physical device, calculate the output variables based on some virtual desired system, and then command the device to that output. A commonly used virtual system is the mass-spring-damper system shown in Fig. \ref{fig:mass-spring-damper}. 
+When controlling a robot which is interacting with an unknown environment, force and position control online may behave unpredictable or even become unstable. Instead, the relation between force and velocity (\textit{i.e.} the impedance) ...
 
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{admittance_sys}
-		\caption{A mass-spring-damper system, with the origin of the spring set to some desired trajectory}
-		\label{fig:mass-spring-damper}
-	\end{figure*}
-	
-Impedance control measures the position and velocity of the robot, and then calculates the force generated by the virtual system, as in Eqn. \ref{eqn:imp} \& \ref{eqn:imp_msd}. The device must then use force control to achieve the desired output force, which is usually done by computed-torque methods. 
 
-\begin{equation} \label{eqn:imp}
+Impedance control accepts a velocity and renders a force. Fundamentally, impedance control can be described by the following equation, where $F$ is the force control input, $Z$ is the desired impedance, and $V_R$ is the 'flow' variable vectors (e.g. position and velocity) :
+
+\begin{equation}
 	F = ZV_R 
-\end{equation}  
+\end{equation} 
 
-\begin{equation} \label{eqn:imp_msd}
+It is common to characterize the desired impedance in terms of a mass, spring and damper system with parameters $m$, $b$, and $k$, respectively. Furthermore, a desired position can also be integrated into the equation by changing the reference point of the spring. 
+
+\begin{equation}
 	F = m\ddot{x} + b\dot{x} + k(x - x_{des})
 \end{equation} 
 
 Using this control law, the end effector of the robot will behave like the system above, about point $x_{des}$, when displaced by the external environment. If, for example, an operator physical moved the robot, it would respond as if it were the mass-spring-damper system, \textit{i.e.} it would apply a resistive force related to the extent to which it was displaced. 
-	This control law rests on a significant assumption -- that the robot itself has no inherent impedance between the actuator and the the end-effector. It is possible to cancel some of the impedance of the robot using ..., however this is less common and generally takes more time and is less successful (ref). This is an idealization - there will also be some level of friction, mass, or other impeding factors in the motor, gears, links, etc. Therefore, impedance control should only be considered for robots made of low impedance components, such as belt drives and direct-drives. 
+	This control law rests on a significant assumption -- that the robot itself has no inherent impedance between the actuator and the the end-effector. This is an idealization - there will also be some level of friction, mass, or other impeding factors in the motor, gears, links, etc. Therefore, impedance control should only be considered for robots made of low impedance components, such as belt drives and direct-drives. 
 	
 	Admittance control is essentially the inverse of impedance control, in that it accepts an external force and then renders a corresponding displacement. Fundamentally, admittance control can be described by the following equation, where $F_R$ is the force applied to the robot, $Y$ is the desired admittance, and $V$ is the 'flow' variable vectors (e.g. position and velocity) :
 	
@@ -816,42 +521,10 @@ Using this control law, the end effector of the robot will behave like the syste
 
 	Admittance control assumes that the robot has infinite impedance, or that all hardware between the actuator and the end-effector is infinitely stiff, infinitely damped, etc. This, once again, is an idealization -- and therefore admittance control should only be considered when the robot has high impedance, i.e. when using large gear reductions and rigid links. 
 	
-	Another point of consideration when choosing between impedance and admittance control is its stability when encountering different types of environments. Impedance control works better when interacting with an admittance (rigid environments), whereas admittance control works better when interacting with an impedance (weak environment / free space). This project targets acute stroke patients who typically do not have much leg strength and rely heavily on assistance from the therapist during therapy. Therefore, these patients can be modeled as an impedance. Furthermore, the motor used on the robot has a high gear reduction which contains substantial impedance. Both of these favour using admittance control. 
+	Another point of consideration when choosing between impedance and admittance control is its stability when encountering different types of environments. It is convenient to model the interaction as a two-port
+	Impedance control works better when interacting with an admittance (rigid environments), whereas admittance control works better when interacting with an impedance (weak environment / free space). 
 	
-	Admittance control is implemented by taking the Z-transform of Eqn. \ref{eqn:adm}, updating the desired position based on these discrete step equations, and then using PD controller to move to this desired position. ...
-	
-	The linear admittance control system in Eqn. \ref{eqn:lin_sys} is discretized according to the Eqn. \ref{eqn:Ad} \& \ref{eqn:Bd}.
-	
-	\begin{equation} \label{eqn:lin_sys} 
-	\dot{X} = AX + BF
-	\end{equation}
-	\begin{equation} \label{eqn:Ad} 
-	A_d = e^{At} 
-	\end{equation}
-	\begin{equation} \label{eqn:Bd} 
-	B_d = A^{-1}(A_d - I)B
-	\end{equation}
-	
-	\subsection{Velocity Profile}	
-	
-	The final step is to set the desired position a suitable trajectory. The system is 1-DOF, so this can be done simply by creating a velocity profile. The velocity profile is defined in terms of the total length of the linear stroke ($x_{max}$) as well as the maximum velocity that we want to have at any point ($v_{max}$). At first, a quadratic relation was used, creating a parabola with zero velocity at each endpoint and $v_{max}$ in the center. This was found to feel unnatural. The final profile is shown in Fig. \ref{fig:velocity_profile}, with constant acceleration to $v_{max}$, a plateau of constant velocity, followed by a constant deceleration. The same profile is inverted to move back at the end of the stroke. The transition points were set empirically, with acceleration up to $0.4 x_{max}$, and deceleration beginning at $0.6 x_{max}$. 
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{velocity_profile}
-		\caption{Velocity Profile of the Desired Trajectory}
-		\label{fig:velocity_profile}
-	\end{figure*}
-	
-	
-	
-	\subsection{Operational Modes Using Admittance Control}
-	
-	Two operational modes use the admittance control with the mass-spring-damper system -- trajectory tracking with assistance, and trajectory tracking with resistance. 
-	
-	\textbf{Trajectory Tracking with Assistance}: The mass-spring-damper system is used with a moving spring origin set to the trajectory as defined by the velocity profile. The spring stiffness represents the level of assistance, with stiffer springs providing more assistive force. The assistance is low when the error is low, therefore only providing assistance as needed. 
-	
-	\textbf{Trajectory Tracking with Resistance}: The spring term is omitted (\textit{i.e.} k = 0.0) so that the user only feels damping and mass. The damper term now represents viscous resistance, with higher damping parameters creating greater resistance. Without the spring term, there are no assistive forces and so the patient must provide all motion on their own. This mode could be used for more capable patient's who need a challenge, or for strength building. 
+	This project targets acute stroke patients who typically do not have much leg strength and rely heavily on assistance from the therapist during therapy. Therefore, these patients can be modeled as an impedance. Furthermore, the motor used on the robot has a high gear reduction which contains substantial impedance. Both of these favour using admittance control. 
 	
 	
 
@@ -866,14 +539,7 @@ Using this control law, the end effector of the robot will behave like the syste
 
 Defining the desired impedance or admittance in terms of a mass-spring-damper system is not always convenient. Ideally, one could define an arbitrary impedance or admittance function relating $F$ and $V$, giving complete control of the behaviour of the robot-environment interaction, while also ensuring stability. The dual goals of imposing a 
 	
-	A method for achieving arbitrary interaction and remaining stable is discussed in \cite{Adams1999}, using what is called a ``haptic coupling''. This effectively decouples the design on the admittance/impedance and analysis of the stability of the robot. Consider again the two-port model of the robot-environment interaction. The haptic coupling is a virtual passive system placed in between the two, which acts as a low pass filter on the variables. This limits the range of renderable impedances, and while it does alter the desired impedance to some extent, the trade off is guaranteed stability. Using the concept of the haptic coupling, a simple physics engine was designed which works in conjunction with the games and visualization.
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.3\linewidth]{haptic_coupling}
-		\caption{Virtual Haptic Coupling for Admittance Control}
-		\label{fig:haptic_coupling}
-	\end{figure*} 
+	A method for achieving arbitrary interaction and remaining stable is discussed in \cite{Adams1999}, using what is called a ``haptic coupling''. This effectively decouples the design on the admittance/impedance and analysis of the stability of the robot. Consider again the two-port model of the robot-environment interaction. The haptic coupling is a virtual passive system placed in between the two, which acts as a low pass filter on the variables. This limits the range of renderable impedances, and while it does alter the desired impedance to some extent, the trade off is guaranteed stability. Using the concept of the haptic coupling, a simple physics engine was designed which works in conjunction with the games and visualization. 
 	
 	In addition to decoupling stability and the design of the haptic environment, the haptic coupling also allows both impedance and admittance to be used together. For example, a robot may use admittance control due to large amounts of drive friction, but the haptic environment may need to be defined as an impedance, \textit{i.e.} using position to calculate the desired haptic force. 
 	
@@ -884,56 +550,6 @@ Defining the desired impedance or admittance in terms of a mass-spring-damper sy
 		Z(z) = \frac{mb(z-1)}{(m+bT)z - m}
 	\end{equation}
 	
-	The z-transform yields the control step algorithm in Eqn. \ref{eqn:ztrans}. These are used to calculate the present time environmental position/velocity. 
-
-\begin{equation} \label{eqn:ztrans}
-	v_k = \frac{m}{T}v_{k-1} + \frac{f_{k-1} - f}{\frac{m}{T} + b}
-\end{equation}
-\begin{equation}
-	x_k = x_{k-1} + v_{k}T
-\end{equation}
-
-	
-The underlying virtual physics should have an impedance causality, and so the environmental force is calculated based on this position/velocity pair. This mapping can be an arbitrary function, thanks to the haptic coupling (Eqn. \ref{eqn:imp}). 
- 
-\begin{equation} \label{eqn:imp}
-	f_k = \mathcal{F}(x_k, v_k)
-\end{equation}
-
-For example, to achieve the standard admittance control from the previous section, the impedance mapping can generate the spring component (with the damping and mass contributed by the haptic coupling), as in Eqn. \ref{eqn:spring}
-
-\begin{equation} \label{eqn:spring} 
-	f_k = K(x_k - x_{des})
-\end{equation}
-
-With the haptic coupling, more complex environments can be created. For example, contact between the user and a virtual object can be rendered. The interaction force is set to zero when there is no contact, allowing for free motion. When in contact, the interaction force can be modelled a number of ways, including with a simple spring
-
-\begin{equation}
-$$
-\[ 
-f_k = 
-     \begin{cases}
-       \text{no contact} &\quad f_k = 0 \\
-       \text{contact} &\quad f_k = k(x_{user} - x_{dist}) \\
-     \end{cases}
-\]
-$$
-\end{equation}
-
-\subsection{Operational Modes Using the Haptic Coupling}
-
-Only a single mode is implemented using the haptic coupling -- a simple interactive balance game. The player is tasked with maintaining a static position within a small margin of error. Disturbances are launched at the player from both directions, which contact the user and produce a haptic force 
-
-\subsection{Physics Engine}
-	
-There physics involves the movement of two objects, the character and the disturbance, as well as the interaction force between them. There are three cases:
-
-\begin{enumerate}
-	\item Disturbance is out of play: The disturbance has left the environment. A new one is randomly spawned to either the right or left of the environment, and given a fixed initial velocity.
-	\item No Contact: There is no contact. The position of each object is updated, with the character's position set equal to the position of the device, and the disturbances position set according to its constant velocity. 
-	\item Contact: The character's sphere overlaps the disturbances sphere, and are therefore in contact. The contact force is modelled a linear spring, with the distance between the objects' centres times the contact stiffness equal to the interaction force. 
-\end{enumerate}
-
 	
 	\section{Tuning Control Gains}
 
@@ -991,16 +607,13 @@ There physics involves the movement of two objects, the character and the distur
 	
 	Finally, the haptic coupling parameters $m$ and $b$ should be set. As was explained in Sec. , these parameters give the controller some minimum impedance so that the haptics do not try to render an impedance too close to free motion. Therefore, the parameters are set to the empirically derived $B_{min}$ and its pair $K_{min}$. This decouples the haptic design from the stability of the controller by imposing the minimum impedance for the stability. The maximum constraints are however still not imposed. Fortunately, the haptics explicitly calculate either the desired force or the desired next position, and therefore the constraints on these parameters can be directly imposed. 
 		
-
+	\section{Physics Engine}
 	
 			
-	\section{Software}	
+	\section{Software Implementation}	
 
-	The controller needs to be implemented in software, along with communication, data logging, and a User Interface for setting up and displaying visuals. The software is split into two parts: the control software and the user interface software. The entire codebase is available on GitHub at \href{https://github.com/nickberezny/RehabRobot}{https://github.com/nickberezny/RehabRobot}. It is built to run on real time enabled Linux, and should run on any hardware (assuming it has sufficient memory and RAM, and an ethernet port to connect with the DAQ). This modularity should make it easy to use this code in future iterations of the project which may use different hardware. To date, it has been tested on the Intel NUC used in this project, as well as on a Raspberry Pi 3B. 
+	The software is split into two parts: the control software and the user interface software. The entire codebase is available on GitHub at \href{https://github.com/nickberezny/RehabRobot}{https://github.com/nickberezny/RehabRobot}. It is built to run on real time enabled Linux, and should run on any hardware (assuming it has sufficient memory and RAM). It has been tested on the Intel NUC used in this project, as well as on a Raspberry Pi 3B. 
 	
-
-	
-
 	\subsection{Real Time Operation and Linux}
 	
 %------------------------------------------------------------------------
@@ -1013,11 +626,11 @@ There physics involves the movement of two objects, the character and the distur
 %
 %-------------------------------------------------------------------------
 
-A real time system is one in which the timing of the computations significantly affects the results \cite{Lewine1991} --  in other words, a missed computational deadline can be detrimental to the performance of the system. Systems can either be soft real time or hard real time, a distinction made based on the danger associated with missing a deadline. Hard real time system will cause serious harm or damage if a deadline is missed (\textit{e.g.} the control systems on a Jet), while the consequences are typically minor in soft real time systems. The distinction can be vague, but in general hard real time systems require programs which are mathematically proven to be real time (REF), whereas soft real time systems can get away with less stringent requirements. 
+A real time system is one in which the timing of the computations significantly affects the results \cite{Lewine1991} --  in other words, a missed computational deadline can be detrimental to the performance of the system. Systems can either be soft real time or hard real time, a distinction made based on the physical danger associated with missing a deadline. Hard real time system will cause serious harm or damage if a deadline is missed (\textit{e.g.} the control systems on a Jet), while the consequences are typically minor in soft real time systems. The distinction can be vague, but in general hard real time systems require programs which are mathematically proven to be real time (ref), whereas soft real time systems can get away with less stringent requirements. 
 
 The consequences of a missed deadline in our system is at worst sending the wrong motor torque command to the actuator, which in the absolute worst case scenario will cause the maximum torque command to be issued. However, motor torque commands are limited for safety (see sec...), and the operator and user have access to an emergency stop. Therefore, we deemed that the system requires only soft real time capabilities. 
 
-Linux is an operating system (OS) based on UNIX which is open source and comes in variety of versions or flavours, including Ubuntu. Linux can be used as a standard home computing operating system like Windows or Mac, and is also found commonly in embedded system where the OS is highly tailored to a specific set of hardware. (refs!). The Linux kernel is not inherently real time -- there is a patch available which adds soft real time capabilities to the OS. This is known as Real-time Linux or RTLinux, and is created using the Preempt RT patch \cite{SebastianSiewior2019}. The patch allows programmings to use the following real time functionalities, as defined in the real time standard extension of the original Portable Operating System Interface for Computing Environments (POSIX) \cite{Obenland}.
+Linux is an operating system (OS) based on UNIX which is open source and comes in variety of versions or flavours, including Ubuntu. Linux can be used as a standard home computing operating system like Windows or Mac, and is also found commonly in embedded system where the OS is highly tailored to a specific set of hardware. (refs!). The Linux kernel is not inherently real time, there is a patch available which adds soft real time capabilities to the OS. This is known as Real-time Linux or RTLinux, and is created using the Preempt RT patch \cite{SebastianSiewior2019}. The patch allows programmings to use the following real time functionalities, as defined in the real time standard extension of the original Portable Operating System Interface for Computing Environments (POSIX) \cite{Obenland}.
 
 \begin{itemize}
 	\item \textbf{Threads}: POSIX threads, or pthreads, are used for parallel computing. Multiple threads can run under a single process and share its memory space.
@@ -1028,63 +641,27 @@ Linux is an operating system (OS) based on UNIX which is open source and comes i
 	
 	\subsection{Controller}
 	
-	The controller is written in C, and is designed to achieve low latency so that it can meet sampling rate deadlines. The target frequency is 1kHz, or 1ms per time step. The controller on average runs at 1.05 ms per time step, or approximately 9.5 kHz. More information of delays and jitter in the control software can be found in Sec REF... 
-	
-		\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=\linewidth]{software}
-		\caption{The Three Threads in the Control Software}
-		\label{fig:software}
-	\end{figure*} 
+	The controller is written in C, and is designed to achieve low latency so that it can meet sampling rate deadlines. The target frequency is 1kHz, or 1ms per time step. The controller on average runs at 1.05 ms per time step, or approximately 9.5 kHz. More information of delays and jitter in the control software can be found in Sec ... 
 	
 	
-	The controller process is split into three threads: the controller, the server communication, and data logging, with priority levels of 98, 97, and 96 respectively. The controller has highest priority and can pre-empt the others to keep it running up to the desired frequency. 
 	
-	Data sharing between the three threads is handled by mutexes and a 10 dimension array of data structures. Each thread iterates through the data structure array. The control thread, being the highest priority, locks the first element. The other threads cannot lock the mutex and so have to wait. The control loop runs through one step, setting any data from the DAQ or otherwise to the data structure. Once the time step is finished, it unlocks the first element and locks the second, and continues. The communication thread can now lock the first element, and send the required data to the UI, such as the position of the device. Once complete, it unlocks the first element and waits for the next to be unlocked by the controller. Finally, the data logging thread  can lock the first element, and print the required variables to another row in the data log file. This process then continues through the ten elements, with the threads going back to the start once finished with the tenth element...
+	It is split into three threads: the controller, the server communication, and data logging, with priority levels of 98, 97, and 96 respectively. The controller has highest priority and can pre-empt the others to keep it running up to speed. 
 	
 	\subsubsection{Setup}
 	
-	Once code execution is started, there is a number of setup and initialization steps before jumping into the control loop. 
 	
-	\begin{enumerate}
-		\item Global variables are created. 		
-		\item The TCP socket is initialized for communication with the UI
-		\item Connection with the DAQ is established. The I/O's are setup as necessary (\textit{e.g.} two digital pins are set as quadrature counters for reading the motor encoder)
-		\item The data log text file is created, and the header row is printed. 
-		\item A total of 10 mutexes are created to regulate data access to the control data.
-		\item Memory is locked - no new variables should be allocated after this point
-		\item The Server code is executed in automatically in another terminal so that the user can connect to the UI.
-		\item The controller waits for input from the UI. Once received, the message is parsed and the control parameters are set. 
-		\item Admittance control matrices $Ad$ and $Bd$ are created according to the discretization formulas in REF.
-		\item Once the UI sends the home command, the homing procedure is executed, with the carriage moving from front to back, to ensure the device starts from a consistent position, and to measure the total stroke length as set by the adjustable endstop. 
-		\item Once the UI sends the run command, the force sensor is calibrated by taking 10 measurements, checking for outliers, and then setting the force bias to the average. 
-		\item The initialization is now complete, and the three threads are run.
-	\end{enumerate}
-	
-	
-	\subsubsection{Control Loop Thread}
-	
-	The control loop can be broken down into four steps, which are executed repeatedly until the program is stopped either by a set end time or by a stop command from the UI. 
-	
-	\begin{enumerate}
-		\item The current robot state is determined by reading sensor values from the DAQ.
-		\item The selected control algorithm is run to determine the command (either admittance control or haptics with physics). 
-		\item The command is sent to the DAQ to be realized by the motor. 
-		\item The total change in time since the beginning of the step is determined, and the controller sleeps for any remaining time so that the step lasts approximately 1ms. 
-	\end{enumerate}
-	
+	\subsubsection{Controller Thread}
 	\subsubsection{Server Communication Thread}
-	
-	This thread sends data to the UI so that the games can be updated. To prevent overloading the UI, the data is only sent every 10 time steps (every 10ms). This data is sent through the TCP socket. 	
-	
 	\subsubsection{Data Logging Thread}
-	This thread logs relevant data to a text file. It does this by printing a predefined set of variables at every time step. 
+	
 	
 	\subsection{User Interface} 
 	
-	The User Interface (UI) is used both by the operator and the patient. It can be used to set up the parameters for a session, display the visual feedback to the patient, and  view the session data and past session data for progress monitoring. The UI should be intuitive, easy to access, and portable across different hardware and computers (including tablets, mobile devices, etc.).
+	The User Interface (UI) is used both by the operator and the user. It can be used to set up the parameters for a session, display the visual feedback to the patient, and  view the session data and past session data for progress monitoring. The UI should be intuitive, easy to access, and portable across different hardware and computers, from Windows to tablets. 
 	
-	There are a number of libraries for creating UI's. For example, GTK is a toolkit for creating UI's on Linux, Mac or Windows \cite{TheGTKTeam2019}. However, we want the UI to work on mobile devices as well (iPADs and Android Tablets), which are more portable and may be easier to position so that the patient can access it comfortably. Ideally, a library that works on Linux, Max, Windows, Android, and iOS. One option is to use web technology, given that all of these OS's have internet browsers. We therefore decided to created and serve a website from the computer through a local network, that could be access by any device which has access to the same local network. 
+	There are a number of libraries or software for creating UI's. For example, GTK is a toolkit for creating UI's on Linux, Mac or Windows \cite{TheGTKTeam2019}. However, we want the UI to work on mobile devices as well (iPADs and Android Tablets), which are more portable...
+	
+	Web technology is highly portable, being available on both computer OS's and mobile platform....
 	
 	The UI uses the following libraries/tools:
 	
@@ -1100,50 +677,20 @@ Linux is an operating system (OS) based on UNIX which is open source and comes i
 	\end{itemize}
 	
 	
-	Ultimately, the UI is built on React, which is a javascript library for creating graphical user interfaces on the web. Components like buttons or inputs can be customized and re-used through the app. This allows for easy customization for future project iteration that will likely need new features. 
+	React is a javascript library for creating graphical user interfaces on the web. Components like buttons or inputs can be customized and re-used through the app.
 	
 		\subsubsection{Layout \& Pages}
 
-The UI consists of a menu and three pages: the setup page, the game page, and the settings page. The UI layout includes a top bar with menu access, the menu (which can be hidden or expanded), and the content. 
-
-\textbf{Setup Page}: Seen in Fig. \ref{fig:ui-menu}, the setup page allows the therapist or operator to set the parameters for a therapy session. The therapist can set the desired game, the length of the session, velocity adn force limits, assistance levels, etc. In developer mode, controller gains can be tuned directly. The set button sends this information to the control prcoess. 
-
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.9\linewidth]{UI_menu_label}
-		\caption{The Setup Page}
-		\label{fig:ui-menu}
-	\end{figure*} 	
-		
-\textbf{Games Page}: The game page displays the games or visuals to the patient. It contains the home and run buttons which are used to set up the device before starting the session. 
-
-\textbf{Settings Page}: This page contains any UI settings that one may want to change. For now, this only allows the operator to switch between Developer Mode and User Mode, which change the level of detail in the setup page. 		
+			
 		
 		\subsubsection{Visuals}
-		
-		The guide is used to display the length of the actuator, the user's position and the desired position (Fig. \ref{fig:trajectory}). The desired position is shown as a translucent box, which is normally red but changes to green if the user's position is within a certain small margin of error. The User's position is shown as a blue rectangle. In essence, the knee flexion exercise is carried out by the user attempting to follow the desired position as closely as possible. 
-		
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{UI_trajectory}
-		\caption{The trajectory guide}
-		\label{fig:trajectory}
-	\end{figure*} 
 	
-	Three simple games were created, each corresponding to a different type of game which could be expanded upon by future students. The first is a simple cube, displayed with the guide. If the user is within a certain margin of error, the cube spins, otherwise the cube is still. This is meant to demonstrate a virtual environment which responds to the performance of the user, but is not a competitive or challenging game. 
-	
-	The second game is a race between three object: the user and two computer controlled characters (Fig. . Each object moves around a track, with the computer characters moving at predefined speeds, and the user's character moving at a speed proportional to the accuracy of their motion (\textit{i.e.} the lower the error, the faster they move). This game is meant to demonstrate a more challenging game which motivates the player to perform the exercise accurately. 
-
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=\linewidth]{UI_game_label}
-		\caption{The racing game}
-		\label{fig:race}
-	\end{figure*} 
-	
-
-The third game is balancing game which is not related to the knee flexion exercise. The user's foot directly controls the position of their character. They are tasked with maintaining a static position on top of a column (Fig REF). Disturbances are launched at the player in the form of spheres, which when in contact created haptic force feedback according to the physics layed out in Sec. REF. The user must push these disturbances away without falling off the column. This game demonstrates both haptic feedback, and a game in which the user's foot directly control a character. 
+			
+			Some basic games were created to illustrate their potential. Fundamentally the game should reward the user for good performance (low trajectory error, achieving some desired velocity, etc.). 
+			
+			The first game demonstrates this reward mechanism in a very simple way. When the player is within a certain bound on the desired trajectory, a cube will start to spin. If the user strays too far from the desired position, the cube stops spinning. 
+			
+			The second game demonstrates a more complex scenario, in which the trajectory error is used as a analog input into the game. The closer the user is to the desired position, the faster his virtual racer moves around the track. 
 			
 	\section{Software Extension}
 	
