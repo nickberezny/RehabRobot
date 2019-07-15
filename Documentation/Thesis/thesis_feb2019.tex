@@ -12,11 +12,28 @@
 \usepackage{svg}
 \usepackage{hyperref}
 
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{color, colortbl}
+\usepackage{xcolor}
+\usepackage{booktabs}
+
 \begin{document}
 \maketitle
 \newpage
 
+\chapter*{Abstract}
+\section*{Acknowledgements}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
 \chapter{Literature Review and Preliminary Research}
+
+\section{Introduction}
+
+\chapter*{Abstract}
 
 \section{Stroke and Rehabilitation}
 
@@ -45,16 +62,15 @@ Older treatment techniques relied on compensatory measures to assist stroke pati
 		\label{fig:knee_ext}
 	\end{figure*}
 
-Stroke rehabilitation encompasses a broad range of therapeutic activities, typically carried out by occupational- and physiotherapists. Physiotherapists (PT's) tend to focus on gross motor movements in the upper and lower limbs, while occupational therapists (OT's) focus on fine motor control, dexterity, and specific ADL's. These two goals are inextricably linked, and so both PT's and OT's form a team which works together to improve patient outcomes. The rehabilitation carried out by both OT's and PT's involves the repetition of a target movement or task. Depending on the abilities of the patient, the therapist may provide support or assistance. For example, lower-limb rehabilitation begins with simple legs movement performed in bed, such as leg lifts (Fig. \ref{fig:leg_lift}), knee flexion/extension (Fig. \ref{fig:knee_ext}), hip abductions, \textit{etc} [include pictures]. The therapist can either assist the patients leg through the movement, or allow patients to perform the movement on their own, or even provide light resistance if the patient is more advanced. Next, the patient will practice sitting upright, going from sit to stand, and  practice bearing weight and balancing while standing. Eventually the patients will be ready for more complex tasks with assistance from the therapist, including walking, heel strike, and stair climbing. The patient may advance to the point where they can walk without therapist assistance, using either parallel bars, a walker, or potentially without any assistance. The stages of lower-limb rehabilitation are summarized below:
+Stroke rehabilitation encompasses a broad range of therapeutic activities, typically carried out by occupational- and physiotherapists. Physiotherapists (PT's) tend to focus on gross motor movements in the upper and lower limbs, while occupational therapists (OT's) focus on fine motor control, dexterity, and specific ADL's. These two goals are inextricably linked, and so both PT's and OT's form a team which works together to improve patient outcomes. The rehabilitation carried out by both OT's and PT's involves the repetition of a target movement or task. Depending on the abilities of the patient, the therapist may provide support or assistance. For example, lower-limb rehabilitation begins with simple legs movement performed in bed, such as leg lifts (Fig. \ref{fig:leg_lift}), knee flexion/extension (Fig. \ref{fig:knee_ext}), hip abductions, \textit{etc}. The therapist can either assist the patients leg through the movement, or allow patients to perform the movement on their own, or even provide light resistance if the patient is more advanced. Next, the patient will practice sitting upright, going from sit to stand, and  practice bearing weight and balancing while standing. Eventually the patients will be ready for more complex tasks with assistance from the therapist, including walking, heel strike, and stair climbing. The patient may advance to the point where they can walk without therapist assistance, using either parallel bars, a walker, or potentially without any assistance. The stages of lower-limb rehabilitation are summarized below:
 
-\begin{enumerate}
-	\item Bed-bound exercises with assistance
-	\item Sit-to-stand and weight bearing
-	\item Assisted gait therapy (with therapist moving the leg through the gait trajectory)
-	\item Other out-of-bed activities, such as heel strike, stair climbing, etc.
-	\item Walking without therapist assistance (using parallel bars or a walker)
-\end{enumerate}
 
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{Traditional_therapy}
+		\caption{The stages of traditional stroke rehabilitation}
+		\label{fig:stages}
+	\end{figure*}
 
 
 \subsection{Rehabilitation Guidelines}
@@ -106,9 +122,12 @@ few large clinical trials have found conflicting results. One study following 63
 
 	One of the most important activities for lower-limb rehabilitation is gait training, wherein the patient walks with assistance from the therapist. Rehabilitation robots were introduced to provide this assistance by attaching to the patient's leg and guiding them through the correct gait trajectories. This can be accomplished bv an exoskeletal orthosis attached around the knee joint, or by and endplate device which supports and guides the feet. 
 	
-	The Lokomat, ALEX \cite{Banala2007}, LOPES \cite{Veneman2007} and ReoAmbulator are examples exoskeletal gait trainers. Each comprise of a powered exoskeleton which can assist the leg through gait trajectories. They all work in conjunction with body-weight supported treadmill training (BWSTT), using a harness to support the patient and a treadmill for walking. The Lokomat and LOPES use impedance control to deliver programmable levels of assistance to the user. ALEX uses a force-field scheme to create an ''assist-as-needed`` controller which ensures that the user contributes to the movement.
+	The Lokomat, ALEX, LOPES, and ReoAmbulator are examples exoskeletal gait trainers. 
 	
-	The Lokomat is one of more widely researched platforms. One recent study found that the Lokomat was more effective than conventional gait therapy with regards to certain outcome measures \cite{Nam2017}, although another found that it was less effective \cite{Hidler2008}. Despite conflicting results, the Lokomat continues to show promise. It is commercially available -- 872 devices can be found worldwide according to their website (as of 2019).
+	
+	%Each comprise of a powered exoskeleton which can assist the leg through gait trajectories. They all work in conjunction with body-weight supported treadmill training (BWSTT), using a harness to support the patient and a treadmill for walking. The Lokomat and LOPES use impedance control to deliver programmable levels of assistance to the user. ALEX uses a force-field scheme to create an ''assist-as-needed`` controller which ensures that the user contributes to the movement.
+	
+	The Lokomat is a powered orthosis that attaches to the patient's leg, and works in conjunction with body-weight supported treadmill training (BWSTT). It uses impedance control to provide programmable assistance to the leg through gait trajectories. The Lokomat is one of more widely researched platforms. One recent study found that the Lokomat was more effective than conventional gait therapy with regards to certain outcome measures \cite{Nam2017}, although another found that it was less effective \cite{Hidler2008}. Despite conflicting results, the Lokomat continues to show promise. It is commercially available -- 872 devices can be found worldwide according to their website (as of 2019).
 			
 	\begin{figure*}[h] 
 		\centering
@@ -117,8 +136,14 @@ few large clinical trials have found conflicting results. One study following 63
 		\label{fig:Lokomat}
 	\end{figure*}
 	
+	The ALEX \cite{Banala2007}
 	
-	The Haptic Walker \cite{Schmidt2005}, G-EO \cite{Hesse2010}, and Gait Trainer \cite{Hesse} are examples of end-plate based rehabilitation robots. Both use actuated platforms under the feet to move the patient through gait trajectories, and a harness to support the patient. The Haptic Walker can perform walking simulations and more complex situations like stumbling or climbing stairs using a 3 DOF system. As can be seen in Figure \ref{fig:Hapticwalker}, the system is much larger than the exoskeletal systems. The GE-O system is similar in that it can simulate walking and stair climbing, with one study finding that electromyography (EMG) readings were similar between simulated walking with the robot and real walking \cite{Hesse2010}. 
+	The LOPES \cite{Veneman2007}
+	
+	The ReoAmbulator
+	
+	
+	The Haptic Walker , G-EO , and Gait Trainer  are examples of end-plate based rehabilitation robots. Both use actuated platforms under the feet to move the patient through gait trajectories, and a harness to support the patient. The Haptic Walker can perform walking simulations and more complex situations like stumbling or climbing stairs using a 3 DOF system. As can be seen in Figure \ref{fig:Hapticwalker}, the system is much larger than the exoskeletal systems. The GE-O system is similar in that it can simulate walking and stair climbing, with one study finding that electromyography (EMG) readings were similar between simulated walking with the robot and real walking \cite{Hesse2010}. 
 	
 	\begin{figure*}[h] 
 		\centering
@@ -126,6 +151,12 @@ few large clinical trials have found conflicting results. One study following 63
 		\caption{The Hapticwalker, an endplate based robot}
 		\label{fig:Hapticwalker}
 	\end{figure*}
+	
+	The Haptic Walker \cite{Schmidt2005}
+	
+	The G-EO \cite{Hesse2010}
+	
+	The Gait Trainer \cite{Hesse}
 	
 	Overground walking robots show promise for improving gait rehabilitation. However, these only target a single type of lower-limb rehabilitation. Patients must be somewhat mobile (enough to leave their beds and their rooms) to access these devices, and the complexity and setup require that a therapist be present. Hence these robots are designed to replace time spent on conventional therapy, which makes proving consistent performance difficult as was previously mentioned.  
 	
@@ -194,6 +225,25 @@ few large clinical trials have found conflicting results. One study following 63
 	Virtual reality can be coupled with rehabilitation robotics to further increase immersion. The robot can be used as a control input to the virtual environment, and the robot can in turn deliver haptic feedback to the user. Haptic feedback allows users to interact directly with the virtual world, for example when walking, the ground reaction force can be applied to the user's foot. This increases the realism of ADL simulations. 
 	
 	A metastudy found evidence that VR may improve functional outcomes over conventional therapy, but admits that most studies are small and prone to bias \cite{Laver2015}. One platform used an upper-limb exoskeletal device to apply assistive forces  \cite{Patel2015}. Another study used a Nintendo Wii gaming system to promote therapy, and found it to be a feasible and safe method  \cite{Saposnik2010}. Another study used the Phantom Omni, a pen attached to a robotic arm that can deliver haptic feedback from a virtual environment \cite{Jiang2017}. A serious gaming approach is used in \cite{SociedadeBrasileiradeInformaticaemSaude2014}, where the Unity3D engine was used to create a virtual world and a MS Kinetic sensor to detect the user's motions. 
+	
+	\subsection{Haptic Feedback}
+	
+	Haptic feedback is the physical rendering of forces from virtual environments. Typically an actuated device is used as the haptic interface, with the user controlling the device, which reports the state to a virtual environment physics engine in order to determine the interaction force to be rendered back to the user. Haptic algorithms must balance stability, transparency, and the renderable impedance range. 
+		
+		Early haptic algorithms used penetration depth between the device and virtual object to determine the interaction forces. However, this leads to ambiguities regarding what surface of the object the user is interacting with (in other words, what face the interaction force should be normal to). In \cite{Zilles}, the God-Object method is introduced to resolve this issue. The device is given a virtual position, that which it would take if the haptics could be infinitely stiff (\textit{i.e.} it always remains at the surface of the object) -- in this way the direction of the interaction force is always known. 
+		
+	A third option is given in \cite{Adams1999}, known as the haptic coupling. This coupling is a virtual system placed in between the physical device and the virtual environment. It in effect places limits on the range of impedances that can be rendered (how close to a rigid wall or free space the device can simulate). 
+	
+	For example, an admittance controlled haptic device is shown in Fig. \ref{fig:haptci_adm}. In this example, the virtual environment is the control algorithm, it is restricted
+	
+	\begin{figure*}[t] 
+		\centering
+		\includegraphics[width=0.75\linewidth]{haptics_admittance}
+		\caption{Block diagram of an admittance haptic device}
+		\label{fig:haptci_adm}
+	\end{figure*}	
+	
+
 	
 	
 \section{Interviews and Shadowing}
@@ -336,7 +386,7 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	
 	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. Furthermore, flexibility and belt slip at high torques could actually act as worst-case safety measures.
 
-<<<<<<< HEAD
+
 
 	
 	\begin{table}[]
@@ -348,28 +398,6 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 		Ballscrew &  &  & x & x \\ \hline
 		Belt Drive & x & x & x & \\ \hline
 		Pneumatic/Hydraulic & x &  & x & \\ \hline
-=======
-	\begin{table}[]
-	\centering
-	\caption{Actuator Type}	
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Type} & \textbf{Features / Requirements}  \\ \hline
-		Ballscrew & \textbullet \hspace{2pt} Low backlash \\ 
-				  & \textbullet \hspace{2pt} Back-drivable \\
-				  & \textbullet \hspace{2pt} Need large lead for high speed \\ \hline
-		Beltdrive & \textbullet \hspace{2pt} Elasticity -- lower precision \\ 
-				  & \textbullet \hspace{2pt}  \\
-				  & \textbullet \hspace{2pt}  \\ \hline
-		Hyrdaulic & \textbullet \hspace{2pt}  \\ 
-				  & \textbullet \hspace{2pt} \\
-				  & \textbullet \hspace{2pt}  \\ \hline
-		Pnuematic & \textbullet \hspace{2pt} Low position precision \\ 
-				  & \textbullet \hspace{2pt}  \\
-				  & \textbullet \hspace{2pt} \\ \hline
-		
-
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
 		\end{tabular}
 	\label{tab:actuator}
 	\end{table}
@@ -419,7 +447,7 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	\end{table}
 		
 
-<<<<<<< HEAD
+
 	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. Two forces are created by the user: the applied force pushing or pulling the footplate ($F_a$), and the weight of the leg on the heel support ($F_w$). The on-bed design sits under the leg, so the moment created by the weight of the leg and its moment arm ($R_x$) can be minimized by minimizing the $R_x$. If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator throught that distance ($R$), which is harder to minimize (Fig. \ref{fig:off-bed_moment}). The length of the footplate extension can be shortened to reduce the moment, however this would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possibly hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
 	
 	\begin{figure*}[h] 
@@ -443,7 +471,7 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	The controller can be executed either from a microcontroller or from a full computer. The microcoontroller is cheaper, easier to set up for real time code execution, and has built in I/O's. Computers have more processing power, memory, can easily be networked or connected wirelessly, but require external data acquisition. Special care must be used to set up a real time system which can execute control loops with minimized latencies. 
 	
 	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF's may be added to our system to the point where a microcontroller is not suitable. The computer could also be used to run the user interface (UI). Therefore we chose to use a computer to run the control software. 
-=======
+
 	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator (Fig...). The length of the footplate extension can be shortened to reduce the moment, however would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possible hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
 	
 	\subsection{Computer v.s. Microcontroller}
@@ -703,11 +731,8 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 
 	The control software and UI are run from an Intel NUC computer (Fig REF). It has the following specifications:
 	
-<<<<<<< HEAD
+
 	\begin{table}[h]
-=======
-	\begin{table}[]
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
 	\centering
 	\caption{PCB Components}	
 	\begin{tabular}{|c|l|}
@@ -719,7 +744,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	\label{tab:belt}
 	\end{table}
 	
-<<<<<<< HEAD
+
 	\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=0.75\linewidth]{computer_system}
@@ -730,11 +755,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	
 		
 \chapter{Controller and Software} \label{ch3}
-=======
-	
-		
-\chapter{Controller and Software}
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
+
 
 	\section{Overview}
 	
@@ -1150,6 +1171,9 @@ The third game is balancing game which is not related to the knee flexion exerci
 			While the software was customized to this system, it is desirable that it can be re-used in future design changes to the device, such as changing the control algorithm, adding DOF's, or changing the UI. To facilitate the use of the software for future designs, the software was re-factored to a more general structure, essentially a software template. The template includes  all initialization steps for creating real-time threads, communication of the UI, and communication with the DAQ -- however the controller and data structures are empty. Instructions are included on adding ...
 	
 \chapter{Experiments}
+
+
+
 	\section{Safety Tests}
 	\section{Functional Tests}
 
@@ -1180,8 +1204,148 @@ The third game is balancing game which is not related to the knee flexion exerci
 	
 	\section{Healthy Subject Experiments}
 	
+		\subsection{Method}
+		
+		Five? subjects were recruited to participate in a pilot study under ethics approval from Carleton University's REB. This was a preliminary study and so was done on healthy subjects with motor control over their legs. The purpose of the study was threefold: to test the function and safety of the device, to study the affects of different levels of assistance and resistance, and to get subjective data concerning the device and the three types of games. The experiment consisted of two phases: 
+
+\textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance. Five trials included changing levels of assistance with constant resistance, and the other five had no assistance and changing levels of resistance. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
+
+\textbf{Games \& Visual}: The next phase consisted of three 1.5-minute trials covering the three games described in REF. The user played each game and then was asked to comment on their levels of effort, engagement, the difficulty of the task, and the distractibility of the visuals. 
+	
+		\subsection{Result}
+		
+		The soft real-time system was capable of providing reasonably precise time step control, with an average time step of 1.05 ms (5\% higher than the goal of 1ms). Jitter was higher during some steps, sometimes reaching up to 2ms, however this did not affect the systems ability to deliver the proper controls. 
+
+%	\begin{itemize}
+%		\item Time step jitter to determine how well the real time system could achieve the desired frequency 
+%		\item Testing how well the actual position of the device matches the position of the admittance simulation
+%	\end{itemize}
+	
+	The admittance control was verified by checking the actual position of the device v.s. an admittance simulation created in Simulink using the force data from the trials. The average error was  2.0 mm, an acceptable level given that it has negligible affects on the perception of the device user. 
+	
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{admittance_sim}
+	\caption{Robot admittance position vs simulated position based on force data}
+	\label{fig:adm_sim}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{admittance_v_position}
+	\caption{Robot admittance position vs actual position of device}
+	\label{fig:adm_pos}
+\end{figure}	
+	
+	
+	\subsection{Impedance Ranges}
+	
+	Using the basic admittance control, assistance and resistance are set through the spring (K) and damping (B) terms. Two metrics were compared across varying levels of these parameters: error from the desired trajectory, and effort. Effort here is defined as force times velocity. To differentiate assistive force supplied by the device, and actual force supplied by the user, effort in the direction of the desired point was considered position, and effort in the opposing direction was considered negative. 
+
+	\setlength\arrayrulewidth{1pt}	
+	
+	\begin{table}[ht]
+	\centering
+	\begin{tabular}{c c c c c c}
+	\toprule
+	Mode & Level & Error & Effort & Overshoot & Difficulty \\
+	& & \tiny $[mm]$ & \tiny $[N mm/s]$ & \tiny $[mm]$ & \\
+	\midrule
+	\cellcolor{white} 						& 1 & 10.1 & 9.5 & 7.8 & 4 \\ 
+	\rowcolor{gray!10}		
+	\cellcolor{white}						& 2 & & & & \\ 
+	\cellcolor{white}						& 3 & & & & \\ 
+	\rowcolor{gray!10}
+	\cellcolor{white}						& 4 & & & & \\ 
+	\cellcolor{white}	\multirow{-5}{*}{Assist} 	& 5 & & & & \\ 
+	\midrule
+	\rowcolor{gray!10}
+	\cellcolor{white} 						& 1 & & & & \\ 
+	\cellcolor{white}
+	\cellcolor{white}						& 2 & & & & \\
+	\rowcolor{gray!10}
+	\cellcolor{white}						& 3 & & & & \\ 
+	\cellcolor{white}						& 4 & & & & \\ 
+	\rowcolor{gray!10}
+	\cellcolor{white}	\multirow{-5}{*}{Resist}		& 5 & & & & \\ 
+	\bottomrule
+	\end{tabular}
+	\end{table}
+	
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{err_assist}
+	\caption{Mean error from desired position for different assistance levels}
+	\label{fig:err_assist}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{err_resist}
+	\caption{Mean error from desired position for different resistance levels}
+	\label{fig:err_resist}
+\end{figure}		
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{eff_assist}
+	\caption{Mean effort from desired position for different assistance levels}
+	\label{fig:eff_assist}
+\end{figure}		
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{eff_resist}
+	\caption{Mean effort from desired position for different resistance levels}
+	\label{fig:eff_resist}
+\end{figure}		
+		
+	
+	\subsection{Efficacy of Games}
+	
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{l c c c c }
+	\toprule
+	Game & Engagement & Effort & Difficulty & Distractibility \\
+	\midrule
+	\rowcolor{gray!10} Simple Environment & & & & \\
+	Racing Game & & & & \\
+	\rowcolor{gray!10} Haptic Balance & & & & \\
+	\bottomrule
+	\end{tabular}
+	\end{table}	
+	
+
+	
+	\begin{table}[h]
+	\centering
+	\begin{tabular}{l c c c c c c }
+	\toprule
+	Subject & 1 & 2 & 3 & 4 & 5 & Average \\
+	\midrule
+	\rowcolor{gray!10} Comfort & & & & & & \\
+	Safety & & & & & & \\
+	\rowcolor{gray!10} Visual Correspondence & & & & & & \\
+	\bottomrule
+	\end{tabular}
+	\end{table}
+	
+	
+		\subsection{Discussion}
+	
+	
 \chapter{Conclusion}
+
+
+
 	\section{Future Work}
+	
+	\subsection{Design Additions}
+	\subsection{Games} 
+	\subsection{Trials}
+	
 	
 \chapter*{Appendix I: CAD Drawings}
 \chapter*{Appendix II: PCB Diagram \& BOM}

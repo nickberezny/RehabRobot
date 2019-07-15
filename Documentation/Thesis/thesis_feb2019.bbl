@@ -138,6 +138,12 @@ J.~Hidler, D.~Nichols, M.~Pelliccio, K.~Brady, D.~D. Campbell, J.~H. Kahn, and
   Effectiveness of the Lokomat in Subacute Stroke},'' {\em Neurorehabilitation
   and Neural Repair}, vol.~23, pp.~5--13, sep 2008.
 
+\bibitem{Nam2017}
+K.~Y. Nam, H.~J. Kim, B.~S. Kwon, J.-W. Park, H.~J. Lee, and A.~Yoo,
+  ``{Robot-assisted gait training (Lokomat) improves walking function and
+  activity in people with spinal cord injury: a systematic review},'' {\em
+  Journal of NeuroEngineering and Rehabilitation}, vol.~14, p.~24, dec 2017.
+
 \bibitem{Banala2007}
 S.~K. Banala, S.~K. Agrawal, and J.~P. Scholz, ``{Active Leg Exoskeleton (ALEX)
   for Gait Rehabilitation of Motor-Impaired Patients},'' in {\em 2007 IEEE 10th
@@ -149,12 +155,6 @@ J.~Veneman, R.~Kruidhof, E.~Hekman, R.~Ekkelenkamp, E.~{Van Asseldonk}, and
   H.~van~der Kooij, ``{Design and Evaluation of the LOPES Exoskeleton Robot for
   Interactive Gait Rehabilitation},'' {\em IEEE Transactions on Neural Systems
   and Rehabilitation Engineering}, vol.~15, pp.~379--386, sep 2007.
-
-\bibitem{Nam2017}
-K.~Y. Nam, H.~J. Kim, B.~S. Kwon, J.-W. Park, H.~J. Lee, and A.~Yoo,
-  ``{Robot-assisted gait training (Lokomat) improves walking function and
-  activity in people with spinal cord injury: a systematic review},'' {\em
-  Journal of NeuroEngineering and Rehabilitation}, vol.~14, p.~24, dec 2017.
 
 \bibitem{Schmidt2005}
 H.~Schmidt, S.~Hesse, R.~Bernhardt, and J.~Kr{\"{u}}ger, ``{HapticWalker---a
@@ -231,6 +231,12 @@ T.~T. Jiang, Z.~Q. Qian, Y.~Lin, Z.~M. Bi, Y.~F. Liu, and W.~J. Zhang,
 E.~Vogiatzaki and A.~Krukowski, ``{Serious Games for Stroke Rehabilitation
   Employing Immersive User Interfaces in 3D Virtual Environment},'' {\em
   Journal of Health Informatics}, vol.~6, nov 2014.
+
+\bibitem{Zilles}
+C.~Zilles and J.~Salisbury, ``{A constraint-based god-object method for haptic
+  display},'' in {\em Proceedings 1995 IEEE/RSJ International Conference on
+  Intelligent Robots and Systems. Human Robot Interaction and Cooperative
+  Robots}, vol.~3, pp.~146--151, IEEE Comput. Soc. Press.
 
 \bibitem{Adams1999}
 R.~Adams and B.~Hannaford, ``{Stable haptic interaction with virtual
