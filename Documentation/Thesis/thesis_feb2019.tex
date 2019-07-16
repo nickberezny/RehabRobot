@@ -376,12 +376,9 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 
 	There are several ways of actuating a linear motion. This includes hydraulics \& pneumatics, ballscrews, and belt drives.
 	
-<<<<<<< HEAD
 	\textbf{Hydraulics \& Pneumatics}: Hydraulics and pneumatics use pressurized liquid or air to achieve linear actuation. They require more consideration than other off-the-shelf solutions, such as valves....
-=======
-	\textbf{Hydraulics \& Pneumatics}: 
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
-	
+
+
 	\textbf{Ballscrew}: Ball screws offer high precision and very low backlash. However, the rehabilitation needs to move quickly, and so the ballscrew would require a very large pitch, or the motor would need to powerful enough to supply high torque at high speed. Cost restraints therefore make using a ballscrew impractical. 
 	
 	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. Furthermore, flexibility and belt slip at high torques could actually act as worst-case safety measures.
@@ -424,11 +421,8 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	\end{figure*}	
 	
 		
-<<<<<<< HEAD
 		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig \ref{fig:off-bed}). The device could sit on the bed, under the patient's leg (see Fig \ref{fig:on-bed}), similar to a passive range of motion machine. Each configurations has pros and cons, as listed in Table. \ref{tab:config}.
-=======
-		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig \ref{fig:off-bed}). The device could sit on the bed, under the patient's leg (see Fig \ref{fig:on-bed}), similar to a passive range of motion machine (Fig...). Each configurations has pros and cons:
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
+
 		
 	\begin{table}[] \label{tab:config}
 	\centering
@@ -502,7 +496,6 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	\section{Structural Design}
 	
 	\subsection{Frame}
-<<<<<<< HEAD
 
 	The frame holds the actuator, footplate, and electronics (Fig. \ref{fig:frame}). It should fit on a bed, under one of the patient's leg, without obstructing the other leg or the patient's body. The frame is constructed out of 1x1' aluminium profile, as shown in Figure REF. The frame can be clamped or strapped to the bed. Future designs could include custom mounts to specific beds by attaching to the footboard or sides. The frame also contains an adjustable physical end stop which is used to control the maximum stroke length of the actuator. This can be adjusted to prevent over-extension of the leg. 
 	
@@ -539,18 +532,7 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 		\label{fig:footplate_label}
 	\end{figure*}
 	
-	
-=======
 
-	The frame was constructed out of 1in aluminium profile. 	
-	
-	\subsection{Footplate}
-	
-	The footplate attaches to the belt drive and should be height adjustable. The footplate both supports the leg and is a the interface through which the robot and user interact. It is shown in Fig REF. 
-	
-	An aluminium profile extends from the base on the belt drive. An off-the-shelf carriage with a handle lock is used to adjust the height. Mounting plates are used to attach a load cell to the carriage, which is placed near the bottom of the footplate. The footplate is cut from aluminium 1/8'' plate. 
-	
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
 	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. These brackets are shown in fig REF, and were 3D printed with PLA. 
 	
 	To hold the foot in place, a custom heel support was created (Fig REF). It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D  printed, using ABS. 

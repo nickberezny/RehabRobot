@@ -156,16 +156,16 @@ J.~Veneman, R.~Kruidhof, E.~Hekman, R.~Ekkelenkamp, E.~{Van Asseldonk}, and
   Interactive Gait Rehabilitation},'' {\em IEEE Transactions on Neural Systems
   and Rehabilitation Engineering}, vol.~15, pp.~379--386, sep 2007.
 
-\bibitem{Schmidt2005}
-H.~Schmidt, S.~Hesse, R.~Bernhardt, and J.~Kr{\"{u}}ger, ``{HapticWalker---a
-  novel haptic foot device},'' {\em ACM Transactions on Applied Perception},
-  vol.~2, pp.~166--180, apr 2005.
-
 \bibitem{Hesse2010}
 S.~Hesse, A.~Waldner, and C.~Tomelleri, ``{Innovative gait robot for the
   repetitive practice of floor walking and stair climbing up and down in stroke
   patients},'' {\em Journal of NeuroEngineering and Rehabilitation}, vol.~7,
   p.~30, dec 2010.
+
+\bibitem{Schmidt2005}
+H.~Schmidt, S.~Hesse, R.~Bernhardt, and J.~Kr{\"{u}}ger, ``{HapticWalker---a
+  novel haptic foot device},'' {\em ACM Transactions on Applied Perception},
+  vol.~2, pp.~166--180, apr 2005.
 
 \bibitem{Hesse}
 S.~Hesse, D.~Uhlenbrock, and K.~Berlin, ``{A mechanized gait trainer for

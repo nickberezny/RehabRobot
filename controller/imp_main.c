@@ -39,7 +39,7 @@
 /**********************************************************************
 					   Global Variables
 ***********************************************************************/
-int subject_id = 3;
+int subject_id = 0;
 
 int daqHandle; 
 int listenfd = 0, connfd = 0;
@@ -334,7 +334,7 @@ int main(int argc, char* argv[]) {
 		switch(++exp_iteration){
 
 			case 1:
-				k_gain = KMIN + 0.2;
+				k_gain = KMIN + 0.1;
 				b_gain = BMIN + 0.1;
 				//game_number = 2;
 				//environment = 1;
@@ -342,48 +342,48 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 2:
-				k_gain = KMIN + 0.4;
+				k_gain = KMIN + 0.3;
 				b_gain = BMIN + 0.1;
 				break;
 
 			case 3:
-				k_gain = KMIN + 0.3;
+				k_gain = KMIN;
 				b_gain = BMIN + 0.1;
 				break; 
 
 			case  4:
-				k_gain = KMIN + 0.1;
+				k_gain = KMIN + 0.2;
 				b_gain = BMIN + 0.1;
 				break;
 
 			case 5:
-				k_gain = KMIN;
+				k_gain = KMIN + 0.4;
 				b_gain = BMIN + 0.1;
 				break;
 
 			case 6:
 				k_gain = 0.00001; //TODO: implement pinv, set K = 0
-				b_gain = BMIN + 0.2;
+				b_gain = BMIN + 0.1;
 				break;
 
 			case 7:
 				k_gain = 0.00001; 
-				b_gain = BMIN + 0.4;
+				b_gain = BMIN + 0.3;
 				break;
 
 			case 8:
 				k_gain = 0.00001; 
-				b_gain = BMIN + 0.3;
+				b_gain = BMIN;
 				break;
 
 			case 9:
 				k_gain = 0.00001; 
-				b_gain = BMIN + 0.1;
+				b_gain = BMIN + 0.2;
 				break;
 
 			case 10:
 				k_gain = 0.00001; 
-				b_gain = BMIN;
+				b_gain = BMIN + 0.4;
 				terminate_program = 1;
 				break;
 		}
