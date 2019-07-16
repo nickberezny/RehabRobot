@@ -350,13 +350,13 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 
 	\section{Design Iterations}
 	
-	This sections lists the early design decisions and iterations, along with the justification. There were three significant design decisions to be made:
+	This rehabilitation robot was designed from scratch, from the initial concept to the final realization. This sections lists the early design decisions and iterations, along with the justification. There were four significant design decisions to be made:
 	
 	\begin{enumerate}
 		\item The number of degrees of freedom (DOF) in the robot. The final decision was to use one linear DOF.
 		\item The type of linear actuator to use. Options included pneumatics, ball screws, and belt drives; the final design uses a belt drive.
 		\item The robots placement within the room (on the bed v.s. beside the bed). The final design sits on the bed.
-		\item The conceptual design of a secondary leg support which would prevent the leg from rotating out of position. This was never realised, however the design is presented here for future work. It consists of a 3 DOF passive linkage which can follow the leg through the motion and provide lateral support. 
+		%\item The conceptual design of a secondary leg support which would prevent the leg from rotating out of position. This was never realised, however the design is presented here for future work. It consists of a 3 DOF passive linkage which can follow the leg through the motion and provide lateral support. 
 		\item The controller can be run from either a microcontroller or a full computer. Due to the plans to increase complexity in the future, as well as the need for a user interface, a computer was chosen. 
 	\end{enumerate}
 	
@@ -367,10 +367,8 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 		
 		There were three options for a simpler robot configuration: 1 linear DOF, 1 rotary DOF, or 2-DOF. The primary motions we need to target include circular, horizontal linear (knee extensions), vertical linear (leg lifts), and more complex movements like gait trajectories. These also need to be adjustable to accommodate a variety of body sizes. A linear DOF could target knee extension or leg lifts, whereas a rotary DOF would only be able to target a weak approximation of a gait trajectory (\textit{i.e.} a circular motion more similar to pedalling a bike). A 2 DOF system could accomplish more types of motions, for example doing both leg lifts and knee extensions, or more closely approximating a gait trajectory.
 		
-		Ultimately the single rotary DOF was excluded because its movement was not relate to any of the bed-bound exercises. The 2-DOF was excluded because \textit{(a)} it was determined to be too complex for the scope of this thesis, and \textit{(b)} it was decided the final configuration of a multi-DOF device would be left to future iterations after receiving feedback from the hospital. Therefore, the final design is a single linear DOF. 
-		
-		The linear DOF could either be horizontal or vertical. ...
-		
+		Ultimately the single rotary DOF was excluded because its movement was not relate to any of the bed-bound exercises. The 2-DOF was excluded because \textit{(a)} it was determined to be too complex for the scope of this thesis, and \textit{(b)} it was decided the final configuration of a multi-DOF device would be left to future iterations after receiving feedback from the hospital. Therefore, the final design is a single horizontal linear DOF. 
+
 					
 		\subsection{Linear Actuator Type}
 
@@ -442,7 +440,7 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 		
 
 
-	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. Two forces are created by the user: the applied force pushing or pulling the footplate ($F_a$), and the weight of the leg on the heel support ($F_w$). The on-bed design sits under the leg, so the moment created by the weight of the leg and its moment arm ($R_x$) can be minimized by minimizing the $R_x$. If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator throught that distance ($R$), which is harder to minimize (Fig. \ref{fig:off-bed_moment}). The length of the footplate extension can be shortened to reduce the moment, however this would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possibly hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
+	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. Two forces are created by the user: the applied force pushing or pulling the footplate ($F_a$), and the weight of the leg on the heel support ($F_w$). The on-bed design sits under the leg, so the moment created by the weight of the leg and its moment arm ($R_x$) can be minimized by minimizing the $R_x$ (Fig. \ref{fig:on-bed_moment}). If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator throught that distance ($R$), which is harder to minimize (Fig. \ref{fig:off-bed_moment}). The length of the footplate extension can be shortened to reduce the moment, however this would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possibly hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
 	
 	\begin{figure*}[h] 
 		\centering
@@ -466,24 +464,17 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	
 	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF's may be added to our system to the point where a microcontroller is not suitable. The computer could also be used to run the user interface (UI). Therefore we chose to use a computer to run the control software. 
 
-	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator (Fig...). The length of the footplate extension can be shortened to reduce the moment, however would require that the patient is transferred closer to the edge of the bed, which is both time consuming and possible hazardous. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
-	
-	\subsection{Computer v.s. Microcontroller}
-	
-	The controller can be executed either from a microcontroller or from a full computer. The microcoontroller is cheaper, easier to set up for real time code execution, and has built in I/O's. Computer's have more processing power, memory, can easily be networked or connected wirelessly, but require external data acquisition.
-	
-	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF may be added to the point where a microcontrolle is not suitable. A complex user interface is required which displays 3D visuals and games, which also will require a computer....
->>>>>>> a063c110292bbdb966f5fd9d4ca03a59e219b14b
+
 		
-	\subsection{Secondary Leg Support}
+	%\subsection{Secondary Leg Support}
 		
-	When therapists assist patients with the knee extension exercise they support the patients leg at two points: at the heel and under the knee. From the heel they hold the leg and apply force to assist or resist the motion. The hand under the knee also supports the leg, and keeps the leg from rotating out of plane. 
+	%When therapists assist patients with the knee extension exercise they support the patients leg at two points: at the heel and under the knee. From the heel they hold the leg and apply force to assist or resist the motion. The hand under the knee also supports the leg, and keeps the leg from rotating out of plane. 
 	
 	
 
-	\section{Overview}
+	\section{Device Overview}
 	
-	The final design consists of one linear degree of freedom, actuated by a belt drive, which sits on the bed under the patient's leg. The footplate has heel support and a Velcro strap to keep the foot in place, and is height adjustable to accommodate a variety of leg sizes. There is also an adjustable end stop to limit the length of the stroke, which can be customized to each individual in order to prevent leg over-extension. Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footplate, and actuator. Figure ... shows the device as of July 2019, with the adjustable end stop. 
+	The final design consists of one linear degree of freedom, actuated by a belt drive, which sits on the bed under the patient's leg. The footplate has heel support and a Velcro strap to keep the foot in place, and is height adjustable to accommodate a variety of leg sizes. There is also an adjustable end stop to limit the length of the stroke, which can be customized to each individual in order to prevent leg over-extension. Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footplate, and actuator. Figure ... shows the device as of July 2019.
 
 	\begin{figure*}[h] 
 		\centering
@@ -497,7 +488,7 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	
 	\subsection{Frame}
 
-	The frame holds the actuator, footplate, and electronics (Fig. \ref{fig:frame}). It should fit on a bed, under one of the patient's leg, without obstructing the other leg or the patient's body. The frame is constructed out of 1x1' aluminium profile, as shown in Figure REF. The frame can be clamped or strapped to the bed. Future designs could include custom mounts to specific beds by attaching to the footboard or sides. The frame also contains an adjustable physical end stop which is used to control the maximum stroke length of the actuator. This can be adjusted to prevent over-extension of the leg. 
+	The frame holds the actuator, footplate, and electronics (Fig. \ref{fig:frame}). It should fit on a bed, under one of the patient's leg, without obstructing the other leg or the patient's body. The frame is constructed out of 1x1' aluminium profile. The frame can be clamped or strapped to the bed to secure it in place. Future designs could include custom mounts to specific beds by attaching to the footboard or sides. The frame also contains an adjustable physical end stop which is used to control the maximum stroke length of the actuator. This can be adjusted to prevent over-extension of the leg.
 	
 
 	\begin{figure*}[h] 
@@ -511,19 +502,9 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	
 	\subsection{Footplate}
 	
-	The footplate attaches to the belt drive and should be height adjustable. The footplate both supports the leg and is a the interface through which the robot and user interact. It is shown in Fig \ref{fig:footplate}. 
+	The footplate attaches to the belt drive and is height adjustable. The footplate both supports the leg and is a the interface through which the robot and user interact. It is shown in Fig \ref{fig:footplate_label}. An aluminium profile extends from the base on the belt drive. An off-the-shelf carriage with a handle lock is used to adjust the height. Mounting plates are used to attach a load cell to the carriage, which is placed near the bottom of the footplate. The footplate is cut from aluminium 1/8'' plate. 
 	
-	An aluminium profile extends from the base on the belt drive. An off-the-shelf carriage with a handle lock is used to adjust the height. Mounting plates are used to attach a load cell to the carriage, which is placed near the bottom of the footplate. The footplate is cut from aluminium 1/8'' plate. 
-	
-	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.5\linewidth]{footplate}
-		\caption{The structure of the frame}
-		\label{fig:footplate}
-	\end{figure*}
-	
-	
+
 	
 	\begin{figure*}[h] 
 		\centering
@@ -533,24 +514,24 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	\end{figure*}
 	
 
-	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. These brackets are shown in fig REF, and were 3D printed with PLA. 
-	
-	To hold the foot in place, a custom heel support was created (Fig REF). It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D  printed, using ABS. 
+	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. These brackets are shown in fig REF, and were 3D printed with PLA. To hold the foot in place, a custom heel support was created (Fig REF). It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D printed, using ABS for additional strength. 
 	
 	\section{Hardware}
-		\subsection{Actuator}		
+		\subsection{Actuator}	
 		
-	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive (Fig. \ref{fig:actuator}). The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354). The gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090). The coupling is an Aluminium Flexible Shaft Coupling with a polyurethance spider from McMaster-Carr. The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. The motor is mounted to the belt drive using custom machined aluminium mounts. 
-	
-	
-	
 	\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=0.75\linewidth]{actuator}
 		\caption{The belt drive and motor}
 		\label{fig:actuator}
 	\end{figure*}
+		
+		
+	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive (Fig. \ref{fig:actuator}). The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354). The gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090). The coupling is an Aluminium Flexible Shaft Coupling with a polyurethance spider from McMaster-Carr. The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. The motor is mounted to the belt drive using custom machined aluminium mounts. Finally, a cable chain is used to secure wires running from sensors on the footplate to the electronics box mounted at the base of the device. 
 	
+	
+
+	\subsubsection{Motor Specification}
 	
 	\begin{table}[h]
 	\centering
@@ -564,22 +545,13 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
  		Stall Torque & 8.92 Nm \\ \hline
  		Nominal Speed & 5680 rpm \\ \hline
  		Nominal Torque & 405 mNm \\ \hline
-		\end{tabular}
-	\label{tab:motor}
-	\end{table}
-	
-	\begin{table}[h]
-	\centering
-	\caption{Gear Reduction Properties}	
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Property} & \textbf{Value}  \\ \hline
  		Reduction & 53:1  \\ \hline
  		Max Speed Input & 6000 rpm  \\ \hline
  		Max Torque Input & 45 Nm  \\ \hline
 		\end{tabular}
-	\label{tab:gear}
+	\label{tab:motor}
 	\end{table}
+	
 	
 	\begin{table}[h]
 	\centering
@@ -597,16 +569,9 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 	\label{tab:belt}
 	\end{table}
 	
-	\begin{figure*}[h] 
-		\centering
-		\includegraphics[width=0.75\linewidth]{Motor_range}
-		\caption{Operating Range of the Motor \newline \small www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}
-		\label{fig:motor_range}
-	\end{figure*}
+
 	
-	The motor is required to move the actuator fast enough while also be able to apply adequate levels of force fro assistance or resistance. This motor and gear assembly was used from a previous project, and was found capable of fast of linear motion and applied force.
-	
-	The maximum linear speed is in this case limited by the maximum input RPM to the gearhead, 6000RPM: 
+	The motor is required to move the actuator fast enough while also be able to apply adequate levels of force fro assistance or resistance. This motor and gear assembly was used from a previous project, and was found capable of fast of linear motion and applied force. The maximum linear speed is in this case limited by the maximum input RPM to the gearhead, 6000RPM: 
 	
 	\begin{align*}
 		V_{max} &= \frac{p\omega _{max}}{GR} \frac{1min}{60s} \\
@@ -648,52 +613,49 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		
 	\section{Electronics and Power}
 	
-	Custom electronics were needed in order to power and operate the sensors, and send command signals to the motor. At first this was achieved using a protoboard (see Fig. ). Wiring and space restrictions became a problem and motivated the a redesign using a printed circuit board (PCB), along with a 3D printed case to enclose the electronics. 
-	The PCB has four functions: supply power to the sensors, route signals to and from the DAQ, process or filter signals as necessary, and implement basic safety precautions. 
-	\begin{itemize}
-	\item \textbf{Power Distribution}: The entire device should run off of a single power supply so that only one wall outlet needs to be used. A 48V supply was chosen, since voltage is required by the motor. The sensors require 24V (Load Cell), and 5V (the IR sensor), and 10V is required to send commands to the motor controller. Therefore the PCB has three step-down voltage regulators at these three levels.
-	\item \textbf{Signal Routing}: To streamline the wiring, the PCB takes in three main wires: a DB9 serial connection from the sensors on the footplate, a DB9 serial connection from  the power supply and motor controller, and a DB37 serial connection from the DAQ. These cables are connected to the PCB case and routed to the correct locations.
-	\item \textbf{Signal Processing}: There are a few processing steps taken on the PCB. An adjustable first order low pass filter is used to clean noise from the force measurements. The motor commands from the DAQ are also processed. The DAQ can output 0-5V from the analog pin, however the motor controller acceptc commands from -10 to 10V. The DAQ commands are amplified by 4 and shifted down by 10V using an Op-Amp, such that the 0-5V output can be mapped to the +/- 10V input. 
-	\item \textbf{Safety}: The PCB implements four safety checks. First, the motor commands is checked to ensure it is within an adjustable range. This range can be changed using potentiometers. A Watchdog timer is also used to ensure the software has not stalled. Every timestep, the software send a pulse to the timer -- if a pulse is missed within a certain delay, the Watchdog timer is triggered. There is also an emergency stop button which can be pressed at any time by operator or user. Th E-stop signal, Watchdog timer and motor command limits are combined in a logical AND gate, and the resulting output is sent to the enable pin on the motor controller. Any trigger from the three safety signals will disable the motor and stop the device. 
-	\end{itemize}
-	
+	Custom electronics were needed in order to power and operate the sensors, and send command signals to the motor. At first this was achieved using a protoboard (see Fig. ). Wiring and space restrictions became a problem and motivated a redesign using a printed circuit board (PCB), along with a 3D printed case to enclose the electronics. 
 	
 		
-		\subsection{Components}
-		
-			 \begin{figure*}[h] 
+	\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=0.9\linewidth]{Motor_setup}
 		\caption{The belt drive and motor}
 		\label{fig:actuator}
 	\end{figure*}
 		
-	\begin{table}[]
-	\centering
-	\caption{PCB Components}	
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Component} & \textbf{Description}  \\ \hline
-		24 V DC/DC Converter & Converts 48V to 24V  \\ \hline
-		10 \& 5V Linear Regulator & Converts 48V to 10V and 5V  \\ \hline
-		OP-AMP & Signal Processing   \\ \hline
-		Comparator & Checks to ensure commands are not above/below threshold   \\ \hline
-		4 Channel AND Gate & Only enables operation if all saftey checks read ok   \\ \hline
-		Watchdog Timer & Ensures controller is still running \\ \hline
+	
+	
+	The PCB has four functions: supply power to the sensors, route signals to and from the DAQ, process or filter signals as necessary, and implement basic safety precautions. 
+	\begin{itemize}
+	\item \textbf{Power Distribution}: The entire device should run off of a single power supply so that only one wall outlet needs to be used. A 48V supply was chosen, since voltage is required by the motor. The sensors require 24V (Load Cell), and 5V (the IR sensor), and 10V is required to send commands to the motor controller. Therefore the PCB has three step-down voltage regulators at these three levels.
+	\item \textbf{Signal Routing}: To streamline the wiring, the PCB takes in three main wires: a DB9 serial connection from the sensors on the footplate, a DB9 serial connection from  the power supply and motor controller, and a DB37 serial connection from the DAQ. These cables are connected to the PCB case and routed to the correct locations.
+	\item \textbf{Signal Processing}: There are a few processing steps taken on the PCB (Fig. \ref{fig:amp}). An adjustable first order low pass filter is used to clean noise from the force measurements. The motor commands from the DAQ are also processed. The DAQ can output 0-5V from the analog pin, however the motor controller acceptc commands from -10 to 10V. The DAQ commands are amplified by 4 using a non-inverting amplifier implemented using an Op-Amp, such that the 0-5V output can be mapped to the +/- 10V input. 
 
-		\end{tabular}
-	\label{tab:belt}
-	\end{table}
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.4\linewidth]{ft_filter}
+		\includegraphics[width=0.4\linewidth]{amplifier}
+		\caption{The command non-inverting amplifier and the force signal low pass filter}
+		\label{fig:amp}
+	\end{figure*}	
+	
+	\item \textbf{Safety}: The PCB implements four safety checks (Fig. \ref{fig:safety}). First, the motor commands is checked to ensure it is within an adjustable range. This range can be changed using potentiometers. A Watchdog timer is also used to ensure the software has not stalled. Every timestep, the software send a pulse to the timer -- if a pulse is missed within a certain delay, the Watchdog timer is triggered. There is also an emergency stop button which can be pressed at any time by operator or user. Th E-stop signal, Watchdog timer and motor command limits are combined in a logical AND gate, and the resulting output is sent to the enable pin on the motor controller. Any trigger from the three safety signals will disable the motor and stop the device.
+
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.6\linewidth]{electronics_safety}
+		\caption{The safety system}
+		\label{fig:safety}
+	\end{figure*}	
+	 
+	\end{itemize}
+
 		
 		\subsection{PCB Layout}
 		
-	\begin{figure*}[t] 
-		\centering
-		\includegraphics[width=\linewidth]{pcb_schematic}
-		\caption{Printed Circuit Board}
-		\label{fig:pcb}
-	\end{figure*}
-	
+		Originally, the electronics were mounted and routed on a prototype board, as shown in Fig. REF. The limited sized of the board was problematic, and the large number of jumper cables required to connect everything to the DAQ and to the other hardware made the setup disorganized, and difficult to troubleshoot. The design was streamlined by creating a custom printed circuit board (PCB), shown in Fig. . The layout was designed in Autodesk Eagle, and the board was manufactured by JLCPB (\url{https://jlcpcb.com/}). The first benefit of this design is the size, which contains more components in a smaller space and so can easily be mounted on to the robot. The wiring is also cleaner, with header pins arranged to minimize to bundle related signals together (\textit{e.g.} all wires going to the DAQ are together on the same unit of pins). A case was 3D printed to contain the PCB and the load cell amplifier. Three serial cables connect to the case: one for the motor controller, one for the DAQ, and one for the load cell and other sensors. 
+		
+
 
 	\begin{figure*}[h] 
 		\centering
@@ -702,28 +664,28 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		\label{fig:pcb_pic}
 	\end{figure*}
 	
-		
+	
 	
 	\section{Data Acquisition} 
 
-	Data acquisition is handled by a LabJack T7 DAQ. This model has 14 analog inputs, 2 analog outputs, 23 digital I/O's, and is also capable of handling quadrature encoder signals and high-speed data streaming. The device can interface with the computer through a Ethernet, USB, or wifi (Ethernet was chosen for this project as it is the fastest and most reliable). The front-end Modbus TCP interface is conveniently packaged in the C/C++ LJM library, discussed further in chapter ... 
+	Data acquisition is handled by a LabJack T7 DAQ. This model has 14 analog inputs, 2 analog outputs, 23 digital I/O's, and is also capable of handling quadrature encoder signals and high-speed data streaming. The device can interface with the computer through a Ethernet, USB, or wifi (Ethernet was chosen for this project as it is the fastest and most reliable). The front-end Modbus TCP interface is conveniently packaged in the C/C++ LJM library, discussed further in chapter \label{ch3}.
 
 
-	\section{Computer}
+	\section{Computer System}
 
-	The control software and UI are run from an Intel NUC computer (Fig REF). It has the following specifications:
+	The control software and UI are run from an Intel NUC computer, with specification listed in Table \ref{tab:comp}. The computer's OS is Ubuntu VER. A wifi router is used to create a local network so that the UI can be accessed wirelessly. The DAQ connects to the computer via the Ethernet port. The system is shown in Fig. \ref{fig:comp}. 
 	
 
 	\begin{table}[h]
 	\centering
-	\caption{PCB Components}	
+	\caption{Computer Specifications}	
 	\begin{tabular}{|c|l|}
 		\hline
 		Processor & 2.2 GHz Intel Core i5 \\ \hline
 		RAM & 8GB DDR4 \\ \hline
 		Memory & 250GB Solid State \\ \hline
 		\end{tabular}
-	\label{tab:belt}
+	\label{tab:comp}
 	\end{table}
 	
 
@@ -731,7 +693,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		\centering
 		\includegraphics[width=0.75\linewidth]{computer_system}
 		\caption{The Computer System, with DAQ, Router, and Tablet}
-		\label{fig:pcb_pic}
+		\label{fig:comp}
 	\end{figure*}
 	
 	
@@ -1331,7 +1293,41 @@ The third game is balancing game which is not related to the knee flexion exerci
 	
 \chapter*{Appendix I: CAD Drawings}
 \chapter*{Appendix II: PCB Diagram \& BOM}
+
+		
+	\begin{figure*}[t] 
+		\centering
+		\includegraphics[width=\linewidth]{pcb_schematic}
+		\caption{Printed Circuit Board}
+		\label{fig:pcb}
+	\end{figure*}
+
+	\begin{table}[]
+	\centering
+	\caption{PCB Components}	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Component} & \textbf{Description}  \\ \hline
+		24 V DC/DC Converter & Converts 48V to 24V  \\ \hline
+		10 \& 5V Linear Regulator & Converts 48V to 10V and 5V  \\ \hline
+		OP-AMP & Signal Processing   \\ \hline
+		Comparator & Checks to ensure commands are not above/below threshold   \\ \hline
+		4 Channel AND Gate & Only enables operation if all saftey checks read ok   \\ \hline
+		Watchdog Timer & Ensures controller is still running \\ \hline
+
+		\end{tabular}
+	\label{tab:belt}
+	\end{table}
+
 \chapter*{Appendix III: Hardware Datasheets}
+
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.75\linewidth]{Motor_range}
+		\caption{Operating Range of the Motor \newline \small www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}
+		\label{fig:motor_range}
+	\end{figure*}
+
 \chapter*{Appendix IV: Complete Data from Fieldwork at Hospital}
 	
 \bibliography{thesis}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  16 JUL 2019 10:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  16 JUL 2019 16:36
 entering extended mode
 **./thesis_feb2019.tex
 (thesis_feb2019.tex
@@ -394,25 +394,19 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 )
 (thesis_feb2019.aux
 
-LaTeX Warning: Label `tab:gear' multiply defined.
-
-
 LaTeX Warning: Label `fig:actuator' multiply defined.
 
 
-LaTeX Warning: Label `tab:belt' multiply defined.
-
-
-LaTeX Warning: Label `tab:belt' multiply defined.
-
-
-LaTeX Warning: Label `fig:pcb_pic' multiply defined.
+LaTeX Warning: Label `ch3' multiply defined.
 
 
 LaTeX Warning: Label `eqn:imp' multiply defined.
 
 
 LaTeX Warning: Label `fig:software' multiply defined.
+
+
+LaTeX Warning: Label `tab:belt' multiply defined.
 
 )
 \openout1 = `thesis_feb2019.aux'.
@@ -523,21 +517,21 @@ Chapter 1.
 
 ] [9
 
-] <pics/leg_lift.png, id=510, 390.258pt x 248.127pt>
+] <pics/leg_lift.png, id=495, 390.258pt x 248.127pt>
 File: pics/leg_lift.png Graphic file (type png)
 
 <use pics/leg_lift.png>
 Package pdftex.def Info: pics/leg_lift.png used on input line 53.
 (pdftex.def)             Requested size: 281.85587pt x 179.20784pt.
 
-<pics/knee_extension.png, id=512, 369.0588pt x 265.9536pt>
+<pics/knee_extension.png, id=497, 369.0588pt x 265.9536pt>
 File: pics/knee_extension.png Graphic file (type png)
 
 <use pics/knee_extension.png>
 Package pdftex.def Info: pics/knee_extension.png used on input line 60.
 (pdftex.def)             Requested size: 281.85587pt x 203.12512pt.
  [10 <./pics/leg_lift.png> <./pics/knee_extension.png>] <pics/Traditional_thera
-py.png, id=521, 663.9204pt x 131.5314pt>
+py.png, id=506, 663.9204pt x 131.5314pt>
 File: pics/Traditional_therapy.png Graphic file (type png)
 
 <use pics/Traditional_therapy.png>
@@ -553,41 +547,41 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
  [13] [14]
-<pics/Lokomat.png, id=571, 1116.17pt x 843.15pt>
+<pics/Lokomat.png, id=556, 1116.17pt x 843.15pt>
 File: pics/Lokomat.png Graphic file (type png)
  <use pics/Lokomat.png>
 Package pdftex.def Info: pics/Lokomat.png used on input line 134.
 (pdftex.def)             Requested size: 352.31625pt x 266.134pt.
 
 [15 <./pics/Lokomat.png>]
-<pics/Hapticwalker.jpg, id=583, 454.69875pt x 401.5pt>
+<pics/Hapticwalker.jpg, id=568, 454.69875pt x 401.5pt>
 File: pics/Hapticwalker.jpg Graphic file (type jpg)
 
 <use pics/Hapticwalker.jpg>
 Package pdftex.def Info: pics/Hapticwalker.jpg used on input line 150.
 (pdftex.def)             Requested size: 352.31625pt x 311.098pt.
  [16 <./pics/Hapticwalker.jpg>]
-<pics/Motionmaker.png, id=595, 204.765pt x 141.4083pt>
+<pics/Motionmaker.png, id=580, 204.765pt x 141.4083pt>
 File: pics/Motionmaker.png Graphic file (type png)
 
 <use pics/Motionmaker.png>
 Package pdftex.def Info: pics/Motionmaker.png used on input line 171.
 (pdftex.def)             Requested size: 352.31625pt x 243.32106pt.
  [17 <./pics/Motionmaker.png>]
-<pics/Lambda.jpg, id=603, 246.375pt x 137.97pt>
+<pics/Lambda.jpg, id=588, 246.375pt x 137.97pt>
 File: pics/Lambda.jpg Graphic file (type jpg)
  <use pics/Lambda.jpg>
 Package pdftex.def Info: pics/Lambda.jpg used on input line 180.
 (pdftex.def)             Requested size: 352.31625pt x 197.32085pt.
 
-<pics/Vigrr.jpg, id=606, 227.04292pt x 146.45868pt>
+<pics/Vigrr.jpg, id=591, 227.04292pt x 146.45868pt>
 File: pics/Vigrr.jpg Graphic file (type jpg)
  <use pics/Vigrr.jpg>
 Package pdftex.def Info: pics/Vigrr.jpg used on input line 191.
 (pdftex.def)             Requested size: 352.31625pt x 227.27899pt.
 
 [18 <./pics/Lambda.jpg>] [19 <./pics/Vigrr.jpg>] [20] [21]
-<pics/haptics_admittance.png, id=645, 428.3202pt x 99.7326pt>
+<pics/haptics_admittance.png, id=630, 428.3202pt x 99.7326pt>
 File: pics/haptics_admittance.png Graphic file (type png)
 
 <use pics/haptics_admittance.png>
@@ -601,314 +595,299 @@ Chapter 2.
 ] [30]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 389.
+               Default added (so using `tbp') on input line 387.
 
-<pics/off-bed.png, id=696, 463.9734pt x 150.3216pt>
+<pics/off-bed.png, id=680, 463.9734pt x 150.3216pt>
 File: pics/off-bed.png Graphic file (type png)
  <use pics/off-bed.png>
-Package pdftex.def Info: pics/off-bed.png used on input line 409.
+Package pdftex.def Info: pics/off-bed.png used on input line 407.
 (pdftex.def)             Requested size: 352.31625pt x 114.14465pt.
 
-<pics/on-bed.png, id=697, 395.5578pt x 203.3196pt>
+<pics/on-bed.png, id=681, 395.5578pt x 203.3196pt>
 File: pics/on-bed.png Graphic file (type png)
  <use pics/on-bed.png>
-Package pdftex.def Info: pics/on-bed.png used on input line 418.
+Package pdftex.def Info: pics/on-bed.png used on input line 416.
 (pdftex.def)             Requested size: 352.31625pt x 181.10277pt.
 
-[31 <./pics/off-bed.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 427.
+               Default added (so using `tbp') on input line 425.
 
-[32 <./pics/on-bed.png>]
-<pics/on-bed_moment.png, id=714, 185.0112pt x 278.9622pt>
+[31 <./pics/off-bed.png>] [32 <./pics/on-bed.png>]
+<pics/on-bed_moment.png, id=699, 185.0112pt x 278.9622pt>
 File: pics/on-bed_moment.png Graphic file (type png)
 
 <use pics/on-bed_moment.png>
-Package pdftex.def Info: pics/on-bed_moment.png used on input line 449.
+Package pdftex.def Info: pics/on-bed_moment.png used on input line 447.
 (pdftex.def)             Requested size: 140.92793pt x 212.50298pt.
 
-<pics/off-bed_moment.png, id=715, 439.4016pt x 185.9748pt>
+<pics/off-bed_moment.png, id=700, 439.4016pt x 185.9748pt>
 File: pics/off-bed_moment.png Graphic file (type png)
 
 <use pics/off-bed_moment.png>
-Package pdftex.def Info: pics/off-bed_moment.png used on input line 457.
+Package pdftex.def Info: pics/off-bed_moment.png used on input line 455.
 (pdftex.def)             Requested size: 281.85587pt x 119.29872pt.
- [33 <./pics/on-bed_moment.png> <./pics/off-bed_moment.png>] [34] <pics/overall
-_device.jpg, id=727, 569.87906pt x 459.96844pt>
+ [33 <./pics/on-bed_moment.png> <./pics/off-bed_moment.png>] <pics/overall_devi
+ce.jpg, id=708, 569.87906pt x 459.96844pt>
 File: pics/overall_device.jpg Graphic file (type jpg)
 
 <use pics/overall_device.jpg>
-Package pdftex.def Info: pics/overall_device.jpg used on input line 490.
+Package pdftex.def Info: pics/overall_device.jpg used on input line 481.
 (pdftex.def)             Requested size: 352.31625pt x 284.36333pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35] <pics/frame.png, id=733, 569.9694pt x 460.119pt>
+[34] <pics/frame.png, id=714, 569.9694pt x 460.119pt>
 File: pics/frame.png Graphic file (type png)
  <use pics/frame.png>
-Package pdftex.def Info: pics/frame.png used on input line 505.
+Package pdftex.def Info: pics/frame.png used on input line 496.
 (pdftex.def)             Requested size: 352.31625pt x 284.42833pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/footplate.jpg, id=735, 569.87906pt x 459.96844pt>
-File: pics/footplate.jpg Graphic file (type jpg)
-
-<use pics/footplate.jpg>
-Package pdftex.def Info: pics/footplate.jpg used on input line 521.
-(pdftex.def)             Requested size: 234.8775pt x 189.5779pt.
- [36 <./pics/overall_device.jpg>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<pics/footplate_label.png, id=741, 676.4472pt x 488.0634pt>
+<pics/footplate_label.png, id=716, 676.4472pt x 488.0634pt>
 File: pics/footplate_label.png Graphic file (type png)
 
 <use pics/footplate_label.png>
-Package pdftex.def Info: pics/footplate_label.png used on input line 530.
+Package pdftex.def Info: pics/footplate_label.png used on input line 511.
 (pdftex.def)             Requested size: 234.8775pt x 169.4619pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[37 <./pics/frame.png>] <pics/actuator.png, id=748, 616.2222pt x 459.6372pt>
+[35 <./pics/overall_device.jpg>]
+<pics/actuator.png, id=721, 616.2222pt x 459.6372pt>
 File: pics/actuator.png Graphic file (type png)
-
-<use pics/actuator.png>
-Package pdftex.def Info: pics/actuator.png used on input line 549.
+ <use pics/actuator.png>
+Package pdftex.def Info: pics/actuator.png used on input line 524.
 (pdftex.def)             Requested size: 352.31625pt x 262.78845pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[36 <./pics/frame.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[37 <./pics/footplate_label.png>] [38 <./pics/actuator.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/Motor_range.png, id=749, 417.05812pt x 316.18124pt>
-File: pics/Motor_range.png Graphic file (type png)
-
-<use pics/Motor_range.png>
-Package pdftex.def Info: pics/Motor_range.png used on input line 602.
-(pdftex.def)             Requested size: 352.31625pt x 267.11497pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[38 <./pics/footplate.jpg>] [39 <./pics/footplate_label.png>] [40 <./pics/actua
-tor.png>] [41] [42 <./pics/Motor_range.png>]
-<pics/Motor_setup.png, id=774, 837.8502pt x 535.2798pt>
+[39] <pics/Motor_setup.png, id=744, 837.8502pt x 535.2798pt>
 File: pics/Motor_setup.png Graphic file (type png)
 
 <use pics/Motor_setup.png>
-Package pdftex.def Info: pics/Motor_setup.png used on input line 666.
+Package pdftex.def Info: pics/Motor_setup.png used on input line 621.
 (pdftex.def)             Requested size: 422.77664pt x 270.09772pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[40] <pics/ft_filter.png, id=750, 553.5882pt x 274.1442pt>
+File: pics/ft_filter.png Graphic file (type png)
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 671.
+<use pics/ft_filter.png>
+Package pdftex.def Info: pics/ft_filter.png used on input line 636.
+(pdftex.def)             Requested size: 187.89914pt x 93.04883pt.
+ <pics/amplifier.png, id=751, 533.8344pt x 396.5214pt>
+File: pics/amplifier.png Graphic file (type png)
 
-<pics/pcb_schematic.png, id=775, 768.2301pt x 678.8562pt>
-File: pics/pcb_schematic.png Graphic file (type png)
+<use pics/amplifier.png>
+Package pdftex.def Info: pics/amplifier.png used on input line 637.
+(pdftex.def)             Requested size: 187.89914pt x 139.56506pt.
 
-<use pics/pcb_schematic.png>
-Package pdftex.def Info: pics/pcb_schematic.png used on input line 692.
-(pdftex.def)             Requested size: 469.75502pt x 415.10646pt.
 
-<pics/pcb_pic.png, id=776, 612.3678pt x 345.4506pt>
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[41 <./pics/Motor_setup.png>]
+<pics/electronics_safety.png, id=758, 590.6868pt x 406.1574pt>
+File: pics/electronics_safety.png Graphic file (type png)
+
+<use pics/electronics_safety.png>
+Package pdftex.def Info: pics/electronics_safety.png used on input line 646.
+(pdftex.def)             Requested size: 281.85587pt x 193.813pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[42 <./pics/ft_filter.png> <./pics/amplifier.png>]
+<pics/pcb_pic.png, id=768, 612.3678pt x 345.4506pt>
 File: pics/pcb_pic.png Graphic file (type png)
  <use pics/pcb_pic.png>
-Package pdftex.def Info: pics/pcb_pic.png used on input line 700.
+Package pdftex.def Info: pics/pcb_pic.png used on input line 662.
 (pdftex.def)             Requested size: 352.31625pt x 198.75378pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[43]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<pics/computer_system.png, id=781, 892.08281pt x 316.93407pt>
+[43 <./pics/electronics_safety.png> <./pics/pcb_pic.png>]
+<pics/computer_system.png, id=777, 892.08281pt x 316.93407pt>
 File: pics/computer_system.png Graphic file (type png)
 
 <use pics/computer_system.png>
-Package pdftex.def Info: pics/computer_system.png used on input line 732.
+Package pdftex.def Info: pics/computer_system.png used on input line 694.
 (pdftex.def)             Requested size: 352.31625pt x 125.17065pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[44 <./pics/Motor_setup.png>] [45] [46 <./pics/pcb_schematic.png>] [47 <./pics/
-pcb_pic.png> <./pics/computer_system.png>]
+ [44 <./pics/computer_system.png>]
 Chapter 3.
-<pics/control_diagram2.png, id=802, 631.6398pt x 212.4738pt>
+<pics/control_diagram2.png, id=784, 631.6398pt x 212.4738pt>
 File: pics/control_diagram2.png Graphic file (type png)
 
 <use pics/control_diagram2.png>
-Package pdftex.def Info: pics/control_diagram2.png used on input line 748.
+Package pdftex.def Info: pics/control_diagram2.png used on input line 710.
 (pdftex.def)             Requested size: 469.75502pt x 158.01921pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[48
+[45
 
-] <pics/admittance_sys.png, id=810, 333.4056pt x 134.4222pt>
+] <pics/admittance_sys.png, id=791, 333.4056pt x 134.4222pt>
 File: pics/admittance_sys.png Graphic file (type png)
 
 <use pics/admittance_sys.png>
-Package pdftex.def Info: pics/admittance_sys.png used on input line 768.
+Package pdftex.def Info: pics/admittance_sys.png used on input line 730.
 (pdftex.def)             Requested size: 352.31625pt x 142.05815pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[49 <./pics/control_diagram2.png>] [50 <./pics/admittance_sys.png>] [51]
-<pics/velocity_profile.png, id=845, 714.9912pt x 387.849pt>
+[46 <./pics/control_diagram2.png>] [47 <./pics/admittance_sys.png>] [48]
+<pics/velocity_profile.png, id=827, 714.9912pt x 387.849pt>
 File: pics/velocity_profile.png Graphic file (type png)
 
 <use pics/velocity_profile.png>
-Package pdftex.def Info: pics/velocity_profile.png used on input line 844.
+Package pdftex.def Info: pics/velocity_profile.png used on input line 806.
 (pdftex.def)             Requested size: 352.31625pt x 191.11884pt.
- [52 <./pics/velocity_profile.png>]
-<pics/haptic_coupling.png, id=853, 120.45pt x 156.1032pt>
+ [49 <./pics/velocity_profile.png>]
+<pics/haptic_coupling.png, id=835, 120.45pt x 156.1032pt>
 File: pics/haptic_coupling.png Graphic file (type png)
 
 <use pics/haptic_coupling.png>
-Package pdftex.def Info: pics/haptic_coupling.png used on input line 876.
+Package pdftex.def Info: pics/haptic_coupling.png used on input line 838.
 (pdftex.def)             Requested size: 140.92793pt x 182.65904pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[53] [54 <./pics/haptic_coupling.png>] [55] [56] [57] [58] [59]
-<pics/software.png, id=910, 933.7284pt x 236.082pt>
+[50] [51 <./pics/haptic_coupling.png>] [52] [53] [54] [55] [56]
+<pics/software.png, id=892, 933.7284pt x 236.082pt>
 File: pics/software.png Graphic file (type png)
  <use pics/software.png>
-Package pdftex.def Info: pics/software.png used on input line 1038.
+Package pdftex.def Info: pics/software.png used on input line 1000.
 (pdftex.def)             Requested size: 469.75502pt x 118.77197pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[60] [61 <./pics/software.png>] [62] [63]
-<pics/UI_menu_label.png, id=954, 794.97pt x 511.1898pt>
+[57] [58 <./pics/software.png>] [59] [60]
+<pics/UI_menu_label.png, id=936, 794.97pt x 511.1898pt>
 File: pics/UI_menu_label.png Graphic file (type png)
 
 <use pics/UI_menu_label.png>
-Package pdftex.def Info: pics/UI_menu_label.png used on input line 1116.
+Package pdftex.def Info: pics/UI_menu_label.png used on input line 1078.
 (pdftex.def)             Requested size: 422.77664pt x 271.86531pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[64] <pics/UI_trajectory.png, id=961, 497.2176pt x 290.5254pt>
+[61] <pics/UI_trajectory.png, id=943, 497.2176pt x 290.5254pt>
 File: pics/UI_trajectory.png Graphic file (type png)
 
 <use pics/UI_trajectory.png>
-Package pdftex.def Info: pics/UI_trajectory.png used on input line 1131.
+Package pdftex.def Info: pics/UI_trajectory.png used on input line 1093.
 (pdftex.def)             Requested size: 352.31625pt x 205.87106pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[65 <./pics/UI_menu_label.png>]
-<pics/UI_game_label.png, id=968, 769.9164pt x 486.1362pt>
+[62 <./pics/UI_menu_label.png>]
+<pics/UI_game_label.png, id=950, 769.9164pt x 486.1362pt>
 File: pics/UI_game_label.png Graphic file (type png)
 
 <use pics/UI_game_label.png>
-Package pdftex.def Info: pics/UI_game_label.png used on input line 1143.
+Package pdftex.def Info: pics/UI_game_label.png used on input line 1105.
 (pdftex.def)             Requested size: 469.75502pt x 296.6094pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[66 <./pics/UI_trajectory.png>] [67 <./pics/UI_game_label.png>]
+[63 <./pics/UI_trajectory.png>] [64 <./pics/UI_game_label.png>]
 Chapter 4.
-<pics/Mar12_NoForce_Step_Plot.png, id=980, 421.575pt x 316.18124pt>
+<pics/Mar12_NoForce_Step_Plot.png, id=961, 421.575pt x 316.18124pt>
 File: pics/Mar12_NoForce_Step_Plot.png Graphic file (type png)
 
 <use pics/Mar12_NoForce_Step_Plot.png>
 Package pdftex.def Info: pics/Mar12_NoForce_Step_Plot.png used on input line 11
-71.
+33.
 (pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
- [68
+ [65
 
 ]
-<pics/Mar12_RandForce_Plot1.png, id=985, 421.575pt x 316.18124pt>
+<pics/Mar12_RandForce_Plot1.png, id=966, 421.575pt x 316.18124pt>
 File: pics/Mar12_RandForce_Plot1.png Graphic file (type png)
 
 <use pics/Mar12_RandForce_Plot1.png>
-Package pdftex.def Info: pics/Mar12_RandForce_Plot1.png used on input line 1178
+Package pdftex.def Info: pics/Mar12_RandForce_Plot1.png used on input line 1140
 .
 (pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
- [69 <./pics/Mar12_NoForce_Step_Plot.png>]
-[70 <./pics/Mar12_RandForce_Plot1.png>]
-<pics/admittance_sim.png, id=996, 421.575pt x 316.18124pt>
+ [66 <./pics/Mar12_NoForce_Step_Plot.png>]
+[67 <./pics/Mar12_RandForce_Plot1.png>]
+<pics/admittance_sim.png, id=978, 421.575pt x 316.18124pt>
 File: pics/admittance_sim.png Graphic file (type png)
 
 <use pics/admittance_sim.png>
-Package pdftex.def Info: pics/admittance_sim.png used on input line 1210.
+Package pdftex.def Info: pics/admittance_sim.png used on input line 1172.
 (pdftex.def)             Requested size: 187.89914pt x 140.92455pt.
 
-<pics/admittance_v_position.png, id=997, 421.575pt x 316.18124pt>
+<pics/admittance_v_position.png, id=979, 421.575pt x 316.18124pt>
 File: pics/admittance_v_position.png Graphic file (type png)
 
 <use pics/admittance_v_position.png>
-Package pdftex.def Info: pics/admittance_v_position.png used on input line 1217
+Package pdftex.def Info: pics/admittance_v_position.png used on input line 1179
 .
 (pdftex.def)             Requested size: 187.89914pt x 140.92455pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[71 <./pics/admittance_sim.png (PNG copy)>]
-<pics/err_assist.png, id=1002, 421.575pt x 316.18124pt>
+[68 <./pics/admittance_sim.png (PNG copy)>]
+<pics/err_assist.png, id=984, 421.575pt x 316.18124pt>
 File: pics/err_assist.png Graphic file (type png)
 
 <use pics/err_assist.png>
-Package pdftex.def Info: pics/err_assist.png used on input line 1260.
+Package pdftex.def Info: pics/err_assist.png used on input line 1222.
 (pdftex.def)             Requested size: 187.89914pt x 140.92455pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/err_resist.png, id=1003, 421.575pt x 316.18124pt>
+<pics/err_resist.png, id=985, 421.575pt x 316.18124pt>
 File: pics/err_resist.png Graphic file (type png)
 
 <use pics/err_resist.png>
-Package pdftex.def Info: pics/err_resist.png used on input line 1267.
+Package pdftex.def Info: pics/err_resist.png used on input line 1229.
 (pdftex.def)             Requested size: 187.89914pt x 140.92455pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/eff_assist.png, id=1004, 421.575pt x 316.18124pt>
+<pics/eff_assist.png, id=986, 421.575pt x 316.18124pt>
 File: pics/eff_assist.png Graphic file (type png)
 
 <use pics/eff_assist.png>
-Package pdftex.def Info: pics/eff_assist.png used on input line 1274.
+Package pdftex.def Info: pics/eff_assist.png used on input line 1236.
 (pdftex.def)             Requested size: 187.89914pt x 140.92455pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/eff_resist.png, id=1005, 421.575pt x 316.18124pt>
+<pics/eff_resist.png, id=987, 421.575pt x 316.18124pt>
 File: pics/eff_resist.png Graphic file (type png)
 
 <use pics/eff_resist.png>
-Package pdftex.def Info: pics/eff_resist.png used on input line 1281.
+Package pdftex.def Info: pics/eff_resist.png used on input line 1243.
 (pdftex.def)             Requested size: 187.89914pt x 140.92455pt.
 
 
@@ -920,61 +899,79 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[72 <./pics/admittance_v_position.png (PNG copy)>] [73 <./pics/err_assist.png (
+[69 <./pics/admittance_v_position.png (PNG copy)>] [70 <./pics/err_assist.png (
 PNG copy)> <./pics/err_resist.png (PNG copy)> <./pics/eff_assist.png (PNG copy)
->] [74 <./pics/eff_resist.png (PNG copy)>]
+>] [71 <./pics/eff_resist.png (PNG copy)>]
 Chapter 5.
-[75
+[72
 
-] [76
+] [73
 
-] [77
+] <pics/pcb_schematic.png, id=1012, 768.2301pt x 678.8562pt>
+File: pics/pcb_schematic.png Graphic file (type png)
+
+<use pics/pcb_schematic.png>
+Package pdftex.def Info: pics/pcb_schematic.png used on input line 1300.
+(pdftex.def)             Requested size: 469.75502pt x 415.10646pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1305.
+
+[74
+
+] [75 <./pics/pcb_schematic.png>]
+<pics/Motor_range.png, id=1022, 417.05812pt x 316.18124pt>
+File: pics/Motor_range.png Graphic file (type png)
+
+<use pics/Motor_range.png>
+Package pdftex.def Info: pics/Motor_range.png used on input line 1326.
+(pdftex.def)             Requested size: 352.31625pt x 267.11497pt.
+ [76
+
+ <./pics/Motor_range.png>] (thesis_feb2019.bbl
+[77
 
 ] [78
 
-] (thesis_feb2019.bbl [79
-
-] [80
-
 ]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 77.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 77.
- [81]
+ [79]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
- [82] [83]
+
+[80] [81]
 Missing character: There is no â in font cmr12!
 Missing character: There is no „ in font cmr12!
 Missing character: There is no ¢ in font cmr12!
-
-[84])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1339.
- [85]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1339.
+ [82])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1335.
+ [83]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1335.
  (thesis_feb2019.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1339.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1339.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1335.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1335.
 
 Package rerunfilecheck Info: File `thesis_feb2019.out' has not changed.
-(rerunfilecheck)             Checksum: B51DCC6C3E48AAE3739991300804791B;4718.
+(rerunfilecheck)             Checksum: DCCBFA84852DB6F6349CD53F0315C2EE;4507.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1339.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1335.
  ) 
 Here is how much of TeX's memory you used:
- 9159 strings out of 493323
- 139882 string characters out of 3139054
- 255548 words of memory out of 3000000
- 12187 multiletter control sequences out of 15000+200000
- 11413 words of font info for 41 fonts, out of 3000000 for 9000
+ 9166 strings out of 493323
+ 140070 string characters out of 3139054
+ 255728 words of memory out of 3000000
+ 12196 multiletter control sequences out of 15000+200000
+ 11582 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,16n,42p,1611b,429s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
@@ -988,10 +985,11 @@ m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis_feb2019.pdf (86 pages, 4231140 bytes).
+2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on thesis_feb2019.pdf (84 pages, 4263515 bytes).
 PDF statistics:
- 1183 PDF objects out of 1200 (max. 8388607)
- 313 named destinations out of 1000 (max. 500000)
- 740 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1173 PDF objects out of 1200 (max. 8388607)
+ 308 named destinations out of 1000 (max. 500000)
+ 726 words of extra memory for PDF output out of 10000 (max. 10000000)
 

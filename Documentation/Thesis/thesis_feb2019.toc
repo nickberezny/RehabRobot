@@ -22,53 +22,51 @@
 \contentsline {subsection}{\numberline {2.1.2}Linear Actuator Type}{30}{subsection.2.1.2}
 \contentsline {subsection}{\numberline {2.1.3}Placement Relative to Bed}{31}{subsection.2.1.3}
 \contentsline {subsection}{\numberline {2.1.4}Computer v.s. Microcontroller}{34}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}Computer v.s. Microcontroller}{34}{subsection.2.1.5}
-\contentsline {subsection}{\numberline {2.1.6}Secondary Leg Support}{35}{subsection.2.1.6}
-\contentsline {section}{\numberline {2.2}Overview}{35}{section.2.2}
-\contentsline {section}{\numberline {2.3}Structural Design}{35}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Frame}{35}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Footplate}{36}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Hardware}{38}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Actuator}{38}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Sensors}{41}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Electronics and Power}{42}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Components}{43}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}PCB Layout}{43}{subsection.2.5.2}
-\contentsline {section}{\numberline {2.6}Data Acquisition}{43}{section.2.6}
-\contentsline {section}{\numberline {2.7}Computer}{44}{section.2.7}
-\contentsline {chapter}{\numberline {3}Controller and Software}{48}{chapter.3}
-\contentsline {section}{\numberline {3.1}Overview}{48}{section.3.1}
-\contentsline {section}{\numberline {3.2}Impedance \& Admittance Controller}{48}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Velocity Profile}{52}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Operational Modes Using Admittance Control}{53}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Haptic Coupling}{53}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Operational Modes Using the Haptic Coupling}{55}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Physics Engine}{55}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Tuning Control Gains}{56}{section.3.4}
-\contentsline {section}{\numberline {3.5}Software}{59}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Real Time Operation and Linux}{59}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Controller}{60}{subsection.3.5.2}
-\contentsline {subsubsection}{Setup}{61}{section*.7}
-\contentsline {subsubsection}{Control Loop Thread}{62}{section*.8}
-\contentsline {subsubsection}{Server Communication Thread}{63}{section*.9}
-\contentsline {subsubsection}{Data Logging Thread}{63}{section*.10}
-\contentsline {subsection}{\numberline {3.5.3}User Interface}{63}{subsection.3.5.3}
-\contentsline {subsubsection}{Layout \& Pages}{64}{section*.11}
-\contentsline {subsubsection}{Visuals}{65}{section*.12}
-\contentsline {section}{\numberline {3.6}Software Extension}{66}{section.3.6}
-\contentsline {chapter}{\numberline {4}Experiments}{68}{chapter.4}
-\contentsline {section}{\numberline {4.1}Safety Tests}{68}{section.4.1}
-\contentsline {section}{\numberline {4.2}Functional Tests}{68}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Verifying Admittance Control}{68}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Verifying Haptic Control}{69}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Healthy Subject Experiments}{69}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Method}{69}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Result}{71}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Impedance Ranges}{71}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{72}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Discussion}{72}{subsection.4.3.5}
-\contentsline {chapter}{\numberline {5}Conclusion}{75}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{75}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Design Additions}{75}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Games}{75}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Trials}{75}{subsection.5.1.3}
+\contentsline {section}{\numberline {2.2}Device Overview}{34}{section.2.2}
+\contentsline {section}{\numberline {2.3}Structural Design}{34}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Frame}{34}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Footplate}{35}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Hardware}{37}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Actuator}{37}{subsection.2.4.1}
+\contentsline {subsubsection}{Motor Specification}{37}{section*.7}
+\contentsline {subsection}{\numberline {2.4.2}Sensors}{39}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Electronics and Power}{40}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}PCB Layout}{42}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.6}Data Acquisition}{44}{section.2.6}
+\contentsline {section}{\numberline {2.7}Computer System}{44}{section.2.7}
+\contentsline {chapter}{\numberline {3}Controller and Software}{45}{chapter.3}
+\contentsline {section}{\numberline {3.1}Overview}{45}{section.3.1}
+\contentsline {section}{\numberline {3.2}Impedance \& Admittance Controller}{45}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Velocity Profile}{49}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Operational Modes Using Admittance Control}{50}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Haptic Coupling}{50}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Operational Modes Using the Haptic Coupling}{52}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Physics Engine}{52}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Tuning Control Gains}{53}{section.3.4}
+\contentsline {section}{\numberline {3.5}Software}{56}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Real Time Operation and Linux}{56}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Controller}{57}{subsection.3.5.2}
+\contentsline {subsubsection}{Setup}{58}{section*.8}
+\contentsline {subsubsection}{Control Loop Thread}{59}{section*.9}
+\contentsline {subsubsection}{Server Communication Thread}{60}{section*.10}
+\contentsline {subsubsection}{Data Logging Thread}{60}{section*.11}
+\contentsline {subsection}{\numberline {3.5.3}User Interface}{60}{subsection.3.5.3}
+\contentsline {subsubsection}{Layout \& Pages}{61}{section*.12}
+\contentsline {subsubsection}{Visuals}{62}{section*.13}
+\contentsline {section}{\numberline {3.6}Software Extension}{63}{section.3.6}
+\contentsline {chapter}{\numberline {4}Experiments}{65}{chapter.4}
+\contentsline {section}{\numberline {4.1}Safety Tests}{65}{section.4.1}
+\contentsline {section}{\numberline {4.2}Functional Tests}{65}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Verifying Admittance Control}{65}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Verifying Haptic Control}{66}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Healthy Subject Experiments}{66}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Method}{66}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Result}{68}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Impedance Ranges}{68}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{69}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Discussion}{69}{subsection.4.3.5}
+\contentsline {chapter}{\numberline {5}Conclusion}{72}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{72}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Design Additions}{72}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Games}{72}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Trials}{72}{subsection.5.1.3}
