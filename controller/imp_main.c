@@ -39,7 +39,7 @@
 /**********************************************************************
 					   Global Variables
 ***********************************************************************/
-int subject_id = 4;
+int subject_id = 6;
 
 int daqHandle; 
 int listenfd = 0, connfd = 0;
@@ -332,9 +332,9 @@ int main(int argc, char* argv[]) {
 		v_max = V_MAX; 
 
 		switch(++exp_iteration){
-			/*
+			
 			case 1:
-				k_gain = KMIN + 0.1;
+				k_gain = KMIN;
 				b_gain = BMIN + 0.1;
 				//game_number = 2;
 				//environment = 1;
@@ -342,37 +342,27 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 2:
-				k_gain = KMIN + 0.3;
-				b_gain = BMIN + 0.1;
-				break;
-			*/
-			case 1:
-				k_gain = KMIN;
-				b_gain = BMIN + 0.1;
-				break; 
-
-			case 2:
 				k_gain = KMIN + 0.2;
 				b_gain = BMIN + 0.1;
 				break;
-
+			
 			case 3:
 				k_gain = KMIN + 0.4;
 				b_gain = BMIN + 0.1;
-				break;
+				break; 
 
 			case 4:
-				k_gain = 0.00001; //TODO: implement pinv, set K = 0
+				k_gain = KMIN + 0.3 ;
 				b_gain = BMIN + 0.1;
 				break;
 
 			case 5:
-				k_gain = 0.00001; 
-				b_gain = BMIN + 0.3;
+				k_gain = KMIN + 0.1;
+				b_gain = BMIN + 0.1;
 				break;
 
 			case 6:
-				k_gain = 0.00001; 
+				k_gain = 0.00001; //TODO: implement pinv, set K = 0
 				b_gain = BMIN;
 				break;
 
@@ -384,13 +374,23 @@ int main(int argc, char* argv[]) {
 			case 8:
 				k_gain = 0.00001; 
 				b_gain = BMIN + 0.4;
+				break;
+
+			case 9:
+				k_gain = 0.00001; 
+				b_gain = BMIN + 0.3;
+				break;
+
+			case 10:
+				k_gain = 0.00001; 
+				b_gain = BMIN + 0.1;
 				terminate_program = 1;
 				break;
 		}
 	}
 	else if(exp_number == 2 )
 	{
-		max_count = 180000; //3 min
+		max_count = 120000; //3 min
 		game_type = 1;
 		temp_counter = 0;
 		game_wait_sec = 5.0;
@@ -423,7 +423,7 @@ int main(int argc, char* argv[]) {
 	}
 	else if(exp_number == 3)
 	{
-		max_count = 180000; //6 min
+		max_count = 120000; //6 min
 		game_type = 1;
 		temp_counter = 0;
 		game_wait_sec = 5.0;
@@ -567,7 +567,7 @@ int main(int argc, char* argv[]) {
 	    	ft_offset = ( (ft_offset*(double)i) + FT_GAIN*aValues[1] ) / ((double)i + 1.0);
 	    	usleep(1000); //sleep to space out measurements
 	    }
-
+	    ft_offset = 2.66;
 	    if(DEBUG) printf("Force sensor offset: %.3f\n", ft_offset);
 
 	    //home to back
