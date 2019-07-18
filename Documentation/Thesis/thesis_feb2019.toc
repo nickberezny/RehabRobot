@@ -63,8 +63,9 @@
 \contentsline {subsection}{\numberline {4.3.1}Method}{66}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Result}{68}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Impedance Ranges}{68}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{69}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Discussion}{69}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{70}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Other Comments and Advice}{70}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Discussion}{70}{subsection.4.3.6}
 \contentsline {chapter}{\numberline {5}Conclusion}{72}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future Work}{72}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Design Additions}{72}{subsection.5.1.1}

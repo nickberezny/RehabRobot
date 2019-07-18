@@ -219,7 +219,12 @@ class Race_game extends Component {
   if(this.begin){
     
     this.race_speed1 = (300.0 - Math.abs(this.props.x - this.props.xdes)) / 500.0
-    
+    this.race_speed2 = this.race_speed1 - Math.random()/4;
+    this.race_speed3 = this.race_speed1 - Math.random()/6 + Math.random()/4 
+
+    0.55
+    var race_speed3 = 0.52
+
     if(this.character.position.y >= 100 )
     {
       this.theta1 += this.race_speed1/90.0;

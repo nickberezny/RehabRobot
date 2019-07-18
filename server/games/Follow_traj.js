@@ -56,13 +56,13 @@ class Follow_traj extends Component {
     var bar = new THREE.Mesh( geometry, barMaterial );
     var desPos = new THREE.Mesh( geometry, desMaterial );
 
-    plate.position.set(0.0, 0.0, 0.0);
+    plate.position.set(0.0, 0.0, 50);
     plate.scale.set(1.25, 0.25, 1.0);
 
     bar.position.set(0.0, 0.0, -200);
     bar.scale.set(0.75, 4.0, 1.0);
 
-    desPos.position.set(0.0, 0.0, 50);
+    desPos.position.set(0.0, 0.0, 10);
     desPos.scale.set(1.5, 0.75, 1.0);
 
     var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
