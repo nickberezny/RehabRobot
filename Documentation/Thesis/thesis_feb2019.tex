@@ -23,7 +23,7 @@
 \newpage
 
 \chapter*{Abstract}
-\section*{Acknowledgements}
+\chapter*{Acknowledgements}
 
 \tableofcontents
 \listoffigures
@@ -33,7 +33,7 @@
 
 \section{Introduction}
 
-\chapter*{Abstract}
+
 
 \section{Stroke and Rehabilitation}
 
@@ -112,7 +112,16 @@ Other factors may restrict the PT's and OT's ability to accomplish the recommend
 \end{itemize}
 	
 
-	Rehabilitation robots can be broadly categorized as targeting the lower-limb or the upper-limb. Upper-limb robots tend to be lighter weight since they encounter much smaller loads, while lower-limb devices are heavier as they need to support either the weight of the leg or of the entire body. Lower-limb robots can be further categorized as either targeting standing activities such as treadmill walking, or lying/sitting activities \cite{Calabro2016}. A final subdivision exists between endplate based devices and exoskeletal devices. Endplate-based devices interact with the patient at a single point, usually the end of the limb (the hand or foot), and only apply forces through this point. Exoskeletal devices attach to the user at multiple points, offering greater control over the overall motion of the limb, although they are often more restrictive, more complex, and potentially less safe \cite{Chang2013}. One study found evidence that endplate-based devices may actually yield better outcomes than exoskeletal devices, although the comparison was done via meta-analysis of many different studies with significantly different methodologies \cite{Mehrholz2012} . 
+	Rehabilitation robots can be broadly categorized as targeting the lower-limb or the upper-limb. Upper-limb robots tend to be lighter weight since they encounter much smaller loads, while lower-limb devices are heavier as they need to support either the weight of the leg or of the entire body. Lower-limb robots can be further categorized as either targeting standing activities such as treadmill walking, or lying/sitting activities \cite{Calabro2016}. A final subdivision exists between endplate based devices and exoskeletal devices (Fig. \ref{fig:end_exo}). Endplate-based devices interact with the patient at a single point, usually the end of the limb (the hand or foot), and only apply forces through this point. Exoskeletal devices attach to the user at multiple points, offering greater control over the overall motion of the limb, although they are often more restrictive, more complex, and potentially less safe \cite{Chang2013}. One study found evidence that endplate-based devices may actually yield better outcomes than exoskeletal devices, although the comparison was done via meta-analysis of many different studies with significantly different methodologies \cite{Mehrholz2012} . 
+	
+	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.8\linewidth]{endplate_exoskeleton}
+		\caption{An endplate device (left) and an exoskeletal device (right)}
+		\label{fig:end_exo}
+	\end{figure*}
+
 	
 	Rehabilitation robots have not yet been fully endorsed by stroke best practices. For example, Canadian best practices list robots as a potential benefit, but do not recommend they replace traditional therapy \cite{Hebert2016}. This is largely due to the limited evidence for outcomes of robotic rehabilitation. Many studies are small scale case studies, and the 
 few large clinical trials have found conflicting results. One study following 63 patients compared using the Lokomat (see Sec. \ref{Sec:Overground}) to conventional therapy, and found that the robot was less effective \cite{Hidler2008}. There are many challenges in studying the efficacy of robots in a clinical setting. It is unethical to replace traditional therapy with an unproven method, so typically extra therapy is added to the subject's regimen either from a robot or from a therapist (control). Since most robots are designed to replace time spent in conventional therapy, the robot must consistently be shown to be at least as effective as a therapist at delivering rehabilitation. Furthermore, since most robotic devices are substantially different, results from the study of one lower-limb robot may not apply to another robot. All of this makes ''proving`` the efficacy of a rehabilitation robot difficult. That said, there have been many different robotic devices successfully tested, with some even being available commercially. 
@@ -122,7 +131,7 @@ few large clinical trials have found conflicting results. One study following 63
 
 	One of the most important activities for lower-limb rehabilitation is gait training, wherein the patient walks with assistance from the therapist. Rehabilitation robots were introduced to provide this assistance by attaching to the patient's leg and guiding them through the correct gait trajectories. This can be accomplished bv an exoskeletal orthosis attached around the knee joint, or by and endplate device which supports and guides the feet. 
 	
-	The Lokomat, ALEX, LOPES, and ReoAmbulator are examples exoskeletal gait trainers. 
+	%The Lokomat, ALEX, LOPES, and ReoAmbulator are examples exoskeletal gait trainers. 
 	
 	
 	%Each comprise of a powered exoskeleton which can assist the leg through gait trajectories. They all work in conjunction with body-weight supported treadmill training (BWSTT), using a harness to support the patient and a treadmill for walking. The Lokomat and LOPES use impedance control to deliver programmable levels of assistance to the user. ALEX uses a force-field scheme to create an ''assist-as-needed`` controller which ensures that the user contributes to the movement.
@@ -136,14 +145,14 @@ few large clinical trials have found conflicting results. One study following 63
 		\label{fig:Lokomat}
 	\end{figure*}
 	
-	The ALEX \cite{Banala2007}
+	The ALEX \cite{Banala2007} is an exoskeletal robot used for treadmill gait training. It consists of a 8 DOF orthosis, and a harness to stabilize the user. Its controller provides assistance-as-needed using a force-field scheme, which only applies force when the user deviates from a desired trajectory. This is done by creating ``virtual walls'' at a set distance around the trajectory. They also use friction compensation to make the device backdrivable, to ensure the motion is transparent. A small study on healthy subjects showed that the force-field controller improved the user's ability to perform the trajectory. 
 	
-	The LOPES \cite{Veneman2007}
+	The LOPES \cite{Veneman2007}, or the Lower Extremity Powered Exoskeleton, is gait rehabilitation robot similar to the Lokomat and the ALEX. It uses impedance control to provide modes like patient-in-charge and robot-in-charge. The device has three DOF's per leg, and also contains a pelvic support system to hold the patient up, which is itself also actuated by three linear DOFs. A small study looked at EMG data from normal treadmill walking with treadmill walking with the LOPES, and found that both produced similar data, suggesting unhindered walking is possible with the LOPES.
 	
 	The ReoAmbulator
 	
 	
-	The Haptic Walker , G-EO , and Gait Trainer  are examples of end-plate based rehabilitation robots. Both use actuated platforms under the feet to move the patient through gait trajectories, and a harness to support the patient. The Haptic Walker can perform walking simulations and more complex situations like stumbling or climbing stairs using a 3 DOF system. As can be seen in Figure \ref{fig:Hapticwalker}, the system is much larger than the exoskeletal systems. The GE-O system is similar in that it can simulate walking and stair climbing, with one study finding that electromyography (EMG) readings were similar between simulated walking with the robot and real walking \cite{Hesse2010}. 
+	%The Haptic Walker , G-EO , and Gait Trainer  are examples of end-plate based rehabilitation robots. Both use actuated platforms under the feet to move the patient through gait trajectories, and a harness to support the patient. The Haptic Walker can perform walking simulations and more complex situations like stumbling or climbing stairs using a 3 DOF system. As can be seen in Figure \ref{fig:Hapticwalker}, the system is much larger than the exoskeletal systems. The GE-O system is similar in that it can simulate walking and stair climbing, with one study finding that electromyography (EMG) readings were similar between simulated walking with the robot and real walking \cite{Hesse2010}. 
 	
 	\begin{figure*}[h] 
 		\centering
@@ -152,11 +161,11 @@ few large clinical trials have found conflicting results. One study following 63
 		\label{fig:Hapticwalker}
 	\end{figure*}
 	
-	The Haptic Walker \cite{Schmidt2005}
+	The HapticWalker \cite{Schmidt2005} is an endplate-based gait trainer with two actuated platforms that can move the user's leg through the sagittal plane (Fig. \ref{fig:Hapticwalker}). The system has 3 DOF per leg, but can be extended to 6 DOF to allow for a greater range of motions. The control software is implemented in RTLinux, and includes trajectory generation and a User interface. 
 	
-	The G-EO \cite{Hesse2010}
+	The G-EO is a endplate-based robot designed for the repetitive practice of floor walking and stair climbing \cite{Hesse2010}. Similarly to the HapticWalker, it has two actuated platforms which can guide the patient's legs through trajectories. This robot uses position control, which does not necessarily encourage patient engagement. 
 	
-	The Gait Trainer \cite{Hesse}
+	%The Gait Trainer \cite{Hesse}
 	
 	Overground walking robots show promise for improving gait rehabilitation. However, these only target a single type of lower-limb rehabilitation. Patients must be somewhat mobile (enough to leave their beds and their rooms) to access these devices, and the complexity and setup require that a therapist be present. Hence these robots are designed to replace time spent on conventional therapy, which makes proving consistent performance difficult as was previously mentioned.  
 	
@@ -228,22 +237,38 @@ few large clinical trials have found conflicting results. One study following 63
 	
 	\subsection{Haptic Feedback}
 	
-	Haptic feedback is the physical rendering of forces from virtual environments. Typically an actuated device is used as the haptic interface, with the user controlling the device, which reports the state to a virtual environment physics engine in order to determine the interaction force to be rendered back to the user. Haptic algorithms must balance stability, transparency, and the renderable impedance range. 
+	Haptic feedback is the physical rendering of forces from virtual environments. Typically an actuated device is used as the haptic interface, which allows the user to control the motion and applies interaction forces when necessary. For example, the Phantom Pentium (Fig. \ref{fig:phantom}) is a haptic interface pen which allows users to interact with a 3D computer environment \cite{Massie1994}.
+	
+	\begin{figure*}[t] 
+		\centering
+		\includegraphics[width=0.6\linewidth]{phantom}
+		\caption{The Phantom Premium Haptic Device https://www.3dsystems.com/haptics-devices/3d-systems-phantom-premium}
+		\label{fig:phantom}
+	\end{figure*}		
+	
+	%with the user controlling the device, which reports the state to a virtual environment
+	
+	 %physics engine in order to determine the interaction force to be rendered back to the user. Haptic algorithms must balance stability, transparency, and the renderable impedance range. 
+		
+	The haptic controller needs to consider the accuracy of the rendering of the interaction forces, the stability of the system, and safety of the user. The modelling and the physics of the virtual environment must also be considered. 		
 		
 		Early haptic algorithms used penetration depth between the device and virtual object to determine the interaction forces. However, this leads to ambiguities regarding what surface of the object the user is interacting with (in other words, what face the interaction force should be normal to). In \cite{Zilles}, the God-Object method is introduced to resolve this issue. The device is given a virtual position, that which it would take if the haptics could be infinitely stiff (\textit{i.e.} it always remains at the surface of the object) -- in this way the direction of the interaction force is always known. 
 		
-	A third option is given in \cite{Adams1999}, known as the haptic coupling. This coupling is a virtual system placed in between the physical device and the virtual environment. It in effect places limits on the range of impedances that can be rendered (how close to a rigid wall or free space the device can simulate). 
-	
-	For example, an admittance controlled haptic device is shown in Fig. \ref{fig:haptci_adm}. In this example, the virtual environment is the control algorithm, it is restricted
+	A third option is given in \cite{Adams1999}, known as the haptic coupling. This coupling is a virtual system placed in between the physical device and the virtual environment. It in effect places limits on the range of impedances that can be rendered (how close to a rigid wall or free space the device can simulate). For example, an admittance controlled haptic device is shown in Fig. \ref{fig:haptic_adm}. In this example, the virtual environment is the control algorithm, it is restricted
 	
 	\begin{figure*}[t] 
 		\centering
 		\includegraphics[width=0.75\linewidth]{haptics_admittance}
 		\caption{Block diagram of an admittance haptic device}
-		\label{fig:haptci_adm}
+		\label{fig:haptic_adm}
 	\end{figure*}	
 	
-
+	\begin{figure*}[t] 
+		\centering
+		\includegraphics[width=0.75\linewidth]{haptic_admittance_coupling}
+		\caption{Block diagram of an admittance haptic device}
+		\label{fig:haptic_adm_coup}
+	\end{figure*}	
 	
 	
 \section{Interviews and Shadowing}
@@ -374,13 +399,12 @@ A one DOF robot was designed and created, consisting of a DC motor, force sensor
 
 	There are several ways of actuating a linear motion. This includes hydraulics \& pneumatics, ballscrews, and belt drives.
 	
-	\textbf{Hydraulics \& Pneumatics}: Hydraulics and pneumatics use pressurized liquid or air to achieve linear actuation. They require more consideration than other off-the-shelf solutions, such as valves....
+	\textbf{Hydraulics \& Pneumatics}: Hydraulics and pneumatics use pressurized liquid or air to achieve linear actuation. They require more consideration than other off-the-shelf solutions, such as ...
 
 
 	\textbf{Ballscrew}: Ball screws offer high precision and very low backlash. However, the rehabilitation needs to move quickly, and so the ballscrew would require a very large pitch, or the motor would need to powerful enough to supply high torque at high speed. Cost restraints therefore make using a ballscrew impractical. 
 	
-	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. Furthermore, flexibility and belt slip at high torques could actually act as worst-case safety measures.
-
+	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. Furthermore, flexibility and belt slip at high torques could actually act as worst-case safety measures. Ultimately an off-the-shelf belt drive was used in the design (Fig...).
 
 
 	
@@ -1146,7 +1170,13 @@ The third game is balancing game which is not related to the knee flexion exerci
 	
 	\subsection{Verifying Haptic Control}
 	
+	Two aspects of the haptic controller was tested. First, the haptic coupling was tested to confirm that it was providing the minimal impedance as described by its mass and damping parameters (REF). This was done by running the controller with the interaction force set to zero. The final result should be equivalent to admittance control without the spring term. ...
+	
+	Next, the haptic controller's ability to render interaction forces correctly was tested. 
+	
 	\section{Healthy Subject Experiments}
+	
+	
 	
 		\subsection{Method}
 		
@@ -1155,6 +1185,21 @@ The third game is balancing game which is not related to the knee flexion exerci
 \textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance. Five trials included changing levels of assistance with constant resistance, and the other five had no assistance and changing levels of resistance. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
 
 \textbf{Games \& Visual}: The next phase consisted of three 1.5-minute trials covering the three games described in REF. The user played each game and then was asked to comment on their levels of effort, engagement, the difficulty of the task, and the distractibility of the visuals. 
+
+Data collection included data logged from the robot and subjective questionnaire answers. Relevant data from the robot included position, desired position, velocity, and force. From these, error and effort are calculated:
+
+\begin{equation}
+\text{err} = \sum |x - x_{des}|
+\end{equation}
+\begin{equation}
+\text{eff} = \sum |vF|
+\end{equation}
+
+It is difficult to distinguish between force reading due to the user applying force to the device, and the device applying force to the user when providing assistance. There the effort metric 
+	
+\begin{equation}
+\text{eff} =  \sum \text{sgn}(err)\text{sgn}(F)|vF|
+\end{equation}	
 	
 		\subsection{Result}
 		
@@ -1219,28 +1264,28 @@ The third game is balancing game which is not related to the knee flexion exerci
 	
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{err_assist}
+	\includegraphics[width=0.6\textwidth]{err_assist}
 	\caption{Mean error from desired position for different assistance levels}
 	\label{fig:err_assist}
 \end{figure}	
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{err_resist}
+	\includegraphics[width=0.6\textwidth]{err_resist}
 	\caption{Mean error from desired position for different resistance levels}
 	\label{fig:err_resist}
 \end{figure}		
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{eff_assist}
+	\includegraphics[width=0.6\textwidth]{eff_assist}
 	\caption{Mean effort from desired position for different assistance levels}
 	\label{fig:eff_assist}
 \end{figure}		
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{eff_resist}
+	\includegraphics[width=0.6\textwidth]{eff_resist}
 	\caption{Mean effort from desired position for different resistance levels}
 	\label{fig:eff_resist}
 \end{figure}		
@@ -1277,18 +1322,63 @@ The third game is balancing game which is not related to the knee flexion exerci
 	\end{tabular}
 	\end{table}
 	
-		\subsection{Other Comments and Advice}
+
+		
 		\subsection{Discussion}
+		
+		The first goal of the experiment was to test a range of assistance and resistance levels to determine which are suitable and how they influence the user's performance. As shown in Fig. \ref{fig:err_assist} and Fig. \ref{fig:eff_assist}, the increasing the level of assistance leads to on average lower levels of error, and lower net effort applied by the user. This trend holds despite some of the user's reporting that they did not feel a difference between differing levels of assistance. This results indicates that increasing the spring stiffness can be used to better help patient's who may need assistance to follow the trajectory, and who may not be physically capable of applying enough effort. 
+		
+		The levels of resistance were also correlated with user effort (Fig. \ref{fig:eff_resist}), as greater damping requires the user to apply more force. However, resistance was not correlated with user error (Fig. \ref{fig:err_assist}. This aligns with the particpant's subjective scores, which show that different participants preferred different levels of resistance. Some preferred lower levels, as these allow for easier and more transparent motion. Some preferred higher levels of resistance, as this allows the user to apply force without having to worry about too much overshoot. These results indicate that the resistance level should be tailored to the specific patient, perhaps with some kind of calibration step.  
+		
+		...
+		
+		The general questions were used to determine participant's views on the comfort of the device, bed and UI, the percieved safety, the correspondence between the visual guide and the participant's position, and the leg support provided by the footplate. Safety and visual correspondence received  consistent high scores, with an average of 4.8 and 4.5/5, respectively. Visual correspondence was marred only by occasional lag in UI which caused the games to freeze momentarily. The device comfort received mixed reviews, with an average of 3.2/5. The comfort score was an aggregate of the comfort of the UI, the footplate, the bed, and an overall score.... The leg support consistently got low ratings, with an average of 1.7/5. This was due to several factors. First, due to some instabilities in the footplate described in REF. The heel rest was also uncomfortable, which affected this score. ...
+		
+		\subsection{Other Comments and Advice}
+
+Participants were asked to comment on how they thought the device could be improved. These comments are enumerated here, and will influence the future work section in REF. 		
+		
+		\begin{enumerate}
+			\item Some users found the heel rest uncomfortable. 
+			\item The simple visual environment (with the spinning cube) confused some participants.
+			\item The motor makes a ringing noise when on, which annoyed some.
+		
+		\end{enumerate}
+		
 	
 	
 \chapter{Conclusion}
 
-
+	Rehabilitation Robots have been used successfully in both research and clinical settings. Many devices exist, primarily for the upper-limbs and for gait training. The gap in the researcher concerning devices for bed-bound therapy for acute stroke patients motivated the construction of ViGRR. 
 
 	\section{Future Work}
 	
 	\subsection{Design Additions}
-	\subsection{Games} 
+	
+	Participants rated the device's ability to support the leg consistently low, at an average of 1.7/5. This needs to be improved before testing on patient's, who will be more dependent on the device for support. 
+	
+	\begin{enumerate}
+		\item Improve heel rest comfort by adding comfortable material, and by extending the rest to hold more of the foot. 
+		\item Improving the support of the footplate by using larger brackets to stabilize the cantilever. 
+		\item Improving the footplate-load cell attachment by machining the support brackets from aluminium to eliminate flexibility. 
+		\item As suggested by therapists, a second support point on the leg is needed so that the patient's leg does not bend out of plane. A passive multi-DOF support point attached under the knee should be added, which can accommodate a variety of leg sizes and stroke lengths. 
+	\end{enumerate}		
+	
+	A case for the PCB and Load Cell amplifier has been created, however the other electronics are lose. A separate box should be built to contain the motor controller, power supply, DAQ and computer. This box should be portable and easily connected to the robot. This would allow the robot to be easily setup and removed as needed in the hospital. 
+	
+	A shell needs to be built to protect other's from any sharp edges, and so that the device can be cleaned or sterilized as needed. Some research should be done on what material to use. 
+	
+	Finally, extra DOF's should be added to accommodate different types of exercises. More research will need to be done concerning the best configuration. 
+	
+	\subsection{User Interface Additions}
+	
+	\begin{enumerate}
+		\item Improve games and visuals
+		\item Determine the origin of the occasional lag and fix
+		\item Add to setup page to allow therapist's to customize the parameters
+		\item Add data viewing page which could allow therapist's to monitor patient progress
+	\end{enumerate}
+	
 	\subsection{Trials}
 	
 	

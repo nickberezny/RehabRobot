@@ -156,20 +156,16 @@ J.~Veneman, R.~Kruidhof, E.~Hekman, R.~Ekkelenkamp, E.~{Van Asseldonk}, and
   Interactive Gait Rehabilitation},'' {\em IEEE Transactions on Neural Systems
   and Rehabilitation Engineering}, vol.~15, pp.~379--386, sep 2007.
 
-\bibitem{Hesse2010}
-S.~Hesse, A.~Waldner, and C.~Tomelleri, ``{Innovative gait robot for the
-  repetitive practice of floor walking and stair climbing up and down in stroke
-  patients},'' {\em Journal of NeuroEngineering and Rehabilitation}, vol.~7,
-  p.~30, dec 2010.
-
 \bibitem{Schmidt2005}
 H.~Schmidt, S.~Hesse, R.~Bernhardt, and J.~Kr{\"{u}}ger, ``{HapticWalker---a
   novel haptic foot device},'' {\em ACM Transactions on Applied Perception},
   vol.~2, pp.~166--180, apr 2005.
 
-\bibitem{Hesse}
-S.~Hesse, D.~Uhlenbrock, and K.~Berlin, ``{A mechanized gait trainer for
-  restoration of gait},'' Tech. Rep.~6, 2000.
+\bibitem{Hesse2010}
+S.~Hesse, A.~Waldner, and C.~Tomelleri, ``{Innovative gait robot for the
+  repetitive practice of floor walking and stair climbing up and down in stroke
+  patients},'' {\em Journal of NeuroEngineering and Rehabilitation}, vol.~7,
+  p.~30, dec 2010.
 
 \bibitem{Schmitt2004}
 C.~Schmitt, P.~M{\'{e}}trailler, A.~Al-Khodairy, R.~Brodard, J.~Fournier,
@@ -231,6 +227,10 @@ T.~T. Jiang, Z.~Q. Qian, Y.~Lin, Z.~M. Bi, Y.~F. Liu, and W.~J. Zhang,
 E.~Vogiatzaki and A.~Krukowski, ``{Serious Games for Stroke Rehabilitation
   Employing Immersive User Interfaces in 3D Virtual Environment},'' {\em
   Journal of Health Informatics}, vol.~6, nov 2014.
+
+\bibitem{Massie1994}
+T.~H. Massie and J.~{Kenneth Salisbury}, ``{The PHANToM Haptic Interface: A
+  Device for Probing Virtual Objects},'' Tech. Rep.~1, 1994.
 
 \bibitem{Zilles}
 C.~Zilles and J.~Salisbury, ``{A constraint-based god-object method for haptic
