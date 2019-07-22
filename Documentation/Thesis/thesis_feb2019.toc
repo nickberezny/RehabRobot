@@ -1,72 +1,72 @@
-\contentsline {chapter}{\numberline {1}Literature Review and Preliminary Research}{9}{chapter.1}
-\contentsline {section}{\numberline {1.1}Stroke and Rehabilitation}{9}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}Rehabilitation Guidelines}{12}{subsection.1.1.1}
-\contentsline {section}{\numberline {1.2}Robotic Rehabilitation}{13}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Robots for Overground Walking}{16}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Robots for Sitting or Bed-bound Therapy}{18}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Controls}{20}{subsection.1.2.3}
-\contentsline {subsection}{\numberline {1.2.4}Virtual Environments}{22}{subsection.1.2.4}
-\contentsline {subsection}{\numberline {1.2.5}Haptic Feedback}{23}{subsection.1.2.5}
-\contentsline {section}{\numberline {1.3}Interviews and Shadowing}{25}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Typical Rehabilitation}{26}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Patient Engagement}{26}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Hospital Environment}{27}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}Therapy Schedule}{27}{subsection.1.3.4}
-\contentsline {subsection}{\numberline {1.3.5}Other Comments and Concerns}{28}{subsection.1.3.5}
-\contentsline {section}{\numberline {1.4}Device Concept}{28}{section.1.4}
-\contentsline {section}{\numberline {1.5}Contributions and Outline}{29}{section.1.5}
-\contentsline {chapter}{\numberline {2}Device Design and Implementation}{31}{chapter.2}
-\contentsline {section}{\numberline {2.1}Design Iterations}{31}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Degrees of Freedom}{32}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Linear Actuator Type}{32}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Placement Relative to Bed}{33}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Computer v.s. Microcontroller}{36}{subsection.2.1.4}
-\contentsline {section}{\numberline {2.2}Device Overview}{36}{section.2.2}
-\contentsline {section}{\numberline {2.3}Structural Design}{36}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Frame}{36}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Footplate}{37}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Hardware}{39}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Actuator}{39}{subsection.2.4.1}
-\contentsline {subsubsection}{Motor Specification}{39}{section*.6}
-\contentsline {subsection}{\numberline {2.4.2}Sensors}{41}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Electronics and Power}{42}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}PCB Layout}{44}{subsection.2.5.1}
-\contentsline {section}{\numberline {2.6}Data Acquisition}{46}{section.2.6}
-\contentsline {section}{\numberline {2.7}Computer System}{46}{section.2.7}
-\contentsline {chapter}{\numberline {3}Controller and Software}{47}{chapter.3}
-\contentsline {section}{\numberline {3.1}Overview}{47}{section.3.1}
-\contentsline {section}{\numberline {3.2}Impedance \& Admittance Controller}{47}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Velocity Profile}{51}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Operational Modes Using Admittance Control}{52}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Haptic Coupling}{52}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Operational Modes Using the Haptic Coupling}{54}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Physics Engine}{54}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Tuning Control Gains}{55}{section.3.4}
-\contentsline {section}{\numberline {3.5}Software}{58}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Real Time Operation and Linux}{58}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Controller}{59}{subsection.3.5.2}
-\contentsline {subsubsection}{Setup}{60}{section*.7}
-\contentsline {subsubsection}{Control Loop Thread}{61}{section*.8}
-\contentsline {subsubsection}{Server Communication Thread}{62}{section*.9}
-\contentsline {subsubsection}{Data Logging Thread}{62}{section*.10}
-\contentsline {subsection}{\numberline {3.5.3}User Interface}{62}{subsection.3.5.3}
-\contentsline {subsubsection}{Layout \& Pages}{63}{section*.11}
-\contentsline {subsubsection}{Visuals}{64}{section*.12}
-\contentsline {section}{\numberline {3.6}Software Extension}{65}{section.3.6}
-\contentsline {chapter}{\numberline {4}Experiments}{67}{chapter.4}
-\contentsline {section}{\numberline {4.1}Safety Tests}{67}{section.4.1}
-\contentsline {section}{\numberline {4.2}Functional Tests}{67}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Verifying Admittance Control}{67}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Verifying Haptic Control}{68}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Healthy Subject Experiments}{69}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Method}{69}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Result}{70}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Impedance Ranges}{71}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{72}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Discussion}{72}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Other Comments and Advice}{74}{subsection.4.3.6}
-\contentsline {chapter}{\numberline {5}Conclusion}{77}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{77}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Design Additions}{77}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}User Interface Additions}{78}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Trials}{78}{subsection.5.1.3}
+\contentsline {chapter}{\numberline {1}Literature Review and Preliminary Research}{10}{chapter.1}
+\contentsline {section}{\numberline {1.1}Stroke and Rehabilitation}{10}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Rehabilitation Guidelines}{13}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}Robotic Rehabilitation}{14}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Robots for Overground Walking}{17}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Robots for Sitting or Bed-bound Therapy}{19}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Controls}{21}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Virtual Environments}{23}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Haptic Feedback}{24}{subsection.1.2.5}
+\contentsline {section}{\numberline {1.3}Interviews and Shadowing}{26}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Typical Rehabilitation}{27}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Patient Engagement}{27}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Hospital Environment}{28}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Therapy Schedule}{28}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Other Comments and Concerns}{29}{subsection.1.3.5}
+\contentsline {section}{\numberline {1.4}Device Concept}{29}{section.1.4}
+\contentsline {section}{\numberline {1.5}Contributions and Outline}{30}{section.1.5}
+\contentsline {chapter}{\numberline {2}Device Design and Implementation}{33}{chapter.2}
+\contentsline {section}{\numberline {2.1}Design Iterations}{33}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Degrees of Freedom}{34}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Linear Actuator Type}{34}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Placement Relative to Bed}{35}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Computer v.s. Microcontroller}{38}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Device Overview}{38}{section.2.2}
+\contentsline {section}{\numberline {2.3}Structural Design}{38}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Frame}{38}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Footplate}{39}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Hardware}{41}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Actuator}{41}{subsection.2.4.1}
+\contentsline {subsubsection}{Motor Specification}{41}{section*.6}
+\contentsline {subsection}{\numberline {2.4.2}Sensors}{43}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Electronics and Power}{44}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}PCB Layout}{46}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.6}Data Acquisition}{48}{section.2.6}
+\contentsline {section}{\numberline {2.7}Computer System}{48}{section.2.7}
+\contentsline {chapter}{\numberline {3}Controller and Software}{50}{chapter.3}
+\contentsline {section}{\numberline {3.1}Overview}{50}{section.3.1}
+\contentsline {section}{\numberline {3.2}Impedance \& Admittance Controller}{50}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Velocity Profile}{54}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Operational Modes Using Admittance Control}{55}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Haptic Coupling}{55}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Operational Modes Using the Haptic Coupling}{57}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Physics Engine}{57}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Tuning Control Gains}{58}{section.3.4}
+\contentsline {section}{\numberline {3.5}Software}{61}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Real Time Operation and Linux}{61}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Controller}{62}{subsection.3.5.2}
+\contentsline {subsubsection}{Setup}{63}{section*.7}
+\contentsline {subsubsection}{Control Loop Thread}{64}{section*.8}
+\contentsline {subsubsection}{Server Communication Thread}{65}{section*.9}
+\contentsline {subsubsection}{Data Logging Thread}{65}{section*.10}
+\contentsline {subsection}{\numberline {3.5.3}User Interface}{65}{subsection.3.5.3}
+\contentsline {subsubsection}{Layout \& Pages}{66}{section*.11}
+\contentsline {subsubsection}{Visuals}{67}{section*.12}
+\contentsline {section}{\numberline {3.6}Software Extension}{68}{section.3.6}
+\contentsline {chapter}{\numberline {4}Experiments}{70}{chapter.4}
+\contentsline {section}{\numberline {4.1}Safety Tests}{70}{section.4.1}
+\contentsline {section}{\numberline {4.2}Functional Tests}{70}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Verifying Admittance Control}{70}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Verifying Haptic Control}{71}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Healthy Subject Experiments}{72}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Method}{72}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Result}{74}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Impedance Ranges}{74}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{75}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Discussion}{75}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Other Comments and Advice}{78}{subsection.4.3.6}
+\contentsline {chapter}{\numberline {5}Conclusion}{83}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{83}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Design Additions}{83}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}User Interface Additions}{84}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Trials}{84}{subsection.5.1.3}

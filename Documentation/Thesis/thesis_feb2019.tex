@@ -367,6 +367,21 @@ In addition to these requirements, the device should be usable within a hospital
 
 A one DOF robot was designed and created according to the requirements determined from the literature review, shadowing, and previous work on ViGRR. The device consists of a DC motor, force sensor, belt drive, footplate, frame, and a number of smaller components. A printed circuit board (PCB) was created to route signals, do preprocessing, and distribute power. System software was implemented on a real-time linux system. A controller was created in C, which can operate the device using admittance control, haptic feedback, a basic physics engine, communication with a UI server, and data logging. Real time functionality is ensured using POSIX standards for memory locking, multi-threading, etc. The UI is implemented as website using the React framework, and some simple games are created using the THREE.js 3D web graphics library. The controller was designed as a modular system that can be easily re-factored to accommodate design changes in future iterations. The device was evaluated through a number of tests and experiments, including functional tests, safety tests, and an pilot study with healthy subjects. The results show that the device functions as planned, but that several things must be changed/added before it is ready for patient testing in the hospital.
 
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.75\linewidth]{robot_leg}
+		\caption{The Rehabilitation Robot with User's Leg}
+		\label{fig:robot_leg}
+	\end{figure*}
+	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.75\linewidth]{device_on_bed}
+		\caption{The Rehabilitation Robot on the test bed}
+		\label{fig:robot_on_bed}
+	\end{figure*}
+
+
 
 \begin{itemize}
 
@@ -699,7 +714,16 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		\label{fig:pcb_pic}
 	\end{figure*}
 	
+		\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.4\linewidth]{protoboard}
+		\: \:
+		\includegraphics[width=0.4\linewidth]{pcb_case}
+		\caption{The original protoboard (left), and the updated pcb and case (right)}
+		\label{fig:robot_leg}
+	\end{figure*}
 	
+
 	
 	\section{Data Acquisition} 
 
@@ -1157,11 +1181,9 @@ The third game is balancing game which is not related to the knee flexion exerci
 	\section{Functional Tests}
 
 	\subsection{Verifying Admittance Control}
-		
-	The goal of admittance control is to achieve a desired dynamic behaviour, usually in terms of a mass-spring-damper system, given some input force. To confirm that the controller is successfully rendering the desired admittance, the output position of the device was compared to a simulation of the desired admittance. Force was applied to the system, and data regarding the position and the input force was saved. The force data was used as an input to a Simulink simulation of the mass-spring-damper system, and both the robots position and the simulated position were compared. It was expected that the robot position would track the simulation with some minimal delay due to time lag introduced by the finite sampling rate, as well as some possible error due to limitations of the robots PD control. 
 	
-	For the first test no interaction force was applied, only an initial offset of the reference position of the spring (of 0.2m) was used to elicit a response. A comparison of the robot's behaviour and the simulated behaviour of the desired admittance behaviour is given in (). Force was applied to the robot in the second test, in order to verify that the controller reproduced the desired admittance when interacting with an unknown environment. ... 
-	
+		The admittance control was verified by checking the actual position of the device v.s. an admittance simulation created in Simulink using the force data from the trials. The average error was  2.0 mm, an acceptable level given that it has negligible affects on the perception of the device user. 
+
 	
 \begin{figure*}[t] 
 	\centering
@@ -1169,13 +1191,29 @@ The third game is balancing game which is not related to the knee flexion exerci
 	\caption{Admittance Verification with Interaction}
 	\label{fig:nVerNoInt}
 \end{figure*}
-
-\begin{figure*}[t] 
+	
+	
+	\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\linewidth]{Mar12_RandForce_Plot1}
-	\caption{Admittance Verification with Interaction}
-	\label{fig:VerInt}
-\end{figure*}
+	\includegraphics[width=0.9\textwidth]{admittance_sim}
+	\caption{Robot admittance position vs simulated position based on force data}
+	\label{fig:adm_sim}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{admittance_v_position}
+	\caption{Robot admittance position vs actual position of device}
+	\label{fig:adm_pos}
+\end{figure}	
+	
+		
+	The goal of admittance control is to achieve a desired dynamic behaviour, usually in terms of a mass-spring-damper system, given some input force. To confirm that the controller is successfully rendering the desired admittance, the output position of the device was compared to a simulation of the desired admittance. Force was applied to the system, and data regarding the position and the input force was saved. The force data was used as an input to a Simulink simulation of the mass-spring-damper system, and both the robots position and the simulated position were compared. It was expected that the robot position would track the simulation with some minimal delay due to time lag introduced by the finite sampling rate, as well as some possible error due to limitations of the robots PD control. 
+	
+	For the first test no interaction force was applied, only an initial offset of the reference position of the spring (of 0.2m) was used to elicit a response. A comparison of the robot's behaviour and the simulated behaviour of the desired admittance behaviour is given in (). Force was applied to the robot in the second test, in order to verify that the controller reproduced the desired admittance when interacting with an unknown environment. ... 
+	
+
+
 	
 	These tests confirm that the admittance controller adequately recreated the desired dynamics, and that the outer-loop PD controller tracked this behaviour. 
 	
@@ -1220,23 +1258,29 @@ It is difficult to distinguish between force reading due to the user applying fo
 %		\item Time step jitter to determine how well the real time system could achieve the desired frequency 
 %		\item Testing how well the actual position of the device matches the position of the admittance simulation
 %	\end{itemize}
-	
-	The admittance control was verified by checking the actual position of the device v.s. an admittance simulation created in Simulink using the force data from the trials. The average error was  2.0 mm, an acceptable level given that it has negligible affects on the perception of the device user. 
-	
-	\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.4\textwidth]{admittance_sim}
-	\caption{Robot admittance position vs simulated position based on force data}
-	\label{fig:adm_sim}
-\end{figure}	
 
-\begin{figure}[h]
+\begin{figure*}[t] 
 	\centering
-	\includegraphics[width=0.4\textwidth]{admittance_v_position}
-	\caption{Robot admittance position vs actual position of device}
-	\label{fig:adm_pos}
-\end{figure}	
+	\includegraphics[width=0.9\linewidth]{time_jitter}
+	\caption{Time jitter over 1 second of operation}
+	\label{fig:jitter}
+\end{figure*}
+
+\begin{figure*}[t] 
+	\centering
+	\includegraphics[width=0.9\linewidth]{position_comp}
+	\caption{Comparison between high and low assistance levels}
+	\label{fig:VerInt}
+\end{figure*}
+
+\begin{figure*}[t] 
+	\centering
+	\includegraphics[width=0.9\linewidth]{force_comp}
+	\caption{Comparison of forces between assistance and resistance modes}
+	\label{fig:VerInt}
+\end{figure*}
 	
+
 	
 	\subsection{Impedance Ranges}
 	
@@ -1275,28 +1319,28 @@ It is difficult to distinguish between force reading due to the user applying fo
 	
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{err_assist}
+	\includegraphics[width=0.9\textwidth]{err_assist}
 	\caption{Mean error from desired position for different assistance levels}
 	\label{fig:err_assist}
 \end{figure}	
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{err_resist}
+	\includegraphics[width=0.9\textwidth]{err_resist}
 	\caption{Mean error from desired position for different resistance levels}
 	\label{fig:err_resist}
 \end{figure}		
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{eff_assist}
+	\includegraphics[width=0.9\textwidth]{eff_assist}
 	\caption{Mean effort from desired position for different assistance levels}
 	\label{fig:eff_assist}
 \end{figure}		
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{eff_resist}
+	\includegraphics[width=0.9\textwidth]{eff_resist}
 	\caption{Mean effort from desired position for different resistance levels}
 	\label{fig:eff_resist}
 \end{figure}		
