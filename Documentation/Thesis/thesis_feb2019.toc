@@ -37,36 +37,38 @@
 \contentsline {section}{\numberline {3.1}Overview}{50}{section.3.1}
 \contentsline {section}{\numberline {3.2}Impedance \& Admittance Controller}{50}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Velocity Profile}{54}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Operational Modes Using Admittance Control}{55}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.2}Operational Modes Using Admittance Control}{54}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Haptic Coupling}{55}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Operational Modes Using the Haptic Coupling}{57}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Physics Engine}{57}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.1}Operational Modes Using the Haptic Coupling}{58}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Physics Engine}{58}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Tuning Control Gains}{58}{section.3.4}
 \contentsline {section}{\numberline {3.5}Software}{61}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Real Time Operation and Linux}{61}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Controller}{62}{subsection.3.5.2}
-\contentsline {subsubsection}{Setup}{63}{section*.7}
-\contentsline {subsubsection}{Control Loop Thread}{64}{section*.8}
+\contentsline {subsection}{\numberline {3.5.1}Real Time Operation and Linux}{62}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Controller}{63}{subsection.3.5.2}
+\contentsline {subsubsection}{Setup}{64}{section*.7}
+\contentsline {subsubsection}{Control Loop Thread}{65}{section*.8}
 \contentsline {subsubsection}{Server Communication Thread}{65}{section*.9}
-\contentsline {subsubsection}{Data Logging Thread}{65}{section*.10}
-\contentsline {subsection}{\numberline {3.5.3}User Interface}{65}{subsection.3.5.3}
-\contentsline {subsubsection}{Layout \& Pages}{66}{section*.11}
+\contentsline {subsubsection}{Data Logging Thread}{66}{section*.10}
+\contentsline {subsection}{\numberline {3.5.3}User Interface}{66}{subsection.3.5.3}
+\contentsline {subsubsection}{Layout \& Pages}{67}{section*.11}
 \contentsline {subsubsection}{Visuals}{67}{section*.12}
-\contentsline {section}{\numberline {3.6}Software Extension}{68}{section.3.6}
-\contentsline {chapter}{\numberline {4}Experiments}{70}{chapter.4}
-\contentsline {section}{\numberline {4.1}Safety Tests}{70}{section.4.1}
-\contentsline {section}{\numberline {4.2}Functional Tests}{70}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Verifying Admittance Control}{70}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Verifying Haptic Control}{71}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Healthy Subject Experiments}{72}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Method}{72}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Result}{74}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Impedance Ranges}{74}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{75}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Discussion}{75}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Other Comments and Advice}{78}{subsection.4.3.6}
+\contentsline {section}{\numberline {3.6}Software Extension}{69}{section.3.6}
+\contentsline {chapter}{\numberline {4}Experiments}{71}{chapter.4}
+\contentsline {section}{\numberline {4.1}Safety Tests}{71}{section.4.1}
+\contentsline {section}{\numberline {4.2}Functional Tests}{72}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Verifying Trajectory Generation and Position Control}{72}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Verifying Admittance Control}{72}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Verifying Haptic Control}{73}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Healthy Subject Experiments}{74}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Method}{74}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Result}{76}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Admittance Ranges}{77}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Efficacy of Games}{80}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}General Comments}{81}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Discussion}{81}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Other Comments and Advice}{82}{subsection.4.3.7}
 \contentsline {chapter}{\numberline {5}Conclusion}{83}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future Work}{83}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Design Additions}{83}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}User Interface Additions}{84}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Trials}{84}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.2}User Interface Additions}{85}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Trials}{85}{subsection.5.1.3}

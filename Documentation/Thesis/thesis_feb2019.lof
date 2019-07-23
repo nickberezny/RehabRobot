@@ -27,28 +27,29 @@
 \contentsline {figure}{\numberline {2.10}{\ignorespaces The command non-inverting amplifier and the force signal low pass filter}}{46}{figure.2.10}
 \contentsline {figure}{\numberline {2.11}{\ignorespaces The safety system}}{47}{figure.2.11}
 \contentsline {figure}{\numberline {2.12}{\ignorespaces The PCB Layout}}{47}{figure.2.12}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces The original protoboard (left), and the updated pcg and case (right)}}{48}{figure.2.13}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces The original protoboard (left), and the updated pcb and case (right)}}{48}{figure.2.13}
 \contentsline {figure}{\numberline {2.14}{\ignorespaces The Computer System, with DAQ, Router, and Tablet}}{49}{figure.2.14}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{51}{figure.3.1}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces A mass-spring-damper system, with the origin of the spring set to some desired trajectory}}{52}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Velocity Profile of the Desired Trajectory}}{54}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{56}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces The Three Threads in the Control Software}}{63}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces The Setup Page}}{67}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces The trajectory guide}}{68}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces The racing game}}{69}{figure.3.8}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Admittance control flow chart}}{52}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Velocity Profile of the Desired Trajectory}}{55}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{56}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{56}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The Three Threads in the Control Software}}{63}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces The Setup Page}}{68}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The trajectory guide}}{69}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces The racing game}}{70}{figure.3.10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Admittance Verification with Interaction}}{71}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Robot admittance position vs simulated position based on force data}}{72}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Robot admittance position vs actual position of device}}{73}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Time jitter over 1 second of operation}}{75}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Comparison between high and low assistance levels}}{76}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Comparison of forces between assistance and resistance modes}}{77}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Mean error from desired position for different assistance levels}}{79}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Mean error from desired position for different resistance levels}}{80}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Mean effort from desired position for different assistance levels}}{81}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Mean effort from desired position for different resistance levels}}{82}{figure.4.10}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Admittance Verification with Interaction}}{73}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Robot admittance position vs simulated position based on force data}}{74}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Time jitter over 1 second of operation}}{76}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Comparison between high and low assistance levels}}{77}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Mean error from desired position (left) and total effort (right) for different assistance levels}}{78}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Comparison of forces between assistance and resistance modes}}{79}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Mean error from desired position (left) and total effort (right) for different resistance levels}}{80}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Subjective Difficulty Scores across assistance and resistance levels}}{80}{figure.4.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Printed Circuit Board}}{87}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Operating Range of the Motor \newline \relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}}{88}{figure.5.2}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces The rehabilitation robot and user interface}}{84}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Printed Circuit Board}}{88}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Operating Range of the Motor \newline \relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}}{89}{figure.5.3}

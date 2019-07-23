@@ -804,6 +804,13 @@ Impedance control measures the position and velocity of the robot, and then calc
 Using this control law, the end effector of the robot will behave like the system above, about point $x_{des}$, when displaced by the external environment. If, for example, an operator physical moved the robot, it would respond as if it were the mass-spring-damper system, \textit{i.e.} it would apply a resistive force related to the extent to which it was displaced. 
 	This control law rests on a significant assumption -- that the robot itself has no inherent impedance between the actuator and the the end-effector. It is possible to cancel some of the impedance of the robot using ..., however this is less common and generally takes more time and is less successful (ref). This is an idealization - there will also be some level of friction, mass, or other impeding factors in the motor, gears, links, etc. Therefore, impedance control should only be considered for robots made of low impedance components, such as belt drives and direct-drives. 
 	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.65\linewidth]{admittance_diagram}
+		\caption{Admittance control flow chart}
+		\label{fig:adm_diagram}
+	\end{figure*}
+	
 	Admittance control is essentially the inverse of impedance control, in that it accepts an external force and then renders a corresponding displacement. Fundamentally, admittance control can be described by the following equation, where $F_R$ is the force applied to the robot, $Y$ is the desired admittance, and $V$ is the 'flow' variable vectors (e.g. position and velocity) :
 	
 	\begin{equation}
@@ -897,6 +904,13 @@ Defining the desired impedance or admittance in terms of a mass-spring-damper sy
 		\includegraphics[width=0.3\linewidth]{haptic_coupling}
 		\caption{Virtual Haptic Coupling for Admittance Control}
 		\label{fig:haptic_coupling}
+	\end{figure*} 
+	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.3\linewidth]{haptic_coupling_original}
+		\caption{Virtual Haptic Coupling for Admittance Control}
+		\label{fig:haptic_coupling_original}
 	\end{figure*} 
 	
 	In addition to decoupling stability and the design of the haptic environment, the haptic coupling also allows both impedance and admittance to be used together. For example, a robot may use admittance control due to large amounts of drive friction, but the haptic environment may need to be defined as an impedance, \textit{i.e.} using position to calculate the desired haptic force. 
@@ -1178,11 +1192,31 @@ The third game is balancing game which is not related to the knee flexion exerci
 
 
 	\section{Safety Tests}
+	
+	The safety features on the device are designed to limit the forces and velocities applied by the robot to the user, and also to prevent over-extending the leg. The safety features to be tested included: 
+
+\textbf{Software Limits}: Software limits are placed on force, velocity, motor command, and position. The motor command is saturated at maximum value. The software limits are tested with some demo code which runs through a variety of trajectories and checks to ensure that the motor command is curtailed as required. ...
+
+\textbf{Motor Current Limit}: The motor controller includes a potentiometer which can set the maximum current running through the motor, effectively limiting the motor torque. This was set to ... This feature is not tested; in the future, a current sensor could be used to verify motor current levels.
+
+\textbf{End stop}: If the leg is pulled straight, or beyond this point, the joint may lock, making any applied force potentially dangerous. An adjustable end stop is used to physically stop the movement of the footplate. The end stop also contains a limit switch so that the system knowns when it has reached the end point. 
+...
+
+Other safety features have been included but have not yet been integrated, including hard limits on the motor command. This is done using a comparator to compare the motor command against a fixed voltage level, as described in Sec REF. This features should be fully tested and integrated before testing on patients, who may be in greater danger due to high applied forces. 
+
+	%\begin{enumerate}
+	%	\item Software limits on velocity, force, motor command
+	%	\item Motor current limits set on the motor controller
+	%	\item The adjustable end stop to prevent over extension 
+	%\end{enumerate}
+	
 	\section{Functional Tests}
+
+	\subsection{Verifying Trajectory Generation and Position Control}
 
 	\subsection{Verifying Admittance Control}
 	
-		The admittance control was verified by checking the actual position of the device v.s. an admittance simulation created in Simulink using the force data from the trials. The average error was  2.0 mm, an acceptable level given that it has negligible affects on the perception of the device user. 
+	The goal of admittance control is to achieve a desired dynamic behaviour, usually in terms of a mass-spring-damper system, given some input force. To confirm that the controller is successfully rendering the desired admittance, the output position of the device was compared to a simulation of the desired admittance. Force was applied to the system, and data regarding the position and the input force was saved. The force data was used as an input to a Simulink simulation of the mass-spring-damper system, and both the robots position and the simulated position were compared. It was expected that the robot position would track the simulation with some minimal delay due to time lag introduced by the finite sampling rate, as well as some possible error due to limitations of the robots PD control. 		
 
 	
 \begin{figure*}[t] 
@@ -1192,34 +1226,30 @@ The third game is balancing game which is not related to the knee flexion exerci
 	\label{fig:nVerNoInt}
 \end{figure*}
 	
-	
-	\begin{figure}[h]
+For the first test no interaction force was applied, only an initial offset of the reference position of the spring (of 0.2m) was used to elicit a response. A comparison of the robot's behaviour and the simulated behaviour of the desired admittance behaviour is given in (Fig. \ref{fig:nVerNoInt}). The system behaved as expected, following the correct admittance with a small delay.
+
+The next test was to apply forces to the system to determine if the system can render the correct admittance with a semi-random input. Hence, a human subject was tasked with moving back and forth. The force data was saved and used as an input to the admittance simulation. Fig. \ref{fig:adm_sim} shows a comparison of the actual device position versus the simulated position. Again, the system behaves as expected, following the simulation with some minimal delay.
+
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{admittance_sim}
 	\caption{Robot admittance position vs simulated position based on force data}
 	\label{fig:adm_sim}
 \end{figure}	
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\textwidth]{admittance_v_position}
-	\caption{Robot admittance position vs actual position of device}
-	\label{fig:adm_pos}
-\end{figure}	
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{admittance_v_position}
+%	\caption{Robot admittance position vs actual position of device}
+%	\label{fig:adm_pos}
+%\end{figure}	
 	
 		
-	The goal of admittance control is to achieve a desired dynamic behaviour, usually in terms of a mass-spring-damper system, given some input force. To confirm that the controller is successfully rendering the desired admittance, the output position of the device was compared to a simulation of the desired admittance. Force was applied to the system, and data regarding the position and the input force was saved. The force data was used as an input to a Simulink simulation of the mass-spring-damper system, and both the robots position and the simulated position were compared. It was expected that the robot position would track the simulation with some minimal delay due to time lag introduced by the finite sampling rate, as well as some possible error due to limitations of the robots PD control. 
-	
-	For the first test no interaction force was applied, only an initial offset of the reference position of the spring (of 0.2m) was used to elicit a response. A comparison of the robot's behaviour and the simulated behaviour of the desired admittance behaviour is given in (). Force was applied to the robot in the second test, in order to verify that the controller reproduced the desired admittance when interacting with an unknown environment. ... 
-	
-
-
-	
 	These tests confirm that the admittance controller adequately recreated the desired dynamics, and that the outer-loop PD controller tracked this behaviour. 
 	
 	\subsection{Verifying Haptic Control}
 	
-	Two aspects of the haptic controller was tested. First, the haptic coupling was tested to confirm that it was providing the minimal impedance as described by its mass and damping parameters (REF). This was done by running the controller with the interaction force set to zero. The final result should be equivalent to admittance control without the spring term. ...
+	Two aspects of the haptic controller were tested. First, the haptic coupling was tested to confirm that it was providing the minimal impedance as described by its mass and damping parameters (REF). This was done by running the controller with the interaction force set to zero. The final result should be equivalent to admittance control without the spring term. ...
 	
 	Next, the haptic controller's ability to render interaction forces correctly was tested. 
 	
@@ -1229,26 +1259,30 @@ The third game is balancing game which is not related to the knee flexion exerci
 	
 		\subsection{Method}
 		
-		Five? subjects were recruited to participate in a pilot study under ethics approval from Carleton University's REB. This was a preliminary study and so was done on healthy subjects with motor control over their legs. The purpose of the study was threefold: to test the function and safety of the device, to study the affects of different levels of assistance and resistance, and to get subjective data concerning the device and the three types of games. The experiment consisted of two phases: 
+		Five subjects were recruited to participate in a pilot study under ethics approval from Carleton University's REB. This was a preliminary study and so was done on healthy subjects with motor control over their legs. The purpose of the study was threefold: to test the function and safety of the device, to study the affects of different levels of assistance and resistance, and to get subjective data concerning the device and the three types of games. The experiment consisted of two phases: 
 
-\textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance. Five trials included changing levels of assistance with constant resistance, and the other five had no assistance and changing levels of resistance. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
+\textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance. Five trials included changing levels of assistance with constant resistance, and the other five had no assistance and changing levels of resistance. The assistance levels varied from 0.1 to 0.6 N/mm (with a constant damping of 0.2 Ns/mm), and then the damping varied from 0.1 to 0.6 Ns/mm. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
 
 \textbf{Games \& Visual}: The next phase consisted of three 1.5-minute trials covering the three games described in REF. The user played each game and then was asked to comment on their levels of effort, engagement, the difficulty of the task, and the distractibility of the visuals. 
 
 Data collection included data logged from the robot and subjective questionnaire answers. Relevant data from the robot included position, desired position, velocity, and force. From these, error and effort are calculated:
 
 \begin{equation}
-\text{err} = \sum |x - x_{des}|
+\text{error} = \frac{\sum |x - x_{des}|}{N}
 \end{equation}
 \begin{equation}
-\text{eff} = \sum |vF|
+\text{effort} = \sum |vF|
 \end{equation}
 
-It is difficult to distinguish between force reading due to the user applying force to the device, and the device applying force to the user when providing assistance. There the effort metric 
+The average error is the sum of the error between the device's position and the desired position. It is hypothesized that higher levels of assistance and lower levels of resistance will lead to lower levels of error. 
+
+The effort captures the power input from the user to the device. It is difficult to distinguish between force reading due to the user applying force to the device, and the device applying force to the user when providing assistance. An approximation was to consider force applied in the correct direction (\textit{i.e.} towards the desired position) as contributing positively to total effort, and force in the wrong direction as negative effort. This is motivated by the fact that if the system is providing assistance, or is driving the motion, than it will be pulling the user's leg in the direction of the desired trajectory, resulting in a force in the opposite direction of the desired point. 
 	
 \begin{equation}
-\text{eff} =  \sum \text{sgn}(err)\text{sgn}(F)|vF|
+\text{effort} =  \sum \text{sgn}(err)\text{sgn}(F)|vF|
 \end{equation}	
+
+It is hypothesized that total user effort will be lower with higher assistance, and will be much higher with higher levels of resistance. If these metrics (error and effort) correlate well, then they may be of use for therapists to track patient progress. 
 	
 		\subsection{Result}
 		
@@ -1266,89 +1300,68 @@ It is difficult to distinguish between force reading due to the user applying fo
 	\label{fig:jitter}
 \end{figure*}
 
-\begin{figure*}[t] 
+One issue discovered was time lag in the UI visuals. Occasionally the visuals would freeze, for approximately 1 - 2 seconds. This can be annoying for the user and makes following the desired trajectory displayed by the guide. The origin of the time lag is unknown -- it could be issues with the wireless network, or with the websocket communication. Further investigation is required. 
+
+	
+	\subsection{Admittance Ranges}
+	
+	The differing levels of assistance had some impact on the participant's performance. Fig. \ref{fig:pos_comp} gives an example of how the higher levels of assistance can help reduce error. The figure shows the position of the user through a single stroke (back and forth), compared to the desired trajectory in green. At the lower level, the user actually overshoots the trajectory when moving from back to front, whereas at the higher assistance level the overshoot is presumably corrected by assistive forces, allowing the user to follow the trajectory more closely. 
+	
+	
+\begin{figure*}[h] 
 	\centering
-	\includegraphics[width=0.9\linewidth]{position_comp}
+	\includegraphics[width=0.75\linewidth]{position_comp}
 	\caption{Comparison between high and low assistance levels}
-	\label{fig:VerInt}
+	\label{fig:pos_comp}
 \end{figure*}
 
-\begin{figure*}[t] 
-	\centering
-	\includegraphics[width=0.9\linewidth]{force_comp}
-	\caption{Comparison of forces between assistance and resistance modes}
-	\label{fig:VerInt}
-\end{figure*}
-	
-
-	
-	\subsection{Impedance Ranges}
-	
-	Using the basic admittance control, assistance and resistance are set through the spring (K) and damping (B) terms. Two metrics were compared across varying levels of these parameters: error from the desired trajectory, and effort. Effort here is defined as force times velocity. To differentiate assistive force supplied by the device, and actual force supplied by the user, effort in the direction of the desired point was considered position, and effort in the opposing direction was considered negative. 
-
-	\setlength\arrayrulewidth{1pt}	
-	
-	\begin{table}[ht]
-	\centering
-	\begin{tabular}{c c c c c c}
-	\toprule
-	Mode & Level & Error & Effort & Overshoot & Difficulty \\
-	& & \tiny $[mm]$ & \tiny $[N mm/s]$ & \tiny $[mm]$ & \\
-	\midrule
-	\cellcolor{white} 						& 1 & 10.1 & 9.5 & 7.8 & 4 \\ 
-	\rowcolor{gray!10}		
-	\cellcolor{white}						& 2 & & & & \\ 
-	\cellcolor{white}						& 3 & & & & \\ 
-	\rowcolor{gray!10}
-	\cellcolor{white}						& 4 & & & & \\ 
-	\cellcolor{white}	\multirow{-5}{*}{Assist} 	& 5 & & & & \\ 
-	\midrule
-	\rowcolor{gray!10}
-	\cellcolor{white} 						& 1 & & & & \\ 
-	\cellcolor{white}
-	\cellcolor{white}						& 2 & & & & \\
-	\rowcolor{gray!10}
-	\cellcolor{white}						& 3 & & & & \\ 
-	\cellcolor{white}						& 4 & & & & \\ 
-	\rowcolor{gray!10}
-	\cellcolor{white}	\multirow{-5}{*}{Resist}		& 5 & & & & \\ 
-	\bottomrule
-	\end{tabular}
-	\end{table}
-	
+Both error and effort decrease as assistance levels are increased, as seen in Fig. \ref{fig:err_assist}. The error trend is small compared to the standard deviation, potentially due to the fact that these are healthy subjects who do not necessarily require assistance in achieving the trajectory. The effort trend is more pronounced, indicating that the participants did not need to apply as much effort to achieve the trajectory when assistance levels are high.
 	
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{err_assist}
-	\caption{Mean error from desired position for different assistance levels}
+	\includegraphics[width=0.45\textwidth]{err_assist}
+	\includegraphics[width=0.45\textwidth]{eff_assist}
+	\caption{Mean error from desired position (left) and total effort (right) for different assistance levels}
 	\label{fig:err_assist}
 \end{figure}	
+		
+The participants found resistance mode more difficult than assistance mode, as demonstrated by the error and effort metrics. This is in part due to the increased force required to move the device at higher resistance levels. This can be seen when comparing force data, as in Fig. \ref{fig:force_comp}. The user in general applies less force in assistance mode, especially when the device is moving at high speeds. 
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=0.75\linewidth]{force_comp}
+	\caption{Comparison of forces between assistance and resistance modes}
+	\label{fig:force_comp}
+\end{figure*}
+	
+The effects of the resistance level on error and effort are shown in Fig. \ref{fig:err_resist}. The resistance did not have a significant effect on the level of error; there is a spike at 0.3 Ns/mm, although this is probably due to other factors. It seems more likely that gradual changes in resistance do not effect a healthy subject's ability to perform the trajectory. Increasing the resistance level increased user effort, as predicted. This is due to the fact that higher resistance levels by definition require greater force to move at a given velocity, hence increasing the required effort. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{err_resist}
-	\caption{Mean error from desired position for different resistance levels}
+	\includegraphics[width=0.45\textwidth]{err_resist}
+	\includegraphics[width=0.45\textwidth]{eff_resist}
+	\caption{Mean error from desired position (left) and total effort (right) for different resistance levels}
 	\label{fig:err_resist}
 \end{figure}		
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\textwidth]{eff_assist}
-	\caption{Mean effort from desired position for different assistance levels}
-	\label{fig:eff_assist}
-\end{figure}		
+
+The subjective scores of difficulty are shown in Fig \ref{fig:difficulty}. These scores were normalized to each participant, averaged, and then scaled such that the highest score was a 5/5. The raw data can be found in REF. Subjective difficulty did not change dramatically for different levels of assistance, although the small trend does show that participant's found higher assistance levels less difficult. The small trend is probably due to the fact that the healthy subjects were able to track the trajectory well, and so only received small amounts of assistance. However, as indicated above, the assistance level did have a small impact on error and effort. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{eff_resist}
-	\caption{Mean effort from desired position for different resistance levels}
-	\label{fig:eff_resist}
-\end{figure}		
-		
+	\includegraphics[width=0.45\textwidth]{diff_assist}
+	\includegraphics[width=0.45\textwidth]{diff_resist}
+	\caption{Subjective Difficulty Scores across assistance and resistance levels}
+	\label{fig:difficulty}
+\end{figure}	
+
+The resistance levels show a different trend, with the medium levels of resistance receiving the lowest difficulty, and the lower and higher levels of resistance each being more difficult. Some user's preferred lower resistance, stating that this allowed for more transparent motion. Others preferred medium to high levels of resistance, because they liked to ``push'' through the motion with greater force, and because they found that they often overshot the desired trajectory when resistance was too low. One user experienced small amounts of instability at the lowest level of resistance (0.1 Ns/mm).  
 	
 	\subsection{Efficacy of Games}
 	
-	\begin{table}[h]
+	The participant's ranked the level of engagement, effort, difficulty, and how distracting the visuals were, each on a scale of 1 to 5. The results are shown in Table \ref{tab:games}. On average, the user's preferred the racing game and the balance game. The cube game was not found to be engaging, as indicated by its low score of 1.75/5. The other measures did not vary significantly across games. Both the cube game and the racing game were found to be somewhat distracting (3/5). 	
+	
+	\begin{table}[h] \label{tab:games}
 	\centering
 	\begin{tabular}{l c c c c }
 	\toprule
@@ -1361,7 +1374,9 @@ It is difficult to distinguish between force reading due to the user applying fo
 	\end{tabular}
 	\end{table}	
 	
-
+\subsection{General Comments}
+	
+	The participants ranked several general aspects of the robot on a scale of 1 to 5, including the comfort and safety of the robot, as well as how well the visuals corresponded to the functioning of the robot, and how well it supported their leg.
 	
 	\begin{table}[h]
 	\centering
@@ -1405,6 +1420,15 @@ Participants were asked to comment on how they thought the device could be impro
 \chapter{Conclusion}
 
 	Rehabilitation Robots have been used successfully in both research and clinical settings. Many devices exist, primarily for the upper-limbs and for gait training. The gap in the researcher concerning devices for bed-bound therapy for acute stroke patients motivated the construction of ViGRR. 
+	
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{robot_cad}
+	\caption{The rehabilitation robot and user interface}
+	\label{fig:robot_cad}
+\end{figure}		
+		
 
 	\section{Future Work}
 	
@@ -1475,6 +1499,38 @@ Participants were asked to comment on how they thought the device could be impro
 	\end{figure*}
 
 \chapter*{Appendix IV: Complete Data from Fieldwork at Hospital}
+
+
+	\setlength\arrayrulewidth{1pt}	
+	
+	\begin{table}[ht]
+	\centering
+	\begin{tabular}{c c c c c c}
+	\toprule
+	Mode & Level & Error & Effort & Overshoot & Difficulty \\
+	& & \tiny $[mm]$ & \tiny $[N mm/s]$ & \tiny $[mm]$ & \\
+	\midrule
+	\cellcolor{white} 						& 1 & 5.00 & 5.00 &  & 2.75 \\ 
+	\rowcolor{gray!10}		
+	\cellcolor{white}						& 2 & 4.35 & 3.15 & & 2.73 \\ 
+	\cellcolor{white}						& 3 & 3.55 & 2.60 & & 1.95 \\ 
+	\rowcolor{gray!10}
+	\cellcolor{white}						& 4 & 3.52 & 2.13 & & 2.24 \\ 
+	\cellcolor{white}	\multirow{-5}{*}{Assist} 	& 5 & 3.40  & 1.84 & & 2.23 \\ 
+	\midrule
+	\rowcolor{gray!10}
+	\cellcolor{white} 						& 1 & 4.07 & 2.15 & & 3.50 \\ 
+	\cellcolor{white}
+	\cellcolor{white}						& 2 & 10.40 & 2.76 & & 2.01 \\
+	\rowcolor{gray!10}
+	\cellcolor{white}						& 3 & 4.98 & 5.11 & & 2.61 \\ 
+	\cellcolor{white}						& 4 & 6.10 & 4.44 & & 4.37 \\ 
+	\rowcolor{gray!10}
+	\cellcolor{white}	\multirow{-5}{*}{Resist}		& 5 & 5.61 & 7.34 & & 5.00 \\ 
+	\bottomrule
+	\end{tabular}
+	\end{table}
+	
 	
 \bibliography{thesis}
 \bibliographystyle{ieeetr}
