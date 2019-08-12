@@ -44,7 +44,7 @@ class Follow_game extends Component {
 
     var cube = new THREE.Mesh( geometry, cubeMaterial)
 
-    cube.position.set( 0.0, 0.0, 0.0);
+    cube.position.set( 0.0, 0.0, -70);
 
     var spotLight1 = new THREE.SpotLight( 0xffffff, 1 );
     spotLight1.position.set( -width/3, 200, 200 );
@@ -57,6 +57,9 @@ class Follow_game extends Component {
     this.scene = scene
     this.camera = camera
     this.renderer = renderer
+    this.clock = new THREE.Clock()
+    this.timer = 0;
+    this.start_game = 0;
 
     this.cube = cube
 
@@ -84,22 +87,50 @@ class Follow_game extends Component {
 
   animate() {
 
+
+    if(!this.start_game)
+    {
+
+      this.timer += this.clock.getDelta()
+      
+      var current_time = Math.round(5.8 - this.timer).toString()
+      var textMaterial = this.textMaterial
+
+      if(this.timer > 4.9) 
+      {
+        this.start_game = 1;
+      }
+    }
+    else
+    {
+
     this.factor = 280.0 / this.props.x_end
 
     console.log('x_end' + this.props.x_end)
     console.log('x cube' + this.factor*this.props.x)
     console.log('xdes cube' + this.factor*this.props.xdes )
 
-    if(this.factor*this.props.x > this.factor*this.props.xdes - 30.0 && this.factor*this.props.x < this.factor*this.props.xdes + 30.0)
+    if(this.factor*this.props.x > this.factor*this.props.xdes - this.props.range && this.factor*this.props.x < this.factor*this.props.xdes + this.props.range)
     {
-      //this.points += 1;
+
+      if(this.points < 6000) this.points += 1;
       
-      this.cube.rotation.x += 0.02;
-      this.cube.rotation.y += 0.01;
-      this.cube.rotation.z += 0.015;
+      //this.cube.rotation.x += 0.02;
+      //this.cube.rotation.y += 0.01;
+      //this.cube.rotation.z += 0.015;
+
+    } else {
+
+      if(this.points > 0) this.points -= 3;
 
     }
 
+    this.cube.rotation.x += 0.02 * this.points/2000;
+    this.cube.rotation.y += 0.01 * this.points/2000;
+    this.cube.rotation.z += 0.015 * this.points/2000;
+
+    this.cube.scale.set(1+this.points/3000,1+this.points/3000,1+this.points/3000)
+  }
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
@@ -128,6 +159,7 @@ function mapStateToProps(state) {
     x: state.x,
     xdes: state.xdes,
     x_end: state.x_end,
+    range: state.range,
   }
 }
 

@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import Follow_traj from '../../games/Follow_traj'
 import Follow_vel from '../../games/Follow_vel'
 import Follow_game from '../../games/Follow_game'
+import Follow_game2 from '../../games/Follow_game2'
 import Race_game from '../../games/Race_game'
 import Balance_game from '../../games/Balance_game'
 import Gait_game from '../../games/Gait_game'
+import Block_game from '../../games/Block_game'
 
 import FollowTraj_Instruction from '../Instructions/FollowTraj_Instruction'
 import FollowVel_Instruction from '../Instructions/FollowVel_Instruction'
@@ -54,7 +56,7 @@ class VisualsPage extends React.Component {
 					this.state.content = 
 						<div style={{display: 'flex',
 										alignItems: 'center',
-    									justifyContent: 'center'}}>	<Follow_game />
+    									justifyContent: 'center'}}>	<Follow_game2 />
 							<Follow_traj />
 						</div> 
 					break; 
@@ -79,7 +81,7 @@ class VisualsPage extends React.Component {
 						<div style={{display: 'flex',
 										alignItems: 'center',
     									justifyContent: 'center'}}>
-							<Gait_game />
+							<Block_game/>
 						</div>
 				default: 
 					<div> Game load failed </div>

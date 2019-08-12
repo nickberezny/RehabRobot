@@ -26,7 +26,7 @@ class Race_game extends Component {
 
     var race_speed1 = 0.5
     var race_speed2 = 0.55
-    var race_speed3 = 0.52
+    var race_speed3 = 0.6
 
     var prev_x;
     var prev_time;
@@ -218,12 +218,15 @@ class Race_game extends Component {
 
   if(this.begin){
     
-    this.race_speed1 = (300.0 - Math.abs(this.props.x - this.props.xdes)) / 500.0
-    this.race_speed2 = this.race_speed1 - Math.random()/4;
-    this.race_speed3 = this.race_speed1 - Math.random()/6 + Math.random()/4 
-
-    0.55
-    var race_speed3 = 0.52
+    this.race_speed1 = (150.0 - 5.0 - Math.abs(this.props.x - this.props.xdes)) / 250.0
+    //this.race_speed2 = this.race_speed2
+    if(this.timer > 6) {
+      if(this.race_speed1>this.race_speed2) { this.race_speed2 = this.race_speed1; }
+      else { this.race_speed2 -= 0.03*Math.random(); }
+      this.race_speed3 = 0.57 - 5*Math.random()/25 + 5*Math.random()/25
+      this.timer = 0;
+    }
+    //else this.race_speed3 = 0.57
 
     if(this.character.position.y >= 100 )
     {

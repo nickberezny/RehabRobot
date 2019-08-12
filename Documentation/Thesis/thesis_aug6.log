@@ -1,0 +1,1242 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  6 AUG 2019 13:53
+entering extended mode
+**./thesis_aug6.tex
+(thesis_aug6.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(C:\Users\nicho_000\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+)
+(C:\Users\nicho_000\AppData\Roaming\MiKTeX\2.9\tex\latex\preprint\fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip43
+) (C:\Users\nicho_000\AppData\Roaming\MiKTeX\2.9\tex\latex\was\gensymb.sty
+Package: gensymb 2003/07/02 v1.0 (WaS)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count100
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\svg\svg.sty"
+Package: svg 2018/11/12 v2.02b (include SVG pictures)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrbase.sty"
+Package: scrbase 2019/02/01 v3.26b KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty"
+Package: scrlfile 2019/02/01 v3.26b KOMA-Script package (loading files)
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\shellesc.sty"
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 67.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\trimspaces\trimspaces.sty"
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\svg@box=\box28
+\c@svg@param@lastpage=\count101
+\c@svg@param@currpage=\count102
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ifplatform\ifplatform.sty"
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\catchfile.sty"
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))))
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\transparent.sty"
+Package: transparent 2016/05/16 v1.1 Transparency via pdfTeX's color stack (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen114
+\Hy@linkcounter=\count103
+\Hy@pagecounter=\count104
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count105
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4498.
+Package hyperref Info: Link nesting OFF on input line 4503.
+Package hyperref Info: Hyper index ON on input line 4506.
+Package hyperref Info: Plain pages OFF on input line 4513.
+Package hyperref Info: Backreferencing OFF on input line 4518.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4751.
+\c@Hy@tempcnt=\count106
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5104.
+\XeTeXLinkMargin=\dimen115
+\Fld@menulength=\count107
+\Field@Width=\dimen116
+\Fld@charsize=\dimen117
+Package hyperref Info: Hyper figures OFF on input line 6358.
+Package hyperref Info: Link nesting OFF on input line 6363.
+Package hyperref Info: Hyper index ON on input line 6366.
+Package hyperref Info: backreferencing OFF on input line 6373.
+Package hyperref Info: Link coloring OFF on input line 6378.
+Package hyperref Info: Link coloring with OCG OFF on input line 6383.
+Package hyperref Info: PDF/A mode OFF on input line 6388.
+LaTeX Info: Redefining \ref on input line 6428.
+LaTeX Info: Redefining \pageref on input line 6432.
+\Hy@abspage=\count108
+\c@Item=\count109
+\c@Hfootnote=\count110
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
+\Fld@listcount=\count111
+\c@bookmark@seq@number=\count112
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip47
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip48
+\multirow@cntb=\count113
+\multirow@dima=\skip49
+\bigstrutjot=\dimen118
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\adjustbox.sty"
+Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
+\XKV@toks=\toks20
+\XKV@tempa@toks=\toks21
+)
+\XKV@depth=\count114
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\adjcalc.sty"
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\trimclip.sty"
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\collectbox\collectbox.sty"
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box29
+)
+\tc@llx=\dimen119
+\tc@lly=\dimen120
+\tc@urx=\dimen121
+\tc@ury=\dimen122
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\tc-pdftex.def"
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen123
+\adjbox@Height=\dimen124
+\adjbox@Depth=\dimen125
+\adjbox@Totalheight=\dimen126
+\adjbox@pwidth=\dimen127
+\adjbox@pheight=\dimen128
+\adjbox@pdepth=\dimen129
+\adjbox@ptotalheight=\dimen130
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ifoddpage\ifoddpage.sty"
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count115
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\varwidth.sty"
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box30
+\sift@deathcycles=\count116
+\@vwid@loff=\dimen131
+\@vwid@roff=\dimen132
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\colortbl\colortbl.sty"
+Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen133
+\extrarowheight=\dimen134
+\NC@list=\toks22
+\extratabsurround=\skip50
+\backup@length=\skip51
+)
+\everycr=\toks23
+\minrowclearance=\skip52
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen135
+\lightrulewidth=\dimen136
+\cmidrulewidth=\dimen137
+\belowrulesep=\dimen138
+\belowbottomsep=\dimen139
+\aboverulesep=\dimen140
+\abovetopsep=\dimen141
+\cmidrulesep=\dimen142
+\cmidrulekern=\dimen143
+\defaultaddspace=\dimen144
+\@cmidla=\count117
+\@cmidlb=\count118
+\@aboverulesep=\dimen145
+\@belowrulesep=\dimen146
+\@thisruleclass=\count119
+\@lastruleclass=\count120
+\@thisrulewidth=\dimen147
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
+Package: epstopdf 2016/05/15 v2.6 Conversion with epstopdf on the fly (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+))
+(thesis_aug6.aux
+
+LaTeX Warning: Label `fig:actuator' multiply defined.
+
+
+LaTeX Warning: Label `eqn:imp' multiply defined.
+
+
+LaTeX Warning: Label `fig:software' multiply defined.
+
+
+LaTeX Warning: Label `tab:belt' multiply defined.
+
+)
+\openout1 = `thesis_aug6.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Info: Redefining \celsius on input line 25.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 25.
+
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 25.
+Package gensymb Info: Using \Omega for \ohm on input line 25.
+
+Package gensymb Warning: Not defining \micro.
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count121
+\scratchdimen=\dimen148
+\scratchbox=\box31
+\nofMPsegments=\count122
+\nofMParguments=\count123
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count124
+\MPscratchDim=\dimen149
+\MPnumerator=\count125
+\makeMPintoPDFobject=\count126
+\everyMPtoPDFconversion=\toks25
+)
+\AtBeginShipoutBox=\box32
+Package hyperref Info: Link coloring OFF on input line 25.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count127
+)
+LaTeX Info: Redefining \ref on input line 25.
+LaTeX Info: Redefining \pageref on input line 25.
+LaTeX Info: Redefining \nameref on input line 25.
+
+(thesis_aug6.out) (thesis_aug6.out)
+\@outlinefile=\write3
+\openout3 = `thesis_aug6.out'.
+
+ [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]pdfTeX warning (ext4): des
+tination with the same identifier (name{page.1}) has been already used, duplica
+te ignored
+<to be read again> 
+                   \relax 
+l.31 \tableofcontents
+                      [1
+
+] (thesis_aug6.toc [2
+
+] [3])
+\tf@toc=\write4
+\openout4 = `thesis_aug6.toc'.
+
+ [4] (thesis_aug6.lof
+[5
+
+] [6])
+\tf@lof=\write5
+\openout5 = `thesis_aug6.lof'.
+
+ [7] (thesis_aug6.lot)
+\tf@lot=\write6
+\openout6 = `thesis_aug6.lot'.
+
+ [8
+
+]
+Chapter 1.
+[9
+
+] <pics/leg_lift.png, id=525, 390.258pt x 248.127pt>
+File: pics/leg_lift.png Graphic file (type png)
+ <use pics/leg_lift.png>
+Package pdftex.def Info: pics/leg_lift.png used on input line 53.
+(pdftex.def)             Requested size: 281.85587pt x 179.20784pt.
+
+<pics/knee_extension.png, id=527, 369.0588pt x 265.9536pt>
+File: pics/knee_extension.png Graphic file (type png)
+
+<use pics/knee_extension.png>
+Package pdftex.def Info: pics/knee_extension.png used on input line 60.
+(pdftex.def)             Requested size: 281.85587pt x 203.12512pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10 <./pics/leg_lift.png>]
+<pics/Traditional_therapy.png, id=537, 663.9204pt x 131.5314pt>
+File: pics/Traditional_therapy.png Graphic file (type png)
+
+<use pics/Traditional_therapy.png>
+Package pdftex.def Info: pics/Traditional_therapy.png used on input line 70.
+(pdftex.def)             Requested size: 469.75502pt x 93.0648pt.
+ [11 <./pics/knee_extension.png> <./pics/Traditional_therapy.png>] <pics/guidel
+ines.png, id=551, 529.98pt x 177.7842pt>
+File: pics/guidelines.png Graphic file (type png)
+
+<use pics/guidelines.png>
+Package pdftex.def Info: pics/guidelines.png used on input line 84.
+(pdftex.def)             Requested size: 352.31625pt x 118.18701pt.
+ [12 <./pics/guidelines.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 115.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
+ [13]
+<pics/endplate_exoskeleton.png, id=578, 582.4962pt x 251.0178pt>
+File: pics/endplate_exoskeleton.png Graphic file (type png)
+
+<use pics/endplate_exoskeleton.png>
+Package pdftex.def Info: pics/endplate_exoskeleton.png used on input line 128.
+(pdftex.def)             Requested size: 375.80544pt x 161.95311pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14] [15 <./pics/endplate_exoskeleton.png>]
+<pics/Lokomat.png, id=597, 1116.17pt x 843.15pt>
+File: pics/Lokomat.png Graphic file (type png)
+ <use pics/Lokomat.png>
+Package pdftex.def Info: pics/Lokomat.png used on input line 151.
+(pdftex.def)             Requested size: 352.31625pt x 266.134pt.
+
+[16 <./pics/Lokomat.png>]
+<pics/Hapticwalker.jpg, id=608, 454.69875pt x 401.5pt>
+File: pics/Hapticwalker.jpg Graphic file (type jpg)
+
+<use pics/Hapticwalker.jpg>
+Package pdftex.def Info: pics/Hapticwalker.jpg used on input line 167.
+(pdftex.def)             Requested size: 328.82707pt x 290.36018pt.
+ [17 <./pics/Hapticwalker.jpg>]
+<pics/Motionmaker.png, id=621, 204.765pt x 141.4083pt>
+File: pics/Motionmaker.png Graphic file (type png)
+
+<use pics/Motionmaker.png>
+Package pdftex.def Info: pics/Motionmaker.png used on input line 188.
+(pdftex.def)             Requested size: 352.31625pt x 243.32106pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<pics/Lambda.jpg, id=624, 246.375pt x 137.97pt>
+File: pics/Lambda.jpg Graphic file (type jpg)
+ <use pics/Lambda.jpg>
+Package pdftex.def Info: pics/Lambda.jpg used on input line 197.
+(pdftex.def)             Requested size: 352.31625pt x 197.32085pt.
+ [18]
+[19 <./pics/Motionmaker.png>]
+<pics/Vigrr.jpg, id=644, 227.04292pt x 146.45868pt>
+File: pics/Vigrr.jpg Graphic file (type jpg)
+ <use pics/Vigrr.jpg>
+Package pdftex.def Info: pics/Vigrr.jpg used on input line 209.
+(pdftex.def)             Requested size: 352.31625pt x 227.27899pt.
+
+[20 <./pics/Lambda.jpg>] [21 <./pics/Vigrr.jpg>] [22] [23] [24] [25] [26]
+[27] [28] <pics/robot_leg.jpg, id=711, 2314.89844pt x 1600.47937pt>
+File: pics/robot_leg.jpg Graphic file (type jpg)
+
+<use pics/robot_leg.jpg>
+Package pdftex.def Info: pics/robot_leg.jpg used on input line 346.
+(pdftex.def)             Requested size: 352.31625pt x 243.57822pt.
+
+<pics/device_on_bed.jpg, id=712, 4047.12pt x 3035.34pt>
+File: pics/device_on_bed.jpg Graphic file (type jpg)
+
+<use pics/device_on_bed.jpg>
+Package pdftex.def Info: pics/device_on_bed.jpg used on input line 353.
+(pdftex.def)             Requested size: 352.31625pt x 264.22992pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[29 <./pics/robot_leg.jpg>] [30 <./pics/device_on_bed.jpg>]
+Chapter 2.
+[31
+
+] [32]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 410.
+
+<pics/off-bed.png, id=734, 463.9734pt x 150.3216pt>
+File: pics/off-bed.png Graphic file (type png)
+ <use pics/off-bed.png>
+Package pdftex.def Info: pics/off-bed.png used on input line 430.
+(pdftex.def)             Requested size: 352.31625pt x 114.14465pt.
+
+<pics/on-bed.png, id=735, 395.5578pt x 203.3196pt>
+File: pics/on-bed.png Graphic file (type png)
+ <use pics/on-bed.png>
+Package pdftex.def Info: pics/on-bed.png used on input line 439.
+(pdftex.def)             Requested size: 352.31625pt x 181.10277pt.
+
+[33 <./pics/off-bed.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 448.
+
+[34 <./pics/on-bed.png>]
+<pics/on-bed_moment.png, id=753, 185.0112pt x 278.9622pt>
+File: pics/on-bed_moment.png Graphic file (type png)
+
+<use pics/on-bed_moment.png>
+Package pdftex.def Info: pics/on-bed_moment.png used on input line 470.
+(pdftex.def)             Requested size: 140.92793pt x 212.50298pt.
+
+<pics/off-bed_moment.png, id=754, 439.4016pt x 185.9748pt>
+File: pics/off-bed_moment.png Graphic file (type png)
+
+<use pics/off-bed_moment.png>
+Package pdftex.def Info: pics/off-bed_moment.png used on input line 478.
+(pdftex.def)             Requested size: 281.85587pt x 119.29872pt.
+ [35 <./pics/on-bed_moment.png> <./pics/off-bed_moment.png>] <pics/overall_devi
+ce.jpg, id=762, 569.87906pt x 459.96844pt>
+File: pics/overall_device.jpg Graphic file (type jpg)
+
+<use pics/overall_device.jpg>
+Package pdftex.def Info: pics/overall_device.jpg used on input line 504.
+(pdftex.def)             Requested size: 352.31625pt x 284.36333pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[36] <pics/frame.png, id=769, 569.9694pt x 460.119pt>
+File: pics/frame.png Graphic file (type png)
+ <use pics/frame.png>
+Package pdftex.def Info: pics/frame.png used on input line 519.
+(pdftex.def)             Requested size: 352.31625pt x 284.42833pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<pics/footplate_label.png, id=771, 676.4472pt x 488.0634pt>
+File: pics/footplate_label.png Graphic file (type png)
+
+<use pics/footplate_label.png>
+Package pdftex.def Info: pics/footplate_label.png used on input line 534.
+(pdftex.def)             Requested size: 234.8775pt x 169.4619pt.
+ [37 <./pics/overall_device.jpg>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<pics/actuator.png, id=776, 616.2222pt x 459.6372pt>
+File: pics/actuator.png Graphic file (type png)
+ <use pics/actuator.png>
+Package pdftex.def Info: pics/actuator.png used on input line 547.
+(pdftex.def)             Requested size: 352.31625pt x 262.78845pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[38 <./pics/frame.png>] [39 <./pics/footplate_label.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[40 <./pics/actuator.png>] [41] [42]
+<pics/Motor_setup.png, id=804, 837.8502pt x 535.2798pt>
+File: pics/Motor_setup.png Graphic file (type png)
+
+<use pics/Motor_setup.png>
+Package pdftex.def Info: pics/Motor_setup.png used on input line 657.
+(pdftex.def)             Requested size: 422.77664pt x 270.09772pt.
+ [43 <./pics/Motor_setup.png>]
+<pics/ft_filter.png, id=811, 553.5882pt x 274.1442pt>
+File: pics/ft_filter.png Graphic file (type png)
+ <use pics/ft_filter.png>
+Package pdftex.def Info: pics/ft_filter.png used on input line 672.
+(pdftex.def)             Requested size: 187.89914pt x 93.04883pt.
+
+<pics/amplifier.png, id=812, 533.8344pt x 396.5214pt>
+File: pics/amplifier.png Graphic file (type png)
+ <use pics/amplifier.png>
+Package pdftex.def Info: pics/amplifier.png used on input line 673.
+(pdftex.def)             Requested size: 187.89914pt x 139.56506pt.
+
+<pics/electronics_safety.png, id=814, 590.6868pt x 406.1574pt>
+File: pics/electronics_safety.png Graphic file (type png)
+
+<use pics/electronics_safety.png>
+Package pdftex.def Info: pics/electronics_safety.png used on input line 682.
+(pdftex.def)             Requested size: 281.85587pt x 193.813pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[44 <./pics/ft_filter.png> <./pics/amplifier.png>]
+<pics/pcb_pic.png, id=824, 612.3678pt x 345.4506pt>
+File: pics/pcb_pic.png Graphic file (type png)
+ <use pics/pcb_pic.png>
+Package pdftex.def Info: pics/pcb_pic.png used on input line 700.
+(pdftex.def)             Requested size: 352.31625pt x 198.75378pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<pics/protoboard.png, id=825, 257.2812pt x 347.3778pt>
+File: pics/protoboard.png Graphic file (type png)
+
+<use pics/protoboard.png>
+Package pdftex.def Info: pics/protoboard.png used on input line 707.
+(pdftex.def)             Requested size: 187.89914pt x 253.71089pt.
+ <pics/pcb_case.jpg, id=826, 3035.34pt x 4047.12pt>
+File: pics/pcb_case.jpg Graphic file (type jpg)
+
+<use pics/pcb_case.jpg>
+Package pdftex.def Info: pics/pcb_case.jpg used on input line 709.
+(pdftex.def)             Requested size: 187.89914pt x 250.47421pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[45 <./pics/electronics_safety.png>] [46 <./pics/pcb_pic.png>] [47 <./pics/prot
+oboard.png> <./pics/pcb_case.jpg>]
+<pics/computer_system.png, id=846, 892.08281pt x 316.93407pt>
+File: pics/computer_system.png Graphic file (type png)
+
+<use pics/computer_system.png>
+Package pdftex.def Info: pics/computer_system.png used on input line 749.
+(pdftex.def)             Requested size: 352.31625pt x 125.17065pt.
+ [48 <./pics/computer_system.png>]
+Chapter 3.
+<pics/control_diagram2.png, id=854, 631.6398pt x 212.4738pt>
+File: pics/control_diagram2.png Graphic file (type png)
+
+<use pics/control_diagram2.png>
+Package pdftex.def Info: pics/control_diagram2.png used on input line 765.
+(pdftex.def)             Requested size: 469.75502pt x 158.01921pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[49
+
+] <pics/admittance_sys.png, id=861, 333.4056pt x 134.4222pt>
+File: pics/admittance_sys.png Graphic file (type png)
+
+<use pics/admittance_sys.png>
+Package pdftex.def Info: pics/admittance_sys.png used on input line 785.
+(pdftex.def)             Requested size: 352.31625pt x 142.05815pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[50 <./pics/control_diagram2.png>]
+<pics/admittance_diagram.png, id=873, 249.5724pt x 88.6512pt>
+File: pics/admittance_diagram.png Graphic file (type png)
+
+<use pics/admittance_diagram.png>
+Package pdftex.def Info: pics/admittance_diagram.png used on input line 806.
+(pdftex.def)             Requested size: 305.33789pt x 108.4627pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[51 <./pics/admittance_sys.png>] [52 <./pics/admittance_diagram.png>] [53]
+<pics/axis.png, id=907, 520.344pt x 367.6134pt>
+File: pics/axis.png Graphic file (type png)
+ <use pics/axis.png>
+Package pdftex.def Info: pics/axis.png used on input line 891.
+(pdftex.def)             Requested size: 281.85587pt x 199.1365pt.
+
+<pics/velocity_profile.png, id=909, 714.9912pt x 387.849pt>
+File: pics/velocity_profile.png Graphic file (type png)
+
+<use pics/velocity_profile.png>
+Package pdftex.def Info: pics/velocity_profile.png used on input line 900.
+(pdftex.def)             Requested size: 352.31625pt x 191.11884pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[54 <./pics/axis.png>] [55 <./pics/velocity_profile.png>]
+<pics/phantom.jpg, id=924, 903.375pt x 495.8525pt>
+File: pics/phantom.jpg Graphic file (type jpg)
+ <use pics/phantom.jpg>
+Package pdftex.def Info: pics/phantom.jpg used on input line 925.
+(pdftex.def)             Requested size: 281.85587pt x 154.71141pt.
+
+[56 <./pics/phantom.jpg>]
+<pics/haptics_admittance.png, id=936, 428.3202pt x 99.7326pt>
+File: pics/haptics_admittance.png Graphic file (type png)
+
+<use pics/haptics_admittance.png>
+Package pdftex.def Info: pics/haptics_admittance.png used on input line 939.
+(pdftex.def)             Requested size: 352.31625pt x 82.03539pt.
+
+<pics/haptic_admittance_coupling.png, id=937, 562.7424pt x 103.1052pt>
+File: pics/haptic_admittance_coupling.png Graphic file (type png)
+
+<use pics/haptic_admittance_coupling.png>
+Package pdftex.def Info: pics/haptic_admittance_coupling.png used on input line
+ 949.
+(pdftex.def)             Requested size: 469.75502pt x 86.07127pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 954--955
+
+ []
+
+[57 <./pics/haptics_admittance.png> <./pics/haptic_admittance_coupling.png>]
+<pics/haptic_coupling_original.png, id=946, 130.5678pt x 109.3686pt>
+File: pics/haptic_coupling_original.png Graphic file (type png)
+
+<use pics/haptic_coupling_original.png>
+Package pdftex.def Info: pics/haptic_coupling_original.png used on input line 9
+85.
+(pdftex.def)             Requested size: 140.92793pt x 118.04955pt.
+
+<pics/haptic_coupling.png, id=948, 120.45pt x 156.1032pt>
+File: pics/haptic_coupling.png Graphic file (type png)
+
+<use pics/haptic_coupling.png>
+Package pdftex.def Info: pics/haptic_coupling.png used on input line 994.
+(pdftex.def)             Requested size: 140.92793pt x 182.65904pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[58 <./pics/haptic_coupling_original.png>] [59 <./pics/haptic_coupling.png>]
+[60] [61] [62] [63] [64] [65]
+<pics/software.png, id=1019, 933.7284pt x 236.082pt>
+File: pics/software.png Graphic file (type png)
+ <use pics/software.png>
+Package pdftex.def Info: pics/software.png used on input line 1185.
+(pdftex.def)             Requested size: 469.75502pt x 118.77197pt.
+
+[66 <./pics/software.png>] [67] [68] [69]
+<pics/UI_menu_label.png, id=1061, 794.97pt x 511.1898pt>
+File: pics/UI_menu_label.png Graphic file (type png)
+
+<use pics/UI_menu_label.png>
+Package pdftex.def Info: pics/UI_menu_label.png used on input line 1263.
+(pdftex.def)             Requested size: 422.77664pt x 271.86531pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[70] <pics/UI_trajectory.png, id=1069, 497.2176pt x 290.5254pt>
+File: pics/UI_trajectory.png Graphic file (type png)
+
+<use pics/UI_trajectory.png>
+Package pdftex.def Info: pics/UI_trajectory.png used on input line 1278.
+(pdftex.def)             Requested size: 352.31625pt x 205.87106pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<pics/axis_leg.png, id=1070, 708.7278pt x 397.9668pt>
+File: pics/axis_leg.png Graphic file (type png)
+ <use pics/axis_leg.png>
+Package pdftex.def Info: pics/axis_leg.png used on input line 1285.
+(pdftex.def)             Requested size: 469.75502pt x 263.77623pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[71 <./pics/UI_menu_label.png>]
+<pics/UI_game_label.png, id=1078, 769.9164pt x 486.1362pt>
+File: pics/UI_game_label.png Graphic file (type png)
+
+<use pics/UI_game_label.png>
+Package pdftex.def Info: pics/UI_game_label.png used on input line 1313.
+(pdftex.def)             Requested size: 469.75502pt x 296.6094pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<pics/balance_game.png, id=1079, 286.82156pt x 162.6075pt>
+File: pics/balance_game.png Graphic file (type png)
+
+<use pics/balance_game.png>
+Package pdftex.def Info: pics/balance_game.png used on input line 1323.
+(pdftex.def)             Requested size: 352.31625pt x 199.74303pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[72 <./pics/UI_trajectory.png>] [73 <./pics/axis_leg.png>] [74 <./pics/UI_game_
+label.png>] [75 <./pics/balance_game.png>]
+Chapter 4.
+[76
+
+] <pics/Mar12_NoForce_Step_Plot.png, id=1105, 421.575pt x 316.18124pt>
+File: pics/Mar12_NoForce_Step_Plot.png Graphic file (type png)
+
+<use pics/Mar12_NoForce_Step_Plot.png>
+Package pdftex.def Info: pics/Mar12_NoForce_Step_Plot.png used on input line 13
+86.
+(pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
+
+<pics/admittance_sim.png, id=1108, 421.575pt x 316.18124pt>
+File: pics/admittance_sim.png Graphic file (type png)
+
+<use pics/admittance_sim.png>
+Package pdftex.def Info: pics/admittance_sim.png used on input line 1397.
+(pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[77] [78 <./pics/Mar12_NoForce_Step_Plot.png>] [79 <./pics/admittance_sim.png (
+PNG copy)>] <pics/time_jitter.png, id=1125, 421.575pt x 316.18124pt>
+File: pics/time_jitter.png Graphic file (type png)
+
+<use pics/time_jitter.png>
+Package pdftex.def Info: pics/time_jitter.png used on input line 1460.
+(pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
+ [80] [81 <./pics/time_jitter.png (PNG copy)>]
+Package epstopdf Info: Source file: <pics/position_comp.eps>
+(epstopdf)                    date: 2019-07-24 17:16:16
+(epstopdf)                    size: 211453 bytes
+(epstopdf)             Output file: <./position_comp-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:36:50
+(epstopdf)                    size: 82435 bytes
+(epstopdf)             Command: <epstopdf --outfile=./position_comp-eps-convert
+ed-to.pdf pics/position_comp.eps>
+(epstopdf)             \includegraphics on input line 1507.
+Package epstopdf Info: Output file is already uptodate.
+
+<./position_comp-eps-converted-to.pdf, id=1140, 319.1925pt x 270.00874pt>
+File: ./position_comp-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./position_comp-eps-converted-to.pdf>
+Package pdftex.def Info: ./position_comp-eps-converted-to.pdf used on input lin
+e 1507.
+(pdftex.def)             Requested size: 422.77664pt x 357.63626pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <pics/err_assist.eps>
+(epstopdf)                    date: 2019-07-31 13:04:19
+(epstopdf)                    size: 63580 bytes
+(epstopdf)             Output file: <./err_assist-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:05:01
+(epstopdf)                    size: 28470 bytes
+(epstopdf)             Command: <epstopdf --outfile=./err_assist-eps-converted-
+to.pdf pics/err_assist.eps>
+(epstopdf)             \includegraphics on input line 1516.
+Package epstopdf Info: Output file is already uptodate.
+<./err_assist-eps-converted-to.pdf, id=1141, 310.15875pt x 270.00874pt>
+File: ./err_assist-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./err_assist-eps-converted-to.pdf>
+Package pdftex.def Info: ./err_assist-eps-converted-to.pdf used on input line 1
+516.
+(pdftex.def)             Requested size: 211.38832pt x 184.02374pt.
+Package epstopdf Info: Source file: <pics/eff_assist.eps>
+(epstopdf)                    date: 2019-07-31 13:04:24
+(epstopdf)                    size: 65759 bytes
+(epstopdf)             Output file: <./eff_assist-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:05:01
+(epstopdf)                    size: 30818 bytes
+(epstopdf)             Command: <epstopdf --outfile=./eff_assist-eps-converted-
+to.pdf pics/eff_assist.eps>
+(epstopdf)             \includegraphics on input line 1517.
+Package epstopdf Info: Output file is already uptodate.
+
+<./eff_assist-eps-converted-to.pdf, id=1142, 313.17pt x 270.00874pt>
+File: ./eff_assist-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./eff_assist-eps-converted-to.pdf>
+Package pdftex.def Info: ./eff_assist-eps-converted-to.pdf used on input line 1
+517.
+(pdftex.def)             Requested size: 211.38832pt x 182.26039pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <pics/force_comp.eps>
+(epstopdf)                    date: 2019-07-24 17:13:42
+(epstopdf)                    size: 209867 bytes
+(epstopdf)             Output file: <./force_comp-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:36:51
+(epstopdf)                    size: 85536 bytes
+(epstopdf)             Command: <epstopdf --outfile=./force_comp-eps-converted-
+to.pdf pics/force_comp.eps>
+(epstopdf)             \includegraphics on input line 1526.
+Package epstopdf Info: Output file is already uptodate.
+<./force_comp-eps-converted-to.pdf, id=1143, 318.18875pt x 270.00874pt>
+File: ./force_comp-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./force_comp-eps-converted-to.pdf>
+Package pdftex.def Info: ./force_comp-eps-converted-to.pdf used on input line 1
+526.
+(pdftex.def)             Requested size: 422.77664pt x 358.7569pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package epstopdf Info: Source file: <pics/err_resist.eps>
+(epstopdf)                    date: 2019-07-31 13:04:22
+(epstopdf)                    size: 55266 bytes
+(epstopdf)             Output file: <./err_resist-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:05:02
+(epstopdf)                    size: 26207 bytes
+(epstopdf)             Command: <epstopdf --outfile=./err_resist-eps-converted-
+to.pdf pics/err_resist.eps>
+(epstopdf)             \includegraphics on input line 1538.
+Package epstopdf Info: Output file is already uptodate.
+<./err_resist-eps-converted-to.pdf, id=1148, 310.15875pt x 270.00874pt>
+File: ./err_resist-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./err_resist-eps-converted-to.pdf>
+Package pdftex.def Info: ./err_resist-eps-converted-to.pdf used on input line 1
+538.
+(pdftex.def)             Requested size: 211.38832pt x 184.02374pt.
+Package epstopdf Info: Source file: <pics/eff_resist.eps>
+(epstopdf)                    date: 2019-07-31 13:04:26
+(epstopdf)                    size: 65576 bytes
+(epstopdf)             Output file: <./eff_resist-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:05:03
+(epstopdf)                    size: 29854 bytes
+(epstopdf)             Command: <epstopdf --outfile=./eff_resist-eps-converted-
+to.pdf pics/eff_resist.eps>
+(epstopdf)             \includegraphics on input line 1539.
+Package epstopdf Info: Output file is already uptodate.
+
+<./eff_resist-eps-converted-to.pdf, id=1149, 313.17pt x 270.00874pt>
+File: ./eff_resist-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./eff_resist-eps-converted-to.pdf>
+Package pdftex.def Info: ./eff_resist-eps-converted-to.pdf used on input line 1
+539.
+(pdftex.def)             Requested size: 211.38832pt x 182.26039pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[82]
+Package epstopdf Info: Source file: <pics/diff_assist.eps>
+(epstopdf)                    date: 2019-07-31 12:59:35
+(epstopdf)                    size: 62737 bytes
+(epstopdf)             Output file: <./diff_assist-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:01:10
+(epstopdf)                    size: 27406 bytes
+(epstopdf)             Command: <epstopdf --outfile=./diff_assist-eps-converted
+-to.pdf pics/diff_assist.eps>
+(epstopdf)             \includegraphics on input line 1549.
+Package epstopdf Info: Output file is already uptodate.
+ <./diff_assist-eps-converted-to.pdf, id=1157, 305.14pt x 270.00874pt>
+File: ./diff_assist-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./diff_assist-eps-converted-to.pdf>
+Package pdftex.def Info: ./diff_assist-eps-converted-to.pdf used on input line 
+1549.
+(pdftex.def)             Requested size: 211.38832pt x 187.05606pt.
+Package epstopdf Info: Source file: <pics/diff_resist.eps>
+(epstopdf)                    date: 2019-07-31 12:59:40
+(epstopdf)                    size: 64377 bytes
+(epstopdf)             Output file: <./diff_resist-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-07-31 13:01:11
+(epstopdf)                    size: 28194 bytes
+(epstopdf)             Command: <epstopdf --outfile=./diff_resist-eps-converted
+-to.pdf pics/diff_resist.eps>
+(epstopdf)             \includegraphics on input line 1550.
+Package epstopdf Info: Output file is already uptodate.
+
+<./diff_resist-eps-converted-to.pdf, id=1158, 305.14pt x 270.00874pt>
+File: ./diff_resist-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./diff_resist-eps-converted-to.pdf>
+Package pdftex.def Info: ./diff_resist-eps-converted-to.pdf used on input line 
+1550.
+(pdftex.def)             Requested size: 211.38832pt x 187.05606pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[83 <./position_comp-eps-converted-to.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[84 <./err_assist-eps-converted-to.pdf> <./eff_assist-eps-converted-to.pdf>]
+[85 <./force_comp-eps-converted-to.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[86 <./err_resist-eps-converted-to.pdf> <./eff_resist-eps-converted-to.pdf>]
+[87 <./diff_assist-eps-converted-to.pdf> <./diff_resist-eps-converted-to.pdf>]
+Chapter 5.
+[88
+
+] <pics/robot_cad.jpg, id=1208, 590.95781pt x 417.05812pt>
+File: pics/robot_cad.jpg Graphic file (type jpg)
+
+<use pics/robot_cad.jpg>
+Package pdftex.def Info: pics/robot_cad.jpg used on input line 1654.
+(pdftex.def)             Requested size: 422.77664pt x 298.37248pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[89] [90 <./pics/robot_cad.jpg>] [91] [92] [93
+
+]
+<pics/pcb_schematic.png, id=1245, 768.2301pt x 678.8562pt>
+File: pics/pcb_schematic.png Graphic file (type png)
+
+<use pics/pcb_schematic.png>
+Package pdftex.def Info: pics/pcb_schematic.png used on input line 1706.
+(pdftex.def)             Requested size: 469.75502pt x 415.10646pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1711.
+
+[94
+
+] [95 <./pics/pcb_schematic.png>]
+<pics/Motor_range.png, id=1255, 417.05812pt x 316.18124pt>
+File: pics/Motor_range.png Graphic file (type png)
+
+<use pics/Motor_range.png>
+Package pdftex.def Info: pics/Motor_range.png used on input line 1732.
+(pdftex.def)             Requested size: 352.31625pt x 267.11497pt.
+ [96
+
+ <./pics/Motor_range.png>] (thesis_aug6.bbl
+[97
+
+] [98
+
+]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 77.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 77.
+ [99]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ì in font cmr12!
+
+[100]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ñ in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+ [101]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [102] [103])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1744.
+ [104]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1744.
+ (thesis_aug6.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1744.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1744.
+
+Package rerunfilecheck Info: File `thesis_aug6.out' has not changed.
+(rerunfilecheck)             Checksum: 8DA5C494747F43530244452A85E1BAF7;4507.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1744.
+ ) 
+Here is how much of TeX's memory you used:
+ 9413 strings out of 493323
+ 144518 string characters out of 3139054
+ 255925 words of memory out of 3000000
+ 12343 multiletter control sequences out of 15000+200000
+ 11582 words of font info for 42 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,16n,44p,1608b,429s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on thesis_aug6.pdf (105 pages, 9714055 bytes).
+PDF statistics:
+ 1424 PDF objects out of 1440 (max. 8388607)
+ 375 named destinations out of 1000 (max. 500000)
+ 803 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -141,8 +141,14 @@ void imp_Haptics_impedance(struct impStruct * imp, struct physics_ball * ball, s
 
         case 2: 
 
-            //imp_gait(imp, gait);
-            imp->Fa = imp->K * (imp->xdes - imp->xa); //spring impedance (for testing)
+            //move box with spring
+            if(imp->xa > ball->x_mass) 
+            {
+                ball->x_mass = imp->xa;
+                imp->Fa = ball->k * (ball->dx - *x_end + ball->x_mass + ); 
+            }else{
+                imp->Fa = 0.0;
+            }
             break;
         }
         

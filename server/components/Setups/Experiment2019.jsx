@@ -7,6 +7,7 @@ import RunButton from '../Generic/RunButton'
 import HomeButton from '../Generic/HomeButton'
 import Dropdown from '../Generic/Dropdown'
 import Dropdown5 from '../Generic/Dropdown5'
+import Dropdown6 from '../Generic/Dropdown6'
 
 import InputText from '../Generic/InputText';
 import { connect } from "react-redux";
@@ -24,7 +25,7 @@ class Experiment2019 extends React.Component {
   render() {
 
     if(this.props.exp == 3){
-      this.state.contents = <Dropdown5 text="Game" id="game" value={this.props.game} select1 = "Assist" select2 = "Resist" select3 = "Cube" select4 = "Race" select5 = "Balance" />
+      this.state.contents = <Dropdown6 text="Game" id="game" value={this.props.game} select1 = "Assist" select2 = "Resist" select3 = "Cube" select4 = "Race" select5 = "Balance" select6 = "Block" />
     }
 
     return (

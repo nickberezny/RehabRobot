@@ -134,8 +134,10 @@ class Follow_traj extends Component {
 
     if(!this.start_game)
     {
-      this.props.setParam('xdes', this.props.x_end)
-      this.props.setParam('x', this.props.x_end)
+      //this.props.setParam('xdes', this.props.x_end)
+      //this.props.setParam('x', this.props.x_end)
+      this.props.setParam('xdes', 1000)
+      this.props.setParam('x', 400)
       this.timer += this.clock.getDelta()
       
       var current_time = Math.round(5.8 - this.timer).toString()
@@ -185,12 +187,19 @@ class Follow_traj extends Component {
 
     //console.log(this.plate.position.y)
 
-    if(this.plate.position.y > this.desPos.position.y - 30.0 && this.plate.position.y < this.desPos.position.y + 30.0)
+    if(this.plate.position.y > this.desPos.position.y - this.props.range && this.plate.position.y < this.desPos.position.y + this.props.range)
     {
-      this.desPos.material.color.setHex(0x7fffa3)   
+      this.desPos.material.color.setHex(0x7fffa3)
+      if(this.points < 6000) this.points += 2;   
     }else{
       this.desPos.material.color.setHex(0xff7272)
+      if(this.points > 0) this.points -= 4;
     }
+
+    var range = -(this.points-6000)*30.0/6000.0 + 5.0;
+    this.props.setParam('range', range)
+
+    this.desPos.scale.set(1.5, 0.75*((this.props.range+7)/35.0), 1.0);
 
     this.renderScene()
     this.frameId = window.requestAnimationFrame(this.animate)
@@ -215,6 +224,7 @@ function mapStateToProps(state) {
     x: state.x,
     xdes: state.xdes,
     x_end: state.x_end,
+    range: state.range,
   }
 }
 
