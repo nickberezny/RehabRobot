@@ -69,21 +69,6 @@ B.~H. Dobkin, ``{Strategies for stroke rehabilitation},'' {\em The Lancet
 Z.~Warraich and J.~A. Kleim, ``{Neural Plasticity: The Biological Substrate For
   Neurorehabilitation},'' {\em PM{\&}R}, vol.~2, pp.~S208--S219, dec 2010.
 
-\bibitem{Casaubon2016}
-L.~K. Casaubon, J.-M. Boulanger, E.~Glasser, D.~Blacquiere, S.~Boucher,
-  K.~Brown, T.~Goddard, J.~Gordon, M.~Horton, J.~Lalonde, C.~LaRivi{\`{e}}re,
-  P.~Lavoie, P.~Leslie, J.~McNeill, B.~K. Menon, B.~Moses, M.~Penn, J.~Perry,
-  E.~Snieder, D.~Tymianski, N.~Foley, E.~E. Smith, G.~Gubitz, M.~D. Hill, and
-  P.~Lindsay, ``{{\textless}i{\textgreater}Canadian Stroke Best Practice
-  Recommendations{\textless}/i{\textgreater} : Acute Inpatient Stroke Care
-  Guidelines, Update 2015},'' {\em International Journal of Stroke}, vol.~11,
-  pp.~239--252, feb 2016.
-
-\bibitem{AVERTTrialCollaborationgroup2015}
-{AVERT Trial Collaboration group}, ``{Efficacy and safety of very early
-  mobilisation within 24 h of stroke onset (AVERT): a randomised controlled
-  trial.},'' {\em Lancet (London, England)}, vol.~386, pp.~46--55, jul 2015.
-
 \bibitem{Lohse2014}
 K.~R. Lohse, C.~E. Lang, and L.~A. Boyd, ``{Is More Better? Using Metadata to
   Explore Dose–Response Relationships in Stroke Rehabilitation},'' {\em
@@ -115,6 +100,39 @@ G.~Colombo, M.~Wirz, and V.~Dietz, ``{Driven gait orthosis for improvement of
 G.~Mchugh and I.~D. Swain, ``{A comparison between reported and ideal
   patient-to-therapist ratios for stroke rehabilitation},'' {\em Health},
   vol.~5, no.~6A2, pp.~105--112, 2013.
+
+\bibitem{Veerbeek2014}
+J.~M. Veerbeek, E.~van Wegen, R.~van Peppen, P.~J. van~der Wees, E.~Hendriks,
+  M.~Rietberg, and G.~Kwakkel, ``{What Is the Evidence for Physical Therapy
+  Poststroke? A Systematic Review and Meta-Analysis},'' {\em PLoS ONE}, vol.~9,
+  p.~e87987, feb 2014.
+
+\bibitem{Cameirao2008}
+M.~S. Cameirao, S.~{Bermudez i Badia}, E.~D. Oller, and P.~F. M.~J. Verschure,
+  ``{Using a multi-task adaptive VR system for upper limb rehabilitation in the
+  acute phase of stroke},'' in {\em 2008 Virtual Rehabilitation}, pp.~2--7,
+  IEEE, aug 2008.
+
+\bibitem{Casaubon2016}
+L.~K. Casaubon, J.-M. Boulanger, E.~Glasser, D.~Blacquiere, S.~Boucher,
+  K.~Brown, T.~Goddard, J.~Gordon, M.~Horton, J.~Lalonde, C.~LaRivi{\`{e}}re,
+  P.~Lavoie, P.~Leslie, J.~McNeill, B.~K. Menon, B.~Moses, M.~Penn, J.~Perry,
+  E.~Snieder, D.~Tymianski, N.~Foley, E.~E. Smith, G.~Gubitz, M.~D. Hill, and
+  P.~Lindsay, ``{{\textless}i{\textgreater}Canadian Stroke Best Practice
+  Recommendations{\textless}/i{\textgreater} : Acute Inpatient Stroke Care
+  Guidelines, Update 2015},'' {\em International Journal of Stroke}, vol.~11,
+  pp.~239--252, feb 2016.
+
+\bibitem{AVERTTrialCollaborationgroup2015}
+{AVERT Trial Collaboration group}, ``{Efficacy and safety of very early
+  mobilisation within 24 h of stroke onset (AVERT): a randomised controlled
+  trial.},'' {\em Lancet (London, England)}, vol.~386, pp.~46--55, jul 2015.
+
+\bibitem{Horn2005}
+S.~D. Horn, G.~DeJong, R.~J. Smout, J.~Gassaway, R.~James, and B.~Conroy,
+  ``{Stroke rehabilitation patients, practice, and outcomes: Is earlier and
+  more aggressive therapy better?},'' {\em Archives of Physical Medicine and
+  Rehabilitation}, vol.~86, no.~12 SUPPL., pp.~101--114, 2005.
 
 \bibitem{Calabro2016}
 R.~S. Calabr{\`{o}}, A.~Cacciola, F.~Bert{\`{e}}, A.~Manuli, A.~Leo,
@@ -228,6 +246,11 @@ W.~Meng, Q.~Liu, Z.~Zhou, Q.~Ai, B.~Sheng, and S.~S. Xie, ``{Recent development
 \bibitem{Hogan1985}
 N.~Hogan, ``{Impedance Control: An Approach to Manipulation},'' {\em American
   Control Conference, 1984 IS - SN - VO -}, no.~March, pp.~304--313, 1985.
+
+\bibitem{Ferris2006}
+D.~P. Ferris, K.~E. Gordon, G.~S. Sawicki, and A.~Peethambaran, ``{An improved
+  powered ankle-foot orthosis using proportional myoelectric control},'' {\em
+  Gait and Posture}, vol.~23, pp.~425--428, jun 2006.
 
 \bibitem{Laver2015}
 K.~Laver, S.~George, S.~Thomas, J.~E. Deutsch, and M.~Crotty, ``{Virtual

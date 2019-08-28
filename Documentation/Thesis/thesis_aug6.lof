@@ -4,58 +4,59 @@
 \contentsline {figure}{\numberline {1.3}{\ignorespaces The stages of traditional stroke rehabilitation}}{11}{figure.1.3}
 \contentsline {figure}{\numberline {1.4}{\ignorespaces Stroke Rehabilitation Guidelines}}{12}{figure.1.4}
 \contentsline {figure}{\numberline {1.5}{\ignorespaces An endplate device (left) and an exoskeletal device (right)}}{15}{figure.1.5}
-\contentsline {figure}{\numberline {1.6}{\ignorespaces The Lokomat (by Hocoma), an exoskeletal robot}}{16}{figure.1.6}
-\contentsline {figure}{\numberline {1.7}{\ignorespaces The Hapticwalker, an endplate based robot}}{17}{figure.1.7}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces The Lokomat (by Hocoma), an exoskeletal robot}}{17}{figure.1.6}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces The Hapticwalker, an endplate based robot}}{18}{figure.1.7}
 \contentsline {figure}{\numberline {1.8}{\ignorespaces The MotionMaker}}{19}{figure.1.8}
 \contentsline {figure}{\numberline {1.9}{\ignorespaces The Lambda}}{20}{figure.1.9}
 \contentsline {figure}{\numberline {1.10}{\ignorespaces ViGRR}}{21}{figure.1.10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Design Process for the new Rehabilitation Robot}}{28}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Design Process for the new Rehabilitation Robot}}{29}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Off-bed Design}}{34}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces On-bed Design}}{35}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Forces and moment arms for on-bed design}}{36}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Forces and moment arm for off-bed design}}{36}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces The Rehabilitation Robot with User's Leg}}{38}{figure.2.6}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces The Rehabilitation Robot on the test bed}}{38}{figure.2.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The Rehabilitation Robot with User's Leg}}{32}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The Rehabilitation Robot on the test bed}}{33}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Off-bed Design}}{35}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces On-bed Design}}{36}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Forces and moment arms for on-bed design}}{37}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Forces and moment arm for off-bed design}}{37}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces The rehabilitation device}}{39}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces The structure of the frame}}{40}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces The structure of the footplate}}{41}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces The belt drive and motor}}{42}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces The belt drive and motor}}{46}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces The command non-inverting amplifier and the force signal low pass filter}}{47}{figure.3.12}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces The safety system}}{47}{figure.3.13}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces The Original Protoboard Layout}}{48}{figure.3.14}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces The PCB Layout}}{49}{figure.3.15}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces The updated pcb and case}}{52}{figure.3.16}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces The Computer System, with DAQ, Router, and Tablet}}{53}{figure.3.17}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The rehabilitation device}}{39}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The structure of the frame}}{40}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The structure of the footplate}}{41}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The belt drive and motor}}{42}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The belt drive and motor}}{46}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The force signal low pass filter with adjustable cut-off frequency (left), and the command non-inverting amplifier with a gain of 4 (right)}}{47}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The safety system}}{48}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces The Original Protoboard Layout}}{49}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The PCB Layout}}{50}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces The updated pcb and case}}{53}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces The Computer System, with DAQ, Router, and Tablet}}{54}{figure.3.11}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces A mass-spring-damper system, with the origin of the spring set to some desired trajectory}}{55}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Admittance control flow chart}}{56}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces The x-axis shown over the robot}}{59}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Velocity Profile of the Desired Trajectory}}{60}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces The Phantom Premium Haptic Device https://www.3dsystems.com/haptics-devices/3d-systems-phantom-premium}}{61}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Block diagram of an admittance haptic device}}{61}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Block diagram of an admittance haptic device}}{62}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{63}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{63}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{64}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces The Three Threads in the Control Software}}{71}{figure.4.11}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces The Setup Page}}{76}{figure.4.12}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces The trajectory guide}}{77}{figure.4.13}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces The trajectory guide and the actuator limits}}{78}{figure.4.14}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces The racing game}}{79}{figure.4.15}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces The Haptic balance game}}{80}{figure.4.16}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A mass-spring-damper system, with the origin of the spring set to some desired trajectory}}{56}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Admittance control flow chart}}{58}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The x-axis shown over the robot}}{60}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Velocity Profile of the Desired Trajectory}}{61}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces The Phantom Premium Haptic Device https://www.3dsystems.com/haptics-devices/3d-systems-phantom-premium}}{62}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Block diagram of an admittance haptic device}}{63}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Block diagram of an admittance haptic device}}{63}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{64}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{64}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Virtual Haptic Coupling for Admittance Control}}{65}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces The Three Threads in the Control Software}}{73}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces The Setup Page}}{77}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces The trajectory guide}}{78}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces The trajectory guide and the actuator limits}}{79}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces The racing game}}{80}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces The Haptic balance game}}{81}{figure.4.16}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Admittance Verification with Interaction}}{83}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Robot admittance position vs simulated position based on force data}}{84}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Time jitter over 1 second of operation}}{86}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Comparison between high and low assistance levels}}{88}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Mean error from desired position (left) and total effort (right) for different assistance levels}}{89}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Comparison of forces between assistance and resistance modes}}{90}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Mean error from desired position (left) and total effort (right) for different resistance levels}}{91}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Subjective Difficulty Scores across assistance and resistance levels}}{92}{figure.5.8}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Admittance Verification with Interaction}}{86}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Robot admittance position vs simulated position based on force data}}{87}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Time jitter over 1 second of operation}}{88}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Questionnaire page 1}}{91}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Questionnaire page 2}}{92}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Questionnaire page 3}}{93}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Mean error from desired position (top) and total effort (middle) and subjective difficulty (bottom) for different assistance levels}}{95}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison between high and low assistance levels}}{96}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Mean error from desired position (left) and total effort (right) for different resistance levels}}{98}{figure.5.9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces The rehabilitation robot and user interface}}{95}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Printed Circuit Board}}{100}{figure.6.2}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Operating Range of the Motor \newline \relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}}{101}{figure.6.3}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The rehabilitation robot and user interface}}{103}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Printed Circuit Board}}{108}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Operating Range of the Motor \newline \relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}}{109}{figure.6.3}
