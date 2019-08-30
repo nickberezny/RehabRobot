@@ -287,6 +287,10 @@ J.~E. Colgate and N.~Hogan, ``{Robust control of dynamically interacting
   systems},'' {\em International Journal of Control}, vol.~48, pp.~65--88, jul
   1988.
 
+\bibitem{Evans2005}
+L.~C. Evans, ``{An introduction to mathematical optimal control theory},'' {\em
+  University of California, Department of Mathematics}, p.~126, 2005.
+
 \bibitem{Massie1994}
 T.~H. Massie and J.~{Kenneth Salisbury}, ``{The PHANToM Haptic Interface: A
   Device for Probing Virtual Objects},'' Tech. Rep.~1, 1994.
@@ -301,6 +305,9 @@ C.~Zilles and J.~Salisbury, ``{A constraint-based god-object method for haptic
 R.~Adams and B.~Hannaford, ``{Stable haptic interaction with virtual
   environments},'' {\em IEEE Transactions on Robotics and Automation}, vol.~15,
   pp.~465--474, jun 1999.
+
+\bibitem{ztrans}
+``{Z-transform},'' 2014.
 
 \bibitem{Lewine1991}
 D.~A. Lewine, ``{POSIX Programmer's Guide},'' tech. rep., 1991.

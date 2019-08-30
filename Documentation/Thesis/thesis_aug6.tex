@@ -20,6 +20,7 @@
 \usepackage{setspace}
 \usepackage{hhline}
 \usepackage{boldline}
+\usepackage{enumitem}
 \usepackage{makecell}
 \renewcommand\theadalign{l}
 \renewcommand\theadgape{\Gape[4pt]}
@@ -33,7 +34,13 @@
 \newpage
 
 \chapter*{Acknowledgements}
+\chapter*{Abstract}
 
+Stroke is a prevalent cerebrovascular disease which leads to neurological deficits, and is a major cause of disability in adults. Stroke victims often lose motor control, effecting their ability to perform activities of daily life such as walking and grasping. Rehabilitation is used to help restore lost abilities through intensive and repetitive exercises with the assistance of a therapist. Robots have been introduced to help therapists administer therapy by replicating the role of physically assisting the patient. Their is a gap in the literature regarding rehabilitation robots for bed-bound, acute stroke patients, and this motivated the design and creation of the novel rehabilitation device presented in this thesis. The device builds off of previous work with the Virtual Gait Rehabilitation Robot (ViGRR), seeking to repackage the fundamental concept into a smaller and more hospital-compatible form. Observational fieldwork on the stroke ward at a local hospital informed the initial design, a linear 1-DOF robot targeting the knee flexion/extension exercise typical to traditional bed-bound rehabilitation. The device sits on the bed, under the leg, with the patient's foot resting on a footplate. An admittance controller was developed to apply assistive or resistive forces to the patient through the linear motion, essentially mimicking the basic role of the therapist. Custom real-time software was created to handle the controller, communication, and data, which is modular and can be extended for future design iterations. Three games were created which are used to make the exercise more engaging, along with haptic feedback control which can render virtual forces to the patient through the robot. The games run on a user interface, which is also used to set up rehabilitation sessions by selecting assistance levels, resistance level, and type of game. 
+	A series of experiments were run, including safety tests and functional tests which confirm that the controller and software are functioning correctly. An experiment on healthy subjects was also done, which looked to evaluate the effects of assistance and resistance levels, along with the participants subjective view on the device through a questionnaire. The experiments indicate that assistance does work to help the user follow the desired trajectory, that resistance can be used to make the task more difficult, and that the games have potential for making the exercise more engaging. However, their is still design work to be completed before the device is ready for clinical trials; recommendations for future work were enumerated and included. 
+	
+	
+	
 \tableofcontents
 \listoffigures
 \listoftables
@@ -522,7 +529,47 @@ A 1-DOF robot was designed and created according to the requirements determined 
 	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF's may be added to our system to the point where a microcontroller is not suitable. The computer could also be used to run the user interface (UI). Therefore we chose to use a computer to run the control software. 
 
 
-				
+\section{Design Requirements} \label{sec:requirements} 
+
+The following design requirements were collected for the lower-limb rehabilitation device, based on the literature review, fieldwork, and previous work on ViGRR. After meeting these requirements, the robot should be ready for clinical trials at the hospital with acute stroke patients. The final outcomes of this work and how they relate to these requirements is given in Sec. \ref{sec:outcomes}.
+
+\begin{enumerate}[label*=\arabic*.]
+	\item Support Leg
+	\begin{enumerate}[label*=\arabic*.]
+		\item Hold the weight of the leg
+		\item Keeps the leg from bending out of plane 
+		\item Adjustable to accommodate range of sizes and weights 
+	\end{enumerate}
+	\item Help acute patients who may not be able to do exercise
+	\begin{enumerate}[label*=\arabic*.]
+		\item Provide assistive forces through the exercise
+		\item Adjust difficulty based on patient 
+	\end{enumerate}
+	\item Engage Patient
+	\begin{enumerate}[label*=\arabic*.]
+		\item Only provides assistance as needed
+		\item Keeps the patient engaged with visuals and games
+		\item Relates the exercise to ADL's and real life scenarios
+	\end{enumerate}
+	\item Long Duration \& Intensive
+	\begin{enumerate}[label*=\arabic*.]
+		\item Device is comfortable and ergonomic
+		\item Can apply resistance to make exercise more difficult
+	\end{enumerate}
+	\item Hospital Compatible
+	\begin{enumerate}[label*=\arabic*.]
+		\item Fits on hospital bed 
+		\item Lightweight, can be easily transferred on to bed
+		\item Compliant with sterilization/cleanliness protocols 
+		\item Easy to set up 
+	\end{enumerate}
+	\item Can be used by Therapists
+	\begin{enumerate}[label*=\arabic*.]
+		\item Intuitive UI
+		\item Progress monitoring using patient data
+	\end{enumerate}
+
+\end{enumerate}			
 
 \section{Final Design} 
 
@@ -892,7 +939,12 @@ Using this control law, the end effector of the robot will behave like the syste
 	V = YF_R 
 	\end{equation} 
 	
-	Once again, it is common to define admittance in terms of a mass-spring-damper system (\ref{eqn:adm}). Here, $x_a$ and $v_a$ are the ``simulated'' position and velocity determined by the admittance controller. Additionally, to actually render the desired position and velocity, an outer-loop PD position controller is used (\ref{eqn:PD}), with $x_a$ and $v_a$ acting as the desired position and velocity. The entire control loop is shown in Fig. \ref{fig:adm_diagram}.
+	Once again, it is common to define admittance in terms of a mass-spring-damper system (\ref{eqn:adm}). Here, $x_a$ and $v_a$ are the ``simulated'' position and velocity determined by the admittance controller. Additionally, to actually render the desired position and velocity, an outer-loop PD position controller is used (\ref{eqn:PD}), with $x_a$ and $v_a$ acting as the desired position and velocity, and with a proportional gain P and a derivative gain D. The entire control loop is shown in Fig. \ref{fig:adm_diagram}. Here, the controller is given in state space form, with state matrix A and input matrix B. 
+	
+	
+	\begin{equation}
+	\dot{X} = AX + BF
+	\end{equation}
 	
 	\begin{gather} \label{eqn:adm}
 	\begin{bmatrix}
@@ -957,7 +1009,7 @@ Admittance control is implemented through the following steps:
 		\item Use a PD position control to achieve the simulated position
 	\end{enumerate}
 	
-	The linear admittance control system in (\ref{eqn:lin_sys}) is discretized according to the (\ref{eqn:Ad}) \& (\ref{eqn:Bd}).
+	The linear admittance control system in (\ref{eqn:lin_sys}) is discretized according to the (\ref{eqn:Ad}) and (\ref{eqn:Bd}), equations which can be found in a number of books on linear systems, for example in \cite{Evans2005}, which yield the discrete state and input matrices ($A_d$ and $B_d$).
 	
 	\begin{equation} \label{eqn:lin_sys} 
 	\dot{X} = AX + BF
@@ -1020,25 +1072,28 @@ Admittance control is implemented through the following steps:
 	
 		Early haptic algorithms used penetration depth between the device and virtual object to determine the interaction forces. However, this leads to ambiguities regarding what surface of the object the user is interacting with (in other words, what face the interaction force should be normal to). In \cite{Zilles}, the God-Object method is introduced to resolve this issue. 
 		
-		The device is given a virtual position, the position the device would be in theory if the haptics were infinitely stiff. Hence the virtual position always remains at the surface of the object, and the direction of the interaction force can be set normal to the surface. A third option is given in \cite{Adams1999}, known as the haptic coupling, is a virtual system placed between the controller and the virtual environment. Using straight admittance controller to render the virtual environment is shown in Fig. \ref{fig:haptic_adm}. The virtual environment must have the same causality as the controller, in this case the admittance causality. The haptic coupling is placed between the robot and the virtual environment, as in Fig. \ref{fig:haptic_adm_coup}. It's purpose is twofold: to decouple the device and virtual environment, and to allow for different causalities.
+		The device is given a virtual position, the position the device would be in theory if the haptics were infinitely stiff. Hence the virtual position always remains at the surface of the object, and the direction of the interaction force can be set normal to the surface. A third option is given in \cite{Adams1999}, known as the haptic coupling, is a virtual system placed between the controller and the virtual environment. Using straight admittance controller to render the virtual environment is shown in Fig. \ref{fig:haptic_adm}. The virtual environment must have the same causality as the controller, in this case the admittance causality. The operator's state is defined by velocity ($V_h$) and force ($F_h$), and in this case the virtual environment is the admittance controller with velocity $V_e$ and force $f_e$. 
 	
 	\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=0.75\linewidth]{haptics_admittance}
-		\caption{Block diagram of an admittance haptic device}
+		\caption{Block diagram of an admittance haptic device without the haptic coupling}
 		\label{fig:haptic_adm}
 	\end{figure*}	
 	
-
+	The haptic coupling is placed between the robot and the virtual environment. It's purpose is twofold: to decouple the device and virtual environment, and to allow for different causalities. For example  in Fig. \ref{fig:haptic_adm_coup}, the haptic coupling allows for an impedance environment to be used with a robot with admittance control. 
 	
-	\textbf{Decoupling the Device and Environment}: Defining the desired impedance or admittance in terms of a mass-spring-damper system is not always convenient. Ideally, one could define an arbitrary impedance or admittance function relating $F$ and $V$, giving complete control of the behaviour of the robot-environment interaction, while also ensuring stability. The haptic coupling decouples the design of the controller and the design of the virtual environment. This allows the virtual environment designer to create the physics of interaction without regards to the stability of the device. For example, you could create a virtual wall which suddenly applies infinite impedance, something that would normally cause instabilities. Note that the impedance that is ultimately rendered to the user will not be exactly as designed, but will be filtered through the haptic coupling.
-	
-		\begin{figure*}[h] 
+			\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=\linewidth]{haptic_admittance_coupling}
 		\caption{Block diagram of an admittance haptic device}
 		\label{fig:haptic_adm_coup}
 	\end{figure*}	
+
+	
+	\textbf{Decoupling the Device and Environment}: Defining the desired impedance or admittance in terms of a mass-spring-damper system is not always convenient. Ideally, one could define an arbitrary impedance or admittance function relating $F$ and $V$, giving complete control of the behaviour of the robot-environment interaction, while also ensuring stability. The haptic coupling decouples the design of the controller and the design of the virtual environment. This allows the virtual environment designer to create the physics of interaction without regards to the stability of the device. For example, you could create a virtual wall which suddenly applies infinite impedance, something that would normally cause instabilities. Note that the impedance that is ultimately rendered to the user will not be exactly as designed, but will be filtered through the haptic coupling.
+	
+
 	
 	\textbf{Allowing for Different Causalities}: The haptic coupling also allows the device controller and the virtual environment to have different causalities. For example, admittance control is better suited to our device. However, creating a virtual environment whose interaction dynamics are calculated based on admittance is difficult. Using an impedance environment is much more intuitive -- you measure the current position of the user within the virtual environment, and calculate the interaction force. \\
 		
@@ -1102,13 +1157,19 @@ The haptic coupling for admittance devices given in \cite{Adams1999} is a mass a
 		Z(s) = \frac{F}{v} = ms + b .
 	\end{equation}
 	
-The z-transform REF yield the algorithm used in the real-time controller, in terms of mass, damping and the time period (T) 	
+The z-transform \cite{ztrans} yield the algorithm used in the real-time controller, in terms of mass, damping and the time period (T). The bilinear transformation relates the laplace and z domains through
+
+	\begin{equation}
+		s = \frac{2(z-1)}{T(z+1)}.
+	\end{equation}
+	
+	Substituting this into the haptic coupling dynamic equation yields
 
 	\begin{equation}
 		Z(z) = \frac{mb(z-1)}{(m+bT)z - m}.
 	\end{equation}
 	
-	The z-transform yields the control step algorithm in (\ref{eqn:ztrans}). These are used to calculate the present time environmental position/velocity. 
+	The z-transform yields the control step algorithm in (\ref{eqn:ztrans}). They are used to update the current environment position and velocity ($x_k$ and $v_k$) based on the previous state of the environment ($x_{k-1}$, $v_{k-1}$, and $f_{k-1}$).
 
 \begin{equation} \label{eqn:ztrans}
 	v_k = \frac{m}{T}v_{k-1} + \frac{f_{k-1} - f}{\frac{m}{T} + b}
@@ -1118,7 +1179,7 @@ The z-transform REF yield the algorithm used in the real-time controller, in ter
 \end{equation}
 
 	
-The underlying virtual physics should have an impedance causality, and so the environmental force is calculated based on this position/velocity pair. This mapping can be an arbitrary function, thanks to the haptic coupling (\ref{eqn:imp}). 
+The underlying virtual physics should have an impedance causality, and so the environmental force is calculated based on this position/velocity pair. This mapping can be an arbitrary function of $x_k$ and $v_k$, thanks to the haptic coupling (\ref{eqn:imp}). 
  
 \begin{equation} \label{eqn:imp}
 	f_k = \mathcal{F}(x_k, v_k)
@@ -1137,8 +1198,8 @@ $$
 \[ 
 f_k = 
      \begin{cases}
-       \text{no contact} &\quad f_k = 0 \\
-       \text{contact} &\quad f_k = k(x_{user} - x_{dist}) \\
+        f_k = 0,&\quad  \text{no contact} \\
+        f_k = k(x_{user} - x_{dist}),&\quad \text{contact} \\
      \end{cases}
 \]
 $$
@@ -1387,7 +1448,7 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 	
 
 	
-	Three simple games were created, each corresponding to a different type of game which could be expanded upon by future students.
+	Three simple games were created, each corresponding to a different, fundamental type of game which could be expanded upon by future students. The goal was to test each type of game to determine which (if any) are engaging, or whether they are distracting. The first two games represent environments which react to the user's performance. The user is still shown the guide, and the amount of trajectory error determines what happens in the environment. The first is a simple, non-competitive game. The second is a competitive raving game which has a clear goal. The third game links the user's movements directly to the movement of the virtual character, and is meant to demonstrate a more immersive virtual world with haptic feedback. 
 	
 
 \begin{itemize}
@@ -1423,29 +1484,7 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 		\label{fig:balance_game}
 	\end{figure*} 
 			
-	\section{Software Extension}
-	
-			%While the software was customized to this system, it is desirable that it can be re-used in future design changes to the device, such as changing the control algorithm, adding DOF's, or changing the UI. To facilitate the use of the software for future designs, the software was re-factored to a more general structure, essentially a software template. The template includes  all initialization steps for creating real-time threads, communication of the UI, and communication with the DAQ -- however the controller and data structures are empty. Instructions are included on adding ...
-			
-	The software was customized for this system, however future design iterations will likely to make significant changes, including changing the controller to accommodate more DOF's, and adding features to the UI. A software template was created from the control and UI software described above. It includes:
-	
-	\begin{itemize}
-		\item Initialization and creating the threads
-		\item Initializing the Data Log
-		\item Creates Mutex
-		\item Connects to DAQ
-	\end{itemize}
-	
-	The programmer can then make customization for their specific system, as listed below. Essentially, this is a soft real time control software template which handles any boilerplate real time functions.
-	
-	\begin{itemize}
-		\item Control loop algorithm
-		\item What variables to send to the UI
-		\item Which variables are saved in the data structures 
-		\item Which variables to log 
-	\end{itemize}
-	
-	The template also includes the UI and UI communication. React.js, the technology behind the UI, can be reconfigured and customized easily. Reusable components can be created, like buttons, dropdown menus, \textit{etc}. All of the components designed for this UI can be easily moved around or reprogrammed. For example, the home button exists as an independent component and so can easily be moved to a different page or location, and the message it sends to the controller can also be changed. 
+
 	
 \chapter{Experiments}
 
@@ -1833,6 +1872,7 @@ Participants were asked to comment on how they thought the device could be impro
 
  Experiments indicate that the device functions as desired. Findings indicate that assistance can help users follow the desired trajectory more closely, and that resistance should be tailored to the preferences of the user, as some prefer lower or higher resistance. The games and haptic interaction increase engagement, but can be distracting. The users felt safe while using the device, although the comfort and the footplate support need to be improved before testing on stroke patients. Future work includes these improvements, more in-depth experiments regarding the engagement of the games, and clinical trials on patients. 
 	
+
 \chapter{Conclusion \& Future Work} \label{ch_conc}
 
 	Rehabilitation Robots have been used successfully in both research and clinical settings. Many devices exist, primarily for the upper-limbs and for gait training. The gap in the researcher concerning devices for bed-bound therapy for acute stroke patients motivated the construction of ViGRR, a 4-DOF rehabilitation robot. ViGRR was successfully tested, however it's high weight and power makes it unsuitable for the hospital environment. It was decided to construct a new robot which target acute stroke rehabilitation and is compatible with the hospital. The following work and contributions are included in this project: 
@@ -1860,6 +1900,47 @@ Participants were asked to comment on how they thought the device could be impro
 	\label{fig:robot_cad}
 \end{figure}		
 		
+	\section{Design Requirement Outcomes} \label{sec:outcomes}
+	
+A list of requirements for the device were developed in Sec. \ref{sec:requirements}. The work presented here fulfilled many of the requirements, however some require additional work before the device is ready for the hospital. The final outcomes of the work as they relate to the requirements are listed below. 
+
+\begin{enumerate}[label*=\arabic*.]
+	\item Support Leg
+	\begin{enumerate}[label*=\arabic*.]
+		\item Hold the weight of the leg: Works in part, although particpant feedback indicates more work needs to be done to secure the foot. 
+		\item Keeps the leg from bending out of plane: Requires the addition of another point of support
+		\item Adjustable to accommodate range of sizes and weights: Footplate height is adjustable, and total stroke length is as well. 
+	\end{enumerate}
+	\item Help acute patients who may not be able to do exercise
+	\begin{enumerate}[label*=\arabic*.]
+		\item Provide assistive forces through the exercise: experiments show assistance from admittance control lowered trajectory error.
+		\item Adjust difficulty based on patient: Experiments show that increasing resistance increases the required user effort. 
+	\end{enumerate}
+	\item Engage Patient
+	\begin{enumerate}[label*=\arabic*.]
+		\item Only provides assistance as needed: In theory, assistance from the admittance spring should only apply large forces when error is large. Future work could include adaptive control to change assistance. 
+		\item Keeps the patient engaged with visuals and games: Preliminary games showed promise in keeping the user engaged in an otherwise boring activity. 
+		\item Relates the exercise to ADL's and real life scenarios: Further work is required in making the games more relevant to everyday experiences. 
+	\end{enumerate}
+	\item Long Duration \& Intensive
+	\begin{enumerate}[label*=\arabic*.]
+		\item Device is comfortable and ergonomic: Participants used device for 20+ minutes without issue. Subjective questions indicate the footplate and heelrest could be more comfortable. 
+		\item Can apply resistance to make exercise more difficult: Experiments show that increasing resistance increased the required user effort. 
+	\end{enumerate}
+	\item Hospital Compatible
+	\begin{enumerate}[label*=\arabic*.]
+		\item Fits on hospital bed: The device has a small footprint and will fit on a standard single bed. 
+		\item Lightweight, can be easily transferred on to bed: The device can be carried around by a single (healthy) person. Future work could include a cart or wheeled device for transport. 
+		\item Compliant with sterilization/cleanliness protocols: A shell will need to be added before taking the device to the hospital.
+		\item Easy to set up: The set up only requires a few steps, including adjusting the footplate height, end stop distance, and homing the device. 
+	\end{enumerate}
+	\item Can be used by Therapists
+	\begin{enumerate}[label*=\arabic*.]
+		\item Intuitive UI: The user interface worked well during experiments; therapists can set up sessions without knowledge of admittance control gains or other technical background.
+		\item Progress monitoring using patient data: two metrics, trajectory error and user effort, show promise for tracking the patients ability and strength. 
+	\end{enumerate}
+	\end{enumerate}
+
 
 	\section{Future Work} \label{sec:future_work}
 	
@@ -1875,6 +1956,30 @@ Participants were asked to comment on how they thought the device could be impro
 	\end{enumerate}		
 	
 	A case for the PCB and Load Cell amplifier has been created, however the other electronics also need to be packaged together. A separate box should be built to contain the motor controller, power supply, DAQ and computer. This box should be portable and easily connected to the robot. This would allow the robot to be easily setup and removed as needed in the hospital. A shell needs to be built to protect other's from any sharp edges, and so that the device can be cleaned or sterilized as needed. Some research should be done on what material to use. Finally, extra DOF's should be added to accommodate different types of exercises. More research will need to be done concerning the best configuration. 
+
+		\section{Software Extension}
+	
+			%While the software was customized to this system, it is desirable that it can be re-used in future design changes to the device, such as changing the control algorithm, adding DOF's, or changing the UI. To facilitate the use of the software for future designs, the software was re-factored to a more general structure, essentially a software template. The template includes  all initialization steps for creating real-time threads, communication of the UI, and communication with the DAQ -- however the controller and data structures are empty. Instructions are included on adding ...
+			
+	The software was customized for this system, however future design iterations will likely to make significant changes, including changing the controller to accommodate more DOF's, and adding features to the UI. A software template was created from the control and UI software described above. It includes:
+	
+	\begin{itemize}
+		\item Initialization and creating the threads
+		\item Initializing the Data Log
+		\item Creates Mutex
+		\item Connects to DAQ
+	\end{itemize}
+	
+	The programmer can then make customization for their specific system, as listed below. Essentially, this is a soft real time control software template which handles any boilerplate real time functions.
+	
+	\begin{itemize}
+		\item Control loop algorithm
+		\item What variables to send to the UI
+		\item Which variables are saved in the data structures 
+		\item Which variables to log 
+	\end{itemize}
+	
+	The template also includes the UI and UI communication. React.js, the technology behind the UI, can be reconfigured and customized easily. Reusable components can be created, like buttons, dropdown menus, \textit{etc}. All of the components designed for this UI can be easily moved around or reprogrammed. For example, the home button exists as an independent component and so can easily be moved to a different page or location, and the message it sends to the controller can also be changed. 	
 	
 	\subsection{User Interface Additions}
 	
