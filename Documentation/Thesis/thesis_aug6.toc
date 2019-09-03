@@ -15,7 +15,7 @@
 \contentsline {section}{\numberline {2.1}Introduction}{31}{section.2.1}
 \contentsline {section}{\numberline {2.2}Fieldwork}{32}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Methods}{32}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Typical Rehabilitation}{32}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.2}Typical Rehabilitation}{33}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Patient Engagement}{33}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Hospital Environment}{34}{subsection.2.2.4}
 \contentsline {subsection}{\numberline {2.2.5}Therapy Schedule}{34}{subsection.2.2.5}
@@ -23,64 +23,64 @@
 \contentsline {section}{\numberline {2.3}Design Decisions}{35}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Degrees of Freedom}{36}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Linear Actuator Type}{36}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Placement Relative to Bed}{37}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Computer v.s. Microcontroller}{40}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.3}Placement Relative to Bed}{38}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Computer v.s. Microcontroller}{39}{subsection.2.3.4}
 \contentsline {section}{\numberline {2.4}Design Requirements}{40}{section.2.4}
 \contentsline {section}{\numberline {2.5}Final Design}{41}{section.2.5}
-\contentsline {chapter}{\numberline {3}Device Design and Implementation}{43}{chapter.3}
-\contentsline {section}{\numberline {3.1}Device Overview}{43}{section.3.1}
+\contentsline {chapter}{\numberline {3}Device Design and Implementation}{44}{chapter.3}
+\contentsline {section}{\numberline {3.1}Device Overview}{44}{section.3.1}
 \contentsline {section}{\numberline {3.2}Structural Design}{44}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Frame}{44}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Footplate}{45}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Hardware}{46}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Actuator}{46}{subsection.3.3.1}
-\contentsline {subsubsection}{Motor Specification}{47}{section*.6}
-\contentsline {subsection}{\numberline {3.3.2}Sensors}{49}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Electronics and Power}{50}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}PCB Layout}{52}{subsection.3.4.1}
-\contentsline {section}{\numberline {3.5}Data Acquisition}{54}{section.3.5}
-\contentsline {section}{\numberline {3.6}Computer System}{55}{section.3.6}
-\contentsline {chapter}{\numberline {4}Controller and Software}{59}{chapter.4}
-\contentsline {section}{\numberline {4.1}Overview}{59}{section.4.1}
-\contentsline {section}{\numberline {4.2}Impedance \& Admittance Controller}{59}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Velocity Profile}{64}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Operational Modes Using Admittance Control}{65}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Haptic Feedback}{66}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Operational Modes Using the Haptic Coupling}{71}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Physics Engine}{71}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Tuning Control Gains}{72}{section.4.4}
-\contentsline {section}{\numberline {4.5}Software}{75}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Real Time Operation and Linux}{76}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Controller}{77}{subsection.4.5.2}
-\contentsline {subsubsection}{Setup}{78}{section*.7}
-\contentsline {subsubsection}{Control Loop Thread}{79}{section*.8}
-\contentsline {subsubsection}{Server Communication Thread}{79}{section*.9}
-\contentsline {subsubsection}{Data Logging Thread}{80}{section*.10}
-\contentsline {subsection}{\numberline {4.5.3}User Interface}{80}{subsection.4.5.3}
-\contentsline {subsubsection}{Layout \& Pages}{81}{section*.11}
-\contentsline {subsubsection}{Visuals}{82}{section*.12}
-\contentsline {chapter}{\numberline {5}Experiments}{86}{chapter.5}
-\contentsline {section}{\numberline {5.1}Overview}{86}{section.5.1}
-\contentsline {section}{\numberline {5.2}Safety Tests}{86}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Goals}{86}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Method}{88}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Results \& Discussion}{88}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Functional Tests}{89}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Goals}{89}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Method}{89}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Results \& Discussion}{90}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}Healthy Subject Experiments}{92}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Goals}{92}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Method}{93}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Results \& Discussion}{98}{subsection.5.4.3}
-\contentsline {subsubsection}{Admittance Ranges}{98}{section*.13}
-\contentsline {subsubsection}{Efficacy of Games}{101}{section*.14}
-\contentsline {subsubsection}{General Comments}{103}{section*.15}
-\contentsline {subsubsection}{Conclusion}{104}{section*.16}
-\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{105}{chapter.6}
-\contentsline {section}{\numberline {6.1}Design Requirement Outcomes}{106}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future Work}{109}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Design Additions}{109}{subsection.6.2.1}
-\contentsline {section}{\numberline {6.3}Software Extension}{110}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}User Interface Additions}{111}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Experiments}{111}{subsection.6.3.2}
+\contentsline {subsubsection}{Motor Specification}{48}{section*.6}
+\contentsline {subsection}{\numberline {3.3.2}Sensors}{50}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Electronics and Power}{51}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}PCB Layout}{53}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Data Acquisition}{55}{section.3.5}
+\contentsline {section}{\numberline {3.6}Computer System}{56}{section.3.6}
+\contentsline {chapter}{\numberline {4}Controller and Software}{60}{chapter.4}
+\contentsline {section}{\numberline {4.1}Overview}{60}{section.4.1}
+\contentsline {section}{\numberline {4.2}Impedance \& Admittance Controller}{60}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Velocity Profile}{65}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Operational Modes Using Admittance Control}{66}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Haptic Feedback}{67}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Operational Modes Using the Haptic Coupling}{72}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Physics Engine}{72}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Tuning Control Gains}{73}{section.4.4}
+\contentsline {section}{\numberline {4.5}Software}{76}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Real Time Operation and Linux}{77}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Controller}{78}{subsection.4.5.2}
+\contentsline {subsubsection}{Setup}{79}{section*.7}
+\contentsline {subsubsection}{Control Loop Thread}{80}{section*.8}
+\contentsline {subsubsection}{Server Communication Thread}{80}{section*.9}
+\contentsline {subsubsection}{Data Logging Thread}{81}{section*.10}
+\contentsline {subsection}{\numberline {4.5.3}User Interface}{81}{subsection.4.5.3}
+\contentsline {subsubsection}{Layout \& Pages}{82}{section*.11}
+\contentsline {subsubsection}{Visuals}{83}{section*.12}
+\contentsline {chapter}{\numberline {5}Experiments}{87}{chapter.5}
+\contentsline {section}{\numberline {5.1}Overview}{87}{section.5.1}
+\contentsline {section}{\numberline {5.2}Safety Tests}{87}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Goals}{87}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Method}{89}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Results \& Discussion}{89}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Functional Tests}{90}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Goals}{90}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Method}{90}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Results \& Discussion}{91}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}Healthy Subject Experiments}{93}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Goals}{93}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Method}{94}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Results \& Discussion}{99}{subsection.5.4.3}
+\contentsline {subsubsection}{Admittance Ranges}{99}{section*.13}
+\contentsline {subsubsection}{Efficacy of Games}{102}{section*.14}
+\contentsline {subsubsection}{General Comments}{104}{section*.15}
+\contentsline {subsubsection}{Conclusion}{105}{section*.16}
+\contentsline {chapter}{\numberline {6}Conclusion \& Future Work}{106}{chapter.6}
+\contentsline {section}{\numberline {6.1}Design Requirement Outcomes}{107}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future Work}{110}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Design Additions}{110}{subsection.6.2.1}
+\contentsline {section}{\numberline {6.3}Software Extension}{111}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}User Interface Additions}{112}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Experiments}{112}{subsection.6.3.2}
