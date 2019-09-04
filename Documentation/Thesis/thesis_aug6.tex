@@ -30,8 +30,42 @@
 
 
 \begin{document}
-\maketitle
+
 \newpage
+
+\begin{center}
+{\LARGE \textbf{Design and Implementation of a Novel Rehabilitation Robot for Acute, Bed-bound Stroke  Patients}}
+
+\vspace{1.5cm}
+by  \\
+\vspace{1.5cm}
+{\Large \textbf{Nicholas Berezny}}
+\vspace{1cm}
+
+A Thesis submitted to \\
+the Faculty of Graduate Studies and Research \\
+in partial fulfilment of \\
+the requirements for the degree of \\
+\textbf{Master of Applied Science} \\
+
+\vspace{1cm}
+Ottawa-Carleton Institute for \\
+Mechanical and Aerospace Engineering \\
+
+\vspace{1cm}
+Department of Mechanical and Aerospace Engineering \\
+Carleton University \\
+Ottawa, Ontario, Canada \\
+September 2019 \\
+\vspace{1cm}
+
+Copyright \textcopyright \hspace{0.08cm} 2019 \\
+Nicholas Berezny
+\end{center}
+\thispagestyle{empty}
+\clearpage
+\newpage
+\pagenumbering{roman} 
 
 \chapter*{Acknowledgements}
 \chapter*{Abstract}
@@ -46,7 +80,7 @@ Stroke is a prevalent cerebrovascular disease which leads to neurological defici
 \listoftables
 
 \chapter{Introduction}
-
+\pagenumbering{arabic} 
 
 \section{Stroke and Rehabilitation}
 
@@ -394,7 +428,9 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	
 	Other comments included the need for comfort, particularly using comfortable material where the robot and human interact. They also mentioned the use of tactile methods of engaging the patient (\textit{e.g.} tapping or vibrations applied to the leg). Some indicated that combining upper and lower-limb activities could be beneficial (\textit{e.g.} by using a joystick with the robot). 
 	
+
 \section{Design Decisions} 
+
 
 	\begin{table}[]
 	\centering
@@ -420,7 +456,7 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	\end{table}
 	
 
-	This rehabilitation robot was designed from scratch, from the initial concept to the final realization. This sections lists the early design decisions and iterations, along with the justification. There were four significant design decisions to be made:
+	This rehabilitation robot was designed from scratch, from the initial concept to the final realization. A summary of design decisions derived from feildwork is given in Table 2.1. This sections explains further the early design decisions and iterations, along with the justification. There were four significant design decisions to be made:
 	
 	\begin{enumerate}
 		\item The number of degrees of freedom (DOF) in the robot. The final decision was to use one linear DOF.
@@ -538,36 +574,36 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 The following design requirements were collected for the lower-limb rehabilitation device, based on the literature review, fieldwork, and previous work on ViGRR. After meeting these requirements, the robot should be ready for clinical trials at the hospital with acute stroke patients. The final outcomes of this work and how they relate to these requirements is given in Sec. \ref{sec:outcomes}.
 
 \begin{enumerate}[label*=\arabic*.]
-	\item Support Leg
+	\item \textbf{Support the user's leg}
 	\begin{enumerate}[label*=\arabic*.]
 		\item Hold the weight of the leg
 		\item Keeps the leg from bending out of plane 
 		\item Adjustable to accommodate range of sizes and weights 
 	\end{enumerate}
-	\item Help acute patients who may not be able to do exercise
+	\item \textbf{Help acute patients who may not be able to do exercise}
 	\begin{enumerate}[label*=\arabic*.]
 		\item Provide assistive forces through the exercise
 		\item Adjust difficulty based on patient 
 	\end{enumerate}
-	\item Engage Patient
+	\item \textbf{Engage Patient}
 	\begin{enumerate}[label*=\arabic*.]
 		\item Only provides assistance as needed
 		\item Keeps the patient engaged with visuals and games
 		\item Relates the exercise to ADL's and real life scenarios
 	\end{enumerate}
-	\item Long Duration \& Intensive
+	\item \textbf{Long Duration \& Intensive Sessions}
 	\begin{enumerate}[label*=\arabic*.]
 		\item Device is comfortable and ergonomic
 		\item Can apply resistance to make exercise more difficult
 	\end{enumerate}
-	\item Hospital Compatible
+	\item \textbf{Hospital Compatible}
 	\begin{enumerate}[label*=\arabic*.]
 		\item Fits on hospital bed 
 		\item Lightweight, can be easily transferred on to bed
 		\item Compliant with sterilization/cleanliness protocols 
 		\item Easy to set up 
 	\end{enumerate}
-	\item Can be used by Therapists
+	\item \textbf{Can be used by Therapists}
 	\begin{enumerate}[label*=\arabic*.]
 		\item Intuitive UI
 		\item Progress monitoring using patient data
@@ -647,7 +683,7 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	\end{figure*}
 	
 
-	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. These brackets are shown in fig REF, and were 3D printed with PLA. To hold the foot in place, a custom heel support was created (Fig REF). It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D printed, using ABS for additional strength. 
+	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. To hold the foot in place, a custom heel support was created (Fig REF). It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D printed, using ABS for additional strength. 
 	
 	\section{Hardware}
 		\subsection{Actuator}	
@@ -706,7 +742,7 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	
 
 	
-	The motor is required to move the actuator fast enough while also be able to apply adequate levels of force fro assistance or resistance. This motor and gear assembly was used from a previous project, and was found capable of fast of linear motion and applied force. The maximum linear speed is in this case limited by the maximum input RPM to the gearhead, 6000RPM: 
+	The motor is required to move the actuator fast enough while also be able to apply adequate levels of force for assistance or resistance. This motor and gear assembly was used from a previous project, and was found capable of fast of linear motion and applied force. The maximum linear speed is in this case limited by the maximum input RPM to the gearhead, 6000RPM: 
 	
 	\begin{align*}
 		V_{max} &= \frac{p\omega _{max}}{GR} \frac{1min}{60s} \\
@@ -1526,7 +1562,7 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 		\multicolumn{2}{l}{} \\ 
 	\hline
 	\rowcolor{gray!10}	\multicolumn{2}{|l|}{} \\
-	\rowcolor{gray!10} \multicolumn{2}{|l|}{\multirow{-2}{*}{\textbf{Experiment 3: Healthy Subject Testing – Admittance Parameters}}} \\
+	\rowcolor{gray!10} \multicolumn{2}{|l|}{\multirow{-2}{*}{\textbf{Experiment 3: Healthy Subject Testing –- Admittance Parameters}}} \\
 	\hlineB{2}
 	Goal & \thead{Determine acceptable assistance and resistance levels \& \\ determine relation between trajectory error, user effort, and \\ parameter levels.} \\
 	\hlineB{2}
@@ -1537,7 +1573,7 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 		\multicolumn{2}{l}{} \\ 
 	\hline
 	\rowcolor{gray!10}	\multicolumn{2}{|l|}{} \\
-	\rowcolor{gray!10} \multicolumn{2}{|l|}{\multirow{-2}{*}{\textbf{Experiment 4: Healthy Subject Testing – Games}}} \\
+	\rowcolor{gray!10} \multicolumn{2}{|l|}{\multirow{-2}{*}{\textbf{Experiment 4: Healthy Subject Testing –- Games}}} \\
 	\hlineB{2}
 	Goal & \thead{Test three game activities designed to engage participants in \\ the exercise} \\
 	\hlineB{2}
@@ -1598,7 +1634,7 @@ For the first test no interaction force was applied, only an initial offset of t
 	\label{fig:nVerNoInt}
 \end{figure*}
 
-The next test was to apply forces to the system to determine if the system can render the correct admittance with a semi-random input. Hence, a human subject was tasked to move the footplate back and forth. The force data from the 1-DOF load cell was saved and used as an input to the admittance simulation. Fig. \ref{fig:adm_sim} shows a comparison of the actual device position versus the simulated position. Again, the system behaves as expected, following the simulation with some minimal delay.
+The next test was to apply forces to the system to determine if the system can render the correct admittance with a semi-random input. Hence, a human subject was tasked to move the footplate back and forth. The force data from the 1-DOF load cell was saved and used as an input to the admittance simulation. Fig. \ref{fig:adm_sim} shows a comparison of the actual device position versus the simulated position. Again, the system behaves as expected, following the simulation with some minimal delay. The average positional error was only 1.91mm. 
 
 \begin{figure}[h]
 	\centering
@@ -1634,7 +1670,7 @@ The next test was to apply forces to the system to determine if the system can r
 %\end{figure}	
 	
 		
-	These tests confirm that the admittance controller adequately recreated the desired dynamics, and that the outer-loop PD controller tracked this behaviour. 
+	These tests confirm that the admittance controller adequately recreated the desired dynamics, and that the outer-loop PD controller tracked this behaviour.
 	
 	%\subsection{Verifying Haptic Control}
 	
@@ -1646,13 +1682,13 @@ The next test was to apply forces to the system to determine if the system can r
 	
 		\subsection{Goals}
 	
-	The healthy subject experiments were designed as a preliminary study on the interaction between the device and a human operator, specifically the robots ability to administer rehabilitation in the form of assistive and resistive forces, visual feedback, and engaging games. While the previous two experiments confirmed that the device was safe and that the controller functioned as expected, there were still questions that needed to be addressed before bringing the robot to the hospital to test on stroke patients. Suitable levels of assistance and resistance are not known -- a range of expectable spring and damper gains needs to be determined. Furthermore, it was not known what parameters levels users would prefer (e.g. high levels of resistance, low levels of resistance, etc.), or to what extent these parameters would change the behaviour of the user (e.g. does increasing the spring stiffness improve the user's ability to follow a desired trajectory, and does it effect how much work the user has to do?). Other qualitative questions also remained, such as the comfort of the robot, how well the robot supported the leg, and how safe the user perceives the device to be. It is critical that any flaws in the design which compromise these aspects of the robot are fixed before bringing the device to the hospital. Finally, the games described in Sec. REF need to be tested to determine if they successfully engage the user in the rehabilitation exercise. Since these games are not meant to be finished products, but only simple representations of different types of potential games, the feedback here should be used to influence what types of games are created in future work.  
+	The healthy subject experiments were designed as a preliminary study on the interaction between the device and a human operator, specifically the robots ability to administer rehabilitation in the form of assistive and resistive forces, visual feedback, and engaging games. While the previous two experiments confirmed that the device was safe and that the controller functioned as expected, there were still questions that needed to be addressed before bringing the robot to the hospital to test on stroke patients. Suitable levels of assistance and resistance are not known -- a range of expectable spring and damper gains needs to be determined. Furthermore, it was not known what parameters levels users would prefer (e.g. high levels of resistance, low levels of resistance, etc.), or to what extent these parameters would change the behaviour of the user (e.g. does increasing the spring stiffness improve the user's ability to follow a desired trajectory, and does it effect how much work the user has to do?). Other qualitative questions also remained, such as the comfort of the robot, how well the robot supported the leg, and how safe the user perceives the device to be. It is critical that any flaws in the design which compromise these aspects of the robot are fixed before bringing the device to the hospital. Finally, the games need to be tested to determine if they successfully engage the user in the rehabilitation exercise. Since these games are not meant to be finished products, but only simple representations of different types of potential games, the feedback here should be used to influence what types of games are created in future work.  
 	
 		\subsection{Method}
 		
 		Six subjects were recruited to participate in a pilot study under ethics approval from Carleton University's REB. This was a preliminary study and so was done on healthy subjects with motor control over their legs. The purpose of the study was threefold: to test the function and safety of the device, to study the effects of different levels of assistance and resistance, and to get subjective data concerning the device and the three types of games. The experiment consisted of two phases: 
 
-\textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance (\textit{i.e.} varying levels of the spring and damper parameters in the admittance control). Five trials included changing levels of assistance with constant resistance, and the other five had no assistance and changing levels of resistance. The assistance levels varied from 0.1 to 0.6 N/mm (with a constant damping of 0.2 Ns/mm), and then the damping varied from 0.1 to 0.6 Ns/mm. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
+\textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance (\textit{i.e.} varying levels of the spring and damper parameters in the admittance control). Five trials included changing levels of assistance with constant resistance, and the other five had changing levels of resistance with no assistance. The assistance levels varied from 0.1 to 0.6 N/mm (with a constant damping of 0.2 Ns/mm), and then the damping varied from 0.1 to 0.6 Ns/mm. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
 
 \textbf{Games \& Visual}: The next phase consisted of three 1.5-minute trials covering the three games described in Sec. \ref{sec:visuals}. The user played each game and then was asked to comment on their levels of effort, engagement, the difficulty of the task, and the distractibility of the visuals. 
 
@@ -1662,7 +1698,7 @@ Data collection included data logged from the robot and subjective questionnaire
 e_{ave} = \frac{\sum_{t=0}^{N} |x_t - x_{t,des}|}{N}.
 \end{equation}
 
-Another metric that could be of use is what is here termed the user's effort ($\phi$), or in other words the total work done by the user to the system. This is equal to the sum of instantaneous power over the duration of the exercise 
+Another metric that could be of use is what is here termed the user's effort ($\phi$), or the total work done by the user to the system. This is equal to the sum of instantaneous power over the duration of the exercise 
 
 \begin{equation} \label{eqn:effort} 
 \phi = \sum_{t=0}^{N} v_tF_t.
@@ -1718,7 +1754,7 @@ In addition to these metrics, data was collected from the questionnaire in Fig. 
 	\begin{tabular}{c c c c c}
 	\toprule
 	Mode & Level & Average Error & Effort & Difficulty \\
-	& & \tiny $[mm]$ & \tiny $[N mm/s]$  & \\
+	& & \tiny $[mm]$ & \tiny $[N mm/s]$  & \tiny $\text{score}/5$ \\
 	\midrule
 	\cellcolor{white} 						& 1 & 5.00 & 5.00   & 2.75 \\ 
 	\rowcolor{gray!10}		
@@ -1743,7 +1779,7 @@ In addition to these metrics, data was collected from the questionnaire in Fig. 
 	
 	Table \ref{tab:expA} holds the trajectory error (\ref{eqn:error}), user effort (\ref{eqn:effort}), and subjective difficulty (subjective score out of 5), averaged across all participants,	for each level of assistance and resistance. 
 	
-	The effects of changing the level of assistance are shown in Fig. \ref{fig:assist}. Increasing assistance levels decreased average error from 9.25mm to 6.32mm at the lowest and highest levels, respectively. This result indicates that the assistance provided by the admittance controller was successful, and can be used to help user's of the robot go through the knee flexion/extension exercise. An example of the effects of assistance is shown in Fig. \ref{fig:pos_comp}, with user positions at high and low assistance compared to the desired trajectory. In this case, higher assistance has helped to prevent overshoot. Assistance levels did not change user effort significantly.
+	The effects of changing the level of assistance are shown in Fig. \ref{fig:assist}. Increasing assistance levels decreased average error from 9.25mm to 6.32mm at the lowest and highest levels, respectively. This result indicates that the assistance provided by the admittance controller was successful, and can be used to help user's of the robot go through the knee flexion/extension exercise. An example of the effects of assistance is shown in Fig. \ref{fig:pos_comp}, with user positions at high and low assistance compared to the desired trajectory. In this case, higher assistance has helped to prevent overshoot. Assistance levels did not change user effort significantly. The comparison of positions from low and high assistance levels for each participant is given in Appendix IV, Fig. \ref{fig:pos1} - \ref{fig:pos6}.
 	
 	\begin{figure}[p]
 	\centering
@@ -1785,10 +1821,10 @@ In addition to these metrics, data was collected from the questionnaire in Fig. 
 	%Increasing the resistance level increased the amount of effort applied by the subjects (Fig. \ref{fig:resist}). This was expected as higher levels of resistance require more force by definition. A comparison of the force over one cycle of motion is given in Fig. \ref{fig:force_comp}, comparing the force applied by the user in assistance and resistance modes. In resistance mode, the user has to apply greater force, particularly when velocity is highest. 
 	
 	%Increasing the resistance level did not significantly effect error (Fig. \ref{fig:resist}).  This is reflected in subjective difficulty scores (Fig. \ref{fig:difficulty}). Some user's preferred lower levels of difficulty, typically because it made the device more transparent. Others preferred higher levels of resistance, typically because it was more stable and prevented overshoot. 
-	The effects of changing the level of resistance are shown in Fig. \ref{fig:resist}. Increasing resistance levels increased user effort, had no significant effect on error. The increase in effort was expected given that higher resistance modes by definition require more force to achieve a given velocity. Resistance levels should be changed based on the user's strength, and higher levels of resistance could be used to build strength. 
+	The effects of changing the level of resistance are shown in Fig. \ref{fig:resist}. Increasing resistance levels increased user effort, and had no significant effect on error. The increase in effort was expected given that higher resistance modes by definition require more force to achieve a given velocity. Resistance levels should be changed based on the user's strength, and higher levels of resistance could be used to build strength. 
 	
 	
-	 The subjective difficulty scores did not change linearly with resistance. Difficulty tended to be rated higher at the extremes, and was lowest at the middle resistance level. This resulted because some participants preferred lower levels of resistance, reporting that they liked when the robot moved transparently, while other participants preferred higher levels of assistance, reporting that they wanted to ... 
+	 The subjective difficulty scores did not change linearly with resistance. Difficulty tended to be rated higher at the extremes, and was lowest at the middle resistance level. This resulted because some participants preferred lower levels of resistance, reporting that they liked when the robot moved transparently, while other participants preferred higher levels of assistance, reporting that they wanted to be able to push through the movement without overshooting. These results further emphasize the need to tune resistance levels to the individual's ability and preferences.
 	 
 \begin{figure}[p]
 	\centering
@@ -1898,7 +1934,7 @@ Participants were asked to comment on how they thought the device could be impro
 	
 	\textbf{Pilot Study}: Six subjects were recruited for a study which aimed to look at a range of assistance and resistance levels, and a preliminary test of the games. Results indicate that the robot functions as expected, but more work needs to be done on supporting the leg and making the device comfortable. 
 	
-	\textbf{Publications}: This project has resulted in three publications. (1) A conference abstract and presentation at the Conference of Control, Dynamic Systems, and Robotics (CDSR'19) covering the design and controls, which won the best paper award REF; (2) a conference paper and poster presentation at the Canadian Medical and Biological Engineering Conference, which covered the fieldwork and how it inspired the foundational device concept REF; and (3) a Paper which is in the process of publication in TBD covering the robot's design, controller, and the results of the healthy subject experiments. Furthermore, the groundwork has be lain for another experiment and publication in the coming months, which seeks to improve the games, measure engagement quantitatively, and also collect electromyographic (EMG) data. 
+	\textbf{Publications}: This project has resulted in three publications. (1) A conference abstract and presentation at the Conference of Control, Dynamic Systems, and Robotics (CDSR'19) covering the design and controls, which won the best paper award \cite{Berezny2019}; (2) a conference paper and poster presentation at the Canadian Medical and Biological Engineering Conference, which covered the fieldwork and how it inspired the foundational device concept \cite{NBerezny2019}; and (3) a Paper which is in the process of publication covering the robot's design, controller, and the results of the healthy subject experiments. Furthermore, the groundwork has be lain for another experiment and publication in the coming months, which seeks to improve the games, measure engagement quantitatively, and also collect electromyographic (EMG) data. 
 	
 \begin{figure}[h]
 	\centering
@@ -2013,16 +2049,60 @@ The user interface needs improvement before it is ready for use by therapists in
 	\end{enumerate}
 	
 	
-\chapter*{Appendix I: CAD Drawings}
+\chapter*{Appendix I: Custom Parts}
+
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.9\linewidth]{heelrest01}
+		\caption{The heel rest used to hold the user's foot in place}
+		\label{fig:heelrest}
+	\end{figure*}
+	
+		\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{pcb_case01}
+		\caption{The case for the PCB and load cell amplifier}
+		\label{fig:pcb_case}
+	\end{figure*}
+	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{bracket02}
+		\caption{Bracket to support footplate by carrying vertical load}
+		\label{fig:bracket}
+	\end{figure*}
+		
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{ls_mount2}
+		\caption{Limit switch mount}
+		\label{fig:ls_mount}
+	\end{figure*}
+
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=0.9\linewidth]{motor_mount01}
+		\caption{Motor and gearhead mount (consisting of four plates)}
+		\label{fig:motor_mount}
+	\end{figure*}
+
 \chapter*{Appendix II: PCB Diagram \& BOM}
 
 		
-	\begin{figure*}[t] 
+	\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=\linewidth]{pcb_schematic}
-		\caption{Printed Circuit Board}
+		\caption{Printed circuit board schematic}
 		\label{fig:pcb}
 	\end{figure*}
+	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{pcb_pic}
+		\caption{Printed circuit board layout -- front (left) and back (right)}
+		\label{fig:pcb_pic}
+	\end{figure*}
+
 
 	\begin{table}[]
 	\centering
@@ -2049,9 +2129,137 @@ The user interface needs improvement before it is ready for use by therapists in
 		\caption{Operating Range of the Motor \newline \small www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}
 		\label{fig:motor_range}
 	\end{figure*}
+	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{motor_spec}
+		\caption{Specifications for the Maxon motor}
+		\label{fig:motor_spec}
+	\end{figure*}
+	
+		\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{gear_spec}
+		\caption{Specifications for the Maxon gearhead}
+		\label{fig:gear_spec}
+	\end{figure*}
+	
+			\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{encoder_spec}
+		\caption{Specifications for the Maxon encoder}
+		\label{fig:encoder_spec}
+	\end{figure*}
+	
+\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{motor_controller_spec}
+		\caption{Specifications for the Maxon motor controller}
+		\label{fig:controller_spec}
+	\end{figure*}
+	
+\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{load_amp}
+		\caption{The load cell and amplifier connection diagram}
+		\label{fig:load_cell_amp}
+	\end{figure*}
+	
+	\begin{figure*}[h] 
+		\centering
+		\includegraphics[width=\linewidth]{load_cell_spec}
+		\caption{Specifications for the MLP load cell}
+		\label{fig:load_cell}
+	\end{figure*}
 
-\chapter*{Appendix IV: Complete Data from Fieldwork at Hospital}
 
+
+\chapter*{Appendix IV: Additional Plots from Healthy Subject Experiment}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{pos1}
+	\caption{Position comparisons for highest and lowest assistance levels (Participant 1)}
+	\label{fig:pos1}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{pos2}
+	\caption{Position comparisons for highest and lowest assistance levels (Participant 2)}
+	\label{fig:pos2}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{pos3}
+	\caption{Position comparisons for highest and lowest assistance levels (Participant 3)}
+	\label{fig:pos3}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{pos4}
+	\caption{Position comparisons for highest and lowest assistance levels (Participant 4)}
+	\label{fig:pos4}
+\end{figure*}
+
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{pos5}
+	\caption{Position comparisons for highest and lowest assistance levels (Participant 5)}
+	\label{fig:pos5}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{pos6}
+	\caption{Position comparisons for highest and lowest assistance levels (Participant 6)}
+	\label{fig:pos6}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{force1}
+	\caption{Force comparisons for the highest and lowest resistance levels (Participant 1)}
+	\label{fig:force1}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{force2}
+	\caption{Force comparisons for the highest and lowest resistance levels (Participant 2)}
+	\label{fig:nVerNoInt}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{force3}
+	\caption{Force comparisons for the highest and lowest resistance levels (Participant 3)}
+	\label{fig:nVerNoInt}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{force4}
+	\caption{Force comparisons for the highest and lowest resistance levels (Participant 4)}
+	\label{fig:nVerNoInt}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{force5}
+	\caption{Force comparisons for the highest and lowest resistance levels (Participant 5)}
+	\label{fig:nVerNoInt}
+\end{figure*}
+
+\begin{figure*}[h] 
+	\centering
+	\includegraphics[width=\linewidth]{force6}
+	\caption{Force comparisons for the highest and lowest resistance levels (Participant 6)}
+	\label{fig:nVerNoInt}
+\end{figure*}
 
 	
 	
