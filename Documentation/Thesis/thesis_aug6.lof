@@ -22,8 +22,8 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces The structure of the frame}}{35}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces The structure of the footplate}}{36}{figure.3.3}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces The actuator system: belt drive and motor}}{37}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces The Maxon motor setup with motor driver, E-stop, and the wiring}}{40}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces The force signal low pass filter with adjustable cut-off frequency (left), and the command non-inverting amplifier with a gain of 4 (right)}}{41}{figure.3.6}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The Maxon motor setup with motor driver, E-stop, and the wiring}}{41}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The force signal low pass filter with adjustable cut-off frequency (left), and the command non-inverting amplifier with a gain of 4 (right)}}{42}{figure.3.6}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces The safety system controlling motor enable pin}}{42}{figure.3.7}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces The original protoboard layout}}{43}{figure.3.8}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces The PCB layout, with header pins, integrated circuits, and voltage regulators}}{44}{figure.3.9}

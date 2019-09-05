@@ -1,35 +1,14 @@
 \begin{thebibliography}{10}
 
 \bibitem{Benjamin2018}
-E.~J. Benjamin, C.~S. {Salim Virani}, C.-V.~W. {Chair Clifton Callaway}, A.~M.
-  Chamberlain, M.~R. {Alexander Chang}, M.~{Susan Cheng}, M.~E. {Stephanie
-  Chiuve}, S.~{Mary Cushman}, F.~N. {Francesca Delling}, M.~{Rajat Deo}, M.~D.
-  {Sarah de Ferranti}, F.~F. {Jane Ferguson}, M.~Fornage, F.~{Cathleen
-  Gillespie}, M.~R. {Carmen Isasi}, F.~C. {Monik Jim{\'{e}}nez}, S.~{Lori
-  Chaffin Jordan}, S.~E. Judd, M.~{Daniel Lackland}, F.~H. {Judith Lichtman},
-  F.~{Lynda Lisabeth}, F.~{Simin Liu}, F.~T. {Chris Longenecker}, P.~L. Lutsey,
-  F.~S. {Jason Mackey}, D.~B. Matchar, K.~Matsushita, F.~E. {Michael
-  Mussolino}, F.~{Khurram Nasir}, F.~O. Martin, L.~P. Palaniappan, F.~{Ambarish
-  Pandey}, D.~K. Pandey, F.~J. {Mathew Reeves}, M.~D. Ritchey, M.~J. {Carlos
-  Rodriguez}, F.~A. {Gregory Roth}, F.~D. {Wayne Rosamond}, F.~K. {Uchechukwu
-  Sampson}, F.~M. {Gary Satou}, F.~H. {Svati Shah}, F.~L. {Nicole Spartano},
-  D.~L. Tirschwell, C.~W. Tsao, M.~H. {Jenifer Voeks}, J.~Z. Willey, M.~T.
-  {John Wilkins}, F.~H. {Jason Wu}, F.~M. {Heather Alger}, S.~S. Wong, and
-  F.~{Paul Muntner}, ``{Heart Disease and Stroke Statistics-2018 Update A
-  Report From the American Heart Association},'' {\em Circulation}, vol.~137,
+E.~J. Benjamin {\em et~al.}, ``{Heart Disease and Stroke Statistics-2018 Update
+  A Report From the American Heart Association},'' {\em Circulation}, vol.~137,
   pp.~67--492, 2018.
 
 \bibitem{Hebert2016}
-D.~Hebert, M.~P. Lindsay, A.~McIntyre, A.~Kirton, P.~G. Rumney, S.~Bagg,
-  M.~Bayley, D.~Dowlatshahi, S.~Dukelow, M.~Garnhum, E.~Glasser, M.-L. Halabi,
-  E.~Kang, M.~MacKay-Lyons, R.~Martino, A.~Rochette, S.~Rowe, N.~Salbach,
-  B.~Semenko, B.~Stack, L.~Swinton, V.~Weber, M.~Mayer, S.~Verrilli,
-  G.~DeVeber, J.~Andersen, K.~Barlow, C.~Cassidy, M.-E. Dilenge, D.~Fehlings,
-  R.~Hung, J.~Iruthayarajah, L.~Lenz, A.~Majnemer, J.~Purtzki, M.~Rafay, L.~K.
-  Sonnenberg, A.~Townley, S.~Janzen, N.~Foley, and R.~Teasell, ``{Canadian
-  stroke best practice recommendations: Stroke rehabilitation practice
-  guidelines, update 2015},'' {\em International Journal of Stroke}, vol.~11,
-  pp.~459--484, jun 2016.
+D.~Hebert {\em et~al.}, ``{Canadian stroke best practice recommendations:
+  Stroke rehabilitation practice guidelines, update 2015},'' {\em International
+  Journal of Stroke}, vol.~11, pp.~459--484, jun 2016.
 
 \bibitem{Langhorne2009}
 P.~Langhorne, F.~Coupar, and A.~Pollock, ``{Motor recovery after stroke: a
@@ -37,17 +16,7 @@ P.~Langhorne, F.~Coupar, and A.~Pollock, ``{Motor recovery after stroke: a
   pp.~741--754, 2009.
 
 \bibitem{Ewart2003}
-S.~Ewart, M.~{Langfeld Layout}, R.~Sadki, D.~Evans, W.~Savedoff, A.~Singh,
-  B.~Stilwell, W.~{Van Lerberghe}, E.~{Villar Montesinos}, P.~Banati,
-  M.~Beusenberg, S.~Colombo, C.~Dora, J.~Dzenowagis, H.~Fogstad, E.~Gajraj,
-  G.~Galea, C.~{Garcia Moreno}, Y.~Hemed, A.~Hinman, A.~Kalache, R.~Kawar,
-  M.~Levin, A.~Lopez, A.~Mechbal, L.~Rago, S.~Saxena, P.~Setel, C.~Shahpar,
-  H.~Troedsson, A.~Yang, D.~Bayarsaikha, S.~Begg, C.~Bernard, D.~Chisholm,
-  S.~Ebener, E.~Gakidou, Y.~Guigoz, P.~Hern{\'{a}}ndez, M.~Hogan, K.~Iburg,
-  C.~Indikadahena, M.~Inoue, K.~Lunze, D.~{Ma Fat}, T.~Mwase, F.~Naville, J.-P.
-  Poullier, C.~Rao, D.~Rhoades, H.~Salehi, J.~Salomon, A.~Sousa, R.~M.
-  Suarez-Berenguela, U.~{Than Sein}, N.~Tomijima, N.~{Van de Maele},
-  S.~Volkmuth, and H.~Xu, {\em {The World Health Report}}.
+S.~Ewart {\em et~al.}, {\em {The World Health Report}}.
 \newblock World Health Organization, 2003.
 
 \bibitem{Rey2008}
@@ -114,14 +83,10 @@ M.~S. Cameirao, S.~{Bermudez i Badia}, E.~D. Oller, and P.~F. M.~J. Verschure,
   IEEE, aug 2008.
 
 \bibitem{Casaubon2016}
-L.~K. Casaubon, J.-M. Boulanger, E.~Glasser, D.~Blacquiere, S.~Boucher,
-  K.~Brown, T.~Goddard, J.~Gordon, M.~Horton, J.~Lalonde, C.~LaRivi{\`{e}}re,
-  P.~Lavoie, P.~Leslie, J.~McNeill, B.~K. Menon, B.~Moses, M.~Penn, J.~Perry,
-  E.~Snieder, D.~Tymianski, N.~Foley, E.~E. Smith, G.~Gubitz, M.~D. Hill, and
-  P.~Lindsay, ``{{\textless}i{\textgreater}Canadian Stroke Best Practice
-  Recommendations{\textless}/i{\textgreater} : Acute Inpatient Stroke Care
-  Guidelines, Update 2015},'' {\em International Journal of Stroke}, vol.~11,
-  pp.~239--252, feb 2016.
+L.~K. Casaubon {\em et~al.}, ``{{\textless}i{\textgreater}Canadian Stroke Best
+  Practice Recommendations{\textless}/i{\textgreater} : Acute Inpatient Stroke
+  Care Guidelines, Update 2015},'' {\em International Journal of Stroke},
+  vol.~11, pp.~239--252, feb 2016.
 
 \bibitem{AVERTTrialCollaborationgroup2015}
 {AVERT Trial Collaboration group}, ``{Efficacy and safety of very early

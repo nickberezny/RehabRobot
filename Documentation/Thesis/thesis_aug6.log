@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  4 SEP 2019 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.7.10)  5 SEP 2019 17:06
 entering extended mode
 **./thesis_aug6.tex
 (thesis_aug6.tex
@@ -448,21 +448,6 @@ LaTeX Warning: Label `fig:pcb_pic' multiply defined.
 
 LaTeX Warning: Label `tab:belt' multiply defined.
 
-
-LaTeX Warning: Label `fig:nVerNoInt' multiply defined.
-
-
-LaTeX Warning: Label `fig:nVerNoInt' multiply defined.
-
-
-LaTeX Warning: Label `fig:nVerNoInt' multiply defined.
-
-
-LaTeX Warning: Label `fig:nVerNoInt' multiply defined.
-
-
-LaTeX Warning: Label `fig:nVerNoInt' multiply defined.
-
 )
 \openout1 = `thesis_aug6.aux'.
 
@@ -664,13 +649,13 @@ LaTeX Warning: No positions in optional float specifier.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 491.
 
-<pics/off-bed.png, id=885, 463.9734pt x 150.3216pt>
+<pics/off-bed.png, id=884, 463.9734pt x 150.3216pt>
 File: pics/off-bed.png Graphic file (type png)
  <use pics/off-bed.png>
 Package pdftex.def Info: pics/off-bed.png used on input line 511.
 (pdftex.def)             Requested size: 352.31625pt x 114.14465pt.
 
-<pics/on-bed.png, id=886, 395.5578pt x 203.3196pt>
+<pics/on-bed.png, id=885, 395.5578pt x 203.3196pt>
 File: pics/on-bed.png Graphic file (type png)
  <use pics/on-bed.png>
 Package pdftex.def Info: pics/on-bed.png used on input line 520.
@@ -682,14 +667,14 @@ LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 529.
 
 [27 <./pics/on-bed.png>]
-<pics/on-bed_moment.png, id=904, 185.0112pt x 278.9622pt>
+<pics/on-bed_moment.png, id=902, 185.0112pt x 278.9622pt>
 File: pics/on-bed_moment.png Graphic file (type png)
 
 <use pics/on-bed_moment.png>
 Package pdftex.def Info: pics/on-bed_moment.png used on input line 551.
 (pdftex.def)             Requested size: 140.92793pt x 212.50298pt.
 
-<pics/off-bed_moment.png, id=905, 439.4016pt x 185.9748pt>
+<pics/off-bed_moment.png, id=903, 439.4016pt x 185.9748pt>
 File: pics/off-bed_moment.png Graphic file (type png)
 
 <use pics/off-bed_moment.png>
@@ -700,14 +685,14 @@ Package pdftex.def Info: pics/off-bed_moment.png used on input line 559.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [28 <./pics/on-bed_moment.png>] [29 <./pics/off-bed_moment.png>]
-<pics/device_on_bed.jpg, id=924, 4047.12pt x 3035.34pt>
+<pics/device_on_bed.jpg, id=922, 4047.12pt x 3035.34pt>
 File: pics/device_on_bed.jpg Graphic file (type jpg)
 
 <use pics/device_on_bed.jpg>
 Package pdftex.def Info: pics/device_on_bed.jpg used on input line 620.
 (pdftex.def)             Requested size: 352.31625pt x 264.22992pt.
  [30]
-<pics/robot_leg.jpg, id=947, 2314.89844pt x 1600.47937pt>
+<pics/robot_leg.jpg, id=945, 2314.89844pt x 1600.47937pt>
 File: pics/robot_leg.jpg Graphic file (type jpg)
 
 <use pics/robot_leg.jpg>
@@ -719,7 +704,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [31 <./pics/device_on_bed.jpg>] [32 <./pics/robot_leg.jpg>]
 Chapter 3.
-<pics/robo_test1.png, id=957, 933.4875pt x 617.30624pt>
+<pics/robo_test1.png, id=955, 933.4875pt x 617.30624pt>
 File: pics/robo_test1.png Graphic file (type png)
 
 <use pics/robo_test1.png>
@@ -729,7 +714,9 @@ Package pdftex.def Info: pics/robo_test1.png used on input line 650.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/frame.png, id=959, 683.1924pt x 406.1574pt>
+[33
+
+] <pics/frame.png, id=961, 683.1924pt x 406.1574pt>
 File: pics/frame.png Graphic file (type png)
  <use pics/frame.png>
 Package pdftex.def Info: pics/frame.png used on input line 665.
@@ -738,9 +725,7 @@ Package pdftex.def Info: pics/frame.png used on input line 665.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[33
-
-] <pics/footplate_label.png, id=965, 647.5392pt x 537.6888pt>
+<pics/footplate_label.png, id=963, 647.5392pt x 537.6888pt>
 File: pics/footplate_label.png Graphic file (type png)
 
 <use pics/footplate_label.png>
@@ -751,7 +736,7 @@ Package pdftex.def Info: pics/footplate_label.png used on input line 680.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [34 <./pics/robo_test1.png>]
-<pics/actuator.png, id=970, 660.066pt x 365.6862pt>
+<pics/actuator.png, id=968, 660.066pt x 365.6862pt>
 File: pics/actuator.png Graphic file (type png)
  <use pics/actuator.png>
 Package pdftex.def Info: pics/actuator.png used on input line 693.
@@ -764,29 +749,39 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [37 <./pics/actuator.png>] [38] [39]
-<pics/Motor_setup.png, id=998, 837.8502pt x 535.2798pt>
+<pics/Motor_setup.png, id=996, 837.8502pt x 535.2798pt>
 File: pics/Motor_setup.png Graphic file (type png)
 
 <use pics/Motor_setup.png>
 Package pdftex.def Info: pics/Motor_setup.png used on input line 803.
 (pdftex.def)             Requested size: 422.77664pt x 270.09772pt.
- [40 <./pics/Motor_setup.png>]
-<pics/amplifier2.png, id=1005, 1136.0844pt x 396.5214pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[40] <pics/amplifier2.png, id=1002, 1136.0844pt x 396.5214pt>
 File: pics/amplifier2.png Graphic file (type png)
 
 <use pics/amplifier2.png>
 Package pdftex.def Info: pics/amplifier2.png used on input line 819.
 (pdftex.def)             Requested size: 469.75502pt x 163.95432pt.
- [41 <./pics/amplifier2.png>]
-<pics/electronics_safety.png, id=1012, 590.6868pt x 406.1574pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[41 <./pics/Motor_setup.png>]
+<pics/electronics_safety.png, id=1009, 590.6868pt x 406.1574pt>
 File: pics/electronics_safety.png Graphic file (type png)
 
 <use pics/electronics_safety.png>
 Package pdftex.def Info: pics/electronics_safety.png used on input line 828.
 (pdftex.def)             Requested size: 281.85587pt x 193.813pt.
 
-<pics/protoboard.png, id=1013, 257.2812pt x 347.3778pt>
+<pics/protoboard.png, id=1010, 257.2812pt x 347.3778pt>
 File: pics/protoboard.png Graphic file (type png)
 
 <use pics/protoboard.png>
@@ -796,35 +791,32 @@ Package pdftex.def Info: pics/protoboard.png used on input line 840.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42 <./pics/electronics_safety.png>]
-<pics/pcb_pic2.png, id=1023, 633.567pt x 441.8106pt>
+[42 <./pics/amplifier2.png> <./pics/electronics_safety.png>] [43 <./pics/protob
+oard.png>] <pics/pcb_pic2.png, id=1027, 633.567pt x 441.8106pt>
 File: pics/pcb_pic2.png Graphic file (type png)
- <use pics/pcb_pic2.png>
+
+<use pics/pcb_pic2.png>
 Package pdftex.def Info: pics/pcb_pic2.png used on input line 849.
 (pdftex.def)             Requested size: 422.77664pt x 294.81831pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[43 <./pics/protoboard.png>]
-<pics/pcb_case.jpg, id=1030, 3035.34pt x 4047.12pt>
+ <pics/pcb_case.jpg, id=1028, 3035.34pt x 4047.12pt>
 File: pics/pcb_case.jpg Graphic file (type jpg)
- <use pics/pcb_case.jpg>
-Package pdftex.def Info: pics/pcb_case.jpg used on input line 864.
+
+<use pics/pcb_case.jpg>
+Package pdftex.def Info: pics/pcb_case.jpg used on input line 861.
 (pdftex.def)             Requested size: 352.31625pt x 469.70091pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[44 <./pics/pcb_pic2.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[44 <./pics/pcb_pic2.png>] [45]
-<pics/computer_system.png, id=1044, 894.2208pt x 300.1614pt>
+[45] <pics/computer_system.png, id=1040, 894.2208pt x 300.1614pt>
 File: pics/computer_system.png Graphic file (type png)
 
 <use pics/computer_system.png>
-Package pdftex.def Info: pics/computer_system.png used on input line 924.
+Package pdftex.def Info: pics/computer_system.png used on input line 921.
 (pdftex.def)             Requested size: 469.75502pt x 157.68327pt.
 
 
@@ -834,141 +826,141 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Chapter 4.
 [49
 
-] <pics/admittance_sys.png, id=1066, 333.4056pt x 134.4222pt>
+] <pics/admittance_sys.png, id=1062, 333.4056pt x 134.4222pt>
 File: pics/admittance_sys.png Graphic file (type png)
 
 <use pics/admittance_sys.png>
-Package pdftex.def Info: pics/admittance_sys.png used on input line 955.
+Package pdftex.def Info: pics/admittance_sys.png used on input line 952.
 (pdftex.def)             Requested size: 234.8775pt x 94.69997pt.
  [50 <./pics/admittance_sys.png>] [51]
-<pics/admittance_diagram.png, id=1090, 822.4326pt x 336.7782pt>
+<pics/admittance_diagram.png, id=1086, 822.4326pt x 336.7782pt>
 File: pics/admittance_diagram.png Graphic file (type png)
 
 <use pics/admittance_diagram.png>
-Package pdftex.def Info: pics/admittance_diagram.png used on input line 1019.
+Package pdftex.def Info: pics/admittance_diagram.png used on input line 1016.
 (pdftex.def)             Requested size: 469.75502pt x 192.36125pt.
  [52 <./pics/admittance_diagram.png>] [53]
-<pics/axis.png, id=1117, 520.344pt x 367.6134pt>
+<pics/axis.png, id=1112, 520.344pt x 367.6134pt>
 File: pics/axis.png Graphic file (type png)
  <use pics/axis.png>
-Package pdftex.def Info: pics/axis.png used on input line 1068.
+Package pdftex.def Info: pics/axis.png used on input line 1065.
 (pdftex.def)             Requested size: 281.85587pt x 199.1365pt.
- [54 <./pics/axis.png>] <pics/velocity_profile.png, id=1127, 714.9912pt x 387.8
+ [54 <./pics/axis.png>] <pics/velocity_profile.png, id=1122, 714.9912pt x 387.8
 49pt>
 File: pics/velocity_profile.png Graphic file (type png)
 
 <use pics/velocity_profile.png>
-Package pdftex.def Info: pics/velocity_profile.png used on input line 1078.
+Package pdftex.def Info: pics/velocity_profile.png used on input line 1075.
 (pdftex.def)             Requested size: 352.31625pt x 191.11884pt.
  [55 <./pics/velocity_profile.png>]
-<pics/phantom.jpg, id=1135, 903.375pt x 495.8525pt>
+<pics/phantom.jpg, id=1130, 903.375pt x 495.8525pt>
 File: pics/phantom.jpg Graphic file (type jpg)
  <use pics/phantom.jpg>
-Package pdftex.def Info: pics/phantom.jpg used on input line 1103.
+Package pdftex.def Info: pics/phantom.jpg used on input line 1100.
 (pdftex.def)             Requested size: 281.85587pt x 154.71141pt.
 
 [56 <./pics/phantom.jpg>]
-<pics/haptics_admittance.png, id=1146, 428.3202pt x 99.7326pt>
+<pics/haptics_admittance.png, id=1140, 428.3202pt x 99.7326pt>
 File: pics/haptics_admittance.png Graphic file (type png)
 
 <use pics/haptics_admittance.png>
-Package pdftex.def Info: pics/haptics_admittance.png used on input line 1119.
+Package pdftex.def Info: pics/haptics_admittance.png used on input line 1118.
 (pdftex.def)             Requested size: 352.31625pt x 82.03539pt.
 
-<pics/haptic_admittance_coupling.png, id=1148, 562.7424pt x 103.1052pt>
+<pics/haptic_admittance_coupling.png, id=1142, 562.7424pt x 103.1052pt>
 File: pics/haptic_admittance_coupling.png Graphic file (type png)
 
 <use pics/haptic_admittance_coupling.png>
 Package pdftex.def Info: pics/haptic_admittance_coupling.png used on input line
- 1128.
+ 1127.
 (pdftex.def)             Requested size: 469.75502pt x 86.07127pt.
  [57 <./pics/haptics_admittance.png> <./pics/haptic_admittance_coupling.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1138--1139
+Underfull \hbox (badness 10000) in paragraph at lines 1137--1138
 
  []
 
-<pics/control_diagram3.png, id=1155, 871.5762pt x 336.7782pt>
+<pics/control_diagram3.png, id=1150, 871.5762pt x 336.7782pt>
 File: pics/control_diagram3.png Graphic file (type png)
 
 <use pics/control_diagram3.png>
-Package pdftex.def Info: pics/control_diagram3.png used on input line 1167.
+Package pdftex.def Info: pics/control_diagram3.png used on input line 1166.
 (pdftex.def)             Requested size: 469.75502pt x 181.51321pt.
 
-<pics/haptic_coupling_original.png, id=1158, 130.5678pt x 109.3686pt>
+<pics/haptic_coupling_original.png, id=1153, 130.5678pt x 109.3686pt>
 File: pics/haptic_coupling_original.png Graphic file (type png)
 
 <use pics/haptic_coupling_original.png>
 Package pdftex.def Info: pics/haptic_coupling_original.png used on input line 1
-178.
+177.
 (pdftex.def)             Requested size: 140.92793pt x 118.04955pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [58 <./pics/control_diagram3.png>]
-<pics/haptic_coupling.png, id=1165, 120.45pt x 156.1032pt>
+<pics/haptic_coupling.png, id=1160, 120.45pt x 156.1032pt>
 File: pics/haptic_coupling.png Graphic file (type png)
 
 <use pics/haptic_coupling.png>
-Package pdftex.def Info: pics/haptic_coupling.png used on input line 1187.
+Package pdftex.def Info: pics/haptic_coupling.png used on input line 1186.
 (pdftex.def)             Requested size: 140.92793pt x 182.65904pt.
  [59 <./pics/haptic_coupling_original.png> <./pics/haptic_coupling.png>] [60] [
 61] [62] [63] [64]
-<pics/software.png, id=1224, 933.7284pt x 236.082pt>
+<pics/software.png, id=1218, 933.7284pt x 236.082pt>
 File: pics/software.png Graphic file (type png)
  <use pics/software.png>
-Package pdftex.def Info: pics/software.png used on input line 1355.
+Package pdftex.def Info: pics/software.png used on input line 1354.
 (pdftex.def)             Requested size: 469.75502pt x 118.77197pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [65] [66 <./pics/software.png>] [67] [68] [69] [70]
-<pics/UI_menu_label.png, id=1281, 794.97pt x 511.1898pt>
+<pics/UI_menu_label.png, id=1275, 794.97pt x 511.1898pt>
 File: pics/UI_menu_label.png Graphic file (type png)
 
 <use pics/UI_menu_label.png>
-Package pdftex.def Info: pics/UI_menu_label.png used on input line 1465.
+Package pdftex.def Info: pics/UI_menu_label.png used on input line 1464.
 (pdftex.def)             Requested size: 422.77664pt x 271.86531pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[71] <pics/UI_trajectory.png, id=1289, 497.2176pt x 290.5254pt>
+[71] <pics/UI_trajectory.png, id=1283, 497.2176pt x 290.5254pt>
 File: pics/UI_trajectory.png Graphic file (type png)
 
 <use pics/UI_trajectory.png>
-Package pdftex.def Info: pics/UI_trajectory.png used on input line 1480.
+Package pdftex.def Info: pics/UI_trajectory.png used on input line 1479.
 (pdftex.def)             Requested size: 352.31625pt x 205.87106pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/axis_leg.png, id=1290, 708.7278pt x 397.9668pt>
+<pics/axis_leg.png, id=1284, 708.7278pt x 397.9668pt>
 File: pics/axis_leg.png Graphic file (type png)
  <use pics/axis_leg.png>
-Package pdftex.def Info: pics/axis_leg.png used on input line 1487.
+Package pdftex.def Info: pics/axis_leg.png used on input line 1486.
 (pdftex.def)             Requested size: 469.75502pt x 263.77623pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [72 <./pics/UI_menu_label.png>] [73 <./pics/UI_trajectory.png>]
-<pics/UI_game_label.png, id=1304, 769.9164pt x 486.1362pt>
+<pics/UI_game_label.png, id=1298, 769.9164pt x 486.1362pt>
 File: pics/UI_game_label.png Graphic file (type png)
 
 <use pics/UI_game_label.png>
-Package pdftex.def Info: pics/UI_game_label.png used on input line 1515.
+Package pdftex.def Info: pics/UI_game_label.png used on input line 1514.
 (pdftex.def)             Requested size: 469.75502pt x 296.6094pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/balance_game.png, id=1305, 286.82156pt x 162.6075pt>
+<pics/balance_game.png, id=1299, 286.82156pt x 162.6075pt>
 File: pics/balance_game.png Graphic file (type png)
 
 <use pics/balance_game.png>
-Package pdftex.def Info: pics/balance_game.png used on input line 1525.
+Package pdftex.def Info: pics/balance_game.png used on input line 1524.
 (pdftex.def)             Requested size: 352.31625pt x 199.74303pt.
 
 
@@ -986,65 +978,55 @@ Missing character: There is no “ in font cmbx12!
 [76
 
 ] [77] [78] [79]
-<pics/Mar12_NoForce_Step_Plot.png, id=1337, 421.575pt x 316.18124pt>
+<pics/Mar12_NoForce_Step_Plot.png, id=1330, 421.575pt x 316.18124pt>
 File: pics/Mar12_NoForce_Step_Plot.png Graphic file (type png)
 
 <use pics/Mar12_NoForce_Step_Plot.png>
 Package pdftex.def Info: pics/Mar12_NoForce_Step_Plot.png used on input line 16
-32.
+31.
 (pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
 
-<pics/admittance_sim.png, id=1339, 421.575pt x 316.18124pt>
+<pics/admittance_sim.png, id=1332, 421.575pt x 316.18124pt>
 File: pics/admittance_sim.png Graphic file (type png)
 
 <use pics/admittance_sim.png>
-Package pdftex.def Info: pics/admittance_sim.png used on input line 1641.
+Package pdftex.def Info: pics/admittance_sim.png used on input line 1640.
 (pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [80 <./pics/Mar12_NoForce_Step_Plot.png>]
-<pics/time_jitter.png, id=1346, 421.575pt x 316.18124pt>
+<pics/time_jitter.png, id=1339, 421.575pt x 316.18124pt>
 File: pics/time_jitter.png Graphic file (type png)
 
 <use pics/time_jitter.png>
-Package pdftex.def Info: pics/time_jitter.png used on input line 1655.
+Package pdftex.def Info: pics/time_jitter.png used on input line 1654.
 (pdftex.def)             Requested size: 422.77664pt x 317.08746pt.
  [81 <./pics/admittance_sim.png (PNG copy)>] [82 <./pics/time_jitter.png (PNG c
 opy)>] [83]
-<pics/questionnaire_p1.png, id=1362, 987.69pt x 1278.27562pt>
+<pics/questionnaire_p1.png, id=1355, 855.94781pt x 1044.90375pt>
 File: pics/questionnaire_p1.png Graphic file (type png)
 
 <use pics/questionnaire_p1.png>
-Package pdftex.def Info: pics/questionnaire_p1.png used on input line 1713.
-(pdftex.def)             Requested size: 469.75502pt x 607.94792pt.
+Package pdftex.def Info: pics/questionnaire_p1.png used on input line 1712.
+(pdftex.def)             Requested size: 469.75502pt x 573.45522pt.
 
-
-LaTeX Warning: Float too large for page by 14.35123pt on input line 1716.
-
-<pics/questionnaire_p2.png, id=1363, 987.69pt x 1278.27562pt>
+<pics/questionnaire_p2.png, id=1356, 863.47594pt x 1052.43187pt>
 File: pics/questionnaire_p2.png Graphic file (type png)
 
 <use pics/questionnaire_p2.png>
-Package pdftex.def Info: pics/questionnaire_p2.png used on input line 1720.
-(pdftex.def)             Requested size: 469.75502pt x 607.94792pt.
+Package pdftex.def Info: pics/questionnaire_p2.png used on input line 1719.
+(pdftex.def)             Requested size: 469.75502pt x 572.54428pt.
 
-
-LaTeX Warning: Float too large for page by 14.35123pt on input line 1723.
-
-<pics/questionnaire_p3.png, id=1364, 987.69pt x 1278.27562pt>
+<pics/questionnaire_p3.png, id=1357, 898.10532pt x 1059.20718pt>
 File: pics/questionnaire_p3.png Graphic file (type png)
 
 <use pics/questionnaire_p3.png>
-Package pdftex.def Info: pics/questionnaire_p3.png used on input line 1727.
-(pdftex.def)             Requested size: 469.75502pt x 607.94792pt.
-
-
-LaTeX Warning: Float too large for page by 14.35123pt on input line 1730.
-
-[84] [85 <./pics/questionnaire_p1.png>] [86 <./pics/questionnaire_p2.png>]
-[87 <./pics/questionnaire_p3.png>]
+Package pdftex.def Info: pics/questionnaire_p3.png used on input line 1726.
+(pdftex.def)             Requested size: 469.75502pt x 554.02335pt.
+ [84] [85 <./pics/questionnaire_p1.png>]
+[86 <./pics/questionnaire_p2.png>] [87 <./pics/questionnaire_p3.png>]
 Package epstopdf Info: Source file: <pics/err_assist.eps>
 (epstopdf)                    date: 2019-07-24 17:01:25
 (epstopdf)                    size: 63419 bytes
@@ -1053,15 +1035,15 @@ Package epstopdf Info: Source file: <pics/err_assist.eps>
 (epstopdf)                    size: 28613 bytes
 (epstopdf)             Command: <epstopdf --outfile=./err_assist-eps-converted-
 to.pdf pics/err_assist.eps>
-(epstopdf)             \includegraphics on input line 1786.
+(epstopdf)             \includegraphics on input line 1785.
 Package epstopdf Info: Output file is already uptodate.
 
-<./err_assist-eps-converted-to.pdf, id=1391, 310.15875pt x 204.765pt>
+<./err_assist-eps-converted-to.pdf, id=1383, 310.15875pt x 204.765pt>
 File: ./err_assist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./err_assist-eps-converted-to.pdf>
 Package pdftex.def Info: ./err_assist-eps-converted-to.pdf used on input line 1
-786.
+785.
 (pdftex.def)             Requested size: 281.85587pt x 186.08022pt.
 Package epstopdf Info: Source file: <pics/eff_assist.eps>
 (epstopdf)                    date: 2019-07-24 17:01:27
@@ -1071,15 +1053,15 @@ Package epstopdf Info: Source file: <pics/eff_assist.eps>
 (epstopdf)                    size: 30900 bytes
 (epstopdf)             Command: <epstopdf --outfile=./eff_assist-eps-converted-
 to.pdf pics/eff_assist.eps>
-(epstopdf)             \includegraphics on input line 1787.
+(epstopdf)             \includegraphics on input line 1786.
 Package epstopdf Info: Output file is already uptodate.
 
-<./eff_assist-eps-converted-to.pdf, id=1392, 313.17pt x 204.765pt>
+<./eff_assist-eps-converted-to.pdf, id=1384, 313.17pt x 204.765pt>
 File: ./eff_assist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./eff_assist-eps-converted-to.pdf>
 Package pdftex.def Info: ./eff_assist-eps-converted-to.pdf used on input line 1
-787.
+786.
 (pdftex.def)             Requested size: 281.85587pt x 184.29614pt.
 Package epstopdf Info: Source file: <pics/diff_assist.eps>
 (epstopdf)                    date: 2019-08-28 11:28:51
@@ -1089,15 +1071,15 @@ Package epstopdf Info: Source file: <pics/diff_assist.eps>
 (epstopdf)                    size: 27489 bytes
 (epstopdf)             Command: <epstopdf --outfile=./diff_assist-eps-converted
 -to.pdf pics/diff_assist.eps>
-(epstopdf)             \includegraphics on input line 1788.
+(epstopdf)             \includegraphics on input line 1787.
 Package epstopdf Info: Output file is already uptodate.
 
-<./diff_assist-eps-converted-to.pdf, id=1393, 305.14pt x 204.765pt>
+<./diff_assist-eps-converted-to.pdf, id=1385, 305.14pt x 204.765pt>
 File: ./diff_assist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./diff_assist-eps-converted-to.pdf>
 Package pdftex.def Info: ./diff_assist-eps-converted-to.pdf used on input line 
-1788.
+1787.
 (pdftex.def)             Requested size: 281.85587pt x 189.14844pt.
  [88] [89 <./err_assist-eps-converted-to.pdf> <./eff_assist-eps-converted-to.pd
 f> <./diff_assist-eps-converted-to.pdf>]
@@ -1109,14 +1091,14 @@ Package epstopdf Info: Source file: <pics/position_comp.eps>
 (epstopdf)                    size: 82435 bytes
 (epstopdf)             Command: <epstopdf --outfile=./position_comp-eps-convert
 ed-to.pdf pics/position_comp.eps>
-(epstopdf)             \includegraphics on input line 1807.
+(epstopdf)             \includegraphics on input line 1806.
 Package epstopdf Info: Output file is already uptodate.
- <./position_comp-eps-converted-to.pdf, id=1411, 319.1925pt x 270.00874pt>
+ <./position_comp-eps-converted-to.pdf, id=1403, 319.1925pt x 270.00874pt>
 File: ./position_comp-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./position_comp-eps-converted-to.pdf>
 Package pdftex.def Info: ./position_comp-eps-converted-to.pdf used on input lin
-e 1807.
+e 1806.
 (pdftex.def)             Requested size: 422.77664pt x 357.63626pt.
  [90 <./position_comp-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <pics/err_resist.eps>
@@ -1127,14 +1109,14 @@ Package epstopdf Info: Source file: <pics/err_resist.eps>
 (epstopdf)                    size: 26189 bytes
 (epstopdf)             Command: <epstopdf --outfile=./err_resist-eps-converted-
 to.pdf pics/err_resist.eps>
-(epstopdf)             \includegraphics on input line 1831.
+(epstopdf)             \includegraphics on input line 1830.
 Package epstopdf Info: Output file is already uptodate.
- <./err_resist-eps-converted-to.pdf, id=1421, 310.15875pt x 204.765pt>
+ <./err_resist-eps-converted-to.pdf, id=1413, 310.15875pt x 204.765pt>
 File: ./err_resist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./err_resist-eps-converted-to.pdf>
 Package pdftex.def Info: ./err_resist-eps-converted-to.pdf used on input line 1
-831.
+830.
 (pdftex.def)             Requested size: 281.85587pt x 186.08022pt.
 Package epstopdf Info: Source file: <pics/eff_resist.eps>
 (epstopdf)                    date: 2019-07-24 17:01:27
@@ -1144,15 +1126,15 @@ Package epstopdf Info: Source file: <pics/eff_resist.eps>
 (epstopdf)                    size: 29949 bytes
 (epstopdf)             Command: <epstopdf --outfile=./eff_resist-eps-converted-
 to.pdf pics/eff_resist.eps>
-(epstopdf)             \includegraphics on input line 1832.
+(epstopdf)             \includegraphics on input line 1831.
 Package epstopdf Info: Output file is already uptodate.
 
-<./eff_resist-eps-converted-to.pdf, id=1422, 313.17pt x 204.765pt>
+<./eff_resist-eps-converted-to.pdf, id=1414, 313.17pt x 204.765pt>
 File: ./eff_resist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./eff_resist-eps-converted-to.pdf>
 Package pdftex.def Info: ./eff_resist-eps-converted-to.pdf used on input line 1
-832.
+831.
 (pdftex.def)             Requested size: 281.85587pt x 184.29614pt.
 Package epstopdf Info: Source file: <pics/diff_resist.eps>
 (epstopdf)                    date: 2019-08-28 11:28:51
@@ -1162,74 +1144,74 @@ Package epstopdf Info: Source file: <pics/diff_resist.eps>
 (epstopdf)                    size: 28308 bytes
 (epstopdf)             Command: <epstopdf --outfile=./diff_resist-eps-converted
 -to.pdf pics/diff_resist.eps>
-(epstopdf)             \includegraphics on input line 1833.
+(epstopdf)             \includegraphics on input line 1832.
 Package epstopdf Info: Output file is already uptodate.
 
-<./diff_resist-eps-converted-to.pdf, id=1423, 305.14pt x 204.765pt>
+<./diff_resist-eps-converted-to.pdf, id=1415, 305.14pt x 204.765pt>
 File: ./diff_resist-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./diff_resist-eps-converted-to.pdf>
 Package pdftex.def Info: ./diff_resist-eps-converted-to.pdf used on input line 
-1833.
+1832.
 (pdftex.def)             Requested size: 281.85587pt x 189.14844pt.
  [91] [92 <./err_resist-eps-converted-to.pdf> <./eff_resist-eps-converted-to.pd
 f> <./diff_resist-eps-converted-to.pdf>] [93] [94]
 Chapter 6.
 [95
 
-] <pics/robot_cad.jpg, id=1461, 590.95781pt x 417.05812pt>
+] <pics/robot_cad.jpg, id=1451, 590.95781pt x 417.05812pt>
 File: pics/robot_cad.jpg Graphic file (type jpg)
 
 <use pics/robot_cad.jpg>
-Package pdftex.def Info: pics/robot_cad.jpg used on input line 1941.
+Package pdftex.def Info: pics/robot_cad.jpg used on input line 1940.
 (pdftex.def)             Requested size: 422.77664pt x 298.37248pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [96] [97 <./pics/robot_cad.jpg>] [98] [99] [100] [101] [102]
-<pics/heelrest01.jpg, id=1531, 758.08218pt x 590.95781pt>
+<pics/heelrest01.jpg, id=1520, 758.08218pt x 590.95781pt>
 File: pics/heelrest01.jpg Graphic file (type jpg)
 
 <use pics/heelrest01.jpg>
-Package pdftex.def Info: pics/heelrest01.jpg used on input line 2056.
+Package pdftex.def Info: pics/heelrest01.jpg used on input line 2054.
 (pdftex.def)             Requested size: 422.77664pt x 329.5725pt.
 
-<pics/pcb_case01.jpg, id=1532, 886.06032pt x 660.96938pt>
+<pics/pcb_case01.jpg, id=1521, 886.06032pt x 660.96938pt>
 File: pics/pcb_case01.jpg Graphic file (type jpg)
 
 <use pics/pcb_case01.jpg>
-Package pdftex.def Info: pics/pcb_case01.jpg used on input line 2063.
+Package pdftex.def Info: pics/pcb_case01.jpg used on input line 2061.
 (pdftex.def)             Requested size: 469.75502pt x 350.42303pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/bracket02.jpg, id=1533, 742.27313pt x 642.14906pt>
+<pics/bracket02.jpg, id=1522, 742.27313pt x 642.14906pt>
 File: pics/bracket02.jpg Graphic file (type jpg)
 
 <use pics/bracket02.jpg>
-Package pdftex.def Info: pics/bracket02.jpg used on input line 2070.
+Package pdftex.def Info: pics/bracket02.jpg used on input line 2068.
 (pdftex.def)             Requested size: 469.75502pt x 406.39815pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/ls_mount2.jpg, id=1534, 797.22844pt x 640.64343pt>
+<pics/ls_mount2.jpg, id=1523, 797.22844pt x 640.64343pt>
 File: pics/ls_mount2.jpg Graphic file (type jpg)
 
 <use pics/ls_mount2.jpg>
-Package pdftex.def Info: pics/ls_mount2.jpg used on input line 2077.
+Package pdftex.def Info: pics/ls_mount2.jpg used on input line 2075.
 (pdftex.def)             Requested size: 469.75502pt x 377.48758pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/motor_mount01.jpg, id=1535, 867.99281pt x 694.84593pt>
+<pics/motor_mount01.jpg, id=1524, 867.99281pt x 694.84593pt>
 File: pics/motor_mount01.jpg Graphic file (type jpg)
 
 <use pics/motor_mount01.jpg>
-Package pdftex.def Info: pics/motor_mount01.jpg used on input line 2084.
+Package pdftex.def Info: pics/motor_mount01.jpg used on input line 2082.
 (pdftex.def)             Requested size: 422.77664pt x 338.4418pt.
 
 
@@ -1239,17 +1221,17 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  <./pics/heelrest01.jpg>] [104 <./pics/pcb_case01.jpg>] [105 <./pics/bracket02.
 jpg>] [106 <./pics/ls_mount2.jpg>] [107 <./pics/motor_mount01.jpg>]
-<pics/pcb_schematic.png, id=1557, 768.2301pt x 678.8562pt>
+<pics/pcb_schematic.png, id=1546, 768.2301pt x 678.8562pt>
 File: pics/pcb_schematic.png Graphic file (type png)
 
 <use pics/pcb_schematic.png>
-Package pdftex.def Info: pics/pcb_schematic.png used on input line 2094.
+Package pdftex.def Info: pics/pcb_schematic.png used on input line 2092.
 (pdftex.def)             Requested size: 469.75502pt x 415.10646pt.
 
-<pics/pcb_pic.png, id=1558, 612.3678pt x 345.4506pt>
+<pics/pcb_pic.png, id=1547, 612.3678pt x 345.4506pt>
 File: pics/pcb_pic.png Graphic file (type png)
  <use pics/pcb_pic.png>
-Package pdftex.def Info: pics/pcb_pic.png used on input line 2101.
+Package pdftex.def Info: pics/pcb_pic.png used on input line 2099.
 (pdftex.def)             Requested size: 469.75502pt x 265.0068pt.
 
 
@@ -1257,77 +1239,77 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 2107.
+               Default added (so using `tbp') on input line 2105.
 
 [108
 
  <./pics/pcb_schematic.png>] [109 <./pics/pcb_pic.png>]
-<pics/Motor_range.png, id=1570, 417.05812pt x 316.18124pt>
+<pics/Motor_range.png, id=1559, 417.05812pt x 316.18124pt>
 File: pics/Motor_range.png Graphic file (type png)
 
 <use pics/Motor_range.png>
-Package pdftex.def Info: pics/Motor_range.png used on input line 2128.
+Package pdftex.def Info: pics/Motor_range.png used on input line 2126.
 (pdftex.def)             Requested size: 352.31625pt x 267.11497pt.
 
-<pics/motor_spec.png, id=1571, 386.94562pt x 536.0025pt>
+<pics/motor_spec.png, id=1560, 386.94562pt x 536.0025pt>
 File: pics/motor_spec.png Graphic file (type png)
 
 <use pics/motor_spec.png>
-Package pdftex.def Info: pics/motor_spec.png used on input line 2135.
+Package pdftex.def Info: pics/motor_spec.png used on input line 2133.
 (pdftex.def)             Requested size: 469.75502pt x 650.71603pt.
 
 
-LaTeX Warning: Float too large for page by 57.11934pt on input line 2138.
+LaTeX Warning: Float too large for page by 57.11934pt on input line 2136.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/gear_spec.png, id=1572, 386.94562pt x 417.05812pt>
+<pics/gear_spec.png, id=1561, 386.94562pt x 417.05812pt>
 File: pics/gear_spec.png Graphic file (type png)
 
 <use pics/gear_spec.png>
-Package pdftex.def Info: pics/gear_spec.png used on input line 2142.
+Package pdftex.def Info: pics/gear_spec.png used on input line 2140.
 (pdftex.def)             Requested size: 469.75502pt x 506.31555pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/encoder_spec.png, id=1573, 384.6872pt x 279.29344pt>
+<pics/encoder_spec.png, id=1562, 384.6872pt x 279.29344pt>
 File: pics/encoder_spec.png Graphic file (type png)
 
 <use pics/encoder_spec.png>
-Package pdftex.def Info: pics/encoder_spec.png used on input line 2149.
+Package pdftex.def Info: pics/encoder_spec.png used on input line 2147.
 (pdftex.def)             Requested size: 469.75502pt x 341.07843pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/motor_controller_spec.png, id=1574, 686.565pt x 511.15968pt>
+<pics/motor_controller_spec.png, id=1563, 686.565pt x 511.15968pt>
 File: pics/motor_controller_spec.png Graphic file (type png)
 
 <use pics/motor_controller_spec.png>
-Package pdftex.def Info: pics/motor_controller_spec.png used on input line 2156
+Package pdftex.def Info: pics/motor_controller_spec.png used on input line 2154
 .
 (pdftex.def)             Requested size: 469.75502pt x 349.73668pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/load_amp.png, id=1575, 465.99094pt x 462.22687pt>
+<pics/load_amp.png, id=1564, 465.99094pt x 462.22687pt>
 File: pics/load_amp.png Graphic file (type png)
 
 <use pics/load_amp.png>
-Package pdftex.def Info: pics/load_amp.png used on input line 2163.
+Package pdftex.def Info: pics/load_amp.png used on input line 2161.
 (pdftex.def)             Requested size: 469.75502pt x 465.97794pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pics/load_cell_spec.png, id=1576, 355.3275pt x 298.11375pt>
+<pics/load_cell_spec.png, id=1565, 355.3275pt x 298.11375pt>
 File: pics/load_cell_spec.png Graphic file (type png)
 
 <use pics/load_cell_spec.png>
-Package pdftex.def Info: pics/load_cell_spec.png used on input line 2170.
+Package pdftex.def Info: pics/load_cell_spec.png used on input line 2168.
 (pdftex.def)             Requested size: 469.75502pt x 394.13pt.
 
 
@@ -1346,14 +1328,14 @@ Package epstopdf Info: Source file: <pics/pos1.eps>
 (epstopdf)                    size: 83500 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pos1-eps-converted-to.pdf
  pics/pos1.eps>
-(epstopdf)             \includegraphics on input line 2181.
+(epstopdf)             \includegraphics on input line 2179.
 Package epstopdf Info: Output file is already uptodate.
 
-<./pos1-eps-converted-to.pdf, id=1614, 432.61626pt x 203.76125pt>
+<./pos1-eps-converted-to.pdf, id=1603, 432.61626pt x 203.76125pt>
 File: ./pos1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pos1-eps-converted-to.pdf>
-Package pdftex.def Info: ./pos1-eps-converted-to.pdf used on input line 2181.
+Package pdftex.def Info: ./pos1-eps-converted-to.pdf used on input line 2179.
 (pdftex.def)             Requested size: 469.75502pt x 221.2621pt.
 Package epstopdf Info: Source file: <pics/pos2.eps>
 (epstopdf)                    date: 2019-09-03 13:36:11
@@ -1363,14 +1345,14 @@ Package epstopdf Info: Source file: <pics/pos2.eps>
 (epstopdf)                    size: 88876 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pos2-eps-converted-to.pdf
  pics/pos2.eps>
-(epstopdf)             \includegraphics on input line 2188.
+(epstopdf)             \includegraphics on input line 2186.
 Package epstopdf Info: Output file is already uptodate.
 
-<./pos2-eps-converted-to.pdf, id=1615, 432.61626pt x 203.76125pt>
+<./pos2-eps-converted-to.pdf, id=1604, 432.61626pt x 203.76125pt>
 File: ./pos2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pos2-eps-converted-to.pdf>
-Package pdftex.def Info: ./pos2-eps-converted-to.pdf used on input line 2188.
+Package pdftex.def Info: ./pos2-eps-converted-to.pdf used on input line 2186.
 (pdftex.def)             Requested size: 469.75502pt x 221.2621pt.
 
 
@@ -1384,13 +1366,13 @@ Package epstopdf Info: Source file: <pics/pos3.eps>
 (epstopdf)                    size: 89334 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pos3-eps-converted-to.pdf
  pics/pos3.eps>
-(epstopdf)             \includegraphics on input line 2195.
+(epstopdf)             \includegraphics on input line 2193.
 Package epstopdf Info: Output file is already uptodate.
-<./pos3-eps-converted-to.pdf, id=1616, 432.61626pt x 203.76125pt>
+<./pos3-eps-converted-to.pdf, id=1605, 432.61626pt x 203.76125pt>
 File: ./pos3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pos3-eps-converted-to.pdf>
-Package pdftex.def Info: ./pos3-eps-converted-to.pdf used on input line 2195.
+Package pdftex.def Info: ./pos3-eps-converted-to.pdf used on input line 2193.
 (pdftex.def)             Requested size: 469.75502pt x 221.2621pt.
 
 
@@ -1404,13 +1386,13 @@ Package epstopdf Info: Source file: <pics/pos4.eps>
 (epstopdf)                    size: 88156 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pos4-eps-converted-to.pdf
  pics/pos4.eps>
-(epstopdf)             \includegraphics on input line 2202.
+(epstopdf)             \includegraphics on input line 2200.
 Package epstopdf Info: Output file is already uptodate.
-<./pos4-eps-converted-to.pdf, id=1617, 432.61626pt x 203.76125pt>
+<./pos4-eps-converted-to.pdf, id=1606, 432.61626pt x 203.76125pt>
 File: ./pos4-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pos4-eps-converted-to.pdf>
-Package pdftex.def Info: ./pos4-eps-converted-to.pdf used on input line 2202.
+Package pdftex.def Info: ./pos4-eps-converted-to.pdf used on input line 2200.
 (pdftex.def)             Requested size: 469.75502pt x 221.2621pt.
 
 
@@ -1424,13 +1406,13 @@ Package epstopdf Info: Source file: <pics/pos5.eps>
 (epstopdf)                    size: 89041 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pos5-eps-converted-to.pdf
  pics/pos5.eps>
-(epstopdf)             \includegraphics on input line 2210.
+(epstopdf)             \includegraphics on input line 2208.
 Package epstopdf Info: Output file is already uptodate.
-<./pos5-eps-converted-to.pdf, id=1618, 432.61626pt x 203.76125pt>
+<./pos5-eps-converted-to.pdf, id=1607, 432.61626pt x 203.76125pt>
 File: ./pos5-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pos5-eps-converted-to.pdf>
-Package pdftex.def Info: ./pos5-eps-converted-to.pdf used on input line 2210.
+Package pdftex.def Info: ./pos5-eps-converted-to.pdf used on input line 2208.
 (pdftex.def)             Requested size: 469.75502pt x 221.2621pt.
 
 
@@ -1444,13 +1426,13 @@ Package epstopdf Info: Source file: <pics/pos6.eps>
 (epstopdf)                    size: 89326 bytes
 (epstopdf)             Command: <epstopdf --outfile=./pos6-eps-converted-to.pdf
  pics/pos6.eps>
-(epstopdf)             \includegraphics on input line 2217.
+(epstopdf)             \includegraphics on input line 2215.
 Package epstopdf Info: Output file is already uptodate.
-<./pos6-eps-converted-to.pdf, id=1619, 432.61626pt x 203.76125pt>
+<./pos6-eps-converted-to.pdf, id=1608, 432.61626pt x 203.76125pt>
 File: ./pos6-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./pos6-eps-converted-to.pdf>
-Package pdftex.def Info: ./pos6-eps-converted-to.pdf used on input line 2217.
+Package pdftex.def Info: ./pos6-eps-converted-to.pdf used on input line 2215.
 (pdftex.def)             Requested size: 469.75502pt x 221.2621pt.
 
 
@@ -1464,13 +1446,13 @@ Package epstopdf Info: Source file: <pics/force1.eps>
 (epstopdf)                    size: 101993 bytes
 (epstopdf)             Command: <epstopdf --outfile=./force1-eps-converted-to.p
 df pics/force1.eps>
-(epstopdf)             \includegraphics on input line 2224.
+(epstopdf)             \includegraphics on input line 2222.
 Package epstopdf Info: Output file is already uptodate.
-<./force1-eps-converted-to.pdf, id=1620, 430.60875pt x 203.76125pt>
+<./force1-eps-converted-to.pdf, id=1609, 430.60875pt x 203.76125pt>
 File: ./force1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./force1-eps-converted-to.pdf>
-Package pdftex.def Info: ./force1-eps-converted-to.pdf used on input line 2224.
+Package pdftex.def Info: ./force1-eps-converted-to.pdf used on input line 2222.
 
 (pdftex.def)             Requested size: 469.75502pt x 222.29123pt.
 
@@ -1485,13 +1467,13 @@ Package epstopdf Info: Source file: <pics/force2.eps>
 (epstopdf)                    size: 106392 bytes
 (epstopdf)             Command: <epstopdf --outfile=./force2-eps-converted-to.p
 df pics/force2.eps>
-(epstopdf)             \includegraphics on input line 2231.
+(epstopdf)             \includegraphics on input line 2229.
 Package epstopdf Info: Output file is already uptodate.
-<./force2-eps-converted-to.pdf, id=1621, 430.60875pt x 203.76125pt>
+<./force2-eps-converted-to.pdf, id=1610, 430.60875pt x 203.76125pt>
 File: ./force2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./force2-eps-converted-to.pdf>
-Package pdftex.def Info: ./force2-eps-converted-to.pdf used on input line 2231.
+Package pdftex.def Info: ./force2-eps-converted-to.pdf used on input line 2229.
 
 (pdftex.def)             Requested size: 469.75502pt x 222.29123pt.
 
@@ -1506,13 +1488,13 @@ Package epstopdf Info: Source file: <pics/force3.eps>
 (epstopdf)                    size: 105380 bytes
 (epstopdf)             Command: <epstopdf --outfile=./force3-eps-converted-to.p
 df pics/force3.eps>
-(epstopdf)             \includegraphics on input line 2238.
+(epstopdf)             \includegraphics on input line 2236.
 Package epstopdf Info: Output file is already uptodate.
-<./force3-eps-converted-to.pdf, id=1622, 430.60875pt x 203.76125pt>
+<./force3-eps-converted-to.pdf, id=1611, 430.60875pt x 203.76125pt>
 File: ./force3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./force3-eps-converted-to.pdf>
-Package pdftex.def Info: ./force3-eps-converted-to.pdf used on input line 2238.
+Package pdftex.def Info: ./force3-eps-converted-to.pdf used on input line 2236.
 
 (pdftex.def)             Requested size: 469.75502pt x 222.29123pt.
 
@@ -1527,13 +1509,13 @@ Package epstopdf Info: Source file: <pics/force4.eps>
 (epstopdf)                    size: 103752 bytes
 (epstopdf)             Command: <epstopdf --outfile=./force4-eps-converted-to.p
 df pics/force4.eps>
-(epstopdf)             \includegraphics on input line 2245.
+(epstopdf)             \includegraphics on input line 2243.
 Package epstopdf Info: Output file is already uptodate.
-<./force4-eps-converted-to.pdf, id=1623, 430.60875pt x 203.76125pt>
+<./force4-eps-converted-to.pdf, id=1612, 430.60875pt x 203.76125pt>
 File: ./force4-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./force4-eps-converted-to.pdf>
-Package pdftex.def Info: ./force4-eps-converted-to.pdf used on input line 2245.
+Package pdftex.def Info: ./force4-eps-converted-to.pdf used on input line 2243.
 
 (pdftex.def)             Requested size: 469.75502pt x 222.29123pt.
 
@@ -1548,13 +1530,13 @@ Package epstopdf Info: Source file: <pics/force5.eps>
 (epstopdf)                    size: 103332 bytes
 (epstopdf)             Command: <epstopdf --outfile=./force5-eps-converted-to.p
 df pics/force5.eps>
-(epstopdf)             \includegraphics on input line 2252.
+(epstopdf)             \includegraphics on input line 2250.
 Package epstopdf Info: Output file is already uptodate.
-<./force5-eps-converted-to.pdf, id=1624, 430.60875pt x 203.76125pt>
+<./force5-eps-converted-to.pdf, id=1613, 430.60875pt x 203.76125pt>
 File: ./force5-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./force5-eps-converted-to.pdf>
-Package pdftex.def Info: ./force5-eps-converted-to.pdf used on input line 2252.
+Package pdftex.def Info: ./force5-eps-converted-to.pdf used on input line 2250.
 
 (pdftex.def)             Requested size: 469.75502pt x 222.29123pt.
 
@@ -1569,13 +1551,13 @@ Package epstopdf Info: Source file: <pics/force6.eps>
 (epstopdf)                    size: 103774 bytes
 (epstopdf)             Command: <epstopdf --outfile=./force6-eps-converted-to.p
 df pics/force6.eps>
-(epstopdf)             \includegraphics on input line 2259.
+(epstopdf)             \includegraphics on input line 2257.
 Package epstopdf Info: Output file is already uptodate.
-<./force6-eps-converted-to.pdf, id=1625, 430.60875pt x 203.76125pt>
+<./force6-eps-converted-to.pdf, id=1614, 430.60875pt x 203.76125pt>
 File: ./force6-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./force6-eps-converted-to.pdf>
-Package pdftex.def Info: ./force6-eps-converted-to.pdf used on input line 2259.
+Package pdftex.def Info: ./force6-eps-converted-to.pdf used on input line 2257.
 
 (pdftex.def)             Requested size: 469.75502pt x 222.29123pt.
 
@@ -1589,22 +1571,21 @@ converted-to.pdf>] [119 <./pos4-eps-converted-to.pdf> <./pos5-eps-converted-to.
 pdf>] [120 <./pos6-eps-converted-to.pdf> <./force1-eps-converted-to.pdf>] [121 
 <./force2-eps-converted-to.pdf> <./force3-eps-converted-to.pdf>] [122 <./force4
 -eps-converted-to.pdf> <./force5-eps-converted-to.pdf>]
-[123 <./force6-eps-converted-to.pdf>] [124
-
-]
+[123 <./force6-eps-converted-to.pdf>]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
- [125]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 121.
+ [124
 
+]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 86.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 121.
- [126] [127]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 86.
+ [125] [126]
 Missing character: There is no â in font cmr12!
 Missing character: There is no „ in font cmr12!
 Missing character: There is no ¢ in font cmr12!
@@ -1614,28 +1595,28 @@ Missing character: There is no œ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no  in font cmr12!
- [128]
-[129] [130])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2268.
- [131]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2268.
+ [127]
+[128] [129])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2266.
+ [130]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2266.
  (thesis_aug6.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2268.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2268.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2266.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2266.
 
 Package rerunfilecheck Info: File `thesis_aug6.out' has not changed.
-(rerunfilecheck)             Checksum: 1FFAAAA5AEB4AF248D141A419137A6AD;5151.
+(rerunfilecheck)             Checksum: 8E14B142710BA178716D40032F570F16;5144.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2268.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2266.
  ) 
 Here is how much of TeX's memory you used:
- 10248 strings out of 493323
- 157620 string characters out of 3139054
- 269929 words of memory out of 3000000
- 13000 multiletter control sequences out of 15000+200000
+ 10254 strings out of 493323
+ 157700 string characters out of 3139054
+ 270700 words of memory out of 3000000
+ 13008 multiletter control sequences out of 15000+200000
  11050 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,18n,44p,1761b,590s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1651,9 +1632,9 @@ m/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis_aug6.pdf (144 pages, 12184348 bytes).
+Output written on thesis_aug6.pdf (143 pages, 12170976 bytes).
 PDF statistics:
- 1878 PDF objects out of 2073 (max. 8388607)
- 513 named destinations out of 1000 (max. 500000)
+ 1863 PDF objects out of 2073 (max. 8388607)
+ 511 named destinations out of 1000 (max. 500000)
  1021 words of extra memory for PDF output out of 10000 (max. 10000000)
 

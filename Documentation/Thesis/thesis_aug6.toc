@@ -28,7 +28,7 @@
 \contentsline {section}{\numberline {2.4}Design Requirements}{29}{section.2.4}
 \contentsline {section}{\numberline {2.5}Final Design}{30}{section.2.5}
 \contentsline {chapter}{\numberline {3}Device Design and Implementation}{33}{chapter.3}
-\contentsline {section}{\numberline {3.1}Device Overview}{33}{section.3.1}
+\contentsline {section}{\numberline {3.1}Overview}{33}{section.3.1}
 \contentsline {section}{\numberline {3.2}Structural Design}{33}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Frame}{33}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Footplate}{34}{subsection.3.2.2}
@@ -37,7 +37,7 @@
 \contentsline {subsubsection}{Motor Specification}{37}{section*.6}
 \contentsline {subsection}{\numberline {3.3.2}Sensors}{39}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Electronics and Power}{40}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}PCB Layout}{42}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.1}PCB Layout}{43}{subsection.3.4.1}
 \contentsline {section}{\numberline {3.5}Data Acquisition}{44}{section.3.5}
 \contentsline {section}{\numberline {3.6}Computer System}{45}{section.3.6}
 \contentsline {chapter}{\numberline {4}Controller and Software}{49}{chapter.4}
