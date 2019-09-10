@@ -1,0 +1,86 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The leg lift exercise for bed-bound rehabilitation}}{2}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces The knee extension/flexion exercise for bed-bound rehabilitation}}{3}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces The stages of traditional stroke rehabilitation}}{3}{figure.1.3}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Stroke rehabilitation guidelines for scheduling therapy, and potential adjuncts}}{4}{figure.1.4}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces An endplate rehabilitation device (left) and an exoskeletal device (right)}}{7}{figure.1.5}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces The Lokomat (by Hocoma), an exoskeletal lower-limb robot}}{9}{figure.1.6}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces The Hapticwalker, an endplate based robot for gait rehabilitation}}{10}{figure.1.7}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces The MotionMaker for reclined lower-limb rehabilitation}}{11}{figure.1.8}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces The Lambda rehabilitation robot with VR setup}}{12}{figure.1.9}
+\contentsline {figure}{\numberline {1.10}{\ignorespaces THe Virtual Gait Rehabilitation Robot, precursor to the new device}}{13}{figure.1.10}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Design Process for the new rehabilitation robot}}{21}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Off-bed robot design}}{26}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces On-bed robot design}}{27}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Forces and moment arms for on-bed design}}{28}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Forces and moment arm for off-bed design}}{29}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces The rehabilitation robot on the test bed}}{31}{figure.2.6}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces The rehabilitation robot with user's leg}}{32}{figure.2.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Rendering of the rehabilitation robot}}{34}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The structure of the frame}}{35}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The structure of the footplate}}{36}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The actuator system: belt drive and motor}}{37}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The Maxon motor setup with motor driver, E-stop, and the wiring}}{41}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The force signal low pass filter with adjustable cut-off frequency (left), and the command non-inverting amplifier with a gain of 4 (right)}}{42}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The safety system controlling motor enable pin}}{42}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces The original protoboard layout}}{43}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces The PCB layout, with header pins, integrated circuits, and voltage regulators}}{44}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces The electronics case with the custom PCB and the load cell amplifier}}{47}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces The Computer System, with DAQ, router, and tablet}}{48}{figure.3.11}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A mass-spring-damper system, with the origin of the spring set to some desired trajectory}}{50}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Admittance control flow chart}}{52}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The x-axis shown over the robot}}{54}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Velocity profile of the desired trajectory}}{55}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces The Phantom Premium Haptic Device (https://www.3dsystems.com/haptics-devices/3d-systems-phantom-premium)}}{56}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Block diagram of an admittance haptic device without the haptic coupling}}{57}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Block diagram of an admittance haptic device with the haptic coupling}}{57}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Virtual haptic coupling for admittance control}}{58}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Virtual haptic coupling for admittance control in series}}{59}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Virtual haptic coupling for admittance control in parallel}}{59}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces The three branches of the software (real time control, server, and UI)}}{66}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces The setup page used to start a rehabilitation session}}{72}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces The trajectory guide with large trajectory error (left) and small error (right)}}{73}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces The trajectory guide and the actuator limits}}{74}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces The racing game}}{75}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces The haptic balance game}}{75}{figure.4.16}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Admittance verification with interaction}}{80}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Robot admittance position vs simulated position based on force data}}{81}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Controller time jitter over 1 second of operation}}{82}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Questionnaire page 1}}{85}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Questionnaire page 2}}{86}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Questionnaire page 3}}{87}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Mean error from desired position (top) and total effort (middle) and subjective difficulty (bottom) for different assistance levels}}{89}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Position omparison between high and low assistance levels}}{90}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Mean error from desired position (left) and total effort (right) for different resistance levels}}{92}{figure.5.9}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The rehabilitation robot and user interface}}{97}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces The heel rest used to hold the user's foot in place}}{103}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces The case for the PCB and load cell amplifier}}{104}{figure.6.3}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Bracket to support footplate by carrying vertical load}}{105}{figure.6.4}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Limit switch mount}}{106}{figure.6.5}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Motor and gearhead mount (consisting of four plates)}}{107}{figure.6.6}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Printed circuit board schematic}}{108}{figure.6.7}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Printed circuit board layout -- front (left) and back (right)}}{109}{figure.6.8}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Operating Range of the Motor \newline \relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip www.maxongroup.com/maxon/view/product/motor/dcmotor/re/re50/370354}}{110}{figure.6.9}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Specifications for the Maxon motor}}{111}{figure.6.10}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Specifications for the Maxon gearhead}}{112}{figure.6.11}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Specifications for the Maxon encoder}}{113}{figure.6.12}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Specifications for the Maxon motor controller}}{114}{figure.6.13}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces The load cell and amplifier connection diagram}}{115}{figure.6.14}
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Specifications for the MLP load cell}}{116}{figure.6.15}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Position comparisons for highest and lowest assistance levels (Participant 1)}}{117}{figure.6.16}
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Position comparisons for highest and lowest assistance levels (Participant 2)}}{118}{figure.6.17}
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Position comparisons for highest and lowest assistance levels (Participant 3)}}{118}{figure.6.18}
+\contentsline {figure}{\numberline {6.19}{\ignorespaces Position comparisons for highest and lowest assistance levels (Participant 4)}}{119}{figure.6.19}
+\contentsline {figure}{\numberline {6.20}{\ignorespaces Position comparisons for highest and lowest assistance levels (Participant 5)}}{119}{figure.6.20}
+\contentsline {figure}{\numberline {6.21}{\ignorespaces Position comparisons for highest and lowest assistance levels (Participant 6)}}{120}{figure.6.21}
+\contentsline {figure}{\numberline {6.22}{\ignorespaces Force comparisons for the highest and lowest resistance levels (Participant 1)}}{120}{figure.6.22}
+\contentsline {figure}{\numberline {6.23}{\ignorespaces Force comparisons for the highest and lowest resistance levels (Participant 2)}}{121}{figure.6.23}
+\contentsline {figure}{\numberline {6.24}{\ignorespaces Force comparisons for the highest and lowest resistance levels (Participant 3)}}{121}{figure.6.24}
+\contentsline {figure}{\numberline {6.25}{\ignorespaces Force comparisons for the highest and lowest resistance levels (Participant 4)}}{122}{figure.6.25}
+\contentsline {figure}{\numberline {6.26}{\ignorespaces Force comparisons for the highest and lowest resistance levels (Participant 5)}}{122}{figure.6.26}
+\contentsline {figure}{\numberline {6.27}{\ignorespaces Force comparisons for the highest and lowest resistance levels (Participant 6)}}{123}{figure.6.27}

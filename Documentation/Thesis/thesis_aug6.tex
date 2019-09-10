@@ -67,13 +67,17 @@ Nicholas Berezny
 \newpage
 \pagenumbering{roman} 
 
-\chapter*{Acknowledgements}
+
+
+
+
 \chapter*{Abstract}
 
-Stroke is a prevalent cerebrovascular disease which leads to neurological deficits, and is a major cause of disability in adults. Stroke victims often lose motor control, effecting their ability to perform activities of daily life such as walking and grasping. Rehabilitation is used to help restore lost abilities through intensive and repetitive exercises with the assistance of a therapist. Robots have been introduced to help therapists administer therapy by replicating the role of physically assisting the patient. Their is a gap in the literature regarding rehabilitation robots for bed-bound, acute stroke patients; this motivated the design and creation of the novel rehabilitation device presented in this thesis. The device builds off of previous work with the Virtual Gait Rehabilitation Robot (ViGRR), seeking to repackage the fundamental concept into a smaller and more hospital-compatible form. Observational fieldwork on the stroke ward at a local hospital informed the initial design, a linear 1-DOF robot targeting the knee flexion/extension exercise typical to traditional bed-bound rehabilitation. The device sits on the bed, under the leg, with the patient's foot resting on a footplate. An admittance controller was developed to apply assistive or resistive forces to the patient's leg. Modular real-time software was created to handle the controller, communication, and data logging. Three games were created which are used to make the exercise more engaging, along with haptic feedback control which can render virtual forces to the patient through the robot. The games run on a user interface, which is also used to set up rehabilitation sessions by selecting assistance levels, resistance level, and type of game. 
-	A series of experiments were run, including safety tests and functional tests which confirm that the controller and software are functioning correctly. We conducted an experiment on healthy subjects, which looked to evaluate the effects of assistance and resistance levels, along with the participants subjective view on the device through a questionnaire. The experiments indicate that assistance does work to help the user follow the desired trajectory, that resistance can be used to make the task more difficult, and that the games have potential for making the exercise more engaging. However, their is still design work to be completed before the device is ready for clinical trials; recommendations for future work were enumerated and included. 
+Stroke is a prevalent cerebrovascular disease which leads to neurological deficits, and is a major cause of disability in adults. Stroke victims often lose motor control, effecting their ability to perform activities of daily life such as walking and grasping. Rehabilitation is used to help restore lost abilities through intensive and repetitive exercises with the assistance of a therapist. Robots have been introduced to help therapists administer therapy by replicating the role of physically assisting the patient. Their is a gap in the literature regarding rehabilitation robots for bed-bound, acute stroke patients -- this motivated the design and creation of the novel rehabilitation device presented in this thesis. The device builds off of previous work with the Virtual Gait Rehabilitation Robot (ViGRR), seeking to repackage the fundamental concept into a smaller and more hospital-compatible form. Observational fieldwork on the stroke ward at a local hospital informed the initial design, a linear 1-DOF robot targeting the knee flexion/extension exercise typical to traditional bed-bound rehabilitation. The device sits on the bed, under the leg, with the patient's foot resting on a footplate. An admittance controller was developed to apply assistive or resistive forces to the patient's leg. Modular real-time software was created to handle the controller, communication, and data logging. Three games were created which are used to make the exercise more engaging, along with haptic feedback control which can render virtual forces to the patient through the robot. The games run on a user interface, which is also used to set up rehabilitation sessions by selecting assistance levels, resistance level, and type of game. 
+	A series of experiments were run, including safety tests and functional tests which confirm that the controller and software are functioning correctly. We conducted an experiment on healthy subjects, which looked to evaluate the effects of assistance and resistance levels, along with the participant's view on the device through a subjective questionnaire. The experiments indicate that assistance does work to help the user follow the desired trajectory, that resistance can be used to make the task more difficult, and that the games have potential for making the exercise more engaging. However, their is still design work to be completed before the device is ready for clinical trials; recommendations for future work were enumerated and included. 
 	
-	
+\chapter*{Acknowledgements}
+I'd like to thank my supervisor, Mojtaba Ahmadi, for the opportunity to work on this project, and for all the assistance navigating Grad school. I would also like to thank all the members of ABL for their support, advice, and for bravely volunteering as the first test subjects. 
 	
 \tableofcontents
 \listoffigures
@@ -617,7 +621,7 @@ The following design requirements were collected for the lower-limb rehabilitati
 
 	\begin{figure*}[h] 
 		\centering
-		\includegraphics[width=0.75\linewidth]{device_on_bed}
+		\includegraphics[width=\linewidth]{device_pic1}
 		\caption{The rehabilitation robot on the test bed}
 		\label{fig:robot_on_bed}
 	\end{figure*}
@@ -625,7 +629,7 @@ The following design requirements were collected for the lower-limb rehabilitati
 
 	\begin{figure*}[h] 
 		\centering
-		\includegraphics[width=0.75\linewidth]{robot_leg}
+		\includegraphics[width=\linewidth]{robot_leg}
 		\caption{The rehabilitation robot with user's leg}
 		\label{fig:robot_leg}
 	\end{figure*}
@@ -1933,7 +1937,7 @@ Participants were asked to comment on how they thought the device could be impro
 	
 	\textbf{Pilot Study}: Six subjects were recruited for a study which aimed to look at a range of assistance and resistance levels, and a preliminary test of the games. Results indicate that the robot functions as expected, but more work needs to be done on supporting the leg and making the device comfortable. 
 	
-	\textbf{Publications}: This project has resulted in three publications. (1) A conference abstract and presentation at the Conference of Control, Dynamic Systems, and Robotics (CDSR'19) covering the design and controls, which won the best presentation award \cite{Berezny2019}; (2) a conference paper and poster presentation at the Canadian Medical and Biological Engineering Conference, which covered the fieldwork and how it inspired the foundational device concept \cite{NBerezny2019}; and (3) a paper which is in the process of submission covering the robot's design, controller, and the results of the healthy subject experiments. Furthermore, the groundwork has be lain for another experiment and publication in the coming months, which seeks to improve the games, measure engagement quantitatively, and also collect electromyographic (EMG) data. 
+	\textbf{Publications}: This project has resulted in two publications, with one more in the process of submission. (1) A conference abstract and presentation at the Conference of Control, Dynamic Systems, and Robotics (CDSR'19) covering the design and controls, which won the best presentation award \cite{Berezny2019}; (2) a conference paper and poster presentation at the Canadian Medical and Biological Engineering Conference, which covered the fieldwork and how it inspired the foundational device concept \cite{NBerezny2019}; and (3) a paper which is in the process of submission covering the robot's design, controller, and the results of the healthy subject experiments. Furthermore, the groundwork has be lain for another experiment and publication in the coming months, which seeks to improve the games, measure engagement quantitatively, and also collect electromyographic (EMG) data. 
 	
 \begin{figure}[h]
 	\centering
