@@ -42,7 +42,7 @@ by  \\
 {\Large \textbf{Nicholas Berezny}}
 \vspace{1cm}
 
-A Thesis submitted to \\
+A thesis submitted to \\
 the Faculty of Graduate Studies and Research \\
 in partial fulfilment of \\
 the requirements for the degree of \\
@@ -73,9 +73,11 @@ Nicholas Berezny
 
 \chapter*{Abstract}
 
-Stroke is a prevalent cerebrovascular disease which leads to neurological deficits, and is a major cause of disability in adults. Stroke victims often lose motor control, effecting their ability to perform activities of daily life such as walking and grasping. Rehabilitation is used to help restore lost abilities through intensive and repetitive exercises with the assistance of a therapist. Robots have been introduced to help therapists administer therapy by replicating the role of physically assisting the patient. Their is a gap in the literature regarding rehabilitation robots for bed-bound, acute stroke patients -- this motivated the design and creation of the novel rehabilitation device presented in this thesis. The device builds off of previous work with the Virtual Gait Rehabilitation Robot (ViGRR), seeking to repackage the fundamental concept into a smaller and more hospital-compatible form. Observational fieldwork on the stroke ward at a local hospital informed the initial design, a linear 1-DOF robot targeting the knee flexion/extension exercise typical to traditional bed-bound rehabilitation. The device sits on the bed, under the leg, with the patient's foot resting on a footplate. An admittance controller was developed to apply assistive or resistive forces to the patient's leg. Modular real-time software was created to handle the controller, communication, and data logging. Three games were created which are used to make the exercise more engaging, along with haptic feedback control which can render virtual forces to the patient through the robot. The games run on a user interface, which is also used to set up rehabilitation sessions by selecting assistance levels, resistance level, and type of game. 
+Stroke is a prevalent cerebrovascular disease which leads to neurological deficits, and is a major cause of disability in adults. Stroke victims often lose motor control, affecting their ability to perform activities of daily life such as walking and grasping. Rehabilitation is used to help restore lost abilities through intensive and repetitive exercises with the assistance of a therapist. Robots have been introduced to help therapists administer therapy by replicating the role of physically assisting the patient. There is a gap in the literature regarding rehabilitation robots for bed-bound, acute stroke patients -- this motivated the design and creation of the novel rehabilitation device presented in this thesis. The device builds off of previous work with the Virtual Gait Rehabilitation Robot (ViGRR), seeking to take the fundamental concepts and apply them to acute, bed-bound stroke rehabilitation. Observational fieldwork on the stroke ward at a local hospital informed the initial design, a linear 1-DOF robot targeting the knee flexion/extension exercise typical to traditional bed-bound rehabilitation. The device sits on the bed, under the leg, with the patient's foot resting on a footplate. An admittance controller was developed to apply assistive or resistive forces to the patient's leg. Modular real-time software was created to handle the controller, communication, and data logging. Three games were created which are used to make the exercise more engaging, along with haptic feedback control which can render virtual forces to the patient through the robot. The games run on a user interface, which is also used to set up rehabilitation sessions by selecting assistance levels, resistance level, and type of game. 
 	A series of experiments were run, including safety tests and functional tests which confirm that the controller and software are functioning correctly. We conducted an experiment on healthy subjects, which looked to evaluate the effects of assistance and resistance levels, along with the participant's view on the device through a subjective questionnaire. The experiments indicate that assistance does work to help the user follow the desired trajectory, that resistance can be used to make the task more difficult, and that the games have potential for making the exercise more engaging. However, their is still design work to be completed before the device is ready for clinical trials; recommendations for future work were enumerated and included. 
 	
+
+
 \chapter*{Acknowledgements}
 I'd like to thank my supervisor, Mojtaba Ahmadi, for the opportunity to work on this project, and for all the assistance navigating Grad school. I would also like to thank all the members of ABL for their support, advice, and for bravely volunteering as the first test subjects. 
 	
@@ -83,8 +85,46 @@ I'd like to thank my supervisor, Mojtaba Ahmadi, for the opportunity to work on 
 \listoffigures
 \listoftables
 
+\chapter*{Terminology} 
+
+\begin{tabular}{l l}
+ABL \hspace{5mm} &Advanced Biomechatronics and Locomotion Laboratory \\
+ADL \hspace{5mm} &Activity of Daily Living \\
+ALEX \hspace{5mm} &The Active Leg Exoskeleton \\
+BWSTT \hspace{5mm} &Body-weight Supported Treadmill Training \\
+DOF \hspace{5mm} &Degree of freedom \\
+FM \hspace{5mm} &Fugyl Meyer Scale \\
+LOPES \hspace{5mm} &The Lower Extremity Powered Exoskeleton \\
+MAL \hspace{5mm} &Motor Activity Log \\
+MUTEX \hspace{5mm} &Mutual Exclusion Object \\
+OS \hspace{5mm} &Operating System \\
+OT \hspace{5mm} &Occupational Therapist \\
+PCB \hspace{5mm} &Printed Circuit Board \\
+POSIX \hspace{5mm} &Portable Operating System Interface \\
+PT \hspace{5mm} &Physiotherapist \\
+STREAM \hspace{5mm} &Stroke Rehabilitation Assessment of Movement \\
+TCP \hspace{5mm} &Transmission Control Protocol \\
+TUG \hspace{5mm} &Timed Up and Go \\
+UI \hspace{5mm} &User Interface \\
+ViGRR \hspace{5mm} &Virtual Gait Rehabilitation Robot \\
+\end{tabular}
+
+
+
+
 \chapter{Introduction}
 \pagenumbering{arabic} 
+
+Suffering a stroke can be devastating to ones autonomy and quality of life. Often, the resulting motor impairment will degrade the victim's ability to perform activities of daily living -- things we rely on everyday such as getting dressed, eating, and walking. Rehabilitation is administered by physiotherapists to stroke victims to help them restore their motor control and abilities. 
+
+Rehabilitation robots have been a topic of research for several decades. They show promise as tools for therapists to help improve stroke rehabilitation. Among lower-limb rehabilitation robots, most target out-of-bed activities such as gait trainers. Others target reclined activities, where the patient can sit in a chair and perform stationary leg exercises. There is a gap in the research regarding devices targeting bed-bound patients, or devices which are compatible with the hospital bed and can be used to deliver the standard rehabilitation exercises for immobile patients. This type of device would primarily benefit patients in the early actue phase of stroke, which occurs within the first 2 weeks of stoke onset. Rehabilitation during this phase is crucial and can greatly affect how well the patient recovers. 
+
+This gap in the literature is not due to oversight, however is more likely due to the many issues with building, testing, and implementing a rehabilitation robot for acute stroke patients. Acute stroke patients lack motor control, can have significant muscle spasticity, and also often lack muscle strength. The utmost care must be taken to ensure the robot does not harm the patient. Since the robot will be largely responsible for driving the motion and supporting the patient's limb, both the physical structure and the controller must be designed to ensure safe interaction. Gathering meaningful data from clinical trials can also be difficult -- patients who have recently suffered severe stroke may be reluctant to participate in an extensive study, and obtaining ethics approval to do so can be lengthy due to the risks involved. 
+
+This research looks to determine if the successes from the broader field of rehabilitation can be applied to bed-bound, acute stroke patients. One significant point of inspiration is the Virtual Gait Rehabilitation Robot (ViGRR), a test platform developed at the Advanced Biomechatronics and Locomotion Laboratory. This device successfully incorporates ideas such as using admittance control to provide assistance, and using haptic feedback and virtual environments to increase engagement. This projects seeks to take these aspects and apply them to a smaller, more lightweight device which specifically targets acute patients with bed-bound exercises.  To overcome the difficulty associated with acute stroke rehabilitation, we have and will continue to work closely with doctors and therapists with experience on the stroke ward. With their help, we have begun designing a device which will soon be ready for clinical trials with stroke patients. This device, and the results from the clinical trial, will be novel -- to our knowledge, no robots exist which explicitly target the range of acute, bed-bound rehabilitation exercises.
+
+This thesis presents the first stages of this process -- collecting initial design requirements by working with physiotherapists, designing and implementing the prototype which incorporates previously proven concepts such as admittance control and virtual environments, and finally taking the first steps before clinical trials by testing the device with healthy subjects. 
+
 
 \section{Stroke and Rehabilitation}
 
@@ -113,7 +153,7 @@ Older treatment techniques relied on compensatory measures to assist stroke pati
 		\label{fig:knee_ext}
 	\end{figure*}
 
-Stroke rehabilitation encompasses a broad range of therapeutic activities, typically carried out by occupational- and physiotherapists. Physiotherapists (PT's) tend to focus on gross motor movements in the upper and lower limbs, while occupational therapists (OT's) focus on fine motor control, dexterity, and specific ADL's. These two goals are inextricably linked, and so both PT's and OT's form a team which works together to improve patient outcomes. The rehabilitation carried out by both OT's and PT's involves the repetition of a target movement or task. Depending on the abilities of the patient, the therapist may provide support or assistance. For example, lower-limb rehabilitation begins with simple leg movements performed in bed, such as leg lifts (Fig. \ref{fig:leg_lift}), knee flexion/extension (Fig. \ref{fig:knee_ext}), hip abductions, \textit{etc}. The therapist can either assist the patients leg through the movement, or allow patients to perform the movement on their own, or even provide light resistance if the patient is more advanced. Next, the patient will practice sitting upright, going from sit to stand, and  practice bearing weight and balancing while standing. Eventually the patients will be ready for more complex tasks with assistance from the therapist, including walking, heel strike, and stair climbing. The patient may advance to the point where they can walk without therapist assistance, using either parallel bars, a walker, or potentially without any assistance. The stages of lower-limb rehabilitation are summarized in Fig. \ref{fig:stages}.
+Stroke rehabilitation encompasses a broad range of therapeutic activities, typically carried out by occupational- and physiotherapists. Physiotherapists (PT's) tend to focus on gross motor movements in the upper and lower limbs, while occupational therapists (OT's) focus on fine motor control, dexterity, and specific ADL's. These two goals are inextricably linked, and so both PT's and OT's form a team which works together to improve patient outcomes. The rehabilitation carried out by both OT's and PT's involves the repetition of a target movement or task. Depending on the abilities of the patient, the therapist may provide support or assistance. For example, lower-limb rehabilitation begins with simple leg movements performed in bed, such as leg lifts (Fig.\ref{fig:leg_lift}), knee flexion/extension (Fig.\ref{fig:knee_ext}), hip abductions, \textit{etc}. The therapist can either assist the patients leg through the movement, or allow patients to perform the movement on their own, or even provide light resistance if the patient is more advanced. Next, the patient will practice sitting upright, going from sit to stand, and  practice bearing weight and balancing while standing. Eventually the patients will be ready for more complex tasks with assistance from the therapist, including walking, heel strike, and stair climbing. The patient may advance to the point where they can walk without therapist assistance, using either parallel bars, a walker, or potentially without any assistance. The stages of lower-limb rehabilitation are summarized in Fig.\ref{fig:stages}.
 
 
 	\begin{figure*}[h] 
@@ -126,7 +166,7 @@ Stroke rehabilitation encompasses a broad range of therapeutic activities, typic
 
 \subsection{Rehabilitation Guidelines}
 
-Canadian stroke best practices recommend that therapy involves the repetition of intensive, task-specific activities in a complex and stimulating environment \cite{Hebert2016}. Lower-limb rehabilitation should be goal-orientated towards selected tasks such as walking and sit-to-stand. Robotics, virtual reality, and biofeedback are all mentioned as potential adjuncts, but are not recommended to replace traditional therapy.  Active participation on the part of the patient is also imperative [4], as it has been found that this facilitates neural plasticity. This requires that the patient be engaged in the therapy (hence the need for stimulating environments). A summary of the guidelines is given in Fig. \ref{fig:guidelines}. 
+Canadian stroke best practices recommend that therapy involves the repetition of intensive, task-specific activities in a complex and stimulating environment \cite{Hebert2016}. Lower-limb rehabilitation should be goal-orientated towards selected tasks such as walking and sit-to-stand. Robotics, virtual reality, and biofeedback are all mentioned as potential adjuncts, but are not recommended to replace traditional therapy.  Active participation on the part of the patient is also imperative [4], as it has been found that this facilitates neural plasticity. This requires that the patient be engaged in the therapy (hence the need for stimulating environments). A summary of the guidelines is given in Fig.\ref{fig:guidelines}. 
 
 Therapy dosage also has an effect on functional outcomes. For example, positive correlation between time scheduled for therapy and most functional outcomes was found in \cite{Lohse2014}. Despite this, many patients do not receive enough therapy. For example, an animal model was used in \cite{Lang2009} to determine if the doses of rehabilitation they observed at a hospital were enough to trigger functional improvement, and found the amount of rehabilitation inadequate. Stroke inpatients spend on average 13\% engaged in physical activities and 5.2\% of their time with a therapist at one hosptial researched in \cite{Bernhardt2004}. Patients were observed to spend a significant amount of time in or sitting near their bed in \cite{King2011}. These results indicate the importance of scheduling time specifically for rehabilitation for stroke inpatients. 
 
@@ -161,7 +201,7 @@ Other factors may restrict the PT's and OT's ability to accomplish the recommend
 
 The acute phase of stroke is usually defined as the stages within several days of stroke onset. The exact time period varies, from within the first 24 hours in \cite{Veerbeek2014}, to within the first 3 weeks in \cite{Cameirao2008}. For the purposes of this thesis, acute phase is defined as the early stages of recovery, before the patient has been mobilized and while they are still in-patients on the stroke ward, similar to the definition given in the Canadian Stroke Best Practices \cite{Casaubon2016}. 
 
-The benefits of beginning rehabilitation during the acute phase are emphasized in many studies. The Canadian Stroke Best Practice Publiction recommends that patients should receive rehabilitation as early as possible once they are deemed medically ready. Early mobilisation is recommended (within 24-48 hours of stroke, \cite{Casaubon2016}, but not before 24 hours due to findings that this actually reduces functional outcomes, \cite{AVERTTrialCollaborationgroup2015}). In \cite{Horn2005}, stroke in-patients at five rehabilitation facilities are followed through their recover. Various measures of recovery indicate that earlier initiation of rehabilitation resulted in better outcomes. 
+The benefits of beginning rehabilitation during the acute phase are emphasized in many studies. The Canadian Stroke Best Practice Publiction recommends that patients should receive rehabilitation as early as possible once they are deemed medically ready. Early mobilisation is recommended (within 24-48 hours of stroke, \cite{Casaubon2016}, but not before 24 hours due to findings that this actually reduces functional outcomes, \cite{AVERTTrialCollaborationgroup2015}). In \cite{Horn2005}, stroke in-patients at five rehabilitation facilities are followed through their recovery. Various measures of recovery indicate that earlier initiation of rehabilitation resulted in better outcomes. 
 
 Increasing rehabilitation time during the acute phase can be difficult. Many patients are bed-bound, so rehabilitation is restricted to activities done while reclining, which are difficult to make engaging and relevant to ADL's. Bed-bound patients typically have not recovered motor coordination, and so they rely on therapists for physical assistance. Due to the importance of acute phase rehabilitation, and the difficulties associated with it, there is an opportunity to introduce new technologies which have an impact on patient outcomes. 
 
@@ -179,7 +219,7 @@ Increasing rehabilitation time during the acute phase can be difficult. Many pat
 \end{itemize}
 	
 
-	Rehabilitation robots can be broadly categorized as targeting the lower-limb or the upper-limb. Upper-limb robots tend to be lighter weight since they encounter much smaller loads, while lower-limb devices are heavier as they need to support either the weight of the leg or of the entire body. Lower-limb robots can be further categorized as either targeting standing activities such as treadmill walking, or lying/sitting activities \cite{Calabro2016}. A final subdivision exists between endplate based devices and exoskeletal devices (Fig. \ref{fig:end_exo}). Endplate-based devices interact with the patient at a single point, usually the end of the limb (the hand or foot), and only apply forces through this point. Exoskeletal devices attach to the user at multiple points, offering greater control over the overall motion of the limb, although they are often more restrictive, more complex, and potentially less safe \cite{Chang2013}. One study found evidence that endplate-based devices may actually yield better outcomes than exoskeletal devices, although the comparison was done via meta-analysis of many different studies with significantly different methodologies \cite{Mehrholz2012} . 
+	Rehabilitation robots can be broadly categorized as targeting the lower-limb or the upper-limb. Upper-limb robots tend to be lighter weight since they encounter much smaller loads, while lower-limb devices are heavier as they need to support either the weight of the leg or of the entire body. Lower-limb robots can be further categorized as either targeting standing activities such as treadmill walking, or lying/sitting activities \cite{Calabro2016}. A final subdivision exists between endplate based devices and exoskeletal devices (Fig.\ref{fig:end_exo}). Endplate-based devices interact with the patient at a single point, usually the end of the limb (the hand or foot), and only apply forces through this point. Exoskeletal devices attach to the user at multiple points, offering greater control over the overall motion of the limb, although they are often more restrictive, more complex, and potentially less safe \cite{Chang2013}. One study found evidence that endplate-based devices may actually yield better outcomes than exoskeletal devices, although the comparison was done via meta-analysis of many different studies with significantly different methodologies \cite{Mehrholz2012} . 
 	
 	
 	\begin{figure*}[h] 
@@ -203,7 +243,7 @@ few large clinical trials have found conflicting results. One study following 63
 	
 	%Each comprise of a powered exoskeleton which can assist the leg through gait trajectories. They all work in conjunction with body-weight supported treadmill training (BWSTT), using a harness to support the patient and a treadmill for walking. The Lokomat and LOPES use impedance control to deliver programmable levels of assistance to the user. ALEX uses a force-field scheme to create an ''assist-as-needed`` controller which ensures that the user contributes to the movement.
 	
-	The Lokomat (Fig. \ref{fig:Lokomat}) is a powered orthosis that attaches to the patient's leg, and works in conjunction with body-weight supported treadmill training (BWSTT). It uses impedance control to provide programmable assistance to the leg through gait trajectories. The Lokomat is one of more widely researched platforms. One recent study found that the Lokomat was more effective than conventional gait therapy with regards to certain outcome measures \cite{Nam2017}, although another found that it was less effective \cite{Hidler2008}. Despite conflicting results, the Lokomat continues to show promise. It is commercially available -- 872 devices can be found worldwide according to their website (as of 2019).
+	The Lokomat (Fig.\ref{fig:Lokomat}) is a powered orthosis that attaches to the patient's leg, and works in conjunction with body-weight supported treadmill training (BWSTT). It uses impedance control to provide programmable assistance to the leg through gait trajectories. The Lokomat is one of more widely researched platforms. One recent study found that the Lokomat was more effective than conventional gait therapy with regards to certain outcome measures \cite{Nam2017}, although another found that it was less effective \cite{Hidler2008}. Despite conflicting results, the Lokomat continues to show promise. It is commercially available -- 872 devices can be found worldwide according to their website (as of 2019).
 			
 	\begin{figure*}[h] 
 		\centering
@@ -214,7 +254,7 @@ few large clinical trials have found conflicting results. One study following 63
 	
 	The ALEX \cite{Banala2007} is an exoskeletal robot used for treadmill gait training. It consists of an 8-DOF orthosis, and a harness to stabilize the user. Its controller provides assistance-as-needed using a force-field scheme, which only applies force when the user deviates from a desired trajectory. This is done by creating ``virtual walls'' at a set distance around the trajectory. They also use friction compensation to make the device backdrivable, to ensure the motion is transparent. A small study on healthy subjects showed that the force-field controller improved the user's ability to perform the trajectory. 
 	
-	The LOPES \cite{Veneman2007}, or the Lower Extremity Powered Exoskeleton, is gait rehabilitation robot similar to the Lokomat and the ALEX. It uses impedance control to provide modes like patient-in-charge and robot-in-charge. The device has three DOF's per leg, and also contains a pelvic support system to hold the patient up, which is itself also actuated by three linear DOFs. A small study looked at EMG data from normal treadmill walking with treadmill walking with the LOPES, and found that both produced similar data, suggesting unhindered walking is possible with the LOPES.
+	The LOPES \cite{Veneman2007}, or the Lower Extremity Powered Exoskeleton, is gait rehabilitation robot similar to the Lokomat and the ALEX. It uses impedance control to provide modes like patient-in-charge and robot-in-charge. The device has three DOF's per leg, and also contains a pelvic support system to hold the patient up, which is itself also actuated by three linear DOFs. A small study compared EMG data from normal treadmill walking with treadmill walking with the LOPES, and found that both produced similar data, suggesting unhindered walking is possible with the LOPES.
 	
 	The ReoAmbulator is another powered orthosis for treadmill training used to assist with BWSTT \cite{West2002}. This device differentiates itself from previous devices by its ``sanitary construction'', standard electrical connections, patient accessibility, and only requiring a single trained operator; all essentially making the device more compatible with the hospital and easier to use. 
 	
@@ -228,7 +268,7 @@ few large clinical trials have found conflicting results. One study following 63
 		\label{fig:Hapticwalker}
 	\end{figure*}
 	
-	The HapticWalker \cite{Schmidt2005} is an endplate-based gait trainer with two actuated platforms that can move the user's leg through the sagittal plane. The system has 3-DOF per leg, but can be extended to 6-DOF to allow for a greater range of motions. The control software is implemented in RTLinux, and includes trajectory generation and a User interface. As can be seen in Fig. \ref{fig:Hapticwalker}, the HapticWalker, along with other endplate devices targetting standing activities, tend to be much larger than and also require more power.
+	The HapticWalker \cite{Schmidt2005} is an endplate-based gait trainer with two actuated platforms that can move the user's leg through the sagittal plane. The system has 3-DOF per leg, but can be extended to 6-DOF to allow for a greater range of motions. The control software is implemented in RTLinux, and includes trajectory generation and a user interface. As can be seen in Fig.\ref{fig:Hapticwalker}, the HapticWalker, along with other endplate devices targetting standing activities, tend to be much larger than and also require more power.
 	
 	The G-EO is a endplate-based robot designed for the repetitive practice of floor walking and stair climbing \cite{Hesse2010}. Similarly to the HapticWalker, it has two actuated platforms which can guide the patient's legs through trajectories. This robot uses position control, which does not necessarily encourage patient engagement. 
 	
@@ -238,9 +278,9 @@ few large clinical trials have found conflicting results. One study following 63
 	
 	\subsection{Robots for Sitting or Bed-bound Therapy}
 	
-	Some types of rehabilitation are administered while the patient is sitting or reclined in bed, often for acute stroke patient's who are not yet mobile. Robots for assisting in activities while the patient sits or lies down are less common in the literature. The MotionMaker, Lambda, the Rutger's Ankle and ViGRR are some examples. 
+	Some types of rehabilitation are administered while the patient is sitting or reclined in bed, often for acute stroke patient's who are not yet mobile. Robots for assisting in activities while the patient sits or lies down are less common in the literature. The MotionMaker, Lambda, the Rutger's Ankle and the Virtual Gait Rehabilitation Robot are some examples. 
 	
-	The MotionMaker (Fig. \ref{fig:Motionmaker}) consists of a reclinable chair and two orthoses, which attach to the leg only at the foot \cite{Schmitt2004}. It uses a regulator with force feedback to control the exercise. It is designed to be used in conjunction with functional electrical stimulation for spinal cord injury patients, but it's application extends to lower-limb rehabilitation in general. 
+	The MotionMaker (Fig.\ref{fig:Motionmaker}) consists of a reclinable chair and two orthoses, which attach to the leg only at the foot \cite{Schmitt2004}. It uses a regulator with force feedback to control the exercise. It is designed to be used in conjunction with functional electrical stimulation for spinal cord injury patients, but it's application extends to lower-limb rehabilitation in general. 
 	
 	\begin{figure*}[h] 
 		\centering
@@ -249,7 +289,7 @@ few large clinical trials have found conflicting results. One study following 63
 		\label{fig:Motionmaker}
 	\end{figure*}
 	
-	The Lambda (Fig. \ref{fig:Lambda}) is robot developed for general lower-limb rehabilitation and for fitness purposesd \cite{Bouri2009}. It uses parallel linkages with a total of three DOF's to achieve a variety of motions. An adjustable seat allows the user to recline as needed. Recent developments include the addition of virtual reality and games to engage the patient, enhanced feedback regarding the patients progress, and multiple types of exercises. 
+	The Lambda (Fig.\ref{fig:Lambda}) is robot developed for general lower-limb rehabilitation and for fitness purposes \cite{Bouri2009}. It uses parallel linkages with a total of three degrees of freedom to achieve a variety of motions. An adjustable seat allows the user to recline as needed. Recent developments include the addition of virtual reality and games to engage the patient, enhanced feedback regarding the patient's progress, and multiple types of exercises. 
 	
 	\begin{figure*}[t] 
 		\centering
@@ -262,13 +302,13 @@ few large clinical trials have found conflicting results. One study following 63
 
 \subsection{Previous Work} 	
 
-	Carleton Universiy's Advanced Biomechatronics and Locomotion Laboratory (ABL) has developed other devices and robots for rehabilitation. The precursor to this project is the Virtual Gait Rehabilitation Robot (ViGRR), a device developed at Carleton University's Advanced Biomechatronics and Locomotion Laboratory \cite{Chisholm2014, Chisholm2010}. It is a 4-DOF end-plate based robot which can assist a reclined patient moving through trajectories in the sagittal plane (Fig. \ref{fig:vigrr}). The user's foot interfaces with a footplate which is magnetically attached to the robot. The magnet can be released if triggered by safety system, including high force, high velocity, or pressing an emergency stop button. An admittance controller is used to provide assistance-as-needed, roughly in proportion to the trajectory error. These desired trajectories can include gait trajectories, linear motion, circular motion, or any other path in the sagittal plane. To increase user engagement, a virtual environment was created which can display visual feedback regarding the desired trajectory, or games such as pushing a block or brick breaker. Users can be further immersed in the virtual environment through haptic feedback. For example, when pushing on virtual wall, the robot will apply a force to the user's foot emulating the wall reaction force. 
+	Carleton Universiy's Advanced Biomechatronics and Locomotion Laboratory (ABL) has developed devices and robots for rehabilitation. The precursor to this project is the Virtual Gait Rehabilitation Robot (ViGRR), a device developed at Carleton University's Advanced Biomechatronics and Locomotion Laboratory \cite{Chisholm2014, Chisholm2010}. It is a 4-DOF end-plate based robot which can assist a reclined patient moving through trajectories in the sagittal plane (Fig.\ref{fig:vigrr}). The user's foot interfaces with a footplate which is magnetically attached to the robot. The magnet can be released if triggered by a safety system, including high force, high velocity, or pressing an emergency stop button. An admittance controller is used to provide assistance-as-needed, roughly in proportion to the trajectory error. These desired trajectories can include gait trajectories, linear motion, circular motion, or any other path in the sagittal plane. To increase user engagement, a virtual environment was created which can display visual feedback regarding the desired trajectory, or games such as pushing a block or brick breaker. Users can be further immersed in the virtual environment through haptic feedback. For example, when pushing on virtual wall, the robot will apply a force to the user's foot emulating the wall reaction force. 
 	
 	
 	\begin{figure*}[t] 
 		\centering
 		\includegraphics[width=0.75\linewidth]{Vigrr}
-		\caption{THe Virtual Gait Rehabilitation Robot, precursor to the new device}
+		\caption{The Virtual Gait Rehabilitation Robot, precursor to the new device}
 		\label{fig:vigrr}
 	\end{figure*}	
 	
@@ -279,7 +319,7 @@ few large clinical trials have found conflicting results. One study following 63
 	
 	A stroke patient's progress is monitored through tests, surveys, and measures. These are important because they help the therapist determine the best rehabilitation routine, and also can be used in research to compare rehabilitation techniques. The Fugl-Meyer (FM) scale is a 226-point test used to directly measure recovery after stroke \cite{Gladstone2002}. It covers both upper and lower limbs, and takes approximately 30 minutes to administer. The Motor Activity Log (MAL) is similar to the FM, however it is used specifically to test motor capacity in the arm \cite{Uswatte2006}.
 
-Other measures commonly used for rehabilitation monitoring include the Berg Balance Scale, Barthel Index, Stroke Rehabilitation Assesment of Movement (STREAM), and the Timed Up and Go (TUG) \cite{Salbach2001}. The Berg Balance scale is used to describe the patient's ability to remain balanced during different tasks. The Barthel index is used to rate the patient's ability to perform a number of ADL's, such as dressing and grooming. Rehabilitation progress is directly monitored in STREAM, which takes into account mobility, range of motion, and coordination. The TUG score measures the time taken to stand up out of a chair, walk 3m, return to the chair, and sit down again. This measures mobility, balance, and also fall risk. 
+Other measures commonly used for rehabilitation monitoring include the Berg Balance Scale, Barthel Index, Stroke Rehabilitation Assesment of Movement (STREAM), and the Timed Up and Go (TUG) \cite{Salbach2001}. The Berg Balance scale is used to describe the patient's ability to remain balanced during different tasks. The Barthel index is used to rate the patient's ability to perform a number of ADL's, such as dressing and grooming. Rehabilitation progress is directly monitored in STREAM, which takes into account mobility, range of motion, and coordination. The TUG score measures the time taken to stand up out of a chair, walk 3 metres, return to the chair, and sit down again. This measures mobility, balance, and also fall risk. 
 
 Robots can record measures unavailable to traditional therapy, including measures of position, velocity, and force, as well as measures derived from these like error, effort, smoothness of movement, \textit{etc}. One study compared robot-based measures and traditional rehabilitation measures, specifically they looked at smoothness of movement and trajectory error versus the FM and MAL \cite{Celik2008}. They found significant agreement between the robot-based measures and the FM score, and moderate agreement against MAL, suggesting that robot-based measures can be used to augment the traditional measures for monitoring therapy progress. 
 
@@ -296,9 +336,9 @@ Robot measures could add to traditional measures, providing more information on 
 
 	\item \textbf{Impedance and admittance} control were introduced by Hogan in \cite{Hogan1985}, and have been the foundation of most interaction controllers since. These controllers determine the dynamic interaction between robot and environment instead of regulating position or force. In this way, an impedance controller can be used to give a programmable amount of assistance to the user through a trajectory, which can be varied by changing the parameters so that an optimal amount of assistance can be obtained for each individual. The desired impedance or admittance is defined in terms of a mass-spring-damper system. Therefore, changing the spring gain will change the level of assistance. The damper gain can be used to resist motion if the patient is more advanced or if strength training is the goal. This control scheme is explained in detail in Sec. \ref{Sec:imp}.
 	
-	\item \textbf{EMG-based} control uses electromyography (EMG) to measure muscle activity in the patient. The robot then only provides assistance when the intent to move is detected (\textit{i.e.} the patient flexes their muscle). This ensure that the patient is actively engaged in the therapy. For example, the ankle-foot orthosis described in \cite{Ferris2006} uses processed EMG signals to drive pneumatic actuation, using control inputs proportional to the EMG activation. 
+	\item \textbf{EMG-based} control uses electromyography (EMG) to measure muscle activity in the patient. The robot then only provides assistance when the intent to move is detected (\textit{i.e.} the patient flexes their muscle). This ensures that the patient is actively engaged in the therapy. For example, the ankle-foot orthosis described in \cite{Ferris2006} uses processed EMG signals to drive pneumatic actuation, using control inputs proportional to the EMG activation. 
 	
-	\item \textbf{Adaptive} control here refers to a controls which changes its behaviour over time based on some predefined law. For example, the amount of assistance supplied by an admittance controller can be changed based on patient performance. Some robots use information from movements in the patient's healthy limb to calculate the optimal control path for the affected limb. Others use assist-as-needed control schemes to only provide assistance when the patient requires it. Artificial Neural Networks have been used to determine when the assistance is needed in robots such as the ALEX and LOPES.
+	\item \textbf{Adaptive} control here refers to a controller which changes its behaviour over time based on some predefined law. For example, the amount of assistance supplied by an admittance controller can be changed based on patient performance. Some robots use information from movements in the patient's healthy limb to calculate the optimal control path for the affected limb. Others use assist-as-needed control schemes to only provide assistance when the patient requires it. Artificial Neural Networks have been used to determine when the assistance is needed in robots such as the ALEX and LOPES.
 	
 \end{itemize}
 		
@@ -314,14 +354,15 @@ Robot measures could add to traditional measures, providing more information on 
 	
 	A metastudy found evidence that VR may improve functional outcomes over conventional therapy, but admits that most studies are small and prone to bias \cite{Laver2015}. One platform used an upper-limb exoskeletal device to apply assistive forces  \cite{Patel2015}. Another study used a Nintendo Wii gaming system to promote therapy, and found it to be a feasible and safe method  \cite{Saposnik2010}. Another study used the Phantom Omni, a pen attached to a robotic arm that can deliver haptic feedback from a virtual environment \cite{Jiang2017}. A serious gaming approach is used in \cite{SociedadeBrasileiradeInformaticaemSaude2014}, where the Unity3D engine was used to create a virtual world and a MS Kinetic sensor to detect the user's motions. 
 	
+\subsection{Serious Games and Exergames}
 
+Using games to engage users in activity has been used in many fields. Serious games are digital games used for purposes other than entertainment such as education or obtaining skills through simulation \cite{Susi}. When designing these games, it is important to make them both attractive to users, and effective at encouraging the desired activity \cite{Sinclair2007}. An example of the successfully application of serious games is  the prevalence of exergames, or serious games applied to exercise. Exergames were linked to increased childhood activity and physical fitness in \cite{Staiano2011}. 
 
+Rehabilitation robots have also sought to leverage serious gaming to engage the patients in therapy. For example, a tele-robotic system for home based rehabilitation has been designed which uses games to encourages children with cerebral palsy to particpate in the activity \cite{KaiChen2014}. Many other rehabilitation robots use some form of visual feedback or games, and there is promise that similar results can be obtained. However, there are other questions which require further research, like how well serious games work with adults and stroke victims. 
 	
 \section{Device Concept} 
 
-With ViGRR, our goal was to design a lower-limb rehabilitation robot targeting acute patients by creating a device compatible with a patient who is lying or reclined in a hospital bed. ViGRR accomplishes this, and has been validated on healthy subjects. However, some aspects of ViGRR prevent it from being used easily in the hospital, including its high weight, high power, and size. The next stage in the project is to repackage ViGRR into a more accessible and light-weight design. 
-
-This new prototype should align with ViGRR's fundamental concept: a lower-limb robot capable of assisting bed-bound acute stroke patients with rehabilitation. The device should be a viable tool for therapists within the hospital to use to increase functional outcomes for their patients. It should replicate the role of the therapist when providing assistance for bed bound exercises. There are three primary roles:
+This rehabilitation robot prototype presented here should align with ViGRR's fundamental concept: a lower-limb robot capable of assisting stroke patients with rehabilitation. It should do this with specific application to bed-bound, acute stroke patients. The device should be a viable tool for therapists within the hospital to use to increase functional outcomes for their patients. It should replicate the role of the therapist when providing assistance for bed bound exercises. There are three primary roles:
 
 \begin{enumerate}
 	\item Support the leg 
@@ -356,7 +397,7 @@ In addition to these requirements, the device should be usable within a hospital
 
 \section{Contributions and Outline}
 
-A 1-DOF robot was designed and created according to the requirements determined from the literature review, shadowing, and previous work on ViGRR. The device consists of a DC motor, force sensor, belt drive, footplate, frame, and a number of smaller components. A printed circuit board (PCB) was created to route signals, do preprocessing, and distribute power. System software was implemented on a real-time linux system. A controller was created in C, which can operate the device using admittance control, haptic feedback, a basic physics engine, communication with a UI server, and data logging. Real time functionality is ensured using POSIX standards for memory locking, multi-threading, etc. The UI is implemented as website using the React framework, and some simple games are created using the THREE.js 3D web graphics library. The controller was designed as a modular system that can be easily re-factored to accommodate design changes in future iterations. The device was evaluated through a number of tests and experiments, including functional tests, safety tests, and an pilot study with healthy subjects. The results show that the device functions as planned, but that several things must be changed/added before it is ready for patient testing in the hospital.
+A 1-DOF robot was designed and created according to the requirements determined from the literature review, shadowing, and previous work on ViGRR. The device consists of a DC motor, force sensor, belt drive, footplate, frame, and a number of smaller components. A printed circuit board (PCB) was created to route signals, preprocess signals, and distribute power. System software was implemented on a real-time linux system. A controller was created with the programming language C, which can operate the device using admittance control, haptic feedback, a basic physics engine, communication with a UI server, and data logging. Real-time functionality is ensured using POSIX standards for memory locking, multi-threading, etc. The UI is implemented as a website using the React framework, and some simple games are created using the THREE.js 3D web graphics library. The controller was designed as a modular system that can be easily re-factored to accommodate design changes in future iterations. The device was evaluated through a number of tests and experiments, including functional tests, safety tests, and a pilot study with healthy subjects. The results show that the device functions as planned, but that several things must be changed/added before it is ready for patient testing in the hospital.
 
 
 
@@ -379,14 +420,14 @@ A 1-DOF robot was designed and created according to the requirements determined 
 
 \section{Introduction}
 
-The overall design process is shown in Fig. \ref{fig:design_diagram}. After literature review and previous work done on ViGRR, the next step towards designing the new robot is an analysis of hospital requirements, including an evaluation of the hospital environment, of traditional acute stroke therapy, and of the needs of the therapists.
+The overall design process is shown in Fig.\ref{fig:design_diagram}. After literature review and previous work done on ViGRR, the next step towards designing the new robot is an analysis of hospital requirements, including an evaluation of the hospital environment, of traditional acute stroke therapy, and of the needs of the therapists.
 
-	The rise of the human-centred design paradigm underscores the importance of involving end users in the design process, especially when the designers lack expertise in the field of interest. After the literature review, the next step of the design process was to consult the end user and collect qualitative data and advice. In the case of rehabilitation robots, there are two types of end-users: the stroke patient using the device, and the therapists who decide when and how to incorporate the device into their rehabilitation regimen. The therapist, however, has greater expertise with stroke rehabilitation in general, and will ultimately be the one who decides the device's fate on the stroke ward. Therefore, it was decided to interview and shadow several PT's and OT's concerning the direction of the project. Patient's were not consulted, due to their lack of expertise in stroke rehabilitation, although their input will be vital in future evaluation experiments.  This chapter covers fieldwork done at the Ottawa Civic Hospital, where we investigated stroke rehabilitation practices and sought advice from experienced stroke therapists. It also covers the initial design decisions based in part on the results from the fieldwork and from the literature review. The complete rehabilitation robot is introduced, with more technical details available in the next chapter.
+	The rise of the human-centred design paradigm underscores the importance of involving end users in the design process, especially when the designers lack expertise in the field of interest. After the literature review, the next step of the design process was to consult the end user and collect qualitative data and advice. In the case of rehabilitation robots, there are two types of end-users: the stroke patient using the device, and the therapists who decide when and how to incorporate the device into their rehabilitation regimen. The therapist, however, has greater expertise with stroke rehabilitation in general, and will ultimately be the one who decides the device's fate on the stroke ward. Therefore, it was decided to interview and shadow several PT's and OT's concerning the direction of the project. Patients were not consulted, due to their lack of expertise in stroke rehabilitation, although their input will be vital in future evaluation experiments.  This chapter covers fieldwork done at the Ottawa Civic Hospital, where we investigated stroke rehabilitation practices and sought advice from experienced stroke therapists. It also covers the initial design decisions based in part on the results from the fieldwork and from the literature review. The complete rehabilitation robot is introduced, with more technical details available in the next chapter.
 	
 		\begin{figure*}[h] 
 		\centering
 		\includegraphics[width=\linewidth]{design_diagram}
-		\caption{Design Process for the new rehabilitation robot}
+		\caption{Design process for the new rehabilitation robot}
 		\label{fig:design_diagram}
 	\end{figure*}
 
@@ -394,11 +435,11 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 
 \subsection{Methods}
 
-	Fieldwork was conducted at the Civic campus of the Ottawa Hospital (TOH), in cooperation with Dr. Dariush Dowlatshahi, and with ethics approval from the Ottawa Health Science Network Research Ethics Board (OHSN-REB). Three PT's and two OT's were recruited for two days of interviews and shadowing. Inclusion criteria included experience working on the stroke ward delivering rehabilitation to stroke patients. Not enough data was collected to perform any meaningful statistic -- instead, key insights guided the fundamental concept of the device, and information was gathered not otherwise available through a literature review. Some topics of interest included:
+	Fieldwork was conducted at the Civic campus of the Ottawa Hospital (TOH), in cooperation with Dr.Dariush Dowlatshahi, and with ethics approval from the Ottawa Health Science Network Research Ethics Board (OHSN-REB). Three PT's and two OT's were recruited for two days of interviews and shadowing. Inclusion criteria included experience working on the stroke ward delivering rehabilitation to stroke patients. Not enough data was collected to perform any meaningful statistic -- instead, key insights guided the fundamental concept of the device, and information was gathered not otherwise available through a literature review. Some topics of interest included:
 	
 	\begin{itemize}
 		\item Typical acute, bed-bound rehabilitation 
-		\item Patient Engagement -- how the therapists keep patients motivated and actively participating 
+		\item Patient engagement -- how the therapists keep patients motivated and actively participating 
 		\item The hospital environment
 		\item The therapists' views on rehabilitation robotics 
 	\end{itemize}
@@ -413,7 +454,7 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	
 	Parameters from typical rehabilitation will help determine the requirements of the new robotic system. Therapists estimated that they exert a maximum of 10 - 15 lbs of force to the leg. The range of motion of patients varied, but many could go through the full range of the leg. The exercises were done slowly at a consistent speed. The role of the therapist can be summarized as providing support to leg and providing assistance through the motion. 
 	
-	Some patient's are capable of performing bed-bound exercises independent of the therapist. Performing independent practice can increase total rehabilitation dosage and is recommended by stroke guidelines \cite{Hebert2016}. However, some patients who are either at an earlier stage of recovery or have suffered more severe strokes are incapable of performing bed-bound exercises without assistance, and so their total dosage is limited to time spent with the therapist. 
+	Some patients are capable of performing bed-bound exercises independent of the therapist. Performing independent practice can increase total rehabilitation dosage and is recommended by stroke guidelines \cite{Hebert2016}. However, some patients who are either at an earlier stage of recovery or have suffered more severe strokes are incapable of performing bed-bound exercises without assistance, and so their total dosage is limited to time spent with the therapist. 
 	
 	\subsection{Patient Engagement} 
 	 It is important for the patient to be actively engaged in the exercise. Therapists will try to only provide assistance as needed, by waiting for the patient to initiate the movement. Many of the patients required verbal or physical engagement throughout the process. This is in part due to a phenomenon known as neglect, wherein the stroke victim has trouble focusing on the effected side of the body. Therapists will verbally motivate patients in a manner similar to a personal trainer; otherwise they may engage the patient in conversation. Physical or tactile cues can be used to guide the patient, for example by tapping the leg if it needs adjusting. Sometimes, pictures and posters (\textit{e.g.} of cats and dogs) were posted in front of the exercise machines in the therapy room. Another common practice is to switch to a new exercise if the patient is showing signs of losing focus. 
@@ -428,15 +469,58 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	
 	\subsection{Other Comments and Concerns}
 	
-	Most therapists had concerns over safety. They recognized that the robot could potential apply forces which could harm the patient. One point of concern was rotation of the leg out of position such that the force was applied incorrectly. For example, during the knee flexion/extension exercise, if the leg were to rotate out of the sagittal plane, the robot could apply a torque about the hip which would bend the leg further and potentially injure the patient. Therapists suggested having multiple support points along the leg to keep the leg in position. 
+	Most therapists had concerns over safety. They recognized that the robot could potentially apply forces which could harm the patient. One point of concern was rotation of the leg out of position such that the force was applied incorrectly. For example, during the knee flexion/extension exercise, if the leg were to rotate out of the sagittal plane, the robot could apply a torque about the hip which would bend the leg further and potentially injure the patient. Therapists suggested having multiple support points along the leg to keep the leg in position. 
 	
 	Other comments included the need for comfort, particularly using comfortable material where the robot and human interact. They also mentioned the use of tactile methods of engaging the patient (\textit{e.g.} tapping or vibrations applied to the leg). Some indicated that combining upper and lower-limb activities could be beneficial (\textit{e.g.} by using a joystick with the robot). 
 	
+\section{Design Requirements} \label{sec:requirements} 
+
+The following design requirements were collected for the lower-limb rehabilitation device, based on the literature review, fieldwork, and previous work on ViGRR. Any anthropometric data is derived from \cite{Winter2009}, ranging from a 5th percentile female to a 95th percentile male. After meeting these requirements, the robot should be ready for clinical trials at the hospital with acute stroke patients. The final outcomes of this work and how they relate to these requirements is given in Sec.\ref{sec:outcomes}.
+
+\begin{enumerate}[label*=\arabic*.]
+	\item \textbf{Support the user's leg}
+	\begin{enumerate}[label*=\arabic*.]
+		\item Hold the weight of the leg, which can be up to 102kg. 
+		\item Keeps the leg from bending out of plane 
+		\item Adjustable to accommodate range of sizes and weights. 
+		\item Can accommodate a large range of motion -- leg lengths vary between 80.3 cm and 98.8 cm.
+	\end{enumerate}
+	\item \textbf{Help acute patients who may not be able to do exercise}
+	\begin{enumerate}[label*=\arabic*.]
+		\item Provide assistive forces through the exercise, up to 10-15 lb. 
+		\item Adjust difficulty based on patient 
+	\end{enumerate}
+	\item \textbf{Engage Patient}
+	\begin{enumerate}[label*=\arabic*.]
+		\item Only provides assistance as needed
+		\item Keeps the patient engaged with visuals and games
+		\item Relates the exercise to ADL's and real life scenarios
+	\end{enumerate}
+	\item \textbf{Long Duration \& Intensive Sessions}
+	\begin{enumerate}[label*=\arabic*.]
+		\item Device is comfortable and ergonomic
+		\item Can apply resistance to make exercise more difficult
+	\end{enumerate}
+	\item \textbf{Hospital Compatible}
+	\begin{enumerate}[label*=\arabic*.]
+		\item Fits on hospital bed 
+		\item Lightweight, can be easily transferred on to bed
+		\item Compliant with sterilization/cleanliness protocols 
+		\item Easy to set up 
+	\end{enumerate}
+	\item \textbf{Can be used by Therapists}
+	\begin{enumerate}[label*=\arabic*.]
+		\item Intuitive UI
+		\item Progress monitoring using patient data
+	\end{enumerate}
+
+\end{enumerate}			
+
 
 \section{Design Decisions} 
 
 
-	\begin{table}[]
+	\begin{table}[h]
 	\centering
 	\caption{Design categories and decisions based on the fieldwork}	
 	\begin{tabular}{|l|l|}
@@ -460,12 +544,12 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	\end{table}
 	
 
-	This rehabilitation robot was designed from scratch, from the initial concept to the final realization. A summary of design decisions derived from feildwork is given in table 2.1. This sections explains further the early design decisions and iterations, along with the justification. There were four significant design decisions to be made:
+	This rehabilitation robot was designed from scratch, from the initial concept to the final realization. A summary of design decisions derived from fieldwork is given in Table 2.1. This sections explains further the early design decisions and iterations, along with the justification. There were four significant design decisions to be made:
 	
 	\begin{enumerate}
 		\item The number of degrees of freedom (DOF) in the robot. The final decision was to use one linear DOF.
 		\item The type of linear actuator to use. Options included pneumatics, ball screws, and belt drives; the final design uses a belt drive.
-		\item The robots placement within the room (on the bed v.s. beside the bed). The final design sits on the bed.
+		\item The robots placement within the room (on the bed versus beside the bed). The final design sits on the bed.
 		%\item The conceptual design of a secondary leg support which would prevent the leg from rotating out of position. This was never realised, however the design is presented here for future work. It consists of a 3 DOF passive linkage which can follow the leg through the motion and provide lateral support. 
 		\item The controller can be run from either a microcontroller or a full computer. Due to the plans to increase complexity in the future, as well as the need for a user interface, a computer was chosen. 
 	\end{enumerate}
@@ -473,22 +557,22 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	
 		\subsection{Degrees of Freedom}
 		
-		This project is a continuation of ViGRR, a 4-DOF planar robot. The goal is to repackage ViGRR in a smaller form more compatible with the hospital. However, we also wanted feedback from both patients and therapists at the hospital throughout the design. It was decided to build a smaller, simpler robot, which could be taken to the hospital and tested promptly. Feedback could then be used to extend the simpler robot with additional DOF's in order to achieve more complex movements.
+		Creating a multi-DOF system which targets many types of acute stroke exercises is the ultimate goal of this project. However, we also wanted feedback from both patients and therapists at the hospital throughout the design. It was decided to build a smaller, simpler robot, which could be taken to the hospital and tested promptly. Feedback could then be used to extend the simpler robot with additional DOF's in order to achieve more complex movements.
 		
 		There were three options for a simpler robot configuration: 1 linear DOF, 1 rotary DOF, or 2-DOF. The primary motions we need to target include circular, horizontal linear (knee extensions), vertical linear (leg lifts), and more complex movements like gait trajectories. These also need to be adjustable to accommodate a variety of body sizes. A single linear DOF could target knee extension or leg lifts, whereas a rotary DOF would only be able to target a weak approximation of a gait trajectory (\textit{i.e.} a circular motion more similar to pedalling a bike). A 2-DOF system could accomplish more types of motions, for example doing both leg lifts and knee extensions, or more closely approximating a gait trajectory.
 		
-		Ultimately the single rotary DOF was excluded because its movement was not relate to any of the bed-bound exercises. The 2-DOF was excluded because \textit{(a)} it was determined to be too complex for the scope of this thesis, and \textit{(b)} it was decided the final configuration of a multi-DOF device would be left to future iterations after receiving feedback from the hospital. Therefore, the final design is a single horizontal linear DOF. 
+		Ultimately the single rotary DOF was excluded because its movement was not related to any of the bed-bound exercises. The 2-DOF was excluded because \textit{(a)} it was determined to be too complex for the scope of this thesis, and \textit{(b)} it was decided the final configuration of a multi-DOF device would be left to future iterations after receiving feedback from the hospital. Therefore, the final design is a single horizontal linear DOF. 
 
 					
 		\subsection{Linear Actuator Type}
 
-	There are several ways of actuating a linear motion. This includes hydraulics \& pneumatics, ballscrews, and belt drives. The pros and cons of each are given in table 2.2.
+	There are several ways of actuating a linear motion. This includes hydraulics \& pneumatics, ballscrews, and belt drives. The pros and cons of each are given in Table 2.2.
 	
-	\textbf{Hydraulics \& Pneumatics}: Hydraulics and pneumatics use pressurized liquid or air to achieve linear actuation. They require more consideration than other off-the-shelf solutions. These were discounted primarily because of lack of experience and issues seen in previous projects. 
+	\textbf{Hydraulics \& Pneumatics}: Hydraulics and pneumatics use pressurized liquid or air to achieve linear actuation. They require more consideration than other off-the-shelf solutions. These were discounted primarily because of lack of experience and issues seen in previous projects. Pneumatics can have issues concerning efficiency and cost, and hydraulics can leak fluid which may be hazardous and unacceptable in the hospital. 
 
 	\textbf{Ballscrew}: Ball screws offer high precision and very low backlash. However, the rehabilitation needs to move quickly, and so the ballscrew would require a very large pitch, or the motor would need to be powerful enough to supply high torque at high speed. Cost restraints therefore make using a ballscrew impractical. 
 	
-	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. However, the belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. Furthermore, flexibility and belt slip at high torques could actually act as worst-case safety measures. Ultimately an off-the-shelf belt drive was used in the design.
+	\textbf{Belt Drive}: Belt drives are in general less expensive and can achieve high speeds. The belt introduces flexibility into the actuator which may affect the precision of the controller. However, precision in this application is not imperative since small errors will not be perceived by the patient. Furthermore, flexibility and belt slip at high torques could actually act as worst-case safety measures. Ultimately an off-the-shelf belt drive was used in the design.
 
 
 	
@@ -527,7 +611,7 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	\end{figure*}	
 	
 		
-		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig \ref{fig:off-bed}). The device could sit on the bed, under the patient's leg (see Fig \ref{fig:on-bed}), similar to a passive range of motion machine. Each configurations has pros and cons, as listed in table 2.3.
+		The device needs to support the patient's leg and provide horizontal assistive forces through the leg flexion/extension exercise. Several possible structural configurations were identified. The device could sit beside the bed, with the foot plate extending horizontally to support the patient's foot (see Fig \ref{fig:off-bed}). The device could sit on the bed, under the patient's leg (see Fig \ref{fig:on-bed}), similar to a passive range of motion machine. Each configurations has pros and cons, as listed in Table 2.3.
 
 		
 	\begin{table}[] \label{tab:config}
@@ -548,7 +632,7 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 		
 
 
-	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. Two forces are created by the user: the applied force pushing or pulling the footplate ($F_a$), and the weight of the leg on the heel support ($F_w$). The on-bed design sits under the leg, so the moment created by the weight of the leg and its moment arm ($R_x$) can be minimized by minimizing the $R_x$ (Fig. \ref{fig:on-bed_moment}). If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator through that distance ($R$) (Fig. \ref{fig:off-bed_moment}). This length is harder to minimize, since this would require that the patient is transferred closer to the edge of the bed. Patient transference should be avoided, it is time consuming and usually requires multiple staff members. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
+	The deciding factors were the moment applied by the leg on the footplate, and the space in the room. Two forces are created by the user: the applied force pushing or pulling the footplate ($F_a$), and the weight of the leg on the heel support ($F_w$). The on-bed design sits under the leg, so the moment created by the weight of the leg and its moment arm ($R_x$) can be minimized by minimizing the $R_x$ (Fig.\ref{fig:on-bed_moment}). If the device sits beside the bed, the footplate must extend horizontally outwards, resulting in the weight of the leg creating a moment on the actuator through that distance ($R$) (Fig.\ref{fig:off-bed_moment}). This length is harder to minimize, since this would require that the patient is transferred closer to the edge of the bed. Patient transference should be avoided, it is time consuming and usually requires multiple staff members. Additionally, the device would require room beside the bed. After observing several hospital rooms in the stroke ward, it was clear that this space is not always available, due to equipment, furniture, and crowded rooms which can contain up to four beds. The on-bed design sits completely on the bed and so should be compatible with any room. The moment applied to the footplate due to the weight of the leg is smaller as it supports the leg from below. Finally, it can be positioned on the bed in a way that suits the patient, instead of having to move the patient to the edge. 
 	
 	\begin{figure*}[h] 
 		\centering
@@ -566,58 +650,17 @@ The overall design process is shown in Fig. \ref{fig:design_diagram}. After lite
 	\end{figure*}
 	
 	
-	\subsection{Computer v.s. Microcontroller}
+	\subsection{Computer versus Microcontroller}
 	
-	The controller can be executed either from a microcontroller or from a full computer. The microcoontroller is cheaper, easier to set up for real time code execution, and has built in I/O's. Computers have more processing power, memory, can easily be networked or connected wirelessly, but require external data acquisition. Additionally, special care must be used to set up a real time system which can execute control loops with minimized latencies. 
+	The controller can be executed either from a microcontroller or from a full computer. The microcoontroller is cheaper, easier to set up for real-time code execution, and has built in I/O's. Computers have more processing power, memory, can easily be networked or connected wirelessly, but require external data acquisition. Additionally, special care must be used to set up a real-time system which can execute control loops with minimized latencies. 
 	
-	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF's may be added to our system to the point where a microcontroller is not suitable. The computer could also be used to run the user interface (UI). Therefore we chose to use a computer to run the control software. 
+	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF's may be added to our system to the point where a microcontroller is not suitable. The computer could also be used to run the user interface (UI). Therefore we chose to use a computer to run the control software. A Linux operating system with a pre-empted kernel was used to achieve real-time control.
 
 
-\section{Design Requirements} \label{sec:requirements} 
-
-The following design requirements were collected for the lower-limb rehabilitation device, based on the literature review, fieldwork, and previous work on ViGRR. After meeting these requirements, the robot should be ready for clinical trials at the hospital with acute stroke patients. The final outcomes of this work and how they relate to these requirements is given in Sec. \ref{sec:outcomes}.
-
-\begin{enumerate}[label*=\arabic*.]
-	\item \textbf{Support the user's leg}
-	\begin{enumerate}[label*=\arabic*.]
-		\item Hold the weight of the leg
-		\item Keeps the leg from bending out of plane 
-		\item Adjustable to accommodate range of sizes and weights 
-	\end{enumerate}
-	\item \textbf{Help acute patients who may not be able to do exercise}
-	\begin{enumerate}[label*=\arabic*.]
-		\item Provide assistive forces through the exercise
-		\item Adjust difficulty based on patient 
-	\end{enumerate}
-	\item \textbf{Engage Patient}
-	\begin{enumerate}[label*=\arabic*.]
-		\item Only provides assistance as needed
-		\item Keeps the patient engaged with visuals and games
-		\item Relates the exercise to ADL's and real life scenarios
-	\end{enumerate}
-	\item \textbf{Long Duration \& Intensive Sessions}
-	\begin{enumerate}[label*=\arabic*.]
-		\item Device is comfortable and ergonomic
-		\item Can apply resistance to make exercise more difficult
-	\end{enumerate}
-	\item \textbf{Hospital Compatible}
-	\begin{enumerate}[label*=\arabic*.]
-		\item Fits on hospital bed 
-		\item Lightweight, can be easily transferred on to bed
-		\item Compliant with sterilization/cleanliness protocols 
-		\item Easy to set up 
-	\end{enumerate}
-	\item \textbf{Can be used by Therapists}
-	\begin{enumerate}[label*=\arabic*.]
-		\item Intuitive UI
-		\item Progress monitoring using patient data
-	\end{enumerate}
-
-\end{enumerate}			
 
 \section{Final Design} 
 
-	The final design consists of one linear degree of freedom, actuated by a belt drive, which sits on the bed under the patient's leg. The robot is shown on the test bed in Fig. \ref{fig:robot_on_bed}. The footplate has heel support and a Velcro strap to keep the foot in place, and is height adjustable to accommodate a variety of leg sizes. The robot with the user's leg in place and extended is shown in Fig. \ref{fig:robot_leg}. There is also an adjustable end stop to limit the length of the stroke, which can be customized to each individual in order to prevent leg over-extension. 
+	The final design consists of one linear degree of freedom, actuated by a belt drive, which sits on the bed under the patient's leg. The robot is shown on the test bed in Fig.\ref{fig:robot_on_bed}. The footplate has heel support and a Velcro strap to keep the foot in place, and is height adjustable to accommodate a variety of leg sizes. The robot with the user's leg in place and extended is shown in Fig.\ref{fig:robot_leg}. There is also an adjustable end stop to limit the length of the stroke, which can be customized to each individual in order to prevent leg over-extension. 
 
 	\begin{figure*}[h] 
 		\centering
@@ -647,7 +690,7 @@ The following design requirements were collected for the lower-limb rehabilitati
 
 	\section{Overview}
 	
-Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footplate, and actuator. The following sections will give a overview of the frame structure, footplate structure, the electronics, and the computer system. Figures of the custom made parts can be found in appendix I, further information on the printed circuit board in appendix II, and hardware data sheets can be found in appendix III.
+Figure \ref{fig:cad} shows a rendering of the design with the frame, footplate, and actuator. The following sections will give a overview of the frame structure, footplate structure, the electronics, and the computer system. Figures of the custom made parts can be found in appendix I, further information on the printed circuit board in appendix II, and hardware data sheets can be found in appendix III.
 
 	\begin{figure*}[h] 
 		\centering
@@ -661,7 +704,7 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	
 	\subsection{Frame}
 
-	The frame holds the actuator, footplate, and electronics (Fig. \ref{fig:frame}). It should fit on a bed, under one of the patient's leg, without obstructing the other leg or the patient's body. The frame is constructed out of 1''x1'' aluminium profile. The frame can be clamped or strapped to the bed to secure it in place. Future designs could include custom mounts to specific beds by attaching to the footboard or sides. The frame also contains an adjustable physical end-stop which is used to control the maximum stroke length of the actuator. This can be adjusted to prevent over-extension of the leg. Over-extension occurs when the leg is pulled straight, or beyond its range-of-motion -- applying force to the leg at this point may cause harm. The physical end-stop is set to prevent the footplate from moving far enough to over-extend the leg. 
+	The frame holds the actuator, footplate, and electronics (Fig.\ref{fig:frame}). It should fit on a bed, under one of the patient's leg, without obstructing the other leg or the patient's body. The frame is constructed out of 1''x1'' aluminium profile. The frame can be clamped or strapped to the bed to secure it in place. Future designs could include custom mounts to specific beds by attaching to the footboard or sides. The frame also contains an adjustable physical end-stop which is used to control the maximum stroke length of the actuator. This can be adjusted to prevent over-extension of the leg. Over-extension occurs when the leg is pulled straight, or beyond its range-of-motion -- applying force to the leg at this point may cause harm. The physical end-stop is set to prevent the footplate from moving far enough to over-extend the leg. 
 	
 
 	\begin{figure*}[h] 
@@ -675,7 +718,8 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	
 	\subsection{Footplate}
 	
-	The footplate attaches to the belt drive and is height adjustable. The footplate both supports the leg and is a the interface through which the robot and user interact. It is shown in Fig \ref{fig:footplate_label}. An aluminium profile extends from the base on the belt drive. An off-the-shelf carriage with a handle lock is used to adjust the height. Mounting plates are used to attach a load cell to the carriage, which is placed near the bottom of the footplate. The footplate is cut from 1/8'' aluminium plate. 
+	The footplate attaches to the belt drive and is height adjustable. The footplate both supports the leg and is 
+the interface through which the robot and user interact. It is shown in Fig.\ref{fig:footplate_label}. An aluminium profile extends from the base on the belt drive. An off-the-shelf carriage with a handle lock is used to adjust the height. Mounting plates are used to attach a load cell to the carriage, which is placed near the bottom of the footplate. The footplate is cut from 1/8'' aluminium plate. 
 	
 
 	
@@ -687,7 +731,7 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	\end{figure*}
 	
 
-	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. To hold the foot in place, a custom heel support was created. It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D printed, using ABS material for additional strength. 
+	The load cell measures force applied horizontally; however it may also register force due to moments placed on the footplate either from the weight of the leg or from applying forces near the top of the footplate. To minimize these erroneous measures, support brackets were created to transfer vertical forces from the footplate directly to the adjustable base, thereby reducing the effect of the moment. These brackets attach rigidly to the footplate, but not to the adjustable base, thus not interfering with the horizontal force reading at the load cell. To hold the foot in place, a custom heel support was created. It contains housing for an infra-red sensor which can detect whether the foot is in place for safety. The heel support was also 3D printed, using ABS material for additional strength. 
 	
 	\section{Hardware}
 		\subsection{Actuator}	
@@ -700,9 +744,9 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	\end{figure*}
 		
 		
-	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive (Fig. \ref{fig:actuator}). The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354), and the gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090); more information is provided in the next section. The coupling is an Aluminium Flexible Shaft Coupling with a polyurethance spider from McMaster-Carr, which allows for slight shaft misalignment and also has no backlash. 
+	The system is actuated using a Brushed DC Motor, gear reduction, coupling, and an off-the-shelf linear belt drive (Fig.\ref{fig:actuator}). The Brushed DC Motor is a Maxon RE 50 200W Graphite Brush model (part number 370354), and the gear reduction is the Maxon GP 52C Planetary Gearhead (part number 223090); more information is provided in the next section. The coupling is an Aluminium Flexible Shaft Coupling with a polyurethance spider from McMaster-Carr, which allows for slight shaft misalignment and also has no backlash. 
 	
-	The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. It has a total stroke length of 24'', which is reduced to 16'' in the final design due to the addition of a second carriage. The belt drive is rated well above the requirements for this rehabilitation robot -- it has a maximum speed of 100in/sec and a maximum dynamic load of 200 lbs. It is primarily made from aluminium and weighs 9.1 lbs, making it lightweight and easy to move around. The drive delivers 4.8 in of linear travel per motor revolution. The Maxon motor is mounted to the belt drive using custom machined aluminium mounts. Finally, a cable carrier is used to secure wires running from sensors on the footplate to the electronics box mounted at the base of the device. 
+	The linear belt drive is a LB250-24 Belt Drive from Anaheim Automation. It has a total stroke length of 610mm, which is reduced to 405mm in the final design due to the addition of a second carriage. The belt drive is rated well above the requirements for this rehabilitation robot -- it has a maximum speed of 2540mm/sec and a maximum dynamic load of 890N. It is primarily made from aluminium and weighs 40N, making it lightweight and easy to move around. The drive delivers 122mm of linear travel per revolution. The Maxon motor is mounted to the belt drive using custom machined aluminium mounts. Finally, a cable carrier is used to secure wires running from sensors on the footplate to the electronics box mounted at the base of the device. 
 	
 	
 
@@ -734,11 +778,11 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	\begin{tabular}{|l|l|}
 		\hline
 		\rowcolor{gray!10} \textbf{Property} & \textbf{Value}  \\ \hline
-		Stroke Length & 24 in  \\ \hline
- 		Travel per Revolutions & 4.8 in/rev  \\ \hline
- 		Maximum Travel Speed & 100 in/s  \\ \hline
- 		Static Load capacity & 1000 lb  \\ \hline
- 		Dynamic Load Capacity & 200 lb  \\ \hline
+		Stroke Length & 610mm  \\ \hline
+ 		Travel per Revolutions & 120mm/rev  \\ \hline
+ 		Maximum Travel Speed & 2540mm/s  \\ \hline
+ 		Static Load capacity & 4500N \\ \hline
+ 		Dynamic Load Capacity & 890N  \\ \hline
  		Pulley Radius & 35 mm  \\ \hline
 		\end{tabular}
 	\label{tab:belt}
@@ -746,7 +790,7 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	
 
 	
-	The motor is required to move the actuator fast enough while also be able to apply adequate levels of force for assistance or resistance. This motor and gear assembly was used from a previous project, and was found capable of fast of linear motion and applied force. Their specifications can be found in tables 3.1 and 3.2.  The maximum linear speed is in this case limited by the maximum input RPM to the gearhead, 6000RPM: 
+	The motor is required to move the actuator at some desired velocity while also applying adequate levels of force for assistance or resistance. This motor and gear assembly was used from a previous project, and was found capable of fast linear motion and applied force. Their specifications can be found in Tables 3.1 and 3.2.  The maximum linear speed is in this case limited by the maximum input RPM to the gearhead, 6000RPM: 
 	
 	\begin{align*}
 		V_{max} &= \frac{p\omega _{max}}{GR} \frac{1min}{60s} \\
@@ -763,10 +807,10 @@ Figure \ref{fig:cad} shows a CAD rendering of the design with the frame, footpla
 	\begin{align*}
 		F_{nom} &= \frac{\tau _{nom}GR}{R_{pulley}} \\
 		&= \frac{(0.405Nm)(53)}{0.0175} \\
-		&= 1227N = 275 lb
+		&= 1227N 
 	\end{align*}
 
-The maximum speed of 230 mm/s is adequate for our purposes, as the system is designed for stroke rehabilitation which is a slow moving process. The nominal force of 275lbs is much higher than the assistive forces seen during traditional therapy (which therapists estimate to be up to 20 lbs). In the future, a lower gear reduction could be used to increase the maximum speed to accommodate more advanced patients.
+The maximum speed of 230 mm/s is adequate for our purposes, as the system is designed for stroke rehabilitation which is a slow moving process. The nominal force of 1227N  is much higher than the assistive forces seen during traditional therapy (which therapists estimate to be up to 10-15 lb, or 45-67 N). In the future, a lower gear reduction could be used to increase the maximum speed to accommodate more advanced patients. A lower powered motor could also be used to limit the maximum force for safety purposes. 
 
 	\begin{table}[h]
 	\centering
@@ -776,7 +820,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		\rowcolor{gray!10} \textbf{Property} & \textbf{Value}  \\ \hline
  		Maximum Linear Speed & 230 mm/s \\ \hline
  		Nominal Linear Speed & 218 mm/s \\ \hline
- 		Nominal Force & 275 lbs \\ \hline
+ 		Nominal Force & 1227N  \\ \hline
 		\end{tabular}
 	\label{tab:gear}
 	\end{table}		
@@ -799,7 +843,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		
 	\section{Electronics and Power}
 	
-	Custom electronics were needed in order to power and operate the sensors, and send command signals to the motor. At first this was achieved using a protoboard (see Fig. \ref{fig:proto}). Wiring and space restrictions became a problem and motivated a redesign using a printed circuit board (PCB), along with a 3D printed case to enclose the electronics. The PCB has four functions: supply power to the sensors, route signals to and from the DAQ, process or filter signals as necessary, and implement basic safety precautions. 
+	Custom electronics were needed in order to power and operate the sensors, and send command signals to the motor. At first this was achieved using a protoboard (see Fig.\ref{fig:protoboard}). Wiring and space restrictions became a problem and motivated a redesign using a printed circuit board (PCB), along with a 3D printed case to enclose the electronics. The PCB has four functions: supply power to the sensors, route signals to and from the DAQ, process or filter signals as necessary, and implement basic safety precautions. 
 	
 		
 	\begin{figure*}[h] 
@@ -815,7 +859,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	\begin{itemize}
 	\item \textbf{Power Distribution}: The entire device should run off of a single power supply so that only one wall outlet needs to be used. A 48V supply was chosen, since voltage is required by the motor. The sensors require 24V (Load Cell), and 5V (the IR sensor), and 10V is required to send commands to the motor controller. Therefore the PCB has three step-down voltage regulators at these three levels.
 	\item \textbf{Signal Routing}: To streamline the wiring, the PCB takes in three main wires: a DB9 serial connection from the sensors on the footplate, a DB9 serial connection from  the power supply and motor controller, and a DB37 serial connection from the DAQ. These cables are connected to the PCB case and routed to the correct locations.
-	\item \textbf{Signal Processing}: There are a few processing steps taken on the PCB (Fig. \ref{fig:amp}). An adjustable first order low pass filter is used to clean noise from the force measurements. The potentiometer is used to change the cutoff frequency as necessary, we used the filter with potentiometer at about 25K, resulting in a cutoff frequency of approximately 21Hz. The motor commands from the DAQ are also processed through a non-inverting amplifier with a gain of 4. This is used to to map the 0-5V analog out from the DAQ to the motor controller. The new 0-20V motor command is referenced to the 10V signal from a voltage regulator, achieving the final -10V to 10V range required by the motor controller. 
+	\item \textbf{Signal Processing}: The PCB handles analog signal processing (Fig.\ref{fig:amp}). An adjustable first order low-pass filter is used to clean noise from the force measurements. The potentiometer is used to change the cutoff frequency as necessary, we used the filter with potentiometer at about 25K, resulting in a cutoff frequency of approximately 21Hz. The motor commands from the DAQ are also processed through a non-inverting amplifier with a gain of 4. This is used to to map the 0-5V analog out from the DAQ to the motor controller. The new 0-20V motor command is referenced to the 10V signal from a voltage regulator, achieving the final -10 to 10V range required by the motor controller. 
 
 	\begin{figure*}[h] 
 		\centering
@@ -825,7 +869,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		\label{fig:amp}
 	\end{figure*}	
 	
-	\item \textbf{Safety}: The PCB implements four safety checks (Fig. \ref{fig:safety}). First, the motor commands is checked to ensure it is within an adjustable range. This range can be changed using potentiometers. A Watchdog timer is also used to ensure the software has not stalled. Every timestep, the software send a pulse to the timer -- if a pulse is missed within a certain delay, the Watchdog timer is triggered. There is also an emergency stop button which can be pressed at any time by operator or user. Th E-stop signal, Watchdog timer and motor command limits are combined in a logical AND gate, and the resulting output is sent to the enable pin on the motor controller. Any trigger from the three safety signals will disable the motor and stop the device.
+	\item \textbf{Safety}: The PCB implements four safety checks (Fig.\ref{fig:safety}). First, the motor commands is checked to ensure it is within an adjustable range. This range can be changed using potentiometers. A Watchdog timer is also used to ensure the software has not stalled. Every timestep, the software sends a pulse to the timer -- if a pulse is missed within a certain delay, the Watchdog timer is triggered. There is also an emergency stop button which can be pressed at any time by operator or user. Th E-stop signal, Watchdog timer and motor command limits are combined in a logical AND gate, and the resulting output is sent to the enable pin on the motor controller. Any trigger from the three safety signals will disable the motor and stop the device.
 
 	\begin{figure*}[h] 
 		\centering
@@ -839,21 +883,23 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 		
 		\subsection{PCB Layout}
 		
-	\begin{figure*}[h] 
+	\begin{figure*}[p] 
 		\centering
-		\includegraphics[width=0.6\linewidth]{protoboard}
+		\includegraphics[width=0.5\linewidth]{protoboard2}
 		\caption{The original protoboard layout}
 		\label{fig:protoboard}
 	\end{figure*}		
-		
-		Originally, the electronics were mounted and routed on a prototype board, as shown in Fig. \ref{fig:protoboard}. The limited sized of the board made it difficult to add extra features such as filters and safety checks, and the large number of jumper cables required to connect everything to the DAQ and to the other hardware made the setup disorganized, and difficult to troubleshoot. The design was streamlined by creating a custom printed circuit board (PCB), shown in Fig. \ref{fig:pcb_pic}. The layout was designed in Autodesk Eagle, and the board was manufactured by JLCPB (\url{https://jlcpcb.com/}). The first benefit of this design is the size, which contains more components in a smaller space and so can easily be mounted on to the robot. The wiring is also cleaner, with header pins arranged to minimize to bundle related signals together (\textit{e.g.} all wires going to the DAQ are together on the same unit of pins). Decoupling capacitors are added near all the power pins on the major components, to prevent power spikes or sudden changes in voltage.
-		
-		\begin{figure*}[h] 
+	
+			\begin{figure*}[p] 
 		\centering
-		\includegraphics[width=0.9\linewidth]{pcb_pic2}
+		\includegraphics[width=0.8\linewidth]{pcb_pic2}
 		\caption{The PCB layout, with header pins, integrated circuits, and voltage regulators}
-		\label{fig:pcb_pic}
+		\label{fig:pcb_pic2}
 	\end{figure*}
+		
+		 The layout was designed in Autodesk Eagle (Fig.\ref{fig:pcb_pic2}), and the board was manufactured by JLCPB (\url{https://jlcpcb.com/}). The first benefit of this design is the size, which contains more components in a smaller space and so can easily be mounted onto the robot. The wiring is also cleaner, with header pins arranged to bundle related signals together (\textit{e.g.} all wires going to the DAQ are together on the same unit of pins). Decoupling capacitors are added near all the power pins on the major components, to prevent power spikes or sudden changes in voltage.
+		
+
 	
 		
 
@@ -871,7 +917,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	
 	\section{Data Acquisition} 
 
-	Data acquisition is handled by a LabJack T7 DAQ. This model has 14 analog inputs, 2 analog outputs, 23 digital I/O's, and is also capable of handling quadrature encoder signals and high-speed data streaming (up to 100k samples/s). The device can interface with the computer through a Ethernet, USB, or wifi (Ethernet was chosen for this project as it is the fastest and most reliable). The front-end Modbus TCP interface is conveniently packaged in the C/C++ LJM library, discussed further in chapter 3. The T6's specifications are listed in table 3.4.
+	Data acquisition is handled by a LabJack T7 DAQ. This model has 14 analog inputs, 2 analog outputs, 23 digital I/O's, and is also capable of handling quadrature encoder signals and high-speed data streaming (up to 100k samples/s). The device can interface with the computer through an Ethernet, USB, or wifi (Ethernet was chosen for this project as it is the fastest and most reliable). The front-end Modbus TCP interface is conveniently packaged in the C/C++ LJM library, discussed further in chapter 4. The T7's specifications are listed in Table 3.4.
 	
 		
 	\begin{table}[h]
@@ -893,14 +939,14 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	\label{tab:T7}
 	\end{table}
 	
-	One issue with this DAQ is that the analog output is limited to a range of 0-5V, whereas the motor controller accepts commands from -10V to +10V. The DAQ commands are amplified by 4 using a non-inverting amplifier implemented using an Op-Amp, resulting in a range of 0-20V. This is the positive command input to the motor controller. The negative command is set to a constant 10V from a voltage regulator, leading to the desired -10V to +10V range. 
+	The analog output of the DAQ is limited to a range of 0-5V, whereas the motor controller accepts commands from -10 to +10V. The DAQ commands are amplified by a gain of 4 using a non-inverting amplifier implemented using an Op-Amp, resulting in a range of 0-20V. This is the positive command input to the motor controller. The negative command is set to a constant 10V from a voltage regulator, leading to the desired -10V to +10V range. 
 	
 	% such that the 0-5V output can be mapped to the +/- 10V input. 
 
 
 	\section{Computer System}
 
-	The control software and UI are run from an Intel NUC mini PC, with specification listed in table 3.5. The RAM and memory are added separately, and can be upgraded as needed. The PC contains ports for USB, Ethernet, and HDMI. It is compact (11.5 x 3.5 x 11.1 cm) and lightweight (450g). The computer's OS is Ubuntu 16, using a pre-emtpted linux kernel for real-time control (described in Sec. \ref{sec:software}). In theory, the software should run on any hardware, as long as it has enough RAM and memory, is running Linux with a pre-empted kernel, and has an Ethernet port to connect with the DAQ. This modularity should make upgrading the robot easier, in case a new computer with different capabilities is required. 
+	The control software and UI are run from an Intel NUC mini PC, with specification listed in Table 3.5. The RAM and memory are added separately, and can be upgraded as needed. The PC contains ports for USB, Ethernet, and HDMI. It is compact (11.5 x 3.5 x 11.1 cm) and lightweight (450g). The computer's OS is Ubuntu 16, using a pre-emtpted linux kernel for real-time control (described in Sec.\ref{sec:software}). In theory, the software should run on any hardware, as long as it has enough RAM and memory, is running Linux with a pre-empted kernel, and has an Ethernet port to connect with the DAQ. This modularity should make upgrading the robot easier, in case a new computer with different capabilities is required. 
 	
 	
 	\begin{table}[h]
@@ -916,7 +962,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	\end{table}
 	
 	 
-	A GL.iNet GL-MT300N-V2 wireless router is used to set up a local network. The UI is served over this network, and can be accessed by anyone who know the network passwords and the IP address of the UI. It can be accessed using any web browser. The router is also small and lightweight. The complete computer system, including the router, DAQ, and UI device, is shown in Fig. \ref{fig:comp}. 
+	A GL.iNet GL-MT300N-V2 wireless router is used to set up a local network. The UI is served over this network, and can be accessed by anyone who knows the network passwords and the IP address of the UI. It can be accessed using any web browser. The router is also small and lightweight. The complete computer system, including the router, DAQ, and UI device, is shown in Fig.\ref{fig:comp}. 
 	
 
 
@@ -934,7 +980,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 
 	\section{Overview}
 	
-	The controller and software must allow the device to perform the required tasks as laid out in chapter \ref{ch2}. This includes providing assistance to the patient through the exercise, but not to the extent that the patient can become passive and allow the robot to drive the motion. The level of assistance should be adjustable so that the operator can tailor the session to the capabilities of the patient. The software must also engage the patient using virtual environments and games. These must be related to the motion of the exercise, such that the robot becomes a control input into the game, and the patient is rewarded for following the desired trajectory. Immersion within the virtual environment could also be bolstered by haptic feedback, or the physical rendering of virtual forces to the patient through the robotic device. 
+	The controller and software must allow the device to perform the required tasks as laid out in Chapter \ref{ch2}. This includes providing assistance to the patient through the exercise, but not to the extent that the patient can become passive and allow the robot to drive the motion. The level of assistance should be adjustable so that the operator can tailor the session to the capabilities of the patient. The software must also engage the patient using virtual environments and games. These must be related to the motion of the exercise, such that the robot becomes a control input into the game, and the patient is rewarded for following the desired trajectory. Immersion within the virtual environment could also be bolstered by haptic feedback, or the physical rendering of virtual forces to the patient through the robotic device. 
 	
 
 	
@@ -949,7 +995,7 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 
 Both position and force control may behave unpredictably when interacting with an unknown environment, and may not be well suited for the purposes of assisting patients through rehabilitation movements. Position control would not provide assistance as needed, but would simply force the user's leg through the motion, similar to a passive motion machine. Force control is not sufficient since it does not allow the controller to follow a predefined trajectory. Interaction control, also known as impedance/admittance control, was introduced in \cite{Hogan1985}. Instead of controlling position or force directly, interaction control seeks to control the dynamic relation between the position and force variables. 
 	
-There are two possible causalities -- an impedance, which accepts a velocity/position and renders a force, and an admittance, which accepts force and renders a velocity/position. An interaction controller uses one of these causalities, and will sense input from the physical device, calculate the output variables based on some virtual desired system, and then command the device to that output. A commonly used virtual system is the mass-spring-damper system shown in Fig. \ref{fig:mass-spring-damper}, with mass (m), damping (b), and spring stiffness (k), applied force (F), and the desired position ($x_{des}$). 
+There are two possible causalities -- an impedance, which accepts a velocity/position and renders a force, and an admittance, which accepts force and renders a velocity/position. An interaction controller uses one of these causalities, and will sense input from the physical device, calculate the output variables based on some virtual desired system, and then command the device to that output. A commonly-used virtual system is the mass-spring-damper system shown in Fig.\ref{fig:mass-spring-damper}, with mass (m), damping (b), and spring stiffness (k), applied force (F), and the desired position ($x_{des}$). 
 
 	\begin{figure*}[h] 
 		\centering
@@ -958,19 +1004,19 @@ There are two possible causalities -- an impedance, which accepts a velocity/pos
 		\label{fig:mass-spring-damper}
 	\end{figure*}
 	
-Impedance control measures the position and velocity ($V_R$) of the robot, and then calculates the force generated by the virtual system according to its impedance (Z), as in (\ref{eqn:imp}) \& (\ref{eqn:imp_msd}). The device must then use force control to achieve the desired output force, which is usually done by computed-torque methods. 
+Impedance control measures the position and velocity ($V_R$) of the robot, and then calculates the force generated by the virtual system according to its impedance (Z),
 
 \begin{equation} \label{eqn:imp}
-	F = ZV_R 
+	F = ZV_R,
 \end{equation}  
 
 \begin{equation} \label{eqn:imp_msd}
-	F = m\ddot{x} + b\dot{x} + k(x - x_{des})
+	F = m\ddot{x} + b\dot{x} + k(x - x_{des}).
 \end{equation} 
 
 Using this control law, the end effector of the robot will behave like the system above, about point $x_{des}$, when displaced by the external environment. If, for example, an operator moves the robot by pushing on the end-effector, it would respond as if it were the mass-spring-damper system, \textit{i.e.} it would apply a resistive force related to the acceleration, velocity, and the error from the desired point, according to (\ref{eqn:imp_msd}).
 
-	This control law rests on a significant assumption -- that the robot itself has no inherent impedance between the actuator and the the end-effector. It is possible to cancel some of the impedance of the robot by modelling and compensating for them (such as friction, for example), however this is less common and generally takes more time and is less successful \cite{Colgate1988}. This assumption is an idealization - there will always be some level of friction, mass, or other impeding factors in the motor, gears, links, \textit{etc}. Therefore, impedance control should only be considered for robots made of low impedance components, such as belt drives and direct-drives. 
+	This control law rests on a significant assumption -- that the robot itself has no inherent impedance between the actuator and the end-effector. It is possible to cancel some of the impedance of the robot by modelling and compensating for them (such as friction, for example), however this is less common and generally takes more time and is less successful \cite{Colgate1988}. This assumption is an idealization - there will always be some level of friction, mass, or other impeding factors in the motor, gears, links, \textit{etc}. Therefore, impedance control should only be considered for robots made of low impedance components, such as belt drives and direct-drives. 
 	
 
 	
@@ -980,7 +1026,7 @@ Using this control law, the end effector of the robot will behave like the syste
 	V = YF_R 
 	\end{equation} 
 	
-	Once again, it is common to define admittance in terms of a mass-spring-damper system (\ref{eqn:adm}). Here, $x_a$ and $v_a$ are the ``simulated'' position and velocity determined by the admittance controller. Additionally, to actually render the desired position and velocity, an inner-loop PD position controller is used (\ref{eqn:PD}), with $x_a$ and $v_a$ acting as the desired position and velocity, and with a proportional gain P and a derivative gain D. The entire control loop is shown in Fig. \ref{fig:adm_diagram}. Here, the controller is given in state space form, with state matrix A and input matrix B. 
+	Once again, it is common to define admittance in terms of a mass-spring-damper system (\ref{eqn:adm}). Here, $x_a$ and $v_a$ are the ``simulated'' position and velocity determined by the admittance controller. Additionally, to actually render the desired position and velocity, an inner-loop PD position controller is used (\ref{eqn:PD}), with $x_a$ and $v_a$ acting as the desired position and velocity, and with a proportional gain P and a derivative gain D. The entire control loop is shown in Fig.\ref{fig:adm_diagram}. Here, the controller is given in state space form, with state matrix A and input matrix B. 
 	
 	
 	\begin{equation}
@@ -1013,7 +1059,7 @@ Using this control law, the end effector of the robot will behave like the syste
 	F = P(x - x_a) + D(v - v_a)
 	\end{equation}
 
-	Admittance control assumes that the robot has infinite impedance, or that all hardware between the actuator and the end-effector is infinitely stiff, infinitely damped, \textit{etc}. This, once again, is an idealization -- and therefore admittance control should only be considered when the robot has high impedance, i.e. when using large gear reductions and rigid links. 
+	Admittance control works best when the inner position control loop is accurate, and therefore relies on the robot having a fairly high impedance i.e. when using large gear reductions and rigid links. 
 	
 		\begin{figure*}[h] 
 		\centering
@@ -1022,7 +1068,7 @@ Using this control law, the end effector of the robot will behave like the syste
 		\label{fig:adm_diagram}
 	\end{figure*}
 	
-	Another point of consideration when choosing between impedance and admittance control is its stability when encountering different types of environments. Impedance control works better when interacting with an admittance (rigid environments), whereas admittance control works better when interacting with an impedance (weak environment / free space). Admittance control also requires a force/torque sensor, whereas impedance only requires position measurements. A summary of the differences between impedance and admittance control is given in table 4.1.
+	Another point of consideration when choosing between impedance and admittance control is its stability when encountering different types of environments. Impedance control works better when interacting with an admittance (rigid environments), whereas admittance control works better when interacting with an impedance (weak environment / free space). Admittance control also requires a force/torque sensor, whereas impedance only requires position measurements. A summary of the differences between impedance and admittance control is given in Table 4.1.
 	
 		\begin{table}[h] \label{tab:imp_vs_adm}
 	\centering \doublespacing
@@ -1071,7 +1117,7 @@ Admittance control is implemented through the following steps:
 		\label{fig:axis}
 	\end{figure*}
 	
-	The final step is to set the desired position to a suitable trajectory. The system is 1-DOF, so this can be done simply by creating a velocity profile. The velocity profile is defined in terms of the total length of the linear stroke ($x_{max}$) as well as the maximum velocity that we want to have at any point ($v_{max}$). The definition of the x axis is shown in Fig. \ref{fig:axis}. At first, a quadratic relation was used, creating a parabola with zero velocity at each endpoint and $v_{max}$ in the center. This was found to feel unnatural. The final profile is shown in Fig. \ref{fig:velocity_profile}, with constant acceleration to $v_{max}$, a plateau of constant velocity, followed by a constant deceleration. The same profile is inverted to move back at the end of the stroke. The transition points were set at points which were determined empirically based on what felt most natural, with acceleration up to $0.4 x_{max}$, and deceleration beginning at $0.6 x_{max}$. 
+	The final step is to set the desired position to a suitable trajectory. The system is 1-DOF, so this can be done simply by creating a velocity profile. The velocity profile is defined in terms of the total length of the linear stroke ($x_{max}$) as well as the maximum velocity ($v_{max}$). The definition of the x-axis is shown in Fig.\ref{fig:axis}. At first, a quadratic relation was used, creating a parabola with zero velocity at each endpoint and $v_{max}$ in the center. This was found to feel unnatural. The final profile is shown in Fig.\ref{fig:velocity_profile}, with constant acceleration to $v_{max}$, a plateau of constant velocity, followed by a constant deceleration. The same profile is inverted to move back at the end of the stroke. The transition points were set at points which were determined empirically based on what felt most natural, with acceleration up to $0.4 x_{max}$, and deceleration beginning at $0.6 x_{max}$. 
 	Improvements could be made on the desired trajectory. For example, a higher order function could be used which minimizes jerk or acceleration to make the movement smoother. Another option is to record the trajectory as either the operator or therapist guides the robot through the exercise.
 	
 	\begin{figure*}[h] 
@@ -1096,7 +1142,7 @@ Admittance control is implemented through the following steps:
 	\section{Haptic Feedback} \label{sec:haptic}
 	
 	
-	Haptic feedback is the physical rendering of forces from virtual environments. Typically an actuated device is used as the haptic interface, which allows the user to control the motion and applies interaction forces when necessary. For example, the Phantom Pentium (Fig. \ref{fig:phantom}) is a haptic interface pen which allows users to interact with a 3D computer environment \cite{Massie1994}. The haptic controller needs to consider the accuracy of the rendering of the interaction forces, the stability of the system, and safety of the user. The modelling and the physics of the virtual environment must also be considered. 		
+	Haptic feedback is the physical rendering of forces from virtual environments. Typically an actuated device is used as the haptic interface, which allows the user to control the motion and applies interaction forces when necessary. For example, the Phantom Pentium (Fig.\ref{fig:phantom}) is a haptic interface pen which allows users to interact with a 3D computer environment \cite{Massie1994}. The haptic controller needs to consider the accuracy of the rendering of the interaction forces, the stability of the system, and safety of the user. The modelling and the physics of the virtual environment must also be considered. 		
 		
 	
 	\begin{figure*}[t] 
@@ -1115,7 +1161,7 @@ Admittance control is implemented through the following steps:
 		
 		In \cite{Zilles}, the God-Object method is introduced to resolve this issue. The device is given a virtual position, the position the device would be in theory if the haptics were infinitely stiff. Hence the virtual position always remains at the surface of the object, and the direction of the interaction force can be set normal to the surface. 
 		
-		A third option is given in \cite{Adams1999}, known as the haptic coupling, is a virtual system placed between the controller and the virtual environment. Using straight admittance controller to render the virtual environment is shown in Fig. \ref{fig:haptic_adm}. The virtual environment must have the same causality as the controller, in this case the admittance causality. The operator's state is defined by velocity ($V_h$) and force ($F_h$), and in this case the virtual environment is the admittance controller with velocity $V_e$ and force $f_e$. 
+		A third option, introduced in \cite{Adams1999} and known as the haptic coupling, is a virtual system placed between the controller and the virtual environment. Using standard admittance controller to render the virtual environment is shown in Fig.\ref{fig:haptic_adm}. The virtual environment must have the same causality as the controller, in this case the admittance causality. The operator's state is defined by velocity ($V_h$) and force ($F_h$), and in this case the virtual environment is the admittance controller with velocity $V_e$ and force $f_e$. 
 	
 	\begin{figure*}[h] 
 		\centering
@@ -1124,7 +1170,7 @@ Admittance control is implemented through the following steps:
 		\label{fig:haptic_adm}
 	\end{figure*}	
 	
-	The haptic coupling is placed between the robot and the virtual environment. It's purpose is twofold: to decouple the device and virtual environment, and to allow for different causalities (for example, in Fig. \ref{fig:haptic_adm_coup}, the haptic coupling allows for an impedance environment to be used with a robot with admittance control).
+	The haptic coupling is placed between the robot and the virtual environment. It's purpose is twofold: to decouple the device and virtual environment, and to allow for different causalities (for example, in Fig.\ref{fig:haptic_adm_coup}, the haptic coupling allows for an impedance environment to be used with a robot with admittance control).
 	
 			\begin{figure*}[h] 
 		\centering
@@ -1173,7 +1219,7 @@ Admittance control is implemented through the following steps:
 	\end{figure*} 
 	
 
-The haptic coupling for admittance devices given in \cite{Adams1999} is a mass and damper in series, as in Fig. \ref{fig:haptic_coupling_original}. The haptic coupling adds impedance to the controller, and so the the virtual environment will be rendered with the highest fidelity when the impedance of the haptic coupling is the smallest possible (without becoming unstable). Placing the mass and damper in series achieves this minimal impedance.  	
+The haptic coupling for admittance devices given in \cite{Adams1999} is a mass and damper in series, as in Fig.\ref{fig:haptic_coupling_original}. The haptic coupling adds impedance to the controller, and so the virtual environment will be rendered with the highest fidelity when the impedance of the haptic coupling is the smallest possible (without becoming unstable). Placing the mass and damper in series achieves this minimal impedance.  	
 
 	
 	\begin{figure*}[h] 
@@ -1183,7 +1229,7 @@ The haptic coupling for admittance devices given in \cite{Adams1999} is a mass a
 		\label{fig:haptic_coupling_original}
 	\end{figure*} 
 	
-	However, in our scenario, it is desired that the minimum impedance provided by the haptic coupling is still somewhat high -- if the damping is too low, the patient-robot interaction may become unstable. Also, having the mass and damper in series produces a strange dynamic effect wherein the damping force is diminished as the system reaches equilibrium. Therefore, we rearranged the haptic coupling to a mass and damper in parallel, as shown in Fig. \ref{fig:haptic_coupling}. In this case, the impedance of the coupling is intuitive, simply a constant mass and damping. This constant impedance is what the user will perceive when the virtual environment is not adding any interaction force, \textit{i.e.} when moving through free space. Any interaction forces (\textit{e.g.} when contacting a wall in the virtual environment) will be added on top of this baseline level of impedance. 
+	However, in our scenario, it is desired that the minimum impedance provided by the haptic coupling is still somewhat high -- if the damping is too low, the patient-robot interaction may become unstable. Also, having the mass and damper in series produces a strange dynamic effect wherein the damping force is diminished as the system reaches equilibrium. Therefore, we rearranged the haptic coupling to a mass and damper in parallel, as shown in Fig.\ref{fig:haptic_coupling}. In this case, the impedance of the coupling is intuitive, simply a constant mass and damping. This constant impedance is what the user will perceive when the virtual environment is not adding any interaction force, \textit{i.e.} when moving through free space. Any interaction forces (\textit{e.g.} when contacting a wall in the virtual environment) will be added on top of this baseline level of impedance. 
 	
 	\begin{figure*}[h] 
 		\centering
@@ -1225,9 +1271,9 @@ The z-transform \cite{ztrans} yield the algorithm used in the real-time controll
 \end{equation}
 
 	
-The underlying virtual physics should have an impedance causality, and so the environmental force is calculated based on this position/velocity pair. This mapping can be an arbitrary function of $x_k$ and $v_k$, thanks to the haptic coupling (\ref{eqn:imp}). 
+The underlying virtual physics should have an impedance causality, and so the environmental force is calculated based on this position/velocity pair. This mapping can be an arbitrary function of $x_k$ and $v_k$, thanks to the haptic coupling (\ref{eqn:imp_coup}). 
  
-\begin{equation} \label{eqn:imp}
+\begin{equation} \label{eqn:imp_coup}
 	f_k = \mathcal{F}(x_k, v_k)
 \end{equation}
 
@@ -1262,13 +1308,13 @@ When using haptic feedback, the physics of the environment become part of the co
 \begin{enumerate}
 	\item Disturbance is out of play: The disturbance has left the environment. A new one is randomly spawned to either the right or left of the environment, and given a fixed initial velocity.
 	\item No Contact: There is no contact. The position of each object is updated, with the character's position set equal to the position of the device, and the disturbances position set according to its constant velocity. 
-	\item Contact: The character's sphere overlaps the disturbances sphere, and are therefore in contact. The contact force is modelled a linear spring, with the distance between the objects' centres times the contact stiffness equal to the interaction force. 
+	\item Contact: The character's sphere overlaps the disturbances sphere, and are therefore in contact. The contact force is modelled by a linear spring, with the distance between the objects' centres times the contact stiffness equal to the interaction force. 
 \end{enumerate}
 
 	
 	\section{Tuning Control Gains}
 
-	The controller gains were tuned based on the maximum limits of the device and the maximum desired behaviour when interacting with the human user. The gains and parameters to be set include:
+	The controller gains were tuned based on the maximum limits of the device and the maximum desired impedance or force when interacting with the human user. The gains and parameters to be set include:
 	
 	\begin{enumerate}
 		\item Proportional and Derivative gains (P \& D) for the position controller 
@@ -1287,7 +1333,7 @@ When using haptic feedback, the physics of the environment become part of the co
 	
 	First, the PD controller can be tuned separately from the admittance. The PD controller can be thought of as another impedance existing within the system (where the proportional gain is like a spring and the derivative gain is like a damper), and should therefore be tuned as high (stiff) as possible for optimal performance of the admittance controller. The P gain should be set such that the largest position error corresponds with the maximum motor command. The maximum motor command at the motor controller is $\pm 10V$, however the motor command sent from the DAQ is multiplied by a factor of approximately 4 and referenced to a constant $10 V$. Therefore the maximum command sent from the controller is between 0 (maximum current in one direction) to 5 (maximum current in the other direction). 
 	
-	The maximum displacement can be calculated by using the maximum velocity achievable by the actuator. In this case that is $9 in/s$, which corresponds to a maximum displacement of about $0.23 mm/step$ for a controller running at 1000 Hz. However, the system may exceed this limit momentarily. Furthermore, since the system is interacting with a person whose behaviour is unknown, there is always the chance the system will be driven beyond the limits. Therefore it was decided to design the PD controller based on a maximum step of 2mm, and to then try and enforce the maximum velocity of $9 in/s$ through visual feedback to the user, by encouraging the user to follow the desired velocity. Given these parameters, the P gain should be set to 2.4. Here the derivative term is neglected since it's contribution is negative (damping). 
+	The maximum displacement can be calculated by using the maximum velocity achievable by the actuator. In this case that is $9 in/s$, which corresponds to a maximum displacement of about $0.23 mm/step$ for a controller running at 1000 Hz. However, the system may exceed this limit momentarily. Furthermore, since the system is interacting with a person whose behaviour is unknown, there is always the chance the system will be driven beyond the limits. Therefore it was decided to design the PD controller based on a maximum step of 2mm, and to then try and enforce the maximum velocity of $9 in/s$ through visual feedback to the user, by encouraging the user to follow the desired velocity. The step size of 2mm was derived empirically. Given these parameters, the P gain should be set to 2.4. Here the derivative term is neglected since it's contribution is negative (damping). 
 	
 	\begin{align*}
 		cmd_{max} &= P\Delta x \\
@@ -1296,7 +1342,7 @@ When using haptic feedback, the physics of the environment become part of the co
 	
 	Next, the D gain is determined empirically by increasing it until there is no overshoot to a step response. The final result was a D gain of 0.2. 
 	
-	The limits on the admittance parameters can now be determined. The admittance system can be approximated by the following equation. 
+	The limits on the admittance parameters can now be determined. The admittance system can be approximated by the following equation, 
 	
 	\begin{equation} \label{eqn:adm_param}
 		\Delta v = - \frac{K}{M}x - \frac{B}{M}\dot{x} + \frac{1}{M}F
@@ -1319,7 +1365,7 @@ When using haptic feedback, the physics of the environment become part of the co
 
 	%The mass does not affect the rendered impedance, but instead determines the systems sensitivity to force. The smaller the mass, the smaller the force that is required to achieve a certain state ... There is therefore no real maximum mass, however at some point a high mass will make the system impossible to move. There is a minimum mass, below which the sensitivity to force allows sensor noise or unmodeled dynamics to effect the system to an undesirable extent. 
 	
-	The haptic coupling parameters are set to the minimums found for the admittance controller. The haptic coupling is then as transparent as possible without leading to instability. The parameter ranges are summarized in table 4.2. 
+	The haptic coupling parameters are set to the minimums found for the admittance controller. The haptic coupling is then as transparent as possible without leading to instability. The parameter ranges are summarized in Table 4.2. 
 	
 	%Finally, the haptic coupling parameters $m$ and $b$ should be set. As was explained in Sec. , these parameters give the controller some minimum impedance so that the haptics do not try to render an impedance too close to free motion. Therefore, the parameters are set to the empirically derived $B_{min}$ and its pair $K_{min}$. This decouples the haptic design from the stability of the controller by imposing the minimum impedance for the stability. The maximum constraints are however still not imposed. Fortunately, the haptics explicitly calculate either the desired force or the desired next position, and therefore the constraints on these parameters can be directly imposed. 
 		
@@ -1351,7 +1397,7 @@ When using haptic feedback, the physics of the environment become part of the co
 			
 	\section{Software} \label{sec:software} 
 
-	The controller needs to be implemented in software, along with communication, data logging, and a User Interface for setting up and displaying visuals. The software is split into two parts: the control software and the user interface software. The entire codebase is available on GitHub at \href{https://github.com/nickberezny/RehabRobot}{https://github.com/nickberezny/RehabRobot}. It is built to run on real time enabled Linux, and should run on any hardware (assuming it has sufficient memory and RAM, and an ethernet port to connect with the DAQ). This modularity should make it easy to use this code in future iterations of the project which may use different hardware. To date, it has been tested on the Intel NUC used in this project, as well as on a Raspberry Pi 3B. The three main branches of the software are the real time controller, the user interface server, and the user interface (Fig. \ref{fig:software}).
+	The controller needs to be implemented in software, along with communication, data logging, and a user interface for setting up and displaying visuals. The software is split into two parts: the control software and the user interface software. The entire codebase is available on GitHub at \href{https://github.com/nickberezny/RehabRobot}{https://github.com/nickberezny/RehabRobot}. It is built to run on real time enabled Linux, and should run on any hardware (assuming it has sufficient memory and RAM, and an ethernet port to connect with the DAQ). This modularity should make it easy to use this code in future iterations of the project which may use different hardware. To date, it has been tested on the Intel NUC used in this project, as well as on a Raspberry Pi 3B. The three main branches of the software are the real time controller, the user interface server, and the user interface (Fig.\ref{fig:software}).
 	
 		\begin{figure*}[h] 
 		\centering
@@ -1373,22 +1419,22 @@ When using haptic feedback, the physics of the environment become part of the co
 %
 %-------------------------------------------------------------------------
 
-A real time system is one in which the timing of the computations significantly affects the results \cite{Lewine1991} --  in other words, a missed computational deadline can be detrimental to the performance of the system. Systems can either be soft real time or hard real time, a distinction made based on the danger associated with missing a deadline. Hard real time system will cause serious harm or damage if a deadline is missed (\textit{e.g.} the control systems on a Jet), while the consequences are typically minor in soft real time systems. The distinction can be vague, but in general hard real time systems require programs which are mathematically proven to be real time, whereas soft real time systems can get away with less stringent requirements. 
+A real time system is one in which the timing of the computations significantly affects the results \cite{Lewine1991} --  in other words, a missed computational deadline can be detrimental to the performance of the system. Systems can either be soft real time or hard real time. Hard real-time systems are deterministic, whereas soft real-time systems typically use similar methods to hard real-time with less stringent requirements. Choosing which to use is based on the danger associated with missing a deadline. Hard real time system will cause serious harm or damage if a deadline is missed (\textit{e.g.} the control systems on a Jet), while the consequences are typically minor in soft real time systems. 
 
 The consequences of a missed deadline in our system is at worst sending the wrong motor torque command to the actuator, which in the absolute worst case scenario will cause the maximum torque command to be issued. However, motor torque commands are limited for safety, and the operator and user have access to an emergency stop. Therefore, we deemed that the system requires only soft real time capabilities. 
 
-Linux is an operating system (OS) based on UNIX which is open source and comes in variety of versions or flavours, including Ubuntu. Linux can be used as a standard home computing operating system like Windows or Mac, and is also found commonly in embedded system where the OS is highly tailored to a specific set of hardware. The Linux kernel is not inherently real time -- there is a patch available which adds soft real time capabilities to the OS. This is known as Real-time Linux or RTLinux, and is created using the Preempt RT patch \cite{SebastianSiewior2019}. The patch allows programmings to use the following real time functionalities, as defined in the real time standard extension of the original Portable Operating System Interface for Computing Environments (POSIX) \cite{Obenland}.
+Linux is an operating system (OS) based on UNIX which is open source and comes in variety of versions or flavours, including Ubuntu. Linux can be used as a standard home computing operating system like Windows or Mac, and is also found commonly in embedded system where the OS is highly tailored to a specific set of hardware. The Linux kernel is not inherently real time -- there is a patch available which adds soft real time capabilities to the OS. This is known as Real-time Linux or RTLinux, and is created using the Preempt RT patch \cite{SebastianSiewior2019}. The patch allows programmers to use the following real time functionalities, as defined in the real time standard extension of the original Portable Operating System Interface for Computing Environments (POSIX) \cite{Obenland}.
 
 \begin{itemize}
 	\item \textbf{Threads}: POSIX threads, or pthreads, are used for parallel computing. Multiple threads can run under a single process and share its memory space.
 	\item \textbf{Priority Scheduling}: Allows setting thread priorities, with higher priority processes pre-empting lower priority processes. This helps critical control code to run uninterrupted by less important work. 
-	\item \textbf{Mutexes}: A Mutual Exclusions Object is used to orchestrate data sharing between threads. Once one thread takes ownership of a Mutex, others cannot access it before it is unlocked. This prevent other threads from changing the data before the previous thread is finished. 
+	\item \textbf{Mutexes}: A Mutual Exclusions Object is used to orchestrate data sharing between threads. Once one thread takes ownership of a Mutex, others cannot access it until it is unlocked. This prevent other threads from changing the data before the previous thread is finished. 
 	\item \textbf{Memory Locking}: Locks memory into RAM to prevent the program from accessing the hard disk (Page Faults), which can cause delays. 
 \end{itemize}
 	
 	\subsection{Controller}
 	
-	The controller is written in C, and is designed to achieve low latency so that it can meet sampling rate deadlines. The target frequency is 1kHz, or 1ms per time step. The controller on average runs at 1.05 ms per time step, or approximately 9.5 kHz. More information of delays and jitter in the control software can be found in Sec \ref{sec:results}. 
+	The controller is written in C, and is designed to achieve low latency so that it can meet sampling rate deadlines. The target frequency is 1kHz, or 1ms per time step. The controller on average runs at 1.05 ms per time step, or approximately 0.95 kHz. More information of delays and jitter in the control software can be found in Sec \ref{sec:results}. 
 	
 
 	
@@ -1439,7 +1485,7 @@ Linux is an operating system (OS) based on UNIX which is open source and comes i
 	
 	The User Interface (UI) is used both by the operator and the patient. It can be used to set up the parameters for a session, display the visual feedback to the patient, and  view the session data and past session data for progress monitoring. The UI should be intuitive, easy to access, and portable across different hardware and computers (including tablets, mobile devices, etc.).
 	
-	There are a number of libraries for creating UI's. For example, GTK is a toolkit for creating UI's on Linux, Mac or Windows \cite{TheGTKTeam2019}. However, we want the UI to work on mobile devices as well (iPADs and Android Tablets), which are more portable and may be easier to position so that the patient can access it comfortably. Ideally, a library that works on Linux, Max, Windows, Android, and iOS would be chosen. One option is to use web technology, given that all of these OS's have internet browsers. We therefore decided to created and serve a website from the computer through a local network, that could be access by any device which has access to the same local network. 
+	There are a number of libraries for creating UI's. For example, GTK is a toolkit for creating UI's on Linux, Mac or Windows \cite{TheGTKTeam2019}. However, we want the UI to work on mobile devices as well (iPADs and Android Tablets), which are more portable and may be easier to position so that the patient can access it comfortably. Ideally, a library that works on Linux, Max, Windows, Android, and iOS would be chosen. One option is to use web technology, given that all of these OS's have internet browsers. We therefore decided to create and serve a website from the computer through a local network, that could be accessed by any device which has access to the same local network. 
 	
 	The UI uses the following libraries/tools:
 	
@@ -1461,7 +1507,7 @@ Linux is an operating system (OS) based on UNIX which is open source and comes i
 
 The UI consists of a menu and three pages: the setup page, the game page, and the settings page. The UI layout includes a top bar with menu access, the menu (which can be hidden or expanded), and the content. 
 
-\textbf{Setup Page}: Seen in Fig. \ref{fig:ui-menu}, the setup page allows the therapist or operator to set the parameters for a therapy session. The therapist can set the desired game, the length of the session, velocity and force limits, assistance levels, etc. In developer mode, controller gains can be tuned directly. The set button sends this information to the control process. 
+\textbf{Setup Page}: Seen in Fig.\ref{fig:ui-menu}, the setup page allows the therapist or operator to set the parameters for a therapy session. The therapist can set the desired game, the length of the session, velocity and force limits, assistance levels, etc. In developer mode, controller gains can be tuned directly. The set button sends this information to the control process. 
 
 	\begin{figure*}[h] 
 		\centering
@@ -1470,13 +1516,13 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 		\label{fig:ui-menu}
 	\end{figure*} 	
 		
-\textbf{Games Page}: The game page displays the games or visuals to the patient. It contains the home and run buttons which are used to set up the device before starting the session. The home button triggers the homing procedure, in which the device is moved to the limits of the device, which is used to determine both the maximum stroke length and the devices current position. 
+\textbf{Games Page}: The game page displays the games or visuals to the patient. It contains the home and run buttons which are used to set up the device before starting the session. The home button triggers the homing procedure, in which the device is moved to the limits of the device, which is used to determine both the maximum stroke length and the device's current position. 
 
 \textbf{Settings Page}: This page contains any UI settings that one may want to change. For now, this only allows the operator to switch between Developer Mode and User Mode, which change the level of detail in the setup page. 		
 		
 		\subsubsection{Visuals} \label{sec:visuals} 
 				
-		The games page is used to give feedback to the user on their position within the trajectory. The guide is used to display the length of the actuator, the user's position and the desired position (Fig. \ref{fig:trajectory}). The desired position is shown as a translucent box, which is normally red but changes to green if the user's position is within a certain small margin of error. The User's position is shown as a blue rectangle. In essence, the knee flexion exercise is carried out by the user attempting to follow the desired position as closely as possible. The guide is also useful in showing the user the end limits of the device, to help them avoid forcing the device through the endstop (Fig. \ref{fig:axis_leg}).
+		The games page is used to give feedback to the user on their position within the trajectory. The guide is used to display the length of the actuator, the user's position and the desired position (Fig.\ref{fig:trajectory}). The desired position is shown as a translucent box, which is normally red but changes to green if the user's position is within a certain small margin of error. The User's position is shown as a blue rectangle. In essence, the knee flexion exercise is carried out by the user attempting to follow the desired position as closely as possible. The guide is also useful in showing the user the end limits of the device, to help them avoid forcing the device through the endstop (Fig.\ref{fig:axis_leg}).
 		
 	\begin{figure*}[h] 
 		\centering
@@ -1501,9 +1547,9 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 
 \item \textbf{Simple Environment}: a simple cube, displayed with the guide. If the user is within a certain margin of error, the cube spins, otherwise the cube is still. This is meant to demonstrate a virtual environment which responds to the performance of the user, but is not a competitive or challenging game. 
 
-\item \textbf{Racing Game}: a race between three object: the user and two computer controlled characters (Fig. \ref{fig:race}). Each object moves around a track, with the computer characters moving at predefined speeds, and the user's character moving at a speed proportional to the accuracy of their motion (\textit{i.e.} the lower the error, the faster they move). This game is meant to demonstrate a more challenging game which motivates the player to perform the exercise accurately. 
+\item \textbf{Racing Game}: a race between three objects: the user and two computer controlled characters (Fig.\ref{fig:race}). Each object moves around a track, with the computer characters moving at predefined speeds, and the user's character moving at a speed proportional to the accuracy of their motion (\textit{i.e.} the lower the error, the faster they move). This game is meant to demonstrate a more challenging game which motivates the player to perform the exercise accurately. 
 
-\item \textbf{Haptic Balance Game}: this game is not related to the knee flexion exercise. The user's foot directly controls the position of their character. They are tasked with maintaining a static position on top of a column (Fig. \ref{fig:balance_game}). Disturbances are launched at the player in the form of spheres, which when in contact created haptic force feedback according to the physics engine. The user must push these disturbances away without falling off the column. This game demonstrates both haptic feedback, and a game in which the user's foot directly controls a character. 
+\item \textbf{Haptic Balance Game}: this game is not related to the knee flexion exercise. The user's foot directly controls the position of their character. They are tasked with maintaining a static position on top of a column (Fig.\ref{fig:balance_game}). Disturbances are launched at the player, which when in contact create haptic force feedback according to the physics engine. The user must push these disturbances away without falling off the column. This game demonstrates both haptic feedback, and a game in which the user's foot directly controls a character. 
 
 
 \end{itemize}	
@@ -1536,7 +1582,7 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 
 	\section{Overview}
 	
-	Four experiments were run in total: a safety test, a test of the controller, and two phases of a healthy participant experiment. The goals, procedure and outcomes of each are summarized in table 5.1. These experiments show that the device is functioning as desired and can successfully deliver assistance and resistance to the user through the knee flexion/extension. The experiments also uncovered future directions for design changes and additions, which are discussed in chapter \ref{ch_conc}. 
+	Four experiments were run in total: a safety test, a test of the controller, and two phases of a healthy participant experiment. The goals, procedure and outcomes of each are summarized in Table 5.1. These experiments show that the device is functioning as desired and can successfully deliver assistance and resistance to the user through the knee flexion/extension. The experiments also uncovered future directions for design changes and additions, which are discussed in Chapter \ref{ch_conc}. 
 	
 		\begin{table}[p] \label{tab:experiments}
 	\centering
@@ -1622,13 +1668,13 @@ Other safety features have been included but have not yet been integrated, inclu
 	
 	\subsection{Method}
 
-	To confirm that the controller is successfully rendering the desired admittance, the output position of the device was compared to a simulation of the desired admittance. The first test looked at a position step response, in which an offset to the reference position at 200mm was used. For the second test, force was applied to the system by pushing the footplate, and data regarding the position and the input force was saved. The force data was used as an input to a Simulink simulation of the mass-spring-damper system, and both the robots position and the simulated position were compared. It was expected that the robot position would track the simulation with some minimal delay due to time lag introduced by the finite sampling rate, as well as some possible error due to limitations of the robots PD control.	
+	To confirm that the controller is successfully rendering the desired admittance, the output position of the device was compared to a simulation of the desired admittance. The first test looked at a position step response, in which an offset to the reference position of 200mm was used. For the second test, force was applied to the system by pushing the footplate, and data regarding the position and the input force was saved. The force data was used as an input to a Simulink simulation of the mass-spring-damper system, and both the robots position and the simulated position were compared. It was expected that the robot position would track the simulation with some minimal delay due to time lag introduced by the finite sampling rate, as well as some possible error due to limitations of the robot's PD control.	
 	
 	Next, the robot was run with a human in place (i.e. operating the device with their leg). The user went through the knee flexion/extension exercise with the visual feedback and games. The time duration of each step was recorded, and were used to determine the average time step interval, and to investigate time step jitter.  
 	
 	\subsection{Results \& Discussion}
 	
-For the first test no interaction force was applied, only an initial offset of the reference position of the spring (of 0.2m) was used to elicit a response. A comparison of the robot's behaviour and the simulated behaviour of the desired admittance behaviour is given in (Fig. \ref{fig:nVerNoInt}). The system behaved as expected, following the correct admittance with a small delay.
+For the first test no interaction force was applied, only an initial offset of the reference position of the spring (of 0.2m) was used to elicit a response. A comparison of the robot's behaviour and the simulated behaviour of the desired admittance behaviour is given in (Fig.\ref{fig:nVerNoInt}). The system behaved as expected, following the correct admittance with a small delay.
 
 \begin{figure*}[t] 
 	\centering
@@ -1637,7 +1683,7 @@ For the first test no interaction force was applied, only an initial offset of t
 	\label{fig:nVerNoInt}
 \end{figure*}
 
-The next test was to apply forces to the system to determine if the system can render the correct admittance with a semi-random input. Hence, a human subject was tasked to move the footplate back and forth. The force data from the 1-DOF load cell was saved and used as an input to the admittance simulation. Fig. \ref{fig:adm_sim} shows a comparison of the actual device position versus the simulated position. Again, the system behaves as expected, following the simulation with some minimal delay. The average positional error was only 1.91mm. 
+The next test was to apply forces to the system to determine if the system can render the correct admittance with a semi-random input. Hence, a human subject was tasked to move the footplate back and forth. The force data from the 1-DOF load cell was saved and used as an input to the admittance simulation. Fig.\ref{fig:adm_sim} shows a comparison of the actual device position versus the simulated position. Again, the system behaves as expected, following the simulation with some minimal delay. The average positional error was only 1.91mm. 
 
 \begin{figure}[h]
 	\centering
@@ -1646,7 +1692,7 @@ The next test was to apply forces to the system to determine if the system can r
 	\label{fig:adm_sim}
 \end{figure}	
 
-	  	The soft real-time system was capable of providing reasonably precise time step control, with an average time step of 1.05 ms (5\% higher than the goal of 1ms). Jitter was higher during some steps, sometimes reaching up to 2ms, however this did not affect the systems ability to deliver the proper controls (Fig. \ref{fig:jitter}). 
+	  	The soft real-time system was capable of providing reasonably precise time step control, with an average time step of 1.05 ms (5\% higher than the goal of 1ms). Jitter was higher during some steps, sometimes reaching up to 2ms, however this did not affect the system's ability to deliver the proper controls (Fig.\ref{fig:jitter}). 
 
 %	\begin{itemize}
 %		\item Time step jitter to determine how well the real time system could achieve the desired frequency 
@@ -1685,13 +1731,13 @@ The next test was to apply forces to the system to determine if the system can r
 	
 		\subsection{Goals}
 	
-	The healthy subject experiments were designed as a preliminary study on the interaction between the device and a human operator, specifically the robots ability to administer rehabilitation in the form of assistive and resistive forces, visual feedback, and engaging games. While the previous two experiments confirmed that the device was safe and that the controller functioned as expected, there were still questions that needed to be addressed before bringing the robot to the hospital to test on stroke patients. Suitable levels of assistance and resistance are not known -- a range of acceptable spring and damper gains needs to be determined. Furthermore, it was not known what parameters levels users would prefer (e.g. high levels of resistance, low levels of resistance, etc.), or to what extent these parameters would change the behaviour of the user (e.g. does increasing the spring stiffness improve the user's ability to follow a desired trajectory, and does it effect how much work the user has to do?). Other qualitative questions also remained, such as the comfort of the robot, how well the robot supported the leg, and how safe the user perceives the device to be. It is critical that any flaws in the design which compromise these aspects of the robot are fixed before bringing the device to the hospital. Finally, the games need to be tested to determine if they successfully engage the user in the rehabilitation exercise. Since these games are not meant to be finished products, but only simple representations of different types of potential games, the feedback here should be used to influence what types of games are created in future work.  
+	The healthy subject experiments were designed as a preliminary study on the interaction between the device and a human operator, specifically the robot's ability to administer rehabilitation in the form of assistive and resistive forces, visual feedback, and engaging games. While the previous two experiments confirmed that the device was safe and that the controller functioned as expected, there were still questions that needed to be addressed before bringing the robot to the hospital to test on stroke patients. Suitable levels of assistance and resistance are not known -- a range of acceptable spring and damper gains needs to be determined. Furthermore, it was not known what parameters levels users would prefer (e.g. high levels of resistance, low levels of resistance, etc.), or to what extent these parameters would change the behaviour of the user (e.g. does increasing the spring stiffness improve the user's ability to follow a desired trajectory, and does it affect how much work the user has to do?). Other qualitative questions also remained, such as the comfort of the robot, how well the robot supported the leg, and how safe the user perceives the device to be. It is critical that any flaws in the design which compromise these aspects of the robot are fixed before bringing the device to the hospital. Finally, the games need to be tested to determine if they successfully engage the user in the rehabilitation exercise. Since these games are not meant to be finished products, but only simple representations of different types of potential games, the feedback here should be used to influence what types of games are created in future work.  
 	
 		\subsection{Method}
 		
-		Six subjects were recruited to participate in a pilot study under ethics approval from Carleton University's REB. This was a preliminary study and so was done on healthy subjects with motor control over their legs. The purpose of the study was threefold: to test the function and safety of the device, to study the effects of different levels of assistance and resistance, and to get subjective data concerning the device and the three types of games. The experiment consisted of two phases: 
+		Six subjects were recruited to participate in a pilot study under ethics approval from Carleton University's REB. This was a preliminary study and so was done on healthy subjects with motor control over their legs. The purpose of the study was threefold: to test the function and safety of the device, to study the effects of different levels of assistance and resistance, and to collect subjective data concerning the device and the three types of games. The experiment consisted of two phases: 
 
-\textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance (\textit{i.e.} varying levels of the spring and damper parameters in the admittance control). Five trials included changing levels of assistance with constant resistance, and the other five had changing levels of resistance with no assistance. The assistance levels varied from 0.1 to 0.6 N/mm (with a constant damping of 0.2 Ns/mm), and then the damping varied from 0.1 to 0.6 Ns/mm. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
+\textbf{Parameter Ranges}: Subjects went through ten 1-minute trials with varying levels of assistance and resistance (\textit{i.e.} varying levels of the spring and damper parameters in the admittance control). Five trials included changing levels of assistance with constant resistance, and the other five had changing levels of resistance with no assistance. The assistance levels varied from 0.2 to 0.6 N/mm (with a constant damping of 0.2 Ns/mm), and then the damping varied from 0.2 to 0.6 Ns/mm. The order of the levels was changed between subjects to prevent time-based biasing due to learning or fatigue. Each trial required the subject to follow a desired trajectory, moving back and forth through the knee extension exercise, each at the same velocity. 
 
 \textbf{Games \& Visual}: The next phase consisted of three 1.5-minute trials covering the three games described in Sec. \ref{sec:visuals}. The user played each game and then was asked to comment on their levels of effort, engagement, the difficulty of the task, and the distractibility of the visuals. 
 
@@ -1701,15 +1747,15 @@ Data collection included data logged from the robot and subjective questionnaire
 e_{ave} = \frac{\sum_{k=0}^{N} |x_k - x_{k,des}|}{N}.
 \end{equation}
 
-Another metric that could be of use is what is here termed the user's effort ($\phi$), or the total work done by the user to the system. This is equal to the sum of instantaneous power over the duration of the exercise 
+Another metric that could be of use is what is here termed the user's effort ($\phi$), or the total work done by the user to the system. This is equal to the sum of instantaneous power over the duration of the exercise. To prevent inter-participant differences from obscuring any trends, each participant's effort is normalized against their effort on the lowest assistance level 
 
 \begin{equation} \label{eqn:effort} 
-\phi = \sum_{k=0}^{N} v_kF_k.
+\phi = \frac{\sum_{k=0}^{N} v_kF_k}{\phi _{norm}}.
 \end{equation}
 
 User effort could be used to track how well the patient is recovering in terms of strength and motor coordination, or could be used to tune resistance levels to ensure the exercise is not too easy or difficult. However, further research is needed into the utility of effort. 
 
-In addition to these metrics, data was collected from the questionnaire in Fig. \ref{fig:q_p1} - \ref{fig:q_p3}. This covers the user's perceived difficulty of the different levels of assistance/resistance, their experience using the device in terms of comfort, safety, and etc, and their views on the three games.
+In addition to these metrics, data was collected from the questionnaire in Fig.\ref{fig:q_p1} - \ref{fig:q_p3}. This covers the user's perceived difficulty of the different levels of assistance/resistance, their experience using the device in terms of comfort, safety, and etc, and their views on the three games.
 
 \begin{figure*}[p] 
 	\centering
@@ -1782,7 +1828,7 @@ In addition to these metrics, data was collected from the questionnaire in Fig. 
 	
 	Table 5.2 holds the trajectory error (\ref{eqn:error}), user effort (\ref{eqn:effort}), and subjective difficulty (subjective score out of 5), averaged across all participants,	for each level of assistance and resistance. 
 	
-	The effects of changing the level of assistance are shown in Fig. \ref{fig:assist}. Increasing assistance levels decreased average error from 9.25mm to 6.32mm at the lowest and highest levels, respectively. This result indicates that the assistance provided by the admittance controller was successful, and can be used to help user's of the robot go through the knee flexion/extension exercise. An example of the effects of assistance is shown in Fig. \ref{fig:pos_comp}, with user positions at high and low assistance compared to the desired trajectory. In this case, higher assistance has helped to prevent overshoot. Assistance levels did not change user effort significantly. The comparison of positions from low and high assistance levels for each participant is given in Appendix IV, Fig. \ref{fig:pos1} - \ref{fig:pos6}.
+	The effects of changing the level of assistance are shown in Fig.\ref{fig:assist}. Increasing assistance levels decreased average error from 9.25mm to 6.32mm at the lowest and highest levels, respectively. This result indicates that the assistance provided by the admittance controller was successful, and can be used to help user's of the robot go through the knee flexion/extension exercise. An example of the effects of assistance is shown in Fig.\ref{fig:pos_comp}, with user positions at high and low assistance compared to the desired trajectory. In this case, higher assistance has helped to prevent overshoot. Assistance levels did not change user effort significantly. The comparison of positions from low and high assistance levels for each participant is given in Appendix IV, Fig.\ref{fig:pos1} - \ref{fig:pos6}.
 	
 	\begin{figure}[p]
 	\centering
@@ -1808,7 +1854,7 @@ In addition to these metrics, data was collected from the questionnaire in Fig. 
 \begin{figure*}[h] 
 	\centering
 	\includegraphics[width=0.9\linewidth]{position_comp}
-	\caption{Position omparison between high and low assistance levels}
+	\caption{Position comparison between high and low assistance levels}
 	\label{fig:pos_comp}
 \end{figure*}
 		
@@ -1851,7 +1897,7 @@ In addition to these metrics, data was collected from the questionnaire in Fig. 
 	
 	%The participant's ranked the level of engagement, effort, difficulty, and how distracting the visuals were, each on a scale of 1 to 5. The results are shown in Table \ref{tab:games}. On average, the user's preferred the racing game and the balance game. The cube game was not found to be engaging, as indicated by its low score of 1.75/5. The other measures did not vary significantly across games. Both the cube game and the racing game were found to be somewhat distracting (3/5). 	
 	
-	The subjective scores are summarized in table 5.3, each is averaged over the six subjects, and is given as a score out of five. The engagement scores indicate that the subjects did not enjoy the simple environment, preferring the more challenging racing game and the more interactive balance game. The subjective effort and difficulty did not change significantly across games. Both the simple environment and the racing game were found to be somewhat distracting, with average scores of 3/5. 
+	The subjective scores are summarized in Table 5.3, each is averaged over the six subjects, and is given as a score out of five. The engagement scores indicate that the subjects did not enjoy the simple environment, preferring the more challenging racing game and the more interactive balance game. The subjective effort and difficulty did not change significantly across games. Both the simple environment and the racing game were found to be somewhat distracting, with average scores of 3/5. 
 	
 	
 	\begin{table}[h] \label{tab:games}
@@ -1874,7 +1920,7 @@ In addition to these metrics, data was collected from the questionnaire in Fig. 
 	
 \subsubsection{General Comments} \label{sec:general}
 	
-	Participants were asked to score the device's comfort and safety, the correspondence between the visual guide and the devices position, and how well the footplate supported their leg. Results are given in table 5.4. Safety and visual correspondence scored high (4.8 and 4.5/5, respectively), indicating that the controller and the visuals functioned well. The comfort score varied, with some finding the device uncomfortable, particularly the heel rest. The leg support score was consistently low -- the mechanical design of the footplate should be improved, and the heel rest made more comfortable. Additionally, a secondary support point should be created to help support the leg and keep the leg from rotating out of plane. This could be a passive linkage which attaches under the user's calf and prevents lateral motion. This secondary point of support would mimic the therapists, who use one hand at the heel and one hand near the knee when supporting the patient. 
+	Participants were asked to score the device's comfort and safety, the correspondence between the visual guide and the devices position, and how well the footplate supported their leg. Results are given in Table 5.4. Safety and visual correspondence scored high (4.8 and 4.5/5, respectively), indicating that the controller and the visuals functioned well. The comfort score varied, with some finding the device uncomfortable, particularly the heel rest. The leg support score was consistently low -- the mechanical design of the footplate should be improved, and the heel rest made more comfortable. Additionally, a secondary support point should be created to help support the leg and keep the leg from rotating out of plane. This could be a passive linkage which attaches under the user's calf and prevents lateral motion. This secondary point of support would mimic the therapists, who use one hand at the heel and one hand near the knee when supporting the patient. 
 	
 	\begin{table}[h] \label{tab:general}
 	\centering \doublespacing
@@ -1921,7 +1967,7 @@ Participants were asked to comment on how they thought the device could be impro
 
 \chapter{Conclusion \& Future Work} \label{ch_conc}
 
-	Rehabilitation Robots have been used successfully in both research and clinical settings. Many devices exist, primarily for the upper-limbs and for gait training. The gap in the research concerning devices for bed-bound therapy for acute stroke patients motivated the construction of ViGRR, a 4-DOF rehabilitation robot. ViGRR was successfully tested, however it's high weight and power makes it unsuitable for the hospital environment. It was decided to construct a new robot which target acute stroke rehabilitation and is compatible with the hospital. The following work and contributions are included in this project: 
+	Rehabilitation Robots have been used successfully in both research and clinical settings. Many devices exist, primarily for the upper-limbs and for gait training. The gap in the research concerning devices for bed-bound therapy for acute stroke patients motivated the construction of ViGRR, a 4-DOF rehabilitation robot. ViGRR was successfully tested, however its high weight and power makes it unsuitable for the hospital environment. It was decided to construct a new robot which targets acute stroke rehabilitation and is compatible with the hospital. The following work and contributions are included in this project: 
 	
 	\textbf{Fieldwork at Hospital}: Fieldwork was conducted at the Stroke ward at the Civic campus of the Ottawa Hospital. Physio- and Occupational Therapists were shadowed and interviewed in order to learn more about bed-bound stroke rehabilitation. From this information, the device concept was created.
 	
@@ -1929,15 +1975,15 @@ Participants were asked to comment on how they thought the device could be impro
 	
 	\textbf{Electronics}: A PCB was created in EAGLE and was manufactured by JCLPCB. It is used to (1) route signals from sensors to the DAQ, (2) process signals, including amplification and filtering, and (3) implement safety features which disable the motor. 
 	
-	\textbf{Controller}: An admittance controller was created, and the acceptable ranges on the gains were determined. A haptic coupling was added to allow for more complex virtual environments. To demonstrate the haptics, a physics engines was used to create a simple virtual environment containing  a moving object, with the contact modelled as a spring.  
+	\textbf{Controller}: An admittance controller was created, and the acceptable ranges on the gains were determined. A haptic coupling was added to allow for more complex virtual environments. To demonstrate the haptics, a physics engine was used to create a simple virtual environment containing  a moving object, with the contact modelled as a spring.  
 	
-	\textbf{Software}: The controller was implemented in C, and runs using real time functionality on Ubuntu with a pre-empted kernel. The code uses multi-threading, mutexes, and scheduling to achieve soft real time, which was verified to run close to the desired 1kH. 
+	\textbf{Software}: The controller was implemented in C, and runs using real time functionality on Ubuntu with a pre-empted kernel. The code uses multi-threading, mutexes, and scheduling to achieve soft real time, which was verified to run close to the desired 1kHz. 
 	
 	\textbf{UI}: A user interface was created using web technologies like React.js and THREE.js. It can be used to set up a therapy session by setting desired parameters and activity; it is also used to display visuals to the patient. Three games were created: a simple environment, a racing game, and a balance game with haptic feedback. 
 	
 	\textbf{Pilot Study}: Six subjects were recruited for a study which aimed to look at a range of assistance and resistance levels, and a preliminary test of the games. Results indicate that the robot functions as expected, but more work needs to be done on supporting the leg and making the device comfortable. 
 	
-	\textbf{Publications}: This project has resulted in two publications, with one more in the process of submission. (1) A conference abstract and presentation at the Conference of Control, Dynamic Systems, and Robotics (CDSR'19) covering the design and controls, which won the best presentation award \cite{Berezny2019}; (2) a conference paper and poster presentation at the Canadian Medical and Biological Engineering Conference, which covered the fieldwork and how it inspired the foundational device concept \cite{NBerezny2019}; and (3) a paper which is in the process of submission covering the robot's design, controller, and the results of the healthy subject experiments. Furthermore, the groundwork has be lain for another experiment and publication in the coming months, which seeks to improve the games, measure engagement quantitatively, and also collect electromyographic (EMG) data. 
+	\textbf{Publications}: This project has resulted in two publications, with one more in the process of submission. (1) A conference abstract and presentation at the Conference of Control, Dynamic Systems, and Robotics (CDSR'19) covering the design and controls, which won the best presentation award \cite{Berezny2019}; (2) a conference paper and poster presentation at the Canadian Medical and Biological Engineering Conference, which covered the fieldwork and how it inspired the foundational device concept \cite{NBerezny2019}; and (3) a paper which is in the process of submission covering the robot's design, controller, and the results of the healthy subject experiments. Furthermore, the groundwork has been lain for another experiment and publication in the coming months, which seeks to improve the games, measure engagement quantitatively, and also collect electromyographic (EMG) data. 
 	
 \begin{figure}[h]
 	\centering
@@ -2001,13 +2047,13 @@ A list of requirements for the device was developed in Sec. \ref{sec:requirement
 		\item As suggested by therapists, a second support point on the leg is needed so that the patient's leg does not bend out of plane. A passive multi-DOF support point attached under the knee should be added, which can accommodate a variety of leg sizes and stroke lengths. 
 	\end{enumerate}		
 	
-	A case for the PCB and Load Cell amplifier has been created, however the other electronics also need to be packaged together. A separate box should be built to contain the motor controller, power supply, DAQ and computer. This box should be portable and easily connected to the robot. This would allow the robot to be easily setup and removed as needed in the hospital. A shell needs to be built to protect other's from any sharp edges, and so that the device can be cleaned or sterilized as needed. Some research should be done on what material to use. Finally, extra DOF's should be added to accommodate different types of exercises. More research will need to be done concerning the best configuration. 
+	A case for the PCB and Load Cell amplifier has been created, however the other electronics also need to be packaged together. A separate box should be built to contain the motor controller, power supply, DAQ and computer. This box should be portable and easily connected to the robot. This would allow the robot to be easily set up and removed as needed in the hospital. A shell needs to be built to protect other's from any sharp edges, and so that the device can be cleaned or sterilized as needed. Some research should be done on what material to use. Finally, extra DOF's should be added to accommodate different types of exercises. More research will need to be done concerning the best configuration. 
 
 		\section{Software Extension}
 	
 			%While the software was customized to this system, it is desirable that it can be re-used in future design changes to the device, such as changing the control algorithm, adding DOF's, or changing the UI. To facilitate the use of the software for future designs, the software was re-factored to a more general structure, essentially a software template. The template includes  all initialization steps for creating real-time threads, communication of the UI, and communication with the DAQ -- however the controller and data structures are empty. Instructions are included on adding ...
 			
-	The software was customized for this system, however future design iterations will likely to make significant changes, including changing the controller to accommodate more DOF's, and adding features to the UI. A software template was created from the control and UI software described above. It includes:
+	The software was customized for this system, however future design iterations will likely make significant changes, including changing the controller to accommodate more DOF's, and adding features to the UI. A software template was created from the control and UI software described above. It includes:
 	
 	\begin{itemize}
 		\item Initialization and creating the threads
@@ -2047,10 +2093,14 @@ The user interface needs improvement before it is ready for use by therapists in
 		\item An experiment measuring engagement objectively (using biometrics, for example).
 		\item An experiment investigating the effort metric used in this thesis (by comparing effort with, for example, EMG data).
 		\item Another healthy subject test when the secondary leg support and other improvements are complete.
-		\item Experiments in the hospital on healthy subjects, subjects who have recovered and have experience with rehabilitation, and finally with stroke patients.
+		\item Experiments in the hospital on healthy subjects, subjects who have recovered and have experience with rehabilitation.
 	\end{enumerate}
 	
+	These experiments are all required to verify that the device functions, is safe, and can potentially benefit acute stroke patients. Once these things are verified, we can then seek ethics approval for a larger scale clinical trial on acute stroke patients, during which we follow acute patients throughout their recover and determine the efficacy of the device for improving rehabilitation outcomes. 
 	
+\bibliography{thesis}
+\bibliographystyle{ieeetr}	
+
 \chapter*{Appendix I: Custom Parts} \label{ap:parts}
 
 	\begin{figure*}[h] 
@@ -2265,6 +2315,5 @@ The user interface needs improvement before it is ready for use by therapists in
 
 	
 	
-\bibliography{thesis}
-\bibliographystyle{ieeetr}
+
 \end{document}
