@@ -22,6 +22,7 @@
 \usepackage{boldline}
 \usepackage{enumitem}
 \usepackage{makecell}
+\usepackage{afterpage}
 \usepackage{url}
 \renewcommand\theadalign{l}
 \renewcommand\theadgape{\Gape[4pt]}
@@ -31,6 +32,7 @@
 
 
 \begin{document}
+
 
 \newpage
 
@@ -65,6 +67,9 @@ Nicholas Berezny
 \end{center}
 \thispagestyle{empty}
 \clearpage
+\afterpage{\null\newpage}
+\thispagestyle{empty}
+\clearpage
 \newpage
 \pagenumbering{roman} 
 
@@ -81,11 +86,13 @@ Stroke is a prevalent cerebrovascular disease which leads to neurological defici
 
 \chapter*{Acknowledgements}
 I'd like to thank my supervisor, Mojtaba Ahmadi, for the opportunity to work on this project, and for all the assistance navigating grad school. I would also like to thank all the members of ABL for their support, advice, and for bravely volunteering as the first test subjects. 
-	
+
+\afterpage{\null\newpage}
 \tableofcontents
 \listoffigures
 \listoftables
 
+\afterpage{\null\newpage}
 \chapter*{Acronyms} 
 
 \begin{tabular}{l l}
@@ -111,7 +118,7 @@ ViGRR \hspace{5mm} &Virtual Gait Rehabilitation Robot \\
 \end{tabular}
 
 
-
+\afterpage{\null\newpage}
 
 \chapter{Introduction}
 \pagenumbering{arabic} 
@@ -417,6 +424,9 @@ A 1-DOF robot was designed and created according to the requirements determined 
 
 \end{itemize}
 
+
+
+\afterpage{\null\newpage}
 \chapter{Fieldwork and Initial Design} 
 
 \section{Introduction}
@@ -657,7 +667,7 @@ The following design requirements were collected for the lower-limb rehabilitati
 	
 	For a 1-DOF device, a microcontroller is the typical choice given that the control is simple and does not require much processing power or memory. However, eventually extra DOF's may be added to our system to the point where a microcontroller is not suitable. The computer could also be used to run the user interface (UI). Therefore we chose to use a computer to run the control software. A Linux operating system with a pre-empted kernel was used to achieve real-time control.
 
-
+\newpage
 
 \section{Final Design} 
 
@@ -679,6 +689,7 @@ The following design requirements were collected for the lower-limb rehabilitati
 	\end{figure*}
 	
 
+\afterpage{\null\newpage}
 \chapter{Device Design and Implementation} \label{ch2}
 
 	
@@ -975,7 +986,8 @@ The maximum speed of 230 mm/s is adequate for our purposes, as the system is des
 	\end{figure*}
 	
 	
-		
+	
+\afterpage{\null\newpage}	
 \chapter{Controller and Software} \label{ch3}
 
 
@@ -1576,9 +1588,9 @@ The UI consists of a menu and three pages: the setup page, the game page, and th
 		\caption{The haptic balance game}
 		\label{fig:balance_game}
 	\end{figure*} 
-			
 
-	
+
+\afterpage{\null\newpage}	
 \chapter{Experiments}
 
 	\section{Overview}
@@ -1966,6 +1978,7 @@ Participants were asked to comment on how they thought the device could be impro
  Experiments indicate that the device functions as desired. Findings indicate that assistance can help users follow the desired trajectory more closely, and that resistance should be tailored to the preferences of the user, as some prefer lower or higher levels. The games and haptic interaction increase engagement, but can be distracting. The users felt safe while using the device, although the comfort and the footplate support need to be improved before testing on stroke patients. Future work includes these improvements, more in-depth experiments regarding the engagement of the games, and clinical trials on patients. 
 	
 
+\afterpage{\null\newpage}
 \chapter{Conclusion \& Future Work} \label{ch_conc}
 
 	Rehabilitation Robots have been used successfully in both research and clinical settings. Many devices exist, primarily for the upper-limbs and for gait training. The gap in the research concerning devices for bed-bound therapy for acute stroke patients motivated the construction of ViGRR, a 4-DOF rehabilitation robot. ViGRR was successfully tested, however its high weight and power makes it unsuitable for the hospital environment. It was decided to construct a new robot which targets acute stroke rehabilitation and is compatible with the hospital. The following work and contributions are included in this project: 
@@ -2139,6 +2152,7 @@ The user interface needs improvement before it is ready for use by therapists in
 		\label{fig:motor_mount}
 	\end{figure*}
 
+\afterpage{\null\newpage}
 \chapter*{Appendix II: PCB Diagram \& BOM} \label{ap:pcb}
 
 		
@@ -2257,7 +2271,7 @@ The user interface needs improvement before it is ready for use by therapists in
 	\end{figure*}
 
 
-
+\afterpage{\null\newpage}
 \chapter*{Appendix IV: Additional Plots from Healthy Subject Experiment} \label{ap:plots}
 
 \begin{figure*}[h] 
